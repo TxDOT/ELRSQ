@@ -1,0 +1,13 @@
+
+/* lists */
+.format_list li {
+    font-family: 'Red Hat Mono', monospace;
+}
+
+
+/* calculator element styling */
+.example, .textentry, .textecho, .textout, .elrs_url {
+    font-family: 'Red Hat Mono', monospace;
+    text-align: left;
+}
+
