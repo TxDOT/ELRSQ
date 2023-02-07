@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TxDOT MQS Replacement</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style/show_hide.css">
+  <link rel="stylesheet" href="style/style_mini_map.css">
+  <link rel="stylesheet" href="style/map_style_ravi.css"> 
+  <link rel="stylesheet" href="style/text_style.css">  
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.5.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="toggle-sidebar">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!--<img src="assets/logo/txdot.png" alt="">-->
+        <span class="d-none d-lg-block">TxDOT MQS Replacement</span>
+      </a>
+    </div><!-- End Logo -->
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+        <div class="container-fluid">
+          <div id="navbarSupportedContent">  
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link " href="index.html">
+                  <span>Form View</span>
+                </a>
+              </li><!-- End Form View Nav -->
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="bulk-conversion.html">
+                  <span>Bulk Conversion</span>
+                </a>
+              </li><!-- End Bulk Conversion Page Nav -->
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="build-routes.html">
+                  <span>Build Routes</span>
+                </a>
+              </li><!-- End Build Routes Page Nav -->
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="help.html">
+                  <span>Help</span>
+                </a>
+              </li><!-- End Help Page Nav -->       
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="about.html">
+                  <span>About</span>
+                </a>
+              </li><!-- End About Page Nav -->
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </header><!-- End Header -->
+
+
+  <main id="main" class="main">
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Query by:</h5>
+
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates" aria-selected="true">Coordinates</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="refmarker-tab" data-bs-toggle="tab" data-bs-target="#refmarker-justified" type="button" role="tab" aria-controls="refmarker" aria-selected="false">Reference Marker</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified" type="button" role="tab" aria-controls="dfo" aria-selected="false">DFO</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="controlsec-tab" data-bs-toggle="tab" data-bs-target="#controlsec-justified" type="button" role="tab" aria-controls="controlsec" aria-selected="false">Control Section</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor" aria-selected="false">Map Cursor</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="coordinates-justified" role="tabpanel" aria-labelledby="coordinates-tab">
+                  <!-- Horizontal Form -->
+                  <form>
+
+
+                  <!-- Bordered Table -->
+                  <table class="table table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>Begin</td>
+                        <td>End</td>                        
+                      </tr>
+                      <tr>
+                        <th scope="row">Latitude:</th>
+                        <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>
+                        <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>                        
+                      </tr>
+                      <tr>
+                        <th scope="row">Longitude:</th>
+                        <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>
+                        <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>  
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary">Convert</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+
+                    <table class="table table-bordered table-sm">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Common Route Names:</th>
+                          <td id="p_returned_ROUTENUMBER" class="textout"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="text-center">
+                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary">Select Route</button>
+
+                    </div>
+
+
+
+                  </form><!-- End Horizontal Form -->
+                </div>
+                <div class="tab-pane fade" id="refmarker-justified" role="tabpanel" aria-labelledby="refmarker-tab">
+                </div>
+                <div class="tab-pane fade" id="dfo-justified" role="tabpanel" aria-labelledby="dfo-tab">
+                </div>
+                <div class="tab-pane fade" id="controlsec-justified" role="tabpanel" aria-labelledby="controlsec-tab">
+                </div>
+                <div class="tab-pane fade" id="mapcursor-justified" role="tabpanel" aria-labelledby="mapcursor-tab">
+                  Use the "crosshairs" map cursor to select a point on the map.
+                </div>
+
+              </div><!-- End Default Tabs -->
+
+            </div>
+          </div>
+
+
+
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Results:</h5> <span id="result-pagination"></span>
+
+              <!-- Disabled and active states -->
+              <!-- <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav> -->
+              <!-- End Disabled and active states -->
+
+              <!-- <div class="row results-title">
+                <div class="col-sm">
+                  Results <span id="result-pagination"></span>
+                </div>
+              </div> -->
+
+              <div class="card">
+                <div class="card-body">
+                  <!-- Bordered Table -->
+                  <table class="table table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Route:</th>
+                        <td id="p_returned_ROUTENUMBER" class="textout"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Begin DFO:</th>
+                        <td id="p_returned_RTE_DFO" class="textout"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">End DFO:</th>
+                        <td id="p_returned_RTE_DFO" class="textout"></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Color:</th>
+                        <td><input type="text" value="blue" class="form-control textentry"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Width:</th>
+                        <td><input type="number" value=1 class="form-control textentry"></td>
+                      </tr>
+                      <tr>
+                      <tr>
+                        <th scope="row">Project:</th>
+                        <td><input type="text" value="Yet another I-35 project" class="form-control textentry"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+
+                  <form>
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary">Add</button>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary">Drop</button>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary">Clear</button>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary">Map Routes</button>
+                    </div>                    
+                  </form><!-- End Horizontal Form -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-8">
+          <div id="viewDiv" class="col-7 map-container">
+            <div id=""></div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center">
+                <button type="button" onclick="" class="btn btn-primary">Export Printable Map</button>
+              </div>
+              <div class="text-center">
+                <button type="button" onclick="" class="btn btn-primary">Export KML</button>
+              </div>
+            </div>
+          </div>
+        <!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <!-- <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div> -->
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+    <!-- ESRI ArcGIS JS API -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+    <script src="script/main.js"></script>
+    <script>let currentSelection = []</script>
+    <script>let allResults = []</script>
+    <script>let currentPos = 1;</script>
+    <script src="script/contentAndEvent.js"></script>
+    <script src="script/handleMapClick.js"></script>    
+    <script src="script/formHandler.js"></script>      
+    <script src="script/query1.js"></script>    
+    <script src="script/showResultsOnMap.js"></script>   
+    <script src="script/results.js"></script>    
+    <script src="script/onMenuClick.js"></script>
+</body>
+
+</html>
