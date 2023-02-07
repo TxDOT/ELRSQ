@@ -32,23 +32,11 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style/show_hide.css">
   <link rel="stylesheet" href="style/style_mini_map.css">
+  <link rel="stylesheet" href="style/map_style_ravi.css"> 
 
 
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="script/scripts_convert_form.js"></script>
-  <!--<script src="script/form_reset.js"></script>
-  <script src="script/button_color.js"></script>-->
-
-  <!--<script src="https://js.arcgis.com/4.24/"></script>-->
-  <!--<script src="script/esriapi_mini_map.js"></script>-->
-
-  <script>
-    console.log("setting current_page, route_count, elrs_method to 0");
-    var current_page = 0;
-    var route_count = 0;
-    var elrs_method = 0;
-  </script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -158,7 +146,7 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="renderELRS(1,0)" class="btn btn-primary">Convert</button>
+                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary">Convert</button>
                       <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
@@ -185,7 +173,7 @@
                       </div>
                     </div>                    
                     <div class="text-center">
-                      <button type="button" onclick="renderELRS(2,0)" class="btn btn-primary">Convert</button>
+                      <button type="button" onclick="lrsQuery(2)" class="btn btn-primary">Convert</button>
                       <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
@@ -206,7 +194,7 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="renderELRS(4,0)" class="btn btn-primary">Convert</button>
+                      <button type="button" onclick="lrsQuery(4)" class="btn btn-primary">Convert</button>
                       <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
@@ -227,7 +215,7 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="renderELRS(3,0)" class="btn btn-primary">Convert</button>
+                      <button type="button" onclick="lrsQuery(3)" class="btn btn-primary">Convert</button>
                       <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
@@ -249,7 +237,7 @@
               <h5 class="card-title">Results:</h5>
 
                 <!-- Disabled and active states -->
-                <nav aria-label="...">
+                <!-- <nav aria-label="...">
                   <ul class="pagination">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -267,7 +255,14 @@
                       <a class="page-link" href="#">Next</a>
                     </li>
                   </ul>
-                </nav><!-- End Disabled and active states -->
+                </nav> -->
+                <!-- End Disabled and active states -->
+
+                <div class="row results-title">
+                  <div class="col-sm">
+                    Results <span id="result-pagination"></span>
+                  </div>
+                </div>
 
 
 
@@ -341,11 +336,21 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-8">
+        <!--<div class="col-lg-8">
           <div id="minimap_pane">
-            <div id="minimapDiv"></div>
+            <div id="viewDiv">
+            </div>
           </div>
-        </div><!-- End Right side columns -->
+        </div>-->
+        <!-- End Right side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-8">
+          <div id="viewDiv" class="col-7 map-container">
+            <div id=""></div>
+          </div>
+        </div>
+        <!-- End Right side columns -->
 
       </div>
     </section>
@@ -394,7 +399,21 @@
 
 
 
+    <!-- ESRI ArcGIS JS API -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.25/"></script>
 
+    <script src="script/main.js"></script>
+    <script>let currentSelection = []</script>
+    <script>let allResults = []</script>
+    <script>let currentPos = 1;</script>
+    <script src="script/contentAndEvent.js"></script>
+    <script src="script/handleMapClick.js"></script>    
+    <script src="script/formHandler.js"></script>      
+    <script src="script/query1.js"></script>    
+    <script src="script/showResultsOnMap.js"></script>   
+    <script src="script/results.js"></script>    
+    <script src="script/onMenuClick.js"></script>
 </body>
 
 </html>
