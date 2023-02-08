@@ -35,6 +35,36 @@
   <link rel="stylesheet" href="style/map_style_ravi.css"> 
   <link rel="stylesheet" href="style/text_style.css">  
 
+  <style>
+    .upload_dropZone {
+      color: #0f3c4b;
+      background-color: #c8dadf;
+      outline: 2px dashed #0c3a57;
+      outline-offset: -12px;
+      transition:
+        outline-offset 0.2s ease-out,
+        outline-color 0.3s ease-in-out,
+        background-color 0.2s ease-out;
+    }
+
+    .upload_dropZone.highlight {
+      outline-offset: -4px;
+      outline-color: #0576bd;
+      background-color: #c8dadf;
+    }
+
+    .btn-upload {
+      color: #fff;
+      background-color: #0c3a57;
+    }
+    .btn-upload:hover,
+    .btn-upload:focus {
+      color: #fff;
+      background-color: #0c3a57;
+    }
+  </style>
+
+
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
   <!-- =======================================================
@@ -63,16 +93,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link " href="index.html">
-                  <span>Form View</span>
+                  <span>Home</span>
                 </a>
               </li><!-- End Form View Nav -->
-        
-              <li class="nav-item">
-                <a class="nav-link collapsed" href="bulk-conversion.html">
-                  <span>Bulk Conversion</span>
-                </a>
-              </li><!-- End Bulk Conversion Page Nav -->
-        
+               
               <li class="nav-item">
                 <a class="nav-link collapsed" href="build-routes.html">
                   <span>Build Routes</span>
@@ -145,10 +169,13 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      &bull;
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
                     </div>
                   </form><!-- End Horizontal Form -->
+                  <!-- Button trigger modal -->
                 </div>
                 <div class="tab-pane fade" id="refmarker-justified" role="tabpanel" aria-labelledby="refmarker-tab">
                   <!-- Horizontal Form -->
@@ -172,8 +199,10 @@
                       </div>
                     </div>                    
                     <div class="text-center">
-                      <button type="button" onclick="lrsQuery(2)" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button type="button" onclick="lrsQuery(2)" class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      &bull;
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal2" title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
                     </div>
                   </form><!-- End Horizontal Form -->
                 </div>
@@ -193,8 +222,8 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="lrsQuery(4)" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button type="button" onclick="lrsQuery(4)" class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
                 </div>
@@ -214,8 +243,8 @@
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" onclick="lrsQuery(3)" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button type="button" onclick="lrsQuery(3)" class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
                   </form><!-- End Horizontal Form -->
                 </div>
@@ -295,6 +324,9 @@
                         <td style="border: 0"></td>
                       </tr>
                       <tr>
+                        <th scope="row" colspan="2"><h5>Control Section & Mile Point</h5></th>
+                      </tr>
+                      <tr>
                         <th scope="row">Control Section:</th>
                         <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
@@ -307,6 +339,9 @@
                         <td style="border: 0"></td>
                       </tr>
                       <tr>
+                        <th scope="row" colspan="2"><h5>Reference Marker & Displacement</h5></th>
+                      </tr>
+                      <tr>
                         <th scope="row">Reference Marker:</th>
                         <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
@@ -317,6 +352,9 @@
                       <tr>
                         <th scope="row" style="border: 0"></th></th>
                         <td style="border: 0"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" colspan="2"><h5>Latitude & Longitude</h5></th>
                       </tr>
                       <tr>
                         <th scope="row">Latitude:</th>
@@ -342,6 +380,13 @@
           <div id="viewDiv" class="col-7 map-container">
             <div id=""></div>
           </div>
+          <div id="mapButtonsDiv" class="card map-buttons">
+            <div class="card-body">
+              <button type="button" onclick="" class="btn btn-primary" title="See current result on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> See Result n</button>
+              <button type="button" onclick="" class="btn btn-primary" title="See all results on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Zoom To and Show all Results</button>
+              <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all points"><i class="fa fa-download"></i> Export KML</button>
+            </div>
+          </div>
         </div>
         <!-- End Right side columns -->
 
@@ -349,6 +394,88 @@
     </section>
 
   </main><!-- End #main -->
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Bulk Conversion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Horizontal Form -->
+          <h3>Placeholder for Bulk Conversion UI</h3>
+          <button type="button" onclick="" class="btn btn-primary" title="Download a fillable template"><i class="fa fa-download"></i> Download Template</button>
+          <form>
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" placeholder="Select file" aria-label="Select file" aria-describedby="button-addon2">
+              <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            </div>
+          </form><!-- End Horizontal Form -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Bulk Conversion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Horizontal Form -->
+          <h3>Placeholder for Bulk Conversion UI</h3>
+          <button type="button" onclick="" class="btn btn-primary" title="Download a fillable template"><i class="fa fa-download"></i> Download Template</button>
+          <form>
+            <fieldset class="upload_dropZone text-center mb-3 p-4">
+              <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
+              <input id="upload_control-section-bulk" data-post-name="control-section-bulk" 
+                data-post-url="https://someplace.com/image/uploads/backgrounds/" 
+                class="position-absolute invisible" type="file" multiple accept="" />
+              <label class="btn btn-upload mb-3" for="upload_control-section-bulk">Choose file(s)</label>
+              <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
+            </fieldset>
+            <button class="btn btn-primary" type="button" id="button" onclick="" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
