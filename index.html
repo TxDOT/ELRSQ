@@ -154,19 +154,19 @@
                   <!-- Horizontal Form -->
                   <form>
                     <div class="row mb-3">
-                      <label for="inputRefMarker" class="col-sm-3 col-form-label">Route Name</label>
+                      <label for="inputRefMarker" class="col-sm-4 col-form-label">Route Name</label>
                       <div class="col-sm-4">
                         <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_2" value="US0077-KG" class="form-control textentry" id="inputRouteName_2">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="inputRefMarker" class="col-sm-3 col-form-label">Reference Marker</label>
+                      <label for="inputRefMarker" class="col-sm-4 col-form-label">Reference Marker</label>
                       <div class="col-sm-4">
                         <input type="number" required name="refmarker" value="622" class="form-control textentry" id="inputReferenceMarker">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="inputRefMarker" class="col-sm-3 col-form-label">Displacement</label>
+                      <label for="inputRefMarker" class="col-sm-4 col-form-label">Displacement</label>
                       <div class="col-sm-4">
                         <input type="number" required name="displacement" value="0.065" class="form-control textentry" id="inputDisplacement">
                       </div>
@@ -181,13 +181,13 @@
                   <!-- Horizontal Form -->
                   <form>
                     <div class="row mb-3">
-                      <label for="inputDFO" class="col-sm-3 col-form-label">Route Name</label>
+                      <label for="inputDFO" class="col-sm-4 col-form-label">Route Name</label>
                       <div class="col-sm-4">
                         <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_4" value="FM1818-KG" class="form-control textentry" id="inputRouteName_4">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="inputDFO" class="col-sm-3 col-form-label">Distance From Origin</label>
+                      <label for="inputDFO" class="col-sm-4 col-form-label">Distance From Origin</label>
                       <div class="col-sm-4">
                         <input type="number" required step="0.1" name="dfo" value="1.606" class="form-control textentry" id="inputDFO">
                       </div>
@@ -202,13 +202,13 @@
                   <!-- Horizontal Form -->
                   <form>
                     <div class="row mb-3">
-                      <label for="inputControlSec" class="col-sm-3 col-form-label">Control Section</label>
+                      <label for="inputControlSec" class="col-sm-4 col-form-label">Control Section</label>
                       <div class="col-sm-4">
                         <input type="text" required name="csj" value="012201" class="form-control textentry" id="inputControlSec">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="inputControlSec" class="col-sm-3 col-form-label">Milepoint Measure</label>
+                      <label for="inputControlSec" class="col-sm-4 col-form-label">Milepoint Measure</label>
                       <div class="col-sm-4">
                         <input type="number" required name="mpm" value="2.394" class="form-control textentry" id="inputMilepointMeasure">
                       </div>
@@ -267,58 +267,64 @@
                 <div class="card-body">
                   <!-- Bordered Table -->
                   <table class="table table-bordered table-sm">
+                    <thead>
+                      <tr style="border: 0">
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                      </tr>
+                    </thead>
                     <tbody>
                       <tr>
                         <th scope="row">RouteID:</th>
-                        <td id="p_returned_ROUTEID" class="textout"></td>
+                        <td id="p_returned_ROUTEID" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Route:</th>
-                        <td id="p_returned_ROUTENUMBER" class="textout"></td>
+                        <td id="p_returned_ROUTENUMBER" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Roadbed Type:</th>
-                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout"></td>
+                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">DFO:</th>
-                        <td id="p_returned_RTE_DFO" class="textout"></td>
+                        <td id="p_returned_RTE_DFO" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Control Section:</th>
-                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout"></td>
+                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Mile Point:</th>
-                        <td id="p_returned_CTRL_SECT_MPT" class="textout"></td>
+                        <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Reference Marker:</th>
-                        <td id="p_returned_RMRKR_PNT_NBR" class="textout"></td>
+                        <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Displacement:</th>
-                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout"></td>
+                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Latitude:</th>
-                        <td id="p_returned_LAT" class="textout"></td>
+                        <td id="p_returned_LAT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Longitude:</th>
-                        <td id="p_returned_LON" class="textout"></td>
+                        <td id="p_returned_LON" class="textout table-secondary border border-dark"></td>
                       </tr>
                     </tbody>
                   </table>

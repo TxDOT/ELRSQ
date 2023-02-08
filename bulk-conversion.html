@@ -249,58 +249,64 @@
                 <div class="card-body">
                   <!-- Bordered Table -->
                   <table class="table table-bordered table-sm">
+                    <thead>
+                      <tr style="border: 0">
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                      </tr>
+                    </thead>
                     <tbody>
                       <tr>
                         <th scope="row">RouteID:</th>
-                        <td id="p_returned_ROUTEID" class="textout"></td>
+                        <td id="p_returned_ROUTEID" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Route:</th>
-                        <td id="p_returned_ROUTENUMBER" class="textout"></td>
+                        <td id="p_returned_ROUTENUMBER" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Roadbed Type:</th>
-                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout"></td>
+                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">DFO:</th>
-                        <td id="p_returned_RTE_DFO" class="textout"></td>
+                        <td id="p_returned_RTE_DFO" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Control Section:</th>
-                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout"></td>
+                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Mile Point:</th>
-                        <td id="p_returned_CTRL_SECT_MPT" class="textout"></td>
+                        <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Reference Marker:</th>
-                        <td id="p_returned_RMRKR_PNT_NBR" class="textout"></td>
+                        <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Displacement:</th>
-                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout"></td>
+                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
                       </tr>
                       <tr>
                         <th scope="row">Latitude:</th>
-                        <td id="p_returned_LAT" class="textout"></td>
+                        <td id="p_returned_LAT" class="textout table-secondary border border-dark"></td>
                       </tr>
                       <tr>
                         <th scope="row">Longitude:</th>
-                        <td id="p_returned_LON" class="textout"></td>
+                        <td id="p_returned_LON" class="textout table-secondary border border-dark"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -316,15 +322,17 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-8">
-          <div id="viewDiv" class="col-7 map-container">
-            <div id=""></div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-hand-o-right" aria-hidden="true"></i> See Result n</button>
-              <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Zoom To and Show all Results</button>
-              <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-download"></i> Export KML</button>
+        <div  class="col-lg-8">
+          <div id="rightDiv">
+            <div id="viewDiv" class="col-7 map-container">
+              <div id=""></div>
+            </div>
+            <div id="mappButtonsDiv" class="card map-buttons">
+              <div class="card-body">
+                <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-hand-o-right" aria-hidden="true"></i> See Result n</button>
+                <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Zoom To and Show all Results</button>
+                <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-download"></i> Export KML</button>
+              </div>
             </div>
           </div>
         <!-- End Right side columns -->
