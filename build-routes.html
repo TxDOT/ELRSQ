@@ -17,6 +17,9 @@
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -123,65 +126,102 @@
                 <li class="nav-item flex-fill" role="presentation">
                   <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor" aria-selected="false">Map Cursor</button>
                 </li>
-
               </ul>
+
               <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <div class="tab-pane fade show active" id="coordinates-justified" role="tabpanel" aria-labelledby="coordinates-tab">
                   <!-- Horizontal Form -->
                   <form>
-
-
-                  <!-- Bordered Table -->
-                  <table class="table table-bordered table-sm">
-                    <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td>Begin</td>
-                        <td>End</td>                        
-                      </tr>
-                      <tr>
-                        <th scope="row">Latitude:</th>
-                        <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>
-                        <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>                        
-                      </tr>
-                      <tr>
-                        <th scope="row">Longitude:</th>
-                        <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>
-                        <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>  
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
-
-                    <div class="text-center">
-                      <button type="button" onclick="" class="btn btn-primary">Convert</button>
-                      <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
-
+                    <!-- Bordered Table -->
                     <table class="table table-bordered table-sm">
                       <tbody>
                         <tr>
-                          <th scope="row">Common Route Names:</th>
-                          <td id="p_returned_ROUTENUMBER" class="textout"></td>
+                          <th scope="row"></th>
+                          <td>Begin</td>
+                          <td>End</td>                        
+                        </tr>
+                        <tr>
+                          <th scope="row">Latitude:</th>
+                          <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>
+                          <td><input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat"></td>                        
+                        </tr>
+                        <tr>
+                          <th scope="row">Longitude:</th>
+                          <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>
+                          <td><input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon"></td>  
                         </tr>
                       </tbody>
                     </table>
+                    <!-- End Bordered Table -->
 
                     <div class="text-center">
-                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary">Select Route</button>
-
+                      <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
 
-
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Common Route Names:</span>
+                      <select class="form-select" id="">
+                        <option selected>Generated dynamically by JS</option>
+                      </select>
+                      <button class="btn btn-outline-primary" type="button" id="button-addon2">Select Route</button>
+                    </div>
 
                   </form><!-- End Horizontal Form -->
                 </div>
+
                 <div class="tab-pane fade" id="refmarker-justified" role="tabpanel" aria-labelledby="refmarker-tab">
+                  <!-- Horizontal Form -->
+                  <form>
+
+                    
+
+                    <!-- Bordered Table -->
+                    <table class="table table-bordered table-sm">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Route Name:</th>
+                          <td><input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_2" value="US0077-KG" class="form-control textentry" id="inputRouteName_2"></td>
+                          <td></td>                     
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>                     
+                        </tr>                       
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong>Begin</strong></td>
+                          <td><strong>End</strong></td>                        
+                        </tr>
+                        <tr>
+                          <th scope="row">Reference Marker:</th>
+                          <td><input type="number" required name="refmarker" value="622" class="form-control textentry" id="inputReferenceMarker"></td>
+                          <td><input type="number" required name="refmarker" value="622" class="form-control textentry" id="inputReferenceMarker"></td>                     
+                        </tr>
+                        <tr>
+                          <th scope="row">Displacement:</th>
+                          <td><input type="number" required name="displacement" value="0.065" class="form-control textentry" id="inputDisplacement"></td>   
+                          <td><input type="number" required name="displacement" value="0.065" class="form-control textentry" id="inputDisplacement"></td>    
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+
+                    <div class="text-center">
+                      <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+
+                  </form><!-- End Horizontal Form -->
                 </div>
+
                 <div class="tab-pane fade" id="dfo-justified" role="tabpanel" aria-labelledby="dfo-tab">
                 </div>
+
                 <div class="tab-pane fade" id="controlsec-justified" role="tabpanel" aria-labelledby="controlsec-tab">
                 </div>
+
                 <div class="tab-pane fade" id="mapcursor-justified" role="tabpanel" aria-labelledby="mapcursor-tab">
                   Use the "crosshairs" map cursor to select a point on the map.
                 </div>
@@ -250,7 +290,21 @@
                       </tr>
                       <tr>
                         <th scope="row">Line Color:</th>
-                        <td><input type="text" value="blue" class="form-control textentry"></td>
+                        <td><select class="form-select" aria-label="line color selector">
+                          <option selected="blue">TxDOT Blue</option>
+                          <option value="black">Black</option>
+                          <option value="brown">Brown</option>
+                          <option value="green">Green</option>
+                          <option value="ltblue">Light Blue</option>
+                          <option value="magenta">Magenta</option>
+                          <option value="orange">Orange</option>   
+                          <option value="red">Red</option>
+                          <option value="yellow">Yellow</option>                                                  
+                        </select></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Color:</th>
+                        <td><input type="color" class="form-control form-control-color" id="exampleColorInput" value="#4154f1" title="Choose your color"></td>
                       </tr>
                       <tr>
                         <th scope="row">Line Width:</th>
@@ -266,18 +320,12 @@
                   <!-- End Bordered Table -->
 
                   <form>
-                    <div class="text-center">
-                      <button type="button" onclick="" class="btn btn-primary">Add</button>
-                    </div>
-                    <div class="text-center">
-                      <button type="button" onclick="" class="btn btn-primary">Drop</button>
-                    </div>
-                    <div class="text-center">
-                      <button type="button" onclick="" class="btn btn-primary">Clear</button>
-                    </div>
-                    <div class="text-center">
-                      <button type="button" onclick="" class="btn btn-primary">Map Routes</button>
-                    </div>                    
+                      <button type="button" onclick="" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
+                      <button type="button" onclick="" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> Drop</button>
+                      <button type="button" onclick="" class="btn btn-secondary"><i class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+                    </form><!-- End Horizontal Form -->
+                    <form>
+                      <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>             
                   </form><!-- End Horizontal Form -->
 
                 </div>
@@ -294,12 +342,8 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <div class="text-center">
-                <button type="button" onclick="" class="btn btn-primary">Export Printable Map</button>
-              </div>
-              <div class="text-center">
-                <button type="button" onclick="" class="btn btn-primary">Export KML</button>
-              </div>
+              <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-download"></i> Export Printable Map</button>
+              <button type="button" onclick="" class="btn btn-primary"><i class="fa fa-download"></i> Export KML</button>
             </div>
           </div>
         <!-- End Right side columns -->
