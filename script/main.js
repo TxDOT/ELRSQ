@@ -31,6 +31,16 @@ require([
   map.add(imagery);
   imagery.visible = false;
 
+
+  TxDOT_Reference_Markers = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0");
+  map.add(TxDOT_Reference_Markers);
+  TxDOT_Reference_Markers.visible = false;
+
+  TxDOT_Control_Sections = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Control_Sections/FeatureServer/0")
+  map.add(TxDOT_Control_Sections);
+  TxDOT_Control_Sections.visible = false;
+
+
   window.view = new MapView({
     map: map,
     center: [-99.90, 31.96], // Longitude, latitude of Texas
@@ -45,14 +55,39 @@ require([
 
 
   $('#basemap-event').change(function() {
+    
     if ($(this).prop('checked')){
-      TxDOTVectorTileLayer.visible = false;
-    imagery.visible = true;
-    } else {
       imagery.visible = false;
-    TxDOTVectorTileLayer.visible = true;
+      TxDOTVectorTileLayer.visible = true;
+    } else {
+      TxDOTVectorTileLayer.visible = false;
+      imagery.visible = true;
     }
-    })
+  })
+
+
+  $('#refmrkr-event').change(function() {
+
+    if ($(this).prop('checked')){
+      TxDOT_Reference_Markers.visible = false;
+    } else if (window.view.zoom < 10){
+      TxDOT_Reference_Markers.visible = false;
+    } else {
+      TxDOT_Reference_Markers.visible = true;
+    }
+  })
+
+
+  $('#controlsec-event').change(function() {
+    if ($(this).prop('checked')){
+      TxDOT_Control_Sections.visible = false;
+    } else if (window.view.zoom < 10){
+      TxDOT_Control_Sections.visible = false;
+    } else {
+      TxDOT_Control_Sections.visible = true;
+    }
+  })
+
 
 
 });
