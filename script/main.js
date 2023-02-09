@@ -18,9 +18,7 @@ require([
 
   esriConfig.apiKey = "";
 
-  const map = new Map({
-    //basemap: "streets", // Basemap layer service
-  });
+  const map = new Map({ });
 
   TxDOTVectorTileLayer = new VectorTileLayer(
     "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
@@ -31,7 +29,6 @@ require([
   map.add(imagery);
   imagery.visible = false;
 
-
   TxDOT_Reference_Markers = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0");
   map.add(TxDOT_Reference_Markers);
   TxDOT_Reference_Markers.visible = false;
@@ -39,7 +36,6 @@ require([
   TxDOT_Control_Sections = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Control_Sections/FeatureServer/0")
   map.add(TxDOT_Control_Sections);
   TxDOT_Control_Sections.visible = false;
-
 
   window.view = new MapView({
     map: map,
@@ -53,9 +49,8 @@ require([
   })
 
 
-
+  // toggle buttons for showing/hiding layers
   $('#basemap-event').change(function() {
-    
     if ($(this).prop('checked')){
       imagery.visible = false;
       TxDOTVectorTileLayer.visible = true;
@@ -65,9 +60,7 @@ require([
     }
   })
 
-
   $('#refmrkr-event').change(function() {
-
     if ($(this).prop('checked')){
       TxDOT_Reference_Markers.visible = false;
     } else if (window.view.zoom < 10){
@@ -76,7 +69,6 @@ require([
       TxDOT_Reference_Markers.visible = true;
     }
   })
-
 
   $('#controlsec-event').change(function() {
     if ($(this).prop('checked')){
@@ -87,7 +79,5 @@ require([
       TxDOT_Control_Sections.visible = true;
     }
   })
-
-
 
 });

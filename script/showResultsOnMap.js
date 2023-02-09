@@ -4,10 +4,9 @@ function showResultsOnMap(results) {
     //go through each result and add on map
     const graphics = [];
     require(["esri/Graphic"], (Graphic) => {
-      //debugger
+
       results.forEach(_result => { 
   
-        //debugger
          let point = {
           type: "point", 
           latitude: parseFloat(_result.LAT),
@@ -33,7 +32,7 @@ function showResultsOnMap(results) {
         view.graphics.add(pointGraphic);
       })
   
-      //zoom to all graphics
+    //zoom to all graphics
     view.goTo({
       target: graphics,
       zoom: 17

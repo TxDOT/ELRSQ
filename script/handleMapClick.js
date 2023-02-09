@@ -1,10 +1,6 @@
 function handleMapClick(evt) {
-  console.log("you clicked");
-  var foo = document.querySelectorAll("#mapcursor-justified.active");
-  console.log(foo)
-  if (foo[0]) {
+  var oncursortab = document.querySelectorAll("#mapcursor-justified.active");
+  if (oncursortab[0]) {
     coordinateQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);
   }
-
-  }
-
+}

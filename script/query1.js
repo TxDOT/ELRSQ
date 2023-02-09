@@ -1,4 +1,6 @@
+// function which takes method to query lrs service for a single point
 async function lrsQuery(method) {
+    currentPos = 1;
     console.log(method);
     //clear existing point
     view.graphics.removeAll();
@@ -48,14 +50,12 @@ async function lrsQuery(method) {
   }
 
 
-  
-
-
-  
+  // function which uses mouse click lat/lon to query lrs service for a single point
   async function coordinateQuery(_lat, _lon) {
     //const loading = document.getElementById("loading");
     //loading.classList.remove("hide");
   
+    currentPos = 1;
     let lat, lon;
   
     if (_lat && _lon) {
@@ -105,6 +105,7 @@ async function lrsQuery(method) {
     });
   }
   
+  // calls API
   async function queryService(url) {  
     const response = await fetch(url, {
       method: 'GET',
