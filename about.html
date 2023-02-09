@@ -86,7 +86,7 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-4" id="split-0">
+        <div class="col-md-4" id="split-0">
           <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
             <div class="container-fluid">
               <div id="navbarSupportedContent">  
@@ -120,28 +120,25 @@
             </div>
           </nav>
 
-
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Query by:</h5>
-
               <!-- Default Tabs -->
-              <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" aria-selected="true">Coordinates</a>
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates" aria-selected="true">Coordinates</button>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="refmarker-tab" data-bs-toggle="tab" data-bs-target="#refmarker-justified" aria-selected="false">Reference Marker</a>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="refmarker-tab" data-bs-toggle="tab" data-bs-target="#refmarker-justified" type="button" role="tab" aria-controls="refmarker" aria-selected="false">Reference Marker</button>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified" aria-selected="false">DFO</a>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified" type="button" role="tab" aria-controls="dfo" aria-selected="false">DFO</button>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="controlsec-tab" data-bs-toggle="tab" data-bs-target="#controlsec-justified" aria-selected="false">Control Section</a>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="controlsec-tab" data-bs-toggle="tab" data-bs-target="#controlsec-justified" type="button" role="tab" aria-controls="controlsec" aria-selected="false">Control Section</button>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" aria-controls="mapcursor" aria-selected="false">Map Cursor</a>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor" aria-selected="false">Map Cursor</button>
                 </li>
               </ul>
 
@@ -370,7 +367,7 @@
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-8" id="split-1">
+        <div class="col-md-8 d-none d-md-block" id="split-1">
           <div id="viewDiv" class="col-7 map-container">
             <div id=""></div>
           </div>
@@ -479,14 +476,29 @@
   <script src="script/results.js"></script>    
   <script src="script/onMenuClick.js"></script>
   <script>
+  if (screen.width >= 768){
     const GUTTER_SIZE = 30;
-
-
     Split(['#split-0', '#split-1'], {
-    sizes: [33, 63],
-    minSize: 200
+    sizes: [33, 66],
+    minSize: [300,400],
+    expandToMin: false
     });
-    </script>
+  }
+  </script>
+
+  <script>
+  window.addEventListener("resize", getSizes, false);
+                
+  let out = document.querySelector(".output");
+    
+  function getSizes() {
+      let body = document.body;
+      let zoom = body.clientWidth + "px x " + body.clientHeight + "px";
+      out.textContent = zoom;
+  }
+  </script>
+
+
 
 </body>
 

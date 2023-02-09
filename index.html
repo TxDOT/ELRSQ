@@ -107,7 +107,7 @@
               <h5 class="card-title">Query by:</h5>
 
               <!-- Default Tabs -->
-              <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+              <!--<ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
                 <li class="nav-item">
                   <a class="nav-link active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" aria-selected="true">Coordinates</a>
                 </li>
@@ -123,7 +123,26 @@
                 <li class="nav-item">
                   <a class="nav-link" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" aria-controls="mapcursor" aria-selected="false">Map Cursor</a>
                 </li>
-              </ul>
+              </ul>-->
+
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates" aria-selected="true">Coordinates</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="refmarker-tab" data-bs-toggle="tab" data-bs-target="#refmarker-justified" type="button" role="tab" aria-controls="refmarker" aria-selected="false">Reference Marker</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified" type="button" role="tab" aria-controls="dfo" aria-selected="false">DFO</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="controlsec-tab" data-bs-toggle="tab" data-bs-target="#controlsec-justified" type="button" role="tab" aria-controls="controlsec" aria-selected="false">Control Section</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor" aria-selected="false">Map Cursor</button>
+                </li>
+              </ul>              
 
 
               <div class="card-body tab-content pt-2" id="myTabjustifiedContent">
@@ -275,7 +294,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row" colspan="2"><h5>Route Information</h5></th>
+                        <td scope="row" colspan="2">Route Information</td>
                       </tr>
                       <tr>
                         <th scope="row">RouteID:</th>
@@ -298,7 +317,7 @@
                         <td style="border: 0"></td>
                       </tr>
                       <tr>
-                        <th scope="row" colspan="2"><h5>Control Section</h5></th>
+                        <td scope="row" colspan="2">Control Section</td>
                       </tr>
                       <tr>
                         <th scope="row">Control Section:</th>
@@ -313,7 +332,7 @@
                         <td style="border: 0"></td>
                       </tr>
                       <tr>
-                        <th scope="row" colspan="2"><h5>Field Location</h5></th>
+                        <td scope="row" colspan="2">Field Location</td>
                       </tr>
                       <tr>
                         <th scope="row">Reference Marker:</th>
@@ -328,7 +347,7 @@
                         <td style="border: 0"></td>
                       </tr>
                       <tr>
-                        <th scope="row" colspan="2"><h5>Coordinates</h5></th>
+                        <td scope="row" colspan="2">Coordinates</td>
                       </tr>
                       <tr>
                         <th scope="row">Latitude:</th>
