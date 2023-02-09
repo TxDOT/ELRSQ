@@ -44,6 +44,7 @@
   /*max-height: 100%;*/
   max-height: 90vh;
   width: 100%;
+  cursor: crosshair; /*added by ES */
 }
 
 #mapButtonsDiv {

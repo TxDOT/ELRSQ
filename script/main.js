@@ -4,14 +4,16 @@ require([
   "esri/views/MapView",
   "esri/layers/GraphicsLayer",
   "esri/layers/FeatureLayer",
-  "esri/layers/VectorTileLayer"
+  "esri/layers/VectorTileLayer",
+  "esri/layers/TileLayer"
   ], function (
     esriConfig,
     Map,
     MapView,
     GraphicsLayer,
     FeatureLayer,
-    VectorTileLayer
+    VectorTileLayer,
+    TileLayer
   ) {
 
   esriConfig.apiKey = "";
@@ -25,6 +27,10 @@ require([
     );
   map.add(TxDOTVectorTileLayer);
 
+  imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
+  map.add(imagery);
+  imagery.visible = false;
+
   window.view = new MapView({
     map: map,
     center: [-99.90, 31.96], // Longitude, latitude of Texas
@@ -35,4 +41,18 @@ require([
   window.view.on("click", function (event) {
       handleMapClick(event)
   })
+
+
+
+  $('#basemap-event').change(function() {
+    if ($(this).prop('checked')){
+      TxDOTVectorTileLayer.visible = false;
+    imagery.visible = true;
+    } else {
+      imagery.visible = false;
+    TxDOTVectorTileLayer.visible = true;
+    }
+    })
+
+
 });

@@ -53,8 +53,8 @@ async function lrsQuery(method) {
 
   
   async function coordinateQuery(_lat, _lon) {
-    const loading = document.getElementById("loading");
-    loading.classList.remove("hide");
+    //const loading = document.getElementById("loading");
+    //loading.classList.remove("hide");
   
     let lat, lon;
   
@@ -101,7 +101,7 @@ async function lrsQuery(method) {
         
         view.graphics.add(pointGraphic);
   
-        loading.classList.add("hide");
+        //loading.classList.add("hide");
     });
   }
   

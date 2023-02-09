@@ -21,12 +21,17 @@
 
   <!-- Vendor CSS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
   <link rel="stylesheet" href="style/show_hide.css">
   <link rel="stylesheet" href="style/style_mini_map.css">
   <link rel="stylesheet" href="style/map_style_ravi.css"> 
   <link rel="stylesheet" href="style/text_style.css">  
+
+
+
+  
 
   <style>
     .upload_dropZone {
@@ -107,25 +112,6 @@
               <h5 class="card-title">Query by:</h5>
 
               <!-- Default Tabs -->
-              <!--<ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" aria-selected="true">Coordinates</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="refmarker-tab" data-bs-toggle="tab" data-bs-target="#refmarker-justified" aria-selected="false">Reference Marker</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified" aria-selected="false">DFO</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="controlsec-tab" data-bs-toggle="tab" data-bs-target="#controlsec-justified" aria-selected="false">Control Section</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="mapcursor-tab" data-bs-toggle="tab" data-bs-target="#mapcursor-justified" aria-controls="mapcursor" aria-selected="false">Map Cursor</a>
-                </li>
-              </ul>-->
-
-              <!-- Default Tabs -->
               <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
                 <li class="nav-item flex-fill" role="presentation">
                   <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates" aria-selected="true">Coordinates</button>
@@ -168,7 +154,6 @@
                       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
                     </div>
                   </form><!-- End Horizontal Form -->
-                  <!-- Button trigger modal -->
                 </div>
                 <div class="tab-pane fade" id="refmarker-justified" aria-labelledby="refmarker-tab">
                   <!-- Horizontal Form -->
@@ -242,7 +227,7 @@
                   </form><!-- End Horizontal Form -->
                 </div>
                 <div class="tab-pane fade" id="mapcursor-justified" aria-labelledby="mapcursor-tab">
-                  Use the "crosshairs" map cursor to select a point on the map.
+                  Use the "crosshairs" map cursor to select a point on the map. 
                 </div>
 
               </div><!-- End Default Tabs -->
@@ -375,6 +360,7 @@
           </div>
           <div id="mapButtonsDiv" class="card map-buttons">
             <div class="card-body">
+              <input id="basemap-event" type="checkbox" data-toggle="toggle" data-on="Imagery" data-off="TxDOT Basemap" data-onstyle="success" data-offstyle="primary">
               <button type="button" onclick="" class="btn btn-primary" title="See current result on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> See Result n</button>
               <button type="button" onclick="" class="btn btn-primary" title="See all results on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Zoom To and Show all Results</button>
               <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all points"><i class="fa fa-download"></i> Export KML</button>
@@ -461,6 +447,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
   <!-- ESRI ArcGIS JS API -->
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
@@ -470,13 +457,12 @@
   <script>let currentSelection = []</script>
   <script>let allResults = []</script>
   <script>let currentPos = 1;</script>
-  <script src="script/contentAndEvent.js"></script>
-  <script src="script/handleMapClick.js"></script>    
-  <script src="script/formHandler.js"></script>      
+  <script src="script/handleMapClick.js"></script>      
   <script src="script/query1.js"></script>    
   <script src="script/showResultsOnMap.js"></script>   
   <script src="script/results.js"></script>    
-  <script src="script/onMenuClick.js"></script>
+
+
 </body>
 
 </html>
