@@ -1,3 +1,15 @@
+/* Franklin Gothic font */
+
+html,body{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size:15px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight:400
+}
+
 
 /* lists */
 .format_list li {
