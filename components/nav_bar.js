@@ -43,7 +43,7 @@ class Nav_Bar extends HTMLElement {
 
   constructor () {
     super();
-    let path = 'nav_bar.html';
+    let path = '/nav_bar.html';
     this.#getHTML(path);
   }
   
