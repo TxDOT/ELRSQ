@@ -17,7 +17,7 @@ class Map_Controls extends HTMLElement {
 
   constructor () {
     super();
-    let path = 'map_controls.html';
+    let path = '/components/map_controls.html';
     this.#getHTML(path);
   }
   

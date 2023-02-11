@@ -39,7 +39,7 @@ const staticResults_Help_Modal = `<!-- Modal -->
   
     constructor () {
       super();
-      let path = 'results_help_modal.html';
+      let path = '/components/results_help_modal.html';
       this.#getHTML(path);
     }
     

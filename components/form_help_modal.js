@@ -64,7 +64,7 @@ const staticForm_Help_Modal = `      <!-- Modal -->
   
     constructor () {
       super();
-      let path = 'form_help_modal.html';
+      let path = '/components/form_help_modal.html';
       this.#getHTML(path);
     }
     

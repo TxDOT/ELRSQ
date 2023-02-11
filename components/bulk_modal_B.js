@@ -43,7 +43,7 @@ class Bulk_Modal_B extends HTMLElement {
 
   constructor () {
     super();
-    let path = 'bulk_modal_B.html';
+    let path = '/components/bulk_modal_B.html';
     this.#getHTML(path);
   }
   

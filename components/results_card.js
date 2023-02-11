@@ -132,7 +132,7 @@ const staticResults_Card = `      <div id="results_card" class="card">
   
     constructor () {
       super();
-      let path = 'results_card.html';
+      let path = '/components/results_card.html';
       this.#getHTML(path);
     }
     
