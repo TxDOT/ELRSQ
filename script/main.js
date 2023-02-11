@@ -49,6 +49,23 @@ require([
   })
 
 
+  // watch handler
+  var zoomHandle = view.watch('zoom', function(newZoom) {
+    console.log("Zoom: ", newZoom);
+    if (newZoom > 10) {
+      console.log("Zoom over 10 ");
+      $('#refmrkr-event').bootstrapToggle('enable')
+    } else {
+      console.log("Zoom under 10");
+      $('#refmrkr-event').bootstrapToggle('disable')
+      $('#refmrkr-event').bootstrapToggle('off')
+    }  
+  });
+
+
+
+
+
   // toggle buttons for showing/hiding layers
   $('#basemap-event').change(function() {
     if ($(this).prop('checked')){

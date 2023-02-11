@@ -1,0 +1,27 @@
+.upload_dropZone {
+    color: #0f3c4b;
+    background-color: #c8dadf;
+    outline: 2px dashed #0c3a57;
+    outline-offset: -12px;
+    transition:
+      outline-offset 0.2s ease-out,
+      outline-color 0.3s ease-in-out,
+      background-color 0.2s ease-out;
+  }
+
+  .upload_dropZone.highlight {
+    outline-offset: -4px;
+    outline-color: #0576bd;
+    background-color: #c8dadf;
+  }
+
+  .btn-upload {
+    color: #fff;
+    background-color: #0c3a57;
+  }
+
+  .btn-upload:hover,
+  .btn-upload:focus {
+    color: #fff;
+    background-color: #0c3a57;
+  }
