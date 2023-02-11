@@ -121,19 +121,19 @@ const staticResults_Card = `      <div id="results_card" class="card">
   
   class Results_Card extends HTMLElement {
   
-    async #getHTML (path) {
+    /*async #getHTML (path) {
       try {
         let request = await fetch(path);
         this.innerHTML = await request.text();
       } catch {
         this.innerHTML = staticResults_Card;
       }
-    }
+    }*/
   
     constructor () {
       super();
-      let path = '/components/results_card.html';
-      this.#getHTML(path);
+      /*let path = '/components/results_card.html';
+      this.#getHTML(path);*/
     }
     
     connectedCallback() {

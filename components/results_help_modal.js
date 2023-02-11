@@ -28,19 +28,19 @@ const staticResults_Help_Modal = `<!-- Modal -->
   
   class Results_Help_Modal extends HTMLElement {
   
-    async #getHTML (path) {
+    /*async #getHTML (path) {
       try {
         let request = await fetch(path);
         this.innerHTML = await request.text();
       } catch {
         this.innerHTML = staticResults_Help_Modal;
       }
-    }
+    }*/
   
     constructor () {
       super();
-      let path = '/components/results_help_modal.html';
-      this.#getHTML(path);
+      /*let path = '/components/results_help_modal.html';
+      this.#getHTML(path);*/
     }
     
     connectedCallback() {

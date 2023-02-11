@@ -32,19 +32,19 @@ const staticNav_Bar = `<nav class="navbar navbar-expand-lg navbar-light bg-light
 
 class Nav_Bar extends HTMLElement {
 
-  async #getHTML (path) {
+  /*async #getHTML (path) {
     try {
       let request = await fetch(path);
       this.innerHTML = await request.text();
     } catch {
       this.innerHTML = staticNav_Bar;
     }
-  }
+  }*/
 
   constructor () {
     super();
-    let path = '/components/nav_bar.html';
-    this.#getHTML(path);
+    /*let path = '/components/nav_bar.html';
+    this.#getHTML(path);*/
   }
   
   connectedCallback() {

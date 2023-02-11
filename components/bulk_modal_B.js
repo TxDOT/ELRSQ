@@ -32,19 +32,19 @@ const staticBulk_Modal_B = `      <!-- Modal -->
 
 class Bulk_Modal_B extends HTMLElement {
 
-  async #getHTML (path) {
+  /*async #getHTML (path) {
     try {
       let request = await fetch(path);
       this.innerHTML = await request.text();
     } catch {
       this.innerHTML = staticBulk_Modal_B;
     }
-  }
+  }*/
 
   constructor () {
     super();
-    let path = '/components/bulk_modal_B.html';
-    this.#getHTML(path);
+    /*let path = '/components/bulk_modal_B.html';
+    this.#getHTML(path);*/
   }
   
   connectedCallback() {

@@ -6,19 +6,19 @@ const staticMap_Controls = `<div class="card-body">
 
 class Map_Controls extends HTMLElement {
 
-  async #getHTML (path) {
+  /*async #getHTML (path) {
     try {
       let request = await fetch(path);
       this.innerHTML = await request.text();
     } catch {
       this.innerHTML = staticMap_Controls;
     }
-  }
+  }*/
 
   constructor () {
     super();
-    let path = '/components/map_controls.html';
-    this.#getHTML(path);
+    /*let path = '/components/map_controls.html';
+    this.#getHTML(path);*/
   }
   
   connectedCallback() {
