@@ -1,8 +1,28 @@
 const staticResults_Card = `      <div id="results_card" class="card">
   <div class="card-body">
-    <h5 class="card-title">Results:</h5> <span id="result-pagination"></span>
-    &bull;
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal" title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>    
+    <h5 class="card-title">Results:</h5> 
+
+    <div class="card">
+      <div class="card-body">
+        <span id="result-pagination"></span>
+        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+            <button type="button" onclick="" class="btn btn-primary" title="Export a CSV file of all points"><i
+                class="fa fa-download"></i> CSV</button>       
+
+            <button type="button" onclick="" class="btn btn-primary" title="Export a JSON file of all points"><i
+                class="fa fa-download"></i> JSON</button>
+
+            <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all points"><i
+                class="fa fa-download"></i> KML</button>
+          </div>
+          <div class="btn-group mb-2" role="group" aria-label="download group">
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal" title="Results Help"><i 
+                class="fa fa-question" aria-hidden="true"></i> Help</button>    
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <div class="card">
@@ -118,29 +138,29 @@ const staticResults_Card = `      <div id="results_card" class="card">
 
   </div>
 </div>`
-  
-  class Results_Card extends HTMLElement {
-  
-    /*async #getHTML (path) {
-      try {
-        let request = await fetch(path);
-        this.innerHTML = await request.text();
-      } catch {
-        this.innerHTML = staticResults_Card;
-      }
-    }*/
-  
-    constructor () {
-      super();
-      /*let path = '/components/results_card.html';
-      this.#getHTML(path);*/
-    }
-    
-    connectedCallback() {
+
+class Results_Card extends HTMLElement {
+
+  /*async #getHTML (path) {
+    try {
+      let request = await fetch(path);
+      this.innerHTML = await request.text();
+    } catch {
       this.innerHTML = staticResults_Card;
     }
+  }*/
+
+  constructor() {
+    super();
+    /*let path = '/components/results_card.html';
+    this.#getHTML(path);*/
   }
-  
-  customElements.define('results_card-component', Results_Card);
+
+  connectedCallback() {
+    this.innerHTML = staticResults_Card;
+  }
+}
+
+customElements.define('results_card-component', Results_Card);
 
 

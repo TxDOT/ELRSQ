@@ -40,7 +40,8 @@
   <script src="components/form_help_modal.js" type="text/javascript" defer></script>
   <script src="components/results_help_modal.js" type="text/javascript" defer></script>
   <script src="components/results_card.js" type="text/javascript" defer></script>
-
+  <script src="components/route_help_modal.js" type="text/javascript" defer></script>
+  <script src="components/route_style_help_modal.js" type="text/javascript" defer></script>
 
   <!-- Vendor JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -55,6 +56,8 @@
   <bulk_modal_b-component></bulk_modal_b-component>
   <form_help_modal-component></form_help_modal-component>
   <results_help_modal-component></results_help_modal-component>
+  <route_help_modal-component></route_help_modal-component>
+  <route_style_help_modal-component></route_style_help_modal-component>
   <!-- Modal END -->
 
   <main id="main" class="main">
@@ -115,8 +118,8 @@
                       </thead>
                       <tr>
                         <th scope="row"></th>
-                        <td><strong>Begin</strong></td>
-                        <td><strong>End</strong></td>
+                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
                       </tr>
                       <tr>
                         <th scope="row">Latitude:</th>
@@ -136,18 +139,24 @@
                   </table>
                   <!-- End Bordered Table -->
 
-                  <div class="text-center">
-                    <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
-                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                    <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
-                        aria-hidden="true"></i> Reset</button>
-                    &bull;
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bulkModal"
-                      title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i>
-                      Bulk Conversion</button>
-                    &bull;
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#formHelpModal"
-                      title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                          class="fa fa-table" aria-hidden="true"></i>
+                        Bulk Conversion</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
                   </div>
 
                   <div class="input-group mb-3">
@@ -187,8 +196,8 @@
                       </tr>
                       <tr>
                         <th scope="row"></th>
-                        <td><strong>Begin</strong></td>
-                        <td><strong>End</strong></td>
+                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
                       </tr>
                       <tr>
                         <th scope="row">Reference Marker:</th>
@@ -208,18 +217,24 @@
                   </table>
                   <!-- End Bordered Table -->
 
-                  <div class="text-center">
-                    <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
-                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                    <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
-                        aria-hidden="true"></i> Reset</button>
-                    &bull;
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bulkModal"
-                      title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i>
-                      Bulk Conversion</button>
-                    &bull;
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#formHelpModal"
-                      title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                          class="fa fa-table" aria-hidden="true"></i>
+                        Bulk Conversion</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
                   </div>
 
                 </form><!-- End Horizontal Form -->
@@ -251,8 +266,8 @@
                       </tr>
                       <tr>
                         <th scope="row"></th>
-                        <td><strong>Begin</strong></td>
-                        <td><strong>End</strong></td>
+                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
                       </tr>
                       <tr>
                         <th scope="row">DFO:</th>
@@ -265,18 +280,24 @@
                   </table>
                   <!-- End Bordered Table -->
 
-                  <div class="text-center">
-                    <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
-                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                    <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
-                        aria-hidden="true"></i> Reset</button>
-                    &bull;
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bulkModal"
-                      title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i>
-                      Bulk Conversion</button>
-                    &bull;
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#formHelpModal"
-                      title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                          class="fa fa-table" aria-hidden="true"></i>
+                        Bulk Conversion</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
                   </div>
 
                 </form><!-- End Horizontal Form -->
@@ -297,8 +318,8 @@
                       </thead>
                       <tr>
                         <th scope="row"></th>
-                        <td><strong>Begin</strong></td>
-                        <td><strong>End</strong></td>
+                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
                       </tr>
                       <tr>
                         <th scope="row">Control Section:</th>
@@ -318,18 +339,24 @@
                   </table>
                   <!-- End Bordered Table -->
 
-                  <div class="text-center">
-                    <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
-                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                    <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
-                        aria-hidden="true"></i> Reset</button>
-                    &bull;
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bulkModal"
-                      title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i>
-                      Bulk Conversion</button>
-                    &bull;
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#formHelpModal"
-                      title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                          class="fa fa-table" aria-hidden="true"></i>
+                        Bulk Conversion</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
                   </div>
 
                 </form><!-- End Horizontal Form -->
@@ -337,7 +364,55 @@
               </div>
 
               <div class="tab-pane fade" id="mapcursor-justified" role="tabpanel" aria-labelledby="mapcursor-tab">
-                Use the "crosshairs" map cursor to select a point on the map.
+                <strong>Use the "crosshairs" map cursor to select two points on the map.</strong>
+                <!-- Horizontal Form -->
+                <form>
+                  <!-- Bordered Table -->
+                  <table class="table table-borderless table-sm">
+                    <tbody>
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tr>
+                        <th scope="row"></th>
+                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin Point</strong></td>
+                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End Point</strong></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Latitude:</th>
+                        <td><input name="lat" value="" class="form-control" disabled></td>
+                        <td><input name="lat" value="" class="form-control" disabled></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Longitude:</th>
+                        <td><input name="lon" value="" class="form-control" disabled></td>
+                        <td><input name="lon" value="" class="form-control" disabled></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
+                  </div>
+
+                </form><!-- End Horizontal Form -->
+
+
               </div>
 
             </div><!-- End Default Tabs -->
@@ -364,7 +439,6 @@
                       <th scope="row">End DFO:</th>
                       <td id="p_returned_RTE_DFO" class="textout table-secondary border border-dark"></td>
                     </tr>
-
                     <tr>
                       <th scope="row"></th>
                       <td></td>
@@ -401,23 +475,45 @@
                 </table>
                 <!-- End Bordered Table -->
 
-                <form>
-                  <button type="button" onclick="" class="btn btn-success"
-                    title="Save current project and add another"><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add Row</button>
-                  <button type="button" onclick="" class="btn btn-danger" title="Remove last project on list"><i
-                      class="fa fa-minus-circle" aria-hidden="true"></i> Drop Row</button>
-                  <button type="button" onclick="" class="btn btn-secondary" title="Clear project(s) from the map"><i
-                      class="fa fa-trash" aria-hidden="true"></i> Clear</button>
-                </form><!-- End Horizontal Form -->
-                <form>
-                  <button type="button" onclick="" class="btn btn-primary" title="Map your project(s)"><i
-                      class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
-                </form><!-- End Horizontal Form -->
-
               </div>
             </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                  aria-label="Toolbar with button groups">
+                  <div class="btn-group me-2 mb-2" role="group">
+                    <button type="button" onclick="" class="btn btn-success"
+                      title="Save current project and add another"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                      Add Row</button>
+                    <button type="button" onclick="" class="btn btn-danger" title="Remove last project on list"><i
+                        class="fa fa-minus-circle" aria-hidden="true"></i> Drop Row</button>
+                    <button type="button" onclick="" class="btn btn-secondary" title="Clear project(s) from the map"><i
+                        class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+                  </div>
+                  <div class="btn-group mb-2" role="group">
+                    <button type="button" onclick="" class="btn btn-primary" title="Map your project(s)"><i
+                        class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                  </div>
+                </div>
+                <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                  aria-label="Toolbar with button groups">
+                  <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+                    <button type="button" onclick="" class="btn btn-primary" title="Export a CSV file of all routes"><i
+                        class="fa fa-download"></i> CSV</button>
 
+                    <button type="button" onclick="" class="btn btn-primary" title="Export a JSON file of all routes"><i
+                        class="fa fa-download"></i> JSON</button>
+
+                    <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all routes"><i
+                        class="fa fa-download"></i> KML</button>
+                  </div>
+                  <div class="btn-group mb-2" role="group" aria-label="download group">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeStyleHelpModal"
+                      title="Route Style Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div><!-- End Left side columns -->
