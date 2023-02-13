@@ -82,17 +82,18 @@
                   aria-selected="true">Coordinates</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="refmarker-tab" data-bs-toggle="tab"
-                  data-bs-target="#refmarker-justified" type="button" role="tab" aria-controls="refmarker"
+                <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
+                  data-bs-target="#referencemarker-justified" type="button" role="tab" aria-controls="referencemarker"
                   aria-selected="false">Reference Marker</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="dfo-tab" data-bs-toggle="tab" data-bs-target="#dfo-justified"
-                  type="button" role="tab" aria-controls="dfo" aria-selected="false">DFO</button>
+                <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
+                  data-bs-target="#distancefromorigin-justified" type="button" role="tab"
+                  aria-controls="distancefromorigin" aria-selected="false">DFO</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="controlsec-tab" data-bs-toggle="tab"
-                  data-bs-target="#controlsec-justified" type="button" role="tab" aria-controls="controlsec"
+                <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
+                  data-bs-target="#controlsection-justified" type="button" role="tab" aria-controls="controlsection"
                   aria-selected="false">Control Section</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
@@ -107,17 +108,17 @@
                 <!-- Horizontal Form -->
                 <form>
                   <div class="row mb-3">
-                    <label for="inputCoordinates" class="col-sm-3 col-form-label">Latitude</label>
+                    <label for="inputLatitude" class="col-sm-3 col-form-label">Latitude</label>
                     <div class="col-sm-4">
-                      <input type="number" required name="lat" value="29.39780972" class="form-control textentry"
-                        id="inputLat">
+                      <input id="inputLatitude" type="number" required name="latitude" value="29.39780972"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputCoordinates" class="col-sm-3 col-form-label">Longitude</label>
+                    <label for="inputLongitude" class="col-sm-3 col-form-label">Longitude</label>
                     <div class="col-sm-4">
-                      <input type="number" required name="lon" value="-94.98759004" class="form-control textentry"
-                        id="inputLon">
+                      <input id="inputLongitude" type="number" required name="longitude" value="-94.98759004"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
@@ -140,28 +141,28 @@
                   </div>
                 </form><!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="refmarker-justified" aria-labelledby="refmarker-tab">
+              <div class="tab-pane fade" id="referencemarker-justified" aria-labelledby="referencemarker-tab">
                 <!-- Horizontal Form -->
                 <form>
                   <div class="row mb-3">
-                    <label for="inputRefMarker" class="col-sm-4 col-form-label">Route Name</label>
+                    <label for="inputRouteName_2" class="col-sm-4 col-form-label">Route Name</label>
                     <div class="col-sm-4">
-                      <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_2"
-                        value="US0077-KG" class="form-control textentry" id="inputRouteName_2">
+                      <input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                        name="routeid_2" value="US0077-KG" class="form-control textentry">
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputRefMarker" class="col-sm-4 col-form-label">Reference Marker</label>
+                    <label for="inputReferenceMarker" class="col-sm-4 col-form-label">Reference Marker</label>
                     <div class="col-sm-4">
-                      <input type="number" required name="refmarker" value="622" class="form-control textentry"
-                        id="inputReferenceMarker">
+                      <input id="inputReferenceMarker" type="number" required name="referencemarker" value="622"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputRefMarker" class="col-sm-4 col-form-label">Displacement</label>
+                    <label for="inputDisplacement" class="col-sm-4 col-form-label">Displacement</label>
                     <div class="col-sm-4">
-                      <input type="number" required name="displacement" value="0.065" class="form-control textentry"
-                        id="inputDisplacement">
+                      <input id="inputDisplacement" type="number" required name="displacement" value="0.065"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
@@ -185,21 +186,21 @@
                   </div>
                 </form><!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="dfo-justified" aria-labelledby="dfo-tab">
+              <div class="tab-pane fade" id="distancefromorigin-justified" aria-labelledby="distancefromorigin-tab">
                 <!-- Horizontal Form -->
                 <form>
                   <div class="row mb-3">
-                    <label for="inputDFO" class="col-sm-4 col-form-label">Route Name</label>
+                    <label for="inputRouteName_4" class="col-sm-4 col-form-label">Route Name</label>
                     <div class="col-sm-4">
-                      <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_4"
-                        value="FM1818-KG" class="form-control textentry" id="inputRouteName_4">
+                      <input id="inputRouteName_4" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                        name="routeid_4" value="FM1818-KG" class="form-control textentry">
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputDFO" class="col-sm-4 col-form-label">Distance From Origin</label>
+                    <label for="inputDistanceFromOrigin" class="col-sm-4 col-form-label">Distance From Origin</label>
                     <div class="col-sm-4">
-                      <input type="number" required step="0.1" name="dfo" value="1.606" class="form-control textentry"
-                        id="inputDFO">
+                      <input id="inputDistanceFromOrigin" type="number" required step="0.1" name="distancefromorigin"
+                        value="1.606" class="form-control textentry">
                     </div>
                   </div>
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
@@ -223,21 +224,21 @@
                   </div>
                 </form><!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="controlsec-justified" aria-labelledby="controlsec-tab">
+              <div class="tab-pane fade" id="controlsection-justified" aria-labelledby="controlsection-tab">
                 <!-- Horizontal Form -->
                 <form>
                   <div class="row mb-3">
-                    <label for="inputControlSec" class="col-sm-4 col-form-label">Control Section</label>
+                    <label for="inputControlSection" class="col-sm-4 col-form-label">Control Section</label>
                     <div class="col-sm-4">
-                      <input type="text" required name="csj" value="012201" class="form-control textentry"
-                        id="inputControlSec">
+                      <input id="inputControlSection" type="text" required name="csj" value="012201"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputControlSec" class="col-sm-4 col-form-label">Milepoint Measure</label>
+                    <label for="inputMilepointMeasure" class="col-sm-4 col-form-label">Milepoint Measure</label>
                     <div class="col-sm-4">
-                      <input type="number" required name="mpm" value="2.394" class="form-control textentry"
-                        id="inputMilepointMeasure">
+                      <input id="inputMilepointMeasure" type="number" required name="mpm" value="2.394"
+                        class="form-control textentry">
                     </div>
                   </div>
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
@@ -262,7 +263,7 @@
                 </form><!-- End Horizontal Form -->
               </div>
               <div class="tab-pane fade" id="mapcursor-justified" aria-labelledby="mapcursor-tab">
-                <strong class="mb-2">Use the "crosshairs" map cursor to select a point on the map.</strong> 
+                <strong class="mb-2">Use the "crosshairs" map cursor to select a point on the map.</strong>
 
                 <!-- Horizontal Form -->
                 <form>
@@ -273,8 +274,9 @@
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
                     <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#cursorHelpModal"
-                        title="Cursor Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#cursorHelpModal" title="Cursor Help"><i class="fa fa-question"
+                          aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
                 </form><!-- End Horizontal Form -->

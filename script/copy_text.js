@@ -15,7 +15,7 @@ function copyCoordinates() {
 function copyFieldLocation() {
       
     /* Select text area by id*/
-    const routeNameElem = document.getElementById("p_returned_ROUTENUMBER");
+    const routeNameElem = document.getElementById("p_returned_RTE_DEFN_LN_NM");
     const refMarkerElem = document.getElementById("p_returned_RMRKR_PNT_NBR");
     const displacementElem = document.getElementById("p_returned_RMRKR_DISPLACEMENT");
     routeName = routeNameElem.innerHTML;
@@ -45,7 +45,7 @@ function copyControlSection() {
 function copyRouteDFO() {
       
     /* Select text area by id*/
-    const routeNameElem = document.getElementById("p_returned_ROUTENUMBER");
+    const routeNameElem = document.getElementById("p_returned_RTE_DEFN_LN_NM");
     const dfoElem = document.getElementById("p_returned_RTE_DFO");
     routeName = routeNameElem.innerHTML;
     dfo = dfoElem.innerHTML;  
@@ -56,7 +56,7 @@ function copyRouteDFO() {
 }
 
 function makequeryTxDOT_Roadways_Unsegmented(){
-    const routeNameElem = document.getElementById("p_returned_ROUTENUMBER");
+    const routeNameElem = document.getElementById("p_returned_RTE_DEFN_LN_NM");
     routeName = routeNameElem.innerHTML;
     const latElem = document.getElementById("p_returned_LAT");
     const lonElem = document.getElementById("p_returned_LON");

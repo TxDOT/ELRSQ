@@ -10,7 +10,7 @@ function showResults(results, navIndex) {
 
   // fill in HTML results
   document.getElementById("p_returned_ROUTEID").innerHTML = currentResult['ROUTEID'];
-  document.getElementById("p_returned_ROUTENUMBER").innerHTML = currentResult['RTE_DEFN_LN_NM'];
+  document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = currentResult['RTE_DEFN_LN_NM'];
   document.getElementById("p_returned_RDBD_TYPE_DSCR").innerHTML = currentResult['RDBD_TYPE_DSCR'];
   document.getElementById("p_returned_RTE_DFO").innerHTML = currentResult['RTE_DFO'];
 

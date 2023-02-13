@@ -3,7 +3,7 @@ async function lrsQuery(method) {
     currentPos = 1;
     console.log(method);
     //clear existing point
-    view.graphics.removeAll(); //add this back in later -- need to separate out map functions from calculator functions
+    //view.graphics.removeAll(); //add this back in later -- need to separate out map functions from calculator functions
   
     //const loading = document.getElementById("loading");
     //loading.classList.remove("hide");
@@ -17,7 +17,7 @@ async function lrsQuery(method) {
     }
 
     else if (method == 2){
-        const routeNameElem = document.getElementById("inputRouteName_2");
+        const routeNameElem = document.getElementById("inputRouteName");
         const refMarkerElem = document.getElementById("inputReferenceMarker");
         const displacementElem = document.getElementById("inputDisplacement");
         const routeName = routeNameElem.value || routeNameElem.defaultValue;
@@ -35,7 +35,7 @@ async function lrsQuery(method) {
     }
 
     else if (method == 4){
-        const routeNameElem = document.getElementById("inputRouteName_4");
+        const routeNameElem = document.getElementById("inputRouteName");
         const dfoElem = document.getElementById("inputDistanceFromOrigin");
         const routeName = routeNameElem.value || routeNameElem.defaultValue;
         const dfo = dfoElem.value || dfoElem.defaultValue;  
@@ -44,7 +44,7 @@ async function lrsQuery(method) {
 
     const results = await queryService(url);
     showResults(results);
-    showResultsOnMap(results);  //add this back in later -- need to separate out map functions from calculator functions
+    //showResultsOnMap(results);  //add this back in later -- need to separate out map functions from calculator functions
   
    //loading.classList.add("hide");
   }
