@@ -33,14 +33,14 @@ const staticResults_Card = `      <div id="results_card" class="card">
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <td scope="col"></td>
-                        <td scope="col"></td>
+                        <td ></td>
+                        <td ></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row">Route Information</td>
-                        <td scope="row">
+                        <td >Route Information</td>
+                        <td >
                             <button type="button" class="btn btn-info" onclick="copyRouteDFO()" title="copy"><i
                                     class="fa fa-copy" aria-hidden="true"></i></button>
                             <button type="button" class="btn btn-info"
@@ -49,19 +49,19 @@ const staticResults_Card = `      <div id="results_card" class="card">
                         </td>
                     </tr>
                     <tr>
-                        <td scope="row">RouteID:</td>
+                        <td >RouteID:</td>
                         <td id="p_returned_ROUTEID" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">Route:</td>
+                        <td >Route:</td>
                         <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">Roadbed Type:</td>
+                        <td >Roadbed Type:</td>
                         <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">DFO:</td>
+                        <td >DFO:</td>
                         <td id="p_returned_RTE_DFO" class="textout table-secondary"></td>
                     </tr>
                 </tbody>
@@ -70,22 +70,22 @@ const staticResults_Card = `      <div id="results_card" class="card">
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <td scope="col"></td>
-                        <td scope="col"></td>
+                        <td ></td>
+                        <td ></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row">Control Section</td>
-                        <td scope="row"><button type="button" class="btn btn-info" onclick="copyControlSection()"
+                        <td >Control Section</td>
+                        <td ><button type="button" class="btn btn-info" onclick="copyControlSection()"
                                 title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                     </tr>
                     <tr>
-                        <td scope="row">Control Section:</td>
+                        <td >Control Section:</td>
                         <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">Mile Point:</td>
+                        <td >Mile Point:</td>
                         <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary"></td>
                     </tr>
                 </tbody>
@@ -94,22 +94,22 @@ const staticResults_Card = `      <div id="results_card" class="card">
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <td scope="col"></td>
-                        <td scope="col"></td>
+                        <td ></td>
+                        <td ></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row">Field Location</td>
-                        <td scope="row"><button type="button" class="btn btn-info" onclick="copyFieldLocation()"
+                        <td >Field Location</td>
+                        <td ><button type="button" class="btn btn-info" onclick="copyFieldLocation()"
                                 title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                     </tr>
                     <tr>
-                        <td scope="row">Reference Marker:</td>
+                        <td >Reference Marker:</td>
                         <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">Displacement:</td>
+                        <td >Displacement:</td>
                         <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary"></td>
                     </tr>
                 </tbody>
@@ -119,22 +119,22 @@ const staticResults_Card = `      <div id="results_card" class="card">
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <td scope="col"></td>
-                        <td scope="col"></td>
+                        <td ></td>
+                        <td ></td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row">Coordinates</td>
-                        <td scope="row"><button type="button" class="btn btn-info" onclick="copyCoordinates()"
+                        <td >Coordinates</td>
+                        <td ><button type="button" class="btn btn-info" onclick="copyCoordinates()"
                                 title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                     </tr>
                     <tr>
-                        <td scope="row">Latitude:</td>
+                        <td >Latitude:</td>
                         <td id="p_returned_LAT" class="textout table-secondary"></td>
                     </tr>
                     <tr>
-                        <td scope="row">Longitude:</td>
+                        <td >Longitude:</td>
                         <td id="p_returned_LON" class="textout table-secondary"></td>
                     </tr>
                 </tbody>
