@@ -35,14 +35,14 @@
   <link rel="stylesheet" href="components/results_card.css">
 
   <!-- Repetitive HTML -->
-  <script src="components/nav_bar.js" type="text/javascript" defer></script>
-  <script src="components/map_controls.js" type="text/javascript" defer></script>
-  <script src="components/bulk_modal_A.js" type="text/javascript" defer></script>
-  <script src="components/bulk_modal_B.js" type="text/javascript" defer></script>
-  <script src="components/form_help_modal.js" type="text/javascript" defer></script>
-  <script src="components/cursor_help_modal.js" type="text/javascript" defer></script>
-  <script src="components/results_help_modal.js" type="text/javascript" defer></script>
-  <script src="components/results_card.js" type="text/javascript" defer></script>
+  <script src="components/nav_bar.js" defer></script>
+  <script src="components/map_controls.js" defer></script>
+  <script src="components/bulk_modal_A.js" defer></script>
+  <script src="components/bulk_modal_B.js" defer></script>
+  <script src="components/form_help_modal.js" defer></script>
+  <script src="components/cursor_help_modal.js" defer></script>
+  <script src="components/results_help_modal.js" defer></script>
+  <script src="components/results_card.js" defer></script>
 
 
   <!-- Vendor JS -->
@@ -78,27 +78,27 @@
             <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab"
-                  data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates"
+                  data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates-justified"
                   aria-selected="true">Coordinates</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
-                  data-bs-target="#referencemarker-justified" type="button" role="tab" aria-controls="referencemarker"
-                  aria-selected="false">Reference Marker</button>
+                  data-bs-target="#referencemarker-justified" type="button" role="tab"
+                  aria-controls="referencemarker-justified" aria-selected="false">Reference Marker</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
                   data-bs-target="#distancefromorigin-justified" type="button" role="tab"
-                  aria-controls="distancefromorigin" aria-selected="false">DFO</button>
+                  aria-controls="distancefromorigin-justified" aria-selected="false">DFO</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
-                  data-bs-target="#controlsection-justified" type="button" role="tab" aria-controls="controlsection"
-                  aria-selected="false">Control Section</button>
+                  data-bs-target="#controlsection-justified" type="button" role="tab"
+                  aria-controls="controlsection-justified" aria-selected="false">Control Section</button>
               </li>
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab"
-                  data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor"
+                  data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor-justified"
                   aria-selected="false">Map Cursor</button>
               </li>
             </ul>
@@ -299,7 +299,7 @@
       <!-- Right side columns -->
       <div class="col-md-8 d-none d-md-block" id="split-1">
         <div id="viewDiv" class="col-7 map-container">
-          <div id=""></div>
+          <div></div> <!-- removing empty id -->
         </div>
         <div id="mapButtonsDiv" class="card map-buttons">
           <!-- Map-Controls START -->
@@ -336,7 +336,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.jquery.min.js"></script>
 
   <!-- ESRI ArcGIS JS API -->
-  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
   <script src="script/main.js"></script>
