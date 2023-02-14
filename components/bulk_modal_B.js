@@ -13,17 +13,29 @@ const staticBulk_Modal_B = `      <!-- Modal -->
           <button type="button" id="tmpl-field" onclick="" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Field Location Template</button>
           <button type="button" id="tmpl-controlsection" onclick="" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section Template</button>
           <button type="button" id="tmpl-dfo" onclick="" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</button>
+          
           <form>
+
             <fieldset class="upload_dropZone text-center mb-3 p-4">
+
+            <legend class="visually-hidden">CSV uploader</legend>
+
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input id="upload_control-section-bulk" data-post-name="control-section-bulk" 
-                data-post-url="https://someplace.com/image/uploads/backgrounds/" 
-                class="position-absolute invisible" type="file" multiple accept="" />
-              <label class="btn btn-upload mb-3" for="upload_control-section-bulk">Choose file(s)</label>
-              <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
+
+              <input id="upload_csv-bulk" data-post-name="csv-bulk" 
+                class="position-absolute invisible" type="file" accept=".csv" />
+
+              <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+
+
             </fieldset>
+
             <button class="btn btn-primary" type="button" id="button" onclick="" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+
           </form>
+
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
