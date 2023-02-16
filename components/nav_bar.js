@@ -15,13 +15,19 @@ const staticNav_Bar = `<nav class="navbar navbar-expand-lg navbar-light bg-light
         </li><!-- End Build Routes Page Nav -->
 
         <li class="nav-item">
+        <a class="nav-link collapsed" href="rpm_lite.html">
+            <span>RPM Lite</span>
+        </a>
+        </li><!-- End Build Routes Page Nav -->       
+
+        <li class="nav-item">
         <a class="nav-link collapsed" href="help.html">
-            <span>Help</span>
+            <span>Wizard</span>
         </a>
         </li><!-- End Help Page Nav -->       
 
         <li class="nav-item">
-        <a class="nav-link collapsed" href="about.html">
+        <a class="nav-link collapsed" href="bulk.html">
             <span>About</span>
         </a>
         </li><!-- End About Page Nav -->
