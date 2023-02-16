@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TxDOT MQS Replacement</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!--<link href="assets/img/favicon.png" rel="icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="css/main.min.css" rel="stylesheet"> <!-- https://www.youtube.com/watch?v=nCX3QVl_PiI -->
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style/show_hide.css">
+  <link rel="stylesheet" href="style/style_mini_map.css">
+  <link rel="stylesheet" href="style/map_style.css"> 
+  <link rel="stylesheet" href="style/text_style.css">  
+
+  <style>
+    .upload_dropZone {
+      color: #0f3c4b;
+      background-color: #c8dadf;
+      outline: 2px dashed #0c3a57;
+      outline-offset: -12px;
+      transition:
+        outline-offset 0.2s ease-out,
+        outline-color 0.3s ease-in-out,
+        background-color 0.2s ease-out;
+    }
+
+    .upload_dropZone.highlight {
+      outline-offset: -4px;
+      outline-color: #0576bd;
+      background-color: #c8dadf;
+    }
+
+    .btn-upload {
+      color: #fff;
+      background-color: #0c3a57;
+    }
+    .btn-upload:hover,
+    .btn-upload:focus {
+      color: #fff;
+      background-color: #0c3a57;
+    }
+  </style>
+
+  <style>
+    .split {
+    display: flex;
+    flex-direction: row;
+    }
+
+    .gutter {
+        background-color: #eee;
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+
+    .gutter.gutter-horizontal {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+        cursor: col-resize;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="module">
+    import { parse } from 'https://cdn.jsdelivr.net/npm/@vanillaes/csv/index.js'
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body>
+  <main id="main" class="main">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-md-4" id="split-0">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+            <div class="container-fluid">
+              <div id="navbarSupportedContent">  
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link " href="index.html">
+                      <span>Home</span>
+                    </a>
+                  </li><!-- End Form View Nav -->
+                  
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" href="build-routes.html">
+                      <span>Build Routes</span>
+                    </a>
+                  </li><!-- End Build Routes Page Nav -->
+            
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" href="help.html">
+                      <span>Help</span>
+                    </a>
+                  </li><!-- End Help Page Nav -->       
+            
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" href="about.html">
+                      <span>About</span>
+                    </a>
+                  </li><!-- End About Page Nav -->
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Query by:</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab" data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates" aria-selected="true">Coordinates</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="bulk-tab" data-bs-toggle="tab" data-bs-target="#bulk-justified" type="button" role="tab" aria-controls="mapcursor" aria-selected="false">Bulk Convert</button>
+                </li>
+              </ul>
+              <div class="card-body tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="coordinates-justified" aria-labelledby="coordinates-tab">
+                  <!-- Horizontal Form -->
+                  <form>
+                    <div class="row mb-3">
+                      <label for="inputCoordinates" class="col-sm-3 col-form-label">Latitude</label>
+                      <div class="col-sm-4">
+                        <input type="number" required name="lat" value="29.39780972" class="form-control textentry" id="inputLat">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="inputCoordinates" class="col-sm-3 col-form-label">Longitude</label>
+                      <div class="col-sm-4">
+                        <input type="number" required name="lon" value="-94.98759004" class="form-control textentry" id="inputLon">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" onclick="lrsQuery(1)" class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      &bull;
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bulkModal" title="Upload a table to convert multiple points"><i class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
+                    </div>
+                  </form><!-- End Horizontal Form -->
+                </div>
+
+
+
+                <div class="tab-pane fade" id="bulk-justified" aria-labelledby="bulk-tab">
+                  <!-- Horizontal Form -->
+                  <h3>Placeholder for Bulk Conversion UI</h3>
+                  <button type="button" onclick="" class="btn btn-primary" title="Download a fillable template"><i class="fa fa-download"></i> Download Template</button>
+                  <form id="bulk-form">
+                    <div class="input-group mb-3">
+                      <input type="file" class="form-control" placeholder="Select file" aria-label="Select file" aria-describedby="button-addon2" id="bulk">
+                      <button class="btn btn-outline-primary" type="submit" id="button-addon2" onclick="" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                    </div>
+                  </form><!-- End Horizontal Form -->
+
+
+
+
+
+
+
+
+
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Results:</h5> <span id="result-pagination"></span>
+
+              <div class="card">
+                <div class="card-body">
+                  <!-- Bordered Table -->
+                  <table class="table table-bordered table-sm">
+                    <thead>
+                      <tr style="border: 0">
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                        <th scope="col" style="width: 50%; border: 0"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row" colspan="2">Route Information</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">RouteID:</th>
+                        <td id="p_returned_ROUTEID" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Route:</th>
+                        <td id="p_returned_ROUTENUMBER" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Roadbed Type:</th>
+                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">DFO:</th>
+                        <td id="p_returned_RTE_DFO" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" colspan="2">Control Section</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Control Section:</th>
+                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Mile Point:</th>
+                        <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" colspan="2">Field Location</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Reference Marker:</th>
+                        <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Displacement:</th>
+                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="border: 0"></th></th>
+                        <td style="border: 0"></td>
+                      </tr>
+                      <tr>
+                        <td scope="row" colspan="2">Coordinates</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Latitude:</th>
+                        <td id="p_returned_LAT" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Longitude:</th>
+                        <td id="p_returned_LON" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-md-8 d-none d-md-block" id="split-1">
+          <div id="viewDiv" class="col-7 map-container">
+            <div id=""></div>
+          </div>
+          <div id="mapButtonsDiv" class="card map-buttons">
+            <div class="card-body">         
+              <button type="button" onclick="" class="btn btn-primary" title="See current result on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> See Result n</button>
+              <button type="button" onclick="" class="btn btn-primary" title="See all results on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Zoom To and Show all Results</button>
+              <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all points"><i class="fa fa-download"></i> Export KML</button>
+            </div>
+          </div>
+        </div>
+        <!-- End Right side columns -->
+
+      </div>
+
+  </main><!-- End #main -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="bulkModal" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bulkModalLabel">Bulk Conversion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Horizontal Form -->
+          <h3>Placeholder for Bulk Conversion UI</h3>
+          <button type="button" onclick="" class="btn btn-primary" title="Download a fillable template"><i class="fa fa-download"></i> Download Template</button>
+          <form>
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" placeholder="Select file" aria-label="Select file" aria-describedby="button-addon2">
+              <button class="btn btn-outline-primary" type="submit" id="button-addon2" onclick="" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            </div>
+          </form><!-- End Horizontal Form -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal -->
+
+
+
+
+
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+  <!-- ESRI ArcGIS JS API -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script src="script/main.js"></script>
+  <script>let currentSelection = []</script>
+  <script>let allResults = []</script>
+  <script>let currentPos = 1;</script>
+  <script src="script/handleMapClick.js"></script>         
+  <script src="script/query1.js"></script>    
+  <script src="script/showResultsOnMap.js"></script>   
+  <script src="script/results.js"></script>    
+
+  <script>
+  if (screen.width >= 768){
+    const GUTTER_SIZE = 30;
+    Split(['#split-0', '#split-1'], {
+    sizes: [33, 66],
+    minSize: [300,400],
+    expandToMin: false
+    });
+  }
+  </script>
+
+  <script>
+    const sleep = (time) => {
+      return new Promise((resolve) => setTimeout(resolve, time))
+    }
+  </script>
+
+
+
+  <script>
+    const bulkForm = document.getElementById("bulk-form");
+    const csvFile = document.getElementById("bulk");
+
+    bulkForm.addEventListener("submit", function (e) {
+      console.log('event listener');
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      reader.onload = async function (e) { // made this async to add sleep function
+        console.log("reader load");
+        const text = e.target.result;
+        const array = csvToArray(text);
+        const outputArray = [];
+        console.log(array);
+        console.log(JSON.stringify(array));
+        console.log(array[1]);
+
+        //foo(outputArray, refinedData, array,1,1,2,1);
+
+        const titleKeys = ["LAT","LON","GID","RTE_DEFN_LN_NM","RTE_DFO","ROUTEID","ROUTENUMBER","RTE_PRFX_TYPE_DSCR","RDBD_TYPE_DSCR","RMRKR_PNT_NBR","RMRKR_DISPLACEMENT","CTRL_SECT_LN_NBR","CTRL_SECT_MPT","MSG","distance"]
+        const refinedData = []
+        refinedData.push(titleKeys)
+
+
+        let i = 1; // skipping 0 header row
+        while (i < array.length) {
+          await sleep(2000);
+          foo(outputArray, refinedData, array, i,1,2,1);
+          i++;
+        }
+        //const titleKeys = Object.keys(outputArray[0][0])
+        console.log(outputArray);
+        console.log(refinedData);
+        console.log(titleKeys);
+
+        let csvContent = ''
+
+        refinedData.forEach(row => {
+          csvContent += row.join(',') + '\n'
+        })
+
+        console.log(csvContent);
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
+        const objUrl = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.setAttribute('href', objUrl)
+        link.setAttribute('download', 'File.csv')
+        link.textContent = 'Click to Download'
+
+        document.querySelector("#bulk-justified").append(link)
+        
+      };
+
+      
+      reader.readAsText(input);
+    });
+
+    function csvToArray(str, delimiter = ",") {
+      console.log("csv to array");
+      let array = str.split("\r\n").map(function (line) {
+        return line.split(delimiter);
+      });
+
+      return array;
+    }
+
+    function foo(output1, output2, array, line, method, colno_coord1, colno_coord2) {
+      currentLine = array[line];
+      coord1 = currentLine[colno_coord1];
+      coord2 = currentLine[colno_coord2];
+      lrsBulkQuery(output1, output2, method, coord1, coord2);
+    }
+
+  </script>
+
+  <script>
+    async function lrsBulkQuery(output1, output2, method, coord1, coord2) {
+    currentPos = 1;
+
+    if (method == 1){
+        lat = coord1;
+        lon = coord2;
+        url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
+    }
+
+    const results = await queryService(url);
+    resultCount = results.length; 
+    console.log(results);
+
+    results.forEach(_result => {
+      output1.push(_result);
+      output2.push(Object.values(_result))
+    });
+
+
+
+    //showResultsOnMap(results);
+  }
+  </script>
+
+
+
+
+</body>
+
+</html>
