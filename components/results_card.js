@@ -8,11 +8,11 @@ const staticResults_Card = `      <div id="results_card" class="card">
             <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                 aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                    <button type="button" onclick="" class="btn btn-primary"
+                    <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
                         title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</button>
 
-                    <button type="button" onclick="" class="btn btn-primary"
-                        title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</button>
+                    <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
+                        title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
 
                     <button type="button" onclick="" class="btn btn-primary"
                         title="Export a KML file of all points"><i class="fa fa-download"></i> KML</button>

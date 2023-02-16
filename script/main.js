@@ -5,7 +5,8 @@ require([
   "esri/layers/GraphicsLayer",
   "esri/layers/FeatureLayer",
   "esri/layers/VectorTileLayer",
-  "esri/layers/TileLayer"
+  "esri/layers/TileLayer",
+  "esri/layers/support/LabelClass"
   ], function (
     esriConfig,
     Map,
@@ -13,7 +14,8 @@ require([
     GraphicsLayer,
     FeatureLayer,
     VectorTileLayer,
-    TileLayer
+    TileLayer,
+    LabelClass
   ) {
 
   esriConfig.apiKey = "";
@@ -29,13 +31,45 @@ require([
   map.add(imagery);
   imagery.visible = false;
 
+
+  const TxDOT_Reference_MarkersLabelClass = new LabelClass({
+    labelExpressionInfo: { expression: "$feature.MRKR_NBR" },
+    symbol: {
+      type: "text",  // autocasts as new TextSymbol()
+      color: "black",
+      haloSize: 1,
+      haloColor: "white"
+    }
+  });
+
   TxDOT_Reference_Markers = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0");
+  TxDOT_Reference_Markers.labelingInfo = [ TxDOT_Reference_MarkersLabelClass ];
   map.add(TxDOT_Reference_Markers);
   TxDOT_Reference_Markers.visible = false;
 
+
+  const TxDOT_Control_SectionsLabelClass = new LabelClass({
+    labelExpressionInfo: { expression: "$feature.CTRL_SECT_NBR" },
+    symbol: {
+      type: "text",  // autocasts as new TextSymbol()
+      color: "black",
+      haloSize: 1,
+      haloColor: "white"
+    }
+  });
+
   TxDOT_Control_Sections = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Control_Sections/FeatureServer/0")
+  TxDOT_Control_Sections.labelingInfo = [ TxDOT_Control_SectionsLabelClass ];
   map.add(TxDOT_Control_Sections);
   TxDOT_Control_Sections.visible = false;
+
+
+
+
+
+
+
+
 
   window.view = new MapView({
     map: map,
@@ -53,7 +87,7 @@ require([
   var zoomHandle = view.watch('zoom', function(newZoom) {
     //console.log("Zoom: ", newZoom);
     
-    // enable/disable checkboxes
+    //// enable/disable checkboxes
    /* if (newZoom > 10) {
       console.log("enable");
       $("#refmrkr-event").prop("disabled", false);

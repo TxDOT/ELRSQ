@@ -41,3 +41,20 @@ function showResultsOnMap(results) {
     });
     
   }
+
+
+
+  function clearResultsFromMap() {
+    //clear existing point
+    view.graphics.removeAll();
+    
+    view.goTo({
+      center: [-99.90, 31.96], // Longitude, latitude of Texas
+      zoom: 6, // Zoom level
+    }) 
+    
+  }
+
+
+
+

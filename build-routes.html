@@ -504,17 +504,21 @@
                 <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                   aria-label="Toolbar with button groups">
                   <div class="btn-group me-2 mb-2" role="group">
-                    <button type="button" onclick="" class="btn btn-success"
+                    <button type="button" onclick="addProjectToArray(projects)" class="btn btn-success"
                       title="Save current project and add another"><i class="fa fa-plus-circle" aria-hidden="true"></i>
                       Add Row</button>
-                    <button type="button" onclick="" class="btn btn-danger" title="Remove last project on list"><i
-                        class="fa fa-minus-circle" aria-hidden="true"></i> Drop Row</button>
-                    <button type="button" onclick="" class="btn btn-secondary" title="Clear project(s) from the map"><i
-                        class="fa fa-trash" aria-hidden="true"></i> Clear</button>
+                    <button type="button" onclick="removeLastProject(projects, projectLines)" class="btn btn-danger"
+                      title="Remove last project on list"><i class="fa fa-minus-circle" aria-hidden="true"></i> Drop
+                      Row</button>
+                    <button type="button" onclick="clearProjectArrays(projects, projectLines)" class="btn btn-secondary"
+                      title="Clear project(s) from the map"><i class="fa fa-trash" aria-hidden="true"></i>
+                      Clear</button>
                   </div>
                   <div class="btn-group mb-2" role="group">
-                    <button type="button" onclick="" class="btn btn-primary" title="Map your project(s)"><i
-                        class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                    <button type="button" onclick="queryProjectGeometry(projects)" class="btn btn-primary"
+                      title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                    <button type="button" onclick="printGeometry(projectLines)" class="btn btn-primary"
+                      title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
                   </div>
                 </div>
                 <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
@@ -583,7 +587,7 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
-  <script src="script/main.js"></script>
+  <!-- <script src="script/main.js"></script>
   <script>let currentSelection = []</script>
   <script>let allResults = []</script>
   <script>let currentPos = 1;</script>
@@ -591,6 +595,44 @@
   <script src="script/query1.js"></script>
   <script src="script/showResultsOnMap.js"></script>
   <script src="script/results.js"></script>
+  <script src="script/dragdropupload.js"></script> -->
+
+  <script src="script/route_builder.js"></script>
+  <script src="script/make_table_from_array.js"></script>
+  <script src="script/data_functions.js"></script>
+
+  <script>
+    let projects = [
+      [
+        "IH0035-KG",
+        "121.243",
+        "149.576",
+        "#ff8000",
+        4,
+        "35"
+      ],
+      [
+        "IH0045-KG",
+        "1.243",
+        "9.576",
+        "#ff8000",
+        4,
+        "45"
+      ],
+      [
+        "IH0010-KG",
+        "500",
+        "600",
+        "#ff8000",
+        4,
+        "10"
+      ]
+    ]
+
+    //let projects = [];
+    var projectLines = [];
+  </script>
+
 
   <script>
     if (screen.width >= 768) {
