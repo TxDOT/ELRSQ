@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload)
+    document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2)
 });
 
 
@@ -21,13 +22,13 @@ const handleUpload = async (event) => {
         //set method parameter depending on tab
         if (currentLRM == `referencemarker-tab`) {
             method = 2;
-            csvinToCsvout(fileContents, method); // need to determine template
+            csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
         } else if (currentLRM == `controlsection-tab`) {
             method = 3;
-            csvinToCsvout(fileContents, method); // need to determine template
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
         } else if (currentLRM == `distancefromorigin-tab`) {
             method = 4;
-            csvinToCsvout(fileContents, method); // need to determine template
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
         } else {
             method = 1;
             csvinToCsvout(fileContents, method, 2, 1);
@@ -37,6 +38,70 @@ const handleUpload = async (event) => {
         ////$('#output_field').text(e.message);
     }
 }
+
+
+
+/*const handleUpload2 = async (event) => {
+    const file = dataRefs.files[0];
+
+    try {
+        const fileContents = await readFile(file)
+        ////$('#output_field').text(fileContents);
+
+        //set method parameter depending on tab
+        if (currentLRM == `referencemarker-tab`) {
+            method = 2;
+            csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
+        } else if (currentLRM == `controlsection-tab`) {
+            method = 3;
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+        } else if (currentLRM == `distancefromorigin-tab`) {
+            method = 4;
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+        } else {
+            method = 1;
+            csvinToCsvout(fileContents, method, 2, 1);
+        }
+
+    } catch (e) {
+        ////$('#output_field').text(e.message);
+    }
+}*/
+
+//experimental
+async function handleUpload2(file){
+
+    try {
+        const fileContents = await readFile(file)
+        ////$('#output_field').text(fileContents);
+
+        //set method parameter depending on tab
+        if (currentLRM == `referencemarker-tab`) {
+            method = 2;
+            csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
+        } else if (currentLRM == `controlsection-tab`) {
+            method = 3;
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+        } else if (currentLRM == `distancefromorigin-tab`) {
+            method = 4;
+            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+        } else {
+            method = 1;
+            csvinToCsvout(fileContents, method, 2, 1);
+        }
+
+    } catch (e) {
+        ////$('#output_field').text(e.message);
+    }
+}
+
+
+
+
+
+
+
+
 
 function readFile(file) {
     console.log("reader load");
@@ -92,16 +157,18 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
 
 async function queryByLine(array, line, method, ...index_coord) {
+    console.log("queryByLine");
     currentLine = array[line];
 
     url = makeLrsQueryUrlFromIndex(method, currentLine, index_coord)
-
+    console.log(url);
     const results = await queryService(url);
     return results;
 }
 
 
 function makeLrsQueryUrlFromIndex(method, vector, index_coord) {
+    console.log(vector);
 
     if (method == 1) {
         const lat = vector[index_coord[0]];

@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="style/dropzone.css">
   <link rel="stylesheet" href="style/split.css">
   <link rel="stylesheet" href="components/results_card.css">
+  <link rel="stylesheet" href="components/indicator.css">
 
   <!-- Repetitive HTML -->
   <script src="components/nav_bar.js" defer></script>
@@ -45,6 +46,8 @@
   <script src="components/results_card.js" defer></script>
   <script src="components/route_help_modal.js" defer></script>
   <script src="components/route_style_help_modal.js" defer></script>
+
+    <script src="script/dragdropupload.js" defer></script>
 
   <!-- Vendor JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -151,8 +154,10 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" onclick="lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude')" class="btn btn-primary" title="Convert to other LRS"><i
-                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="button"
+                        onclick="lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude')"
+                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                          aria-hidden="true"></i> Convert</button>
                       <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
@@ -197,8 +202,8 @@
 
                       <tr>
                         <th scope="row">Route Name:</th>
-                        <td><input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" value="FM0060-KG"
-                            class="form-control textentry"></td>
+                        <td><input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                            value="FM0060-KG" class="form-control textentry"></td>
                         <td></td>
                       </tr>
                       <tr>
@@ -232,8 +237,10 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" onclick="lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement')" class="btn btn-primary" title="Convert to other LRS"><i
-                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="button"
+                        onclick="lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement')"
+                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                          aria-hidden="true"></i> Convert</button>
                       <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
@@ -270,8 +277,8 @@
 
                       <tr>
                         <th scope="row">Route Name:</th>
-                        <td><input id="inputRouteName_4"  type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routeid_4"
-                            value="IH0030-KG" class="form-control textentry"></td>
+                        <td><input id="inputRouteName_4" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                            name="routeid_4" value="IH0030-KG" class="form-control textentry"></td>
                         <td></td>
                       </tr>
                       <tr>
@@ -298,8 +305,10 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" onclick="lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin')" class="btn btn-primary" title="Convert to other LRS"><i
-                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="button"
+                        onclick="lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin')"
+                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                          aria-hidden="true"></i> Convert</button>
                       <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
@@ -360,8 +369,10 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" onclick="lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure')" class="btn btn-primary" title="Convert to other LRS"><i
-                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="button"
+                        onclick="lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure')"
+                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                          aria-hidden="true"></i> Convert</button>
                       <button type="reset" class="btn btn-secondary" title="Reset to default values"><i
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                     </div>
@@ -592,12 +603,20 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
+  <script src="script/main.js"></script>
+  <script src="script/ready.js"></script>
+  <script>let currentSelection = [];</script>
+  <script>let allResults = [];</script>
+  <script>let currentPos = 1;</script>
+  <script>let graphics = [];</script> <!-- this is an experiment -->
+  <script src="script/handleMapClick.js"></script>
   <script src="script/lrsDualQuery.js"></script>
   <script src="script/lrsQuery.js"></script>
-
-
-
-
+  <script src="script/showResultsOnMap.js"></script>
+  <script src="script/results.js" defer></script>
+  <script src="script/copy_text.js"></script>
+  <script src="script/rdwayquery.js"></script>
+  <script src="script/currentLRM.js"></script>
 
 
   <script src="script/route_builder.js"></script>

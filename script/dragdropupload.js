@@ -25,16 +25,22 @@ function unhighlight(event) {
 }
 
 function getInputRefs(element) {
+  console.log("getInputRefs");
   const zone = element.closest('.upload_dropZone') || false;
   const input = zone.querySelector('input[type="file"]') || false;
   return { input: input };
 }
 
 function handleDrop(event) {
+  console.log("handleDrop");
   const dataRefs = getInputRefs(event.target);
+  console.log("dataRefs");
+  console.log(dataRefs);
   dataRefs.files = event.dataTransfer.files;
   handleFiles(dataRefs);
-  console.log(dataRefs);
+  console.log("dataRefs.files");
+  console.log(dataRefs.files);
+  handleUpload2(dataRefs.files[0]); //experimental
 }
 
 
@@ -71,6 +77,7 @@ function eventHandlers(zone) {
 
 // Handle both selected and dropped files
 function handleFiles(dataRefs) {
+  console.log("handleFiles");
 
   let files = [...dataRefs.files];
   console.log(files);
@@ -78,3 +85,33 @@ function handleFiles(dataRefs) {
   if (!files.length) return;
   dataRefs.files = files;
 }
+
+
+/*
+// this starts converting before Convert button is pressed
+const handleFiles = async (event) => {
+  const file = event.target.files[0];
+
+  try {
+      const fileContents = await readFile(file)
+      ////$('#output_field').text(fileContents);
+
+      //set method parameter depending on tab
+      if (currentLRM == `referencemarker-tab`) {
+          method = 2;
+          csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
+      } else if (currentLRM == `controlsection-tab`) {
+          method = 3;
+          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+      } else if (currentLRM == `distancefromorigin-tab`) {
+          method = 4;
+          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
+      } else {
+          method = 1;
+          csvinToCsvout(fileContents, method, 2, 1);
+      }
+
+  } catch (e) {
+      ////$('#output_field').text(e.message);
+  }
+}*/

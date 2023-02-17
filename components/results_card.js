@@ -14,8 +14,8 @@ const staticResults_Card = `      <div id="results_card" class="card">
                     <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
                         title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
 
-                    <button type="button" onclick="" class="btn btn-primary"
-                        title="Export a KML file of all points"><i class="fa fa-download"></i> KML</button>
+                    <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
+                        title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
                 </div>
                 <div class="btn-group mb-2" role="group" aria-label="download group">
                     <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -149,24 +149,24 @@ const staticResults_Card = `      <div id="results_card" class="card">
 
 class Results_Card extends HTMLElement {
 
-  /*async #getHTML (path) {
-    try {
-      let request = await fetch(path);
-      this.innerHTML = await request.text();
-    } catch {
-      this.innerHTML = staticResults_Card;
+    /*async #getHTML (path) {
+      try {
+        let request = await fetch(path);
+        this.innerHTML = await request.text();
+      } catch {
+        this.innerHTML = staticResults_Card;
+      }
+    }*/
+
+    constructor() {
+        super();
+        /*let path = '/components/results_card.html';
+        this.#getHTML(path);*/
     }
-  }*/
 
-  constructor() {
-    super();
-    /*let path = '/components/results_card.html';
-    this.#getHTML(path);*/
-  }
-
-  connectedCallback() {
-    this.innerHTML = staticResults_Card;
-  }
+    connectedCallback() {
+        this.innerHTML = staticResults_Card;
+    }
 }
 
 customElements.define('results_card-component', Results_Card);

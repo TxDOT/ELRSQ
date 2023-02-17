@@ -1,30 +1,32 @@
 require([
-  "esri/config", 
-  "esri/Map", 
+  "esri/config",
+  "esri/Map",
   "esri/views/MapView",
   "esri/layers/GraphicsLayer",
   "esri/layers/FeatureLayer",
   "esri/layers/VectorTileLayer",
   "esri/layers/TileLayer",
+  "esri/layers/GeoJSONLayer",
   "esri/layers/support/LabelClass"
-  ], function (
-    esriConfig,
-    Map,
-    MapView,
-    GraphicsLayer,
-    FeatureLayer,
-    VectorTileLayer,
-    TileLayer,
-    LabelClass
-  ) {
+], function (
+  esriConfig,
+  Map,
+  MapView,
+  GraphicsLayer,
+  FeatureLayer,
+  VectorTileLayer,
+  TileLayer,
+  GeoJSONLayer,
+  LabelClass
+) {
 
   esriConfig.apiKey = "";
 
-  const map = new Map({ });
+  const map = new Map({});
 
   TxDOTVectorTileLayer = new VectorTileLayer(
     "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
-    );
+  );
   map.add(TxDOTVectorTileLayer);
 
   imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
@@ -43,7 +45,7 @@ require([
   });
 
   TxDOT_Reference_Markers = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0");
-  TxDOT_Reference_Markers.labelingInfo = [ TxDOT_Reference_MarkersLabelClass ];
+  TxDOT_Reference_Markers.labelingInfo = [TxDOT_Reference_MarkersLabelClass];
   map.add(TxDOT_Reference_Markers);
   TxDOT_Reference_Markers.visible = false;
 
@@ -59,7 +61,7 @@ require([
   });
 
   TxDOT_Control_Sections = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Control_Sections/FeatureServer/0")
-  TxDOT_Control_Sections.labelingInfo = [ TxDOT_Control_SectionsLabelClass ];
+  TxDOT_Control_Sections.labelingInfo = [TxDOT_Control_SectionsLabelClass];
   map.add(TxDOT_Control_Sections);
   TxDOT_Control_Sections.visible = false;
 
@@ -79,26 +81,26 @@ require([
   });
 
   window.view.on("click", function (event) {
-      handleMapClick(event)
+    handleMapClick(event)
   })
 
 
   // watch handler
-  var zoomHandle = view.watch('zoom', function(newZoom) {
+  var zoomHandle = view.watch('zoom', function (newZoom) {
     //console.log("Zoom: ", newZoom);
-    
+
     //// enable/disable checkboxes
-   /* if (newZoom > 10) {
-      console.log("enable");
-      $("#refmrkr-event").prop("disabled", false);
-      $("#controlsec-event").prop("disabled", false);
-    } else {
-      console.log("off + disable");
-      $("#refmrkr-event").prop("checked", false);
-      $("#refmrkr-event").prop("disabled", true);
-      $("#controlsec-event").prop("checked", false);
-      $("#controlsec-event").prop("disabled", true);
-    }  */
+    /* if (newZoom > 10) {
+       console.log("enable");
+       $("#refmrkr-event").prop("disabled", false);
+       $("#controlsec-event").prop("disabled", false);
+     } else {
+       console.log("off + disable");
+       $("#refmrkr-event").prop("checked", false);
+       $("#refmrkr-event").prop("disabled", true);
+       $("#controlsec-event").prop("checked", false);
+       $("#controlsec-event").prop("disabled", true);
+     }  */
 
 
     // enable/disable toggles
@@ -113,12 +115,12 @@ require([
       $('#controlsec-event').bootstrapToggle('off');
       $('#controlsec-event').bootstrapToggle('disable');
 
-    }  
+    }
 
 
 
     //show/hide layers
-    if (newZoom <= 10){
+    if (newZoom <= 10) {
       TxDOT_Reference_Markers.visible = false;
       TxDOT_Control_Sections.visible = false;
     }
@@ -126,8 +128,8 @@ require([
 
 
   // toggle buttons for showing/hiding layers
-  $('#basemap-event').change(function() {
-    if ($(this).prop('checked')){
+  $('#basemap-event').change(function () {
+    if ($(this).prop('checked')) {
       imagery.visible = false;
       TxDOTVectorTileLayer.visible = true;
     } else {
@@ -137,11 +139,11 @@ require([
   })
 
 
-  $('#refmrkr-event').change(function() {
-    if ($(this).attr('disabled')){
+  $('#refmrkr-event').change(function () {
+    if ($(this).attr('disabled')) {
       console.log("hide due to  disabled");
       TxDOT_Reference_Markers.visible = false;
-    } else if (window.view.zoom < 10){
+    } else if (window.view.zoom < 10) {
       console.log("hide due to zoom");
       TxDOT_Reference_Markers.visible = false;
     } else if (!($("#refmrkr-event").prop("checked"))) {
@@ -157,11 +159,11 @@ require([
   })
 
 
-  $('#controlsec-event').change(function() {
-    if ($(this).attr('disabled')){
+  $('#controlsec-event').change(function () {
+    if ($(this).attr('disabled')) {
       console.log("hide due to  disabled");
       TxDOT_Control_Sections.visible = false;
-    } else if (window.view.zoom < 10){
+    } else if (window.view.zoom < 10) {
       console.log("hide due to zoom");
       TxDOT_Control_Sections.visible = false;
     } else if (!($("#controlsec-event").prop("checked"))) {
@@ -178,4 +180,24 @@ require([
 
 
 
+
+
+
 });
+
+
+
+// Zooms to the extent of the layer as defined by
+// its definitionExpression
+// This method will work for all FeatureLayers, even
+// those without a saved `fullExtent` on the service.
+
+function zoomToLayer(layer) {
+  return layer.queryExtent().then((response) => {
+    console.log(response);
+    view.goTo(response.extent)
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+}
