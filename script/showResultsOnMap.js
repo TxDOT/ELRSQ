@@ -2,7 +2,7 @@
 
 function showResultsOnMap(results) {
     //go through each result and add on map
-    const graphics = [];
+    //const graphics = []; // going to initialize this outside of the function and see what happens
     require(["esri/Graphic"], (Graphic) => {
 
       results.forEach(_result => { 
@@ -54,6 +54,18 @@ function showResultsOnMap(results) {
     }) 
     
   }
+
+
+  function returnToPoint() {
+
+    //zoom to all graphics
+    view.goTo({
+      target: graphics,
+      zoom: 17
+    }) 
+    
+  }
+
 
 
 

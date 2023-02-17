@@ -3,7 +3,7 @@ const staticResults_Card = `      <div id="results_card" class="card">
     <h5 class="card-title">Results:</h5>
 
     <div class="card">
-        <div class="card-body">
+        <div id="results-header" class="card-body">
             <span id="result-pagination"></span>
             <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                 aria-label="Toolbar with button groups">

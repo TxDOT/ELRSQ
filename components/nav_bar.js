@@ -2,6 +2,7 @@ const staticNav_Bar = `<nav class="navbar navbar-expand-lg navbar-light bg-light
 <div class="container-fluid">
     <div id="navbarSupportedContent">  
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
         <a class="nav-link " href="index.html">
             <span>Home</span>
@@ -22,12 +23,12 @@ const staticNav_Bar = `<nav class="navbar navbar-expand-lg navbar-light bg-light
 
         <li class="nav-item">
         <a class="nav-link collapsed" href="help.html">
-            <span>Wizard</span>
+            <span>Help</span>
         </a>
         </li><!-- End Help Page Nav -->       
 
         <li class="nav-item">
-        <a class="nav-link collapsed" href="bulk.html">
+        <a class="nav-link collapsed" href="about.html">
             <span>About</span>
         </a>
         </li><!-- End About Page Nav -->

@@ -14,7 +14,7 @@ const staticBulk_Modal_B = `      <!-- Modal -->
           <button type="button" id="tmpl-controlsection" onclick="" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section Template</button>
           <button type="button" id="tmpl-dfo" onclick="" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</button>
           
-          <form>
+          <form id="bulk-form">
 
             <fieldset class="upload_dropZone text-center mb-3 p-4">
 
@@ -23,7 +23,7 @@ const staticBulk_Modal_B = `      <!-- Modal -->
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
 
               <input id="upload_csv-bulk" data-post-name="csv-bulk" 
-                class="position-absolute invisible" type="file" accept=".csv" />
+                class="position-absolute invisible form-control" type="file" placeholder="Select file" accept=".csv" />
 
               <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
 
@@ -44,6 +44,13 @@ const staticBulk_Modal_B = `      <!-- Modal -->
     </div>
   </div>
   <!--End Modal -->`
+
+
+
+
+
+
+
 
 
 class Bulk_Modal_B extends HTMLElement {
