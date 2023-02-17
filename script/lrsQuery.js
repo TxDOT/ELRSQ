@@ -84,6 +84,7 @@ function makeLrsQueryUrlFromHtml(method, id_coord) {
 
 // function which uses mouse click lat/lon to query lrs service for a single point
 async function coordinateQuery(_lat, _lon) {
+  graphics = []; //this is an experiment
   //const loading = document.getElementById("loading");
   //loading.classList.remove("hide");
 
