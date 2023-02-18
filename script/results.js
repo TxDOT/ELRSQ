@@ -103,11 +103,6 @@ function clearPagination() {
 
 
 
-
-
-
-
-
 // special results
 
 function specialResults(results) {
@@ -120,9 +115,7 @@ function specialResults(results) {
   exportToCsvFile(jsonData);
   exportToKMLFile(jsonData);
   //resultCount = allResults.length; // use this somewhere
-  //currentResult = allResults[index];
-
-
+  //currentResult = allResults[index]
 }
 
 
@@ -151,7 +144,6 @@ function exportToJsonFile(jsonData) {
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
-
 
 
 
@@ -220,9 +212,6 @@ function parseJSONToCSVStr(jsonData) {
 
   return encodeURIComponent(csvStr);;
 }
-
-
-
 
 
 

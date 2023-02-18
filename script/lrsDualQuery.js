@@ -46,10 +46,6 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
     console.log(B_results);
     console.log(E_results);
 
-
-
-  
-
     if (method == 1) {
         // need to make array of common route names and pass to selector
     }
@@ -65,7 +61,6 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
         console.log(B_results[b_index]);*/
         let bdfo = B_results[b_index]['RTE_DFO'];
         routeQueryOutput.push(bdfo);
-
 
         let e_index = E_results.findIndex(function (item, i) {
             return item.RTE_DEFN_LN_NM === rte_nm
@@ -120,17 +115,11 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
 
 
-
-// determine pagination and fill in HTML table results
+// fill in HTML table results
 function showRouteResults(routeQueryOutput) {
 
     // fill in HTML results
-
     document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = routeQueryOutput[0];
     document.getElementById("p_returned_RTE_DFO_begin").innerHTML = routeQueryOutput[1];
     document.getElementById("p_returned_RTE_DFO_end").innerHTML = routeQueryOutput[2];
 }
-
-
-
-

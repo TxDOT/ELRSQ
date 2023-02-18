@@ -5,4 +5,3 @@ function GreenToYellow(){
 function YellowToGreen(){
     document.getElementById('readyIndicator').classList.replace('yellow', 'green');
 }
-

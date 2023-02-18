@@ -85,33 +85,3 @@ function handleFiles(dataRefs) {
   if (!files.length) return;
   dataRefs.files = files;
 }
-
-
-/*
-// this starts converting before Convert button is pressed
-const handleFiles = async (event) => {
-  const file = event.target.files[0];
-
-  try {
-      const fileContents = await readFile(file)
-      ////$('#output_field').text(fileContents);
-
-      //set method parameter depending on tab
-      if (currentLRM == `referencemarker-tab`) {
-          method = 2;
-          csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
-      } else if (currentLRM == `controlsection-tab`) {
-          method = 3;
-          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-      } else if (currentLRM == `distancefromorigin-tab`) {
-          method = 4;
-          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-      } else {
-          method = 1;
-          csvinToCsvout(fileContents, method, 2, 1);
-      }
-
-  } catch (e) {
-      ////$('#output_field').text(e.message);
-  }
-}*/

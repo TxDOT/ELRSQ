@@ -13,6 +13,7 @@ console.log("rawtext: " + rawtext);
 
 // this starts converting before Convert button is pressed
 const handleUpload = async (event) => {
+    console.log("handleUpload");
     const file = event.target.files[0];
 
     try {
@@ -40,37 +41,9 @@ const handleUpload = async (event) => {
 }
 
 
-
-/*const handleUpload2 = async (event) => {
-    const file = dataRefs.files[0];
-
-    try {
-        const fileContents = await readFile(file)
-        ////$('#output_field').text(fileContents);
-
-        //set method parameter depending on tab
-        if (currentLRM == `referencemarker-tab`) {
-            method = 2;
-            csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
-        } else if (currentLRM == `controlsection-tab`) {
-            method = 3;
-            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-        } else if (currentLRM == `distancefromorigin-tab`) {
-            method = 4;
-            csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-        } else {
-            method = 1;
-            csvinToCsvout(fileContents, method, 2, 1);
-        }
-
-    } catch (e) {
-        ////$('#output_field').text(e.message);
-    }
-}*/
-
 //experimental
 async function handleUpload2(file){
-
+console.log("handleUpload2");
     try {
         const fileContents = await readFile(file)
         ////$('#output_field').text(fileContents);
@@ -96,13 +69,6 @@ async function handleUpload2(file){
 }
 
 
-
-
-
-
-
-
-
 function readFile(file) {
     console.log("reader load");
     const reader = new FileReader();
@@ -120,6 +86,8 @@ function readFile(file) {
     });
 };
 
+// this needs the functionality to export geoJSON and KML as well
+// should probably be split into two functions - one to do the query, another to make the outputs
 async function csvinToCsvout(text, method, ...index_coord) {
     let array = csvToArray(text);
     let outputArray = [];
@@ -143,6 +111,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
         breakMultipleResults(outputArray, refinedData, array, i, results)
     }
 
+    // see if there is a function in papa parser to replace this
     let csvContent = ''
     refinedData.forEach(row => { csvContent += row.join(',') + '\n' })
 
@@ -210,7 +179,7 @@ function breakMultipleResults(output1, output2, array, line, results) {
     });
 }
 
-//change this link to go somewhere else
+
 function makeDownloadLink(csvContent) {
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
     const objUrl = URL.createObjectURL(blob)

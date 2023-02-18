@@ -66,13 +66,6 @@ require([
   TxDOT_Control_Sections.visible = false;
 
 
-
-
-
-
-
-
-
   window.view = new MapView({
     map: map,
     center: [-99.90, 31.96], // Longitude, latitude of Texas
@@ -117,15 +110,12 @@ require([
 
     }
 
-
-
     //show/hide layers
     if (newZoom <= 10) {
       TxDOT_Reference_Markers.visible = false;
       TxDOT_Control_Sections.visible = false;
     }
   });
-
 
   // toggle buttons for showing/hiding layers
   $('#basemap-event').change(function () {
@@ -137,7 +127,6 @@ require([
       imagery.visible = true;
     }
   })
-
 
   $('#refmrkr-event').change(function () {
     if ($(this).attr('disabled')) {
@@ -158,7 +147,6 @@ require([
     }
   })
 
-
   $('#controlsec-event').change(function () {
     if ($(this).attr('disabled')) {
       console.log("hide due to  disabled");
@@ -177,12 +165,6 @@ require([
       TxDOT_Control_Sections.visible = false;
     }
   })
-
-
-
-
-
-
 });
 
 

@@ -19,5 +19,3 @@ async function rdwayQuery(url) {
     
     return response.json();
   }
-  
-  

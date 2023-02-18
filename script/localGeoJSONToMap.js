@@ -66,8 +66,6 @@ function foo() {
 
         view.map.add(projectLayer);  // adds the layer to the map
 
-
-
         // When the layer is loaded, query for the extent
         // of all features in the layer. Then set the view's
         // extent to the returned extent of all features.
@@ -80,19 +78,7 @@ function foo() {
                 view.goTo(response.extent);
             });
 
-
-
-
-
-
-        //zoom to all graphics
-        /*view.goTo({
-            target: projectLayer,
-            zoom: 12
-        })*/
-
     });
-
 }
 
 
