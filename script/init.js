@@ -5,6 +5,17 @@ let graphics = [];
 let projects = [];
 var projectLines = [];
 
+
+function resetGraphics() {
+    graphics = []; //this is an experiment
+  }
+  
+  function resetcurrentPos() {
+    currentPos = 1;
+  }
+  
+  
+  
 /*let projects = [
     [
         "IH0035-KG",
