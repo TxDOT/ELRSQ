@@ -95,9 +95,6 @@ const staticWizard_Form = `                <!-- Horizontal Form -->
   </div>
 </form><!-- End Horizontal Form -->`
 
-/**
-  FIXME change onclicks to event handlers
-*/
 
 class Wizard_Form extends HTMLElement {
 

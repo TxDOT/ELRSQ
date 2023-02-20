@@ -147,7 +147,6 @@ const staticResults_Card = `      <div id="results_card" class="card">
 </div>
 </div>`
 
-/* FIXME add ids and event handlers */
 
 class Results_Card extends HTMLElement {
 

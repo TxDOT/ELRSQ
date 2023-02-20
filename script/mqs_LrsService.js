@@ -134,7 +134,6 @@ function addPointGraphic(lat, lon) {
 // bulk conversion functions
 
 // FIXME change to use Convert button instead of automatic
-// TODO reenable try block
 const handleUpload = async (event) => {
   console.log("handleUpload");
   const file = event.target.files[0];
@@ -156,32 +155,6 @@ const handleUpload = async (event) => {
     method = 1;
     csvinToCsvout(fileContents, method, 2, 1);
   }
-
-
-
-
-  /*try {
-      const fileContents = await readFile(file)
-      ////$('#output_field').text(fileContents);
-
-      //set method parameter depending on tab
-      if (currentLRM == `referencemarker-tab`) {
-          method = 2;
-          csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
-      } else if (currentLRM == `controlsection-tab`) {
-          method = 3;
-          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-      } else if (currentLRM == `distancefromorigin-tab`) {
-          method = 4;
-          csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-      } else {
-          method = 1;
-          csvinToCsvout(fileContents, method, 2, 1);
-      }
-
-  } catch (e) {
-      ////$('#output_field').text(e.message);
-  }*/
 }
 
 //experimental
@@ -237,7 +210,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  // TODO see if there is a function in papa parser to replace this
+  // FIXME see if there is a function in papa parser to replace this
   let csvContent = ''
   refinedData.forEach(row => { csvContent += row.join(',') + '\n' })
 

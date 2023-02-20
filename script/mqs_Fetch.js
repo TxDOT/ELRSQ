@@ -17,7 +17,7 @@ async function queryService(url) {
 }
 
 
-//TODO verify correct fetch settings on unsegmented roadways
+
 async function queryRoadwayService(url) {
   const response = await fetch(url, {
     method: 'GET',

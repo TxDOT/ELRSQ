@@ -13,7 +13,7 @@ function specialResults(results) {
   //currentResult = allResults[index]
 }
 
-//TODO rename to specify that this is for single point conversion
+//FIXME rename to specify that this is for single point conversion
 function exportToGeoJsonFile(jsonData) {
 
   var geojson = {
@@ -67,7 +67,7 @@ function exportToCsvFile(jsonData) {
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
-//TODO find Papa Parse alternative
+//FIXME find Papa Parse alternative
 function parseJSONToCSVStr(jsonData) {
   if (jsonData.length == 0) {
     return '';
@@ -94,7 +94,7 @@ function parseJSONToCSVStr(jsonData) {
   return encodeURIComponent(csvStr);;
 }
 
-//TODO rename to specify that this is for single points conversion
+//FIXME rename to specify that this is for single points conversion
 function exportToKMLFile(jsonData) {
 
   // build kml file
@@ -170,7 +170,7 @@ function readFile(file) {
 };
 
 
-// TODO look for papa parse alternative
+// FIXME look for papa parse alternative
 function csvToArray(str, delimiter = ",") {
   console.log("csv to array");
   let array = str.split("\r\n").map(function (line) { return line.split(delimiter); });

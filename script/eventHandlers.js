@@ -13,18 +13,9 @@ $("#convert4-2point").on('click', function () { lrsDualQuery(4, 0, 'inputRouteNa
 
 
 
-//TODO change to use selector other than ID
-$("#reset1").on('click', function () { clearResults(); });
-$("#reset2").on('click', function () { clearResults(); });
-$("#reset3").on('click', function () { clearResults(); });
-$("#reset4").on('click', function () { clearResults(); });
-$("#reset-mapcursor").on('click', function () { clearResults(); });
+$(".reset").on('click', function () { clearResults(); });
+$(".reset").on('click', function () { clearResultsFromMap(); });
 
-$("#reset1").on('click', function () { clearResultsFromMap(); });
-$("#reset2").on('click', function () { clearResultsFromMap(); });
-$("#reset3").on('click', function () { clearResultsFromMap(); });
-$("#reset4").on('click', function () { clearResultsFromMap(); });
-$("#reset-mapcursor").on('click', function () { clearResultsFromMap(); });
 
 //return to point on map
 $("#returnToPoint").on('click', function () { returnToPoint(); });

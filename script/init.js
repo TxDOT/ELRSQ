@@ -63,7 +63,7 @@ $(document).ready(function () {
   // $("map_controls-component").load("components/html/map_controls.html");
   $("indicator-component").load("components/html/indicator.html");
   // $("demo_modal-component").load("components/html/demo_modal.html");
-  $("bulk_modal_B-component").load("components/html/bulk_modal_B.html");
+  $("bulk_modal-component").load("components/html/bulk_modal.html");
   $("form_help_modal-component").load("components/html/form_help_modal.html");
   $("cursor_help_modal-component").load("components/html/cursor_help_modal.html");
   $("results_help_modal-component").load("components/html/results_help_modal.html");
