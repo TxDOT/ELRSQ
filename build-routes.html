@@ -65,8 +65,9 @@
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
 
+  <script src="script/route_builder.js"></script>
+  <script src="script/mqs_RouteBuilder.js"></script>
   <script src="script/data_functions.js"></script> <!-- look for jquery alternative -->
-
 
 </head>
 
@@ -94,6 +95,9 @@
         <nav_bar-component></nav_bar-component>
         <!-- Nav-Bar END -->
 
+        <!-- Status-Indicator START -->
+        <indicator-component></indicator-component>
+        <!-- Status-Indicator END -->
 
         <!-- Scrolling Column START -->
         <div class="overflow-scroll" style="max-height: 90vh">
@@ -475,6 +479,12 @@
                 </div>
                 <!-- Map Cursor Tab Body END -->
 
+                <!-- Wizard Tab Body START -->
+                <div class="tab-pane fade" id="wizard-tabpane" role="tabpanel" aria-labelledby="wizard-tab">
+                  <wizard_form-component></wizard_form-component>
+                </div>
+                <!-- Wizard Tab Body END -->
+
               </div>
               <!-- Tab Bodies END -->
 
@@ -538,6 +548,8 @@
                     </tbody>
                   </table>
                   <!-- End Bordered Table -->
+                  <!-- TODO reidentify and find a new home -->
+                  <!-- <div id="print"></div> -->
                 </div>
               </div>
               <!-- StyleBuilder-Card END -->
@@ -666,7 +678,6 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
-  <script src="script/route_builder.js"></script>
 </body>
 
 </html>

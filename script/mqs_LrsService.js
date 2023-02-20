@@ -249,12 +249,3 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
 
 
-// fill in HTML table results
-function showRouteResults(routeQueryOutput) {
-
-  // fill in HTML results
-  document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = routeQueryOutput[0];
-  document.getElementById("p_returned_RTE_DFO_begin").innerHTML = routeQueryOutput[1];
-  document.getElementById("p_returned_RTE_DFO_end").innerHTML = routeQueryOutput[2];
-}
-
