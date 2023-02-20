@@ -144,6 +144,15 @@ function copyRouteDFO() {
 }
 
 
+// fill in HTML table results
+function showRouteResults(routeQueryOutput) {
+
+  // fill in HTML results
+  $(outputFieldIDs.RTE_DEFN_LN_NM).html(routeQueryOutput[0]);
+  $(outputFieldIDs.BDFO).html(routeQueryOutput[1]);
+  $(outputFieldIDs.EDFO).html(routeQueryOutput[2]);
+}
+
 
 // <!--makeTableFromArray(dataArray)
 // accepts multi-dimensional array and returns a string for an HTML table with a header record (Example: [["ID","NAME","AGE"],["1", "Michael",43], ["2", "Jessica",40]])-->
@@ -170,14 +179,4 @@ function makeTableFromArray(dataArray) {
   return result;
 }
 //---------------------------------------
-
-
-// fill in HTML table results
-function showRouteResults(routeQueryOutput) {
-
-  // fill in HTML results
-  document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = routeQueryOutput[0];
-  document.getElementById("p_returned_RTE_DFO_begin").innerHTML = routeQueryOutput[1];
-  document.getElementById("p_returned_RTE_DFO_end").innerHTML = routeQueryOutput[2];
-}
 

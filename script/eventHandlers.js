@@ -75,6 +75,13 @@ $(document).ready(function () {
 
 
 
+//const bulkForm = document.getElementById("bulk-form");
+//const fileContentDiv = document.getElementById('#output_field')
 
+$(document).ready(function () {
+    document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload)
+    document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2)
+  });
+  
 
 

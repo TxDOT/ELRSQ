@@ -4,7 +4,7 @@
 //// add to projects array if it is not a duplicate
 
 //do not delete
-function addProjectToArray(myProjects) {
+function addProjectToArray_old(myProjects) {
     console.log("addProjectToArray");
     projString = [document.input.RTE_NM.value, document.input.BDFO.value, document.input.EDFO.value,
     document.input.Color.value, + document.input.Width.value, document.input.Desc.value]
@@ -15,6 +15,27 @@ function addProjectToArray(myProjects) {
     console.log("addProjectToArray calling listQueries");
     listQueries(myProjects);
 }
+
+
+
+function addProjectToArray(myProjects) {
+    console.log("addProjectToArray");
+    const RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
+    const BDFO = $(outputFieldIDs.BDFO).html();
+    const EDFO = $(outputFieldIDs.EDFO).html();
+    const Color = $('#colors').val();
+    const Width = $('#width').val();
+    const Desc = $('#description').val();
+
+    projString = [RTE_NM, BDFO, EDFO, Color, Width, Desc];
+
+    if (myProjects.indexOf(projString) < 0) {
+        myProjects.push(projString);
+    }
+    console.log("addProjectToArray calling listQueries");
+    listQueries(myProjects);
+}
+
 
 
 //// validate that there is an input
@@ -38,6 +59,7 @@ function listQueries(myProjects) {
         $('#print').html(makeTableFromArray(arrayForTable));
     }
 }
+
 
 // removes last project in projects array
 function removeLastProject(myProjects, myProjectLines) {
@@ -293,14 +315,3 @@ function locatePointOnLine(theLine, pointMeasure) {
     }
 }
 
-
-//Draws user defined project on the map 
-//function printGeometry(prjGeom)
-function printGeometry(prjGeom) {
-    console.log("printGeometry");
-    for (var a = 0; a < prjGeom.length; a++) {
-        //console.log("print geom: ");
-        //console.log(prjGeom[a]);
-    }
-    console.log(prjGeom);
-}

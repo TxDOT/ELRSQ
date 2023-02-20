@@ -1,3 +1,5 @@
+// status functions
+//TODO add in Red functions
 function GreenToYellow(){
     document.getElementById('readyIndicator').classList.replace('green', 'yellow');
 }
@@ -5,37 +7,10 @@ function GreenToYellow(){
 function YellowToGreen(){
     document.getElementById('readyIndicator').classList.replace('yellow', 'green');
 }
+// end status functions
 
-let currentLRM = `coordinates-tab`;
 
-$('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-    currentLRM = $(e.target).attr("id") // activated tab
-    console.log(currentLRM);
-
-    if (currentLRM == `referencemarker-tab`) {
-        $("#tmpl-latlon").hide();
-        $("#tmpl-controlsection").hide();
-        $("#tmpl-dfo").hide();
-        $("#tmpl-field").show();
-    } else if (currentLRM == `controlsection-tab`) {
-        $("#tmpl-latlon").hide();
-        $("#tmpl-controlsection").show();
-        $("#tmpl-dfo").hide();
-        $("#tmpl-field").hide();
-    } else if (currentLRM == `distancefromorigin-tab`) {
-        $("#tmpl-latlon").hide();
-        $("#tmpl-controlsection").hide();
-        $("#tmpl-dfo").show();
-        $("#tmpl-field").hide();
-    } else {
-        $("#tmpl-latlon").show();
-        $("#tmpl-controlsection").hide();
-        $("#tmpl-dfo").hide();
-        $("#tmpl-field").hide();
-    }
-	
-});
-
+// wizard functions
 function noControlSection() {
     $("#rowInputControlSection").hide();
     $("#rowInputMilepointMeasure").hide();
@@ -99,5 +74,45 @@ function restartWizard() {
     $("#rowInputControlSection").show();
     $("#rowInputMilepointMeasure").show();
 }
+
+// end wizard functions
+
+
+// move drag and drop functions here
+// get current LRM
+
+let currentLRM = `coordinates-tab`;
+
+$('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+    currentLRM = $(e.target).attr("id") // activated tab
+    console.log(currentLRM);
+
+    if (currentLRM == `referencemarker-tab`) {
+        $("#tmpl-latlon").hide();
+        $("#tmpl-controlsection").hide();
+        $("#tmpl-dfo").hide();
+        $("#tmpl-field").show();
+    } else if (currentLRM == `controlsection-tab`) {
+        $("#tmpl-latlon").hide();
+        $("#tmpl-controlsection").show();
+        $("#tmpl-dfo").hide();
+        $("#tmpl-field").hide();
+    } else if (currentLRM == `distancefromorigin-tab`) {
+        $("#tmpl-latlon").hide();
+        $("#tmpl-controlsection").hide();
+        $("#tmpl-dfo").show();
+        $("#tmpl-field").hide();
+    } else {
+        $("#tmpl-latlon").show();
+        $("#tmpl-controlsection").hide();
+        $("#tmpl-dfo").hide();
+        $("#tmpl-field").hide();
+    }
+	
+});
+
+
+// end get current LRM
+
 
 
