@@ -279,13 +279,12 @@
                 <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
                   aria-labelledby="controlsection-tab">
                   <!-- Horizontal Form -->
-                  <!-- TODO All: text pattern on control section -->
                   <form id="form-controlsection-1point">
                     <div class="row mb-3">
                       <label for="inputControlSection" class="col-sm-4 col-form-label">Control Section</label>
                       <div class="col-sm-4">
-                        <input id="inputControlSection" type="text" required name="controlsection" value="012201"
-                          class="form-control textentry">
+                        <input id="inputControlSection" type="text" required pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}"
+                          name="controlsection" value="012201" class="form-control textentry">
                       </div>
                     </div>
                     <div class="row mb-3">

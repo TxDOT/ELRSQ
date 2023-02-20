@@ -183,7 +183,7 @@ async function handleUpload2(file) {
 // TODO All: needs the functionality to export geoJSON and KML as well
 // TODO All: split into two functions - one to do the query, another to make the outputs
 async function csvinToCsvout(text, method, ...index_coord) {
-  let array = Papa.parse(text).data;
+  let array = Papa.parse(text, { "skipEmptyLines": true }).data;
   let outputArray = [];
   let useLoadIndicator = 1;
 

@@ -366,10 +366,12 @@
                         </tr>
                         <tr>
                           <th scope="row">Control Section:</th>
-                          <td><input id="inputBeginControlSection" type="text" required name="begin-controlsection"
-                              value="012201" class="form-control textentry"></td>
-                          <td><input id="inputEndControlSection" type="text" required name="end-controlsection"
-                              value="012201" class="form-control textentry"></td>
+                          <td><input id="inputBeginControlSection" type="text" required
+                              pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="begin-controlsection" value="012201"
+                              class="form-control textentry"></td>
+                          <td><input id="inputEndControlSection" type="text" required
+                              pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection" value="012201"
+                              class="form-control textentry"></td>
                         </tr>
                         <tr>
                           <th scope="row">Milepoint Measure:</th>
