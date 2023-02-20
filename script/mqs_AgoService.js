@@ -45,16 +45,14 @@ async function queryProjectGeometry(myProjects) {
     }
 }
 
-
+// added output spatial reference to return WGS84
 async function queryRoadwayServiceByLine(myProjectData) {
 
     url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
         myProjectData[0] +
-        "'&returnGeometry=true&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
+        "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
 
     const results = await queryRoadwayService(url);
     myClippedLine = getSegment(results, myProjectData, projects);
     projectLines.push(myClippedLine);
 }
-
-
