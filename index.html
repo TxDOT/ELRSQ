@@ -70,19 +70,23 @@
   <!-- Modal END -->
 
   <main id="main" class="main">
-    <div class="row">
+
+    <!-- On Screen Content START -->
+    <div id="onscreencontent" class="row">
 
       <!-- Left side columns -->
       <div class="col-md-4" id="split-0">
+
         <!-- Nav-Bar START -->
         <nav_bar-component></nav_bar-component>
         <!-- Nav-Bar END -->
 
-        <div class="card">
-          <div class="card-body">
+        <!-- Calculator-Card START -->
+        <div id="CalculatorCard" class="card">
+          <div id="CalculatorCardBody" class="card-body">
             <h5 class="card-title">Query by:</h5>
 
-            <!-- Default Tabs -->
+            <!-- Tabs START -->
             <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
               <li class="nav-item flex-fill" role="presentation">
                 <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab"
@@ -114,12 +118,14 @@
                   type="button" role="tab" aria-controls="wizard-justified" aria-selected="false">Wizard</button>
               </li>
             </ul>
+            <!-- Tabs END -->
 
-            <!-- Tab Bodies Start -->
+            <!-- Tab Bodies START -->
             <div class="card-body tab-content pt-2" id="myTabjustifiedContent">
+              <!-- Coordinates Tab Body START -->
               <div class="tab-pane fade show active" id="coordinates-justified" aria-labelledby="coordinates-tab">
                 <!-- Horizontal Form -->
-                <form>
+                <form id="form-coordinates-1point">
                   <div class="row mb-3">
                     <label for="inputLatitude" class="col-sm-3 col-form-label">Latitude</label>
                     <div class="col-sm-4">
@@ -137,11 +143,12 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery1 group">
-                      <button type="button" onclick="lrsQuery(1, 1, 'inputLatitude', 'inputLongitude')"
+                      <button id="convert1" type="button" onclick="lrsQuery(1, 1, 'inputLatitude', 'inputLongitude')"
                         class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
                           aria-hidden="true"></i> Convert</button>
-                      <button type="reset" onclick="clearResults();clearResultsFromMap()" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button id="reset1" type="reset" onclick="clearResults();clearResultsFromMap()"
+                        class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
+                          aria-hidden="true"></i> Reset</button>
                     </div>
                     <div class="btn-group me-2 mb-2" role="group">
                       <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
@@ -154,11 +161,16 @@
                         title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
-                </form><!-- End Horizontal Form -->
+                </form>
+                <!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="referencemarker-justified" aria-labelledby="referencemarker-tab">
+              <!-- Coordinates Tab Body END -->
+
+              <!-- Reference Marker Tab Body START -->
+              <div class="tab-pane fade" id="referencemarker-justified" role="tabpanel"
+                aria-labelledby="referencemarker-tab">
                 <!-- Horizontal Form -->
-                <form>
+                <form id="form-referencemarker-1point">
                   <div class="row mb-3">
                     <label for="inputRouteName_2" class="col-sm-4 col-form-label">Route Name</label>
                     <div class="col-sm-4">
@@ -183,12 +195,13 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery2 group">
-                      <button type="button"
+                      <button id="convert2" type="button"
                         onclick="lrsQuery(2, 1, 'inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement')"
                         class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
                           aria-hidden="true"></i> Convert</button>
-                      <button type="reset" onclick="clearResults();clearResultsFromMap()" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button id="reset2" type="reset" onclick="clearResults();clearResultsFromMap()"
+                        class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
+                          aria-hidden="true"></i> Reset</button>
                     </div>
                     <div class="btn-group me-2 mb-2" role="group">
                       <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
@@ -201,11 +214,16 @@
                         title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
-                </form><!-- End Horizontal Form -->
+                </form>
+                <!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="distancefromorigin-justified" aria-labelledby="distancefromorigin-tab">
+              <!-- Reference Marker Tab Body END -->
+
+              <!-- DFO Tab Body START -->
+              <div class="tab-pane fade" id="distancefromorigin-justified" role="tabpanel"
+                aria-labelledby="distancefromorigin-tab">
                 <!-- Horizontal Form -->
-                <form>
+                <form id="form-distancefromorigin-1point">
                   <div class="row mb-3">
                     <label for="inputRouteName_4" class="col-sm-4 col-form-label">Route Name</label>
                     <div class="col-sm-4">
@@ -240,11 +258,17 @@
                         title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
-                </form><!-- End Horizontal Form -->
+                </form>
+                <!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="controlsection-justified" aria-labelledby="controlsection-tab">
+              <!-- DFO Tab Body END -->
+
+              <!-- Control Section Tab Body START -->
+              <div class="tab-pane fade" id="controlsection-justified" role="tabpanel"
+                aria-labelledby="controlsection-tab">
                 <!-- Horizontal Form -->
-                <form>
+                <!-- TODO text pattern on control section -->
+                <form id="form-controlsection-1point">
                   <div class="row mb-3">
                     <label for="inputControlSection" class="col-sm-4 col-form-label">Control Section</label>
                     <div class="col-sm-4">
@@ -262,11 +286,12 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery3 group">
-                      <button type="button" onclick="lrsQuery(3, 1, 'inputControlSection', 'inputMilepointMeasure')"
-                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                          aria-hidden="true"></i> Convert</button>
-                      <button type="reset" onclick="clearResults();clearResultsFromMap()" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button id="convert3" type="button"
+                        onclick="lrsQuery(3, 1, 'inputControlSection', 'inputMilepointMeasure')" class="btn btn-primary"
+                        title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button id="reset3" type="reset" onclick="clearResults();clearResultsFromMap()"
+                        class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
+                          aria-hidden="true"></i> Reset</button>
                     </div>
                     <div class="btn-group me-2 mb-2" role="group">
                       <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
@@ -279,17 +304,22 @@
                         title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
-                </form><!-- End Horizontal Form -->
+                </form>
+                <!-- End Horizontal Form -->
               </div>
-              <div class="tab-pane fade" id="mapcursor-justified" aria-labelledby="mapcursor-tab">
+              <!-- Control Section Tab Body END -->
+
+              <!-- Map Cursor Tab Body START -->
+              <div class="tab-pane fade" id="mapcursor-justified" role="tabpanel" aria-labelledby="mapcursor-tab">
                 <strong class="mb-2">Use the "crosshairs" map cursor to select a point on the map.</strong>
                 <!-- Horizontal Form -->
-                <form>
+                <form id="form-mapcursor-1point">
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="reset" onclick="clearResults();clearResultsFromMap()" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      <button id="reset-mapcursor" type="reset" onclick="clearResults();clearResultsFromMap()"
+                        class="btn btn-secondary" title="Reset to default values"><i class="fa fa-undo"
+                          aria-hidden="true"></i> Reset</button>
                     </div>
                     <div class="btn-group mb-2" role="group">
                       <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -297,54 +327,73 @@
                           aria-hidden="true"></i> Help</button>
                     </div>
                   </div>
-                </form><!-- End Horizontal Form -->
+                </form>
+                <!-- End Horizontal Form -->
               </div>
+              <!-- Map Cursor Tab Body END -->
+
+              <!-- Wizard Tab Body START -->
               <div class="tab-pane fade" id="wizard-justified" aria-labelledby="wizard-tab">
                 <wizard_form-component></wizard_form-component>
               </div>
-              <!-- Tab Bodies End -->
-            </div><!-- End Default Tabs -->
+              <!-- Wizard Tab Body END -->
+
+            </div>
+            <!-- Tab Bodies END -->
           </div>
 
           <indicator-component></indicator-component>
 
         </div>
+        <!-- Calculator-Card END -->
 
         <!-- Results-Card START -->
         <results_card-component></results_card-component>
         <!-- Results-Card END -->
 
-      </div><!-- End Left side columns -->
-
+      </div>
+      <!-- End Left side columns -->
 
       <!-- Right side columns -->
       <div class="col-md-8 d-none d-md-block" id="split-1">
-        <div id="rightDiv">
-          <div id="viewDiv" class="col-7 map-container">
-            <div></div> <!-- removing empty id -->
-          </div>
-          <div id="mapButtonsDiv" class="card map-buttons">
-            <!-- Map-Controls START -->
-            <map_controls-component></map_controls-component>
-            <!-- Map-Controls END -->
-            <div class="card-body">
-              <button type="button" onclick="returnToPoint()" class="btn btn-primary" title="See all results on map"><i
-                  class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
-            </div>
+
+        <!-- Map START -->
+        <div id="viewDiv" class="col-7 map-container">
+          <div></div>
+        </div>
+        <!-- Map END -->
+
+        <!-- Map Buttons START -->
+        <div id="mapButtonsDiv" class="card map-buttons">
+
+          <!-- Map-Controls START -->
+          <map_controls-component></map_controls-component>
+          <!-- Map-Controls END -->
+
+          <div class="card-body">
+            <button id="returnToPoint" type="button" onclick="returnToPoint()" class="btn btn-primary"
+              title="See all results on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Return to
+              Point</button>
           </div>
         </div>
-        <!-- End Right side columns -->
+        <!-- Map Buttons END -->
 
       </div>
+      <!-- End Right side columns -->
+
     </div>
-  </main><!-- End #main -->
+    <!-- On Screen Content END -->
+
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a> -->
 
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
