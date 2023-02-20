@@ -7,15 +7,15 @@ var projectLines = [];
 
 
 function resetGraphics() {
-    graphics = []; //this is an experiment
-  }
-  
-  function resetcurrentPos() {
-    currentPos = 1;
-  }
-  
-  
-  
+  graphics = []; //this is an experiment
+}
+
+function resetcurrentPos() {
+  currentPos = 1;
+}
+
+
+
 /*let projects = [
     [
         "IH0035-KG",
@@ -45,12 +45,12 @@ function resetGraphics() {
 
 
 if (screen.width >= 768) {
-    const GUTTER_SIZE = 30;
-    Split(['#split-0', '#split-1'], {
-        sizes: [33, 66],
-        minSize: [300, 400],
-        expandToMin: false
-    });
+  const GUTTER_SIZE = 30;
+  Split(['#split-0', '#split-1'], {
+    sizes: [33, 66],
+    minSize: [300, 400],
+    expandToMin: false
+  });
 }
 
 

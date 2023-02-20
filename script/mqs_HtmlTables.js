@@ -48,8 +48,8 @@ function insertPagination(currentPos, resultCount) {
   const btn_prev_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Previous</span></li>`;
   const btn_next_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Next</span></li>`;
 
-  const btn_prev_active = `<li class="page-item"><span class="page-link" onClick="navResults('prev')">Previous</span></li>`;
-  const btn_next_active = `<li class="page-item"><span class="page-link" onClick="navResults('next')">Next</span></li>`;
+  const btn_prev_active = `<li class="page-item"><span id="pagn_prev" class="page-link">Previous</span></li>`;
+  const btn_next_active = `<li class="page-item"><span id="pagn_next" class="page-link">Next</span></li>`;
 
   const pgnStart = `<nav aria-label="..."><ul class="pagination justify-content-center">`
   const pgnEnd = `</ul></nav>`
@@ -77,6 +77,8 @@ function insertPagination(currentPos, resultCount) {
 
   //insert pagination
   $("#result-pagination").html(navTitle);
+  $("#pagn_prev").on('click', function () { navResults('prev'); });
+  $("#pagn_next").on('click', function () { navResults('next'); });
 
 }
 

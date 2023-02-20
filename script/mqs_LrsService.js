@@ -94,6 +94,15 @@ async function coordinateQuery(_lat, _lon) {
   showResults(results)
   showResultsOnMap(results);
 
+  addPointGraphic(lat, lon);
+
+  if (useLoadIndicator == 1) {
+    YellowToGreen();
+  }
+
+}
+
+function addPointGraphic(lat, lon) {
   require(["esri/Graphic"], (Graphic) => {
     let point = {
       type: "point",
@@ -117,8 +126,6 @@ async function coordinateQuery(_lat, _lon) {
     });
 
     view.graphics.add(pointGraphic);
-
-    //loading.classList.add("hide");
   });
 }
 

@@ -1,15 +1,14 @@
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
 
+function localGeoJSONToMap() {
 
-function foo() {
-
-    console.log('foo');
+    console.log('localGeoJSONToMap');
 
     require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
 
         // create a geojson layer from geojson feature collection
-        const geojson = {
+        const geojson_point = {
             "type": "FeatureCollection",
             "metadata": {},
             "features": [
@@ -48,17 +47,21 @@ function foo() {
 
 
 
-        console.log(geojson);
+        console.log(geojson_line);
 
         // create a new blob from geojson featurecollection
-        const blob = new Blob([JSON.stringify(geojson)], {
+        /*const blob = new Blob([JSON.stringify(geojson_line)], {
+            type: "application/json"
+        });*/
+
+        const blob = new Blob([featureCollectionText], {
             type: "application/json"
         });
 
         // URL reference to the blob
         const url = URL.createObjectURL(blob);
 
-        const renderer = {
+        const renderer_point = {
             type: "simple",
             field: "mag",
             symbol: {
@@ -100,7 +103,7 @@ function foo() {
         const projectLayer = new GeoJSONLayer({
             url: url,
             copyright: "USGS Earthquakes",
-            renderer: renderer,
+            renderer: renderer_line,
             orderBy: {
                 field: "mag"
             }
