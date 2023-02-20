@@ -1,5 +1,4 @@
 // status functions
-//TODO add in Red functions
 function GreenToYellow(){
   $('#readyIndicator').removeClass('green');
   $('#busyIndicator').addClass('yellow');
@@ -12,8 +11,28 @@ function YellowToGreen(){
   $('#readyIndicator').addClass('green');
   $('#busyBadge').hide();
   $('#readyBadge').show();
-
 }
+
+function ToRed(){
+  $('#busyIndicator').removeClass('yellow');
+  $('#readyIndicator').removeClass('green');
+  $('#busyBadge').hide();
+  $('#readyBadge').hide();
+  $('#errorIndicator').addClass('red');
+  $('#errorBadge').show();
+}
+
+function ToGreen(){
+  $('#busyIndicator').removeClass('yellow');
+  $('#errorIndicator').removeClass('red');
+  $('#readyIndicator').addClass('green');
+  $('#busyBadge').hide();
+  $('#errorBadge').hide();
+  $('#readyBadge').show();
+}
+
+
+
 // end status functions
 
 
