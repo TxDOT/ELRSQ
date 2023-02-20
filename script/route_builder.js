@@ -65,52 +65,6 @@ function clearProjectArrays(myProjects, myProjectLines) {
     printGeometry(myProjectLines);
 }
 
-
-
-
-
-
-//iterates over projects array
-//for each project, queries queryRecordFromServiceGeometry
-
-async function queryProjectGeometry(myProjects) {
-    console.log("queryProjectGeometry");
-    console.log(myProjects);
-    projectLines = [];
-
-    //get segment is called within a loop, for each project
-    for (var i = 0; i < myProjects.length; i++) {
-        console.log("queryProjectGeometry looping queryRoadwayServiceByLine");
-        console.log(myProjects[i]);
-        let myProjectData = myProjects[i]
-
-        await queryRoadwayServiceByLine(myProjectData);
-    }
-}
-
-
-async function queryRoadwayServiceByLine(myProjectData) {
-
-    url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
-        myProjectData[0] +
-        "'&returnGeometry=true&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
-
-    const results = await queryRoadwayService(url);
-    myClippedLine = getSegment(results, myProjectData, projects);
-    projectLines.push(myClippedLine);
-}
-
-
-async function queryRoadwayService(url) {
-    const response = await fetch(url, {
-        method: 'GET',
-    });
-
-    return response.json(); // parses JSON response into native JavaScript objects
-}
-
-
-
 function getSegment(myData, myPrjAttributes, myProjects) {
     console.log("getSegment");
 

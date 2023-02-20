@@ -69,22 +69,6 @@ console.log("handleUpload2");
 }
 
 
-function readFile(file) {
-    console.log("reader load");
-    const reader = new FileReader();
-
-    return new Promise((resolve, reject) => {
-        reader.onerror = () => {
-            reader.abort();
-            reject(new DOMException("Problem parsing input file."));
-        };
-
-        reader.onload = () => {
-            resolve(reader.result);
-        };
-        reader.readAsText(file);
-    });
-};
 
 // this needs the functionality to export geoJSON and KML as well
 // should probably be split into two functions - one to do the query, another to make the outputs
@@ -180,21 +164,3 @@ function breakMultipleResults(output1, output2, array, line, results) {
 }
 
 
-function makeDownloadLink(csvContent) {
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
-    const objUrl = URL.createObjectURL(blob)
-
-    let exportFileDefaultName = 'christian_bale.csv';
-
-    let linkElement = document.getElementById('CSVdownload');
-    linkElement.setAttribute('href', objUrl);
-    linkElement.setAttribute('download', exportFileDefaultName);
-
-}
-
-// look for papa parse alternative
-function csvToArray(str, delimiter = ",") {
-    console.log("csv to array");
-    let array = str.split("\r\n").map(function (line) { return line.split(delimiter); });
-    return array;
-}
