@@ -25,6 +25,11 @@ function makequeryTxDOT_Roadways_Unsegmented() {
 
 }
 
+//TODO do something with these results
+async function rdwayQuery(url) {
+    const results = await queryRoadwayService(url);
+    console.log(results);
+}
 
 
 //iterates over projects array
