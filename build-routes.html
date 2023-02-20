@@ -56,6 +56,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
 
+  <script src="script/init.js" defer></script>
   <script src="script/mqs_EsriMap.js" defer></script>
   <script src="script/mqs_UI.js" defer></script>
 </head>
@@ -660,10 +661,7 @@
 
   <!-- <script src="script/main.js"></script> -->
   <!-- <script src="script/ready.js"></script> -->
-  <script>let currentSelection = [];</script>
-  <script>let allResults = [];</script>
-  <script>let currentPos = 1;</script>
-  <script>let graphics = [];</script> <!-- this is an experiment -->
+ 
   <script src="script/handleMapClick.js"></script>
   <script src="script/lrsDualQuery.js"></script>
   <script src="script/lrsQuery.js"></script>
@@ -677,50 +675,6 @@
   <script src="script/route_builder.js"></script>
   <script src="script/make_table_from_array.js"></script>
   <script src="script/data_functions.js"></script>
-
-  <script>
-    let projects = [
-      [
-        "IH0035-KG",
-        "121.243",
-        "149.576",
-        "#ff8000",
-        4,
-        "35"
-      ],
-      [
-        "IH0045-KG",
-        "1.243",
-        "9.576",
-        "#ff8000",
-        4,
-        "45"
-      ],
-      [
-        "IH0010-KG",
-        "500",
-        "600",
-        "#ff8000",
-        4,
-        "10"
-      ]
-    ]
-
-    //let projects = [];
-    var projectLines = [];
-  </script>
-
-
-  <script>
-    if (screen.width >= 768) {
-      const GUTTER_SIZE = 30;
-      Split(['#split-0', '#split-1'], {
-        sizes: [33, 66],
-        minSize: [300, 400],
-        expandToMin: false
-      });
-    }
-  </script>
 
 </body>
 
