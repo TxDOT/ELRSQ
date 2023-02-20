@@ -45,10 +45,10 @@ $('#demo-mode-toggle').change(function () {
     $("#inputMilepointMeasure").val("2.394");
     $("#inputBeginDistanceFromOrigin").val("59.095");
     $("#inputEndDistanceFromOrigin").val("220.951");
-    $("#inputBeginLatitude").val("29.39780972");
-    $("#inputBeginLongitude").val("-94.98759004");
-    $("#inputEndLatitude").val("29.39780972");
-    $("#inputEndLongitude").val("-94.98759004");
+    $("#inputBeginLatitude").val("29.652006");
+    $("#inputBeginLongitude").val("-97.659926");
+    $("#inputEndLatitude").val("29.666168");
+    $("#inputEndLongitude").val("-97.650841");
     $("#inputBeginReferenceMarker").val("622");
     $("#inputBeginDisplacement").val("0.065");
     $("#inputEndReferenceMarker").val("622");
@@ -102,7 +102,7 @@ $(document).ready(function () {
   $("#inputLongitude").attr({
     "max": -93,
     "min": -107,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputReferenceMarker").attr({
@@ -144,25 +144,25 @@ $(document).ready(function () {
   $("#inputBeginLatitude").attr({
     "max": 37,
     "min": 24,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputBeginLongitude").attr({
     "max": -93,
     "min": -107,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputEndLatitude").attr({
     "max": 37,
     "min": 24,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputEndLongitude").attr({
     "max": -93,
     "min": -107,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputBeginReferenceMarker").attr({
