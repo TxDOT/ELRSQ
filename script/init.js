@@ -73,12 +73,6 @@ $(document).ready(function () {
   $("route_help_modal-component").load("components/html/route_help_modal.html");
   $("route_style_help_modal-component").load("components/html/route_style_help_modal.html");
 
-  $("<link/>", {
-    rel: "stylesheet",
-    type: "text/css",
-    href: "/css/bootstrap5-toggle.min.css"
- }).appendTo("head");
-
 });
 
 
