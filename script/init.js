@@ -76,7 +76,7 @@ $(document).ready(function () {
   $("<link/>", {
     rel: "stylesheet",
     type: "text/css",
-    href: "/css/bootstrap5-toggle.min.css"
+    href: "https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css"
  }).appendTo("head");
 
 });
