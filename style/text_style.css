@@ -18,7 +18,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 /* calculator element styling */
-.example, .textentry, .textecho, .textout, .elrs_url {
+.example, .textentry, .textecho, .textout, .elrs_url, .candidate {
     font-family: 'Red Hat Mono', monospace;
     text-align: left;
 }
