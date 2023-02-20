@@ -56,41 +56,15 @@ function exportPointsToGeoJsonFile(jsonData) {
 
 function exportToCsvFile(jsonData) {
   console.log("CSV export");
-  let csvStr = parseJSONToCSVStr(jsonData);
-  let dataUri = 'data:text/csv;charset=utf-8,' + csvStr;
 
+  let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] });
+  let csvStr = encodeURIComponent(unparsed);
+  let dataUri = 'data:text/csv;charset=utf-8,' + csvStr;
   let exportFileDefaultName = 'results.csv';
 
   let linkElement = document.getElementById('CSVdownload');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
-}
-
-//FIXME find Papa Parse alternative
-function parseJSONToCSVStr(jsonData) {
-  if (jsonData.length == 0) {
-    return '';
-  }
-
-  let keys = Object.keys(jsonData[0]);
-
-  let columnDelimiter = ',';
-  let lineDelimiter = '\n';
-
-  let csvColumnHeader = keys.join(columnDelimiter);
-  let csvStr = csvColumnHeader + lineDelimiter;
-
-  jsonData.forEach(item => {
-    keys.forEach((key, index) => {
-      if ((index > 0) && (index < keys.length - 1)) {
-        csvStr += columnDelimiter;
-      }
-      csvStr += item[key];
-    });
-    csvStr += lineDelimiter;
-  });
-
-  return encodeURIComponent(csvStr);;
 }
 
 
@@ -167,14 +141,6 @@ function readFile(file) {
     reader.readAsText(file);
   });
 };
-
-
-// FIXME find Papa Parse alternative
-function csvToArray(str, delimiter = ",") {
-  console.log("csv to array");
-  let array = str.split("\r\n").map(function (line) { return line.split(delimiter); });
-  return array;
-}
 
 
 

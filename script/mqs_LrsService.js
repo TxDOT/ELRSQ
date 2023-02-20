@@ -188,7 +188,7 @@ async function handleUpload2(file) {
 // TODO needs the functionality to export geoJSON and KML as well
 // TODO split into two functions - one to do the query, another to make the outputs
 async function csvinToCsvout(text, method, ...index_coord) {
-  let array = csvToArray(text);
+  let array = Papa.parse(text).data;
   let outputArray = [];
   let useLoadIndicator = 1;
 
@@ -210,17 +210,13 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  // FIXME find Papa Parse alternative
-  let csvContent = ''
-  refinedData.forEach(row => { csvContent += row.join(',') + '\n' })
+  makeDownloadLink(Papa.unparse(refinedData));
 
+  alert("Ready to Download");
   if (useLoadIndicator == 1) {
     YellowToGreen();
   }
 
-  console.log(csvContent);
-  alert("Ready to Download");
-  makeDownloadLink(csvContent);
 };
 
 
