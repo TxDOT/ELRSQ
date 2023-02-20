@@ -55,3 +55,16 @@ if (screen.width >= 768) {
 
 
 
+
+
+$(document).ready(function () {
+  $("#test").load("components/map_controls.html", function (responseTxt, statusTxt, jqXHR) {
+    if (statusTxt == "success") {
+      alert("New content loaded successfully!");
+    }
+    if (statusTxt == "error") {
+      alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
+    }
+  });
+});
+
