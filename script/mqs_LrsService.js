@@ -210,7 +210,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  // FIXME see if there is a function in papa parser to replace this
+  // FIXME find Papa Parse alternative
   let csvContent = ''
   refinedData.forEach(row => { csvContent += row.join(',') + '\n' })
 

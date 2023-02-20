@@ -6,15 +6,14 @@ function specialResults(results) {
   console.log(results);
   jsonData = results;
   /*exportToJsonFile(jsonData);*/
-  exportToGeoJsonFile(jsonData);
+  exportPointsToGeoJsonFile(jsonData);
   exportToCsvFile(jsonData);
-  exportToKMLFile(jsonData);
+  exportPointsToKMLFile(jsonData);
   //resultCount = allResults.length; // use this somewhere
   //currentResult = allResults[index]
 }
 
-//FIXME rename to specify that this is for single point conversion
-function exportToGeoJsonFile(jsonData) {
+function exportPointsToGeoJsonFile(jsonData) {
 
   var geojson = {
     type: "FeatureCollection",
@@ -94,8 +93,8 @@ function parseJSONToCSVStr(jsonData) {
   return encodeURIComponent(csvStr);;
 }
 
-//FIXME rename to specify that this is for single points conversion
-function exportToKMLFile(jsonData) {
+
+function exportPointsToKMLFile(jsonData) {
 
   // build kml file
   var headerTags = `<?xml version='1.0' encoding='UTF-8'?>
@@ -170,7 +169,7 @@ function readFile(file) {
 };
 
 
-// FIXME look for papa parse alternative
+// FIXME find Papa Parse alternative
 function csvToArray(str, delimiter = ",") {
   console.log("csv to array");
   let array = str.split("\r\n").map(function (line) { return line.split(delimiter); });
