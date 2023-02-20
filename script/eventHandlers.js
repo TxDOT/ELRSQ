@@ -1,3 +1,46 @@
+
+$("#convert1").on('click', function () { lrsQuery(1, 1, 'inputLatitude', 'inputLongitude'); });
+$("#convert2").on('click', function () { lrsQuery(2, 1, 'inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'); });
+$("#convert3").on('click', function () { lrsQuery(3, 1, 'inputControlSection', 'inputMilepointMeasure'); });
+$("#convert4").on('click', function () { lrsQuery(4, 1, 'inputRouteName_4', 'inputDistanceFromOrigin'); });
+
+
+$("#convert1-2point").on('click', function () { lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude'); });
+$("#convert2-2point").on('click', function () { lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'); });
+$("#convert3-2point").on('click', function () { lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'); });
+$("#convert4-2point").on('click', function () { lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'); });
+
+
+
+
+//TODO change to use selector other than ID
+$("#reset1").on('click', function () { clearResults(); });
+$("#reset2").on('click', function () { clearResults(); });
+$("#reset3").on('click', function () { clearResults(); });
+$("#reset4").on('click', function () { clearResults(); });
+$("#reset-mapcursor").on('click', function () { clearResults(); });
+
+$("#reset1").on('click', function () { clearResultsFromMap(); });
+$("#reset2").on('click', function () { clearResultsFromMap(); });
+$("#reset3").on('click', function () { clearResultsFromMap(); });
+$("#reset4").on('click', function () { clearResultsFromMap(); });
+$("#reset-mapcursor").on('click', function () { clearResultsFromMap(); });
+
+//return to point on map
+$("#returnToPoint").on('click', function () { returnToPoint(); });
+
+//route builder
+$("#addRow").on('click', function () { addProjectToArray(projects); });
+$("#dropRow").on('click', function () { removeLastProject(projects, projectLines); });
+$("#clearRows").on('click', function () { clearProjectArrays(projects, projectLines); });
+
+
+
+
+
+
+
+
 // toggle buttons for showing/hiding layers
 // TODO do this for route builder too
 $('#demo-mode-toggle').change(function () {
@@ -75,13 +118,6 @@ $(document).ready(function () {
 
 
 
-//const bulkForm = document.getElementById("bulk-form");
-//const fileContentDiv = document.getElementById('#output_field')
 
-$(document).ready(function () {
-    document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload)
-    document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2)
-  });
-  
 
 

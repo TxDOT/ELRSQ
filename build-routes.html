@@ -38,7 +38,8 @@
   <!-- Repetitive HTML -->
   <script src="components/nav_bar.js" defer></script>
   <script src="components/map_controls.js" defer></script>
-  <script src="components/bulk_modal_A.js" defer></script>
+  <script src="components/indicator.js" defer></script>
+  <script src="components/demo_modal.js" defer></script>
   <script src="components/bulk_modal_B.js" defer></script>
   <script src="components/form_help_modal.js" defer></script>
   <script src="components/cursor_help_modal.js" defer></script>
@@ -46,8 +47,6 @@
   <script src="components/results_card.js" defer></script>
   <script src="components/route_help_modal.js" defer></script>
   <script src="components/route_style_help_modal.js" defer></script>
-
-  <script src="script/dragdropupload.js" defer></script>
 
   <!-- Vendor JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -67,6 +66,8 @@
   <script src="script/eventHandlers.js" defer></script>
 
   <script src="script/mqs_RouteBuilder.js"></script>
+  <script src="script/localGeoJSONToMap.js"></script> <!-- very rough -->
+  <script src="script\routebuilderToLocalGeoJSON.js"></script> <!-- very rough -->
   <script src="script/data_functions.js"></script> <!-- look for jquery alternative -->
 
 </head>
@@ -74,7 +75,7 @@
 <body>
 
   <!-- Modal START -->
-  <bulk_modal_a-component></bulk_modal_a-component>
+  <demo_modal-component></demo_modal-component>
   <bulk_modal_b-component></bulk_modal_b-component>
   <form_help_modal-component></form_help_modal-component>
   <cursor_help_modal-component></cursor_help_modal-component>
@@ -180,10 +181,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button id="convert1-2point type=" button"
-                          onclick="lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude')"
-                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                            aria-hidden="true"></i> Convert</button>
+                        <button id="convert1-2point" type="button" class="btn btn-primary"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset1-2point" type="reset" class="btn btn-secondary"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -262,10 +261,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button id="convert2-2point" type="button"
-                          onclick="lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement')"
-                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                            aria-hidden="true"></i> Convert</button>
+                        <button id="convert2-2point" type="button" class="btn btn-primary"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset2-2point" type="reset" class="btn btn-secondary"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -332,10 +329,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button id="convert4-2point" type="button" type="button"
-                          onclick="lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin')"
-                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                            aria-hidden="true"></i> Convert</button>
+                        <button id="convert4-2point" type="button" class="btn btn-primary"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset4-2point" type="reset" class="btn btn-secondary"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -396,10 +391,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button id="convert3-2point" type="button"
-                          onclick="lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure')"
-                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                            aria-hidden="true"></i> Convert</button>
+                        <button id="convert3-2point" type="button" class="btn btn-primary"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset3-2point" type="reset" class="btn btn-secondary"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -564,17 +557,13 @@
 
                     <!-- Add/Drop/Clear START -->
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button id="addRow" type="button" onclick="addProjectToArray(projects)" class="btn btn-success"
+                      <button id="addRow" type="button" class="btn btn-success"
                         title="Save current project and add another"><i class="fa fa-plus-circle"
-                          aria-hidden="true"></i>
-                        Add Row</button>
-                      <button id="dropRow" type="button" onclick="removeLastProject(projects, projectLines)"
-                        class="btn btn-danger" title="Remove last project on list"><i class="fa fa-minus-circle"
-                          aria-hidden="true"></i> Drop
-                        Row</button>
-                      <button id="clearRows" type="button" onclick="clearProjectArrays(projects, projectLines)"
-                        class="btn btn-secondary" title="Clear project(s) from the map"><i class="fa fa-trash"
-                          aria-hidden="true"></i>
+                          aria-hidden="true"></i> Add Row</button>
+                      <button id="dropRow" type="button" class="btn btn-danger" title="Remove last project on list"><i
+                          class="fa fa-minus-circle" aria-hidden="true"></i> Drop Row</button>
+                      <button id="clearRows" type="button" class="btn btn-secondary"
+                        title="Clear project(s) from the map"><i class="fa fa-trash" aria-hidden="true"></i>
                         Clear</button>
                     </div>
                     <!-- Add/Drop/Clear END -->
@@ -582,9 +571,13 @@
                     <!-- Process to Map START -->
                     <div class="btn-group mb-2" role="group">
                       <button type="button" onclick="queryProjectGeometry(projects)" class="btn btn-primary"
-                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
-                      <button type="button" onclick="printGeometry(projectLines)" class="btn btn-primary"
-                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Convert</button>
+                      <button type="button" onclick="parseGeometryToGeoJSON(projectLines)" class="btn btn-primary"
+                        title="parseGeometryToGeoJSON"><i class="fa fa-map" aria-hidden="true"></i>
+                        parseGeometryToGeoJSON</button>
+                      <button id="localGeoJSONToMap-button" type="button" onclick="localGeoJSONToMap()"
+                        class="btn btn-primary" title="localGeoJSONToMap"><i class="fa fa-map" aria-hidden="true"></i>
+                        localGeoJSONToMap</button>
                     </div>
                     <!-- Process to Map END -->
 
