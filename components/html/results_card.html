@@ -57,13 +57,13 @@
         <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
             <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
-              title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</button>
+              title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
 
-              <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
-                title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+            <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
+              title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
 
-              <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
-                title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+            <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
+              title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
           </div>
           <div class="btn-group mb-2" role="group" aria-label="download group">
             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
@@ -87,9 +87,9 @@
             <tr>
               <td>Route Information</td>
               <td>
-                <button type="button" class="btn btn-info" onclick="copyRouteDFO()" title="copy"><i class="fa fa-copy"
+                <button id="copyRouteDFO" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
                     aria-hidden="true"></i></button>
-                <button type="button" class="btn btn-info" onclick="makequeryTxDOT_Roadways_Unsegmented()"><i
+                <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
                     class="fa fa-link" aria-hidden="true"></i></button>
               </td>
             </tr>
@@ -122,8 +122,8 @@
           <tbody>
             <tr>
               <td>Control Section</td>
-              <td><button type="button" class="btn btn-info" onclick="copyControlSection()" title="copy"><i
-                    class="fa fa-copy" aria-hidden="true"></i></button></td>
+              <td><button id="copyControlSection" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                    aria-hidden="true"></i></button></td>
             </tr>
             <tr>
               <td>Control Section:</td>
@@ -146,8 +146,8 @@
           <tbody>
             <tr>
               <td>Field Location</td>
-              <td><button type="button" class="btn btn-info" onclick="copyFieldLocation()" title="copy"><i
-                    class="fa fa-copy" aria-hidden="true"></i></button></td>
+              <td><button id="copyFieldLocation" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                    aria-hidden="true"></i></button></td>
             </tr>
             <tr>
               <td>Reference Marker:</td>
@@ -171,8 +171,8 @@
           <tbody>
             <tr>
               <td>Coordinates</td>
-              <td><button type="button" class="btn btn-info" onclick="copyCoordinates()" title="copy"><i
-                    class="fa fa-copy" aria-hidden="true"></i></button></td>
+              <td><button id="copyCoordinates" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                    aria-hidden="true"></i></button></td>
             </tr>
             <tr>
               <td>Latitude:</td>
@@ -191,5 +191,3 @@
 
   </div>
 </div>`
-
-<!-- FIXME add ids and event handlers  -->

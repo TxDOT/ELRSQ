@@ -88,18 +88,6 @@ function restartWizard() {
 
 // drag and drop functions
 
-//move event handlers somewhere else
-/*$(document).ready(function () {
-  document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload)
-  document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2)
-});*/
-
-$(document).ready(function () {
-  $("#upload_csv-bulk").on('change', handleUpload)
-  $("#bulk-convert-button").on('click', handleUpload2)
-});
-
-
 //TODO find documentation on where these functions came from
 /* Bootstrap 5 JS included */
 
