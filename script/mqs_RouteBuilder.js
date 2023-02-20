@@ -73,8 +73,8 @@ function removeLastProject(myProjects, myProjectLines) {
     myProjectLines.pop();
     console.log("removeLastProject calling listQueries");
     listQueries(myProjects);
-    console.log("removeLastProject calling printGeometry");
-    printGeometry(myProjectLines);
+    console.log("removeLastProject calling parseGeometryToGeoJSON");
+    parseGeometryToGeoJSON(myProjectLines);
 }
 
 
@@ -85,8 +85,8 @@ function clearProjectArrays(myProjects, myProjectLines) {
     myProjectLines = [];
     console.log("clearProjectArrays calling listQueries");
     listQueries(myProjects);
-    console.log("clearProjectArrays calling printGeometry");
-    printGeometry(myProjectLines);
+    console.log("clearProjectArrays calling parseGeometryToGeoJSON");
+    parseGeometryToGeoJSON(myProjectLines);
 }
 
 
