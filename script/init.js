@@ -10,7 +10,7 @@ function resetGraphics() {
   graphics = []; //this is an experiment
 }
 
-function resetcurrentPos() {
+function resetCurrentPos() {
   currentPos = 1;
 }
 

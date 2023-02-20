@@ -1,5 +1,5 @@
 
-//TODO finish writing
+//TODO RouteBuilder: finish writing
 //Draws user defined project on the map 
 function parseGeometryToGeoJSON(prjGeom) {
   console.log("parseGeometryToGeoJSON");

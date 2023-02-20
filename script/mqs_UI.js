@@ -86,9 +86,9 @@ function restartWizard() {
 
 
 
-// drag and drop functions
+// drag and drop functions 
+//from https://codepen.io/incentive/pen/mdwoVqO
 
-//TODO find documentation on where these functions came from
 /* Bootstrap 5 JS included */
 
 // Drag and drop - single or multiple image files

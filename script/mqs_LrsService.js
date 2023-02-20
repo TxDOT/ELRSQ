@@ -2,13 +2,12 @@
 // function which takes method to query lrs service for a single point
 async function lrsQuery(method, useMap, ...id_coord) {
   resetGraphics();
-  resetcurrentPos();
+  resetCurrentPos();
 
   let useLoadIndicator = 1;
 
   if (useMap == 1) {
-    //clear existing point
-    view.graphics.removeAll();
+    clearResultsFromMap();
   }
 
   if (useLoadIndicator == 1) {
@@ -65,7 +64,7 @@ function makeLrsQueryUrlFromHtml(method, id_coord) {
 // function which uses mouse click lat/lon to query lrs service for a single point
 async function coordinateQuery(_lat, _lon) {
   resetGraphics();
-  resetcurrentPos();
+  resetCurrentPos();
 
   let useLoadIndicator = 1;
 
@@ -81,7 +80,7 @@ async function coordinateQuery(_lat, _lon) {
   }
 
   //clear existing point
-  view.graphics.removeAll();
+  clearResultsFromMap();
   view.goTo({
     center: [parseFloat(lon), parseFloat(lat)],
     zoom: 17,
@@ -133,7 +132,7 @@ function addPointGraphic(lat, lon) {
 
 // bulk conversion functions
 
-// FIXME change to use Convert button instead of automatic
+// FIXME Bulk Upload: change to use Convert button instead of automatic
 const handleUpload = async (event) => {
   console.log("handleUpload");
   const file = event.target.files[0];
@@ -185,8 +184,8 @@ async function handleUpload2(file) {
 }
 
 
-// TODO needs the functionality to export geoJSON and KML as well
-// TODO split into two functions - one to do the query, another to make the outputs
+// TODO All: needs the functionality to export geoJSON and KML as well
+// TODO All: split into two functions - one to do the query, another to make the outputs
 async function csvinToCsvout(text, method, ...index_coord) {
   let array = Papa.parse(text).data;
   let outputArray = [];
@@ -275,7 +274,6 @@ function breakMultipleResults(output1, output2, array, line, results) {
   });
 }
 
-//TODO move clear graphics into its own function
 // function which takes method to query lrs service for a single point
 async function lrsDualQuery(method, useMap, ...id_coord) {
   currentPos = 1;
@@ -286,8 +284,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
 
   if (useMap == 1) {
-    //clear existing point
-    view.graphics.removeAll();
+    clearResultsFromMap();
   }
 
   if (method == 1) {
