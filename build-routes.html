@@ -76,547 +76,558 @@
     <div id="onscreencontent" class="row">
 
       <!-- Left side columns -->
-      <div class="col-md-4" id="split-0">
+      <div class="col-md-4" style="max-height: 100vh" id="split-0">
+
         <!-- Nav-Bar START -->
         <nav_bar-component></nav_bar-component>
         <!-- Nav-Bar END -->
 
-        <!-- RouteEntry-Card START -->
-        <div id="RouteEntryCard" class="card">
-          <div id="RouteEntryCardBody" class="card-body">
-            <h5 class="card-title">Query by:</h5>
 
-            <!-- Tabs START -->
-            <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
-              <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab"
-                  data-bs-target="#coordinates-justified" type="button" role="tab" aria-controls="coordinates-justified"
-                  aria-selected="true">Coordinates</button>
-              </li>
-              <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
-                  data-bs-target="#referencemarker-justified" type="button" role="tab"
-                  aria-controls="referencemarker-justified" aria-selected="false">Reference Marker</button>
-              </li>
-              <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
-                  data-bs-target="#distancefromorigin-justified" type="button" role="tab"
-                  aria-controls="distancefromorigin-justified" aria-selected="false">DFO</button>
-              </li>
-              <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
-                  data-bs-target="#controlsection-justified" type="button" role="tab"
-                  aria-controls="controlsection-justified" aria-selected="false">Control Section</button>
-              </li>
-              <li class="nav-item flex-fill" role="presentation">
-                <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab"
-                  data-bs-target="#mapcursor-justified" type="button" role="tab" aria-controls="mapcursor-justified"
-                  aria-selected="false">Map Cursor</button>
-              </li>
-            </ul>
-            <!-- Tabs END -->
+        <!-- Scrolling Column START -->
+        <div class="overflow-scroll" style="max-height: 90vh">
 
-            <!-- Tab Bodies START -->
-            <div class="card-body tab-content pt-2" id="myTabjustifiedContent">
+          <!-- RouteEntry-Card START -->
+          <div id="RouteEntryCard" class="card">
+            <div id="RouteEntryCardBody" class="card-body">
+              <h5 class="card-title">Query by:</h5>
 
-              <!-- Coordinates Tab Body START -->
-              <div class="tab-pane fade show active" id="coordinates-justified" role="tabpanel"
-                aria-labelledby="coordinates-tab">
-                <!-- Horizontal Form -->
-                <form id="form-coordinates-2point">
-                  <!-- Bordered Table -->
-                  <table class="table table-borderless table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
-                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Latitude:</th>
-                        <td><input type="number" required name="begin-latitude" value="29.39780972"
-                            class="form-control textentry" id="inputBeginLatitude"></td>
-                        <td><input type="number" required name="end-latitude" value="29.39780972"
-                            class="form-control textentry" id="inputEndLatitude"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Longitude:</th>
-                        <td><input type="number" required name="begin-longitude" value="-94.98759004"
-                            class="form-control textentry" id="inputBeginLongitude"></td>
-                        <td><input type="number" required name="end-longitude" value="-94.98759004"
-                            class="form-control textentry" id="inputEndLongitude"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
+              <!-- Tabs START -->
+              <ul class="nav nav-tabs d-flex" id="routebuilder-tablist" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="coordinates-tab" data-bs-toggle="tab"
+                    data-bs-target="#coordinates-tabpane" type="button" role="tab" aria-controls="coordinates-tabpane"
+                    aria-selected="false">Coordinates</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
+                    data-bs-target="#referencemarker-tabpane" type="button" role="tab"
+                    aria-controls="referencemarker-tabpane" aria-selected="false">Reference Marker</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="distancefromorigin-tab" data-bs-toggle="tab"
+                    data-bs-target="#distancefromorigin-tabpane" type="button" role="tab"
+                    aria-controls="distancefromorigin-tabpane" aria-selected="true">DFO</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
+                    data-bs-target="#controlsection-tabpane" type="button" role="tab"
+                    aria-controls="controlsection-tabpane" aria-selected="false">Control Section</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab"
+                    data-bs-target="#mapcursor-tabpane" type="button" role="tab" aria-controls="mapcursor-tabpane"
+                    aria-selected="false">Map Cursor</button>
+                </li>
+              </ul>
+              <!-- Tabs END -->
 
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button id="convert1-2point type=" button"
-                        onclick="lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude')"
-                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                          aria-hidden="true"></i> Convert</button>
-                      <button id="reset1-2point" type="reset" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+              <!-- Tab Bodies START -->
+              <div class="card-body tab-content pt-2" id="routebuilder-tabcontent">
+
+                <!-- Coordinates Tab Body START -->
+                <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
+                  <!-- Horizontal Form -->
+                  <form id="form-coordinates-2point">
+                    <!-- Bordered Table -->
+                    <table class="table table-borderless table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Latitude:</th>
+                          <td><input type="number" required name="begin-latitude" value="29.39780972"
+                              class="form-control textentry" id="inputBeginLatitude"></td>
+                          <td><input type="number" required name="end-latitude" value="29.39780972"
+                              class="form-control textentry" id="inputEndLatitude"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Longitude:</th>
+                          <td><input type="number" required name="begin-longitude" value="-94.98759004"
+                              class="form-control textentry" id="inputBeginLongitude"></td>
+                          <td><input type="number" required name="end-longitude" value="-94.98759004"
+                              class="form-control textentry" id="inputEndLongitude"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+
+                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button id="convert1-2point type=" button"
+                          onclick="lrsDualQuery(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude','inputEndLongitude')"
+                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                            aria-hidden="true"></i> Convert</button>
+                        <button id="reset1-2point" type="reset" class="btn btn-secondary"
+                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      </div>
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                          data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                            class="fa fa-table" aria-hidden="true"></i>
+                          Bulk Conversion</button>
+                      </div>
+                      <div class="btn-group mb-2" role="group">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#routeHelpModal" title="Form Help"><i class="fa fa-question"
+                            aria-hidden="true"></i> Help</button>
+                      </div>
                     </div>
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
-                          class="fa fa-table" aria-hidden="true"></i>
-                        Bulk Conversion</button>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name:</span>
+                      <select class="form-select">
+                        <option selected>Generated dynamically by JS</option>
+                      </select>
+                      <button class="btn btn-outline-primary" type="button">Select Route</button>
                     </div>
-                    <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
-                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Coordinates Tab Body END -->
+
+                <!-- Reference Marker Tab Body START -->
+                <div class="tab-pane fade" id="referencemarker-tabpane" role="tabpanel"
+                  aria-labelledby="referencemarker-tab">
+                  <!-- Horizontal Form -->
+                  <form id="form-referencemarker-2point">
+                    <!-- Bordered Table -->
+                    <table class="table table-borderless table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Route Name:</th>
+                          <td><input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                              value="FM0060-KG" class="form-control textentry"></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Reference Marker:</th>
+                          <td><input id="inputBeginReferenceMarker" type="number" required name="begin-referencemarker"
+                              value="624" class="form-control textentry"></td>
+                          <td><input id="inputEndReferenceMarker" type="number" required name="end-referencemarker"
+                              value="632" class="form-control textentry"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Displacement:</th>
+                          <td><input id="inputBeginDisplacement" type="number" required name="begin-displacement"
+                              value="1.362" class="form-control textentry"></td>
+                          <td><input id="inputEndDisplacement" type="number" required name="end-displacement"
+                              value="1.950" class="form-control textentry"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button id="convert2-2point" type="button"
+                          onclick="lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement')"
+                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                            aria-hidden="true"></i> Convert</button>
+                        <button id="reset2-2point" type="reset" class="btn btn-secondary"
+                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      </div>
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                          data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                            class="fa fa-table" aria-hidden="true"></i>
+                          Bulk Conversion</button>
+                      </div>
+                      <div class="btn-group mb-2" role="group">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#routeHelpModal" title="Form Help"><i class="fa fa-question"
+                            aria-hidden="true"></i> Help</button>
+                      </div>
                     </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">Route Name:</span>
-                    <select class="form-select">
-                      <option selected>Generated dynamically by JS</option>
-                    </select>
-                    <button class="btn btn-outline-primary" type="button">Select Route</button>
-                  </div>
-                </form>
-                <!-- End Horizontal Form -->
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Reference Marker Tab Body END -->
+
+                <!-- DFO Tab Body START -->
+                <div class="tab-pane fade show active" id="distancefromorigin-tabpane" role="tabpanel"
+                  aria-labelledby="distancefromorigin-tab">
+                  <!-- Horizontal Form -->
+                  <form id="form-distancefromorigin-2point">
+                    <!-- FIXME maybe this is a layout table-->
+                    <!-- Bordered Table -->
+                    <table class="table table-borderless table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Route Name:</th>
+                          <td><input id="inputRouteName_4" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                              name="routeid_4" value="IH0030-KG" class="form-control textentry"></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
+                        </tr>
+                        <tr>
+                          <!-- TODO set values -->
+                          <th scope="row">DFO:</th>
+                          <td><input id="inputBeginDistanceFromOrigin" type="number" required step="0.1"
+                              name="begin-distancefromorigin" value="59.095" class="form-control textentry"></td>
+                          <td><input id="inputEndDistanceFromOrigin" type="number" required step="0.1"
+                              name="end-distancefromorigin" value="220.951" class="form-control textentry"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button id="convert4-2point" type="button" type="button"
+                          onclick="lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin')"
+                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                            aria-hidden="true"></i> Convert</button>
+                        <button id="reset4-2point" type="reset" class="btn btn-secondary"
+                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      </div>
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                          data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                            class="fa fa-table" aria-hidden="true"></i>
+                          Bulk Conversion</button>
+                      </div>
+                      <div class="btn-group mb-2" role="group">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#routeHelpModal" title="Form Help"><i class="fa fa-question"
+                            aria-hidden="true"></i> Help</button>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- DFO Tab Body END -->
+
+                <!-- Control Section Tab Body START -->
+                <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
+                  aria-labelledby="controlsection-tab">
+                  <!-- Horizontal Form -->
+                  <form id="form-controlsection-2point">
+                    <!-- Bordered Table -->
+                    <table class="table table-borderless table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
+                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Control Section:</th>
+                          <td><input id="inputBeginControlSection" type="text" required name="begin-controlsection"
+                              value="012201" class="form-control textentry"></td>
+                          <td><input id="inputEndControlSection" type="text" required name="end-controlsection"
+                              value="012201" class="form-control textentry"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Milepoint Measure:</th>
+                          <td><input id="inputBeginMilepointMeasure" type="number" required
+                              name="begin-milepointmeasure" value="2.394" class="form-control textentry"></td>
+                          <td><input id="inputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
+                              value="2.394" class="form-control textentry"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button id="convert3-2point" type="button"
+                          onclick="lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure')"
+                          class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
+                            aria-hidden="true"></i> Convert</button>
+                        <button id="reset3-2point" type="reset" class="btn btn-secondary"
+                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      </div>
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                          data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
+                            class="fa fa-table" aria-hidden="true"></i>
+                          Bulk Conversion</button>
+                      </div>
+                      <div class="btn-group mb-2" role="group">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#routeHelpModal" title="Form Help"><i class="fa fa-question"
+                            aria-hidden="true"></i> Help</button>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Control Section Tab Body END -->
+
+                <!-- Map Cursor Tab Body START -->
+                <div class="tab-pane fade" id="mapcursor-tabpane" role="tabpanel" aria-labelledby="mapcursor-tab">
+                  <strong class="mb-2">Use the "crosshairs" map cursor to select two points on the map.</strong>
+                  <!-- Horizontal Form -->
+                  <form id="form-mapcursor-2point">
+                    <!-- Bordered Table -->
+                    <table class="table table-borderless table-sm">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin Point</strong></td>
+                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End Point</strong></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Latitude:</th>
+                          <td><input name="begin-cursor-latitude" value="" class="form-control" disabled></td>
+                          <td><input name="end-cursor-latitude" value="" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Longitude:</th>
+                          <td><input name="begin-cursor-longitude" value="" class="form-control" disabled></td>
+                          <td><input name="end-cursor-longitude" value="" class="form-control" disabled></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- End Bordered Table -->
+                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                      aria-label="Toolbar with button groups">
+                      <div class="btn-group me-2 mb-2" role="group">
+                        <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
+                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                        <button id="reset-mapcursor-2point" type="reset" class="btn btn-secondary"
+                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                      </div>
+                      <div class="btn-group mb-2" role="group">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                          data-bs-target="#routeHelpModal" title="Form Help"><i class="fa fa-question"
+                            aria-hidden="true"></i> Help</button>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name:</span>
+                      <select class="form-select">
+                        <option selected>Generated dynamically by JS</option>
+                      </select>
+                      <button class="btn btn-outline-primary" type="button">Select Route</button>
+                    </div>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Map Cursor Tab Body END -->
+
               </div>
-              <!-- Coordinates Tab Body END -->
-
-              <!-- Reference Marker Tab Body START -->
-              <div class="tab-pane fade" id="referencemarker-justified" role="tabpanel"
-                aria-labelledby="referencemarker-tab">
-                <!-- Horizontal Form -->
-                <form id="form-referencemarker-2point">
-                  <!-- Bordered Table -->
-                  <table class="table table-borderless table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Route Name:</th>
-                        <td><input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                            value="FM0060-KG" class="form-control textentry"></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
-                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Reference Marker:</th>
-                        <td><input id="inputBeginReferenceMarker" type="number" required name="begin-referencemarker"
-                            value="624" class="form-control textentry"></td>
-                        <td><input id="inputEndReferenceMarker" type="number" required name="end-referencemarker"
-                            value="632" class="form-control textentry"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Displacement:</th>
-                        <td><input id="inputBeginDisplacement" type="number" required name="begin-displacement"
-                            value="1.362" class="form-control textentry"></td>
-                        <td><input id="inputEndDisplacement" type="number" required name="end-displacement"
-                            value="1.950" class="form-control textentry"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button id="convert2-2point" type="button"
-                        onclick="lrsDualQuery(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement')"
-                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                          aria-hidden="true"></i> Convert</button>
-                      <button id="reset2-2point" type="reset" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                    </div>
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
-                          class="fa fa-table" aria-hidden="true"></i>
-                        Bulk Conversion</button>
-                    </div>
-                    <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
-                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
-                    </div>
-                  </div>
-                </form>
-                <!-- End Horizontal Form -->
-              </div>
-              <!-- Reference Marker Tab Body END -->
-
-              <!-- DFO Tab Body START -->
-              <div class="tab-pane fade" id="distancefromorigin-justified" role="tabpanel"
-                aria-labelledby="distancefromorigin-tab">
-                <!-- Horizontal Form -->
-                <form id="form-distancefromorigin-2point">
-                  <!-- FIXME maybe this is a layout table-->
-                  <!-- Bordered Table -->
-                  <table class="table table-borderless table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Route Name:</th>
-                        <td><input id="inputRouteName_4" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                            name="routeid_4" value="IH0030-KG" class="form-control textentry"></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"></th>
-                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
-                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
-                      </tr>
-                      <tr>
-                        <!-- TODO set values -->
-                        <th scope="row">DFO:</th>
-                        <td><input id="inputBeginDistanceFromOrigin" type="number" required step="0.1"
-                            name="begin-distancefromorigin" value="59.095" class="form-control textentry"></td>
-                        <td><input id="inputEndDistanceFromOrigin" type="number" required step="0.1"
-                            name="end-distancefromorigin" value="220.951" class="form-control textentry"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button id="convert4-2point" type="button" type="button"
-                        onclick="lrsDualQuery(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin')"
-                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                          aria-hidden="true"></i> Convert</button>
-                      <button id="reset4-2point" type="reset" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                    </div>
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
-                          class="fa fa-table" aria-hidden="true"></i>
-                        Bulk Conversion</button>
-                    </div>
-                    <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
-                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
-                    </div>
-                  </div>
-                </form>
-                <!-- End Horizontal Form -->
-              </div>
-              <!-- DFO Tab Body END -->
-
-              <!-- Control Section Tab Body START -->
-              <div class="tab-pane fade" id="controlsection-justified" role="tabpanel"
-                aria-labelledby="controlsection-tab">
-                <!-- Horizontal Form -->
-                <form id="form-controlsection-2point">
-                  <!-- Bordered Table -->
-                  <table class="table table-borderless table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong></td>
-                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Control Section:</th>
-                        <td><input id="inputBeginControlSection" type="text" required name="begin-controlsection"
-                            value="012201" class="form-control textentry"></td>
-                        <td><input id="inputEndControlSection" type="text" required name="end-controlsection"
-                            value="012201" class="form-control textentry"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Milepoint Measure:</th>
-                        <td><input id="inputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
-                            value="2.394" class="form-control textentry"></td>
-                        <td><input id="inputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
-                            value="2.394" class="form-control textentry"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button id="convert3-2point" type="button"
-                        onclick="lrsDualQuery(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure')"
-                        class="btn btn-primary" title="Convert to other LRS"><i class="fa fa-cog"
-                          aria-hidden="true"></i> Convert</button>
-                      <button id="reset3-2point" type="reset" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                    </div>
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#bulkModal2" title="Upload a table to convert multiple points"><i
-                          class="fa fa-table" aria-hidden="true"></i>
-                        Bulk Conversion</button>
-                    </div>
-                    <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
-                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
-                    </div>
-                  </div>
-                </form>
-                <!-- End Horizontal Form -->
-              </div>
-              <!-- Control Section Tab Body END -->
-
-              <!-- Map Cursor Tab Body START -->
-              <div class="tab-pane fade" id="mapcursor-justified" role="tabpanel" aria-labelledby="mapcursor-tab">
-                <strong>Use the "crosshairs" map cursor to select two points on the map.</strong>
-                <!-- Horizontal Form -->
-                <form id="form-mapcursor-2point">
-                  <!-- Bordered Table -->
-                  <table class="table table-borderless table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"></th>
-                        <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin Point</strong></td>
-                        <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End Point</strong></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Latitude:</th>
-                        <td><input name="begin-cursor-latitude" value="" class="form-control" disabled></td>
-                        <td><input name="end-cursor-latitude" value="" class="form-control" disabled></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Longitude:</th>
-                        <td><input name="begin-cursor-longitude" value="" class="form-control" disabled></td>
-                        <td><input name="end-cursor-longitude" value="" class="form-control" disabled></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" onclick="" class="btn btn-primary" title="Convert to other LRS"><i
-                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                      <button id="reset-mapcursor-2point" type="reset" class="btn btn-secondary"
-                        title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                    </div>
-                    <div class="btn-group mb-2" role="group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
-                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
-                    </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">Route Name:</span>
-                    <select class="form-select">
-                      <option selected>Generated dynamically by JS</option>
-                    </select>
-                    <button class="btn btn-outline-primary" type="button">Select Route</button>
-                  </div>
-                </form>
-                <!-- End Horizontal Form -->
-              </div>
-              <!-- Map Cursor Tab Body END -->
+              <!-- Tab Bodies END -->
 
             </div>
-            <!-- Tab Bodies END -->
-
           </div>
-        </div>
 
-        <!-- StyleBuilderAndTools-Card START -->
-        <div id="StyleBuilderAndTools-Card" class="card">
-          <div id="StyleBuilderAndTools-CardBody" class="card-body">
+          <!-- StyleBuilderAndTools-Card START -->
+          <div id="StyleBuilderAndTools-Card" class="card">
+            <div id="StyleBuilderAndTools-CardBody" class="card-body">
 
-            <!-- StyleBuilder-Card START -->
-            <div id="StyleBuilder-Card" class="card">
-              <div id="StyleBuilder-CardBody" class="card-body">
-                <!-- Bordered Table -->
-                <table class="table table-bordered table-sm">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Route:</th>
-                      <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary border border-dark"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Begin DFO:</th>
-                      <td id="p_returned_RTE_DFO_begin" class="textout table-secondary border border-dark"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">End DFO:</th>
-                      <td id="p_returned_RTE_DFO_end" class="textout table-secondary border border-dark"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"></th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Line Color:</th>
-                      <td><select id="colors" class="form-select" aria-label="line color selector">
-                          <option value="#000000">Black</option>
-                          <option value="#cc6600">Brown</option>
-                          <option value="#009933">Green</option>
-                          <option value="#00bfff">Light Blue</option>
-                          <option value="#ff00ff">Magenta</option>
-                          <option value="#ff8000" selected="selected">Orange</option>
-                          <option value="#ff0000">Red</option>
-                          <option value="#14375a">TxDOT Blue</option>
-                          <option value="#ffff00">Yellow</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Line Color:</th>
-                      <td><input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"
-                          title="Choose your color"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Line Width:</th>
-                      <td><input id="width" type="number" value=1 class="form-control textentry"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Project:</th>
-                      <td><input id="description" type="text" value="Yet another I-35 project"
-                          class="form-control textentry"></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <!-- End Bordered Table -->
+              <!-- StyleBuilder-Card START -->
+              <div id="StyleBuilder-Card" class="card">
+                <div id="StyleBuilder-CardBody" class="card-body">
+                  <!-- Bordered Table -->
+                  <table class="table table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Route:</th>
+                        <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Begin DFO:</th>
+                        <td id="p_returned_RTE_DFO_begin" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">End DFO:</th>
+                        <td id="p_returned_RTE_DFO_end" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Color:</th>
+                        <td><select id="colors" class="form-select" aria-label="line color selector">
+                            <option value="#000000">Black</option>
+                            <option value="#cc6600">Brown</option>
+                            <option value="#009933">Green</option>
+                            <option value="#00bfff">Light Blue</option>
+                            <option value="#ff00ff">Magenta</option>
+                            <option value="#ff8000" selected="selected">Orange</option>
+                            <option value="#ff0000">Red</option>
+                            <option value="#14375a">TxDOT Blue</option>
+                            <option value="#ffff00">Yellow</option>
+                          </select></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Color:</th>
+                        <td><input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"
+                            title="Choose your color"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Line Width:</th>
+                        <td><input id="width" type="number" value=1 class="form-control textentry"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Project:</th>
+                        <td><input id="description" type="text" value="Yet another I-35 project"
+                            class="form-control textentry"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+                </div>
               </div>
-            </div>
-            <!-- StyleBuilder-Card END -->
+              <!-- StyleBuilder-Card END -->
 
-            <!-- RouteBuilderTools-Card START -->
-            <div id="RouteBuilderTools-Card" class="card">
-              <div id="RouteBuilderTools-CardBody" class="card-body">
+              <!-- RouteBuilderTools-Card START -->
+              <div id="RouteBuilderTools-Card" class="card">
+                <div id="RouteBuilderTools-CardBody" class="card-body">
 
-                <!-- RouteBuilderToolbar START -->
-                <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                  aria-label="Toolbar with button groups">
+                  <!-- RouteBuilderToolbar START -->
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
 
-                  <!-- Add/Drop/Clear START -->
-                  <div class="btn-group me-2 mb-2" role="group">
-                    <button id="addRow" type="button" onclick="addProjectToArray(projects)" class="btn btn-success"
-                      title="Save current project and add another"><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                      Add Row</button>
-                    <button id="dropRow" type="button" onclick="removeLastProject(projects, projectLines)"
-                      class="btn btn-danger" title="Remove last project on list"><i class="fa fa-minus-circle"
-                        aria-hidden="true"></i> Drop
-                      Row</button>
-                    <button id="clearRows" type="button" onclick="clearProjectArrays(projects, projectLines)"
-                      class="btn btn-secondary" title="Clear project(s) from the map"><i class="fa fa-trash"
-                        aria-hidden="true"></i>
-                      Clear</button>
+                    <!-- Add/Drop/Clear START -->
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button id="addRow" type="button" onclick="addProjectToArray(projects)" class="btn btn-success"
+                        title="Save current project and add another"><i class="fa fa-plus-circle"
+                          aria-hidden="true"></i>
+                        Add Row</button>
+                      <button id="dropRow" type="button" onclick="removeLastProject(projects, projectLines)"
+                        class="btn btn-danger" title="Remove last project on list"><i class="fa fa-minus-circle"
+                          aria-hidden="true"></i> Drop
+                        Row</button>
+                      <button id="clearRows" type="button" onclick="clearProjectArrays(projects, projectLines)"
+                        class="btn btn-secondary" title="Clear project(s) from the map"><i class="fa fa-trash"
+                          aria-hidden="true"></i>
+                        Clear</button>
+                    </div>
+                    <!-- Add/Drop/Clear END -->
+
+                    <!-- Process to Map START -->
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" onclick="queryProjectGeometry(projects)" class="btn btn-primary"
+                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                      <button type="button" onclick="printGeometry(projectLines)" class="btn btn-primary"
+                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                    </div>
+                    <!-- Process to Map END -->
+
                   </div>
-                  <!-- Add/Drop/Clear END -->
+                  <!-- RouteBuilderToolbar END -->
 
-                  <!-- Process to Map START -->
-                  <div class="btn-group mb-2" role="group">
-                    <button type="button" onclick="queryProjectGeometry(projects)" class="btn btn-primary"
-                      title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
-                    <button type="button" onclick="printGeometry(projectLines)" class="btn btn-primary"
-                      title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Map Routes</button>
+                  <!-- Export Tabular START -->
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+                      <button type="button" onclick="" class="btn btn-primary"
+                        title="Export a CSV file of all routes"><i class="fa fa-download"></i> CSV</button>
+
+                      <button type="button" onclick="" class="btn btn-primary"
+                        title="Export a JSON file of all routes"><i class="fa fa-download"></i> JSON</button>
+
+                      <button type="button" onclick="" class="btn btn-primary"
+                        title="Export a KML file of all routes"><i class="fa fa-download"></i> KML</button>
+                    </div>
+                    <div class="btn-group mb-2" role="group" aria-label="download group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#routeStyleHelpModal" title="Route Style Help"><i class="fa fa-question"
+                          aria-hidden="true"></i> Help</button>
+                    </div>
                   </div>
-                  <!-- Process to Map END -->
+                  <!-- Export Tabular END -->
 
                 </div>
-                <!-- RouteBuilderToolbar END -->
-
-                <!-- Export Tabular START -->
-                <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                  aria-label="Toolbar with button groups">
-                  <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                    <button type="button" onclick="" class="btn btn-primary" title="Export a CSV file of all routes"><i
-                        class="fa fa-download"></i> CSV</button>
-
-                    <button type="button" onclick="" class="btn btn-primary" title="Export a JSON file of all routes"><i
-                        class="fa fa-download"></i> JSON</button>
-
-                    <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all routes"><i
-                        class="fa fa-download"></i> KML</button>
-                  </div>
-                  <div class="btn-group mb-2" role="group" aria-label="download group">
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                      data-bs-target="#routeStyleHelpModal" title="Route Style Help"><i class="fa fa-question"
-                        aria-hidden="true"></i> Help</button>
-                  </div>
-                </div>
-                <!-- Export Tabular END -->
-
               </div>
-            </div>
-            <!-- RouteBuilderTools-Card END -->
+              <!-- RouteBuilderTools-Card END -->
 
+            </div>
           </div>
+          <!-- StyleBuilderAndTools-Card END -->
+
         </div>
-        <!-- StyleBuilderAndTools-Card END -->
+        <!-- Scrolling Column END -->
 
       </div>
       <!-- End Left side columns -->
 
       <!-- Right side columns -->
       <div class="col-md-8 d-none d-md-block" id="split-1">
-        <!-- <div id="rightDiv"> -->
 
-          <!-- Map START -->
-          <div id="viewDiv" class="col-7 map-container">
-            <div></div>
+        <!-- Map START -->
+        <div id="viewDiv" class="col-7 map-container">
+          <div></div>
+        </div>
+        <!-- Map END -->
+
+        <!-- Map Buttons START -->
+        <div id="mapButtonsDiv" class="card map-buttons">
+
+          <!-- Map-Controls START -->
+          <map_controls-component></map_controls-component>
+          <!-- Map-Controls END -->
+
+          <div class="card-body">
+            <button type="button" onclick="" class="btn btn-primary" title="Export a printable map"><i
+                class="fa fa-download"></i> Export Printable Map</button>
+            <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all lines"><i
+                class="fa fa-download"></i> Export KML</button>
           </div>
-          <!-- Map END -->
 
-          <!-- Map Buttons START -->
-          <div id="mapButtonsDiv" class="card map-buttons">
+        </div>
+        <!-- Map Buttons END -->
 
-            <!-- Map-Controls START -->
-            <map_controls-component></map_controls-component>
-            <!-- Map-Controls END -->
-
-            <div class="card-body">
-              <button type="button" onclick="" class="btn btn-primary" title="Export a printable map"><i
-                  class="fa fa-download"></i> Export Printable Map</button>
-              <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all lines"><i
-                  class="fa fa-download"></i> Export KML</button>
-            </div>
-
-          </div>
-          <!-- Map Buttons END -->
-
-        <!-- </div> -->
       </div>
       <!-- End Right side columns -->
 
