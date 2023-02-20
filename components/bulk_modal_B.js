@@ -45,7 +45,10 @@ const staticBulk_Modal_B = `      <!-- Modal -->
   </div>
   <!--End Modal -->`
 
-
+/**
+  TODO identify buttons
+    TODO add event listeners
+*/
 
 
 
