@@ -25,7 +25,8 @@ function makequeryTxDOT_Roadways_Unsegmented() {
 
 }
 
-//TODO do something with these results
+//TODO RouteBuilder: do something with these results
+// pull out min and max DFO
 async function rdwayQuery(url) {
     const results = await queryRoadwayService(url);
     console.log(results);

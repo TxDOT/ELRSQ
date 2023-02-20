@@ -324,51 +324,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   console.log(B_results);
   console.log(E_results);
 
-  if (method == 1) {
-    // TODO make array of common route names and pass to selector
-  }
-
-  else if (method == 2) {
-
-    let b_index = B_results.findIndex(function (item, i) {
-      return item.RTE_DEFN_LN_NM === rte_nm
-    });
-
-    let bdfo = B_results[b_index]['RTE_DFO'];
-    routeQueryOutput.push(bdfo);
-
-    let e_index = E_results.findIndex(function (item, i) {
-      return item.RTE_DEFN_LN_NM === rte_nm
-    });
-
-    let edfo = E_results[e_index]['RTE_DFO'];
-    routeQueryOutput.push(edfo);
-
-  }
-
-  else if (method == 3) {
-    // TODO make array of common control sections and pass to selector
-  }
-
-  else if (method == 4) {
-
-    let b_index = B_results.findIndex(function (item, i) {
-      return item.RTE_DEFN_LN_NM === rte_nm
-    });
-
-    let bdfo = B_results[b_index]['RTE_DFO'];
-    routeQueryOutput.push(bdfo);
-
-    let e_index = E_results.findIndex(function (item, i) {
-      return item.RTE_DEFN_LN_NM === rte_nm
-    });
-
-    let edfo = E_results[e_index]['RTE_DFO'];
-    routeQueryOutput.push(edfo);
-  }
-
-
-  console.log(routeQueryOutput);
+  Rte_Dfo_Assembler(method, B_results, E_results, rte_nm);
 
   showRouteResults(routeQueryOutput);
 
@@ -376,6 +332,60 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   if (useMap == 1) {
       showResultsOnMap(results);
   }*/
+
+}
+
+
+function Rte_Dfo_Assembler(method, B_results, E_results, rte_nm) {
+  if (method == 2 || method == 4) {
+
+    let b_index = B_results.findIndex(function (item, i) {
+      return item.RTE_DEFN_LN_NM === rte_nm
+    });
+
+    let bdfo = B_results[b_index]['RTE_DFO'];
+    routeQueryOutput.push(bdfo);
+
+    let e_index = E_results.findIndex(function (item, i) {
+      return item.RTE_DEFN_LN_NM === rte_nm
+    });
+
+    let edfo = E_results[e_index]['RTE_DFO'];
+    routeQueryOutput.push(edfo);
+
+  } else if (method == 1) {
+    // TODO RouteBuilder: finish writing
+    let B_RTENMs = B_results.map(a => a.RTE_DEFN_LN_NM);
+    let E_RTENMs = E_results.map(a => a.RTE_DEFN_LN_NM);
+    let BE_RTENMs = B_RTENMs.filter(x => E_RTENMs.includes(x));
+
+    for (var i = 0; i < BE_RTENMs.length; i++) {
+      var optn = BE_RTENMs[i];
+      var el = document.createElement("option");
+      el.textContent = optn;
+      el.value = optn;
+      $("#candidateRTENMs").append(el);
+    }
+
+    /**
+      take selector results, match to B/E results, return route name and dfos
+    */
+  } else if (method == 3) {
+    // TODO RouteBuilder: finish writing
+    let B_CSs = B_results.map(a => a.CTRL_SECT_LN_NBR);
+    let E_CSs = E_results.map(a => a.CTRL_SECT_LN_NBR);
+    let BE_CS = B_CSs.filter(x => E_CSs.includes(x));
+
+    for (var i = 0; i < BE_CS.length; i++) {
+      var optn = BE_CS[i];
+      var el = document.createElement("option");
+      el.textContent = optn;
+      el.value = optn;
+      $("#candidateCSs").append(el);
+    }
+  }
+
+  console.log(routeQueryOutput);
 
 }
 
