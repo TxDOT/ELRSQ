@@ -59,19 +59,19 @@ if (screen.width >= 768) {
 
 $(document).ready(function () {
 
-  $("nav_bar").load("components/html/nav_bar.html");
-  $("map_controls").load("components/html/map_controls.html");
-  $("indicator").load("components/html/indicator.html");
-  $("demo_modal").load("components/html/demo_modal.html");
-  $("bulk_modal_B").load("components/html/bulk_modal_B.html");
-  $("form_help_modal").load("components/html/form_help_modal.html");
-  $("cursor_help_modal").load("components/html/cursor_help_modal.html");
-  $("results_help_modal").load("components/html/results_help_modal.html");
-  $("results_card").load("components/html/results_card.html");
-  $("wizard_form").load("components/html/wizard_form.html");
+  $("nav_bar-component").load("components/html/nav_bar.html");
+  $("map_controls-component").load("components/html/map_controls.html");
+  $("indicator-component").load("components/html/indicator.html");
+  $("demo_modal-component").load("components/html/demo_modal.html");
+  $("bulk_modal_B-component").load("components/html/bulk_modal_B.html");
+  $("form_help_modal-component").load("components/html/form_help_modal.html");
+  $("cursor_help_modal-component").load("components/html/cursor_help_modal.html");
+  $("results_help_modal-component").load("components/html/results_help_modal.html");
+  $("results_card-component").load("components/html/results_card.html");
+  $("wizard_form-component").load("components/html/wizard_form.html");
 
-  $("route_help_modal").load("components/html/route_help_modal.html");
-  $("route_style_help_modal").load("components/html/route_style_help_modal.html");
+  $("route_help_modal-component").load("components/html/route_help_modal.html");
+  $("route_style_help_modal-component").load("components/html/route_style_help_modal.html");
 
 });
 
