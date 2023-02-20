@@ -74,16 +74,13 @@ require([
   });
 
 
-  window.view.on("click", function (event) {
-    handleMapClick(event)
-  })
-
-  function handleMapClick(evt) {
+  window.view.on("click", function (evt) {
     var oncursortab = document.querySelectorAll("#mapcursor-tabpane.active");
     if (oncursortab[0]) {
       coordinateQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);
     }
-  }
+  })
+
 
 
   // watch handler
@@ -222,6 +219,8 @@ function showResultsOnMap(results) {
 }
 
 function clearResultsFromMap() {
+
+  graphics = []; /*experiment */
   //clear existing point
   view.graphics.removeAll();
 
@@ -234,14 +233,11 @@ function clearResultsFromMap() {
 
 function returnToPoint() {
 
-  //zoom to all graphics
-  view.goTo({
-    target: graphics,
-    zoom: 17
-  })
+  if (graphics.length > 0) {
+    //zoom to all graphics
+    view.goTo({
+      target: graphics,
+      zoom: 17
+    })
+  }
 }
-
-
-
-
-
