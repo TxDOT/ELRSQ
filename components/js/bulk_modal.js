@@ -1,9 +1,9 @@
 const staticBulk_Modal = `      <!-- Modal -->
-  <div class="modal fade" id="bulkModal2" tabindex="-1" aria-labelledby="bulkModalLabel2" aria-hidden="true">
+  <div class="modal fade" id="bulkModal" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="bulkModalLabel2">Bulk Conversion</h5>
+          <h5 class="modal-title" id="bulkModalLabel">Bulk Conversion</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -48,19 +48,14 @@ const staticBulk_Modal = `      <!-- Modal -->
 
 
 
-
-
-
-
 class Bulk_Modal extends HTMLElement {
 
   constructor() {
     super();
-
   }
 
   connectedCallback() {
-    this.innerHTML = staticBulk_Modal;
+    //this.innerHTML = staticBulk_Modal;
   }
 }
 
