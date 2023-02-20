@@ -2,8 +2,10 @@ let currentSelection = [];
 let allResults = [];
 let currentPos = 1;
 let graphics = [];
+let projects = [];
+var projectLines = [];
 
-let projects = [
+/*let projects = [
     [
         "IH0035-KG",
         "121.243",
@@ -28,11 +30,7 @@ let projects = [
         4,
         "10"
     ]
-]
-
-//let projects = [];
-var projectLines = [];
-
+]*/
 
 
 if (screen.width >= 768) {
@@ -43,3 +41,6 @@ if (screen.width >= 768) {
         expandToMin: false
     });
 }
+
+
+
