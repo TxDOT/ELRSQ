@@ -37,7 +37,7 @@ const staticWizard_Form = `                <!-- Horizontal Form -->
   <div class="row mb-3" style="display:none" id="rowInputDistanceFromOrigin">
     <label for="inputDistanceFromOrigin" class="col-sm-4 col-form-label">Distance From Origin</label>
     <div class="input-group mb-3 col-sm-4">
-      <input id="wizinputDistanceFromOrigin" type="number" step="0.1" name="dfo" placeholder="1.606"
+      <input id="wizinputDistanceFromOrigin" type="number" name="dfo" placeholder="1.606"
         class="form-control textentry">
       <button class="btn btn-outline-primary" type="button" onclick="lrsQuery(4, 0, 'inputRouteName', 'inputDistanceFromOrigin')"
         title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>

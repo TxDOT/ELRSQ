@@ -96,7 +96,7 @@ $(document).ready(function () {
   $("#inputLatitude").attr({
     "max": 37,
     "min": 24,
-    "step": 0.00001
+    "step": 0.000001
   });
 
   $("#inputLongitude").attr({
@@ -112,7 +112,7 @@ $(document).ready(function () {
   });
 
   $("#inputDisplacement").attr({
-    "max": 10,
+    "max": 2,
     "min": 0,
     "step": 0.001
   });
@@ -172,7 +172,7 @@ $(document).ready(function () {
   });
 
   $("#inputBeginDisplacement").attr({
-    "max": 10,
+    "max": 2,
     "min": 0,
     "step": 0.001
   });
@@ -184,7 +184,7 @@ $(document).ready(function () {
   });
 
   $("#inputEndDisplacement").attr({
-    "max": 10,
+    "max": 2,
     "min": 0,
     "step": 0.001
   });

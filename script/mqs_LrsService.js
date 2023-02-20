@@ -207,7 +207,8 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
   makeDownloadLink(Papa.unparse(refinedData));
 
-  alert("Ready to Download");
+  // FIXME replace with less intrusive dialogue
+  // alert("Ready to Download"); 
   if (useLoadIndicator == 1) {
     YellowToGreen();
   }
