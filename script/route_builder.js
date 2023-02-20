@@ -23,7 +23,20 @@ function addProjectToArray(myProjects) {
 //// validate that input is a KG
 //function routeCenterlineValidator()
 
+function listQueries(myProjects) {
+    console.log("listQueries");
+    var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
+    for (var i = 0; i < myProjects.length; i++) {
+        arrayForTable.push([i + 1].concat(myProjects[i]));
+    }
+
+    if (myProjects.length == 0) {
+        document.getElementById("print").innerHTML = "";
+    } else {
+        document.getElementById("print").innerHTML = makeTableFromArray(arrayForTable);
+    }
+}
 
 // removes last project in projects array
 function removeLastProject(myProjects, myProjectLines) {
@@ -52,20 +65,7 @@ function clearProjectArrays(myProjects, myProjectLines) {
     printGeometry(myProjectLines);
 }
 
-function listQueries(myProjects) {
-    console.log("listQueries");
-    var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
-    for (var i = 0; i < myProjects.length; i++) {
-        arrayForTable.push([i + 1].concat(myProjects[i]));
-    }
-
-    if (myProjects.length == 0) {
-        document.getElementById("print").innerHTML = "";
-    } else {
-        document.getElementById("print").innerHTML = makeTableFromArray(arrayForTable);
-    }
-}
 
 
 
@@ -230,6 +230,7 @@ function setVertexNumbers(myData, a, myFrom, myTo) {
     return vertexNumbers;
 }
 
+
 // clips
 function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
     let aClippedLine = [];
@@ -285,6 +286,7 @@ function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
 
     return aClippedLine;
 }
+
 
 //The Line with Geometry and Desired M value
 function locatePointOnLine(theLine, pointMeasure) {

@@ -1,6 +1,23 @@
+
+var outputFieldIDs = {
+  ROUTEID: "#p_returned_ROUTEID",
+  RTE_DEFN_LN_NM: "#p_returned_RTE_DEFN_LN_NM",
+  RDBD_TYPE_DSCR: "#p_returned_RDBD_TYPE_DSCR",
+  RTE_DFO: "#p_returned_RTE_DFO",
+  CTRL_SECT_LN_NBR: "#p_returned_CTRL_SECT_LN_NBR",
+  CTRL_SECT_MPT: "#p_returned_CTRL_SECT_MPT",
+  RMRKR_PNT_NBR: "#p_returned_RMRKR_PNT_NBR",
+  RMRKR_DISPLACEMENT: "#p_returned_RMRKR_DISPLACEMENT",
+  LAT: "#p_returned_LAT",
+  LON: "#p_returned_LON",
+  BDFO: "#p_returned_RTE_DFO_begin",
+  EDFO: "#p_returned_RTE_DFO_end"
+};
+
+
 // determine pagination and fill in HTML table results
 function showResults(results, navIndex) {
-  allResults = results;
+  allResults = results; // this is changing the value of a global variable
   resultCount = allResults.length; // use this somewhere
   const index = navIndex ? navIndex - 1 : 0;
   currentResult = allResults[index];
@@ -9,28 +26,19 @@ function showResults(results, navIndex) {
   insertPagination(currentPos, resultCount);
 
   // fill in HTML results
-  document.getElementById("p_returned_ROUTEID").innerHTML = currentResult['ROUTEID'];
-  document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = currentResult['RTE_DEFN_LN_NM'];
-  document.getElementById("p_returned_RDBD_TYPE_DSCR").innerHTML = currentResult['RDBD_TYPE_DSCR'];
-  document.getElementById("p_returned_RTE_DFO").innerHTML = currentResult['RTE_DFO'];
+  $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
+  $(outputFieldIDs.RTE_DEFN_LN_NM).html(currentResult['RTE_DEFN_LN_NM']);
+  $(outputFieldIDs.RDBD_TYPE_DSCR).html(currentResult['RDBD_TYPE_DSCR']);
+  $(outputFieldIDs.RTE_DFO).html(currentResult['RTE_DFO']);
 
-  document.getElementById("p_returned_CTRL_SECT_LN_NBR").innerHTML = currentResult['CTRL_SECT_LN_NBR'];
-  document.getElementById("p_returned_CTRL_SECT_MPT").innerHTML = currentResult['CTRL_SECT_MPT'];
+  $(outputFieldIDs.CTRL_SECT_LN_NBR).html(currentResult['CTRL_SECT_LN_NBR']);
+  $(outputFieldIDs.CTRL_SECT_MPT).html(currentResult['CTRL_SECT_MPT']);
 
-  document.getElementById("p_returned_RMRKR_PNT_NBR").innerHTML = currentResult['RMRKR_PNT_NBR'];
-  document.getElementById("p_returned_RMRKR_DISPLACEMENT").innerHTML = currentResult['RMRKR_DISPLACEMENT'];
+  $(outputFieldIDs.RMRKR_PNT_NBR).html(currentResult['RMRKR_PNT_NBR']);
+  $(outputFieldIDs.RMRKR_DISPLACEMENT).html(currentResult['RMRKR_DISPLACEMENT']);
 
-  document.getElementById("p_returned_LAT").innerHTML = currentResult['LAT'];
-  document.getElementById("p_returned_LON").innerHTML = currentResult['LON'];
-}
-
-//navResults called by pagination buttons in showResults function
-function navResults(direction) {
-  direction == 'next' ? currentPos++ : currentPos--;
-
-  if (currentPos > 0 && currentPos <= resultCount) {
-    showResults(allResults, currentPos)
-  }
+  $(outputFieldIDs.LAT).html(currentResult['LAT']);
+  $(outputFieldIDs.LON).html(currentResult['LON']);
 }
 
 
@@ -68,10 +76,9 @@ function insertPagination(currentPos, resultCount) {
   navTitle = pgnStart + pgnCurrent + pgnEnd
 
   //insert pagination
-  document.getElementById("result-pagination").innerHTML = navTitle;
+  $("#result-pagination").html(navTitle);
 
 }
-
 
 function clearResults() {
 
@@ -79,27 +86,38 @@ function clearResults() {
   clearPagination();
 
   // fill in HTML results
-  document.getElementById("p_returned_ROUTEID").innerHTML = '';
-  document.getElementById("p_returned_RTE_DEFN_LN_NM").innerHTML = '';
-  document.getElementById("p_returned_RDBD_TYPE_DSCR").innerHTML = '';
-  document.getElementById("p_returned_RTE_DFO").innerHTML = '';
+  $(outputFieldIDs.ROUTEID).html('');
+  $(outputFieldIDs.RTE_DEFN_LN_NM).html('');
+  $(outputFieldIDs.RDBD_TYPE_DSCR).html('');
+  $(outputFieldIDs.RTE_DFO).html('');
 
-  document.getElementById("p_returned_CTRL_SECT_LN_NBR").innerHTML = '';
-  document.getElementById("p_returned_CTRL_SECT_MPT").innerHTML = '';
+  $(outputFieldIDs.CTRL_SECT_LN_NBR).html('');
+  $(outputFieldIDs.CTRL_SECT_MPT).html('');
 
-  document.getElementById("p_returned_RMRKR_PNT_NBR").innerHTML = '';
-  document.getElementById("p_returned_RMRKR_DISPLACEMENT").innerHTML = '';
+  $(outputFieldIDs.RMRKR_PNT_NBR).html('');
+  $(outputFieldIDs.RMRKR_DISPLACEMENT).html('');
 
-  document.getElementById("p_returned_LAT").innerHTML = '';
-  document.getElementById("p_returned_LON").innerHTML = '';
+  $(outputFieldIDs.LAT).html('');
+  $(outputFieldIDs.LON).html('');
 }
-
 
 
 //clear pagination
 function clearPagination() {
-  document.getElementById("result-pagination").innerHTML = '';
+  $("#result-pagination").html('');
 }
+
+
+//navResults called by pagination buttons in showResults function
+function navResults(direction) {
+  direction == 'next' ? currentPos++ : currentPos--;
+
+  if (currentPos > 0 && currentPos <= resultCount) {
+    showResults(allResults, currentPos)
+  }
+}
+
+
 
 
 
@@ -213,8 +231,7 @@ function parseJSONToCSVStr(jsonData) {
   return encodeURIComponent(csvStr);;
 }
 
-
-
+//TODO rename to specify that this is for single points conversion
 function exportToKMLFile(jsonData) {
 
   // build kml file
@@ -257,7 +274,6 @@ function exportToKMLFile(jsonData) {
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
-
 
 function addTags(theData, theTagType) {
   var taggedData = "";

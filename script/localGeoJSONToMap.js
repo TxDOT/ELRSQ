@@ -18,6 +18,36 @@ function foo() {
             ]
         };
 
+
+        const geojson_line = {
+            "type": "FeatureCollection",
+            "metadata": {},
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": { "mag": 8, },
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[-93.98759004, 30.39780972], [-94.98759004, 29.39780972]]
+                    },
+                    "id": "ak02327gyz9x"
+                },
+                {
+                    "type": "Feature",
+                    "properties": { "mag": 7 },
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [[-94.98759004, 29.39780972], [-95.98759004, 30.39780972]]
+                    },
+                    "id": "us6000jpiy"
+                }
+            ]
+        };
+
+
+
+
+
         console.log(geojson);
 
         // create a new blob from geojson featurecollection
@@ -54,6 +84,18 @@ function foo() {
         };
 
 
+        const renderer_line = {
+            type: "simple",
+            field: "mag",
+            symbol: {
+                type: "simple-line",  // autocasts as new SimpleLineSymbol()
+                color: "orange",
+                width: "5px",
+                style: "short-dot"
+            }
+        };
+
+
         // create new geojson layer using the blob url
         const projectLayer = new GeoJSONLayer({
             url: url,
@@ -80,19 +122,3 @@ function foo() {
 
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -73,15 +73,18 @@ require([
     container: "viewDiv", // Div map element
   });
 
+
   window.view.on("click", function (event) {
     handleMapClick(event)
   })
+
 
 
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {
     //console.log("Zoom: ", newZoom);
 
+    //// do not delete
     //// enable/disable checkboxes
     /* if (newZoom > 10) {
        console.log("enable");
