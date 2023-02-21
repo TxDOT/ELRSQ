@@ -1,4 +1,5 @@
-const staticBulk_Modal = `      <!-- Modal -->
+const staticBulk_Modal = `      
+<!-- Modal -->
   <div class="modal fade" id="bulkModal" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -45,7 +46,8 @@ const staticBulk_Modal = `      <!-- Modal -->
   </div>
   <!--End Modal -->`
 
-const staticNav_Bar = `<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+const staticNav_Bar = `
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
 <div class="container-fluid">
     <div id="navbarSupportedContent">  
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -245,8 +247,8 @@ const staticIndicator = `
     </div>
   </div>`
 
-
-const staticCursor_Help_Modal = `<!-- Modal -->
+const staticCursor_Help_Modal = `
+<!-- Modal -->
   <div class="modal fade" id="cursorHelpModal" tabindex="-1" aria-labelledby="cursorHelpModalLabel" aria-hidden="true">cog
       <div class="modal-dialog">
           <div class="modal-content">
@@ -272,7 +274,6 @@ const staticCursor_Help_Modal = `<!-- Modal -->
       </div>
   </div>
   <!--End Modal -->`
-
 
 const staticResults_Card = `      
   <style>
@@ -472,8 +473,8 @@ const staticResults_Card = `
   </div>
   </div>`
 
-
-const staticForm_Help_Modal = `      <!-- Modal -->
+const staticForm_Help_Modal = `      
+<!-- Modal -->
   <div class="modal fade" id="formHelpModal" tabindex="-1" aria-labelledby="formHelpModalLabel" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -526,9 +527,8 @@ const staticForm_Help_Modal = `      <!-- Modal -->
   </div>
   <!--End Modal -->`
 
-
-
-const staticResults_Help_Modal = `<!-- Modal -->
+const staticResults_Help_Modal = `
+<!-- Modal -->
   <div class="modal fade" id="resultsHelpModal" tabindex="-1" aria-labelledby="resultsHelpModalLabel" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -556,9 +556,8 @@ const staticResults_Help_Modal = `<!-- Modal -->
   </div>
   <!--End Modal -->`
 
-
-
-const staticWizard_Form = `                <!-- Horizontal Form -->
+const staticWizard_Form = `                
+<!-- Horizontal Form -->
   <form>
     <div class="row mb-3" id="rowInputControlSection">
       <label for="inputControlSection" class="col-sm-4 col-form-label">Control Section</label>
@@ -655,9 +654,8 @@ const staticWizard_Form = `                <!-- Horizontal Form -->
     </div>
   </form><!-- End Horizontal Form -->`
 
-
-
-  const staticRoute_Help_Modal = `<!-- Modal -->
+const staticRoute_Help_Modal = `
+<!-- Modal -->
 <div class="modal fade" id="routeHelpModal" tabindex="-1" aria-labelledby="routeHelpModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -696,8 +694,8 @@ const staticWizard_Form = `                <!-- Horizontal Form -->
 </div>
 <!--End Modal -->`
 
-
-const staticRoute_Style_Help_Modal = `<!-- Modal -->
+const staticRoute_Style_Help_Modal = `
+<!-- Modal -->
 <div class="modal fade" id="routeStyleHelpModal" tabindex="-1" aria-labelledby="routeStyleHelpModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -723,3 +721,212 @@ const staticRoute_Style_Help_Modal = `<!-- Modal -->
     </div>
 </div>
 <!--End Modal -->`
+
+const staticMap_Controls = `
+<div class="card-body">
+
+  <input id="basemap-event"    
+  type="checkbox" checked 
+  data-toggle="toggle" data-html="true" 
+  data-onlabel="<i class='fa fa-camera'     aria-hidden='true'></i> Imagery"     
+  data-offlabel="<i class='fa fa-map-signs' aria-hidden='true'></i> TxDOT"       
+  data-onstyle="success" 
+  data-offstyle="primary">
+
+  <input id="refmrkr-event"    
+  type="checkbox" 
+  data-toggle="toggle" data-html="true" 
+  data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ref Mrkr"    
+  data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ref Mrkr"    
+  data-onstyle="info" 
+  data-offstyle="primary" 
+  disabled>
+
+  <input id="controlsec-event" 
+  type="checkbox" 
+  data-toggle="toggle" data-html="true" 
+  data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ctrl Sec" 
+  data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ctrl Sec" 
+  data-onstyle="info" 
+  data-offstyle="primary" 
+  disabled> 
+
+</div>`
+
+const staticDemo_Modal = `
+<!-- Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="demoModalLabel">Demo Mode</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+          <div class="modal-body">
+              <div class="card-body">
+                  <input id="demo-mode-toggle"    
+                  type="checkbox" 
+                  checked
+                  data-toggle="toggle" data-html="true" 
+                  data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Demo Mode"    
+                  data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Demo Mode"    
+                  data-onstyle="info" 
+                  data-offstyle="primary">
+              </div>
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Modal -->
+`
+
+const staticResults_Card2 = `
+<div id="results_card" class="card">
+<div class="card-body">
+  <h5 class="card-title">Results:</h5>
+
+  <div class="card">
+    <div id="results-header" class="card-body">
+      <span id="result-pagination"></span>
+      <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+          <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
+            title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
+
+          <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
+            title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+
+          <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
+            title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+        </div>
+        <div class="btn-group mb-2" role="group" aria-label="download group">
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
+            title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <!-- Bordered Table -->
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Route Information</td>
+            <td>
+              <button id="copyRouteDFO" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                  aria-hidden="true"></i></button>
+              <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
+                  class="fa fa-link" aria-hidden="true"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>RouteID:</td>
+            <td id="p_returned_ROUTEID" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>Route:</td>
+            <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>Roadbed Type:</td>
+            <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>DFO:</td>
+            <td id="p_returned_RTE_DFO" class="textout table-secondary"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Control Section</td>
+            <td><button id="copyControlSection" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                  aria-hidden="true"></i></button></td>
+          </tr>
+          <tr>
+            <td>Control Section:</td>
+            <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>Mile Point:</td>
+            <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Field Location</td>
+            <td><button id="copyFieldLocation" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                  aria-hidden="true"></i></button></td>
+          </tr>
+          <tr>
+            <td>Reference Marker:</td>
+            <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>Displacement:</td>
+            <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary"></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Coordinates</td>
+            <td><button id="copyCoordinates" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+                  aria-hidden="true"></i></button></td>
+          </tr>
+          <tr>
+            <td>Latitude:</td>
+            <td id="p_returned_LAT" class="textout table-secondary"></td>
+          </tr>
+          <tr>
+            <td>Longitude:</td>
+            <td id="p_returned_LON" class="textout table-secondary"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- End Bordered Table -->
+
+    </div>
+  </div>
+
+</div>
+</div>
+`
+

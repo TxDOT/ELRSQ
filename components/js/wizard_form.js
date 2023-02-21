@@ -90,15 +90,3 @@ const staticWizard_Form = `
 `
 
 
-class Wizard_Form extends HTMLElement {
-
-  constructor() {
-    super();
-  }
-
-  connectedCallback() {
-    this.innerHTML = staticWizard_Form;
-  }
-}
-
-customElements.define('wizard_form-component', Wizard_Form);

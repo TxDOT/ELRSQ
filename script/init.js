@@ -68,14 +68,6 @@ $(document).ready(function () {
     if (status == "error") { $("indicator-component").html(staticIndicator); }
   });
 
-  $("bulk_modal-component").load("components/html/bulk_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("bulk_modal-component").html(staticBulk_Modal); }
-    // document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload);
-    // document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2);
-    $("#upload_csv-bulk").on('change', handleUpload);
-    $("#bulk-convert-button").on('click', handleUpload2);
-  });
-
   $("results_card-component").load("components/html/results_card.html", function (response, status, xhr) {
     if (status == "error") { $("results_card-component").html(staticResults_Card); }
     $("#copyRouteDFO").on('click', function () { copyRouteDFO(); });
@@ -98,32 +90,5 @@ $(document).ready(function () {
     $("#convert1-wizard").on('click', function () { lrsQuery(1, 0, 'wizinputLatitude', 'wizinputLongitude'); });
     $("#missingCoordinates").on('click', function () { restartWizard(); });
   });
-
-
-
-
-  // help modals with no actions
-
-  $("form_help_modal-component").load("components/html/form_help_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("form_help_modal-component").html(staticForm_Help_Modal); }
-  });
-
-  $("cursor_help_modal-component").load("components/html/cursor_help_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("cursor_help_modal-component").html(staticCursor_Help_Modal); }
-  });
-
-  $("results_help_modal-component").load("components/html/results_help_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("results_help_modal-component").html(staticResults_Help_Modal); }
-  });
-
-  $("route_help_modal-component").load("components/html/route_help_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("route_help_modal-component").html(staticRoute_Help_Modal); }
-  });
-
-  $("route_style_help_modal-component").load("components/html/route_style_help_modal.html", function (response, status, xhr) {
-    if (status == "error") { $("route_style_help_modal-component").html(staticRoute_Style_Help_Modal); }
-  });
-
-
 
 });
