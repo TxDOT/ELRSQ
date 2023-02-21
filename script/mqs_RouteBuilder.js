@@ -54,9 +54,9 @@ function listQueries(myProjects) {
     }
 
     if (myProjects.length == 0) {
-        $('#print').html("");
+        $('#routes-table').html("");
     } else {
-        $('#print').html(makeTableFromArray(arrayForTable));
+        $('#routes-table').html(makeTableFromArray(arrayForTable));
     }
 }
 
