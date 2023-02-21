@@ -296,7 +296,7 @@
                   aria-labelledby="distancefromorigin-tab">
                   <!-- Horizontal Form -->
                   <form id="form-distancefromorigin-2point">
-                    <!-- FIXME RouteBuilder: maybe this is a layout table-->
+
                     <div>
                       <div class="row mb-3">
                         <div class="col-2">
@@ -448,34 +448,40 @@
                   <strong class="mb-2">Use the "crosshairs" map cursor to select two points on the map.</strong>
                   <!-- Horizontal Form -->
                   <form id="form-mapcursor-2point">
-                    <!-- Bordered Table -->
-                    <table class="table table-borderless table-sm">
-                      <thead>
-                        <tr>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row"></th>
-                          <td><strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin Point</strong></td>
-                          <td><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End Point</strong></td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Latitude:</th>
-                          <td><input name="begin-cursor-latitude" value="" class="form-control" disabled></td>
-                          <td><input name="end-cursor-latitude" value="" class="form-control" disabled></td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Longitude:</th>
-                          <td><input name="begin-cursor-longitude" value="" class="form-control" disabled></td>
-                          <td><input name="end-cursor-longitude" value="" class="form-control" disabled></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <!-- End Bordered Table -->
+                    <div>
+                      <div class="row mb-3">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-3">
+                          Latitude:
+                        </div>
+                        <div class="col-3">
+                          Longitude:
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-2">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin Point</strong>
+                        </div>
+                        <div class="col-3">
+                          <input name="begin-cursor-latitude" value="" class="form-control" disabled>
+                        </div>
+                        <div class="col-3">
+                          <input name="begin-cursor-longitude" value="" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-2">
+                          <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End Point</strong>
+                        </div>
+                        <div class="col-3">
+                          <input name="end-cursor-latitude" value="" class="form-control" disabled>
+                        </div>
+                        <div class="col-3">
+                          <input name="end-cursor-longitude" value="" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
