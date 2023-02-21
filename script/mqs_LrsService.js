@@ -295,7 +295,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   console.log(B_results);
   console.log(E_results);
 
-  Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm);
+  await Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm);
 
   showRouteResults(routeQueryOutput);
 
@@ -306,8 +306,9 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
 }
 
+
 // description
-function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
+async function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
   if (method == 2 || method == 4) {
 
     let b_index = B_results.findIndex(function (item, i) {
@@ -315,17 +316,18 @@ function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_n
     });
 
     let bdfo = B_results[b_index]['RTE_DFO'];
-    routeQueryOutput.push(bdfo);
 
     let e_index = E_results.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm
     });
 
     let edfo = E_results[e_index]['RTE_DFO'];
+
+    routeQueryOutput.push(bdfo);
     routeQueryOutput.push(edfo);
 
-  } else if (method == 1) {
-    // TODO RouteBuilder: finish writing
+  } else if (method == 1 || method == 3) {
+
     let B_RTENMs = B_results.map(a => a.RTE_DEFN_LN_NM);
     let E_RTENMs = E_results.map(a => a.RTE_DEFN_LN_NM);
     let BE_RTENMs = B_RTENMs.filter(x => E_RTENMs.includes(x));
@@ -335,27 +337,70 @@ function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_n
       var el = document.createElement("option");
       el.textContent = optn;
       el.value = optn;
-      $("#candidateRTENMs").append(el);
+
+      if (method == 1) {
+        $("#candidateRTENMs").append(el);
+      } else if (method == 3) {
+        $("#candidateRTENMs_2").append(el);
+      }
+
     }
 
-    /**
-      take selector results, match to B/E results, return route name and dfos
-    */
-  } else if (method == 3) {
-    // TODO RouteBuilder: finish writing
-    let B_CSs = B_results.map(a => a.CTRL_SECT_LN_NBR);
-    let E_CSs = E_results.map(a => a.CTRL_SECT_LN_NBR);
-    let BE_CS = B_CSs.filter(x => E_CSs.includes(x));
-
-    for (var i = 0; i < BE_CS.length; i++) {
-      var optn = BE_CS[i];
-      var el = document.createElement("option");
-      el.textContent = optn;
-      el.value = optn;
-      $("#candidateCSs").append(el);
+    if (method == 1) {
+      rte_nm = await confirmRTENM();
+    } else if (method == 3) {
+      rte_nm = await confirmRTENM_2();
     }
+
+    routeQueryOutput.push(rte_nm);
+
+    let b_index = B_results.findIndex(function (item, i) {
+      return item.RTE_DEFN_LN_NM === rte_nm
+    });
+
+    let bdfo = B_results[b_index]['RTE_DFO'];
+
+    let e_index = E_results.findIndex(function (item, i) {
+      return item.RTE_DEFN_LN_NM === rte_nm
+    });
+
+    let edfo = E_results[e_index]['RTE_DFO'];
+
+    // check min and max DFOs and transpose if necessary
+    routeQueryOutput.push(Math.min(bdfo, edfo));
+    routeQueryOutput.push(Math.max(bdfo, edfo));
+
   }
-
 }
 
 
+
+// https://wesbos.com/javascript/12-advanced-flow-control/72-async-await-prompt-ui
+
+async function confirmRTENM() {
+  result = (await
+    new Promise(async function (resolve) {
+
+      $("#btn-candidateRTENMs").on("click", function (e) {
+        //e.preventDefault();
+        resolve(document.querySelector("#candidateRTENMs").value);
+      });
+    })
+  );
+
+  return result;
+}
+
+async function confirmRTENM_2() {
+  result = (await
+    new Promise(async function (resolve) {
+
+      $("#btn-candidateRTENMs_2").on("click", function (e) {
+        //e.preventDefault();
+        resolve(document.querySelector("#candidateRTENMs_2").value);
+      });
+    })
+  );
+
+  return result;
+}
