@@ -287,6 +287,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   if (method == 1) {
     b_coord = id_coord.slice(0, 2);
     e_coord = id_coord.slice(2, 4);
+    rte_nm = '';
   }
 
   else if (method == 2) {
@@ -299,6 +300,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   else if (method == 3) {
     b_coord = id_coord.slice(0, 2);
     e_coord = id_coord.slice(2, 4);
+    rte_nm = '';
   }
 
   else if (method == 4) {
@@ -318,7 +320,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   console.log(B_results);
   console.log(E_results);
 
-  Rte_Dfo_Assembler(method, B_results, E_results, rte_nm);
+  Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm);
 
   showRouteResults(routeQueryOutput);
 
@@ -329,8 +331,8 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
 }
 
-
-function Rte_Dfo_Assembler(method, B_results, E_results, rte_nm) {
+// description
+function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
   if (method == 2 || method == 4) {
 
     let b_index = B_results.findIndex(function (item, i) {
@@ -378,8 +380,6 @@ function Rte_Dfo_Assembler(method, B_results, E_results, rte_nm) {
       $("#candidateCSs").append(el);
     }
   }
-
-  console.log(routeQueryOutput);
 
 }
 
