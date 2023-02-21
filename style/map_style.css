@@ -35,6 +35,7 @@
   width: 100%;
 }
 
+/* FIXME only use crosshair when cursor tab active */
 #viewDiv {
   padding: 0;
   margin: 0;
