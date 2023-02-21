@@ -29,7 +29,11 @@ function makequeryTxDOT_Roadways_Unsegmented() {
 // pull out min and max DFO
 async function rdwayQuery(url) {
     const results = await queryRoadwayService(url);
-    console.log(results);
+    let min_DFO = results.features[0].attributes.BEGIN_DFO;
+    let max_DFO = results.features[0].attributes.END_DFO;
+    console.log(min_DFO);
+    console.log(max_DFO);
+    return [min_DFO, max_DFO];
 }
 
 
