@@ -53,11 +53,13 @@ async function queryProjectGeometry(myProjects) {
 
         await queryRoadwayServiceByLine(myProjectData);
     }
+    console.log(projectLines);
 }
 
 // added output spatial reference to return WGS84
 async function queryRoadwayServiceByLine(myProjectData) {
 
+    // why is this a 0 index?
     url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
         myProjectData[0] +
         "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
