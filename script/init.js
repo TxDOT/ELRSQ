@@ -91,4 +91,51 @@ $(document).ready(function () {
     $("#missingCoordinates").on('click', function () { restartWizard(); });
   });
 
+  // FIXME Bulk Upload: change to use Convert button instead of automatic
+  const myDropZone = document.getElementById("bulk-fieldset");
+  eventHandlers(myDropZone);
+
+  document.getElementById("bulk-fieldset").addEventListener('drop', async function (e) {
+    console.log(e.dataTransfer.files[0]);
+    const fileContents = await readFile(e.dataTransfer.files[0])
+    thenConvertCSVByMethod(fileContents);
+  });
+
+  document.getElementById("upload_csv-bulk").addEventListener('change', async function (e) {
+    const fileContents = await readFile(e.target.files[0])
+    thenConvertCSVByMethod(fileContents);
+  });
+
 });
+
+
+
+// drag and drop event handlers
+function eventHandlers(zone) {
+  // Prevent default drag behaviors
+  ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+    zone.addEventListener(event, preventDefaults, false);
+    document.body.addEventListener(event, preventDefaults, false);
+  });
+
+  // Highlighting drop area when item is dragged over it
+  ;['dragenter', 'dragover'].forEach(event => {
+    zone.addEventListener(event, highlight, false);
+  });
+  ;['dragleave', 'drop'].forEach(event => {
+    zone.addEventListener(event, unhighlight, false);
+  });
+}
+
+function preventDefaults(event) {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
+function highlight(event) {
+  event.target.classList.add('highlight');
+}
+
+function unhighlight(event) {
+  event.target.classList.remove('highlight');
+}

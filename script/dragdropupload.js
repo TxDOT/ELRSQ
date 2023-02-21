@@ -25,22 +25,15 @@ function unhighlight(event) {
 }
 
 function getInputRefs(element) {
-  console.log("getInputRefs");
   const zone = element.closest('.upload_dropZone') || false;
   const input = zone.querySelector('input[type="file"]') || false;
   return { input: input };
 }
 
 function handleDrop(event) {
-  console.log("handleDrop");
   const dataRefs = getInputRefs(event.target);
-  console.log("dataRefs");
-  console.log(dataRefs);
   dataRefs.files = event.dataTransfer.files;
   handleFiles(dataRefs);
-  console.log("dataRefs.files");
-  console.log(dataRefs.files);
-  handleUpload2(dataRefs.files[0]); //experimental
 }
 
 
@@ -77,10 +70,8 @@ function eventHandlers(zone) {
 
 // Handle both selected and dropped files
 function handleFiles(dataRefs) {
-  console.log("handleFiles");
 
   let files = [...dataRefs.files];
-  console.log(files);
   
   if (!files.length) return;
   dataRefs.files = files;

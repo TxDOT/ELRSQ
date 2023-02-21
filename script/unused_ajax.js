@@ -11,10 +11,6 @@ $(document).ready(function () {
   
     // $("bulk_modal-component").load("components/html/bulk_modal.html", function (response, status, xhr) {
     //   if (status == "error") { $("bulk_modal-component").html(staticBulk_Modal); }
-    //   // document.getElementById("upload_csv-bulk").addEventListener('change', handleUpload);
-    //   // document.getElementById("bulk-convert-button").addEventListener('click', handleUpload2);
-    //   $("#upload_csv-bulk").on('change', handleUpload);
-    //   $("#bulk-convert-button").on('click', handleUpload2);
     // });
   
     $("results_card-component").load("components/html/results_card.html", function (response, status, xhr) {

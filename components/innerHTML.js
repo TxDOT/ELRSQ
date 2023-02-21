@@ -17,7 +17,7 @@ const staticBulk_Modal = `
           
           <form id="bulk-form">
 
-            <fieldset class="upload_dropZone text-center mb-3 p-4">
+            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
 
             <legend class="visually-hidden">CSV uploader</legend>
 
@@ -31,7 +31,7 @@ const staticBulk_Modal = `
 
             </fieldset>
 
-            <button class="btn btn-primary" type="button" id="bulk-convert-button" title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            <button id="bulk-convert-button" class="btn btn-primary" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
 
           </form>
 

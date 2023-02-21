@@ -132,63 +132,10 @@ function addPointGraphic(lat, lon) {
 
 // bulk conversion functions
 
-// FIXME Bulk Upload: change to use Convert button instead of automatic
-const handleUpload = async (event) => {
-  console.log("handleUpload");
-  const file = event.target.files[0];
-
-  handleUpload3(file);
-
-  // const fileContents = await readFile(file)
-  // ////$('#output_field').text(fileContents);
-
-  // //set method parameter depending on tab
-  // if (currentLRM == `referencemarker-tab`) {
-  //   method = 2;
-  //   csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
-  // } else if (currentLRM == `controlsection-tab`) {
-  //   method = 3;
-  //   csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-  // } else if (currentLRM == `distancefromorigin-tab`) {
-  //   method = 4;
-  //   csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-  // } else {
-  //   method = 1;
-  //   csvinToCsvout(fileContents, method, 2, 1);
-  // }
-}
 
 //experimental
-async function handleUpload2(file) {
-  console.log("handleUpload2");
-
-  handleUpload3(file);
-
-  // const fileContents = await readFile(file)
-  // ////$('#output_field').text(fileContents);
-
-  // //set method parameter depending on tab
-  // if (currentLRM == `referencemarker-tab`) {
-  //   method = 2;
-  //   csvinToCsvout(fileContents, method, 1, 2, 3); // need to determine template
-  // } else if (currentLRM == `controlsection-tab`) {
-  //   method = 3;
-  //   csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-  // } else if (currentLRM == `distancefromorigin-tab`) {
-  //   method = 4;
-  //   csvinToCsvout(fileContents, method, 1, 2); // need to determine template
-  // } else {
-  //   method = 1;
-  //   csvinToCsvout(fileContents, method, 2, 1);
-  // }
-}
-
-
-//experimental
-async function handleUpload3(file) {
-  console.log("handleUpload3");
-
-  const fileContents = await readFile(file)
+function thenConvertCSVByMethod(fileContents) {
+  console.log("thenConvertCSVByMethod");
 
   //set method parameter depending on tab
   if (currentLRM == `referencemarker-tab`) {
