@@ -1,19 +1,68 @@
-// special results
+// tabularConvertExport
 
-function specialResults(results) {
-  console.log("special results");
-  console.log("is this json or geojson???");
-  console.log(results);
+function tabularConvertExport(results) {
   jsonData = results;
-  /*exportToJsonFile(jsonData);*/
-  exportPointsToGeoJsonFile(jsonData);
   exportToCsvFile(jsonData);
+  exportPointsToGeoJsonFile(jsonData);
   exportPointsToKMLFile(jsonData);
-  //resultCount = allResults.length; // use this somewhere
-  //currentResult = allResults[index]
+}
+
+function exportToCsvFile(jsonData) {
+  console.log("CSV export");
+
+  let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] });
+  let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
+  let exportFileDefaultName = 'results.csv';
+
+  let linkElement = document.getElementById('CSVdownload');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
 }
 
 function exportPointsToGeoJsonFile(jsonData) {
+  console.log("geoJSON export");
+
+  var geojson = jsonToGeoJson(jsonData)
+  let dataStr = JSON.stringify(geojson);
+  let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+  let exportFileDefaultName = 'results.json';
+
+  let linkElement = document.getElementById('JSONdownload');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+}
+
+function exportPointsToKMLFile(jsonData) {
+  console.log("KML export");
+
+  var kmlContent = jsonToKML(jsonData)
+  let dataUri = encodeURI(kmlContent);
+  let exportFileDefaultName = 'results.kml';
+
+  let linkElement = document.getElementById('KMLdownload');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+}
+
+
+// function bulkExport(refinedData) {
+//   makeDownloadLink(Papa.unparse(refinedData));
+// }
+
+
+// function makeDownloadLink(csvContent) {
+//   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
+//   const objUrl = URL.createObjectURL(blob)
+
+//   let exportFileDefaultName = 'christian_bale.csv';
+
+//   let linkElement = document.getElementById('CSVdownload');
+//   linkElement.setAttribute('href', objUrl);
+//   linkElement.setAttribute('download', exportFileDefaultName);
+// }
+
+
+function jsonToGeoJson(jsonData) {
 
   var geojson = {
     type: "FeatureCollection",
@@ -40,36 +89,11 @@ function exportPointsToGeoJsonFile(jsonData) {
     });
   }
 
-  console.log(geojson);
-  console.log("geoJSON export");
-  let dataStr = JSON.stringify(geojson);
-  let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-
-  let exportFileDefaultName = 'results.json';
-
-  let linkElement = document.getElementById('JSONdownload');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
-
+  return geojson;
 }
 
 
-function exportToCsvFile(jsonData) {
-  console.log("CSV export");
-
-  let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] });
-  let csvStr = encodeURIComponent(unparsed);
-  let dataUri = 'data:text/csv;charset=utf-8,' + csvStr;
-  let exportFileDefaultName = 'results.csv';
-
-  let linkElement = document.getElementById('CSVdownload');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
-}
-
-
-function exportPointsToKMLFile(jsonData) {
-
+function jsonToKML(jsonData) {
   // build kml file
   var headerTags = `<?xml version='1.0' encoding='UTF-8'?>
     <kml xmlns='http://www.opengis.net/kml/2.2'>
@@ -100,16 +124,9 @@ function exportPointsToKMLFile(jsonData) {
   kmlContent += closingTags;
   // end build kml file
 
-  console.log(kmlContent);
-  console.log("KML export");
-
-  let dataUri = encodeURI(kmlContent);
-  let exportFileDefaultName = 'results.kml';
-
-  let linkElement = document.getElementById('KMLdownload');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  return kmlContent;
 }
+
 
 function addTags(theData, theTagType) {
   var taggedData = "";
@@ -141,17 +158,3 @@ function readFile(file) {
     reader.readAsText(file);
   });
 };
-
-
-
-function makeDownloadLink(csvContent) {
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
-  const objUrl = URL.createObjectURL(blob)
-
-  let exportFileDefaultName = 'christian_bale.csv';
-
-  let linkElement = document.getElementById('CSVdownload');
-  linkElement.setAttribute('href', objUrl);
-  linkElement.setAttribute('download', exportFileDefaultName);
-
-}

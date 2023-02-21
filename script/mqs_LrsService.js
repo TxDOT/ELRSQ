@@ -18,7 +18,7 @@ async function lrsQuery(method, useMap, ...id_coord) {
 
   const results = await queryService(url);
   showResults(results);
-  specialResults(results);
+  tabularConvertExport(results);
 
   if (useMap == 1) {
     showResultsOnMap(results);
@@ -206,7 +206,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  bulkExport(refinedData);
+  tabularConvertExport(refinedData);
 
   if (useLoadIndicator == 1) {
     YellowToGreen();
@@ -215,12 +215,6 @@ async function csvinToCsvout(text, method, ...index_coord) {
 };
 
 
-// TODO All: needs the functionality to export geoJSON and KML as well
-function bulkExport(refinedData) {
-  makeDownloadLink(Papa.unparse(refinedData));
-  // TODO export to geoJSON
-  // TODO export to KML
-}
 
 async function queryByLine(array, line, method, ...index_coord) {
   console.log("queryByLine");
