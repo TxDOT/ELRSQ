@@ -61,6 +61,38 @@ function makeLrsQueryUrlFromHtml(method, id_coord) {
 }
 
 
+function makeLrsQueryUrlFromIndex(method, vector, index_coord) {
+  console.log(vector);
+
+  if (method == 1) {
+    const lat = vector[index_coord[0]];
+    const lon = vector[index_coord[1]];
+    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
+  }
+
+  else if (method == 2) {
+    const routeName = vector[index_coord[0]];
+    const refMarker = vector[index_coord[1]];
+    const displacement = vector[index_coord[2]];
+    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs2?RouteID=${routeName}&ReferenceMarker=${refMarker}&Displacement=${displacement}`;
+  }
+
+  else if (method == 3) {
+    const controlSecNum = vector[index_coord[0]];
+    const milePointMeasure = vector[index_coord[1]];
+    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
+  }
+
+  else if (method == 4) {
+    const routeName = vector[index_coord[0]];
+    const dfo = vector[index_coord[1]];
+    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
+  }
+
+  return url;
+}
+
+
 // function which uses mouse click lat/lon to query lrs service for a single point
 async function coordinateQuery(_lat, _lon) {
   resetGraphics();
@@ -129,11 +161,8 @@ function addPointGraphic(lat, lon) {
 }
 
 
-
 // bulk conversion functions
 
-
-//experimental
 function thenConvertCSVByMethod(fileContents) {
   console.log("thenConvertCSVByMethod");
 
@@ -154,9 +183,6 @@ function thenConvertCSVByMethod(fileContents) {
 }
 
 
-
-// TODO All: needs the functionality to export geoJSON and KML as well
-// TODO All: split into two functions - one to do the query, another to make the outputs
 async function csvinToCsvout(text, method, ...index_coord) {
   let array = Papa.parse(text, { "skipEmptyLines": true }).data;
   let outputArray = [];
@@ -180,16 +206,21 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  makeDownloadLink(Papa.unparse(refinedData));
+  bulkExport(refinedData);
 
-  // FIXME replace with less intrusive dialogue
-  // alert("Ready to Download"); 
   if (useLoadIndicator == 1) {
     YellowToGreen();
   }
 
 };
 
+
+// TODO All: needs the functionality to export geoJSON and KML as well
+function bulkExport(refinedData) {
+  makeDownloadLink(Papa.unparse(refinedData));
+  // TODO export to geoJSON
+  // TODO export to KML
+}
 
 async function queryByLine(array, line, method, ...index_coord) {
   console.log("queryByLine");
@@ -199,38 +230,6 @@ async function queryByLine(array, line, method, ...index_coord) {
   console.log(url);
   const results = await queryService(url);
   return results;
-}
-
-
-function makeLrsQueryUrlFromIndex(method, vector, index_coord) {
-  console.log(vector);
-
-  if (method == 1) {
-    const lat = vector[index_coord[0]];
-    const lon = vector[index_coord[1]];
-    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
-  }
-
-  else if (method == 2) {
-    const routeName = vector[index_coord[0]];
-    const refMarker = vector[index_coord[1]];
-    const displacement = vector[index_coord[2]];
-    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs2?RouteID=${routeName}&ReferenceMarker=${refMarker}&Displacement=${displacement}`;
-  }
-
-  else if (method == 3) {
-    const controlSecNum = vector[index_coord[0]];
-    const milePointMeasure = vector[index_coord[1]];
-    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
-  }
-
-  else if (method == 4) {
-    const routeName = vector[index_coord[0]];
-    const dfo = vector[index_coord[1]];
-    url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
-  }
-
-  return url;
 }
 
 
