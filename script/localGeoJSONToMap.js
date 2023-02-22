@@ -7,6 +7,7 @@ function localGeoJSONToMap(localGeoJSON) {
 
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
       let geojson_line = localGeoJSON[i];
+      console.log(localGeoJSON[i]);
 
       //TODO get render elements from feature properties
       const renderer_line = {

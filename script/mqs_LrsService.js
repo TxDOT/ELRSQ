@@ -4,15 +4,11 @@ async function lrsQuery(method, useMap, ...id_coord) {
   resetGraphics();
   resetCurrentPos();
 
-  let useLoadIndicator = 1;
-
   if (useMap == 1) {
     clearResultsFromMap();
   }
 
-  if (useLoadIndicator == 1) {
-    GreenToYellow();
-  }
+  GreenToYellow();
 
   url = makeLrsQueryUrlFromHtml(method, id_coord);
 
@@ -24,9 +20,8 @@ async function lrsQuery(method, useMap, ...id_coord) {
     showPointResultsOnMap(results);
   }
 
-  if (useLoadIndicator == 1) {
-    YellowToGreen();
-  }
+  YellowToGreen();
+
 }
 
 
@@ -35,16 +30,13 @@ async function coordinateQuery(lat, lon) {
   resetGraphics();
   resetCurrentPos();
 
-  let useLoadIndicator = 1;
   let useMap = 1;
 
   if (useMap == 1) {
     clearResultsFromMap();
   }
 
-  if (useLoadIndicator == 1) {
-    GreenToYellow();
-  }
+  GreenToYellow();
 
   //go to cursor location, regardless of api results
   addPointGraphic(lat, lon);
@@ -63,9 +55,8 @@ async function coordinateQuery(lat, lon) {
     showPointResultsOnMap(results);
   }
 
-  if (useLoadIndicator == 1) {
-    YellowToGreen();
-  }
+  YellowToGreen();
+
 }
 
 
@@ -162,15 +153,11 @@ function thenConvertCSVByMethod(fileContents) {
 async function csvinToCsvout(text, method, ...index_coord) {
   let array = Papa.parse(text, { "skipEmptyLines": true }).data;
   let outputArray = [];
-  let useLoadIndicator = 1;
 
-  if (useLoadIndicator == 1) {
-    GreenToYellow();
-  }
+  GreenToYellow();
 
-  // TODO move hard-coded table headers
   ////const titleKeys = Object.keys(outputArray[0][0])
-  const titleKeys = ["LAT", "LON", "GID", "RTE_DEFN_LN_NM", "RTE_DFO", "ROUTEID", "ROUTENUMBER", "RTE_PRFX_TYPE_DSCR", "RDBD_TYPE_DSCR", "RMRKR_PNT_NBR", "RMRKR_DISPLACEMENT", "CTRL_SECT_LN_NBR", "CTRL_SECT_MPT", "MSG", "distance"]
+  let titleKeys = lrsApiFields;
   titleKeys.unshift("Feature");
   let refinedData = []
   refinedData.push(titleKeys)
@@ -184,9 +171,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
   tabularConvertExport(refinedData);
 
-  if (useLoadIndicator == 1) {
-    YellowToGreen();
-  }
+  YellowToGreen();
 
 };
 
@@ -217,17 +202,11 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   resetGraphics();
   resetCurrentPos();
 
-  // TODO make a global variable
-  let useLoadIndicator = 1;
-
   if (useMap == 1) {
     clearResultsFromMap();
   }
 
-  if (useLoadIndicator == 1) {
-    GreenToYellow();
-  }
-
+  GreenToYellow();
 
   let routeQueryOutput = [];
 
@@ -269,9 +248,7 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
 
   //TODO tabular export
 
-  if (useLoadIndicator == 1) {
-    YellowToGreen();
-  }
+  YellowToGreen();
 
 }
 

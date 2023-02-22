@@ -87,9 +87,8 @@ function removeLastProject(myProjects, myProjectLines) {
 //clears the arrays
 function clearProjectArrays(myProjects, myProjectLines) {
   console.log("clearProjectArrays");
-  //TODO  make global function
-  myProjects = [];
-  myProjectLines = [];
+  resetProjects();
+  resetProjectLines();
   listQueries(myProjects);
   parseGeometryToGeoJSON(myProjectLines);
 }

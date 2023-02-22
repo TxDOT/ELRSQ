@@ -3,8 +3,12 @@
 async function confirmRTENM() {
   console.log(answers);
 
+  GreenToYellow();
+
   result = (await
     new Promise(async function (resolve) {
+
+
 
       const foo = document.createElement('form');
 
@@ -30,6 +34,8 @@ async function confirmRTENM() {
     })
 
   );
+
+  YellowToGreen();
 
   answers = result;
   console.log(answers);

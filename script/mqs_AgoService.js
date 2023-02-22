@@ -28,7 +28,9 @@ function makequeryTxDOT_Roadways_Unsegmented() {
 //TODO RouteBuilder: do something with these results
 // pull out min and max DFO
 async function rdwayQuery(url) {
+  GreenToYellow();
   const results = await queryRoadwayService(url);
+  YellowToGreen();
   let min_DFO = results.features[0].attributes.BEGIN_DFO;
   let max_DFO = results.features[0].attributes.END_DFO;
   console.log(min_DFO);
@@ -42,8 +44,9 @@ async function rdwayQuery(url) {
 
 async function queryProjectGeometry(myProjects) {
   console.log(myProjects);
-  projectLines = []; //TODO change this to a function
+  resetProjectLines();
 
+  GreenToYellow();
   //get segment is called within a loop, for each project
   for (var i = 0; i < myProjects.length; i++) {
     let myProjectData = myProjects[i]
@@ -51,6 +54,9 @@ async function queryProjectGeometry(myProjects) {
     await queryRoadwayServiceByLine(myProjectData);
     //TODO add a return to queryRoadwayServiceByLine and deal with results here
   }
+
+  YellowToGreen();
+
 }
 
 // added output spatial reference to return WGS84
@@ -61,8 +67,9 @@ async function queryRoadwayServiceByLine(myProjectData) {
     "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
 
   console.log("queryRoadwayServiceByLine using url: " + url);
-
+  GreenToYellow();
   const results = await queryRoadwayService(url);
+  YellowToGreen();
   console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
   myClippedLine = getSegment(results, myProjectData, projects);
   projectLines.push(myClippedLine);

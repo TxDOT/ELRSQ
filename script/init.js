@@ -5,14 +5,25 @@ let graphics = [];
 //let projects = [];
 var projectLines = [];
 
+const useLoadIndicator = 1;
 
-function resetGraphics() {
-  graphics = []; //this is an experiment
-}
 
 function resetCurrentPos() {
   currentPos = 1;
 }
+
+function resetGraphics() {
+  graphics = [];
+}
+
+function resetProjects() {
+  projects = [];
+}
+
+function resetProjectLines() {
+  projectLines = [];
+}
+
 
 
 // projects is an array containing JS objects
@@ -42,6 +53,58 @@ let projects = [
     Desc: "10"
   }
 ];
+
+
+
+
+const lrsApiFields = [
+  "LAT",
+  "LON",
+  "GID",
+  "RTE_DEFN_LN_NM",
+  "RTE_DFO",
+  "ROUTEID",
+  "ROUTENUMBER",
+  "RTE_PRFX_TYPE_DSCR",
+  "RDBD_TYPE_DSCR",
+  "RMRKR_PNT_NBR",
+  "RMRKR_DISPLACEMENT",
+  "CTRL_SECT_LN_NBR",
+  "CTRL_SECT_MPT",
+  "MSG",
+  "distance"
+]
+
+
+const outputFieldIDs = {
+  ROUTEID: "#p_returned_ROUTEID",
+  RTE_DEFN_LN_NM: "#p_returned_RTE_DEFN_LN_NM",
+  RDBD_TYPE_DSCR: "#p_returned_RDBD_TYPE_DSCR",
+  RTE_DFO: "#p_returned_RTE_DFO",
+  CTRL_SECT_LN_NBR: "#p_returned_CTRL_SECT_LN_NBR",
+  CTRL_SECT_MPT: "#p_returned_CTRL_SECT_MPT",
+  RMRKR_PNT_NBR: "#p_returned_RMRKR_PNT_NBR",
+  RMRKR_DISPLACEMENT: "#p_returned_RMRKR_DISPLACEMENT",
+  LAT: "#p_returned_LAT",
+  LON: "#p_returned_LON",
+  BDFO: "#p_returned_RTE_DFO_begin",
+  EDFO: "#p_returned_RTE_DFO_end"
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //screen pane slider
 if (screen.width >= 768) {
@@ -98,12 +161,16 @@ $(document).ready(function () {
 
   document.getElementById("bulk-fieldset").addEventListener('drop', async function (e) {
     console.log(e.dataTransfer.files[0]);
+    GreenToYellow();
     const fileContents = await readFile(e.dataTransfer.files[0])
+    YellowToGreen();
     thenConvertCSVByMethod(fileContents);
   });
 
   document.getElementById("upload_csv-bulk").addEventListener('change', async function (e) {
+    GreenToYellow();
     const fileContents = await readFile(e.target.files[0])
+    YellowToGreen();
     thenConvertCSVByMethod(fileContents);
   });
 
