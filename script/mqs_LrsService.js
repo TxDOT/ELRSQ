@@ -165,7 +165,9 @@ async function csvinToCsvout(text, method, ...index_coord) {
   // skipping 0 header row
   for (let i = 1; i < array.length; i++) {
     console.log(i);
-    results = await queryByLine(array, i, method, ...index_coord);
+    url = makeLrsQueryUrlFromIndex(method, array[i], ...index_coord)
+    results = await queryService(url);
+    //results = await queryByLine(array, i, method, ...index_coord);
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
@@ -177,12 +179,12 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
 
 
-async function queryByLine(array, line, method, ...index_coord) {
-  url = makeLrsQueryUrlFromIndex(method, array[line], index_coord)
-  console.log(url);
-  const results = await queryService(url);
-  return results;
-}
+// async function queryByLine(array, line, method, ...index_coord) {
+//   url = makeLrsQueryUrlFromIndex(method, array[line], index_coord)
+//   console.log(url);
+//   const results = await queryService(url);
+//   return results;
+// }
 
 
 // if result has multiple rows, write each row individually
