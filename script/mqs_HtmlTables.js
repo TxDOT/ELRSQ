@@ -7,6 +7,8 @@ function showResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
   currentResult = allResults[index];
 
+
+
   //insert pagination
   insertPagination(currentPagination, resultCount);
 
@@ -206,8 +208,8 @@ function makeTableFromArray(dataArray) {
       }
       else {
         console.log("row: " + r + ", column: " + c);
-        console.log(JSON.stringify(records[0][c-1]));
-        result += "<td>" + JSON.stringify(records[0][c-1]) + "</td>";
+        console.log(JSON.stringify(records[0][c - 1]));
+        result += "<td>" + JSON.stringify(records[0][c - 1]) + "</td>";
       }
     }
     result += "</tr>";

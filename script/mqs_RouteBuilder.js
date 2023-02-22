@@ -61,11 +61,12 @@ function makeRouteProjectsTable(myProjects) {
     arrayForTable.push([i + 1].concat(myProjects[i]));
   }
 
-  if (myProjects.length == 0) {
-    $('#routes-table').html("");
-  } else {
-    $('#routes-table').html(makeTableFromArray(arrayForTable));
-  }
+  //FIXME fix and reenable
+  // if (myProjects.length == 0) {
+  //   $('#routes-table').html("");
+  // } else {
+  //   $('#routes-table').html(makeTableFromArray(arrayForTable));
+  // }
 }
 
 
@@ -79,17 +80,17 @@ function dropLastProjectFromArray(myProjects, myProjectLines) {
   }
 
   myProjectLines.pop();
-  listQueries(myProjects);
+  //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
   parseGeometryToGeoJSON(myProjectLines);
 }
 
 
 //clears the arrays
-function clearProjectArrays(myProjects, myProjectLines) {
-  console.log("clearProjectArrays");
+function clearProjectsFromArray(myProjects, myProjectLines) {
+  console.log("clearProjectsFromArray");
   resetProjects();
   resetProjectLines();
-  listQueries(myProjects);
+  //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
   parseGeometryToGeoJSON(myProjectLines);
 }
 
@@ -99,7 +100,7 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
 
   if (myRoadwayQueryResults.features.length == 0) {
     myProjects.pop();
-    listQueries(myProjects);
+    //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
     return;
   }
 
