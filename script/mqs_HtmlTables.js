@@ -1,4 +1,4 @@
-
+//TODO move these values to a config file
 var outputFieldIDs = {
   ROUTEID: "#p_returned_ROUTEID",
   RTE_DEFN_LN_NM: "#p_returned_RTE_DEFN_LN_NM",
@@ -183,7 +183,7 @@ function showRouteResults(routeQueryOutput) {
 // }
 //---------------------------------------
 
-
+// FIXME this table no longer works
 //---------------------------------------
 function makeTableFromArray(dataArray) {
   let colheads = ['ID', 'RTENM', 'BDFO', 'EDFO', 'COLOR', 'WIDTH', 'DESC'];

@@ -22,8 +22,8 @@ function makequeryTxDOT_Roadways_Unsegmented() {
   navigator.clipboard.writeText(url);
 
   rdwayQuery(url);
-
 }
+
 
 //TODO RouteBuilder: do something with these results
 // pull out min and max DFO
@@ -41,24 +41,20 @@ async function rdwayQuery(url) {
 //for each project, queries queryRecordFromServiceGeometry
 
 async function queryProjectGeometry(myProjects) {
-  console.log("queryProjectGeometry");
   console.log(myProjects);
-  projectLines = [];
+  projectLines = []; //TODO change this to a function
 
   //get segment is called within a loop, for each project
   for (var i = 0; i < myProjects.length; i++) {
-    console.log("queryProjectGeometry looping queryRoadwayServiceByLine");
-    console.log(myProjects);
-    console.log(myProjects[i]);
     let myProjectData = myProjects[i]
 
     await queryRoadwayServiceByLine(myProjectData);
+    //TODO add a return to queryRoadwayServiceByLine and deal with results here
   }
-  console.log("projectLines: ");
-  console.log(projectLines);
 }
 
 // added output spatial reference to return WGS84
+//TODO add a return
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +

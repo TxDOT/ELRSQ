@@ -176,9 +176,9 @@ require([
 
 // creates point graphic at lat/lon of each result
 
-function showResultsOnMap(results) {
+function showPointResultsOnMap(results) {
   //go through each result and add on map
-  //const graphics = []; // going to initialize this outside of the function and see what happens
+
   require(["esri/Graphic"], (Graphic) => {
 
     results.forEach(_result => {
@@ -218,9 +218,40 @@ function showResultsOnMap(results) {
 
 }
 
+function addPointGraphic(lat, lon) {
+  require(["esri/Graphic"], (Graphic) => {
+    let point = {
+      type: "point",
+      latitude: parseFloat(lat),
+      longitude: parseFloat(lon)
+    };
+
+    let symbol = {
+      type: "simple-marker",
+      color: [226, 119, 40],
+      size: "12px",
+      outline: {
+        color: [255, 255, 0],
+        width: 3
+      }
+    };
+
+    let pointGraphic = new Graphic({
+      geometry: point,
+      symbol: symbol
+    });
+
+    view.graphics.add(pointGraphic);
+  });
+}
+
+
+
+
+
 function clearResultsFromMap() {
 
-  graphics = []; /*experiment */
+  graphics = [];
   //clear existing point
   view.graphics.removeAll();
 
@@ -241,3 +272,5 @@ function returnToPoint() {
     })
   }
 }
+
+

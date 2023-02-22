@@ -31,8 +31,6 @@ function ToGreen(){
   $('#readyBadge').show();
 }
 
-
-
 // end status functions
 
 

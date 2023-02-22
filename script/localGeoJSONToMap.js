@@ -8,14 +8,13 @@ function localGeoJSONToMap(localGeoJSON) {
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
       let geojson_line = localGeoJSON[i];
 
+      //TODO get render elements from feature properties
       const renderer_line = {
         type: "simple",
-        field: "mag",
         symbol: {
           type: "simple-line",  // autocasts as new SimpleLineSymbol()
           color: "orange",
-          width: "5px"//,
-          //style: "short-dot"
+          width: "5px"
         }
       };
 

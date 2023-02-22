@@ -4,41 +4,28 @@
 // those without a saved `fullExtent` on the service.
 
 function zoomToLayer(layer) {
-    return layer.queryExtent().then((response) => {
-      console.log(response);
-      view.goTo(response.extent)
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-  }
-
-
-  
-function exportToJsonFile(jsonData) {
-  console.log("JSON export");
-  let dataStr = JSON.stringify(jsonData);
-  let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-
-  let exportFileDefaultName = 'results.json';
-
-  let linkElement = document.getElementById('JSONdownload');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  return layer.queryExtent().then((response) => {
+    console.log(response);
+    view.goTo(response.extent)
+      .catch((error) => {
+        console.error(error);
+      });
+  });
 }
 
+
+
 function kmlGeom(theData) {
-  // console.log(theData);
   var kmlCoords = "";
   var calcCoord = [];
   for (var i = 0; i < theData.length; i++) {
-      calcCoord = metersToLatLong(theData[i]);
+    calcCoord = metersToLatLong(theData[i]);
 
-      if (i == theData.length - 1) {
-          kmlCoords += calcCoord.toString();
-      } else {
-          kmlCoords += calcCoord.toString() + " ";
-      }
+    if (i == theData.length - 1) {
+      kmlCoords += calcCoord.toString();
+    } else {
+      kmlCoords += calcCoord.toString() + " ";
+    }
   }
 
   return kmlCoords;

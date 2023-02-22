@@ -77,7 +77,7 @@ function getSegment(myData, myPrjAttributes, myProjects) {
 
   //Clipping to desired From and To
 
-  clippedLine = clipFromTo(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
+  clippedLine = clipFromToAndMakeGeoJson(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
   return clippedLine;
 }
 

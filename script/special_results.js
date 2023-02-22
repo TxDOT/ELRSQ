@@ -1,16 +1,3 @@
-
-function exportToJsonFile(jsonData) {
-    let dataStr = JSON.stringify(jsonData);
-    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-
-    let exportFileDefaultName = 'results.json';
-
-    let linkElement = document.getElementById('#JSONdownload');
-    console.log(linkElement);
-    //linkElement.setAttribute('href', dataUri);
-    //linkElement.setAttribute('download', exportFileDefaultName);
-}
-
 // this is from RPM and needs to be edited
 function exportKML() {
 

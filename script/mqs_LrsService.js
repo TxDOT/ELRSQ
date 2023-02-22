@@ -21,13 +21,53 @@ async function lrsQuery(method, useMap, ...id_coord) {
   tabularConvertExport(results);
 
   if (useMap == 1) {
-    showResultsOnMap(results);
+    showPointResultsOnMap(results);
   }
 
   if (useLoadIndicator == 1) {
     YellowToGreen();
   }
 }
+
+
+// function which uses mouse click lat/lon to query lrs service for a single point
+async function coordinateQuery(lat, lon) {
+  resetGraphics();
+  resetCurrentPos();
+
+  let useLoadIndicator = 1;
+  let useMap = 1;
+
+  if (useMap == 1) {
+    clearResultsFromMap();
+  }
+
+  if (useLoadIndicator == 1) {
+    GreenToYellow();
+  }
+
+  //go to cursor location, regardless of api results
+  addPointGraphic(lat, lon);
+  view.goTo({
+    center: [parseFloat(lon), parseFloat(lat)],
+    zoom: 17,
+  });
+
+  const url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
+
+  const results = await queryService(url);
+  showResults(results);
+  tabularConvertExport(results);
+
+  if (useMap == 1) {
+    showPointResultsOnMap(results);
+  }
+
+  if (useLoadIndicator == 1) {
+    YellowToGreen();
+  }
+}
+
 
 
 function makeLrsQueryUrlFromHtml(method, id_coord) {
@@ -93,72 +133,8 @@ function makeLrsQueryUrlFromIndex(method, vector, index_coord) {
 }
 
 
-// function which uses mouse click lat/lon to query lrs service for a single point
-async function coordinateQuery(_lat, _lon) {
-  resetGraphics();
-  resetCurrentPos();
 
-  let useLoadIndicator = 1;
 
-  if (useLoadIndicator == 1) {
-    GreenToYellow();
-  }
-
-  let lat, lon;
-
-  if (_lat && _lon) {
-    lat = _lat;
-    lon = _lon;
-  }
-
-  //clear existing point
-  clearResultsFromMap();
-  view.goTo({
-    center: [parseFloat(lon), parseFloat(lat)],
-    zoom: 17,
-  });
-
-  const url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
-
-  const results = await queryService(url);
-
-  showResults(results)
-  showResultsOnMap(results);
-
-  addPointGraphic(lat, lon);
-
-  if (useLoadIndicator == 1) {
-    YellowToGreen();
-  }
-
-}
-
-function addPointGraphic(lat, lon) {
-  require(["esri/Graphic"], (Graphic) => {
-    let point = {
-      type: "point",
-      latitude: parseFloat(lat),
-      longitude: parseFloat(lon)
-    };
-
-    let symbol = {
-      type: "simple-marker",
-      color: [226, 119, 40],
-      size: "12px",
-      outline: {
-        color: [255, 255, 0],
-        width: 3
-      }
-    };
-
-    let pointGraphic = new Graphic({
-      geometry: point,
-      symbol: symbol
-    });
-
-    view.graphics.add(pointGraphic);
-  });
-}
 
 
 // bulk conversion functions
@@ -190,9 +166,9 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
   if (useLoadIndicator == 1) {
     GreenToYellow();
-    console.log("busy");
   }
 
+  // TODO move hard-coded table headers
   ////const titleKeys = Object.keys(outputArray[0][0])
   const titleKeys = ["LAT", "LON", "GID", "RTE_DEFN_LN_NM", "RTE_DFO", "ROUTEID", "ROUTENUMBER", "RTE_PRFX_TYPE_DSCR", "RDBD_TYPE_DSCR", "RMRKR_PNT_NBR", "RMRKR_DISPLACEMENT", "CTRL_SECT_LN_NBR", "CTRL_SECT_MPT", "MSG", "distance"]
   titleKeys.unshift("Feature");
@@ -217,10 +193,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
 
 async function queryByLine(array, line, method, ...index_coord) {
-  console.log("queryByLine");
-  currentLine = array[line];
-
-  url = makeLrsQueryUrlFromIndex(method, currentLine, index_coord)
+  url = makeLrsQueryUrlFromIndex(method, array[line], index_coord)
   console.log(url);
   const results = await queryService(url);
   return results;
@@ -241,16 +214,22 @@ function breakMultipleResults(output1, output2, array, line, results) {
 
 // function which takes method to query lrs service for a single point
 async function lrsDualQuery(method, useMap, ...id_coord) {
-  currentPos = 1;
-  console.log(method);
-  console.log(id_coord);
+  resetGraphics();
+  resetCurrentPos();
 
-  let routeQueryOutput = [];
-
+  // TODO make a global variable
+  let useLoadIndicator = 1;
 
   if (useMap == 1) {
     clearResultsFromMap();
   }
+
+  if (useLoadIndicator == 1) {
+    GreenToYellow();
+  }
+
+
+  let routeQueryOutput = [];
 
   if (method == 1) {
     b_coord = id_coord.slice(0, 2);
@@ -278,24 +257,21 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
     routeQueryOutput.push(rte_nm);
   }
 
-  B_url = makeLrsQueryUrlFromHtml(method, b_coord);
-  E_url = makeLrsQueryUrlFromHtml(method, e_coord);
+  let B_url = makeLrsQueryUrlFromHtml(method, b_coord);
+  let E_url = makeLrsQueryUrlFromHtml(method, e_coord);
 
   const B_results = await queryService(B_url);
   const E_results = await queryService(E_url);
-
-  console.log("success");
-  console.log(B_results);
-  console.log(E_results);
 
   await Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm);
 
   showRouteResults(routeQueryOutput);
 
-  /*
-  if (useMap == 1) {
-      showResultsOnMap(results);
-  }*/
+  //TODO tabular export
+
+  if (useLoadIndicator == 1) {
+    YellowToGreen();
+  }
 
 }
 

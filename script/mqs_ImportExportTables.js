@@ -2,12 +2,12 @@
 
 function tabularConvertExport(results) {
   jsonData = results;
-  exportToCsvFile(jsonData);
+  exportPointsToCsvFile(jsonData);
   exportPointsToGeoJsonFile(jsonData);
   exportPointsToKMLFile(jsonData);
 }
 
-function exportToCsvFile(jsonData) {
+function exportPointsToCsvFile(jsonData) {
   console.log("CSV export");
 
   let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] });
@@ -22,7 +22,7 @@ function exportToCsvFile(jsonData) {
 function exportPointsToGeoJsonFile(jsonData) {
   console.log("geoJSON export");
 
-  var geojson = jsonToGeoJson(jsonData)
+  var geojson = jsonFromLrsApiToGeoJson(jsonData)
   let dataStr = JSON.stringify(geojson);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
   let exportFileDefaultName = 'results.json';
@@ -45,24 +45,7 @@ function exportPointsToKMLFile(jsonData) {
 }
 
 
-// function bulkExport(refinedData) {
-//   makeDownloadLink(Papa.unparse(refinedData));
-// }
-
-
-// function makeDownloadLink(csvContent) {
-//   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
-//   const objUrl = URL.createObjectURL(blob)
-
-//   let exportFileDefaultName = 'christian_bale.csv';
-
-//   let linkElement = document.getElementById('CSVdownload');
-//   linkElement.setAttribute('href', objUrl);
-//   linkElement.setAttribute('download', exportFileDefaultName);
-// }
-
-
-function jsonToGeoJson(jsonData) {
+function jsonFromLrsApiToGeoJson(jsonData) {
 
   var geojson = {
     type: "FeatureCollection",

@@ -15,7 +15,7 @@ function resetCurrentPos() {
 }
 
 
-
+// projects is an array containing JS objects
 let projects = [
   {
     RTE_NM: "IH0035-KG",
@@ -43,7 +43,7 @@ let projects = [
   }
 ];
 
-
+//screen pane slider
 if (screen.width >= 768) {
   const GUTTER_SIZE = 30;
   Split(['#split-0', '#split-1'], {
@@ -56,7 +56,7 @@ if (screen.width >= 768) {
 
 
 
-
+// add certain page elements and event handlers on page load
 $(document).ready(function () {
   console.log("doc ready");
 
@@ -91,6 +91,7 @@ $(document).ready(function () {
     $("#missingCoordinates").on('click', function () { restartWizard(); });
   });
 
+
   // FIXME Bulk Upload: change to use Convert button instead of automatic
   const myDropZone = document.getElementById("bulk-fieldset");
   eventHandlers(myDropZone);
@@ -107,7 +108,6 @@ $(document).ready(function () {
   });
 
 });
-
 
 
 // drag and drop event handlers

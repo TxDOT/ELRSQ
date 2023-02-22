@@ -42,8 +42,6 @@ function addProjectToArray(myProjects) {
     myProjects.push(projObj);
   }
 
-
-  //console.log("addProjectToArray calling listQueries");
   listQueries(myProjects);
 }
 
@@ -57,7 +55,6 @@ function addProjectToArray(myProjects) {
 
 
 function listQueries(myProjects) {
-  //console.log("listQueries");
   var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
   for (var i = 0; i < myProjects.length; i++) {
@@ -82,9 +79,7 @@ function removeLastProject(myProjects, myProjectLines) {
   }
 
   myProjectLines.pop();
-  console.log("removeLastProject calling listQueries");
   listQueries(myProjects);
-  console.log("removeLastProject calling parseGeometryToGeoJSON");
   parseGeometryToGeoJSON(myProjectLines);
 }
 
@@ -92,18 +87,15 @@ function removeLastProject(myProjects, myProjectLines) {
 //clears the arrays
 function clearProjectArrays(myProjects, myProjectLines) {
   console.log("clearProjectArrays");
+  //TODO  make global function
   myProjects = [];
   myProjectLines = [];
-  console.log("clearProjectArrays calling listQueries");
   listQueries(myProjects);
-  console.log("clearProjectArrays calling parseGeometryToGeoJSON");
   parseGeometryToGeoJSON(myProjectLines);
 }
 
 
 function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
-  console.log("getSegment");
-
   //// multiple results are orderByFields=BEGIN_DFO
 
   if (myRoadwayQueryResults.features.length == 0) {
@@ -115,10 +107,10 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
   var theFrom = roundToDecimalPlace(myPrjAttributes.BDFO, 3);
   var theTo = roundToDecimalPlace(myPrjAttributes.EDFO, 3);
 
-  // this targets the last (if > 1) feature returned by the roadway query (has highest BDFO)
+  //// this targets the last (if > 1) feature returned by the roadway query (has highest BDFO)
   let maxFeatureM = roundToDecimalPlace(myRoadwayQueryResults.features.last().geometry.paths[0].last()[2], 3);
 
-  //Checking END_DFO against Max Feature M value
+  //// Checking END_DFO against Max Feature M value
   if (theTo > maxFeatureM) {
     theTo = maxFeatureM;
     alert("End DFO reduced to Max Road DFO (" + theTo + ") for project " + myPrjAttributes.RTE_NM);
@@ -138,15 +130,14 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
   }
 
   //Clipping to desired From and To
-  let aFeatureCollectionObj = clipFromTo(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
-  console.log(aFeatureCollectionObj);
+  let aFeatureCollectionObj = clipFromToAndMakeGeoJson(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
   return aFeatureCollectionObj;
 }
 
 
 //function setVertexNumbers(theData, a, theFrom, theTo)
 function setVertexNumbers(feature, myFrom, myTo) {
-  returnedFeatureGeomPart = [];
+  //returnedFeatureGeomPart = [];
   var vertexBeginNumber = 0;
   var vertexEndNumber = 0;
 
@@ -204,15 +195,16 @@ function setVertexNumbers(feature, myFrom, myTo) {
     }
   }
 
+  //TODO change from array to JS object
   var vertexNumbers = [vertexBeginNumber, vertexEndNumber];
   return vertexNumbers;
 }
 
 
 // clips
-function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
+function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   let aFeatureCollectionArray = [];
-  console.log("clipFromTo myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
 
   //Clipping to desired From and To
   var newBeginPoint = [];
@@ -256,7 +248,6 @@ function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
 
 //The Line with Geometry and Desired M value
 function locatePointOnLine(theLine, pointMeasure) {
-  //console.log("locatePointOnLine");
   var pointLocation = [];
   var PrevCoordM;
   var CurCoordM;
@@ -296,7 +287,6 @@ function locatePointOnLine(theLine, pointMeasure) {
       newY = (beginPercentOfWhole * endPoint[1]) + (beginRemainderPercent * beginPoint[1]);
 
       pointLocation.push(newX, newY);
-      //return pointLocation;
     }
   }
 

@@ -8,7 +8,6 @@ class Bulk_Modal extends HTMLElement {
 }
 customElements.define('bulk_modal-component', Bulk_Modal);
 
-
 class Cursor_Help_Modal extends HTMLElement {
   constructor() {
     super();
@@ -18,7 +17,6 @@ class Cursor_Help_Modal extends HTMLElement {
   }
 }
 customElements.define('cursor_help_modal-component', Cursor_Help_Modal);
-
 
 class Form_Help_Modal extends HTMLElement {
   constructor() {
@@ -104,8 +102,6 @@ customElements.define('nav_bar-component', Nav_Bar);
 class Results_Card extends HTMLElement {
   constructor() {
       super();
-      /*let path = '/components/results_card.html';
-      this.#getHTML(path);*/
   }
   connectedCallback() {
       this.innerHTML = staticResults_Card;
