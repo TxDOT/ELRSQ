@@ -37,37 +37,6 @@ function resetProjectLines() {
 
 
 
-// projects is an array containing JS objects
-let projects = [
-  {
-    RTE_NM: "IH0035-KG",
-    BDFO: "121.243",
-    EDFO: "149.576",
-    Color: "#ff8000",
-    Width: 4,
-    Desc: "35"
-  },
-  {
-    RTE_NM: "IH0045-KG",
-    BDFO: "1.243",
-    EDFO: "9.576",
-    Color: "#ff8000",
-    Width: 4,
-    Desc: "45"
-  },
-  {
-    RTE_NM: "IH0010-KG",
-    BDFO: "500.01",
-    EDFO: "600.01",
-    Color: "#ff8000",
-    Width: 4,
-    Desc: "10"
-  }
-];
-
-
-
-
 const lrsApiFields = [
   "LAT",
   "LON",

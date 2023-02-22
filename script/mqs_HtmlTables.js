@@ -86,6 +86,9 @@ function clearResults() {
 
   $(outputFieldIDs.LAT).html('');
   $(outputFieldIDs.LON).html('');
+
+  $(outputFieldIDs.BDFO).html('');
+  $(outputFieldIDs.EDFO).html('');
 }
 
 
