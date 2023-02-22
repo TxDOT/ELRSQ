@@ -57,8 +57,11 @@ function addProjectToArray(myProjectsArr) {
 function makeRouteProjectsTable(myProjectsArr) {
   var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
-  for (var i = 0; i < myProjects.length; i++) {
-    arrayForTable.push([i + 1].concat(myProjects[i]));
+  for (var projectno = 0; projectno < myProjectsArr.length; projectno++) {
+    arrayForTable.push(
+      [projectno + 1].concat(
+        Object.values(myProjectsArr[projectno])
+      ));
   }
 
   //FIXME fix and reenable
