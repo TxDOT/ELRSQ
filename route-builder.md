@@ -1,16 +1,16 @@
 
 build-routes.html
-<button type="button" onclick="queryProjectGeometry(projects)" class="btn btn-primary" Convert</button>
+<button type="button" onclick="queryProjectGeometry(projectsArr)" class="btn btn-primary" Convert</button>
 
-//iterates over projects array
+//iterates over projectsArr array
 //for each project, queries queryRecordFromServiceGeometry
 
-async function queryProjectGeometry(myProjects) {
+async function queryProjectGeometry(myProjectsArr) {
     projectLines = [];
 
     //get segment is called within a loop, for each project
-    for (var i = 0; i < myProjects.length; i++) {
-        let myProjectData = myProjects[i]
+    for (var i = 0; i < myProjectsArr.length; i++) {
+        let myProjectData = myProjectsArr[i]
         await queryRoadwayServiceByLine(myProjectData);
     }
 }
@@ -23,7 +23,7 @@ async function queryRoadwayServiceByLine(myProjectData) {
         "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
 
     const results = await queryRoadwayService(url);
-    myClippedLine = getSegment(results, myProjectData, projects);
+    myClippedLine = getSegment(results, myProjectData, projectsArr);
     projectLines.push(myClippedLine);
 }
 
@@ -37,10 +37,10 @@ async function queryRoadwayService(url) {
 }
 
 
-function getSegment(myData, myPrjAttributes, myProjects) {
+function getSegment(myData, myPrjAttributes, myProjectsArr) {
   if (myData.features.length == 0) {
-    myProjects.pop();
-    makeRouteProjectsTable(myProjects);
+    myProjectsArr.pop();
+    makeRouteProjectsTable(myProjectsArr);
     return;
   }
 

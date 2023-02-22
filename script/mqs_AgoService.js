@@ -39,17 +39,17 @@ async function rdwayQuery(url) {
 }
 
 
-//iterates over projects array
+//iterates over projectsArr array
 //for each project, queries queryRecordFromServiceGeometry
 
-async function queryProjectGeometry(myProjects) {
-  console.log(myProjects);
+async function queryProjectGeometry(myProjectsArr) {
+  console.log(myProjectsArr);
   resetProjectLines();
 
   GreenToYellow();
   //get segment is called within a loop, for each project
-  for (var i = 0; i < myProjects.length; i++) {
-    let myProjectData = myProjects[i]
+  for (var i = 0; i < myProjectsArr.length; i++) {
+    let myProjectData = myProjectsArr[i]
 
     await queryRoadwayServiceByLine(myProjectData);
     //TODO add a return to queryRoadwayServiceByLine and deal with results here
@@ -71,6 +71,6 @@ async function queryRoadwayServiceByLine(myProjectData) {
   const results = await queryRoadwayService(url);
   YellowToGreen();
   console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
-  myClippedLine = getSegment(results, myProjectData, projects);
+  myClippedLine = getSegment(results, myProjectData, projectsArr);
   projectLines.push(myClippedLine);
 }

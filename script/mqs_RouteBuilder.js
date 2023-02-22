@@ -1,24 +1,24 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within projects array
-//// add to projects array if it is not a duplicate
+//// retrieve position within projectsArr array
+//// add to projectsArr array if it is not a duplicate
 
 //do not delete
-function addProjectToArray_old(myProjects) {
+function addProjectToArray_old(myProjectsArr) {
   console.log("addProjectToArray");
   projString = [document.input.RTE_NM.value, document.input.BDFO.value, document.input.EDFO.value,
   document.input.Color.value, + document.input.Width.value, document.input.Desc.value]
 
-  if (myProjects.indexOf(projString) < 0) {
-    myProjects.push(projString);
+  if (myProjectsArr.indexOf(projString) < 0) {
+    myProjectsArr.push(projString);
   }
   console.log("addProjectToArray calling makeRouteProjectsTable");
-  makeRouteProjectsTable(myProjects);
+  makeRouteProjectsTable(myProjectsArr);
 }
 
 
 
-function addProjectToArray(myProjects) {
+function addProjectToArray(myProjectsArr) {
   console.log("addProjectToArray");
   let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
   let BDFO = $(outputFieldIDs.BDFO).html();
@@ -38,11 +38,11 @@ function addProjectToArray(myProjects) {
   let projString = JSON.stringify(projObj);
   console.log(projString);
 
-  if (myProjects.indexOf(projObj) < 0) {
-    myProjects.push(projObj);
+  if (myProjectsArr.indexOf(projObj) < 0) {
+    myProjectsArr.push(projObj);
   }
 
-  makeRouteProjectsTable(myProjects);
+  makeRouteProjectsTable(myProjectsArr);
 }
 
 
@@ -54,7 +54,7 @@ function addProjectToArray(myProjects) {
 //function routeCenterlineValidator()
 
 
-function makeRouteProjectsTable(myProjects) {
+function makeRouteProjectsTable(myProjectsArr) {
   var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
   for (var i = 0; i < myProjects.length; i++) {
@@ -62,45 +62,45 @@ function makeRouteProjectsTable(myProjects) {
   }
 
   //FIXME fix and reenable
-  // if (myProjects.length == 0) {
-  //   $('#routes-table').html("");
-  // } else {
-  //   $('#routes-table').html(makeTableFromArray(arrayForTable));
-  // }
+  if (myProjectsArr.length == 0) {
+    $('#routes-table').html("");
+  } else {
+    $('#routes-table').html(makeTableFromArray(arrayForTable));
+  }
 }
 
 
-// removes last project in projects array
-function dropLastProjectFromArray(myProjects, myProjectLines) {
+// removes last project in projectsArr array
+function dropLastProjectFromArray(myProjectsArr, myProjectLines) {
   console.log("dropLastProjectFromArray");
-  myProjects.pop();
+  myProjectsArr.pop();
 
-  if (myProjects.length == 0) {
-    clearProjectsFromArray(myProjects, myProjectLines);
+  if (myProjectsArr.length == 0) {
+    clearProjectsFromArray(myProjectsArr, myProjectLines);
   }
 
   myProjectLines.pop();
-  //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
+  makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
   parseGeometryToGeoJSON(myProjectLines);
 }
 
 
 //clears the arrays
-function clearProjectsFromArray(myProjects, myProjectLines) {
+function clearProjectsFromArray(myProjectsArr, myProjectLines) {
   console.log("clearProjectsFromArray");
   resetProjects();
   resetProjectLines();
-  //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
+  makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
   parseGeometryToGeoJSON(myProjectLines);
 }
 
 
-function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
+function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectsArr) {
   //// multiple results are orderByFields=BEGIN_DFO
 
   if (myRoadwayQueryResults.features.length == 0) {
-    myProjects.pop();
-    //makeRouteProjectsTable(myProjects); //FIXME fix and reenable
+    myProjectsArr.pop();
+    //makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
     return;
   }
 

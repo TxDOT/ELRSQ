@@ -13,7 +13,7 @@ if (screen.width >= 768) {
 let allResults = [];
 let currentPagination = 1;
 let graphics = [];
-let projects = [];
+let projectsArr = [];
 var projectLines = [];
 
 const useLoadIndicator = 1;
@@ -28,7 +28,7 @@ function resetGraphics() {
 }
 
 function resetProjects() {
-  projects = [];
+  projectsArr = [];
 }
 
 function resetProjectLines() {

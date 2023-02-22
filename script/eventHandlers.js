@@ -19,9 +19,9 @@ $(":reset").on('click', function () { clearResultsFromMap(); });
 $("#returnToPoint").on('click', function () { returnToPoint(); });
 
 //route builder
-$("#addRow").on('click', function () { addProjectToArray(projects); });
-$("#dropRow").on('click', function () { dropLastProjectFromArray(projects, projectLines); });
-$("#clearRows").on('click', function () { clearProjectsFromArray(projects, projectLines); });
+$("#addRow").on('click', function () { addProjectToArray(projectsArr); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(projectsArr, projectLines); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(projectsArr, projectLines); });
 
 
 
@@ -58,8 +58,8 @@ $('#demo-mode-toggle').change(function () {
     $("#inputEndControlSection").val("012201");
     $("#inputEndMilepointMeasure").val("2.394");
 
-    // projects is an array containing JS objects
-    projects = [
+    // projectsArr is an array containing JS objects
+    projectsArr = [
       {
         RTE_NM: "IH0035-KG",
         BDFO: "121.243",
