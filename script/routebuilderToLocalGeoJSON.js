@@ -3,56 +3,62 @@
 //Draws user defined project on the map 
 function parseGeometryToGeoJSON(prjGeom) {
   console.log("parseGeometryToGeoJSON");
+  console.log(prjGeom);
+  let x = isJSON(prjGeom);
+  console.log(x);
+
+  let featureCollectionTextArr = [];
+  // begin loop over FeatureCollection
   for (var nFeatureCollection = 0; nFeatureCollection < prjGeom.length; nFeatureCollection++) {
     console.log("print geom level FeatureCollection: ");
     console.log(prjGeom[nFeatureCollection]);
     console.log("Feature: " + nFeatureCollection);
 
+    let featureTextArr = [];
+    // begin loop over Feature
     for (var nFeature = 0; nFeature < prjGeom[nFeatureCollection].length; nFeature++) {
-      let coordinates = '';
+      console.log("print geom level Feature: ");
+      console.log(prjGeom[nFeatureCollection][nFeature]);
 
+      let propertiesTextArr = [];
+      // begin loop over Properties
       for (var nLineString = 1; nLineString < prjGeom[nFeatureCollection][nFeature].length; nLineString++) {
         console.log("print geom level LineString: ");
-        console.log(prjGeom[nFeatureCollection][nFeature][nLineString]);
-        console.log("RTE_NM: " + prjGeom[nFeatureCollection][nFeature][nLineString][0]);
-        console.log("BDFO: " + prjGeom[nFeatureCollection][nFeature][nLineString][1]);
-        console.log("EDFO: " + prjGeom[nFeatureCollection][nFeature][nLineString][2]);
-        console.log("Color: " + prjGeom[nFeatureCollection][nFeature][nLineString][3]);
-        console.log("Width: " + prjGeom[nFeatureCollection][nFeature][nLineString][4]);
-        console.log("Desc: " + prjGeom[nFeatureCollection][nFeature][nLineString][5]);
-
-
-
-        propertiesText = `"properties": { "RTE_NM": "` + prjGeom[nFeatureCollection][nFeature][nLineString][0] +
-          `", "BDFO": ` + prjGeom[nFeatureCollection][nFeature][nLineString][1] + `, "EDFO": ` + prjGeom[nFeatureCollection][nFeature][nLineString][2] +
-          `,"Color": "` + prjGeom[nFeatureCollection][nFeature][nLineString][3] + `", "Width": ` + prjGeom[nFeatureCollection][nFeature][nLineString][4] +
-          `,"Desc": "` + prjGeom[nFeatureCollection][nFeature][nLineString][5] + `"}`
-
-        console.log(propertiesText);
+        let propertyVals = prjGeom[nFeatureCollection][nFeature][nLineString];
+        let propertyKeys = ["RTE_NM", "BDFO" , "EDFO", "Color", "Width", "Desc"];
+        let propertiesText = JSON.stringify(propertyKeys.reduce((obj, key, index) => ({ ...obj, [key]: propertyVals[index] }), {}));
+        propertiesTextArr.push(propertiesText);
 
       }
-      for (var nCoordinate = 0; nCoordinate < 10; nCoordinate++) {
-        console.log("coordinates: " + nCoordinate);
-        console.log(prjGeom[nFeatureCollection][nFeature][0][nCoordinate]);
+      // end loop over Properties
+      console.log(propertiesTextArr);
 
-        if (nCoordinate + 1 < 10) {
-          coordinateBracket = `[` + prjGeom[nFeatureCollection][nFeature][0][nCoordinate] + `],`;
-        } else {
-          coordinateBracket = `[` + prjGeom[nFeatureCollection][nFeature][0][nCoordinate] + `]`;
-        }
+      let strCoordinates = "[" + (prjGeom[nFeatureCollection][nFeature][0]).join("],[") + "]";
+      let geometryText = `geometry: { type: LineString, coordinates: [${strCoordinates}] }`;
+      ////console.log(geometryText);
 
-        coordinates += coordinateBracket;
-
-      }
-      console.log(coordinates);
-      geometryText = `"geometry": { ` + `"type": "LineString", "coordinates": [` + coordinates + `]`;
-
+      let _propertiesText = propertiesTextArr[0];
+      let featureText = `{ "type": "Feature", ${_propertiesText},${geometryText}, "id": ${nFeature} }`;
+      featureTextArr.push(featureText);
     }
+    // end loop over Feature
+    console.log(featureTextArr);
 
 
-    featureText = `{ "type": "Feature", ` + propertiesText + `,` + geometryText + `}, "id": "` + nFeatureCollection + `" }`;
-    console.log(featureText);
+    //featureText = `, "id": "` + nFeatureCollection + `" }`;
+    //console.log(featureText);
   }
-  featureCollectionText = `{"type": "FeatureCollection", "metadata": {}, "features": [` + featureText + `]}`;
-  console.log(featureCollectionText);
+  // end loop over FeatureCollection
+
+  //featureCollectionText = `{"type": "FeatureCollection", "metadata": {}, "features": [` + featureText + `]}`;
+  //console.log(featureCollectionText);
+}
+
+
+function isJSON(str) {
+  try {
+    return (JSON.parse(str) && !!str);
+  } catch (e) {
+    return false;
+  }
 }

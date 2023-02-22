@@ -48,23 +48,35 @@ async function queryProjectGeometry(myProjects) {
     //get segment is called within a loop, for each project
     for (var i = 0; i < myProjects.length; i++) {
         console.log("queryProjectGeometry looping queryRoadwayServiceByLine");
+        console.log(myProjects);
         console.log(myProjects[i]);
         let myProjectData = myProjects[i]
 
         await queryRoadwayServiceByLine(myProjectData);
     }
+    console.log("projectLines: ");
     console.log(projectLines);
 }
 
 // added output spatial reference to return WGS84
 async function queryRoadwayServiceByLine(myProjectData) {
 
+
+    // why is this a 0 index?
+    // url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
+    //     myProjectData[0] +
+    //     "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
+
     // why is this a 0 index?
     url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
-        myProjectData[0] +
+        myProjectData.RTE_NM +
         "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
 
+
+    console.log("queryRoadwayServiceByLine using url: " + url);
+
     const results = await queryRoadwayService(url);
+    console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
     myClippedLine = getSegment(results, myProjectData, projects);
     projectLines.push(myClippedLine);
 }

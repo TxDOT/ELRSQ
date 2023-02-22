@@ -1,6 +1,6 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// aretrieve position within projects array
+//// retrieve position within projects array
 //// add to projects array if it is not a duplicate
 
 //do not delete
@@ -20,18 +20,34 @@ function addProjectToArray_old(myProjects) {
 
 function addProjectToArray(myProjects) {
   console.log("addProjectToArray");
-  const RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
-  const BDFO = $(outputFieldIDs.BDFO).html();
-  const EDFO = $(outputFieldIDs.EDFO).html();
-  const Color = $('#colors').val();
-  const Width = $('#width').val();
-  const Desc = $('#description').val();
+  let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
+  let BDFO = $(outputFieldIDs.BDFO).html();
+  let EDFO = $(outputFieldIDs.EDFO).html();
+  let Color = $('#colors').val();
+  let Width = $('#width').val();
+  let Desc = $('#description').val();
 
-  projString = [RTE_NM, BDFO, EDFO, Color, Width, Desc];
+  // projString = [RTE_NM, BDFO, EDFO, Color, Width, Desc];
 
-  if (myProjects.indexOf(projString) < 0) {
-    myProjects.push(projString);
+  // if (myProjects.indexOf(projString) < 0) {
+  //   myProjects.push(projString);
+  // }
+
+  let projObj = new Object();
+  projObj.RTE_NM = RTE_NM;
+  projObj.BDFO = BDFO;
+  projObj.EDFO = EDFO;
+  projObj.Color = Color;
+  projObj.Width = Width;
+  projObj.Desc = Desc;
+  let projString = JSON.stringify(projObj);
+  console.log(projString);
+
+  if (myProjects.indexOf(projObj) < 0) {
+    myProjects.push(projObj);
   }
+
+
   //console.log("addProjectToArray calling listQueries");
   listQueries(myProjects);
 }
@@ -90,84 +106,235 @@ function clearProjectArrays(myProjects, myProjectLines) {
 }
 
 
-function getSegment(myData, myPrjAttributes, myProjects) {
-  //console.log("getSegment");
+// function getSegment(myData, myPrjAttributes, myProjects) {
+//   console.log("getSegment");
+//   console.log(Object.keys(myData));
+//   console.log(Object.keys(myPrjAttributes));
+//   console.log(Object.keys(myProjects));
 
-  if (myData.features.length == 0) {
-    alert("Route not found, please check the Route Name and try again.");
+//   if (myData.features.length == 0) {
+//     //alert("Route not found, please check the Route Name and try again.");
+//     myProjects.pop();
+//     listQueries(myProjects);
+//     return;
+//   }
+//   console.log(myPrjAttributes);
+//   // var theFrom = roundToDecimalPlace(myPrjAttributes[1], 3);
+//   // var theTo = roundToDecimalPlace(myPrjAttributes[2], 3);
+
+//   var theFrom = roundToDecimalPlace(myPrjAttributes.BDFO, 3);
+//   var theTo = roundToDecimalPlace(myPrjAttributes.EDFO, 3);
+
+//   var returnedFeatureGeomPart = [];
+//   var returnedFeatureGeom = [];
+//   // var maxCoordsLength;
+//   // var maxFeatureM;
+
+//   // why are we subtracting 1 here?
+//   // var numberOfFeatures = myData.features.length - 1;
+//   // var numberOfFeatures = myData.features.length - 0; //change me back later
+//   // maxCoordsLength = myData.features[numberOfFeatures].geometry.paths[0].length - 1;
+//   // maxFeatureM = roundToDecimalPlace(myData.features[numberOfFeatures].geometry.paths[0][maxCoordsLength][2], 3);
+
+
+//   // maxCoordsLength = myData.features.last().geometry.paths[0].length - 1;
+//   // maxFeatureM = roundToDecimalPlace(myData.features.last().geometry.paths[0][maxCoordsLength][2], 3);
+
+
+//   // maxCoordsLength = myData.features.last().geometry.paths[0].length - 1;
+//   let maxFeatureM = roundToDecimalPlace(myData.features.last().geometry.paths[0].last()[2], 3);
+
+
+
+//   //Checking END_DFO against Max Feature M value
+//   if (theTo > maxFeatureM) {
+//     theTo = maxFeatureM;
+//     alert("End DFO reduced to Max Road DFO (" + theTo + ") for project " + myPrjAttributes[0]);
+//   }
+
+//   //vertex numbers
+//   for (var a = 0; a < myData.features.length; a++) {
+//     console.log("myData.features.length : " + myData.features.length);
+
+//     //console.log("getSegment calling setVertexNumbers");
+//     //console.log("feature count: " + myData.features.length);
+//     //let vertexNumbers = setVertexNumbers(myData, a, theFrom, theTo) // why is this not acting on myData.features ???
+//     let vertexNumbers = setVertexNumbers(myData.features[a], theFrom, theTo) // why is this not acting on myData.features ???
+
+//     if (vertexNumbers[0] == vertexNumbers[1]) {
+//       //nothing
+//     }
+//     else {
+//       for (var x = vertexNumbers[0]; x <= vertexNumbers[1]; x++) {
+//         //returnedFeatureGeomPart.push([myData.features[a].geometry.paths[0][x][0], myData.features[a].geometry.paths[0][x][1], myData.features[a].geometry.paths[0][x][2]]);
+//         returnedFeatureGeomPart.push(myData.features[a].geometry.paths[0][x]);
+//       }
+//       returnedFeatureGeom.push(returnedFeatureGeomPart);
+//     }
+//   }
+
+//   //Clipping to desired From and To
+//   //console.log("getSegment calling clipFromTo");
+//   clippedLine = clipFromTo(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
+
+//   return clippedLine;
+// }
+
+
+
+
+
+function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjects) {
+  console.log("getSegment");
+  // console.log(Object.keys(myRoadwayQueryResults));
+  // console.log(Object.keys(myPrjAttributes));
+  // console.log(Object.keys(myProjects));
+
+  //// multiple results are orderByFields=BEGIN_DFO
+
+  if (myRoadwayQueryResults.features.length == 0) {
     myProjects.pop();
     listQueries(myProjects);
     return;
   }
-  console.log(myPrjAttributes);
-  var theFrom = roundToDecimalPlace(myPrjAttributes[1], 3);
-  var theTo = roundToDecimalPlace(myPrjAttributes[2], 3);
-  var returnedFeatureGeomPart = [];
-  var returnedFeatureGeom = [];
-  var maxCoordsLength;
-  var maxFeatureM;
+  //console.log(myPrjAttributes);
 
-  var numberOfFeatures = myData.features.length - 1;
-  maxCoordsLength = myData.features[numberOfFeatures].geometry.paths[0].length - 1;
-  maxFeatureM = roundToDecimalPlace(myData.features[numberOfFeatures].geometry.paths[0][maxCoordsLength][2], 3);
+  var theFrom = roundToDecimalPlace(myPrjAttributes.BDFO, 3);
+  var theTo = roundToDecimalPlace(myPrjAttributes.EDFO, 3);
+
+  // this targets the last (if > 1) feature returned by the roadway query (has highest BDFO)
+  let maxFeatureM = roundToDecimalPlace(myRoadwayQueryResults.features.last().geometry.paths[0].last()[2], 3);
 
   //Checking END_DFO against Max Feature M value
   if (theTo > maxFeatureM) {
     theTo = maxFeatureM;
-    alert("End DFO reduced to Max Road DFO (" + theTo + ") for project " + myPrjAttributes[0]);
+    alert("End DFO reduced to Max Road DFO (" + theTo + ") for project " + myPrjAttributes.RTE_NM);
   }
 
   //vertex numbers
-  for (var a = 0; a < myData.features.length; a++) {
-    //console.log("getSegment calling setVertexNumbers");
-    //console.log("feature count: " + myData.features.length);
-    let vertexNumbers = setVertexNumbers(myData, a, theFrom, theTo)
-
-    if (vertexNumbers[0] == vertexNumbers[1]) {
-      //nothing
-    }
-    else {
-      for (var x = vertexNumbers[0]; x <= vertexNumbers[1]; x++) {
-        returnedFeatureGeomPart.push([myData.features[a].geometry.paths[0][x][0], myData.features[a].geometry.paths[0][x][1], myData.features[a].geometry.paths[0][x][2]]);
+  //console.log("myRoadwayQueryResults.features.length : " + myRoadwayQueryResults.features.length);
+  var returnedFeatureGeom = [];
+  for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
+    var returnedLineString = [];
+    let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo)
+    if (!(vertexNumbers[0] == vertexNumbers[1])) {
+      //console.log(vertexNumbers);
+      for (var vertex = vertexNumbers[0]; vertex <= vertexNumbers[1]; vertex++) {
+        //console.log("pushing " + myPrjAttributes.RTE_NM + " vertex");
+        returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);
       }
-
-      returnedFeatureGeom.push(returnedFeatureGeomPart);
+      //console.log("pushing " + myPrjAttributes.RTE_NM + " linestring");
+      returnedFeatureGeom.push(returnedLineString);
     }
   }
 
   //Clipping to desired From and To
-  //console.log("getSegment calling clipFromTo");
   clippedLine = clipFromTo(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
 
   return clippedLine;
 }
 
+
+
+
+
+
+// //function setVertexNumbers(theData, a, theFrom, theTo)
+// function setVertexNumbers(myData, a, myFrom, myTo) {
+//   //console.log("setVertexNumbers");
+//   returnedFeatureGeomPart = [];
+//   var vertexBeginNumber = 0;
+//   var vertexEndNumber = 0;
+
+//   //Check Event M's vs. Feature M's 
+//   maxCoordsLength = myData.features[a].geometry.paths[0].length - 1;
+//   var minFeatureM = roundToDecimalPlace(myData.features[a].geometry.paths[0][0][2], 3);
+//   var maxFeatureM = roundToDecimalPlace(myData.features[a].geometry.paths[0][maxCoordsLength][2], 3);
+
+//   //Take the whole thing
+//   if (myFrom <= minFeatureM && myTo >= maxFeatureM) {
+//     vertexBeginNumber = 0;
+//     vertexEndNumber = maxCoordsLength;
+//   }
+
+//   //If the From value is only on this segment
+//   if (myFrom >= minFeatureM && myFrom <= maxFeatureM && myTo > maxFeatureM) {
+//     vertexBeginNumber = 0;
+//     vertexEndNumber = maxCoordsLength;
+
+//     for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
+//       prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
+//       curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+
+//       if (myFrom >= prevCoordM && myFrom <= curCoordM) {
+//         vertexBeginNumber = j - 1;
+//       }
+//     }
+//   }
+
+//   //Find the middle
+//   if (myFrom >= minFeatureM && myTo <= maxFeatureM) {
+//     for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
+//       prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
+//       curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+
+//       if (myFrom >= prevCoordM && myFrom <= curCoordM) {
+//         vertexBeginNumber = j - 1;
+//       }
+
+//       if (myTo >= prevCoordM && myTo <= curCoordM) {
+//         vertexEndNumber = j;
+//       }
+//     }
+//   }
+
+//   //If the To value is only on this segment
+//   if (myTo >= minFeatureM && myTo <= maxFeatureM && myFrom < minFeatureM) {
+//     vertexBeginNumber = 0;
+//     for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
+//       prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
+//       curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+
+//       if (myTo >= prevCoordM && myTo <= curCoordM) {
+//         vertexEndNumber = j;
+//       }
+//     }
+//   }
+
+//   var vertexNumbers = [vertexBeginNumber, vertexEndNumber];
+//   //console.log(vertexNumbers);
+//   return vertexNumbers;
+// }
+
+
+
+
 //function setVertexNumbers(theData, a, theFrom, theTo)
-function setVertexNumbers(myData, a, myFrom, myTo) {
+function setVertexNumbers(feature, myFrom, myTo) {
   //console.log("setVertexNumbers");
   returnedFeatureGeomPart = [];
   var vertexBeginNumber = 0;
   var vertexEndNumber = 0;
 
   //Check Event M's vs. Feature M's 
-  maxCoordsLength = myData.features[a].geometry.paths[0].length - 1;
-  var minFeatureM = roundToDecimalPlace(myData.features[a].geometry.paths[0][0][2], 3);
-  var maxFeatureM = roundToDecimalPlace(myData.features[a].geometry.paths[0][maxCoordsLength][2], 3);
+  //maxCoordsLength = feature.geometry.paths[0].last();
+  var minFeatureM = roundToDecimalPlace(feature.geometry.paths[0][0][2], 3);
+  var maxFeatureM = roundToDecimalPlace(feature.geometry.paths[0].last()[2], 3);
 
   //Take the whole thing
   if (myFrom <= minFeatureM && myTo >= maxFeatureM) {
     vertexBeginNumber = 0;
-    vertexEndNumber = maxCoordsLength;
+    vertexEndNumber = feature.geometry.paths[0].length - 1;
   }
 
   //If the From value is only on this segment
   if (myFrom >= minFeatureM && myFrom <= maxFeatureM && myTo > maxFeatureM) {
     vertexBeginNumber = 0;
-    vertexEndNumber = maxCoordsLength;
+    vertexEndNumber = feature.geometry.paths[0].length - 1;
 
-    for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
-      prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
-      curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+    for (var j = 1; j < feature.geometry.paths[0].length; j++) {
+      prevCoordM = roundToDecimalPlace(feature.geometry.paths[0][j - 1][2], 3);
+      curCoordM = roundToDecimalPlace(feature.geometry.paths[0][j][2], 3);
 
       if (myFrom >= prevCoordM && myFrom <= curCoordM) {
         vertexBeginNumber = j - 1;
@@ -177,9 +344,9 @@ function setVertexNumbers(myData, a, myFrom, myTo) {
 
   //Find the middle
   if (myFrom >= minFeatureM && myTo <= maxFeatureM) {
-    for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
-      prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
-      curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+    for (var j = 1; j < feature.geometry.paths[0].length; j++) {
+      prevCoordM = roundToDecimalPlace(feature.geometry.paths[0][j - 1][2], 3);
+      curCoordM = roundToDecimalPlace(feature.geometry.paths[0][j][2], 3);
 
       if (myFrom >= prevCoordM && myFrom <= curCoordM) {
         vertexBeginNumber = j - 1;
@@ -194,9 +361,9 @@ function setVertexNumbers(myData, a, myFrom, myTo) {
   //If the To value is only on this segment
   if (myTo >= minFeatureM && myTo <= maxFeatureM && myFrom < minFeatureM) {
     vertexBeginNumber = 0;
-    for (var j = 1; j < myData.features[a].geometry.paths[0].length; j++) {
-      prevCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j - 1][2], 3);
-      curCoordM = roundToDecimalPlace(myData.features[a].geometry.paths[0][j][2], 3);
+    for (var j = 1; j < feature.geometry.paths[0].length; j++) {
+      prevCoordM = roundToDecimalPlace(feature.geometry.paths[0][j - 1][2], 3);
+      curCoordM = roundToDecimalPlace(feature.geometry.paths[0][j][2], 3);
 
       if (myTo >= prevCoordM && myTo <= curCoordM) {
         vertexEndNumber = j;
@@ -210,67 +377,95 @@ function setVertexNumbers(myData, a, myFrom, myTo) {
 }
 
 
+
+
+
+
+
+// // clips
+// function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
+//   let aClippedLine = [];
+//   console.log("clipFromTo myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+//   //Clipping to desired From and To
+//   if (myReturnedFeatureGeom.length == 1) {
+//     var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
+//     var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[0], myTo);
+
+//     //Replace first item
+//     myReturnedFeatureGeom[0].shift();
+//     myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
+
+//     //Replace last item
+//     myReturnedFeatureGeom[0].pop();
+//     myReturnedFeatureGeom[0].push([newEndPoint[0], newEndPoint[1], myTo]);
+
+//     aClippedLine.push([myReturnedFeatureGeom[0], myPrjAttributes]);
+//   }
+//   if (myReturnedFeatureGeom.length == 2) {
+//     var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
+//     var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[1], myTo);
+
+//     //Replace first item on first piece
+//     myReturnedFeatureGeom[0].shift();
+//     myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
+
+//     //Replace last item on second piece
+//     myReturnedFeatureGeom[1].pop();
+//     myReturnedFeatureGeom[1].push([newEndPoint[0], newEndPoint[1], myTo]);
+
+//     aClippedLine.push([myReturnedFeatureGeom[0], myPrjAttributes]);
+//     aClippedLine.push([myReturnedFeatureGeom[1], myPrjAttributes]);
+//   }
+//   if (myReturnedFeatureGeom.length > 2) {
+//     var lastSegmentNumber = myReturnedFeatureGeom.length - 1;
+//     var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
+//     var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[lastSegmentNumber], myTo);
+
+//     //Replace first item on first piece
+//     myReturnedFeatureGeom[0].shift();
+//     myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
+
+//     //Replace last item on last piece
+//     myReturnedFeatureGeom[lastSegmentNumber].pop();
+//     myReturnedFeatureGeom[lastSegmentNumber].push([newEndPoint[0], newEndPoint[1], myTo]);
+
+//     //Place all items in project list
+//     for (var b = 0; b < myReturnedFeatureGeom.length; b++) {
+//       aClippedLine.push([myReturnedFeatureGeom[b], myPrjAttributes]); // do attributes need to be joined each time?
+//     }
+//   }
+
+//   return aClippedLine;
+// }
+
+
+
+
+
+
 // clips
 function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   let aClippedLine = [];
-  console.log("clipFromTo");
+  console.log("clipFromTo myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+
   //Clipping to desired From and To
-  if (myReturnedFeatureGeom.length == 1) {
-    var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
-    var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[0], myTo);
+  var newBeginPoint = [];
+  var newEndPoint = [];
 
-    //Replace first item
-    myReturnedFeatureGeom[0].shift();
-    myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
+  Array.prototype.push.apply(newBeginPoint, locatePointOnLine(myReturnedFeatureGeom[0], myFrom));
+  Array.prototype.push.apply(newEndPoint, locatePointOnLine(myReturnedFeatureGeom.last(), myTo));
 
-    //Replace last item
-    myReturnedFeatureGeom[0].pop();
-    myReturnedFeatureGeom[0].push([newEndPoint[0], newEndPoint[1], myTo]);
+  newBeginPoint.push(myFrom);
+  newEndPoint.push(myTo);
 
-    aClippedLine.push([myReturnedFeatureGeom[0], myPrjAttributes]);
-    console.log(myReturnedFeatureGeom[0]);
-    console.log(myPrjAttributes);
+  myReturnedFeatureGeom[0].shift();
+  myReturnedFeatureGeom[0].unshift(newBeginPoint);
+  myReturnedFeatureGeom.last().pop();
+  myReturnedFeatureGeom.last().push(newEndPoint);
+
+  for (var b = 0; b < myReturnedFeatureGeom.length; b++) {
+    aClippedLine.push([myReturnedFeatureGeom[b], myPrjAttributes]); // do attributes need to be joined each time?
   }
-  if (myReturnedFeatureGeom.length == 2) {
-    var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
-    var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[1], myTo);
-
-    //Replace first item on first piece
-    myReturnedFeatureGeom[0].shift();
-    myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
-
-    //Replace last item on second piece
-    myReturnedFeatureGeom[1].pop();
-    myReturnedFeatureGeom[1].push([newEndPoint[0], newEndPoint[1], myTo]);
-
-    aClippedLine.push([myReturnedFeatureGeom[0], myPrjAttributes]);
-    aClippedLine.push([myReturnedFeatureGeom[1], myPrjAttributes]);
-    console.log(myReturnedFeatureGeom[0]);
-    console.log(myReturnedFeatureGeom[1]);
-    console.log(myPrjAttributes);
-  }
-  if (myReturnedFeatureGeom.length > 2) {
-    var lastSegmentNumber = myReturnedFeatureGeom.length - 1;
-    var newBeginPoint = locatePointOnLine(myReturnedFeatureGeom[0], myFrom);
-    var newEndPoint = locatePointOnLine(myReturnedFeatureGeom[lastSegmentNumber], myTo);
-
-    //Replace first item on first piece
-    myReturnedFeatureGeom[0].shift();
-    myReturnedFeatureGeom[0].splice(0, 1, [newBeginPoint[0], newBeginPoint[1], myFrom]);
-
-    //Replace last item on last piece
-    myReturnedFeatureGeom[lastSegmentNumber].pop();
-    myReturnedFeatureGeom[lastSegmentNumber].push([newEndPoint[0], newEndPoint[1], myTo]);
-
-    //Place all items in project list
-    for (var b = 0; b < myReturnedFeatureGeom.length; b++) {
-      aClippedLine.push([myReturnedFeatureGeom[b], myPrjAttributes]); // do attributes need to be joined each time?
-      console.log(myReturnedFeatureGeom[b]);
-      console.log(myPrjAttributes);
-    }
-  }
-
-
 
   return aClippedLine;
 }
@@ -279,7 +474,6 @@ function clipFromTo(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
 //The Line with Geometry and Desired M value
 function locatePointOnLine(theLine, pointMeasure) {
   //console.log("locatePointOnLine");
-  // console.log(theLine);
   var pointLocation = [];
   var PrevCoordM;
   var CurCoordM;
@@ -319,8 +513,10 @@ function locatePointOnLine(theLine, pointMeasure) {
       newY = (beginPercentOfWhole * endPoint[1]) + (beginRemainderPercent * beginPoint[1]);
 
       pointLocation.push(newX, newY);
-      return pointLocation;
+      //return pointLocation;
     }
   }
+
+  return pointLocation;
 }
 

@@ -162,23 +162,78 @@ function showRouteResults(routeQueryOutput) {
 
 //HTML Table accepts a multi-dimensional array.  First set in the array should contain field names.  Example: [["ID","NAME","AGE"],["1", "Michael",43], ["2", "Jessica",40]]
 //---------------------------------------
+// function makeTableFromArray(dataArray) {
+
+//   var result = "<table>";
+//   for (var i = 0; i < dataArray.length; i++) {
+//     result += "<tr>";
+//     for (var j = 0; j < dataArray[i].length; j++) {
+//       if (i == 0) {
+//         result += "<th>" + dataArray[i][j] + "</th>";
+//       }
+//       else {
+//         result += "<td>" + dataArray[i][j] + "</td>";
+//       }
+//     }
+//     result += "</tr>";
+//   }
+//   result += "</table>";
+
+//   return result;
+// }
+//---------------------------------------
+
+
+//---------------------------------------
 function makeTableFromArray(dataArray) {
+  let colheads = ['ID', 'RTENM', 'BDFO', 'EDFO', 'COLOR', 'WIDTH', 'DESC'];
+  table_length = 4;
+  table_width = 7;
+
   var result = "<table>";
-  for (var i = 0; i < dataArray.length; i++) {
+  for (var r = 0; r < table_length; r++) {
+    var rowdata = [];
+    var rowid = JSON.stringify(dataArray[r][0]);
+    rowdata.push(JSON.parse(JSON.stringify(dataArray[r][1])));
+
+
+    // get properties from objects
+    const props = rowdata.reduce((acc, item) =>
+      [...new Set([...acc, ...Object.keys(item)])]
+      , []);
+
+    // for each item, return array of values for the properties above
+    const records = rowdata.map(item =>
+      props.map(key => item[key])
+    );
+
+    console.log(records);
+
+
+
     result += "<tr>";
-    for (var j = 0; j < dataArray[i].length; j++) {
-      if (i == 0) {
-        result += "<th>" + dataArray[i][j] + "</th>";
+    for (var c = 0; c < table_width; c++) {
+      if (r == 0) {
+        result += "<th>" + colheads[c] + "</th>";
       }
       else {
-        result += "<td>" + dataArray[i][j] + "</td>";
+        console.log("row: " + r + ", column: " + c);
+        console.log(JSON.stringify(records[0][c-1]));
+        result += "<td>" + JSON.stringify(records[0][c-1]) + "</td>";
       }
     }
     result += "</tr>";
+
+
+
   }
   result += "</table>";
 
   return result;
 }
 //---------------------------------------
+
+
+
+
 
