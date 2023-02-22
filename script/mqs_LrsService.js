@@ -165,9 +165,9 @@ async function csvinToCsvout(text, method, ...index_coord) {
   // skipping 0 header row
   for (let i = 1; i < array.length; i++) {
     console.log(i);
-    url = makeLrsQueryUrlFromIndex(method, array[i], ...index_coord)
+
+    url = makeLrsQueryUrlFromIndex(method, array[i], index_coord)
     results = await queryService(url);
-    //results = await queryByLine(array, i, method, ...index_coord);
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
@@ -179,24 +179,18 @@ async function csvinToCsvout(text, method, ...index_coord) {
 
 
 
-// async function queryByLine(array, line, method, ...index_coord) {
-//   url = makeLrsQueryUrlFromIndex(method, array[line], index_coord)
-//   console.log(url);
-//   const results = await queryService(url);
-//   return results;
-// }
-
-
 // if result has multiple rows, write each row individually
 function breakMultipleResults(output1, output2, array, line, results) {
   rowhead = (array[line])[0];
 
-  results.forEach(_result => {
-    output1.push(_result);
-    out_row = Object.values(_result);
+
+  for (let i = 0; i < results.length; i = i + 1) {
+    output1.push(results[i]);
+    out_row = Object.values(results[i]);
     out_row.unshift(rowhead);
     output2.push(out_row);
-  });
+  }
+
 }
 
 // function which takes method to query lrs service for a single point
