@@ -41,7 +41,7 @@ async function rdwayQuery(url) {
 
 //iterates over projectsArr array
 //for each project, queries queryRecordFromServiceGeometry
-
+//FIXME add projectLines as an argument instead of hardcoded
 async function queryProjectGeometry(myProjectsArr) {
   console.log(myProjectsArr);
   resetProjectLines();
