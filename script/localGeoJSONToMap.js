@@ -6,18 +6,10 @@ function localGeoJSONToMap(localGeoJSON) {
 
 
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
-      let geojson_line = localGeoJSON[i];
-      console.log(localGeoJSON[i]);
-
-      //TODO get render elements from feature properties
-      const renderer_line = {
-        type: "simple",
-        symbol: {
-          type: "simple-line",  // autocasts as new SimpleLineSymbol()
-          color: "orange",
-          width: "5px"
-        }
-      };
+      let geojson_line = localGeoJSON[i]; // is this a feature collection? do we need another loop over features?
+      let color = localGeoJSON[i].features[0].properties.Color;
+      let width = localGeoJSON[i].features[0].properties.Width + "px";
+      const renderer_line = JSON.parse(`{"type": "simple", "symbol": {"type": "simple-line", "color": "${color}", "width": "${width}"}}`);
 
       let blob = new Blob([JSON.stringify(geojson_line)], {
         type: "application/json"
@@ -29,7 +21,7 @@ function localGeoJSONToMap(localGeoJSON) {
         renderer: renderer_line,
       });
 
-      view.map.add(projectLayer);  // adds the layer to the map
+      view.map.add(projectLayer); // adds the layer to the map
 
       // When the layer is loaded, query for the extent
       // of all features in the layer. Then set the view's
