@@ -64,7 +64,6 @@ function makeRouteProjectsTable(myProjectsArr) {
       ));
   }
 
-  //FIXME fix and reenable
   if (myProjectsArr.length == 0) {
     $('#routes-table').html("");
   } else {
@@ -83,7 +82,7 @@ function dropLastProjectFromArray(myProjectsArr, myProjectLines) {
   }
 
   myProjectLines.pop();
-  makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
+  makeRouteProjectsTable(myProjectsArr);
   parseGeometryToGeoJSON(myProjectLines);
 }
 
@@ -93,7 +92,7 @@ function clearProjectsFromArray(myProjectsArr, myProjectLines) {
   console.log("clearProjectsFromArray");
   resetProjects();
   resetProjectLines();
-  makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
+  makeRouteProjectsTable(myProjectsArr); 
   parseGeometryToGeoJSON(myProjectLines);
 }
 
@@ -103,7 +102,7 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectsArr) {
 
   if (myRoadwayQueryResults.features.length == 0) {
     myProjectsArr.pop();
-    //makeRouteProjectsTable(myProjectsArr); //FIXME fix and reenable
+    makeRouteProjectsTable(myProjectsArr);
     return;
   }
 
@@ -123,9 +122,11 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectsArr) {
   var returnedFeatureGeom = [];
   for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
     var returnedLineString = [];
-    let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo)
-    if (!(vertexNumbers[0] == vertexNumbers[1])) {
-      for (var vertex = vertexNumbers[0]; vertex <= vertexNumbers[1]; vertex++) {
+    let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
+    console.log(vertexNumbers.vertexBeginNumber);
+    console.log(vertexNumbers.vertexEndNumber);
+    if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
+      for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
         returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);
       }
       returnedFeatureGeom.push(returnedLineString);
@@ -198,8 +199,7 @@ function setVertexNumbers(feature, myFrom, myTo) {
     }
   }
 
-  //TODO change from array to JS object
-  var vertexNumbers = [vertexBeginNumber, vertexEndNumber];
+  var vertexNumbers = JSON.parse(`{"vertexBeginNumber": ${vertexBeginNumber}, "vertexEndNumber": ${vertexEndNumber}}`);
   return vertexNumbers;
 }
 
