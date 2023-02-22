@@ -1,127 +1,47 @@
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
 
-function localGeoJSONToMap() {
-
-    console.log('localGeoJSONToMap');
-
-    require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
+function localGeoJSONToMap(localGeoJSON) {
+  console.log('localGeoJSONToMap');
+  require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
 
-        // create a geojson layer from geojson feature collection
-        const geojson_point = {
-            "type": "FeatureCollection",
-            "metadata": {},
-            "features": [
-                { "type": "Feature", "properties": { "mag": 8, }, "geometry": { "type": "Point", "coordinates": [-93.98759004, 30.39780972] }, "id": "ak02327gyz9x" },
-                { "type": "Feature", "properties": { "mag": 7 }, "geometry": { "type": "Point", "coordinates": [-94.98759004, 29.39780972] }, "id": "us6000jpiy" }
-            ]
-        };
+    for (let i = 0; i < localGeoJSON.length; i = i + 1) {
+      let geojson_line = localGeoJSON[i];
 
+      const renderer_line = {
+        type: "simple",
+        field: "mag",
+        symbol: {
+          type: "simple-line",  // autocasts as new SimpleLineSymbol()
+          color: "orange",
+          width: "5px"//,
+          //style: "short-dot"
+        }
+      };
 
-        const geojson_line = {
-            "type": "FeatureCollection",
-            "metadata": {},
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": { "mag": 8, },
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [[-93.98759004, 30.39780972], [-94.98759004, 29.39780972]]
-                    },
-                    "id": "ak02327gyz9x"
-                },
-                {
-                    "type": "Feature",
-                    "properties": { "mag": 7 },
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [[-94.98759004, 29.39780972], [-95.98759004, 30.39780972]]
-                    },
-                    "id": "us6000jpiy"
-                }
-            ]
-        };
+      let blob = new Blob([JSON.stringify(geojson_line)], {
+        type: "application/json"
+      });
 
+      // create new geojson layer using the blob url
+      projectLayer = new GeoJSONLayer({
+        url: URL.createObjectURL(blob),
+        renderer: renderer_line,
+      });
 
+      view.map.add(projectLayer);  // adds the layer to the map
 
+      // When the layer is loaded, query for the extent
+      // of all features in the layer. Then set the view's
+      // extent to the returned extent of all features.
 
-
-        console.log(geojson_line);
-
-        // create a new blob from geojson featurecollection
-        /*const blob = new Blob([JSON.stringify(geojson_line)], {
-            type: "application/json"
-        });*/
-
-        const blob = new Blob([featureCollectionText], {
-            type: "application/json"
+      projectLayer
+        .when(() => {
+          return projectLayer.queryExtent();
+        })
+        .then((response) => {
+          view.goTo(response.extent);
         });
-
-        // URL reference to the blob
-        const url = URL.createObjectURL(blob);
-
-        const renderer_point = {
-            type: "simple",
-            field: "mag",
-            symbol: {
-                type: "simple-marker",
-                color: "orange",
-                outline: {
-                    color: "white"
-                }
-            },
-            visualVariables: [{
-                type: "size",
-                field: "mag",
-                stops: [{
-                    value: 2.5,
-                    size: "4px"
-                },
-                {
-                    value: 8,
-                    size: "40px"
-                }
-                ]
-            }]
-        };
-
-
-        const renderer_line = {
-            type: "simple",
-            field: "mag",
-            symbol: {
-                type: "simple-line",  // autocasts as new SimpleLineSymbol()
-                color: "orange",
-                width: "5px",
-                style: "short-dot"
-            }
-        };
-
-
-        // create new geojson layer using the blob url
-        const projectLayer = new GeoJSONLayer({
-            url: url,
-            copyright: "USGS Earthquakes",
-            renderer: renderer_line,
-            orderBy: {
-                field: "mag"
-            }
-        });
-
-        view.map.add(projectLayer);  // adds the layer to the map
-
-        // When the layer is loaded, query for the extent
-        // of all features in the layer. Then set the view's
-        // extent to the returned extent of all features.
-
-        projectLayer
-            .when(() => {
-                return projectLayer.queryExtent();
-            })
-            .then((response) => {
-                view.goTo(response.extent);
-            });
-
-    });
+    }
+  });
 }
