@@ -140,6 +140,14 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
         $("#tmpl-dfo").hide();
         $("#tmpl-field").hide();
     }
+
+    if (currentLRM == `mapcursor-tab`) {
+        $("#viewDiv").css('cursor','crosshair');
+    } else {
+        $("#viewDiv").css('cursor','move');
+    }
+
+
 	
 });
 

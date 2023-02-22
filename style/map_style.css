@@ -35,7 +35,6 @@
   width: 100%;
 }
 
-/* FIXME only use crosshair when cursor tab active */
 #viewDiv {
   padding: 0;
   margin: 0;
@@ -45,7 +44,7 @@
   /*max-height: 100%;*/
   max-height: 90vh;
   width: 100%;
-  cursor: crosshair; /*added by ES */
+  cursor: move;
 }
 
 #mapButtonsDiv {
