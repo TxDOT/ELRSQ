@@ -51,8 +51,9 @@ async function queryProjectGeometry(myProjectsArr) {
   for (var i = 0; i < myProjectsArr.length; i++) {
     let myProjectData = myProjectsArr[i]
 
-    await queryRoadwayServiceByLine(myProjectData);
-    //TODO add a return to queryRoadwayServiceByLine and deal with results here
+    let results = await queryRoadwayServiceByLine(myProjectData);
+    myClippedLine = getSegment(results, myProjectData, projectsArr);
+    projectLines.push(myClippedLine);
   }
 
   YellowToGreen();
@@ -60,7 +61,6 @@ async function queryProjectGeometry(myProjectsArr) {
 }
 
 // added output spatial reference to return WGS84
-//TODO add a return
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +
@@ -71,6 +71,5 @@ async function queryRoadwayServiceByLine(myProjectData) {
   const results = await queryRoadwayService(url);
   YellowToGreen();
   console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
-  myClippedLine = getSegment(results, myProjectData, projectsArr);
-  projectLines.push(myClippedLine);
+  return results;
 }
