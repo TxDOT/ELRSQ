@@ -12,8 +12,8 @@ function addProjectToArray_old(myProjects) {
   if (myProjects.indexOf(projString) < 0) {
     myProjects.push(projString);
   }
-  console.log("addProjectToArray calling listQueries");
-  listQueries(myProjects);
+  console.log("addProjectToArray calling makeRouteProjectsTable");
+  makeRouteProjectsTable(myProjects);
 }
 
 
@@ -42,7 +42,7 @@ function addProjectToArray(myProjects) {
     myProjects.push(projObj);
   }
 
-  listQueries(myProjects);
+  makeRouteProjectsTable(myProjects);
 }
 
 
@@ -54,7 +54,7 @@ function addProjectToArray(myProjects) {
 //function routeCenterlineValidator()
 
 
-function listQueries(myProjects) {
+function makeRouteProjectsTable(myProjects) {
   var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
   for (var i = 0; i < myProjects.length; i++) {
@@ -70,12 +70,12 @@ function listQueries(myProjects) {
 
 
 // removes last project in projects array
-function removeLastProject(myProjects, myProjectLines) {
-  console.log("removeLastProject");
+function dropLastProjectFromArray(myProjects, myProjectLines) {
+  console.log("dropLastProjectFromArray");
   myProjects.pop();
 
   if (myProjects.length == 0) {
-    clearProjectArrays(myProjects, myProjectLines);
+    clearProjectsFromArray(myProjects, myProjectLines);
   }
 
   myProjectLines.pop();

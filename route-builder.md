@@ -40,7 +40,7 @@ async function queryRoadwayService(url) {
 function getSegment(myData, myPrjAttributes, myProjects) {
   if (myData.features.length == 0) {
     myProjects.pop();
-    listQueries(myProjects);
+    makeRouteProjectsTable(myProjects);
     return;
   }
 

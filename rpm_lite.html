@@ -86,7 +86,7 @@
   </script>
 </head>
 
-<body onload="listQueries(projects)">
+<body onload="makeRouteProjectsTable(projects)">
   <div id="index" style="width: 25%;">
 
 
@@ -132,9 +132,9 @@
       <button class="halfSizeButton" title="Save current project and add another"
         onclick="addProjectToArray_old(projects)">Add</button>
       <button class="halfSizeButton" title="Remove last project on list"
-        onclick="removeLastProject(projects, projectLines)">Drop</button>
+        onclick="dropLastProjectFromArray(projects, projectLines)">Drop</button>
       <button class="halfSizeButton" title="Clear project(s) from the map"
-        onclick="clearProjectArrays(projects, projectLines)">Clear</button>
+        onclick="clearProjectsFromArray(projects, projectLines)">Clear</button>
     </div>
 
     <button title="Convert" onclick="queryProjectGeometry(projects)">Convert</button>

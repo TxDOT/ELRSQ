@@ -1,15 +1,26 @@
-let currentSelection = [];
+//screen pane slider
+if (screen.width >= 768) {
+  const GUTTER_SIZE = 30;
+  Split(['#split-0', '#split-1'], {
+    sizes: [33, 66],
+    minSize: [300, 400],
+    expandToMin: false
+  });
+}
+
+
+
 let allResults = [];
-let currentPos = 1;
+let currentPagination = 1;
 let graphics = [];
-//let projects = [];
+let projects = [];
 var projectLines = [];
 
 const useLoadIndicator = 1;
 
 
-function resetCurrentPos() {
-  currentPos = 1;
+function resetCurrentPagination() {
+  currentPagination = 1;
 }
 
 function resetGraphics() {
@@ -93,28 +104,6 @@ const outputFieldIDs = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//screen pane slider
-if (screen.width >= 768) {
-  const GUTTER_SIZE = 30;
-  Split(['#split-0', '#split-1'], {
-    sizes: [33, 66],
-    minSize: [300, 400],
-    expandToMin: false
-  });
-}
 
 
 

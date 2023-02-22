@@ -8,7 +8,7 @@ function showResults(results, navIndex) {
   currentResult = allResults[index];
 
   //insert pagination
-  insertPagination(currentPos, resultCount);
+  insertPagination(currentPagination, resultCount);
 
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
@@ -28,8 +28,8 @@ function showResults(results, navIndex) {
 
 
 //insert pagination
-function insertPagination(currentPos, resultCount) {
-  console.log(currentPos + " of " + resultCount);
+function insertPagination(currentPagination, resultCount) {
+  console.log(currentPagination + " of " + resultCount);
   const btn_prev_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Previous</span></li>`;
   const btn_next_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Next</span></li>`;
 
@@ -40,14 +40,14 @@ function insertPagination(currentPos, resultCount) {
   const pgnEnd = `</ul></nav>`
   const pgnCurrentOpen = `<li class="page-item active" aria-current="page"><span class="page-link">`
   const pgnCurrentClose = `</span></li>`
-  const pgnCurrentIndicator = `${currentPos} of ${resultCount}`
+  const pgnCurrentIndicator = `${currentPagination} of ${resultCount}`
   var pgnCurrent = `<li class="page-item active" aria-current="page"><span class="page-link">` + "No data" + `</span></li>`
   var navTitle = pgnStart + pgnCurrent + pgnEnd
 
   if (resultCount > 1) {
-    if (currentPos == 1) {
+    if (currentPagination == 1) {
       pgnCurrent = btn_prev_inactive + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_active
-    } else if (currentPos + 0 == resultCount) {
+    } else if (currentPagination + 0 == resultCount) {
       pgnCurrent = btn_prev_active + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_inactive
     } else {
       pgnCurrent = btn_prev_active + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_active
@@ -97,10 +97,10 @@ function clearPagination() {
 
 //navResults called by pagination buttons in showResults function
 function navResults(direction) {
-  direction == 'next' ? currentPos++ : currentPos--;
+  direction == 'next' ? currentPagination++ : currentPagination--;
 
-  if (currentPos > 0 && currentPos <= resultCount) {
-    showResults(allResults, currentPos)
+  if (currentPagination > 0 && currentPagination <= resultCount) {
+    showResults(allResults, currentPagination)
   }
 }
 

@@ -2,7 +2,7 @@
 // function which takes method to query lrs service for a single point
 async function lrsQuery(method, useMap, ...id_coord) {
   resetGraphics();
-  resetCurrentPos();
+  resetCurrentPagination();
 
   if (useMap == 1) {
     clearResultsFromMap();
@@ -14,7 +14,7 @@ async function lrsQuery(method, useMap, ...id_coord) {
 
   const results = await queryService(url);
   showResults(results);
-  tabularConvertExport(results);
+  tabularPointsConvertExport(results);
 
   if (useMap == 1) {
     showPointResultsOnMap(results);
@@ -26,9 +26,9 @@ async function lrsQuery(method, useMap, ...id_coord) {
 
 
 // function which uses mouse click lat/lon to query lrs service for a single point
-async function coordinateQuery(lat, lon) {
+async function cursorQuery(lat, lon) {
   resetGraphics();
-  resetCurrentPos();
+  resetCurrentPagination();
 
   let useMap = 1;
 
@@ -49,7 +49,7 @@ async function coordinateQuery(lat, lon) {
 
   const results = await queryService(url);
   showResults(results);
-  tabularConvertExport(results);
+  tabularPointsConvertExport(results);
 
   if (useMap == 1) {
     showPointResultsOnMap(results);
@@ -169,7 +169,7 @@ async function csvinToCsvout(text, method, ...index_coord) {
     breakMultipleResults(outputArray, refinedData, array, i, results)
   }
 
-  tabularConvertExport(refinedData);
+  tabularPointsConvertExport(refinedData);
 
   YellowToGreen();
 
@@ -200,7 +200,7 @@ function breakMultipleResults(output1, output2, array, line, results) {
 // function which takes method to query lrs service for a single point
 async function lrsDualQuery(method, useMap, ...id_coord) {
   resetGraphics();
-  resetCurrentPos();
+  resetCurrentPagination();
 
   if (useMap == 1) {
     clearResultsFromMap();

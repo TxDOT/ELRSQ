@@ -1,6 +1,6 @@
-// tabularConvertExport
+// tabularPointsConvertExport
 
-function tabularConvertExport(results) {
+function tabularPointsConvertExport(results) {
   jsonData = results;
   exportPointsToCsvFile(jsonData);
   exportPointsToGeoJsonFile(jsonData);

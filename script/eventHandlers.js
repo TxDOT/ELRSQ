@@ -20,8 +20,8 @@ $("#returnToPoint").on('click', function () { returnToPoint(); });
 
 //route builder
 $("#addRow").on('click', function () { addProjectToArray(projects); });
-$("#dropRow").on('click', function () { removeLastProject(projects, projectLines); });
-$("#clearRows").on('click', function () { clearProjectArrays(projects, projectLines); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(projects, projectLines); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(projects, projectLines); });
 
 
 
