@@ -20,6 +20,7 @@ function exportPointsToCsvFile(resultsArr) {
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
+
 function exportPointsToGeoJsonFile(resultsArr) {
   console.log("geoJSON export");
 
@@ -32,6 +33,7 @@ function exportPointsToGeoJsonFile(resultsArr) {
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
+
 
 function exportPointsToKMLFile(resultsArr) {
   console.log("KML export");

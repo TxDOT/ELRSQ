@@ -19,6 +19,10 @@ var projectLines = [];
 const useLoadIndicator = 1;
 
 
+//FIXME this is not always true
+let currentLRM = `coordinates-tab`;
+
+
 function resetCurrentPagination() {
   currentPagination = 1;
 }
@@ -34,46 +38,6 @@ function resetProjects() {
 function resetProjectLines() {
   projectLines = [];
 }
-
-
-
-const lrsApiFields = [
-  "LAT",
-  "LON",
-  "GID",
-  "RTE_DEFN_LN_NM",
-  "RTE_DFO",
-  "ROUTEID",
-  "ROUTENUMBER",
-  "RTE_PRFX_TYPE_DSCR",
-  "RDBD_TYPE_DSCR",
-  "RMRKR_PNT_NBR",
-  "RMRKR_DISPLACEMENT",
-  "CTRL_SECT_LN_NBR",
-  "CTRL_SECT_MPT",
-  "MSG",
-  "distance"
-]
-
-
-const outputFieldIDs = {
-  ROUTEID: "#p_returned_ROUTEID",
-  RTE_DEFN_LN_NM: "#p_returned_RTE_DEFN_LN_NM",
-  RDBD_TYPE_DSCR: "#p_returned_RDBD_TYPE_DSCR",
-  RTE_DFO: "#p_returned_RTE_DFO",
-  CTRL_SECT_LN_NBR: "#p_returned_CTRL_SECT_LN_NBR",
-  CTRL_SECT_MPT: "#p_returned_CTRL_SECT_MPT",
-  RMRKR_PNT_NBR: "#p_returned_RMRKR_PNT_NBR",
-  RMRKR_DISPLACEMENT: "#p_returned_RMRKR_DISPLACEMENT",
-  LAT: "#p_returned_LAT",
-  LON: "#p_returned_LON",
-  BDFO: "#p_returned_RTE_DFO_begin",
-  EDFO: "#p_returned_RTE_DFO_end"
-};
-
-
-
-
 
 
 
@@ -115,7 +79,7 @@ $(document).ready(function () {
 
   // FIXME Bulk Upload: change to use Convert button instead of automatic
   const myDropZone = document.getElementById("bulk-fieldset");
-  eventHandlers(myDropZone);
+  dragDropEventHandlers(myDropZone);
 
   document.getElementById("bulk-fieldset").addEventListener('drop', async function (e) {
     console.log(e.dataTransfer.files[0]);
@@ -136,7 +100,7 @@ $(document).ready(function () {
 
 
 // drag and drop event handlers
-function eventHandlers(zone) {
+function dragDropEventHandlers(zone) {
   // Prevent default drag behaviors
   ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
     zone.addEventListener(event, preventDefaults, false);

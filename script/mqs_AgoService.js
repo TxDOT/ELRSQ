@@ -47,6 +47,7 @@ async function queryProjectGeometry(myProjectsArr) {
   resetProjectLines();
 
   GreenToYellow();
+
   //get segment is called within a loop, for each project
   for (var i = 0; i < myProjectsArr.length; i++) {
     let myProjectData = myProjectsArr[i]

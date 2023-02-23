@@ -18,16 +18,11 @@ $(":reset").on('click', function () { clearResultsFromMap(); });
 //return to point on map
 $("#returnToPoint").on('click', function () { returnToPoint(); });
 
+
 //route builder
 $("#addRow").on('click', function () { addProjectToArray(projectsArr); });
 $("#dropRow").on('click', function () { dropLastProjectFromArray(projectsArr, projectLines); });
 $("#clearRows").on('click', function () { clearProjectsFromArray(projectsArr, projectLines); });
-
-
-
-
-
-
 
 
 // toggle buttons for showing/hiding layers
@@ -117,6 +112,7 @@ $('#demo-mode-toggle').change(function () {
     resetProjects();
   }
 })
+
 
 // set input min-max values
 $(document).ready(function () {
@@ -230,11 +226,3 @@ $(document).ready(function () {
   });
 
 });
-
-
-
-
-
-
-
-

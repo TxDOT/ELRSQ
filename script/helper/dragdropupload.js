@@ -8,7 +8,7 @@
 // Initialise ALL dropzones
 const dropZones = document.querySelectorAll('.upload_dropZone');
 for (const zone of dropZones) {
-  eventHandlers(zone);
+  dragDropEventHandlers(zone);
 }
 
 function preventDefaults(event) {
@@ -37,7 +37,7 @@ function handleDrop(event) {
 }
 
 
-function eventHandlers(zone) {
+function dragDropEventHandlers(zone) {
 
   const dataRefs = getInputRefs(zone);
   if (!dataRefs.input) return;

@@ -246,9 +246,6 @@ function addPointGraphic(lat, lon) {
 }
 
 
-
-
-
 function clearResultsFromMap() {
 
   graphics = [];
@@ -259,8 +256,8 @@ function clearResultsFromMap() {
     center: [-99.90, 31.96], // Longitude, latitude of Texas
     zoom: 6, // Zoom level
   })
-
 }
+
 
 function returnToPoint() {
 
@@ -272,5 +269,3 @@ function returnToPoint() {
     })
   }
 }
-
-

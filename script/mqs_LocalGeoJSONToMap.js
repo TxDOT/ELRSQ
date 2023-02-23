@@ -4,7 +4,6 @@ function localGeoJSONToMap(localGeoJSON) {
   console.log('localGeoJSONToMap');
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
-
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
       let geojson_line = localGeoJSON[i]; // is this a feature collection? do we need another loop over features?
       let color = localGeoJSON[i].features[0].properties.Color;

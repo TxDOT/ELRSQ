@@ -118,4 +118,3 @@ class Wizard_Form extends HTMLElement {
   }
 }
 customElements.define('wizard_form-component', Wizard_Form);
-

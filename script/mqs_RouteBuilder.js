@@ -17,7 +17,6 @@ function addProjectToArray_old(myProjectsArr) {
 }
 
 
-
 function addProjectToArray(myProjectsArr) {
   console.log("addProjectToArray");
   let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
@@ -295,4 +294,3 @@ function locatePointOnLine(theLine, pointMeasure) {
 
   return pointLocation;
 }
-

@@ -7,8 +7,6 @@ function showResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
   currentResult = allResults[index];
 
-
-
   //insert pagination
   insertPagination(currentPagination, resultCount);
 
@@ -68,6 +66,7 @@ function insertPagination(currentPagination, resultCount) {
   $("#pagn_next").on('click', function () { navResults('next'); });
 
 }
+
 
 function clearResults() {
 
@@ -172,7 +171,3 @@ function makeTableFromArray(dataArray) {
   return result;
 }
 //---------------------------------------
-
-
-
-
