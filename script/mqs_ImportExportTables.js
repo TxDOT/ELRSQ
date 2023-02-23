@@ -129,6 +129,26 @@ function addTags(theData, theTagType) {
 }
 
 
+// tabularPointsConvertExport
+
+function tabularRoutesConvertExport(resultsArr) {
+  exportRoutesToCsvFile(resultsArr);
+}
+
+
+function exportRoutesToCsvFile(resultsArr) {
+  console.log("CSV export");
+
+  let unparsed = Papa.unparse(resultsArr);
+  let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
+  let exportFileDefaultName = 'bwdresults.csv';
+
+  let linkElement = document.getElementById('CSVdownload');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+}
+
+
 function readFile(file) {
   console.log("reader load");
   const reader = new FileReader();
