@@ -1,6 +1,7 @@
 
 
 // determine pagination and fill in HTML table results
+//TODO move point on map
 function showResults(results, navIndex) {
   allResults = results; // this is changing the value of a global variable
   resultCount = allResults.length; // use this somewhere
@@ -62,7 +63,7 @@ function insertPagination(currentPagination, resultCount) {
 
   //insert pagination
   $("#result-pagination").html(navTitle);
-  $("#pagn_prev").on('click', function () { navResults('prev'); });
+  $("#pagn_prev").on('click', function () { navResults('prev'); }); //TODO move point on map
   $("#pagn_next").on('click', function () { navResults('next'); });
 
 }
@@ -100,6 +101,7 @@ function clearPagination() {
 
 
 //navResults called by pagination buttons in showResults function
+//TODO move point on map
 function navResults(direction) {
   direction == 'next' ? currentPagination++ : currentPagination--;
 

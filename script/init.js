@@ -90,6 +90,7 @@ $(document).ready(function () {
   console.log("doc ready");
 
   // FIXME Bulk Upload: change to use Convert button instead of automatic
+  // FIXME close modal on button press
   const myDropZone = document.getElementById("bulk-fieldset");
   dragDropEventHandlers(myDropZone);
 

@@ -33,7 +33,7 @@ require([
   map.add(imagery);
   imagery.visible = false;
 
-
+  //FIXME change format of TxDOT_Reference_MarkersLabelClass
   const TxDOT_Reference_MarkersLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.MRKR_NBR" },
     symbol: {
@@ -49,7 +49,7 @@ require([
   map.add(TxDOT_Reference_Markers);
   TxDOT_Reference_Markers.visible = false;
 
-
+  //FIXME change format of TxDOT_Control_SectionsLabelClass
   const TxDOT_Control_SectionsLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.CTRL_SECT_NBR" },
     symbol: {
