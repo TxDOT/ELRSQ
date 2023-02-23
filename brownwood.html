@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TxDOT MQS Replacement</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!--<link href="assets/img/favicon.png" rel="icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link href="style/vendor/main.min.css" rel="stylesheet"> <!-- https://www.youtube.com/watch?v=nCX3QVl_PiI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css">
+
+  <link rel="stylesheet" href="style/show_hide.css">
+  <link rel="stylesheet" href="style/style_mini_map.css">
+  <link rel="stylesheet" href="style/map_style.css">
+  <link rel="stylesheet" href="style/text_style.css">
+  <link rel="stylesheet" href="style/dropzone.css">
+
+  <!-- Repetitive HTML -->
+  <script src="components/innerHTML.js"></script>
+  <script src="script/component.js"></script>
+
+  <!-- Vendor JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="module">
+    import { parse } from 'https://cdn.jsdelivr.net/npm/@vanillaes/csv/index.js'
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+  <script src="script/vendor/papaparse.js"></script>
+
+
+  <script src="bwd_script/brownwood.js" defer></script>
+
+  <script src="script/helper/dynamic_dropdowns.js" defer></script>
+  <script src="script/helper/data_functions.js"></script> <!-- look for jquery alternative -->
+
+</head>
+
+<body>
+
+  <!-- Modal START -->
+  <div id="modal-parent">
+    <demo_modal-component></demo_modal-component>
+  </div>
+  <!-- Modal END -->
+
+  <main id="main" class="main">
+
+    <!-- On Screen Content START -->
+    <div id="onscreencontent" class="row">
+
+      <!-- Left side columns -->
+      <div class="col-md-8">
+
+        <!-- Nav-Bar START -->
+        <nav_bar-component></nav_bar-component>
+        <!-- Nav-Bar END -->
+
+        <!-- Status-Indicator START -->
+        <indicator-component></indicator-component>
+        <!-- Status-Indicator END -->
+
+        <!-- Scrolling Column START -->
+        <div>
+
+          <!-- RouteEntry-Card START -->
+          <div id="RouteEntryCard" class="card">
+            <div id="RouteEntryCardBody" class="card-body">
+              <h5 class="card-title">Query by:</h5>
+
+              <!-- Tabs START -->
+              <ul class="nav nav-tabs d-flex" id="routebuilder-tablist" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="referencemarker-tab" data-bs-toggle="tab"
+                    data-bs-target="#referencemarker-tabpane" type="button" role="tab"
+                    aria-controls="referencemarker-tabpane" aria-selected="true">Reference Marker</button>
+                </li>
+              </ul>
+              <!-- Tabs END -->
+
+              <!-- Tab Bodies START -->
+              <div class="card-body tab-content pt-2" id="routebuilder-tabcontent">
+
+                <!-- Coordinates Tab Body START -->
+                <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
+                </div>
+                <!-- Coordinates Tab Body END -->
+
+                <!-- Reference Marker Tab Body START -->
+                <div class="tab-pane fade show active" id="referencemarker-tabpane" role="tabpanel"
+                  aria-labelledby="referencemarker-tab">
+                  <form id="bulk-form">
+                    <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+                      <input id="upload_csv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        accept=".csv" />
+                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                    </fieldset>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name Field:</span>
+                      <select id="rte_nm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Reference Marker Field:</span>
+                      <select id="brm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-brm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Displacement Field:</span>
+                      <select id="bd_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-bd_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Reference Marker Field:</span>
+                      <select id="erm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-erm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Displacement Field:</span>
+                      <select id="ed_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-ed_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <button id="bulk-convert-button" class="btn btn-primary" type="button"
+                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Reference Marker Tab Body END -->
+
+              </div>
+              <!-- Tab Bodies END -->
+
+            </div>
+          </div>
+          <!-- RouteEntry-Card END -->
+
+          <!-- StyleBuilderAndTools-Card START -->
+          <div id="StyleBuilderAndTools-Card" class="card">
+            <div id="StyleBuilderAndTools-CardBody" class="card-body">
+
+              <!-- RouteBuilderTools-Card START -->
+              <div id="RouteBuilderTools-Card" class="card">
+                <div id="RouteBuilderTools-CardBody" class="card-body">
+
+                  <!-- Export Tabular START -->
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+                      <a id="CSVdownload" type="button" class="btn btn-primary"
+                        title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
+                    </div>
+                  </div>
+                  <!-- Export Tabular END -->
+
+                </div>
+              </div>
+              <!-- RouteBuilderTools-Card END -->
+
+            </div>
+          </div>
+          <!-- StyleBuilderAndTools-Card END -->
+
+        </div>
+        <!-- Scrolling Column END -->
+
+      </div>
+      <!-- End Left side columns -->
+
+    </div>
+    <!-- On Screen Content END -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+  </footer>
+  <!-- End Footer -->
+
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- ESRI ArcGIS JS API -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+</body>
+
+</html>
