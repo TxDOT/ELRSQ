@@ -113,6 +113,7 @@ function restartWizard() {
 
 // get current LRM
 
+//FIXME this is not always true
 let currentLRM = `coordinates-tab`;
 
 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
