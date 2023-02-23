@@ -16,7 +16,7 @@ $(document).ready(function () {
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       //thenConvertCSVByMethod(fileContents);
-      bwd_setMethodAndFields(fileContents);
+      setMethodAndFields(fileContents);
     });
   
   });

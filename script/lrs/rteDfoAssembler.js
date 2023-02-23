@@ -1,7 +1,8 @@
 // description
 
 
-async function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
+async function rteDfoAssembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
+
   if (method == 2 || method == 4) {
 
     let b_index = B_results.findIndex(function (item, i) {
@@ -25,24 +26,14 @@ async function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results,
     let E_RTENMs = E_results.map(a => a.RTE_DEFN_LN_NM);
     let BE_RTENMs = B_RTENMs.filter(x => E_RTENMs.includes(x));
 
-    for (var i = 0; i < BE_RTENMs.length; i++) {
-      var optn = BE_RTENMs[i];
-      var el = document.createElement("option");
-      el.textContent = optn;
-      el.value = optn;
-
-      if (method == 1) {
-        $("#candidateRTENMs").append(el);
-      } else if (method == 3) {
-        $("#candidateRTENMs_2").append(el);
-      }
-
-    }
-
     if (method == 1) {
-      rte_nm = await confirmRTENM();
+      dropDownPopulator("#candidateRTENMs", BE_RTENMs);
+      rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
+      rte_nm = BE_RTENMs[rte_nm_Index];
     } else if (method == 3) {
-      rte_nm = await confirmRTENM_2();
+      dropDownPopulator("#candidateRTENMs_2", BE_RTENMs);
+      rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs_2", "#candidateRTENMs_2");
+      rte_nm = BE_RTENMs[rte_nm_Index];
     }
 
     routeQueryOutput.push(rte_nm);
@@ -64,4 +55,16 @@ async function Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results,
     routeQueryOutput.push(Math.max(bdfo, edfo));
 
   }
+
+  let rteOutputAssemblerOutput = [];
+  /**
+    try {
+      rteOutputAssemblerOutput = (Object.values(b_output)).concat(Object.values(e_output));
+    } catch (err) {
+      rteOutputAssemblerOutput = lrsApiFields.concat(lrsApiFields);
+    }
+  */
+
+
+  //return (rteOutputAssemblerOutput);
 }

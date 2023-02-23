@@ -1,7 +1,5 @@
 // function which takes method to query lrs service for a single point
-
-
-async function lrsDualQuery(method, useMap, ...id_coord) {
+async function lrsDualQueryFromHtml(method, useMap, ...id_coord) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -45,11 +43,14 @@ async function lrsDualQuery(method, useMap, ...id_coord) {
   const B_results = await queryService(B_url);
   const E_results = await queryService(E_url);
 
-  await Rte_Dfo_Assembler(routeQueryOutput, method, B_results, E_results, rte_nm);
+  await rteDfoAssembler(routeQueryOutput, method, B_results, E_results, rte_nm);
 
   showRouteResults(routeQueryOutput);
 
   //TODO tabular export
+  //tabularRoutesConvertExport(routeQueryOutput);
+
+
   YellowToGreen();
 
 }

@@ -1,4 +1,4 @@
-function makeLrsQueryUrlFromIndex(method, vector, lrm_indices, format_rte_nm) {
+function new_makeLrsQueryUrlFromIndex(method, vector, lrm_indices, format_rte_nm) {
   let routeName = '';
   let url = '';
 
@@ -15,7 +15,7 @@ function makeLrsQueryUrlFromIndex(method, vector, lrm_indices, format_rte_nm) {
   }
 
   else if (method == 2) {
-    //let routeName = vector[lrm_indices[0]];
+
     let refMarker = vector[lrm_indices[1]];
     let displacement = vector[lrm_indices[2]];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs2?RouteID=${routeName}&ReferenceMarker=${refMarker}&Displacement=${displacement}`;
@@ -28,7 +28,7 @@ function makeLrsQueryUrlFromIndex(method, vector, lrm_indices, format_rte_nm) {
   }
 
   else if (method == 4) {
-    //let routeName = vector[lrm_indices[0]];
+
     let dfo = vector[lrm_indices[1]];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
   }
