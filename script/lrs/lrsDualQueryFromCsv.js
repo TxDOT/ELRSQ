@@ -1,15 +1,19 @@
 // function which takes method to query lrs service for a single point
 async function lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_indices) {
 
+  let b_lrm_indices = [];
+  let e_lrm_indices = [];
+  let rte_nm_lrm_indices = '';
+
   GreenToYellow();
 
   let refinedData = [];
-  let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields.map(i => 'Begin ' + i)).concat(lrsApiFields.map(i => 'End ' + i)); //FIXME use all caps and underscore
+  let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields.map(i => 'BEGIN_' + i)).concat(lrsApiFields.map(i => 'END_' + i)); //FIXME use all caps and underscore
 
   if (method == 1) {
-    //b_lrm_indices = 
-    //e_lrm_indices = 
-    //rte_nm_lrm_indices = 
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[3], lrm_indices[3]];
+    rte_nm_lrm_indices = lrm_indices[4];
   }
 
   else if (method == 2) {
@@ -19,15 +23,15 @@ async function lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_in
   }
 
   else if (method == 3) {
-    //b_lrm_indices = 
-    //e_lrm_indices = 
-    //rte_nm_lrm_indices = 
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[3], lrm_indices[3]];
+    rte_nm_lrm_indices = lrm_indices[4];
   }
 
   else if (method == 4) {
-    //b_lrm_indices = 
-    //e_lrm_indices = 
-    //rte_nm_lrm_indices = 
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[0], lrm_indices[2]];
+    rte_nm_lrm_indices = lrm_indices[0];
   }
 
 

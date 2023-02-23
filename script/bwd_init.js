@@ -9,15 +9,20 @@ $(document).ready(function () {
     $("indicator-component").load("components/html/indicator.html", function (response, status, xhr) {
       if (status == "error") { $("indicator-component").html(staticIndicator); }
     });
-  
-    // FIXME Bulk Upload: change to use Convert button instead of automatic
-    document.getElementById("upload_csv-bulk").addEventListener('change', async function (e) {
-      GreenToYellow();
-      const fileContents = await readFile(e.target.files[0])
-      YellowToGreen();
-      //thenConvertCSVByMethod(fileContents);
-      setMethodAndFields(fileContents);
-    });
-  
+
   });
   
+
+// add certain page elements and event handlers on page load
+$(document).ready(function () {
+
+  // FIXME Bulk Upload: change to use Convert button instead of automatic
+  document.getElementById("upload_csv-bulk").addEventListener('change', async function (e) {
+    GreenToYellow();
+    const fileContents = await readFile(e.target.files[0])
+    YellowToGreen();
+    //thenConvertCSVByMethod(fileContents);
+    setMethodAndFields(fileContents);
+  });
+
+});

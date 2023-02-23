@@ -3,7 +3,7 @@ function dropDownPopulator(dropDownId, candidate_fields) {
       var optn = candidate_fields[aCandidate_field];
       var el = document.createElement("option");
       el.textContent = optn;
-      el.value = aCandidate_field;
+      el.value = aCandidate_field; //this returns the index of the selection, not the selection itself
       $(dropDownId).append(el);
     }
   }
@@ -19,5 +19,3 @@ function dropDownPopulator(dropDownId, candidate_fields) {
     );
     return result;
   }
-  
-  

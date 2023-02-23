@@ -62,6 +62,12 @@ $(document).ready(function () {
     $("#copyCoordinates").on('click', function () { copyCoordinates(); });
   });
 
+});
+
+
+// add certain page elements and event handlers on page load
+$(document).ready(function () {
+
   $("wizard_form-component").load("components/html/wizard_form.html", function (response, status, xhr) {
     if (status == "error") { $("wizard_form-component").html(staticWizard_Form); }
     $("#missingControlSection").on('click', function () { noControlSection(); });
@@ -76,6 +82,12 @@ $(document).ready(function () {
     $("#missingCoordinates").on('click', function () { restartWizard(); });
   });
 
+});
+
+
+// add certain page elements and event handlers on page load
+$(document).ready(function () {
+  console.log("doc ready");
 
   // FIXME Bulk Upload: change to use Convert button instead of automatic
   const myDropZone = document.getElementById("bulk-fieldset");

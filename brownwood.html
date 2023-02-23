@@ -48,7 +48,6 @@
 
 
   <!-- Refactoring LRS scripts -->
-  <script src="script/bwd_LrsService.js" defer></script>
   <script src="script/lrs/setMethodAndFields.js" defer></script>
   <script src="script/lrs/lrsDualQueryFromCsv.js" defer></script>
   <script src="script/lrs/new_makeLrsQueryUrlFromIndex.js" defer></script>
@@ -62,7 +61,7 @@
   <script src="script/mqs_ImportExportTables.js" defer></script>
 
   <script src="script/mqs_Fetch.js" defer></script>
-  
+
   <script src="script/mqs_RouteNameFixer.js" defer></script>
 
 
@@ -107,9 +106,24 @@
               <!-- Tabs START -->
               <ul class="nav nav-tabs d-flex" id="routebuilder-tablist" role="tablist">
                 <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="coordinates-tab" data-bs-toggle="tab"
+                    data-bs-target="#coordinates-tabpane" type="button" role="tab" aria-controls="coordinates-tabpane"
+                    aria-selected="false">Coordinates</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
                   <button class="nav-link w-100 active" id="referencemarker-tab" data-bs-toggle="tab"
                     data-bs-target="#referencemarker-tabpane" type="button" role="tab"
                     aria-controls="referencemarker-tabpane" aria-selected="true">Reference Marker</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
+                    data-bs-target="#distancefromorigin-tabpane" type="button" role="tab"
+                    aria-controls="distancefromorigin-tabpane" aria-selected="false">DFO</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
+                    data-bs-target="#controlsection-tabpane" type="button" role="tab"
+                    aria-controls="controlsection-tabpane" aria-selected="false">Control Section</button>
                 </li>
               </ul>
               <!-- Tabs END -->
@@ -119,12 +133,66 @@
 
                 <!-- Coordinates Tab Body START -->
                 <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
+                  <!-- Horizontal Form -->
+                  <form id="coordinates-bulk-form">
+                    <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+                      <input id="coordinates-upload_csv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        accept=".csv" />
+                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                    </fieldset>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Latitude Field:</span>
+                      <select id="blat_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-blat_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Longitude Field:</span>
+                      <select id="blon_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-blon_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Latitude Field:</span>
+                      <select id="elat_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-elat_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Longitude Field:</span>
+                      <select id="elon_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-elon_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name Field:</span>
+                      <select id="coordinates-rte_nm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <button id="coordinates-bulk-convert-button" class="btn btn-primary" type="button"
+                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                  </form>
+                  <!-- End Horizontal Form -->
                 </div>
                 <!-- Coordinates Tab Body END -->
 
                 <!-- Reference Marker Tab Body START -->
                 <div class="tab-pane fade show active" id="referencemarker-tabpane" role="tabpanel"
                   aria-labelledby="referencemarker-tab">
+                  <!-- Horizontal Form -->
                   <form id="bulk-form">
                     <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <input id="upload_csv-bulk" data-post-name="csv-bulk"
@@ -180,6 +248,108 @@
                 </div>
                 <!-- Reference Marker Tab Body END -->
 
+                <!-- DFO Tab Body START -->
+                <div class="tab-pane fade" id="distancefromorigin-tabpane" role="tabpanel"
+                  aria-labelledby="distancefromorigin-tab">
+                  <!-- Horizontal Form -->
+                  <form id="distancefromorigin-bulk-form">
+                    <fieldset id="distancefromorigin-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+                      <input id="distancefromorigin-upload_csv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        accept=".csv" />
+                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                    </fieldset>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name Field:</span>
+                      <select id="distancefromorigin-rte_nm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin DFO Field:</span>
+                      <select id="bdfo_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-bdfo_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End DFO Field:</span>
+                      <select id="edfo_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-edfo_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <button id="distancefromorigin-bulk-convert-button" class="btn btn-primary" type="button"
+                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- DFO Tab Body END -->
+
+                <!-- Control Section Tab Body START -->
+                <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
+                  aria-labelledby="controlsection-tab">
+                  <!-- Horizontal Form -->
+                  <form id="controlsection-bulk-form">
+                    <fieldset id="controlsection-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+                      <input id="controlsection-upload_csv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        accept=".csv" />
+                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                    </fieldset>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Control Section Field:</span>
+                      <select id="bcs_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-bcs_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Begin Milepoint Marker Field:</span>
+                      <select id="bmp_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-bmp_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Control Section Field:</span>
+                      <select id="ecs_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-ecs_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">End Milepoint Marker Field:</span>
+                      <select id="emp_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-emp_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">Route Name Field:</span>
+                      <select id="controlsection-rte_nm_field" class="form-select candidate">
+                        <!-- <option selected>Generated dynamically by JS</option> -->
+                      </select>
+                      <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                    </div>
+
+                    <button id="controlsection-bulk-convert-button" class="btn btn-primary" type="button"
+                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                  </form>
+                  <!-- End Horizontal Form -->
+                </div>
+                <!-- Control Section Tab Body END -->
+
               </div>
               <!-- Tab Bodies END -->
 
@@ -199,8 +369,8 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                      <a id="CSVdownload" type="button" class="btn btn-primary"
-                        title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
+                      <a id="CSVdownload" type="button" class="btn btn-primary" title="Export a CSV file"><i
+                          class="fa fa-download"></i> CSV</a>
                     </div>
                   </div>
                   <!-- Export Tabular END -->
