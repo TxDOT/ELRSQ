@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TxDOT MQS Wizard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!--<link href="assets/img/favicon.png" rel="icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link href="style/vendor/main.min.css" rel="stylesheet"> <!-- https://www.youtube.com/watch?v=nCX3QVl_PiI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css">
+
+  <link rel="stylesheet" href="style/show_hide.css">
+  <link rel="stylesheet" href="style/style_mini_map.css">
+  <link rel="stylesheet" href="style/map_style.css">
+  <link rel="stylesheet" href="style/text_style.css">
+  <link rel="stylesheet" href="style/dropzone.css">
+  <link rel="stylesheet" href="style/split.css">
+  <!-- <link rel="stylesheet" href="components/results_card.css">
+  <link rel="stylesheet" href="components/indicator.css"> -->
+
+  <!-- Repetitive HTML -->
+  <script src="components/innerHTML.js"></script>
+  <script src="script/component.js"></script>
+
+  <!-- <script src="components/js/map_controls.js"></script>
+  <script src="components/js/demo_modal.js"></script> -->
+
+
+  <!-- Vendor JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="module">
+    import { parse } from 'https://cdn.jsdelivr.net/npm/@vanillaes/csv/index.js'
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+  <script src="script/vendor/papaparse.js"></script>
+
+
+  <script src="script/init.js" defer></script>
+  <script src="script/config_hardcoded.js" defer></script>
+  <script src="script/mqs_LrsService.js" defer></script>
+  <script src="script/mqs_EsriMap.js" defer></script>
+  <script src="script/mqs_UI.js" defer></script>
+  <script src="script/mqs_HtmlTables.js" defer></script>
+  <script src="script/mqs_ImportExportTables.js" defer></script>
+  <script src="script/mqs_AgoService.js" defer></script>
+  <script src="script/mqs_Fetch.js" defer></script>
+  <script src="script/eventHandlers.js" defer></script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+  <!-- Modal START -->
+  <div id="modal-parent">
+    <demo_modal-component></demo_modal-component>
+    <bulk_modal-component></bulk_modal-component>
+    <form_help_modal-component></form_help_modal-component>
+    <cursor_help_modal-component></cursor_help_modal-component>
+    <results_help_modal-component></results_help_modal-component>
+    <route_help_modal-component></route_help_modal-component>
+    <route_style_help_modal-component></route_style_help_modal-component>
+  </div>
+  <!-- Modal END -->
+
+  <main id="main" class="main">
+
+    <!-- On Screen Content START -->
+    <div id="onscreencontent" class="row">
+
+      <!-- Left side columns -->
+      <div class="col-md-4" style="max-height: 100vh" id="split-0">
+
+        <!-- Nav-Bar START -->
+        <nav_bar-component></nav_bar-component>
+        <!-- Nav-Bar END -->
+
+        <!-- Status-Indicator START -->
+        <indicator-component></indicator-component>
+        <!-- Status-Indicator END -->
+
+        <!-- Scrolling Column START -->
+        <div class="overflow-scroll" style="max-height: 90vh">
+
+          <!-- Calculator-Card START -->
+          <div id="CalculatorCard" class="card">
+            <div id="CalculatorCardBody" class="card-body">
+              <h5 class="card-title">Query by:</h5>
+
+              <!-- Tabs START -->
+              <ul class="nav nav-tabs d-flex" id="calculator-tablist" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="wizard-tab" data-bs-toggle="tab"
+                    data-bs-target="#wizard-tabpane" type="button" role="tab" aria-controls="wizard-tabpane"
+                    aria-selected="true">Wizard</button>
+                </li>
+              </ul>
+              <!-- Tabs END -->
+
+              <!-- Tab Bodies START -->
+              <div class="card-body tab-content pt-2" id="calculator-tabcontent">
+
+                <!-- Wizard Tab Body START -->
+                <div class="tab-pane fade" id="wizard-tabpane" role="tabpanel" aria-labelledby="wizard-tab">
+                  <wizard_form-component></wizard_form-component>
+                </div>
+                <!-- Wizard Tab Body END -->
+
+              </div>
+              <!-- Tab Bodies END -->
+
+            </div>
+          </div>
+          <!-- Calculator-Card END -->
+
+          <!-- Results-Card START -->
+          <results_card-component></results_card-component>
+          <!-- Results-Card END -->
+
+        </div>
+        <!-- Scrolling Column END -->
+
+      </div>
+      <!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-md-8 d-none d-md-block" id="split-1">
+
+        <!-- Map START -->
+        <div id="viewDiv" class="col-7 map-container">
+          <div></div>
+        </div>
+        <!-- Map END -->
+
+        <!-- Map Buttons START -->
+        <div id="mapButtonsDiv" class="card map-buttons">
+
+          <!-- Map-Controls START -->
+          <map_controls-component></map_controls-component>
+          <!-- Map-Controls END -->
+
+          <div class="card-body">
+            <button id="returnToPoint" type="button" class="btn btn-primary" title="See all results on map"><i
+                class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
+          </div>
+        </div>
+        <!-- Map Buttons END -->
+
+      </div>
+      <!-- End Right side columns -->
+
+    </div>
+    <!-- On Screen Content END -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+  </footer>
+  <!-- End Footer -->
+
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.jquery.min.js"></script>
+
+  <!-- ESRI ArcGIS JS API -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+</body>
+
+</html>
