@@ -50,7 +50,5 @@ async function lrsDualQueryFromHtml(method, useMap, ...id_coord) {
   //TODO tabular export
   //tabularRoutesConvertExport(routeQueryOutput);
 
-
   YellowToGreen();
-
 }

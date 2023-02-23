@@ -20,5 +20,4 @@ async function lrsQuery(method, useMap, ...id_coord) {
   }
 
   YellowToGreen();
-
 }

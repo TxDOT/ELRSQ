@@ -1,6 +1,5 @@
 // description
 
-
 async function rteDfoAssembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
 
   if (method == 2 || method == 4) {
@@ -66,5 +65,5 @@ async function rteDfoAssembler(routeQueryOutput, method, B_results, E_results, r
   */
 
 
-  //return (rteOutputAssemblerOutput);
+  //return (rteOutputAssemblerOutput); //TODO change to a return function
 }

@@ -1,6 +1,5 @@
 // description
 
-
 function rteOutputAssembler(routeQueryOutput, method, B_results, E_results, rte_nm) {
   let b_output = {};
   let e_output = {};
@@ -25,10 +24,6 @@ function rteOutputAssembler(routeQueryOutput, method, B_results, E_results, rte_
 
   }
 
-
-
-
-
   let rteOutputAssemblerOutput = [];
   /**  */
   try {
@@ -37,7 +32,6 @@ function rteOutputAssembler(routeQueryOutput, method, B_results, E_results, rte_
     rteOutputAssemblerOutput = lrsApiFields.concat(lrsApiFields);
   }
   /** */
-
 
   return (rteOutputAssemblerOutput);
 }

@@ -4,7 +4,7 @@ async function lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_in
   GreenToYellow();
 
   let refinedData = [];
-  let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields.map(i => 'Begin ' + i)).concat(lrsApiFields.map(i => 'End ' + i));
+  let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields.map(i => 'Begin ' + i)).concat(lrsApiFields.map(i => 'End ' + i)); //FIXME use all caps and underscore
 
   if (method == 1) {
     //b_lrm_indices = 
