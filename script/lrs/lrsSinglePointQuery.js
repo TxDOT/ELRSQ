@@ -6,7 +6,6 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   resetGraphics();
   resetCurrentPagination();
 
-  let useMap = 1; //FIXME make parameter again, or make a global parameter not passed in function
   if (useMap == 1) {
     clearResultsFromMap();
   }
@@ -20,42 +19,55 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   let refinedData = [];
 
   // set title keys
-  let titleKeys = ["Feature"].concat(lrsApiFields);
+  // let titleKeys = ["Feature"].concat(lrsApiFields);
+
+
+  // process rows
+  for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
+    let pointQueryOutput = [];
+
+
+
+    // build url
+    let url = makeLrsQueryUrl("html", currentLRMno, lrm_indices, rowFromArray, 0);
+    console.log(url);
+    // end build url
+
+    // perform query
+    let P_results = await queryService(url);
+
+    // end perform query
 
 
 
 
+    // get row header data
+    let rowhead = ''; // get from HTML
 
-  // build url
-  let url = makeLrsQueryUrl("html", currentLRMno, lrm_indices, rowFromArray, 0);
-
-  // end build url
-
-  // perform query
-  let P_results = await queryService(url);
-
-  // end perform query
+    // assemble data
 
 
 
+    // process multiple returns
+    for (let aRowResult = 0; aRowResult < P_results.length; aRowResult++) {
+      let aRowResultObj = P_results[aRowResult];
+      //Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
+      refinedData.push(aRowResultObj);
+    }
+  }
 
-  // get row header data
-  let rowhead = ''; // get from HTML
-
-  // assemble data
-
-
-
-  // process multiple returns
   // append feature info
+  //refinedData.unshift(titleKeys);
+
+
   // show results
-  showResults(P_results);
+  showResults(refinedData);
 
   // export data
-  tabularPointsConvertExport(P_results);
+  tabularPointsConvertExport(refinedData);
 
   if (useMap == 1) {
-    showPointResultsOnMap(P_results);
+    showPointResultsOnMap(refinedData);
   }
 
   YellowToGreen();
