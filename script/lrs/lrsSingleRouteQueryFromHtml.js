@@ -2,6 +2,9 @@ async function lrsSingleRouteQueryFromHtml(method, useMap, id_coord) {
   // single 
   // route
 
+  currentLRMno = 4; //FIXME set this programatically
+  currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
+
 
   resetGraphics();
   resetCurrentPagination();

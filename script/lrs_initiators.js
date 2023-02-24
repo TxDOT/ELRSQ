@@ -3,6 +3,7 @@ let currentLRM = `coordinates-tab`;
 let currentLRMno = 1;
 let lrm_indices = [0, 1];
 let currentPointFieldOrder = ['inputLatitude', 'inputLongitude'];
+let currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
 
 // get current LRM
 
@@ -70,10 +71,11 @@ if (calcGeomType == "Point") {
   // 1-point
   // single
 
-  $("#convert1").on('click', function () { lrsSinglePointQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
-  $("#convert2").on('click', function () { lrsSinglePointQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
-  $("#convert3").on('click', function () { lrsSinglePointQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
-  $("#convert4").on('click', function () { lrsSinglePointQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
+  $("#convert1").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
+  $("#convert2").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
+  $("#convert3").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
+  $("#convert4").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
+
 
   // 1-point
   // bulk
@@ -132,10 +134,19 @@ if (calcGeomType == "Route") {
   // 2-point
   // single
 
-  $("#convert1-2point").on('click', function () { lrsSingleRouteQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
-  $("#convert2-2point").on('click', function () { lrsSingleRouteQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
-  $("#convert3-2point").on('click', function () { lrsSingleRouteQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
-  $("#convert4-2point").on('click', function () { lrsSingleRouteQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
+  /**
+    $("#convert1-2point").on('click', function () { lrsSingleRouteQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
+    $("#convert2-2point").on('click', function () { lrsSingleRouteQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
+    $("#convert3-2point").on('click', function () { lrsSingleRouteQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
+    $("#convert4-2point").on('click', function () { lrsSingleRouteQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
+  */
+
+
+  $("#convert1-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert2-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert3-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert4-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
+
 
   // 2-point
   // bulk
