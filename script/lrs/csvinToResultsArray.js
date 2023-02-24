@@ -1,23 +1,44 @@
 async function csvinToResultsArray(text, method, ...index_coord) {
+
+  // input CSV
   let parsedInputCSV = Papa.parse(text, { "skipEmptyLines": true }).data;
   console.log(parsedInputCSV);
 
   GreenToYellow();
 
-  ////const titleKeys = Object.keys(outputArray[0][0])
-  let titleKeys = lrsApiFields;
-  titleKeys.unshift("Feature");
+
+
+  // make array for output
   let refinedData = [];
   //refinedData.push(titleKeys)
   // skipping 0 header row
+
+  // set title keys
+
+  let titleKeys = lrsApiFields;
+  ////const titleKeys = Object.keys(outputArray[0][0])
+  titleKeys.unshift("Feature");
+
+  // get indices
+
+  // end get indices
+
+
+  // process rows
   for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
     console.log("processing row: " + rowToQuery + " of " + (parsedInputCSV.length));
 
+    // build url
     let url = makeLrsQueryUrlFromIndex(method, parsedInputCSV[rowToQuery], index_coord);
     console.log(url);
+    // end build url
+
+    // perform query
     rowResults = await queryService(url);
     console.log("returned " + rowResults.length + " results for row: " + rowToQuery);
+    // end perform query
 
+    // assemble data
     rowhead = (parsedInputCSV[rowToQuery])[0];
     console.log("rowhead");
     console.log(rowhead);
@@ -31,6 +52,7 @@ async function csvinToResultsArray(text, method, ...index_coord) {
     }
   }
 
+  // export data
   console.log("refinedData");
   console.log(refinedData);
   tabularPointsConvertExport(refinedData);

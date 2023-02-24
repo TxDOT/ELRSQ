@@ -1,5 +1,8 @@
-// function which takes method to query lrs service for a single point
 async function lrsQuery(method, useMap, ...id_coord) {
+  // single 
+  // point
+
+
   resetGraphics();
   resetCurrentPagination();
 
@@ -9,10 +12,26 @@ async function lrsQuery(method, useMap, ...id_coord) {
 
   GreenToYellow();
 
-  url = makeLrsQueryUrlFromHtml(method, id_coord);
 
+
+
+
+
+
+
+
+
+  // build url
+  url = makeLrsQueryUrlFromHtml(method, id_coord);
+  // end build url
+
+  // perform query
   const results = await queryService(url);
+  // end perform query
+
   showResults(results);
+
+  // export data
   tabularPointsConvertExport(results);
 
   if (useMap == 1) {

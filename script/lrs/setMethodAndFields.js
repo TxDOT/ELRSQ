@@ -1,6 +1,10 @@
-// bulk conversion functions
 
 async function setMethodAndFields(fileContents) {
+  // bulk 
+  // route
+
+
+  // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
   let method = 2; //FIXME set this programatically
@@ -20,7 +24,6 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
   all_fields = [...Array(candidate_fields.length).keys()];
 
   if (method == 1) {
-
     dropDownPopulator("#blat_field", candidate_fields);
     dropDownPopulator("#blon_field", candidate_fields);
     dropDownPopulator("#elat_field", candidate_fields);
@@ -81,6 +84,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
   }
 
   other_indices = all_fields.filter(x => !lrm_indices.includes(x));
+
   field_indices = [lrm_indices, other_indices];
 
   return field_indices;

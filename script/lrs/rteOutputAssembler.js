@@ -4,6 +4,7 @@ function rteOutputAssembler(routeQueryOutput, method, B_results, E_results, rte_
   let b_output = {};
   let e_output = {};
 
+  //get right route
   if (method == 2 || method == 4) {
 
     let b_index = B_results.findIndex(function (item, i) {

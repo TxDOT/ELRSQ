@@ -1,5 +1,8 @@
 function makeLrsQueryUrlFromHtml(method, id_coord) {
 
+  // build url
+  let url = '';
+
   if (method == 1) {
     let lat = $('#' + id_coord[0]).val();
     let lon = $('#' + id_coord[1]).val();
@@ -26,4 +29,6 @@ function makeLrsQueryUrlFromHtml(method, id_coord) {
   }
 
   return url;
+
+  // end build url
 }
