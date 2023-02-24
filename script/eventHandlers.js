@@ -1,14 +1,14 @@
 
-$("#convert1").on('click', function () { lrsQuery(1, 1, 'inputLatitude', 'inputLongitude'); });
-$("#convert2").on('click', function () { lrsQuery(2, 1, 'inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'); });
-$("#convert3").on('click', function () { lrsQuery(3, 1, 'inputControlSection', 'inputMilepointMeasure'); });
-$("#convert4").on('click', function () { lrsQuery(4, 1, 'inputRouteName_4', 'inputDistanceFromOrigin'); });
+$("#convert1").on('click', function () { lrsQuery(1, 1, ['inputLatitude', 'inputLongitude']); });
+$("#convert2").on('click', function () { lrsQuery(2, 1, ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
+$("#convert3").on('click', function () { lrsQuery(3, 1, ['inputControlSection', 'inputMilepointMeasure']); });
+$("#convert4").on('click', function () { lrsQuery(4, 1, ['inputRouteName_4', 'inputDistanceFromOrigin']); });
 
 
-$("#convert1-2point").on('click', function () { lrsDualQueryFromHtml(1, 0, 'inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'); });
-$("#convert2-2point").on('click', function () { lrsDualQueryFromHtml(2, 0, 'inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'); });
-$("#convert3-2point").on('click', function () { lrsDualQueryFromHtml(3, 0, 'inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'); });
-$("#convert4-2point").on('click', function () { lrsDualQueryFromHtml(4, 0, 'inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'); });
+$("#convert1-2point").on('click', function () { lrsDualQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
+$("#convert2-2point").on('click', function () { lrsDualQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
+$("#convert3-2point").on('click', function () { lrsDualQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
+$("#convert4-2point").on('click', function () { lrsDualQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
 
 
 $(":reset").on('click', function () { clearResults(); });

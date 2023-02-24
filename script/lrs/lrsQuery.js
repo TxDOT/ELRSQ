@@ -1,4 +1,4 @@
-async function lrsQuery(method, useMap, ...id_coord) {
+async function lrsQuery(method, useMap, id_coord) {
   // single 
   // point
 

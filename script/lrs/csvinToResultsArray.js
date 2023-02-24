@@ -1,4 +1,4 @@
-async function csvinToResultsArray(text, method, ...index_coord) {
+async function csvinToResultsArray(text, method, index_coord) {
 
   // input CSV
   let parsedInputCSV = Papa.parse(text, { "skipEmptyLines": true }).data;
