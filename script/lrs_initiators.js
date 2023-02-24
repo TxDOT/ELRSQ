@@ -1,5 +1,8 @@
 //FIXME this is not always true
 let currentLRM = `coordinates-tab`;
+let currentLRMno = 1;
+let lrm_indices = [0, 1];
+let currentPointFieldOrder = ['inputLatitude', 'inputLongitude'];
 
 // get current LRM
 
@@ -34,6 +37,29 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   } else {
     $("#viewDiv").css('cursor', 'move');
   }
+
+  if (currentLRM == `referencemarker-tab`) {
+    currentLRMno = 2;
+    lrm_indices = [0, 1, 2];
+    currentPointFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
+    currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
+  } else if (currentLRM == `controlsection-tab`) {
+    currentLRMno = 3;
+    lrm_indices = [0, 1];
+    currentPointFieldOrder = ['inputControlSection', 'inputMilepointMeasure'];
+    currentRouteFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
+  } else if (currentLRM == `distancefromorigin-tab`) {
+    currentLRMno = 4;
+    lrm_indices = [0, 1];
+    currentPointFieldOrder = ['inputRouteName_4', 'inputDistanceFromOrigin'];
+    currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
+  } else {
+    currentLRMno = 1;
+    lrm_indices = [0, 1];
+    currentPointFieldOrder = ['inputLatitude', 'inputLongitude'];
+    currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
+  }
+
 });
 
 // end get current LRM
@@ -77,11 +103,6 @@ if (calcGeomType == "Point") {
 
   });
 
-
-
-
-
-
   // 1-point
   // single
   // wizard
@@ -103,8 +124,6 @@ if (calcGeomType == "Point") {
     });
 
   });
-
-
 
 
 }
