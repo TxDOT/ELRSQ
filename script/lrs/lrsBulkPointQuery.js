@@ -1,4 +1,6 @@
 async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
+  // bulk 
+  // point
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
@@ -17,8 +19,6 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
   // make array for output
   let refinedData = [];
-  //refinedData.push(titleKeys)
-  // skipping 0 header row
 
   // set title keys
   //let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields);

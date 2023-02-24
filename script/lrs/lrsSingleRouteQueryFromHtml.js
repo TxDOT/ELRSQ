@@ -1,10 +1,11 @@
-async function lrsSingleRouteQueryFromHtml(method, useMap, id_coord) {
+async function lrsSingleRouteQueryFromHtml(currentLRMno, useMap, lrm_indices) {
   // single 
   // route
 
-  currentLRMno = 4; //FIXME set this programatically
-  currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
-
+  /**
+    currentLRMno = 4; //FIXME set this programatically
+    currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
+  */
 
   resetGraphics();
   resetCurrentPagination();
@@ -18,54 +19,70 @@ async function lrsSingleRouteQueryFromHtml(method, useMap, id_coord) {
   // make array for output
   let routeQueryOutput = [];
 
+  // set title keys
+  // let titleKeys = ["Feature"].concat(lrsApiFields.map(i => 'BEGIN_' + i)).concat(lrsApiFields.map(i => 'END_' + i));
+
 
   // get indices
-  if (method == 1) {
-    b_coord = id_coord.slice(0, 2);
-    e_coord = id_coord.slice(2, 4);
+  if (currentLRMno == 1) {
+    b_coord = lrm_indices.slice(0, 2);
+    e_coord = lrm_indices.slice(2, 4);
     rte_nm = '';
   }
 
-  else if (method == 2) {
-    b_coord = [id_coord[0], id_coord[1], id_coord[2]];
-    e_coord = [id_coord[0], id_coord[3], id_coord[4]];
-    rte_nm = $("#" + id_coord[0]).val();
+  else if (currentLRMno == 2) {
+    b_coord = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
+    e_coord = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
+    rte_nm = $("#" + lrm_indices[0]).val();
     routeQueryOutput.push(rte_nm);
   }
 
-  else if (method == 3) {
-    b_coord = id_coord.slice(0, 2);
-    e_coord = id_coord.slice(2, 4);
+  else if (currentLRMno == 3) {
+    b_coord = lrm_indices.slice(0, 2);
+    e_coord = lrm_indices.slice(2, 4);
     rte_nm = '';
   }
 
-  else if (method == 4) {
-    b_coord = [id_coord[0], id_coord[1]];
-    e_coord = [id_coord[0], id_coord[2]];
-    rte_nm = $("#" + id_coord[0]).val();
+  else if (currentLRMno == 4) {
+    b_coord = [lrm_indices[0], lrm_indices[1]];
+    e_coord = [lrm_indices[0], lrm_indices[2]];
+    rte_nm = $("#" + lrm_indices[0]).val();
     routeQueryOutput.push(rte_nm);
   }
   // end get indices
 
-
   // process rows
 
   // build url
-  let B_url = makeLrsQueryUrlFromHtml(method, b_coord);
-  let E_url = makeLrsQueryUrlFromHtml(method, e_coord);
+  let B_url = makeLrsQueryUrlFromHtml(currentLRMno, b_coord);
+  let E_url = makeLrsQueryUrlFromHtml(currentLRMno, e_coord);
   // end build url
-
 
   // perform query
   const B_results = await queryService(B_url);
   const E_results = await queryService(E_url);
   // end perform query
 
-
-
   //get right route
-  await rteDfoAssembler(routeQueryOutput, method, B_results, E_results, rte_nm);
+  await rteDfoAssembler(routeQueryOutput, currentLRMno, B_results, E_results, rte_nm);
   // end get right route
+
+  // get row header data
+  // let rowhead = ''; // get from HTML
+
+
+  // assemble data
+  // let fullRowData = rowhead.concat(routeResulrsArr);
+  // refinedData.push(fullRowData);
+
+
+
+
+
+
+  // append feature info
+  // refinedData.unshift(titleKeys);
+
 
   // show results
   showRouteResults(routeQueryOutput);

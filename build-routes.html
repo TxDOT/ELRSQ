@@ -124,9 +124,9 @@
               <!-- Tabs START -->
               <ul class="nav nav-tabs d-flex" id="routebuilder-tablist" role="tablist">
                 <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="coordinates-tab" data-bs-toggle="tab"
+                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab"
                     data-bs-target="#coordinates-tabpane" type="button" role="tab" aria-controls="coordinates-tabpane"
-                    aria-selected="false">Coordinates</button>
+                    aria-selected="true">Coordinates</button>
                 </li>
                 <li class="nav-item flex-fill" role="presentation">
                   <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
@@ -134,9 +134,9 @@
                     aria-controls="referencemarker-tabpane" aria-selected="false">Reference Marker</button>
                 </li>
                 <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100 active" id="distancefromorigin-tab" data-bs-toggle="tab"
+                  <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
                     data-bs-target="#distancefromorigin-tabpane" type="button" role="tab"
-                    aria-controls="distancefromorigin-tabpane" aria-selected="true">DFO</button>
+                    aria-controls="distancefromorigin-tabpane" aria-selected="false">DFO</button>
                 </li>
                 <li class="nav-item flex-fill" role="presentation">
                   <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
@@ -155,7 +155,8 @@
               <div class="card-body tab-content pt-2" id="routebuilder-tabcontent">
 
                 <!-- Coordinates Tab Body START -->
-                <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
+                <div class="tab-pane fade show active" id="coordinates-tabpane" role="tabpanel"
+                  aria-labelledby="coordinates-tab">
                   <!-- New Route Form -->
                   <form id="form-coordinates-2point">
                     <div>
@@ -309,7 +310,7 @@
                 <!-- Reference Marker Tab Body END -->
 
                 <!-- DFO Tab Body START -->
-                <div class="tab-pane fade show active" id="distancefromorigin-tabpane" role="tabpanel"
+                <div class="tab-pane fade" id="distancefromorigin-tabpane" role="tabpanel"
                   aria-labelledby="distancefromorigin-tab">
                   <!-- New Route Form -->
                   <form id="form-distancefromorigin-2point">
@@ -502,7 +503,7 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" onclick="" class="btn btn-primary convert-2point" title="Convert to other LRS"><i
+                        <button type="button" class="btn btn-primary convert-2point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset-mapcursor-2point" type="reset" class="btn btn-secondary"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
