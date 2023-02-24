@@ -29,10 +29,15 @@
   <link rel="stylesheet" href="style/map_style.css">
   <link rel="stylesheet" href="style/text_style.css">
   <link rel="stylesheet" href="style/dropzone.css">
+  <link rel="stylesheet" href="style/split.css">
+
 
   <!-- Repetitive HTML -->
   <script src="components/innerHTML.js"></script>
   <script src="script/component.js"></script>
+
+
+
 
   <!-- Vendor JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -45,7 +50,6 @@
 
   <script src="script/bwd_init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
-
 
   <!-- Refactoring LRS scripts -->
   <script src="script/lrs/setMethodAndFields.js" defer></script>
@@ -133,7 +137,7 @@
 
                 <!-- Coordinates Tab Body START -->
                 <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
-                  <!-- Horizontal Form -->
+                  <!-- Upload and Field Picker Form -->
                   <form id="coordinates-bulk-form">
                     <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <input id="coordinates-upload_csv-bulk" data-post-name="csv-bulk"
@@ -145,7 +149,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Latitude Field:</span>
                       <select id="blat_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-blat_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -153,7 +156,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Longitude Field:</span>
                       <select id="blon_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-blon_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -161,7 +163,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Latitude Field:</span>
                       <select id="elat_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-elat_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -169,7 +170,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Longitude Field:</span>
                       <select id="elon_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-elon_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -177,22 +177,22 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="coordinates-rte_nm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
-                      <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary"
+                        type="button">Select</button>
                     </div>
 
                     <button id="coordinates-bulk-convert-button" class="btn btn-primary" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End Upload and Field Picker Form -->
                 </div>
                 <!-- Coordinates Tab Body END -->
 
                 <!-- Reference Marker Tab Body START -->
                 <div class="tab-pane fade show active" id="referencemarker-tabpane" role="tabpanel"
                   aria-labelledby="referencemarker-tab">
-                  <!-- Horizontal Form -->
+                  <!-- Upload and Field Picker Form -->
                   <form id="bulk-form">
                     <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <input id="upload_csv-bulk" data-post-name="csv-bulk"
@@ -204,7 +204,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="rte_nm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -212,7 +211,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Reference Marker Field:</span>
                       <select id="brm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-brm_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -220,7 +218,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Displacement Field:</span>
                       <select id="bd_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-bd_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -228,7 +225,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Reference Marker Field:</span>
                       <select id="erm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-erm_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -236,7 +232,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Displacement Field:</span>
                       <select id="ed_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-ed_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -244,14 +239,14 @@
                     <button id="bulk-convert-button" class="btn btn-primary" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End Upload and Field Picker Form -->
                 </div>
                 <!-- Reference Marker Tab Body END -->
 
                 <!-- DFO Tab Body START -->
                 <div class="tab-pane fade" id="distancefromorigin-tabpane" role="tabpanel"
                   aria-labelledby="distancefromorigin-tab">
-                  <!-- Horizontal Form -->
+                  <!-- Upload and Field Picker Form -->
                   <form id="distancefromorigin-bulk-form">
                     <fieldset id="distancefromorigin-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <input id="distancefromorigin-upload_csv-bulk" data-post-name="csv-bulk"
@@ -263,15 +258,14 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="distancefromorigin-rte_nm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
-                      <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary"
+                        type="button">Select</button>
                     </div>
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin DFO Field:</span>
                       <select id="bdfo_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-bdfo_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -279,7 +273,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End DFO Field:</span>
                       <select id="edfo_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-edfo_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -287,14 +280,14 @@
                     <button id="distancefromorigin-bulk-convert-button" class="btn btn-primary" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End Upload and Field Picker Form -->
                 </div>
                 <!-- DFO Tab Body END -->
 
                 <!-- Control Section Tab Body START -->
                 <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
                   aria-labelledby="controlsection-tab">
-                  <!-- Horizontal Form -->
+                  <!-- Upload and Field Picker Form -->
                   <form id="controlsection-bulk-form">
                     <fieldset id="controlsection-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <input id="controlsection-upload_csv-bulk" data-post-name="csv-bulk"
@@ -306,7 +299,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Control Section Field:</span>
                       <select id="bcs_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-bcs_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -314,7 +306,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Begin Milepoint Marker Field:</span>
                       <select id="bmp_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-bmp_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -322,7 +313,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Control Section Field:</span>
                       <select id="ecs_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-ecs_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -330,7 +320,6 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">End Milepoint Marker Field:</span>
                       <select id="emp_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-emp_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
@@ -338,15 +327,15 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="controlsection-rte_nm_field" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
-                      <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary"
+                        type="button">Select</button>
                     </div>
 
                     <button id="controlsection-bulk-convert-button" class="btn btn-primary" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End Upload and Field Picker Form -->
                 </div>
                 <!-- Control Section Tab Body END -->
 
@@ -405,6 +394,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <!-- <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.jquery.min.js"></script>
 
   <!-- ESRI ArcGIS JS API -->
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">

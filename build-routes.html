@@ -30,15 +30,13 @@
   <link rel="stylesheet" href="style/text_style.css">
   <link rel="stylesheet" href="style/dropzone.css">
   <link rel="stylesheet" href="style/split.css">
-  <!-- <link rel="stylesheet" href="components/results_card.css">
-  <link rel="stylesheet" href="components/indicator.css"> -->
+
 
   <!-- Repetitive HTML -->
   <script src="components/innerHTML.js"></script>
   <script src="script/component.js"></script>
 
-  <!-- <script src="components/js/map_controls.js"></script>
-  <script src="components/js/demo_modal.js"></script> -->
+
 
 
   <!-- Vendor JS -->
@@ -151,7 +149,7 @@
 
                 <!-- Coordinates Tab Body START -->
                 <div class="tab-pane fade" id="coordinates-tabpane" role="tabpanel" aria-labelledby="coordinates-tab">
-                  <!-- Horizontal Form -->
+                  <!-- New Route Form -->
                   <form id="form-coordinates-2point">
                     <div>
                       <div class="row mb-3">
@@ -214,20 +212,20 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name:</span>
                       <select id="candidateRTENMs" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
+
                       </select>
                       <button id="btn-candidateRTENMs" class="btn btn-outline-primary" type="button">Select
                         Route</button>
                     </div>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End New Route Form -->
                 </div>
                 <!-- Coordinates Tab Body END -->
 
                 <!-- Reference Marker Tab Body START -->
                 <div class="tab-pane fade" id="referencemarker-tabpane" role="tabpanel"
                   aria-labelledby="referencemarker-tab">
-                  <!-- Horizontal Form -->
+                  <!-- New Route Form -->
                   <form id="form-referencemarker-2point">
                     <div>
                       <div class="row mb-3">
@@ -299,14 +297,14 @@
                       </div>
                     </div>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End New Route Form -->
                 </div>
                 <!-- Reference Marker Tab Body END -->
 
                 <!-- DFO Tab Body START -->
                 <div class="tab-pane fade show active" id="distancefromorigin-tabpane" role="tabpanel"
                   aria-labelledby="distancefromorigin-tab">
-                  <!-- Horizontal Form -->
+                  <!-- New Route Form -->
                   <form id="form-distancefromorigin-2point">
 
                     <div>
@@ -374,14 +372,14 @@
                       </div>
                     </div>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End New Route Form -->
                 </div>
                 <!-- DFO Tab Body END -->
 
                 <!-- Control Section Tab Body START -->
                 <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
                   aria-labelledby="controlsection-tab">
-                  <!-- Horizontal Form -->
+                  <!-- New Route Form -->
                   <form id="form-controlsection-2point">
                     <div>
                       <div class="row mb-3">
@@ -446,20 +444,19 @@
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name:</span>
                       <select id="candidateRTENMs_2" class="form-select candidate">
-                        <!-- <option selected>Generated dynamically by JS</option> -->
                       </select>
                       <button id="btn-candidateRTENMs_2" class="btn btn-outline-primary" type="button">Select
                         Route</button>
                     </div>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End New Route Form -->
                 </div>
                 <!-- Control Section Tab Body END -->
 
                 <!-- Map Cursor Tab Body START -->
                 <div class="tab-pane fade" id="mapcursor-tabpane" role="tabpanel" aria-labelledby="mapcursor-tab">
                   <strong class="mb-2">Use the "crosshairs" map cursor to select two points on the map.</strong>
-                  <!-- Horizontal Form -->
+                  <!-- New Route Form -->
                   <form id="form-mapcursor-2point">
                     <div>
                       <div class="row mb-3">
@@ -517,7 +514,7 @@
                       <button class="btn btn-outline-primary" type="button">Select Route</button>
                     </div>
                   </form>
-                  <!-- End Horizontal Form -->
+                  <!-- End New Route Form -->
                 </div>
                 <!-- Map Cursor Tab Body END -->
 
@@ -546,7 +543,6 @@
               </div>
               <!-- RoutesTable-Card END -->
 
-
               <!-- StyleBuilder-Card START -->
               <div id="StyleBuilder-Card" class="card">
                 <div id="StyleBuilder-CardBody" class="card-body">
@@ -570,6 +566,7 @@
                         <td></td>
                       </tr>
                       <tr>
+                        <!-- TODO link color inputs together -->
                         <th scope="row">Line Color:</th>
                         <td><select id="colors" class="form-select" aria-label="line color selector">
                             <option value="#000000">Black</option>
@@ -583,7 +580,8 @@
                             <option value="#ffff00">Yellow</option>
                           </select></td>
                       </tr>
-                      <tr>
+                      <tr> 
+                        <!-- TODO link color inputs together -->
                         <th scope="row">Line Color:</th>
                         <td><input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"
                             title="Choose your color"></td>
@@ -643,14 +641,12 @@
                   <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                      <a type="button" class="btn btn-primary" title="Export a CSV file of all routes"><i
+                      <a id="CSVdownload" type="button" class="btn btn-primary" title="Export a CSV file"><i
                           class="fa fa-download"></i> CSV</a>
-
-                      <a type="button" class="btn btn-primary" title="Export a JSON file of all routes"><i
-                          class="fa fa-download"></i> JSON</a>
-
-                      <a type="button" class="btn btn-primary" title="Export a KML file of all routes"><i
-                          class="fa fa-download"></i> KML</a>
+                      <a type="button" class="btn btn-primary" title="Export a JSON file"><i class="fa fa-download"></i>
+                        JSON</a>
+                      <a type="button" class="btn btn-primary" title="Export a KML file"><i class="fa fa-download"></i>
+                        KML</a>
                     </div>
                     <div class="btn-group mb-2" role="group" aria-label="download group">
                       <button type="button" class="btn btn-info" data-bs-toggle="modal"
@@ -691,10 +687,10 @@
           <!-- Map-Controls END -->
 
           <div class="card-body">
-            <button type="button" onclick="" class="btn btn-primary" title="Export a printable map"><i
-                class="fa fa-download"></i> Export Printable Map</button>
-            <button type="button" onclick="" class="btn btn-primary" title="Export a KML file of all lines"><i
-                class="fa fa-download"></i> Export KML</button>
+            <a type="button" class="btn btn-primary" title="Export a printable map"><i class="fa fa-download"></i>
+              Export Printable Map</a>
+            <a type="button" class="btn btn-primary" title="Export a KML file of all lines"><i
+                class="fa fa-download"></i> Export KML</a>
           </div>
         </div>
         <!-- Map Buttons END -->
