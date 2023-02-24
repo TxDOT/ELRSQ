@@ -1,15 +1,4 @@
 
-$("#convert1").on('click', function () { lrsQuery(1, 1, ['inputLatitude', 'inputLongitude']); });
-$("#convert2").on('click', function () { lrsQuery(2, 1, ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
-$("#convert3").on('click', function () { lrsQuery(3, 1, ['inputControlSection', 'inputMilepointMeasure']); });
-$("#convert4").on('click', function () { lrsQuery(4, 1, ['inputRouteName_4', 'inputDistanceFromOrigin']); });
-
-
-$("#convert1-2point").on('click', function () { lrsDualQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
-$("#convert2-2point").on('click', function () { lrsDualQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
-$("#convert3-2point").on('click', function () { lrsDualQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
-$("#convert4-2point").on('click', function () { lrsDualQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
-
 
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearResultsFromMap(); });
@@ -226,3 +215,36 @@ $(document).ready(function () {
   });
 
 });
+
+
+// drag and drop event handlers
+/**
+  function dragDropEventHandlers(zone) {
+    // Prevent default drag behaviors
+    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+      zone.addEventListener(event, preventDefaults, false);
+      document.body.addEventListener(event, preventDefaults, false);
+    });
+  
+    // Highlighting drop area when item is dragged over it
+    ;['dragenter', 'dragover'].forEach(event => {
+      zone.addEventListener(event, highlight, false);
+    });
+    ;['dragleave', 'drop'].forEach(event => {
+      zone.addEventListener(event, unhighlight, false);
+    });
+  }
+  
+  function preventDefaults(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+  
+  function highlight(event) {
+    event.target.classList.add('highlight');
+  }
+  
+  function unhighlight(event) {
+    event.target.classList.remove('highlight');
+  }
+*/

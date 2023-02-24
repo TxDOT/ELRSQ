@@ -47,16 +47,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
   <script src="script/vendor/papaparse.js"></script>
 
+  <script>
+    const calcGeomType = "Route";
+    const useMap = 0;
+  </script>
 
-  <script src="script/bwd_init.js" defer></script>
+
+  <script src="script/init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
+  <script src="script/lrs_initiators.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
   <script src="script/lrs/setMethodAndFields.js" defer></script>
   <script src="script/lrs/lrsDualQueryFromCsv.js" defer></script>
   <script src="script/lrs/new_makeLrsQueryUrlFromIndex.js" defer></script>
   <script src="script/lrs/rteOutputAssembler.js" defer></script>
-  <script src="script/lrs/new_makeLrsQueryUrl.js" defer></script>
+  <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
   <!-- End Refactoring LRS scripts -->
 
 
@@ -65,7 +71,7 @@
   <script src="script/mqs_ImportExportTables.js" defer></script>
 
   <script src="script/mqs_Fetch.js" defer></script>
-
+  <script src="script/helper/dragdropupload.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
 
 
@@ -140,10 +146,10 @@
                   <!-- Upload and Field Picker Form -->
                   <form id="coordinates-bulk-form">
                     <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
-                      <input id="coordinates-upload_csv-bulk" data-post-name="csv-bulk"
+                      <input id="coordinates-uploadCsv-bulk" data-post-name="csv-bulk"
                         class="position-absolute invisible form-control" type="file" placeholder="Select file"
                         accept=".csv" />
-                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                      <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
                     <div class="input-group mb-3">
@@ -194,11 +200,11 @@
                   aria-labelledby="referencemarker-tab">
                   <!-- Upload and Field Picker Form -->
                   <form id="bulk-form">
-                    <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
-                      <input id="upload_csv-bulk" data-post-name="csv-bulk"
+                    <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
+                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
                         class="position-absolute invisible form-control" type="file" placeholder="Select file"
                         accept=".csv" />
-                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                      <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
                     <div class="input-group mb-3">
@@ -249,10 +255,10 @@
                   <!-- Upload and Field Picker Form -->
                   <form id="distancefromorigin-bulk-form">
                     <fieldset id="distancefromorigin-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
-                      <input id="distancefromorigin-upload_csv-bulk" data-post-name="csv-bulk"
+                      <input id="distancefromorigin-uploadCsv-bulk" data-post-name="csv-bulk"
                         class="position-absolute invisible form-control" type="file" placeholder="Select file"
                         accept=".csv" />
-                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                      <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
                     <div class="input-group mb-3">
@@ -290,10 +296,10 @@
                   <!-- Upload and Field Picker Form -->
                   <form id="controlsection-bulk-form">
                     <fieldset id="controlsection-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
-                      <input id="controlsection-upload_csv-bulk" data-post-name="csv-bulk"
+                      <input id="controlsection-uploadCsv-bulk" data-post-name="csv-bulk"
                         class="position-absolute invisible form-control" type="file" placeholder="Select file"
                         accept=".csv" />
-                      <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
+                      <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
                     <div class="input-group mb-3">

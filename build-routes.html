@@ -47,9 +47,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
   <script src="script/vendor/papaparse.js"></script>
 
+  <script>
+    const calcGeomType = "Route";
+    const useMap = 1;
+  </script>
 
   <script src="script/init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
+  <script src="script/lrs_initiators.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
   <script src="script/mqs_LrsService.js" defer></script>
@@ -66,6 +71,8 @@
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/eventHandlers.js" defer></script>
+
+  <script src="script/helper/dragdropupload.js" defer></script>
 
   <script src="script/mqs_RouteBuilder.js"></script>
   <script src="script/mqs_LocalGeoJSONToMap.js"></script>
@@ -580,7 +587,7 @@
                             <option value="#ffff00">Yellow</option>
                           </select></td>
                       </tr>
-                      <tr> 
+                      <tr>
                         <!-- TODO link color inputs together -->
                         <th scope="row">Line Color:</th>
                         <td><input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"

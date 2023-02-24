@@ -16,26 +16,15 @@ const staticBulk_Modal = `
           <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
           
           <form id="bulk-form">
-
-            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
-
+            <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
             <legend class="visually-hidden">CSV uploader</legend>
-
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-
-              <input id="upload_csv-bulk" data-post-name="csv-bulk" 
+              <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
                 class="position-absolute invisible form-control" type="file" placeholder="Select file" accept=".csv" />
-
-              <label class="btn btn-upload mb-3" for="upload_csv-bulk">Choose file(s)</label>
-
-
+              <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
             </fieldset>
-
             <button id="bulk-convert-button" class="btn btn-primary" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-
           </form>
-
-
 
         </div>
         <div class="modal-footer">
@@ -94,7 +83,6 @@ const staticIndicator = `
     position: relative;
   }
 
-
   .lamp {
     background-size: 2px 2px;
     width: 25px;
@@ -134,8 +122,6 @@ const staticIndicator = `
       0 0 3px lime;
     animation: 10s green infinite;
   }
-
-
 
   @keyframes red {
     0% {
@@ -190,7 +176,6 @@ const staticIndicator = `
       opacity: .7
     }
   }
-
 
   @keyframes greenblink {
     0% {

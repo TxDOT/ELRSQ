@@ -1,4 +1,4 @@
-async function lrsQuery(method, useMap, id_coord) {
+async function lrsQuery(method, lrm_indices, rowFromArray) {
   // single 
   // point
 
@@ -6,6 +6,7 @@ async function lrsQuery(method, useMap, id_coord) {
   resetGraphics();
   resetCurrentPagination();
 
+  let useMap =  1; //FIXME make parameter again, or make a global parameter not passed in function
   if (useMap == 1) {
     clearResultsFromMap();
   }
@@ -22,7 +23,8 @@ async function lrsQuery(method, useMap, id_coord) {
 
 
   // build url
-  url = makeLrsQueryUrlFromHtml(method, id_coord);
+  // url = makeLrsQueryUrlFromHtml(method, id_coord); //FIXME change me back maybe
+  url = makeLrsQueryUrl("html", method, lrm_indices, rowFromArray, 0)
   // end build url
 
   // perform query
