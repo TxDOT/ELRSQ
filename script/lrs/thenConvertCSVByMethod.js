@@ -28,6 +28,6 @@ function thenConvertCSVByMethod(fileContents) {
   }
   // end get indices
 
-  csvinToResultsArray(fileContents, method, lrm_indices);
+  lrsBulkPointQuery(fileContents, method, lrm_indices);
 
 }

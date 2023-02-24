@@ -1,4 +1,4 @@
-async function lrsSinglePointQuery(method, lrm_indices, rowFromArray) {
+async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   // single 
   // point
 
@@ -6,7 +6,7 @@ async function lrsSinglePointQuery(method, lrm_indices, rowFromArray) {
   resetGraphics();
   resetCurrentPagination();
 
-  let useMap =  1; //FIXME make parameter again, or make a global parameter not passed in function
+  let useMap = 1; //FIXME make parameter again, or make a global parameter not passed in function
   if (useMap == 1) {
     clearResultsFromMap();
   }
@@ -16,28 +16,46 @@ async function lrsSinglePointQuery(method, lrm_indices, rowFromArray) {
 
 
 
+  // make array for output
+  let refinedData = [];
 
+  // set title keys
+  let titleKeys = ["Feature"].concat(lrsApiFields);
 
 
 
 
 
   // build url
-  // url = makeLrsQueryUrlFromHtml(method, id_coord); //FIXME change me back maybe
-  url = makeLrsQueryUrl("html", method, lrm_indices, rowFromArray, 0)
+  let url = makeLrsQueryUrl("html", currentLRMno, lrm_indices, rowFromArray, 0);
+
   // end build url
 
   // perform query
-  const results = await queryService(url);
+  let P_results = await queryService(url);
+
   // end perform query
 
-  showResults(results);
+
+
+
+  // get row header data
+  let rowhead = ''; // get from HTML
+
+  // assemble data
+
+
+
+  // process multiple returns
+  // append feature info
+  // show results
+  showResults(P_results);
 
   // export data
-  tabularPointsConvertExport(results);
+  tabularPointsConvertExport(P_results);
 
   if (useMap == 1) {
-    showPointResultsOnMap(results);
+    showPointResultsOnMap(P_results);
   }
 
   YellowToGreen();
