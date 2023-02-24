@@ -1,4 +1,4 @@
-async function lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_indices) {
+async function lrsBulkRouteQueryFromCsv(method, parsedInputCSV, lrm_indices, other_indices) {
   // bulk 
   // route
 
@@ -51,8 +51,8 @@ async function lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_in
     let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
 
     // build url
-    let B_url = new_makeLrsQueryUrlFromIndex(method, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
-    let E_url = new_makeLrsQueryUrlFromIndex(method, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
+    let B_url = makeLrsQueryUrlFromIndex(method, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
+    let E_url = makeLrsQueryUrlFromIndex(method, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
 
     console.log(B_url);
     console.log(E_url);

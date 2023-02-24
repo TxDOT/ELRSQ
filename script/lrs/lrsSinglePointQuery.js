@@ -1,4 +1,4 @@
-async function lrsQuery(method, lrm_indices, rowFromArray) {
+async function lrsSinglePointQuery(method, lrm_indices, rowFromArray) {
   // single 
   // point
 

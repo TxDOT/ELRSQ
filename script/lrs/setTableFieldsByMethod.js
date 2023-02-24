@@ -1,22 +1,4 @@
 
-async function setMethodAndFields(fileContents) {
-  // bulk 
-  // route
-
-
-  // input CSV
-  let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
-
-  let method = 2; //FIXME set this programatically
-
-  // set fields
-  let field_indices = await setTableFieldsByMethod(method, parsedInputCSV);
-  let lrm_indices = field_indices[0];
-  let other_indices = field_indices[1];
-
-  await lrsDualQueryFromCsv(method, parsedInputCSV, lrm_indices, other_indices);
-}
-
 
 async function setTableFieldsByMethod(method, parsedInputCSV) {
   let field_indices = [];
@@ -34,7 +16,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
     let blon_field = ~~await confirmFieldChoice("#btn-blon_field", "#blon_field");
     let elat_field = ~~await confirmFieldChoice("#btn-elat_field", "#elat_field");
     let elon_field = ~~await confirmFieldChoice("#btn-elon_field", "#elon_field");
-    let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field");  //TODO make this optional
+    let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
     lrm_indices = [blat_field, blon_field, elat_field, elon_field, rte_nm_field];
   }
@@ -66,7 +48,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
     let bmpm_field = ~~await confirmFieldChoice("#btn-bmpm_field", "#bmpm_field");
     let ecs_field = ~~await confirmFieldChoice("#btn-ecs_field", "#ecs_field");
     let empm_field = ~~await confirmFieldChoice("#btn-empm_field", "#empm_field");
-    let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field");  //TODO make this optional
+    let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
     lrm_indices = [bcs_field, bmpm_field, ecs_field, empm_field, rte_nm_field];
   }

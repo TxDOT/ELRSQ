@@ -25,14 +25,14 @@ $(document).ready(function () {
     $("wizard_form-component").load("components/html/wizard_form.html", function (response, status, xhr) {
       if (status == "error") { $("wizard_form-component").html(staticWizard_Form); }
       $("#missingControlSection").on('click', function () { noControlSection(); });
-      $("#convert3-wizard").on('click', function () { lrsQuery(3, 0, 'wizinputControlSection', 'wizinputMilepointMeasure'); });
+      $("#convert3-wizard").on('click', function () { lrsSinglePointQuery(3, 0, 'wizinputControlSection', 'wizinputMilepointMeasure'); });
       $("#missingMilepointMeasure").on('click', function () { noMilepointMeasure(); });
       $("#missingRouteName").on('click', function () { noRouteName(); });
-      $("#conver4-wizard").on('click', function () { lrsQuery(4, 0, 'wizinputRouteName', 'wizinputDistanceFromOrigin'); });
+      $("#conver4-wizard").on('click', function () { lrsSinglePointQuery(4, 0, 'wizinputRouteName', 'wizinputDistanceFromOrigin'); });
       $("#missingDistanceFromOrigin").on('click', function () { noDistanceFromOrigin(); });
-      $("#convert2-wizard").on('click', function () { lrsQuery(2, 0, 'wizinputRouteName', 'wizinputReferenceMarker', 'wizinputDisplacement'); });
+      $("#convert2-wizard").on('click', function () { lrsSinglePointQuery(2, 0, 'wizinputRouteName', 'wizinputReferenceMarker', 'wizinputDisplacement'); });
       $("#missingReferenceMarker").on('click', function () { noReferenceMarker(); });
-      $("#convert1-wizard").on('click', function () { lrsQuery(1, 0, 'wizinputLatitude', 'wizinputLongitude'); });
+      $("#convert1-wizard").on('click', function () { lrsSinglePointQuery(1, 0, 'wizinputLatitude', 'wizinputLongitude'); });
       $("#missingCoordinates").on('click', function () { restartWizard(); });
     });
   

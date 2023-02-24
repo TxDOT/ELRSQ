@@ -70,10 +70,10 @@ if (calcGeomType == "Point") {
   // 1-point
   // single
 
-  $("#convert1").on('click', function () { lrsQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
-  $("#convert2").on('click', function () { lrsQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
-  $("#convert3").on('click', function () { lrsQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
-  $("#convert4").on('click', function () { lrsQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
+  $("#convert1").on('click', function () { lrsSinglePointQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
+  $("#convert2").on('click', function () { lrsSinglePointQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
+  $("#convert3").on('click', function () { lrsSinglePointQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
+  $("#convert4").on('click', function () { lrsSinglePointQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
 
   // 1-point
   // bulk
@@ -112,14 +112,14 @@ if (calcGeomType == "Point") {
     $("wizard_form-component").load("components/html/wizard_form.html", function (response, status, xhr) {
       if (status == "error") { $("wizard_form-component").html(staticWizard_Form); }
       $("#missingControlSection").on('click', function () { noControlSection(); });
-      $("#convert3-wizard").on('click', function () { lrsQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
+      $("#convert3-wizard").on('click', function () { lrsSinglePointQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
       $("#missingMilepointMeasure").on('click', function () { noMilepointMeasure(); });
       $("#missingRouteName").on('click', function () { noRouteName(); });
-      $("#convert4-wizard").on('click', function () { lrsQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
+      $("#convert4-wizard").on('click', function () { lrsSinglePointQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
       $("#missingDistanceFromOrigin").on('click', function () { noDistanceFromOrigin(); });
-      $("#convert2-wizard").on('click', function () { lrsQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
+      $("#convert2-wizard").on('click', function () { lrsSinglePointQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
       $("#missingReferenceMarker").on('click', function () { noReferenceMarker(); });
-      $("#convert1-wizard").on('click', function () { lrsQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
+      $("#convert1-wizard").on('click', function () { lrsSinglePointQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
       $("#missingCoordinates").on('click', function () { restartWizard(); });
     });
 
@@ -132,10 +132,10 @@ if (calcGeomType == "Route") {
   // 2-point
   // single
 
-  $("#convert1-2point").on('click', function () { lrsDualQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
-  $("#convert2-2point").on('click', function () { lrsDualQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
-  $("#convert3-2point").on('click', function () { lrsDualQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
-  $("#convert4-2point").on('click', function () { lrsDualQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
+  $("#convert1-2point").on('click', function () { lrsSingleRouteQueryFromHtml(1, 0, ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude']); });
+  $("#convert2-2point").on('click', function () { lrsSingleRouteQueryFromHtml(2, 0, ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement']); });
+  $("#convert3-2point").on('click', function () { lrsSingleRouteQueryFromHtml(3, 0, ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure']); });
+  $("#convert4-2point").on('click', function () { lrsSingleRouteQueryFromHtml(4, 0, ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin']); });
 
   // 2-point
   // bulk
@@ -152,7 +152,7 @@ if (calcGeomType == "Route") {
         GreenToYellow();
         const fileContents = await readFile(e.dataTransfer.files[0])
         YellowToGreen();
-        setMethodAndFields(fileContents);
+        lrsBulkRouteQueryFromCsv_wrapper(fileContents);
       });
     
       document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
@@ -160,7 +160,7 @@ if (calcGeomType == "Route") {
         const fileContents = await readFile(e.target.files[0])
         YellowToGreen();
         //thenConvertCSVByMethod(fileContents);
-        setMethodAndFields(fileContents);
+        lrsBulkRouteQueryFromCsv_wrapper(fileContents);
       });
     
     });
@@ -181,14 +181,14 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      setMethodAndFields(fileContents);
+      lrsBulkRouteQueryFromCsv_wrapper(fileContents);
     });
 
     document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
-      setMethodAndFields(fileContents);
+      lrsBulkRouteQueryFromCsv_wrapper(fileContents);
     });
 
   });

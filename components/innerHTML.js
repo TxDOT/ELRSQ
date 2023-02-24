@@ -558,7 +558,7 @@ const staticWizard_Form = `
       <div class="input-group mb-3 col-sm-4">
         <input id="wizinputMilepointMeasure" type="number" name="mpm" class="form-control textentry"
           placeholder="2.394">
-        <button class="btn btn-outline-primary" type="button" onclick="lrsQuery(3, 0, 'inputControlSection', 'inputMilepointMeasure')"
+        <button class="btn btn-outline-primary" type="button" onclick="lrsSinglePointQuery(3, 0, 'inputControlSection', 'inputMilepointMeasure')"
           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
         <button id="missingMilepointMeasure" class="btn btn-outline-danger" type="button"
           onclick="noMilepointMeasure()">Unknown</button>
@@ -581,7 +581,7 @@ const staticWizard_Form = `
       <div class="input-group mb-3 col-sm-4">
         <input id="wizinputDistanceFromOrigin" type="number" name="dfo" placeholder="1.606"
           class="form-control textentry">
-        <button class="btn btn-outline-primary" type="button" onclick="lrsQuery(4, 0, 'inputRouteName', 'inputDistanceFromOrigin')"
+        <button class="btn btn-outline-primary" type="button" onclick="lrsSinglePointQuery(4, 0, 'inputRouteName', 'inputDistanceFromOrigin')"
           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
         <button id="missingDistanceFromOrigin" class="btn btn-outline-danger" type="button"
           onclick="noDistanceFromOrigin()">Unknown</button>
@@ -595,7 +595,7 @@ const staticWizard_Form = `
           class="form-control textentry">
         <input id="wizinputDisplacement" type="number" name="displacement" placeholder="0.065"
           class="form-control textentry">
-        <button class="btn btn-outline-primary" type="button" onclick="lrsQuery(2, 0, 'inputRouteName', 'inputReferenceMarker', 'inputDisplacement')"
+        <button class="btn btn-outline-primary" type="button" onclick="lrsSinglePointQuery(2, 0, 'inputRouteName', 'inputReferenceMarker', 'inputDisplacement')"
           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
         <button id="missingReferenceMarker" class="btn btn-outline-danger" type="button"
           onclick="noReferenceMarker()">Unknown</button>
@@ -623,7 +623,7 @@ const staticWizard_Form = `
           class="form-control textentry">
         <input id="wizinputLongitude" type="number" name="lon" placeholder="-94.98759004"
           class="form-control textentry">
-        <button class="btn btn-outline-primary" type="button" onclick="lrsQuery(1, 0, 'inputLatitude', 'inputLongitude')"
+        <button class="btn btn-outline-primary" type="button" onclick="lrsSinglePointQuery(1, 0, 'inputLatitude', 'inputLongitude')"
           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
         <button id="missingCoordinates" class="btn btn-outline-danger" type="button"
           onclick="restartWizard()">Restart</button>

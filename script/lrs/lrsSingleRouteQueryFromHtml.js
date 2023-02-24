@@ -1,4 +1,4 @@
-async function lrsDualQueryFromHtml(method, useMap, id_coord) {
+async function lrsSingleRouteQueryFromHtml(method, useMap, id_coord) {
   // single 
   // route
 
