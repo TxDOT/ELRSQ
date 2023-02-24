@@ -1,4 +1,4 @@
-async function lrsBulkRouteQueryFromCsv_wrapper(fileContents) {
+async function lrsBulkRouteQueryFromCsv(fileContents) {
   // bulk 
   // route
 

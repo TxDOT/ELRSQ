@@ -1,4 +1,4 @@
-async function lrsBulkPointQuery(fileContents, currentLRMno, index_coord) {
+async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
@@ -33,7 +33,7 @@ async function lrsBulkPointQuery(fileContents, currentLRMno, index_coord) {
 
 
     // build url
-    let url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], index_coord);
+    let url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices);
     console.log(url);
     // end build url
 
