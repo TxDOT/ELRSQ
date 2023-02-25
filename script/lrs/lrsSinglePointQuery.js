@@ -18,8 +18,11 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   // make array for output
   let refinedData = [];
 
-  // set title keys
-  // let titleKeys = ["Feature"].concat(lrsApiFields);
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"];
+  let standardhead = lrsApiFields;
+  let colhead = customhead.concat(standardhead);
+
 
 
   // process rows
@@ -60,8 +63,8 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
     }
   }
 
-  // append feature info
-  // refinedData.unshift(titleKeys);
+  // prepend column heads
+  // refinedData.unshift(colhead);
 
 
   // show results

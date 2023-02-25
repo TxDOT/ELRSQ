@@ -17,13 +17,16 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   let e_coord = [];
   //set begin indices
 
-  // let rte_nm_lrm_indices = '';
+  let rte_nm_lrm_indices = '';
+
 
   // make array for output
   let refinedData = [];
 
-  // set title keys
-  // let titleKeys = ["Feature"].concat(lrsApiFields.map(i => 'BEGIN_' + i)).concat(lrsApiFields.map(i => 'END_' + i));
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"];
+  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  // let colhead = customhead.concat(standardhead);
 
 
   // get indices
@@ -84,7 +87,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     let rowhead = ''; // get from HTML
 
     // assemble data
-    // let fullRowData = rowhead.concat(routeResulrsArr);
+    // let routeQueryOutput = rowhead.concat(routeResultsArr);
     refinedData.push(routeQueryOutput);
 
 
@@ -93,8 +96,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   }
 
-  // append feature info
-  // refinedData.unshift(titleKeys);
+  // prepend column heads
+  // refinedData.unshift(colhead);
 
 
   // show results

@@ -5,8 +5,8 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
-  // resetGraphics();
-  // resetCurrentPagination();
+  resetGraphics();
+  resetCurrentPagination();
 
   if (useMap == 1) {
     clearResultsFromMap();
@@ -30,8 +30,10 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // make array for output
   let refinedData = [];
 
-  // set title keys
-  let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields.map(i => 'BEGIN_' + i)).concat(lrsApiFields.map(i => 'END_' + i));
+  // set column heads // can this be moved to after the loop?
+  let customhead = other_indices.map(i => parsedInputCSV[0][i]);
+  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let colhead = customhead.concat(standardhead);
 
 
   // get indices
@@ -103,8 +105,8 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
   }
 
-  // append feature info
-  refinedData.unshift(titleKeys);
+  // prepend column heads
+  refinedData.unshift(colhead);
 
 
   // show results

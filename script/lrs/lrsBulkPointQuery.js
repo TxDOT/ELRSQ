@@ -5,8 +5,8 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
-  // resetGraphics();
-  // resetCurrentPagination();
+  resetGraphics();
+  resetCurrentPagination();
 
   if (useMap == 1) {
     clearResultsFromMap();
@@ -16,7 +16,7 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
   // set fields
   // let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  // lrm_indices = field_indices[0];
+  // lrm_indices = field_indices[0]; // why is this replaced the passed data?
   // let other_indices = field_indices[1];
 
 
@@ -25,10 +25,12 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // make array for output
   let refinedData = [];
 
-  // set title keys
-  //let titleKeys = other_indices.map(i => parsedInputCSV[0][i]).concat(lrsApiFields);
-  let titleKeys = lrsApiFields;
-  titleKeys.unshift("Feature");
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"]
+  // let customhead = other_indices.map(i => parsedInputCSV[0][i]);
+  let standardhead = lrsApiFields;
+  let colhead = customhead.concat(standardhead);
+
 
 
   // process rows
@@ -70,8 +72,8 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     }
   }
 
-  // append feature info
-  // refinedData.unshift(titleKeys);
+  // prepend column heads
+  // refinedData.unshift(colhead);
 
 
   // show results
