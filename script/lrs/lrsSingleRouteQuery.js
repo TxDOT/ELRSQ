@@ -14,8 +14,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   GreenToYellow();
 
   //set begin indices
-  let b_coord = [];
-  let e_coord = [];
+  let b_lrm_indices = [];
+  let e_lrm_indices = [];
   //set begin indices
 
   let rte_nm_lrm_indices = '';
@@ -27,26 +27,26 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   // get indices
   if (currentLRMno == 1) {
-    b_coord = lrm_indices.slice(0, 2);
-    e_coord = lrm_indices.slice(2, 4);
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
     // blank line
   }
 
   else if (currentLRMno == 2) {
-    b_coord = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
-    e_coord = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
+    e_lrm_indices = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
 
   else if (currentLRMno == 3) {
-    b_coord = lrm_indices.slice(0, 2);
-    e_coord = lrm_indices.slice(2, 4);
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
     // blank line
   }
 
   else if (currentLRMno == 4) {
-    b_coord = [lrm_indices[0], lrm_indices[1]];
-    e_coord = [lrm_indices[0], lrm_indices[2]];
+    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
+    e_lrm_indices = [lrm_indices[0], lrm_indices[2]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
   // end get indices
@@ -58,8 +58,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     let routeQueryOutput = [];
 
     // build url
-    let B_url = makeLrsQueryUrl("html", currentLRMno, b_coord, currentRouteFieldOrder, 0);
-    let E_url = makeLrsQueryUrl("html", currentLRMno, e_coord, currentRouteFieldOrder, 0);
+    let B_url = makeLrsQueryUrl("html", currentLRMno, b_lrm_indices, currentRouteFieldOrder, 0);
+    let E_url = makeLrsQueryUrl("html", currentLRMno, e_lrm_indices, currentRouteFieldOrder, 0);
     console.log(B_url);
     console.log(E_url);
     // end build url
@@ -71,12 +71,12 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
     // get right route
     if (currentLRMno == 1 || currentLRMno == 3) {
-      rte_nm = '';
+      user_input_rte_nm = '';
     } else if (currentLRMno == 2 || currentLRMno == 4) {
-      rte_nm = $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val();
-      routeQueryOutput.push(rte_nm);
+      user_input_rte_nm = $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val();
+      routeQueryOutput.push(user_input_rte_nm);
     }
-    await rteDfoAssembler(routeQueryOutput, "html", currentLRMno, B_results, E_results, rte_nm);
+    await rteDfoAssembler(routeQueryOutput, "html", currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
 
     // get row header data

@@ -48,7 +48,6 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     // end perform query
 
 
-    // blank line
 
     // get row header data
     // let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);

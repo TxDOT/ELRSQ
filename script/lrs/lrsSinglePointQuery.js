@@ -42,8 +42,6 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
 
 
 
-
-
     // get row header data
     let rowhead = ''; // get from HTML
 
