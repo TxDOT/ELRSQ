@@ -24,19 +24,22 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
 
   // process rows
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
+    // no header row
+    console.log("processing row " + rowToQuery + " of 1");
     let pointQueryOutput = [];
-
-
 
     // build url
     let url = makeLrsQueryUrl("html", currentLRMno, lrm_indices, rowFromArray, 0);
+    // blank line
     console.log(url);
+    // blank line
     // end build url
 
     // perform query
     let P_results = await queryService(url);
-
+    console.log("returned " + P_results.length + " results for row: " + rowToQuery);
     // end perform query
+
 
 
 
@@ -50,8 +53,9 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
 
     // process multiple returns
     for (let aRowResult = 0; aRowResult < P_results.length; aRowResult++) {
+      console.log("processing result: " + (aRowResult + 1) + " of " + (P_results.length));
       let aRowResultObj = P_results[aRowResult];
-      //Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
+      // Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
       refinedData.push(aRowResultObj);
     }
   }

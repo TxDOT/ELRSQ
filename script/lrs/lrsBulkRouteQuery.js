@@ -5,6 +5,14 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
+  // resetGraphics();
+  // resetCurrentPagination();
+
+  if (useMap == 1) {
+    clearResultsFromMap();
+  }
+
+  GreenToYellow();
 
   // set fields
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
@@ -18,7 +26,6 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
   let rte_nm_lrm_indices = '';
 
-  GreenToYellow();
 
   // make array for output
   let refinedData = [];
@@ -56,27 +63,30 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // process rows
   for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
     // skipping 0 header row
-    console.log("row " + (rowToQuery + 1) + " of " + parsedInputCSV.length);
+    console.log("processing row " + rowToQuery + " of " + (parsedInputCSV.length - 1));
     let routeQueryOutput = [];
-
-    let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
 
     // build url
     let B_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
     let E_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
-    //let B_url = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
-    //let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
-
+    // let B_url = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
+    // let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
     console.log(B_url);
     console.log(E_url);
     // end build url
 
     // perform query
-    const B_results = await queryService(B_url);
-    const E_results = await queryService(E_url);
+    let B_results = await queryService(B_url);
+    let E_results = await queryService(E_url);
     // end perform query
 
     // get right route
+
+
+
+
+
+    let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     let routeResultsArr = await rteOutputAssembler(routeQueryOutput, "table", currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
 
@@ -103,6 +113,9 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // export data
   tabularRoutesConvertExport(refinedData);
 
-  YellowToGreen();
+  if (useMap == 1) {
+    showPointResultsOnMap(refinedData);
+  }
 
+  YellowToGreen();
 }

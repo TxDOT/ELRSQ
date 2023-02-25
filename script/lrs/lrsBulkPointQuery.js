@@ -4,18 +4,23 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
-  console.log(parsedInputCSV);
 
+  // resetGraphics();
+  // resetCurrentPagination();
+
+  if (useMap == 1) {
+    clearResultsFromMap();
+  }
+
+  GreenToYellow();
 
   // set fields
-  // field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  //lrm_indices = field_indices[0];
-  //let other_indices = field_indices[1];
+  // let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  // lrm_indices = field_indices[0];
+  // let other_indices = field_indices[1];
 
 
   //let lrm_indices = [];
-
-
 
   // make array for output
   let refinedData = [];
@@ -28,13 +33,15 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
   // process rows
   for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
+    // skipping 0 header row
+    console.log("processing row " + rowToQuery + " of " + (parsedInputCSV.length - 1));
     let pointQueryOutput = [];
-    console.log("processing row: " + rowToQuery + " of " + (parsedInputCSV.length));
-
 
     // build url
     let url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices);
+    // blank line
     console.log(url);
+    // blank line
     // end build url
 
     // perform query
@@ -43,11 +50,12 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     // end perform query
 
 
+    // blank line
+
     // get row header data
-    //let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);
-    rowhead = (parsedInputCSV[rowToQuery])[0];
-    console.log("rowhead");
-    console.log(rowhead);
+    // let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);
+    let rowhead = (parsedInputCSV[rowToQuery])[0];
+
 
     // assemble data
 
@@ -55,8 +63,7 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
     // process multiple returns
     for (let aRowResult = 0; aRowResult < P_results.length; aRowResult++) {
-      console.log("processing result: " + aRowResult + " of " + (P_results.length));
-      console.log(aRowResult);
+      console.log("processing result: " + (aRowResult + 1) + " of " + (P_results.length));
       let aRowResultObj = P_results[aRowResult];
       Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
       refinedData.push(aRowResultObj);
@@ -64,17 +71,18 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   }
 
   // append feature info
-  //refinedData.unshift(titleKeys);
+  // refinedData.unshift(titleKeys);
 
 
   // show results
   // future feature showBulkPointResults(refinedData);
 
   // export data
-  console.log("refinedData");
-  console.log(refinedData);
   tabularPointsConvertExport(refinedData);
 
-  YellowToGreen();
+  if (useMap == 1) {
+    showPointResultsOnMap(refinedData);
+  }
 
+  YellowToGreen();
 }
