@@ -1,6 +1,21 @@
-async function lrsBulkRouteQueryFromCsv(method, parsedInputCSV, lrm_indices, other_indices) {
+async function lrsBulkRouteQuery(fileContents) {
   // bulk 
   // route
+
+  // input CSV
+  let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
+
+  /**
+    currentLRMno = 2; //FIXME set this programatically
+    //lrm_indices = [0, 1, 2];
+    currentPointFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
+    currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
+  */
+
+  // set fields
+  let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  let lrm_indices = field_indices[0];
+  let other_indices = field_indices[1];
 
   //set begin indices
   let b_lrm_indices = [];
@@ -65,15 +80,15 @@ async function lrsBulkRouteQueryFromCsv(method, parsedInputCSV, lrm_indices, oth
     const E_results = await queryService(E_url);
     // end perform query
 
-    //get right route
-    let routeResulrsArr = rteOutputAssembler(routeQueryOutput, method, B_results, E_results, user_input_rte_nm);
+    // get right route
+    let routeResultsArr = rteOutputAssembler(routeQueryOutput, currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
 
     // get row header data
     let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);
 
     // assemble data
-    let fullRowData = rowhead.concat(routeResulrsArr);
+    let fullRowData = rowhead.concat(routeResultsArr);
     refinedData.push(fullRowData);
 
 

@@ -1,4 +1,4 @@
-async function lrsSingleRouteQueryFromHtml(currentLRMno, useMap, lrm_indices) {
+async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
   // single 
   // route
 

@@ -143,10 +143,10 @@ if (calcGeomType == "Route") {
   // 2-point
   // single
 
-  $("#convert1-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert2-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert3-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert4-2point").on('click', function () { lrsSingleRouteQueryFromHtml(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert1-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert2-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert3-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert4-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
 
 
   // 2-point
@@ -165,14 +165,14 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkRouteQueryFromCsv(fileContents);
+      lrsBulkRouteQuery(fileContents);
     });
 
     document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
-      lrsBulkRouteQueryFromCsv(fileContents);
+      lrsBulkRouteQuery(fileContents);
     });
 
   });
