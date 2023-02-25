@@ -52,6 +52,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   else if (currentLRMno == 4) {
     b_coord = [lrm_indices[0], lrm_indices[1]];
+    e_coord = [lrm_indices[0], lrm_indices[2]];
     rte_nm = $('#' + currentRouteFieldOrder[lrm_indices[0]]).val();
     routeQueryOutput.push(rte_nm);
   }
@@ -73,7 +74,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   // end perform query
 
   //get right route
-  await rteDfoAssembler(routeQueryOutput, currentLRMno, B_results, E_results, rte_nm);
+  await rteDfoAssembler(routeQueryOutput, "html", currentLRMno, B_results, E_results, rte_nm);
   // end get right route
 
   // get row header data
