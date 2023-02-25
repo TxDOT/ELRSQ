@@ -41,47 +41,47 @@ const staticNav_Bar = `
     <div id="navbarSupportedContent">  
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item">
-        <a class="nav-link " href="index.html">
-            <span>Point Builder</span>
-        </a>
-        </li>
-        <!-- End Form View Nav -->
-        
-        <li class="nav-item">
-        <a class="nav-link " href="bulk_conversion.html">
-            <span>Bulk Conversion</span>
-        </a>
-        </li>
-        <!-- End Bulk Conversion Nav -->
+    <li class="nav-item">
+    <a class="nav-link " href="index.html">
+      <span>Point Builder</span>
+    </a>
+  </li>
+  <!-- End Form View Nav -->
 
-        <li class="nav-item">
-          <a class="nav-link " href="bulk_point_wizard.html">
-            <span>Bulk Point Wizard</span>
-          </a>
-        </li>
-        <!-- End Bulk Conversion Nav -->
+  <li class="nav-item">
+    <a class="nav-link " href="bulk-point-template.html">
+      <span>Bulk Point Template</span>
+    </a>
+  </li>
+  <!-- End Bulk Conversion Nav -->
 
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="single_route_calculator.html">
-            <span>Route Builder</span>
-        </a>
-        </li>
-        <!-- End Build Routes Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link " href="bulk-point-wizard.html">
+      <span>Bulk Point Wizard</span>
+    </a>
+  </li>
+  <!-- End Bulk Conversion Nav -->
 
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="brownwood.html">
-            <span>Bulk Routes</span>
-        </a>
-        </li>
-        <!-- End Bulk Routes Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="single-route-form.html">
+      <span>Route Builder</span>
+    </a>
+  </li>
+  <!-- End Build Routes Page Nav -->
 
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="build-routes.html">
-            <span>Build Routes (future RPM)</span>
-        </a>
-        </li>
-        <!-- End Build Routes Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="bulk-route-wizard.html">
+      <span>Bulk Route Wizard</span>
+    </a>
+  </li>
+  <!-- End Bulk Routes Page Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="single-route-rpm.html">
+      <span>Future RPM Replacement</span>
+    </a>
+  </li>
+  <!-- End Build Routes Page Nav -->
 
     </ul>
     </div>
