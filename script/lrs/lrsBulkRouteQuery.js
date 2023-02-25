@@ -1,20 +1,14 @@
-async function lrsBulkRouteQuery(fileContents) {
+async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // bulk 
   // route
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
-  /**
-    currentLRMno = 2; //FIXME set this programatically
-    //lrm_indices = [0, 1, 2];
-    currentPointFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
-    currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
-  */
 
   // set fields
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  let lrm_indices = field_indices[0];
+  lrm_indices = field_indices[0];
   let other_indices = field_indices[1];
 
   //set begin indices
@@ -70,6 +64,8 @@ async function lrsBulkRouteQuery(fileContents) {
     // build url
     let B_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
     let E_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
+    //let B_url = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
+    //let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
 
     console.log(B_url);
     console.log(E_url);
@@ -105,7 +101,6 @@ async function lrsBulkRouteQuery(fileContents) {
   // future feature showBulkRouteResults(refinedData);
 
   // export data
-  //TODO tabular export
   tabularRoutesConvertExport(refinedData);
 
   YellowToGreen();

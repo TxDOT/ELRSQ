@@ -57,7 +57,7 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   }
 
   // append feature info
-  //refinedData.unshift(titleKeys);
+  // refinedData.unshift(titleKeys);
 
 
   // show results

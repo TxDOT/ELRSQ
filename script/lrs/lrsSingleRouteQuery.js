@@ -2,10 +2,6 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   // single 
   // route
 
-  /**
-    currentLRMno = 4; //FIXME set this programatically
-    currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
-  */
 
   resetGraphics();
   resetCurrentPagination();

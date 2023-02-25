@@ -170,14 +170,14 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkRouteQuery(fileContents);
+      lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
     });
 
     document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
-      lrsBulkRouteQuery(fileContents);
+      lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
     });
 
   });
