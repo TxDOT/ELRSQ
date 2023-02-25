@@ -1,5 +1,3 @@
-// description
-
 //get right route
 async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results, E_results, rte_nm) {
   let b_output = {};
