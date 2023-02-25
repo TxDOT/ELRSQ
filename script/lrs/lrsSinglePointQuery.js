@@ -1,6 +1,7 @@
 async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   // single 
   // point
+  let inputMethod = "html";
 
 
   resetGraphics();
@@ -18,10 +19,6 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   // make array for output
   let refinedData = [];
 
-  // set column heads // can this be moved to after the loop?
-  let customhead = ["Feature"];
-  let standardhead = lrsApiFields;
-  let colhead = customhead.concat(standardhead);
 
 
 
@@ -32,7 +29,7 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
     let pointQueryOutput = [];
 
     // build url
-    let url = makeLrsQueryUrl("html", currentLRMno, lrm_indices, rowFromArray, 0);
+    let url = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices, rowFromArray, 0);
     // blank line
     console.log(url);
     // blank line
@@ -62,6 +59,11 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
       refinedData.push(aRowResultObj);
     }
   }
+
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"];
+  let standardhead = lrsApiFields;
+  let colhead = customhead.concat(standardhead);
 
   // prepend column heads
   // refinedData.unshift(colhead);

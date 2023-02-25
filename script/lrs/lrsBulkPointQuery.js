@@ -1,6 +1,7 @@
 async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // bulk 
   // point
+  let inputMethod = "table";
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
@@ -25,11 +26,6 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // make array for output
   let refinedData = [];
 
-  // set column heads // can this be moved to after the loop?
-  let customhead = ["Feature"]
-  // let customhead = other_indices.map(i => parsedInputCSV[0][i]);
-  let standardhead = lrsApiFields;
-  let colhead = customhead.concat(standardhead);
 
 
 
@@ -71,6 +67,12 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
       refinedData.push(aRowResultObj);
     }
   }
+
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"]
+  // let customhead = other_indices.map(i => parsedInputCSV[0][i]);
+  let standardhead = lrsApiFields;
+  let colhead = customhead.concat(standardhead);
 
   // prepend column heads
   // refinedData.unshift(colhead);

@@ -1,6 +1,7 @@
 async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // bulk 
   // route
+  let inputMethod = "table";
 
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
@@ -26,14 +27,9 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
   let rte_nm_lrm_indices = '';
 
-
   // make array for output
   let refinedData = [];
 
-  // set column heads // can this be moved to after the loop?
-  let customhead = other_indices.map(i => parsedInputCSV[0][i]);
-  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  let colhead = customhead.concat(standardhead);
 
 
   // get indices
@@ -104,6 +100,11 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
 
   }
+
+  // set column heads // can this be moved to after the loop?
+  let customhead = other_indices.map(i => parsedInputCSV[0][i]);
+  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let colhead = customhead.concat(standardhead);
 
   // prepend column heads
   refinedData.unshift(colhead);

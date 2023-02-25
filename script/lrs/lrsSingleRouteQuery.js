@@ -1,6 +1,7 @@
 async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldOrder) {
   // single 
   // route
+  let inputMethod = "html";
 
 
   resetGraphics();
@@ -19,14 +20,9 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   let rte_nm_lrm_indices = '';
 
-
   // make array for output
   let refinedData = [];
 
-  // set column heads // can this be moved to after the loop?
-  let customhead = ["Feature"];
-  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  // let colhead = customhead.concat(standardhead);
 
 
   // get indices
@@ -95,6 +91,11 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
 
   }
+
+  // set column heads // can this be moved to after the loop?
+  let customhead = ["Feature"];
+  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  // let colhead = customhead.concat(standardhead);
 
   // prepend column heads
   // refinedData.unshift(colhead);
