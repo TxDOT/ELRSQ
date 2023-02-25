@@ -2,7 +2,7 @@
 
 // determine pagination and fill in HTML table results
 //TODO move point on map
-function showResults(results, navIndex) {
+function showPointResults(results, navIndex) {
   allResults = results; // this is changing the value of a global variable
   resultCount = allResults.length; // use this somewhere
   const index = navIndex ? navIndex - 1 : 0;
@@ -106,7 +106,7 @@ function navResults(direction) {
   direction == 'next' ? currentPagination++ : currentPagination--;
 
   if (currentPagination > 0 && currentPagination <= resultCount) {
-    showResults(allResults, currentPagination)
+    showPointResults(allResults, currentPagination)
   }
 }
 

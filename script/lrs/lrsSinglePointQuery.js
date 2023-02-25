@@ -1,6 +1,4 @@
 async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
-  // single 
-  // point
   let inputMethod = "html";
 
 
@@ -15,7 +13,6 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
 
 
 
-
   // make array for output
   let refinedData = [];
 
@@ -26,20 +23,19 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
     // no header row
     console.log("processing row " + rowToQuery + " of 1");
-    let pointQueryOutput = [];
+    let queryOutput = [];
 
     // build url
-    let url = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices, rowFromArray, 0);
+    let P_url = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices, rowFromArray, 0);
     // blank line
-    console.log(url);
+    console.log(P_url);
     // blank line
     // end build url
 
     // perform query
-    let P_results = await queryService(url);
+    let P_results = await queryService(P_url);
     console.log("returned " + P_results.length + " results for row: " + rowToQuery);
     // end perform query
-
 
 
     // get row header data
@@ -58,7 +54,7 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
     }
   }
 
-  // set column heads // can this be moved to after the loop?
+  // set column heads
   let customhead = ["Feature"];
   let standardhead = lrsApiFields;
   let colhead = customhead.concat(standardhead);
@@ -68,7 +64,7 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
 
 
   // show results
-  showResults(refinedData);
+  showPointResults(refinedData);
 
   // export data
   tabularPointsConvertExport(refinedData);

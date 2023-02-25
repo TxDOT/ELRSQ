@@ -1,6 +1,4 @@
 async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldOrder) {
-  // single 
-  // route
   let inputMethod = "html";
 
 
@@ -29,7 +27,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   if (currentLRMno == 1) {
     b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
     e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
-    // blank line
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 2) {
@@ -41,7 +39,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   else if (currentLRMno == 3) {
     b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
     e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
-    // blank line
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 4) {
@@ -55,11 +53,11 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
     // no header row
     console.log("processing row " + rowToQuery + " of 1");
-    let routeQueryOutput = [];
+    let queryOutput = [];
 
     // build url
-    let B_url = makeLrsQueryUrl("html", currentLRMno, b_lrm_indices, currentRouteFieldOrder, 0);
-    let E_url = makeLrsQueryUrl("html", currentLRMno, e_lrm_indices, currentRouteFieldOrder, 0);
+    let B_url = makeLrsQueryUrl(inputMethod, currentLRMno, b_lrm_indices, currentRouteFieldOrder, 0);
+    let E_url = makeLrsQueryUrl(inputMethod, currentLRMno, e_lrm_indices, currentRouteFieldOrder, 0);
     console.log(B_url);
     console.log(E_url);
     // end build url
@@ -78,8 +76,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     let rowhead = ''; // get from HTML
 
     // assemble data
-    // let routeQueryOutput = rowhead.concat(routeResultsArr);
-    refinedData.push(routeQueryOutput);
+    let fullRowData = rowhead.concat(routeResultsArr);
+    refinedData.push(fullRowData);
 
 
 
@@ -87,20 +85,20 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   }
 
-  // set column heads // can this be moved to after the loop?
+  // set column heads
   let customhead = ["Feature"];
   let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  // let colhead = customhead.concat(standardhead);
+  let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  // refinedData.unshift(colhead);
+  refinedData.unshift(colhead);
 
 
   // show results
   showRouteResults(refinedData[0]);
 
   // export data
-  // tabularRoutesConvertExport(routeQueryOutput); // TODO tabular export
+  // tabularRoutesConvertExport(refinedData); // TODO tabular export
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);

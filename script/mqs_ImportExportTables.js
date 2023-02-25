@@ -129,7 +129,7 @@ function addTags(theData, theTagType) {
 }
 
 
-// tabularPointsConvertExport
+// tabularRoutesConvertExport
 
 function tabularRoutesConvertExport(resultsArr) {
   exportRoutesToCsvFile(resultsArr);
@@ -147,6 +147,13 @@ function exportRoutesToCsvFile(resultsArr) {
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
+
+
+function tabularPointsConvertExport_2(resultsArr) {
+  console.log(resultsArr);
+  exportPointsToCsvFile(resultsArr);
+}
+
 
 
 function readFile(file) {

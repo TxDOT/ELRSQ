@@ -1,6 +1,4 @@
 async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
-  // bulk 
-  // route
   let inputMethod = "table";
 
   // input CSV
@@ -17,7 +15,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
   // set fields
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  lrm_indices = field_indices[0];
+  lrm_indices = field_indices[0]; // why is this replaced the passed data?
   let other_indices = field_indices[1];
 
   //set begin indices
@@ -36,7 +34,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   if (currentLRMno == 1) {
     b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
     e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
-    rte_nm_lrm_indices = lrm_indices[4];
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 2) {
@@ -48,7 +46,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   else if (currentLRMno == 3) {
     b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
     e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
-    rte_nm_lrm_indices = lrm_indices[4];
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 4) {
@@ -62,7 +60,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
     // skipping 0 header row
     console.log("processing row " + rowToQuery + " of " + (parsedInputCSV.length - 1));
-    let routeQueryOutput = [];
+    let queryOutput = [];
 
     // build url
     let B_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
@@ -79,11 +77,6 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     // end perform query
 
     // get right route
-
-
-
-
-
     let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
@@ -95,13 +88,9 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     let fullRowData = rowhead.concat(routeResultsArr);
     refinedData.push(fullRowData);
 
-
-
-
-
   }
 
-  // set column heads // can this be moved to after the loop?
+  // set column heads
   let customhead = other_indices.map(i => parsedInputCSV[0][i]);
   let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
   let colhead = customhead.concat(standardhead);
@@ -114,7 +103,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // future feature showBulkRouteResults(refinedData);
 
   // export data
-  tabularRoutesConvertExport(refinedData);
+  tabularRoutesConvertExport(refinedData); //FIXME
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);
