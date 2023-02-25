@@ -55,16 +55,19 @@
   <script src="script/init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
   <script src="script/lrs_initiators.js" defer></script>
+  <script src="script/eventHandlers.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
   <script src="script/mqs_LrsService.js" defer></script>
   <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromHtml.js" defer></script>
-  <script src="script/lrs/cursorQuery.js" defer></script>
   <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
-  <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromIndex.js" defer></script>
   <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
+  <script src="script/lrs/makeLrsQueryUrlFromHtml.js" defer></script>
+  <script src="script/lrs/makeLrsQueryUrlFromIndex.js" defer></script>
+  <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
+
+  <script src="script/lrs/cursorQuery.js" defer></script>
+
   <!-- End Refactoring LRS scripts -->
 
   <script src="script/mqs_EsriMap.js" defer></script>
@@ -73,14 +76,14 @@
   <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
-  <script src="script/eventHandlers.js" defer></script>
+  <script src="script/mqs_RouteNameFixer.js" defer></script>
+  <script src="script/mqs_RouteBuilder.js"></script>
+  <script src="script/mqs_LocalGeoJSONToMap.js"></script>
 
   <script src="script/helper/dragdropupload.js" defer></script>
-
-
-
-
-
+  <script src="script/helper/dynamic_dropdowns.js" defer></script>
+  <script src="script/helper/data_functions.js"></script> <!-- look for jquery alternative -->
+  <script src="script/helper/arraylast.js"></script>
 
 </head>
 
@@ -177,8 +180,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery1 group">
-                        <button id="convert1" type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                        <button id="convert1" type="button" class="btn btn-primary convert-1point"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset1" type="reset" class="btn btn-secondary" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -228,8 +231,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery2 group">
-                        <button id="convert2" type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                        <button id="convert2" type="button" class="btn btn-primary convert-1point"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset2" type="reset" class="btn btn-secondary" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -272,8 +275,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery4 group">
-                        <button id="convert4" type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                        <button id="convert4" type="button" class="btn btn-primary convert-1point"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset4" type="reset" class="btn btn-secondary" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
@@ -316,8 +319,8 @@
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
                       <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery3 group">
-                        <button id="convert3" type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                        <button id="convert3" type="button" class="btn btn-primary convert-1point"
+                          title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button id="reset3" type="reset" class="btn btn-secondary" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>

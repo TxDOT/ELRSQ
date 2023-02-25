@@ -52,32 +52,37 @@
     const useMap = 0;
   </script>
 
-
   <script src="script/init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
   <script src="script/lrs_initiators.js" defer></script>
+  <script src="script/eventHandlers.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
+  <script src="script/mqs_LrsService.js" defer></script>
+  <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
   <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
+  <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
+  <script src="script/lrs/makeLrsQueryUrlFromHtml.js" defer></script>
   <script src="script/lrs/makeLrsQueryUrlFromIndex.js" defer></script>
   <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
+
   <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
   <!-- End Refactoring LRS scripts -->
 
-
+  <script src="script/mqs_EsriMap.js" defer></script>
   <script src="script/mqs_UI.js" defer></script>
-
+  <script src="script/mqs_HtmlTables.js" defer></script>
   <script src="script/mqs_ImportExportTables.js" defer></script>
-
+  <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
-  <script src="script/helper/dragdropupload.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
+  <script src="script/mqs_RouteBuilder.js"></script>
+  <script src="script/mqs_LocalGeoJSONToMap.js"></script>
 
-
-
+  <script src="script/helper/dragdropupload.js" defer></script>
   <script src="script/helper/dynamic_dropdowns.js" defer></script>
   <script src="script/helper/data_functions.js"></script> <!-- look for jquery alternative -->
+  <script src="script/helper/arraylast.js"></script>
 
 </head>
 
@@ -256,7 +261,6 @@
                       </select>
                       <button id="btn-dfo_field" class="btn btn-outline-primary" type="button">Select</button>
                     </div>
-
 
                     <button id="distancefromorigin-bulk-convert-button" class="btn btn-primary" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
