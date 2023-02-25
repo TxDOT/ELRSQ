@@ -14,9 +14,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   //set begin indices
   let b_lrm_indices = [];
   let e_lrm_indices = [];
-  //set begin indices
-
   let rte_nm_lrm_indices = '';
+  //set begin indices
 
   // make array for output
   let refinedData = [];
@@ -78,10 +77,6 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     // assemble data
     let fullRowData = rowhead.concat(routeResultsArr);
     refinedData.push(fullRowData);
-
-
-
-
 
   }
 

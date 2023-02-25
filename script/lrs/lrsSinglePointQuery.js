@@ -12,7 +12,6 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
   GreenToYellow();
 
 
-
   // make array for output
   let refinedData = [];
 
@@ -37,11 +36,13 @@ async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
     console.log("returned " + P_results.length + " results for row: " + rowToQuery);
     // end perform query
 
+    // TODO make route dropdown???
 
     // get row header data
     let rowhead = ''; // get from HTML
 
     // assemble data
+
 
 
 

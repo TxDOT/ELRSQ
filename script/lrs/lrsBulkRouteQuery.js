@@ -18,12 +18,12 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   lrm_indices = field_indices[0]; // why is this replaced the passed data?
   let other_indices = field_indices[1];
 
+
   //set begin indices
   let b_lrm_indices = [];
   let e_lrm_indices = [];
-  //set begin indices
-
   let rte_nm_lrm_indices = '';
+  //set begin indices
 
   // make array for output
   let refinedData = [];
@@ -77,8 +77,15 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     // end perform query
 
     // get right route
-    let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
+    let rtenmformat = "AAdddd"; //TODO use regex to detect
+    if (rtenmformat == "AAdddd") {
+      let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
+    } else {
+      let user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
+    }
     let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, B_results, E_results, user_input_rte_nm);
+    console.log("routeResultsArr.length");
+    console.log(routeResultsArr.length);
     // end get right route
 
     // get row header data

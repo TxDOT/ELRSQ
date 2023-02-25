@@ -18,7 +18,6 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   lrm_indices = field_indices[0]; // why is this replaced the passed data?
   let other_indices = field_indices[1];
 
-
   let rte_nm_lrm_indices = '';
 
   // make array for output
@@ -63,15 +62,22 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     // end perform query
 
     // get right route
-    let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
+    let rtenmformat = "AAdddd"; //TODO use regex to detect
+    if (rtenmformat == "AAdddd") {
+      let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
+    } else {
+      let user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
+    }
     let routeResultsArr = await matchOutputOnRteNm("table", currentLRMno, P_results, user_input_rte_nm);
+    console.log("routeResultsArr.length");
+    console.log(routeResultsArr.length);
     // end get right route
 
     // get row header data
     let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);
-    console.log(rowhead);
 
     // assemble data
+    // FIXME need to fix multiple return functionality
     let fullRowData = rowhead.concat(routeResultsArr);
     refinedData.push(fullRowData);
 
@@ -99,7 +105,7 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // future feature showBulkPointResults(refinedData);
 
   // export data
-  tabularPointsConvertExport_2(refinedData);
+  tabularPointsConvertExport_2(refinedData); //FIXME
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);
