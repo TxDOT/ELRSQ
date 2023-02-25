@@ -70,13 +70,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     // end perform query
 
     // get right route
-    if (currentLRMno == 1 || currentLRMno == 3) {
-      user_input_rte_nm = '';
-    } else if (currentLRMno == 2 || currentLRMno == 4) {
-      user_input_rte_nm = $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val();
-      routeQueryOutput.push(user_input_rte_nm);
-    }
-    await rteDfoAssembler(routeQueryOutput, "html", currentLRMno, B_results, E_results, user_input_rte_nm);
+    let user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val() : '';
+    let routeResultsArr = await matchOutputOnCommonRteNm("html", currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
 
     // get row header data

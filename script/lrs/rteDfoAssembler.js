@@ -59,22 +59,22 @@ async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results,
   routeQueryOutput.push(Math.max(bdfo, edfo));
 
 
-  let rteOutputAssemblerOutput = [];
+  let matchOutputOnCommonRteNmOutput = [];
 
   if (transposed == 0) {
-    rteOutputAssemblerOutput = (Object.values(b_output)).concat(Object.values(e_output));
+    matchOutputOnCommonRteNmOutput = (Object.values(b_output)).concat(Object.values(e_output));
   } else {
-    rteOutputAssemblerOutput = (Object.values(e_output)).concat(Object.values(b_output));
+    matchOutputOnCommonRteNmOutput = (Object.values(e_output)).concat(Object.values(b_output));
   }
 
   /**
     try {
-      rteOutputAssemblerOutput = (Object.values(b_output)).concat(Object.values(e_output));
+      matchOutputOnCommonRteNamOutput = (Object.values(b_output)).concat(Object.values(e_output));
     } catch (err) {
-      rteOutputAssemblerOutput = lrsApiFields.concat(lrsApiFields);
+      matchOutputOnCommonRteNamOutput = lrsApiFields.concat(lrsApiFields);
     }
   */
 
 
-  //return (rteOutputAssemblerOutput); //TODO change to a return function
+  //return (matchOutputOnCommonRteNamOutput); //TODO change to a return function
 }

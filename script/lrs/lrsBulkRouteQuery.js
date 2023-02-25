@@ -85,7 +85,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
 
     let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
-    let routeResultsArr = await rteOutputAssembler(routeQueryOutput, "table", currentLRMno, B_results, E_results, user_input_rte_nm);
+    let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, B_results, E_results, user_input_rte_nm);
     // end get right route
 
     // get row header data
