@@ -1,4 +1,4 @@
-async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
+async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldOrder) {
   // single 
   // route
 
@@ -15,6 +15,13 @@ async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
   }
 
   GreenToYellow();
+
+  //set begin indices
+  let b_coord = [];
+  let e_coord = [];
+  //set begin indices
+
+  //let rte_nm_lrm_indices = '';
 
   // make array for output
   let routeQueryOutput = [];
@@ -33,7 +40,7 @@ async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
   else if (currentLRMno == 2) {
     b_coord = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
     e_coord = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
-    rte_nm = $("#" + lrm_indices[0]).val();
+    rte_nm = $('#' + currentRouteFieldOrder[lrm_indices[0]]).val();
     routeQueryOutput.push(rte_nm);
   }
 
@@ -45,8 +52,7 @@ async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
 
   else if (currentLRMno == 4) {
     b_coord = [lrm_indices[0], lrm_indices[1]];
-    e_coord = [lrm_indices[0], lrm_indices[2]];
-    rte_nm = $("#" + lrm_indices[0]).val();
+    rte_nm = $('#' + currentRouteFieldOrder[lrm_indices[0]]).val();
     routeQueryOutput.push(rte_nm);
   }
   // end get indices
@@ -54,8 +60,11 @@ async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
   // process rows
 
   // build url
-  let B_url = makeLrsQueryUrlFromHtml(currentLRMno, b_coord);
-  let E_url = makeLrsQueryUrlFromHtml(currentLRMno, e_coord);
+  let B_url = makeLrsQueryUrl("html", currentLRMno, b_coord, currentRouteFieldOrder, 0);
+  let E_url = makeLrsQueryUrl("html", currentLRMno, e_coord, currentRouteFieldOrder, 0);
+
+  console.log(B_url);
+  console.log(E_url);
   // end build url
 
   // perform query
@@ -69,7 +78,6 @@ async function lrsSingleRouteQuery(currentLRMno, useMap, lrm_indices) {
 
   // get row header data
   // let rowhead = ''; // get from HTML
-
 
   // assemble data
   // let fullRowData = rowhead.concat(routeResulrsArr);

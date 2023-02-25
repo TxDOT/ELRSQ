@@ -2,6 +2,7 @@
 let currentLRM = `coordinates-tab`;
 let currentLRMno = 1;
 let lrm_indices = [0, 1];
+let route_lrm_indices = [0, 1, 2, 3];
 default_template_lrm_indices = [2, 1];
 let currentPointFieldOrder = ['inputLatitude', 'inputLongitude'];
 let currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
@@ -43,24 +44,28 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   if (currentLRM == `referencemarker-tab`) {
     currentLRMno = 2;
     lrm_indices = [0, 1, 2];
+    route_lrm_indices = [0, 1, 2, 3, 4];
     default_template_lrm_indices = [1, 2, 3];
     currentPointFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
     currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
   } else if (currentLRM == `controlsection-tab`) {
     currentLRMno = 3;
     lrm_indices = [0, 1];
+    route_lrm_indices = [0, 1, 2, 3];
     default_template_lrm_indices = [1, 2];
     currentPointFieldOrder = ['inputControlSection', 'inputMilepointMeasure'];
     currentRouteFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
   } else if (currentLRM == `distancefromorigin-tab`) {
     currentLRMno = 4;
     lrm_indices = [0, 1];
+    route_lrm_indices = [0, 1, 2];
     default_template_lrm_indices = [1, 2];
     currentPointFieldOrder = ['inputRouteName_4', 'inputDistanceFromOrigin'];
     currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
   } else {
     currentLRMno = 1;
     lrm_indices = [0, 1];
+    route_lrm_indices = [0, 1, 2, 3];
     default_template_lrm_indices = [2, 1];
     currentPointFieldOrder = ['inputLatitude', 'inputLongitude'];
     currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
@@ -143,10 +148,10 @@ if (calcGeomType == "Route") {
   // 2-point
   // single
 
-  $("#convert1-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert2-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert3-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
-  $("#convert4-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, 0, currentRouteFieldOrder); });
+  $("#convert1-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
+  $("#convert2-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
+  $("#convert3-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
+  $("#convert4-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
 
 
   // 2-point

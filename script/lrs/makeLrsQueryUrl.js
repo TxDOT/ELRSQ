@@ -17,12 +17,14 @@ function makeLrsQueryUrl(inputMethod, lrsMethod, lrm_indices, rowFromArray, form
 
   if (inputMethod == 'html') {
     for (let i = 0; i < lrm_indices.length; i++) {
-      let value = $('#' + rowFromArray[i]).val();
+      let value = $('#' + rowFromArray[lrm_indices[i]]).val();
+      console.log('#' + rowFromArray[lrm_indices[i]]);
       console.log(value);
       coordinateArr.push(value);
     }
   } else if (inputMethod == 'table') {
     coordinateArr = rowFromArray;
+    //FIXME map lrm_indices somehow
   }
 
   if (format_rte_nm == 1) {
@@ -32,25 +34,25 @@ function makeLrsQueryUrl(inputMethod, lrsMethod, lrm_indices, rowFromArray, form
   }
 
   if (lrsMethod == 1) {
-    lat = coordinateArr[lrm_indices[0]];
-    lon = coordinateArr[lrm_indices[1]];
+    lat = coordinateArr[0];
+    lon = coordinateArr[1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
   }
 
   else if (lrsMethod == 2) {
-    refMarker = coordinateArr[lrm_indices[1]];
-    displacement = coordinateArr[lrm_indices[2]];
+    refMarker = coordinateArr[1];
+    displacement = coordinateArr[2];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs2?RouteID=${routeName}&ReferenceMarker=${refMarker}&Displacement=${displacement}`;
   }
 
   else if (lrsMethod == 3) {
-    controlSecNum = coordinateArr[lrm_indices[0]];
-    milePointMeasure = coordinateArr[lrm_indices[1]];
+    controlSecNum = coordinateArr[0];
+    milePointMeasure = coordinateArr[1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
   }
 
   else if (lrsMethod == 4) {
-    dfo = coordinateArr[lrm_indices[1]];
+    dfo = coordinateArr[1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
   }
 
