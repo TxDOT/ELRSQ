@@ -43,7 +43,7 @@ const staticNav_Bar = `
 
         <li class="nav-item">
         <a class="nav-link " href="index.html">
-            <span>Home</span>
+            <span>Point Builder</span>
         </a>
         </li>
         <!-- End Form View Nav -->
@@ -56,8 +56,15 @@ const staticNav_Bar = `
         <!-- End Bulk Conversion Nav -->
 
         <li class="nav-item">
-        <a class="nav-link collapsed" href="build-routes.html">
-            <span>Build Routes</span>
+          <a class="nav-link " href="bulk_point_wizard.html">
+            <span>Bulk Point Wizard</span>
+          </a>
+        </li>
+        <!-- End Bulk Conversion Nav -->
+
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="single_route_calculator.html">
+            <span>Route Builder</span>
         </a>
         </li>
         <!-- End Build Routes Page Nav -->
@@ -68,6 +75,14 @@ const staticNav_Bar = `
         </a>
         </li>
         <!-- End Bulk Routes Page Nav -->
+
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="build-routes.html">
+            <span>Build Routes (future RPM)</span>
+        </a>
+        </li>
+        <!-- End Build Routes Page Nav -->
+
     </ul>
     </div>
 </div>
