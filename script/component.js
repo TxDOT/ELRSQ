@@ -8,6 +8,26 @@ class Bulk_Modal extends HTMLElement {
 }
 customElements.define('bulk_modal-component', Bulk_Modal);
 
+class Bulk_Modal_ReferenceMarker extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticBulk_Modal_ReferenceMarker;
+  }
+}
+customElements.define('bulk_modal_reference_marker-component', Bulk_Modal_ReferenceMarker);
+
+class Bulk_Modal_LatLon extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticBulk_Modal_LatLon;
+  }
+}
+customElements.define('bulk_modal_latlon-component', Bulk_Modal_LatLon);
+
 class Cursor_Help_Modal extends HTMLElement {
   constructor() {
     super();
@@ -90,8 +110,11 @@ class Indicator extends HTMLElement {
 customElements.define('indicator-component', Indicator);
 
 class Nav_Bar extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
+    // https://dev.to/zippcodder/a-quick-guide-to-custom-html-elements-5f3b
+    // attach shadow DOM to element
+    // let shadow = this.attachShadow({mode: "closed"});
   }
   connectedCallback() {
     this.innerHTML = staticNav_Bar;
@@ -101,10 +124,10 @@ customElements.define('nav_bar-component', Nav_Bar);
 
 class Results_Card extends HTMLElement {
   constructor() {
-      super();
+    super();
   }
   connectedCallback() {
-      this.innerHTML = staticResults_Card;
+    this.innerHTML = staticResults_Card;
   }
 }
 customElements.define('results_card-component', Results_Card);
@@ -118,3 +141,24 @@ class Wizard_Form extends HTMLElement {
   }
 }
 customElements.define('wizard_form-component', Wizard_Form);
+
+class FileInputForm extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticFileInputForm;
+  }
+}
+customElements.define('file-input-form-component', FileInputForm);
+
+class Download_Bar extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticDownload_Bar;
+  }
+}
+customElements.define('download_bar-component', Download_Bar);
+

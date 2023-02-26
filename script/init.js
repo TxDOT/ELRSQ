@@ -10,7 +10,7 @@ if (useMap == 1) {
       expandToMin: false
     });
   }
-  
+
 }
 
 
@@ -56,6 +56,12 @@ $(document).ready(function () {
   $("indicator-component").load("components/html/indicator.html", function (response, status, xhr) {
     if (status == "error") { $("indicator-component").html(staticIndicator); }
   });
+
+  var url = window.location;
+  $('a[href="' + url + '"]').parent().addClass("active");
+  $('a').filter(function () {
+    return this.href == url;
+  }).parent().addClass('active');
 
 });
 

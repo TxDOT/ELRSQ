@@ -103,7 +103,7 @@ function clearPagination() {
 
 
 //navResults called by pagination buttons in showResults function
-//TODO move point on map/
+// TODO move point on map
 // TODO separate out from specific function
 function navResults(direction) {
   direction == 'next' ? currentPagination++ : currentPagination--;

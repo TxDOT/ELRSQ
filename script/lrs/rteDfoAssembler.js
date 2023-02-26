@@ -69,12 +69,12 @@ async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results,
 
   /**
     try {
-      matchOutputOnCommonRteNamOutput = (Object.values(b_output)).concat(Object.values(e_output));
+      matchOutputOnCommonRteNmOutput = (Object.values(b_output)).concat(Object.values(e_output));
     } catch (err) {
-      matchOutputOnCommonRteNamOutput = lrsApiFields.concat(lrsApiFields);
+      matchOutputOnCommonRteNmOutput = lrsApiFields.concat(lrsApiFields);
     }
   */
 
 
-  //return (matchOutputOnCommonRteNamOutput); //TODO change to a return function
+  //return (matchOutputOnCommonRteNmOutput); //TODO change to a return function
 }
