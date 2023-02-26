@@ -27,7 +27,7 @@ function showPointResults(results, navIndex) {
   $(outputFieldIDs.LON).html(currentResult['LON']);
 }
 
-
+// FIXME just use Jquery to change pagination states
 //insert pagination
 function insertPagination(currentPagination, resultCount) {
   console.log(currentPagination + " of " + resultCount);

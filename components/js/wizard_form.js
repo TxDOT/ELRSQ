@@ -10,7 +10,6 @@ const staticWizard_Form = `
     </div>
   </div>
 
-
   <div class="row mb-3" id="rowInputMilepointMeasure">
     <label for="inputMilepointMeasure" class="col-sm-4 col-form-label">Milepoint Measure</label>
     <div class="input-group mb-3 col-sm-4">
@@ -20,7 +19,6 @@ const staticWizard_Form = `
       <button id="missingMilepointMeasure" class="btn btn-outline-danger" type="button">Unknown</button>
     </div>
   </div>
-
 
   <div class="row mb-3" style="display:none" id="rowInputRouteName">
     <label for="inputRouteName" class="col-sm-4 col-form-label">Route Name</label>
@@ -68,7 +66,6 @@ const staticWizard_Form = `
       <label class="form-check-label" for="inlineRadio2">Route Name</label>
     </div>
   </div>
-
 
   <div class="row mb-3" style="display:none" id="rowInputCoordinates">
     <label class="col-sm-4 col-form-label">Latitude & Longitude</label>
