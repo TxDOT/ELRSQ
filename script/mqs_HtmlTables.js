@@ -70,7 +70,7 @@ function insertPagination(currentPagination, resultCount) {
 
 
 function clearResults() {
-//TODO find way to use different selector child/class
+  //TODO find way to use different selector child/class
 
 
   //clear pagination

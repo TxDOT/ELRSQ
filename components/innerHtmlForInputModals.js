@@ -15,15 +15,15 @@ const staticBulk_Modal = `
           <a type="button" id="tmpl-controlsection" href="templates/queryPointByControlSection.csv" download="queryPointByControlSection.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section Template</a>
           <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
           
-          <form id="bulk-form">
+          <form>
             <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone fieldset-uploadCsv-bulk text-center mb-3 p-4">
             <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
+              <input data-post-name="csv-bulk" 
                 class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
             </fieldset>
-            <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            <button class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
 
         </div>
@@ -136,7 +136,7 @@ const staticWizard_Form = `
 
 
 
-  const staticBulk_Modal_ReferenceMarker = `      
+const staticBulk_Modal_ReferenceMarker = `      
   <!-- Modal -->
     <div class="modal fade" id="bulkModalReferenceMarker" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -147,11 +147,11 @@ const staticWizard_Form = `
           </div>
           <div class="modal-body">
           <!-- Upload and Field Picker Form -->
-          <form id="bulk-form">
+          <form>
             <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+              <input data-post-name="csv-bulk"
                 class="position-absolute invisible form-control" type="file" placeholder="Select file"
                 accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
@@ -179,7 +179,7 @@ const staticWizard_Form = `
             </div>
   
   
-            <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
+            <button class="btn btn-primary bulk-convert" type="button"
               title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
           <!-- End Upload and Field Picker Form -->
@@ -192,11 +192,11 @@ const staticWizard_Form = `
       </div>
     </div>
     <!--End Modal -->`
-  
-  
-  
-  
-  const staticBulk_Modal_LatLon = `      
+
+
+
+
+const staticBulk_Modal_LatLon = `      
   <!-- Modal -->
     <div class="modal fade" id="bulkModalLatLon" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -207,11 +207,11 @@ const staticWizard_Form = `
           </div>
           <div class="modal-body">
           <!-- Upload and Field Picker Form -->
-          <form id="coordinates-bulk-form">
+          <form>
             <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input id="coordinates-uploadCsv-bulk" data-post-name="csv-bulk"
+              <input data-post-name="csv-bulk"
                 class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                 accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
@@ -239,7 +239,7 @@ const staticWizard_Form = `
                 type="button">Select</button>
             </div>
           
-            <button id="coordinates-bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
+            <button class="btn btn-primary bulk-convert" type="button"
               title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
           <!-- End Upload and Field Picker Form -->
@@ -251,12 +251,11 @@ const staticWizard_Form = `
       </div>
     </div>
     <!--End Modal -->`
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+

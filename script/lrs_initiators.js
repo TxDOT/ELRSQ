@@ -95,23 +95,6 @@ if (calcGeomType == "Point") {
     const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
     dragDropEventHandlers(myDropZone);
 
-    /**
-      document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
-        console.log(e.dataTransfer.files[0]);
-        GreenToYellow();
-        const fileContents = await readFile(e.dataTransfer.files[0])
-        YellowToGreen();
-        lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
-      });
-  
-      document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
-        GreenToYellow();
-        const fileContents = await readFile(e.target.files[0])
-        YellowToGreen();
-        lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
-      });
-    */
-
     $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);
       GreenToYellow();
@@ -177,25 +160,6 @@ if (calcGeomType == "Route") {
     // FIXME get away from using ids
     const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
     dragDropEventHandlers(myDropZone);
-
-    /**
-      document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
-        console.log(e.dataTransfer.files[0]);
-        GreenToYellow();
-        const fileContents = await readFile(e.dataTransfer.files[0])
-        YellowToGreen();
-        lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
-      });
-  
-      document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
-        GreenToYellow();
-        const fileContents = await readFile(e.target.files[0])
-        YellowToGreen();
-        lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
-      });
-    */
-
-
 
     $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);

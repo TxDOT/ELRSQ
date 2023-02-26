@@ -5,7 +5,7 @@ $(":reset").on('click', function () { clearResultsFromMap(); });
 
 
 //return to point on map
-$("#returnToPoint").on('click', function () { returnToPoint(); });
+$(".map-return").on('click', function () { returnToPoint(); });
 
 
 //route builder

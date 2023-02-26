@@ -1,13 +1,13 @@
 const staticFileInputForm = `      
-    <form id="bulk-form">
+    <form>
     <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
     <legend class="visually-hidden">CSV uploader</legend>
         <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-        <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
+        <input data-post-name="csv-bulk" 
         class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
         <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
     </fieldset>
-    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+    <button class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
     </form>`
 
 

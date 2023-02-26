@@ -162,17 +162,16 @@
                     download="queryPointByCoordinates.csv" class="btn btn-primary"
                     title="Download a fillable template"><i class="fa fa-download"></i> Lat/Lon Template</a>
 
-                  <form id="bulk-form">
+                  <form>
                     <fieldset class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
-                        accept=".csv" />
+                      <input data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                        type="file" placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
-                    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
-                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                    <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Bulk Conversion Form -->
                 </div>
@@ -186,17 +185,16 @@
                     download="queryPointByReferenceMarker.csv" class="btn btn-primary tmpl-download"
                     title="Download a fillable template"><i class="fa fa-download"></i> Field Location Template</a>
 
-                  <form id="bulk-form">
+                  <form>
                     <fieldset class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
-                        accept=".csv" />
+                      <input data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                        type="file" placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
-                    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
-                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                    <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Bulk Conversion Form -->
                 </div>
@@ -207,20 +205,20 @@
                   aria-labelledby="distancefromorigin-tab">
                   <!-- Bulk Conversion Form -->
                   <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv"
-                    class="btn btn-primary tmpl-download" title="Download a fillable template"><i class="fa fa-download"></i> DFO
+                    class="btn btn-primary tmpl-download" title="Download a fillable template"><i
+                      class="fa fa-download"></i> DFO
                     Template</a>
 
-                  <form id="bulk-form">
+                  <form>
                     <fieldset class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
-                        accept=".csv" />
+                      <input data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                        type="file" placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
-                    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
-                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                    <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Bulk Conversion Form -->
                 </div>
@@ -234,17 +232,16 @@
                     download="queryPointByControlSection.csv" class="btn btn-primary tmpl-download"
                     title="Download a fillable template"><i class="fa fa-download"></i> Control Section Template</a>
 
-                  <form id="bulk-form">
+                  <form>
                     <fieldset class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
-                        accept=".csv" />
+                      <input data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                        type="file" placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
-                    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
-                      title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                    <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                        class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Bulk Conversion Form -->
                 </div>
@@ -284,8 +281,9 @@
           <!-- Map-Controls END -->
 
           <div class="card-body">
-            <button id="returnToPoint" type="button" class="btn btn-primary map-return" title="See all results on map"><i
-                class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
+            <button type="button" class="btn btn-primary map-return" title="See all results on map"><i
+                class="fa fa-hand-o-right" aria-hidden="true"></i> Return to
+              Point</button>
           </div>
         </div>
         <!-- Map Buttons END -->
