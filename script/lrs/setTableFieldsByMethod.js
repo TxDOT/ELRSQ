@@ -11,7 +11,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
     if (method == 1) {
       dropDownPopulator("#lat_field", candidate_fields);
       dropDownPopulator("#lon_field", candidate_fields);
-      dropDownPopulator("#rte_nm_field", candidate_fields); //TODO make this optional
+      dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let lat_field = ~~await confirmFieldChoice("#btn-lat_field", "#lat_field");
       let lon_field = ~~await confirmFieldChoice("#btn-lon_field", "#lon_field");
@@ -36,7 +36,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
     else if (method == 3) {
       dropDownPopulator("#cs_field", candidate_fields);
       dropDownPopulator("#mpm_field", candidate_fields);
-      dropDownPopulator("#rte_nm_field", candidate_fields); //TODO make this optional
+      dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let cs_field = ~~await confirmFieldChoice("#btn-bs_field", "#cs_field");
       let mpm_field = ~~await confirmFieldChoice("#btn-mpm_field", "#mpm_field");
@@ -62,7 +62,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       dropDownPopulator("#blon_field", candidate_fields);
       dropDownPopulator("#elat_field", candidate_fields);
       dropDownPopulator("#elon_field", candidate_fields);
-      dropDownPopulator("#rte_nm_field", candidate_fields); //TODO make this optional
+      dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let blat_field = ~~await confirmFieldChoice("#btn-blat_field", "#blat_field");
       let blon_field = ~~await confirmFieldChoice("#btn-blon_field", "#blon_field");
@@ -94,7 +94,7 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       dropDownPopulator("#bmpm_field", candidate_fields);
       dropDownPopulator("#ecs_field", candidate_fields);
       dropDownPopulator("#empm_field", candidate_fields);
-      dropDownPopulator("#rte_nm_field", candidate_fields); //TODO make this optional
+      dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let bcs_field = ~~await confirmFieldChoice("#btn-bcs_field", "#bcs_field");
       let bmpm_field = ~~await confirmFieldChoice("#btn-bmpm_field", "#bmpm_field");

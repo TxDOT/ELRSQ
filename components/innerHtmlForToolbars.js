@@ -3,7 +3,7 @@ const staticFileInputForm = `
     <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
     <legend class="visually-hidden">CSV uploader</legend>
         <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-        <input data-post-name="csv-bulk" 
+        <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
         class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
         <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
     </fieldset>

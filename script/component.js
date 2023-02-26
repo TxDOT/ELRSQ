@@ -28,6 +28,27 @@ class Bulk_Modal_LatLon extends HTMLElement {
 }
 customElements.define('bulk_modal_latlon-component', Bulk_Modal_LatLon);
 
+class Bulk_Modal_ControlSection extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticBulk_Modal_ControlSection;
+  }
+}
+customElements.define('bulk_modal_controlsection-component', Bulk_Modal_ControlSection);
+
+class Bulk_Modal_DFO extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = staticBulk_Modal_DFO;
+  }
+}
+customElements.define('bulk_modal_dfo-component', Bulk_Modal_DFO);
+
+
 class Cursor_Help_Modal extends HTMLElement {
   constructor() {
     super();

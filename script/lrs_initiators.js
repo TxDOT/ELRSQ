@@ -94,6 +94,12 @@ if (calcGeomType == "Point") {
     // FIXME get away from using ids
     const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
     dragDropEventHandlers(myDropZone);
+    /**
+      const dropZones = document.querySelectorAll('.upload_dropZone');
+      for (const zone of dropZones) {
+        dragDropEventHandlers(zone);
+      }
+    */
 
     $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);
@@ -158,8 +164,13 @@ if (calcGeomType == "Route") {
     // FIXME Bulk Upload: change to use Convert button instead of automatic
     // FIXME close modal on button press
     // FIXME get away from using ids
-    const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
-    dragDropEventHandlers(myDropZone);
+    // const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
+    // dragDropEventHandlers(myDropZone);
+    const dropZones = document.querySelectorAll('.upload_dropZone');
+    for (const zone of dropZones) {
+      dragDropEventHandlers(zone);
+    }
+
 
     $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);

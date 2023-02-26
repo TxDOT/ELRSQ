@@ -19,7 +19,7 @@ const staticBulk_Modal = `
             <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone fieldset-uploadCsv-bulk text-center mb-3 p-4">
             <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input data-post-name="csv-bulk" 
+              <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
                 class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
             </fieldset>
@@ -99,7 +99,6 @@ const staticWizard_Form = `
       </div>
     </div>
   
-  
     <div class="row mb-3" style="display:none" id="rowInputMatchCoordinates">
       <label class="col-sm-4 col-form-label">Match Against:</label>
       <div class="form-check form-check-inline">
@@ -148,10 +147,10 @@ const staticBulk_Modal_ReferenceMarker = `
           <div class="modal-body">
           <!-- Upload and Field Picker Form -->
           <form>
-            <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
+            <fieldset class="upload_dropZone text-center mb-3 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input data-post-name="csv-bulk"
+              <input id="uploadCsv-bulk" data-post-name="csv-bulk"
                 class="position-absolute invisible form-control" type="file" placeholder="Select file"
                 accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
@@ -202,16 +201,16 @@ const staticBulk_Modal_LatLon = `
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="bulkModalLabel">Bulk Conversion</h5>
+            <h5 class="modal-title">Bulk Conversion</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
           <!-- Upload and Field Picker Form -->
           <form>
-            <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+            <fieldset class="upload_dropZone text-center mb-3 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-              <input data-post-name="csv-bulk"
+              <input id="uploadCsv-bulk" data-post-name="csv-bulk"
                 class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                 accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
@@ -253,6 +252,114 @@ const staticBulk_Modal_LatLon = `
     <!--End Modal -->`
 
 
+
+
+const staticBulk_Modal_ControlSection = `      
+    <!-- Modal -->
+      <div class="modal fade" id="bulkModalControlSection" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Bulk Conversion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <!-- Upload and Field Picker Form -->
+            <form>
+              <fieldset class="upload_dropZone text-center mb-3 p-4">
+                <legend class="visually-hidden">CSV uploader</legend>
+                <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
+                <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                  type="file" placeholder="Select file" accept=".csv" />
+                <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
+              </fieldset>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Control Section Field:</span>
+                <select id="cs_field" class="form-select candidate">
+                </select>
+                <button id="btn-cs_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Milepoint Marker Field:</span>
+                <select id="mp_field" class="form-select candidate">
+                </select>
+                <button id="btn-mp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Route Name Field:</span>
+                <select id="controlsection-rte_nm_field" class="form-select candidate">
+                </select>
+                <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary confirm"
+                  type="button">Select</button>
+              </div>
+
+              <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                  class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            </form>
+            <!-- End Upload and Field Picker Form -->>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Modal -->`
+
+
+
+
+
+const staticBulk_Modal_DFO = `      
+      <!-- Modal -->
+        <div class="modal fade" id="bulkModalDFO" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Bulk Conversion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              <!-- Upload and Field Picker Form -->
+              <form>
+                <fieldset class="upload_dropZone text-center mb-3 p-4">
+                  <legend class="visually-hidden">CSV uploader</legend>
+                  <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
+                  <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
+                    type="file" placeholder="Select file" accept=".csv" />
+                  <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
+                </fieldset>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Route Name Field:</span>
+                  <select id="distancefromorigin-rte_nm_field" class="form-select candidate">
+                  </select>
+                  <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary confirm"
+                    type="button">Select</button>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">DFO Field:</span>
+                  <select id="dfo_field" class="form-select candidate">
+                  </select>
+                  <button id="btn-dfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                </div>
+
+                <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
+                    class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+              </form>
+              <!-- End Upload and Field Picker Form -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End Modal -->`
 
 
 
