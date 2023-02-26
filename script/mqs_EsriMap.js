@@ -174,13 +174,14 @@ require([
 });
 
 
+// TODO split out and extend these functions
 // creates point graphic at lat/lon of each result
 
 function showPointResultsOnMap(results) {
   //go through each result and add on map
 
   require(["esri/Graphic"], (Graphic) => {
-
+    // FIXME verify that this draws all returned points
     results.forEach(_result => {
 
       let point = {

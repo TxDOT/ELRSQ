@@ -105,7 +105,7 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   // future feature showBulkPointResults(refinedData);
 
   // export data
-  tabularPointsConvertExport_2(refinedData); //FIXME
+  tabularPointsConvertExport_2(refinedData); //FIXME need JS and KML support
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);

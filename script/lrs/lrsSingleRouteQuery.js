@@ -93,7 +93,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   showRouteResults(refinedData[0]);
 
   // export data
-  // tabularRoutesConvertExport(refinedData); // TODO tabular export
+  // tabularRoutesConvertExport(refinedData); // TODO tabular export for routes
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);

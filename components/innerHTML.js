@@ -1,3 +1,7 @@
+// TODO add wizard
+// TODO add status bar
+// TODO add download buttons
+
 const staticBulk_Modal = `      
 <!-- Modal -->
   <div class="modal fade" id="bulkModal" tabindex="-1" aria-labelledby="bulkModalLabel" aria-hidden="true">

@@ -66,7 +66,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     let B_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
     let E_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
     // let B_url = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
-    // let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
+    // let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0);
     console.log(B_url);
     console.log(E_url);
     // end build url
@@ -110,7 +110,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
   // future feature showBulkRouteResults(refinedData);
 
   // export data
-  tabularRoutesConvertExport(refinedData); //FIXME
+  tabularRoutesConvertExport(refinedData);
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);

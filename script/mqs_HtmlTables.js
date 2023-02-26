@@ -1,4 +1,4 @@
-
+// TODO add functions for bulk and routes
 
 // determine pagination and fill in HTML table results
 //TODO move point on map
@@ -62,14 +62,16 @@ function insertPagination(currentPagination, resultCount) {
   navTitle = pgnStart + pgnCurrent + pgnEnd
 
   //insert pagination
-  $("#result-pagination").html(navTitle);
+  $("#result-pagination").html(navTitle); // FIXME this is changing the inner HTML instead of dynamically creating elements
   $("#pagn_prev").on('click', function () { navResults('prev'); }); //TODO move point on map
-  $("#pagn_next").on('click', function () { navResults('next'); });
+  $("#pagn_next").on('click', function () { navResults('next'); }); // TODO separate out from specific function
 
 }
 
 
 function clearResults() {
+//TODO find way to use different selector child/class
+
 
   //clear pagination
   clearPagination();
@@ -101,7 +103,8 @@ function clearPagination() {
 
 
 //navResults called by pagination buttons in showResults function
-//TODO move point on map
+//TODO move point on map/
+// TODO separate out from specific function
 function navResults(direction) {
   direction == 'next' ? currentPagination++ : currentPagination--;
 
