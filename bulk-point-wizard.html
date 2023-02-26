@@ -35,8 +35,6 @@
   <!-- Repetitive HTML -->
   <script src="components/innerHtmlForSystemHelpers.js"></script>
   <script src="components/innerHtmlForToolbars.js"></script>
-  <script src="components/innerHtmlForInputModals.js"></script>
-  <script src="components/innerHtmlForHelpModals.js"></script>
   <script src="components/innerHtml.js"></script>
   <script src="script/component.js"></script>
 
@@ -53,7 +51,7 @@
 
   <script>
     const calcGeomType = "Point";
-    const useMap = 0;
+    const useMap = 1;
   </script>
 
   <script src="script/init.js" defer></script>
@@ -62,7 +60,6 @@
   <script src="script/eventHandlers.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
-  <script src="script/mqs_LrsService.js" defer></script>
   <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
   <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
   <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
@@ -74,7 +71,6 @@
   <!-- End Refactoring LRS scripts -->
 
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_UI.js" defer></script>
   <script src="script/mqs_HtmlTables.js" defer></script>
   <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
@@ -104,7 +100,7 @@
     <div id="onscreencontent" class="row">
 
       <!-- Left side columns -->
-      <div class="col-md-8">
+      <div class="col-md-4" style="max-height: 100vh" id="split-0">
 
         <!-- Nav-Bar START -->
         <nav_bar-component></nav_bar-component>
@@ -115,7 +111,7 @@
         <!-- Status-Indicator END -->
 
         <!-- Scrolling Column START -->
-        <div>
+        <div class="overflow-scroll" style="max-height: 90vh">
 
           <!-- PointEntry-Card START -->
           <div name="PointEntryCard" class="card">
@@ -158,8 +154,9 @@
                     <fieldset id="coordinates-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
-                        type="file" placeholder="Select file" accept=".csv" />
+                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file"
+                        placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
@@ -176,7 +173,6 @@
                       </select>
                       <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
-
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
@@ -201,8 +197,9 @@
                     <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
-                        type="file" placeholder="Select file" accept=".csv" />
+                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file"
+                        placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
@@ -244,8 +241,9 @@
                     <fieldset id="distancefromorigin-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
-                        type="file" placeholder="Select file" accept=".csv" />
+                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file"
+                        placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
@@ -279,8 +277,9 @@
                     <fieldset id="controlsection-bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
-                      <input id="uploadCsv-bulk" data-post-name="csv-bulk" class="position-absolute invisible form-control uploadCsv-bulk"
-                        type="file" placeholder="Select file" accept=".csv" />
+                      <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file"
+                        placeholder="Select file" accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
 
@@ -321,37 +320,41 @@
           </div>
           <!-- PointEntry-Card END -->
 
-          <!-- StyleBuilderAndTools-Card START -->
-          <div class="card">
-            <div class="card-body">
-
-              <!-- PointBuilderTools-Card START -->
-              <div class="card">
-                <div class="card-body">
-
-                  <!-- Export Tabular START -->
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                      <a id="CSVdownload" type="button" class="btn btn-primary" title="Export a CSV file"><i
-                          class="fa fa-download"></i> CSV</a>
-                    </div>
-                  </div>
-                  <!-- Export Tabular END -->
-
-                </div>
-              </div>
-              <!-- PointBuilderTools-Card END -->
-
-            </div>
-          </div>
-          <!-- StyleBuilderAndTools-Card END -->
+          <!-- Results-Card START -->
+          <results_card-component></results_card-component>
+          <!-- Results-Card END -->
 
         </div>
         <!-- Scrolling Column END -->
 
       </div>
       <!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-md-8 d-none d-md-block" id="split-1">
+
+        <!-- Map START -->
+        <div id="viewDiv" class="col-7 map-container">
+          <div></div>
+        </div>
+        <!-- Map END -->
+
+        <!-- Map Buttons START -->
+        <div class="card map-buttons">
+
+          <!-- Map-Controls START -->
+          <map_controls-component></map_controls-component>
+          <!-- Map-Controls END -->
+
+          <div class="card-body">
+            <button type="button" class="btn btn-primary map-return" title="See all results on map"><i
+                class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
+          </div>
+        </div>
+        <!-- Map Buttons END -->
+
+      </div>
+      <!-- End Right side columns -->
 
     </div>
     <!-- On Screen Content END -->

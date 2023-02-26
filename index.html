@@ -35,8 +35,6 @@
   <!-- Repetitive HTML -->
   <script src="components/innerHtmlForSystemHelpers.js"></script>
   <script src="components/innerHtmlForToolbars.js"></script>
-  <script src="components/innerHtmlForInputModals.js"></script>
-  <script src="components/innerHtmlForHelpModals.js"></script>
   <script src="components/innerHtml.js"></script>
   <script src="script/component.js"></script>
 
@@ -62,7 +60,6 @@
   <script src="script/eventHandlers.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
-  <script src="script/mqs_LrsService.js" defer></script>
   <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
   <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
   <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
@@ -72,11 +69,9 @@
 
   <script src="script/lrs/cursorQuery.js" defer></script>
   <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
-
   <!-- End Refactoring LRS scripts -->
 
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_UI.js" defer></script>
   <script src="script/mqs_HtmlTables.js" defer></script>
   <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
@@ -97,16 +92,6 @@
   <!-- Modal START -->
   <div name="modal-parent">
     <demo_modal-component></demo_modal-component>
-    <bulk_modal-component></bulk_modal-component>
-    <bulk_modal_reference_marker-component></bulk_modal_reference_marker-component>
-    <bulk_modal_latlon-component></bulk_modal_latlon-component>
-    <bulk_modal_controlsection-component></bulk_modal_controlsection-component>
-    <bulk_modal_dfo-component></bulk_modal_dfo-component>
-    <form_help_modal-component></form_help_modal-component>
-    <cursor_help_modal-component></cursor_help_modal-component>
-    <results_help_modal-component></results_help_modal-component>
-    <route_help_modal-component></route_help_modal-component>
-    <route_style_help_modal-component></route_style_help_modal-component>
   </div>
   <!-- Modal END -->
 
@@ -119,57 +104,7 @@
       <div class="col-md-4" style="max-height: 100vh" id="split-0">
 
         <!-- Nav-Bar START -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <div id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                  <a class="nav-link " href="index.html">
-                    <span>Point Builder</span>
-                  </a>
-                </li>
-                <!-- End Form View Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link " href="bulk-point-template.html">
-                    <span>Bulk Point Template</span>
-                  </a>
-                </li>
-                <!-- End Bulk Conversion Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link " href="bulk-point-wizard.html">
-                    <span>Bulk Point Wizard</span>
-                  </a>
-                </li>
-                <!-- End Bulk Conversion Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="single-route-form.html">
-                    <span>Route Builder</span>
-                  </a>
-                </li>
-                <!-- End Build Routes Page Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="bulk-route-wizard.html">
-                    <span>Bulk Route Wizard</span>
-                  </a>
-                </li>
-                <!-- End Bulk Routes Page Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="single-route-rpm.html">
-                    <span>Future RPM Replacement</span>
-                  </a>
-                </li>
-                <!-- End Build Routes Page Nav -->
-
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <nav_bar-component></nav_bar-component>
         <!-- Nav-Bar END -->
 
         <!-- Status-Indicator START -->
@@ -238,21 +173,11 @@
                     </div>
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery1 group">
+                      <div class="btn-group me-2 mb-2" role="group">
                         <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalLatLon" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
                       </div>
                     </div>
                   </form>
@@ -288,22 +213,11 @@
                     </div>
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery2 group">
+                      <div class="btn-group me-2 mb-2" role="group">
                         <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalReferenceMarker"
-                          title="Upload a table to convert multiple points"><i class="fa fa-table"
-                            aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
                       </div>
                     </div>
                   </form>
@@ -332,21 +246,11 @@
                     </div>
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery4 group">
+                      <div class="btn-group me-2 mb-2" role="group">
                         <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalDFO" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
                       </div>
                     </div>
                   </form>
@@ -375,21 +279,11 @@
                     </div>
                     <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                       aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery3 group">
+                      <div class="btn-group me-2 mb-2" role="group">
                         <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                         <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
                             class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalControlSection" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
                       </div>
                     </div>
                   </form>
@@ -407,11 +301,6 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button id="reset-mapcursor" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#cursorHelpModal" title="Cursor Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
                       </div>
                     </div>
                   </form>

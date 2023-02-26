@@ -15,21 +15,6 @@ function zoomToLayer(layer) {
 
 
 
-function kmlGeom(theData) {
-  var kmlCoords = "";
-  var calcCoord = [];
-  for (var i = 0; i < theData.length; i++) {
-    calcCoord = metersToLatLong(theData[i]);
-
-    if (i == theData.length - 1) {
-      kmlCoords += calcCoord.toString();
-    } else {
-      kmlCoords += calcCoord.toString() + " ";
-    }
-  }
-
-  return kmlCoords;
-}
 
 function metersToLatLong(metersCoord) {
   //https://pubs.usgs.gov/pp/1395/report.pdf - Mercator to WGS 84 conversion on pages 44 and 267

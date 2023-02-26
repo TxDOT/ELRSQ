@@ -114,30 +114,6 @@ function navResults(direction) {
 }
 
 
-function copyCoordinates() {
-  let lat = $(outputFieldIDs.LAT).html();
-  let lon = $(outputFieldIDs.LON).html();
-  navigator.clipboard.writeText(`${lat}, ${lon}`);
-}
-
-function copyFieldLocation() {
-  let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
-  let refMarker = $(outputFieldIDs.RMRKR_PNT_NBR).html();
-  let displacement = $(outputFieldIDs.RMRKR_DISPLACEMENT).html();
-  navigator.clipboard.writeText(`RouteID: ${routeName}, ReferenceMarker: ${refMarker}, Displacement: ${displacement}`);
-}
-
-function copyControlSection() {
-  let controlSecNum = $(outputFieldIDs.CTRL_SECT_LN_NBR).html();
-  let milePointMeasure = $(outputFieldIDs.CTRL_SECT_MPT).html();
-  navigator.clipboard.writeText(`ControlSectionNumber: ${controlSecNum}, MilePointMeasure: ${milePointMeasure}`);
-}
-
-function copyRouteDFO() {
-  let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
-  let dfo = $(outputFieldIDs.RTE_DFO).html();
-  navigator.clipboard.writeText(`RouteID: ${routeName}, DistanceFromOrigin: ${dfo}`);
-}
 
 
 // fill in HTML table results

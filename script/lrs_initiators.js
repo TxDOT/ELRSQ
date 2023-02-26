@@ -89,16 +89,9 @@ if (calcGeomType == "Point") {
   // add event handlers to drop zones on page load
   $(document).ready(function () {
 
-    // FIXME Bulk Upload: change to use Convert button instead of automatic
-    // FIXME close modal on button press
-    // FIXME get away from using ids
-    const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
-    dragDropEventHandlers(myDropZone);
     /**
-      const dropZones = document.querySelectorAll('.upload_dropZone');
-      for (const zone of dropZones) {
-        dragDropEventHandlers(zone);
-      }
+      const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
+      dragDropEventHandlers(myDropZone);
     */
 
     $(".upload_dropZone").on('drop', async function (e) {
@@ -120,32 +113,6 @@ if (calcGeomType == "Point") {
   });
 
 
-
-
-
-  // 1-point
-  // single
-  // wizard
-
-  $(document).ready(function () {
-
-    $("wizard_form-component").load("components/html/wizard_form.html", function (response, status, xhr) {
-      if (status == "error") { $("wizard_form-component").html(staticWizard_Form); }
-      $("#missingControlSection").on('click', function () { noControlSection(); });
-      $("#convert3-wizard").on('click', function () { lrsSinglePointQuery(3, [0, 1], ['inputControlSection', 'inputMilepointMeasure']); });
-      $("#missingMilepointMeasure").on('click', function () { noMilepointMeasure(); });
-      $("#missingRouteName").on('click', function () { noRouteName(); });
-      $("#convert4-wizard").on('click', function () { lrsSinglePointQuery(4, [0, 1], ['inputRouteName_4', 'inputDistanceFromOrigin']); });
-      $("#missingDistanceFromOrigin").on('click', function () { noDistanceFromOrigin(); });
-      $("#convert2-wizard").on('click', function () { lrsSinglePointQuery(2, [0, 1, 2], ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement']); });
-      $("#missingReferenceMarker").on('click', function () { noReferenceMarker(); });
-      $("#convert1-wizard").on('click', function () { lrsSinglePointQuery(1, [0, 1], ['inputLatitude', 'inputLongitude']); });
-      $("#missingCoordinates").on('click', function () { restartWizard(); });
-    });
-
-  });
-
-
 }
 
 if (calcGeomType == "Route") {
@@ -161,11 +128,6 @@ if (calcGeomType == "Route") {
   // add certain page elements and event handlers on page load
   $(document).ready(function () {
 
-    // FIXME Bulk Upload: change to use Convert button instead of automatic
-    // FIXME close modal on button press
-    // FIXME get away from using ids
-    // const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
-    // dragDropEventHandlers(myDropZone);
     const dropZones = document.querySelectorAll('.upload_dropZone');
     for (const zone of dropZones) {
       dragDropEventHandlers(zone);
@@ -186,9 +148,6 @@ if (calcGeomType == "Route") {
       YellowToGreen();
       lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
     });
-
-
-
 
 
   });

@@ -217,34 +217,3 @@ $(document).ready(function () {
 });
 
 
-// drag and drop event handlers
-/**
-  function dragDropEventHandlers(zone) {
-    // Prevent default drag behaviors
-    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
-      zone.addEventListener(event, preventDefaults, false);
-      document.body.addEventListener(event, preventDefaults, false);
-    });
-  
-    // Highlighting drop area when item is dragged over it
-    ;['dragenter', 'dragover'].forEach(event => {
-      zone.addEventListener(event, highlight, false);
-    });
-    ;['dragleave', 'drop'].forEach(event => {
-      zone.addEventListener(event, unhighlight, false);
-    });
-  }
-  
-  function preventDefaults(event) {
-    event.preventDefault();
-    event.stopPropagation();
-  };
-  
-  function highlight(event) {
-    event.target.classList.add('highlight');
-  }
-  
-  function unhighlight(event) {
-    event.target.classList.remove('highlight');
-  }
-*/

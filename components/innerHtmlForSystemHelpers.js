@@ -12,13 +12,6 @@ const staticNav_Bar = `
         <!-- End Form View Nav -->
 
         <li class="nav-item">
-          <a class="nav-link " href="bulk-point-template.html">
-            <span>Bulk Point Template</span>
-          </a>
-        </li>
-        <!-- End Bulk Conversion Nav -->
-
-        <li class="nav-item">
           <a class="nav-link " href="bulk-point-wizard.html">
             <span>Bulk Point Wizard</span>
           </a>
