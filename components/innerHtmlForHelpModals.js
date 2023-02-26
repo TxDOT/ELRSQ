@@ -4,7 +4,7 @@ const staticCursor_Help_Modal = `
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="cursorHelpModalLabel">Help with...</h5>
+                  <h5 class="modal-title">Help with...</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -33,7 +33,7 @@ const staticForm_Help_Modal = `
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="formHelpModalLabel">Help with...</h5>
+                  <h5 class="modal-title">Help with...</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -87,7 +87,7 @@ const staticResults_Help_Modal = `
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="resultsHelpModalLabel">Help with...</h5>
+                  <h5 class="modal-title" >Help with...</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -116,7 +116,7 @@ const staticRoute_Help_Modal = `
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="routeHelpModalLabel">Help with...</h5>
+                <h5 class="modal-title" >Help with...</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -157,7 +157,7 @@ const staticRoute_Style_Help_Modal = `
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="routeStyleHelpModalLabel">Help with...</h5>
+                <h5 class="modal-title" >Help with...</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

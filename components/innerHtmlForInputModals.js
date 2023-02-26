@@ -4,7 +4,7 @@ const staticBulk_Modal = `
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="bulkModalLabel">Bulk Conversion</h5>
+          <h5 class="modal-title" >Bulk Conversion</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -16,14 +16,14 @@ const staticBulk_Modal = `
           <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
           
           <form id="bulk-form">
-            <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone text-center mb-3 p-4">
+            <fieldset id="fieldset-uploadCsv-bulk" class="upload_dropZone fieldset-uploadCsv-bulk text-center mb-3 p-4">
             <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
               <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
-                class="position-absolute invisible form-control" type="file" placeholder="Select file" accept=".csv" />
+                class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
             </fieldset>
-            <button id="bulk-convert-button" class="btn btn-primary" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+            <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
 
         </div>
@@ -142,7 +142,7 @@ const staticWizard_Form = `
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="bulkModalLabel">Bulk Conversion</h5>
+            <h5 class="modal-title" >Bulk Conversion</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -179,7 +179,7 @@ const staticWizard_Form = `
             </div>
   
   
-            <button id="bulk-convert-button" class="btn btn-primary" type="button"
+            <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
               title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
           <!-- End Upload and Field Picker Form -->
@@ -212,7 +212,7 @@ const staticWizard_Form = `
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
               <input id="coordinates-uploadCsv-bulk" data-post-name="csv-bulk"
-                class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                 accept=".csv" />
               <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
             </fieldset>
@@ -221,25 +221,25 @@ const staticWizard_Form = `
               <span class="input-group-text">Latitude Field:</span>
               <select id="lat_field" class="form-select candidate">
               </select>
-              <button id="btn-lat_field" class="btn btn-outline-primary" type="button">Select</button>
+              <button id="btn-lat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
             </div>
           
             <div class="input-group mb-3">
               <span class="input-group-text">Longitude Field:</span>
               <select id="lon_field" class="form-select candidate">
               </select>
-              <button id="btn-lon_field" class="btn btn-outline-primary" type="button">Select</button>
+              <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
             </div>
           
             <div class="input-group mb-3">
               <span class="input-group-text">Route Name Field:</span>
               <select id="coordinates-rte_nm_field" class="form-select candidate">
               </select>
-              <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary"
+              <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary confirm"
                 type="button">Select</button>
             </div>
           
-            <button id="coordinates-bulk-convert-button" class="btn btn-primary" type="button"
+            <button id="coordinates-bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
               title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
           </form>
           <!-- End Upload and Field Picker Form -->

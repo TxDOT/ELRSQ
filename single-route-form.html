@@ -92,7 +92,7 @@
 <body>
 
   <!-- Modal START -->
-  <div id="modal-parent">
+  <div name="modal-parent">
     <demo_modal-component></demo_modal-component>
     <bulk_modal-component></bulk_modal-component>
     <form_help_modal-component></form_help_modal-component>
@@ -123,8 +123,8 @@
         <div class="overflow-scroll" style="max-height: 90vh">
 
           <!-- RouteEntry-Card START -->
-          <div id="RouteEntryCard" class="card">
-            <div id="RouteEntryCardBody" class="card-body">
+          <div name="RouteEntryCard" class="card">
+            <div name="RouteEntryCardBody" class="card-body">
               <h5 class="card-title">Query by:</h5>
 
               <!-- Tabs START -->
@@ -208,11 +208,11 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button id="convert1-2point" type="button" class="btn btn-primary convert-2point"
                           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button id="reset1-2point" type="reset" class="btn btn-secondary"
+                        <button id="reset1-2point" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
                           data-bs-target="#bulkModal" title="Upload a table to convert multiple points"><i
                             class="fa fa-table" aria-hidden="true"></i>
                           Bulk Conversion</button>
@@ -295,11 +295,11 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button id="convert2-2point" type="button" class="btn btn-primary convert-2point"
                           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button id="reset2-2point" type="reset" class="btn btn-secondary"
+                        <button id="reset2-2point" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
                           data-bs-target="#bulkModal" title="Upload a table to convert multiple points"><i
                             class="fa fa-table" aria-hidden="true"></i>
                           Bulk Conversion</button>
@@ -370,11 +370,11 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button id="convert4-2point" type="button" class="btn btn-primary convert-2point"
                           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button id="reset4-2point" type="reset" class="btn btn-secondary"
+                        <button id="reset4-2point" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
                           data-bs-target="#bulkModal" title="Upload a table to convert multiple points"><i
                             class="fa fa-table" aria-hidden="true"></i>
                           Bulk Conversion</button>
@@ -440,11 +440,11 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button id="convert3-2point" type="button" class="btn btn-primary convert-2point"
                           title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button id="reset3-2point" type="reset" class="btn btn-secondary"
+                        <button id="reset3-2point" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
                       <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
                           data-bs-target="#bulkModal" title="Upload a table to convert multiple points"><i
                             class="fa fa-table" aria-hidden="true"></i>
                           Bulk Conversion</button>
@@ -511,7 +511,7 @@
                       <div class="btn-group me-2 mb-2" role="group">
                         <button type="button" class="btn btn-primary convert-2point" title="Convert to other LRS"><i
                             class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button id="reset-mapcursor-2point" type="reset" class="btn btn-secondary"
+                        <button id="reset-mapcursor-2point" type="reset" class="btn btn-secondary reset"
                           title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
                       </div>
                       <div class="btn-group mb-2" role="group">
@@ -525,7 +525,7 @@
                       <select class="form-select">
                         <option selected>Generated dynamically by JS</option>
                       </select>
-                      <button class="btn btn-outline-primary" type="button">Select Route</button>
+                      <button class="btn btn-outline-primary" type="button confirm">Select Route</button>
                     </div>
                   </form>
                   <!-- End New Route Form -->

@@ -4,10 +4,10 @@ const staticFileInputForm = `
     <legend class="visually-hidden">CSV uploader</legend>
         <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
         <input id="uploadCsv-bulk" data-post-name="csv-bulk" 
-        class="position-absolute invisible form-control" type="file" placeholder="Select file" accept=".csv" />
+        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file" accept=".csv" />
         <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
     </fieldset>
-    <button id="bulk-convert-button" class="btn btn-primary" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"  title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
     </form>`
 
 
@@ -31,7 +31,7 @@ const staticDownload_Bar = `
         </div>
     </div>`
 
-    const staticMap_Controls = `
+const staticMap_Controls = `
     <div class="card-body">
     
       <input id="basemap-event"    
@@ -61,8 +61,8 @@ const staticDownload_Bar = `
       disabled> 
     
     </div>`
-    
-    
+
+
 
 
 

@@ -93,7 +93,7 @@
 <body>
 
   <!-- Modal START -->
-  <div id="modal-parent">
+  <div name="modal-parent">
     <demo_modal-component></demo_modal-component>
   </div>
   <!-- Modal END -->
@@ -118,8 +118,8 @@
         <div>
 
           <!-- PointEntry-Card START -->
-          <div id="PointEntryCard" class="card">
-            <div id="PointEntryCardBody" class="card-body">
+          <div name="PointEntryCard" class="card">
+            <div name="PointEntryCardBody" class="card-body">
               <h5 class="card-title">Query by:</h5>
 
               <!-- Tabs START -->
@@ -159,7 +159,7 @@
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
                       <input id="coordinates-uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                         accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
@@ -168,14 +168,14 @@
                       <span class="input-group-text">Latitude Field:</span>
                       <select id="lat_field" class="form-select candidate">
                       </select>
-                      <button id="btn-lat_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-lat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Longitude Field:</span>
                       <select id="lon_field" class="form-select candidate">
                       </select>
-                      <button id="btn-lon_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
 
@@ -183,11 +183,11 @@
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="coordinates-rte_nm_field" class="form-select candidate">
                       </select>
-                      <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary"
+                      <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary confirm"
                         type="button">Select</button>
                     </div>
 
-                    <button id="coordinates-bulk-convert-button" class="btn btn-primary" type="button"
+                    <button id="coordinates-bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Upload and Field Picker Form -->
@@ -203,7 +203,7 @@
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
                       <input id="uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                         accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
@@ -212,25 +212,25 @@
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="rte_nm_field" class="form-select candidate">
                       </select>
-                      <button id="btn-rte_nm_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-rte_nm_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Reference Marker Field:</span>
                       <select id="rm_field" class="form-select candidate">
                       </select>
-                      <button id="btn-rm_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-rm_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Displacement Field:</span>
                       <select id="d_field" class="form-select candidate">
                       </select>
-                      <button id="btn-d_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-d_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
 
-                    <button id="bulk-convert-button" class="btn btn-primary" type="button"
+                    <button id="bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Upload and Field Picker Form -->
@@ -246,7 +246,7 @@
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
                       <input id="distancefromorigin-uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                         accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
@@ -255,7 +255,7 @@
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="distancefromorigin-rte_nm_field" class="form-select candidate">
                       </select>
-                      <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary"
+                      <button id="btn-distancefromorigin-rte_nm_field" class="btn btn-outline-primary confirm"
                         type="button">Select</button>
                     </div>
 
@@ -263,10 +263,10 @@
                       <span class="input-group-text">DFO Field:</span>
                       <select id="dfo_field" class="form-select candidate">
                       </select>
-                      <button id="btn-dfo_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-dfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
-                    <button id="distancefromorigin-bulk-convert-button" class="btn btn-primary" type="button"
+                    <button id="distancefromorigin-bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Upload and Field Picker Form -->
@@ -282,7 +282,7 @@
                       <legend class="visually-hidden">CSV uploader</legend>
                       <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
                       <input id="controlsection-uploadCsv-bulk" data-post-name="csv-bulk"
-                        class="position-absolute invisible form-control" type="file" placeholder="Select file"
+                        class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
                         accept=".csv" />
                       <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
                     </fieldset>
@@ -291,14 +291,14 @@
                       <span class="input-group-text">Control Section Field:</span>
                       <select id="cs_field" class="form-select candidate">
                       </select>
-                      <button id="btn-cs_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-cs_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
                     <div class="input-group mb-3">
                       <span class="input-group-text">Milepoint Marker Field:</span>
                       <select id="mp_field" class="form-select candidate">
                       </select>
-                      <button id="btn-mp_field" class="btn btn-outline-primary" type="button">Select</button>
+                      <button id="btn-mp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
 
@@ -306,11 +306,11 @@
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="controlsection-rte_nm_field" class="form-select candidate">
                       </select>
-                      <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary"
+                      <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary confirm"
                         type="button">Select</button>
                     </div>
 
-                    <button id="controlsection-bulk-convert-button" class="btn btn-primary" type="button"
+                    <button id="controlsection-bulk-convert-button" class="btn btn-primary bulk-convert" type="button"
                       title="Convert to other LRS"><i class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                   </form>
                   <!-- End Bulk Conversion Form -->

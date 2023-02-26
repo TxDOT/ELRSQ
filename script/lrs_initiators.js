@@ -79,12 +79,8 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 if (calcGeomType == "Point") {
   // 1-point
-  // single
-  // FIXME get away from using ids
-  $("#convert1").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
-  $("#convert2").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
-  $("#convert3").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
-  $("#convert4").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
+
+  $(".convert-1point").on('click', function () { lrsSinglePointQuery(currentLRMno, lrm_indices, currentPointFieldOrder); });
 
 
   // 1-point
@@ -99,7 +95,24 @@ if (calcGeomType == "Point") {
     const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
     dragDropEventHandlers(myDropZone);
 
-    document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
+    /**
+      document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
+        console.log(e.dataTransfer.files[0]);
+        GreenToYellow();
+        const fileContents = await readFile(e.dataTransfer.files[0])
+        YellowToGreen();
+        lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
+      });
+  
+      document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
+        GreenToYellow();
+        const fileContents = await readFile(e.target.files[0])
+        YellowToGreen();
+        lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
+      });
+    */
+
+    $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
@@ -107,12 +120,13 @@ if (calcGeomType == "Point") {
       lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
     });
 
-    document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
+    $(".uploadCsv-bulk").on('change', async function (e) {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       lrsBulkPointQuery(currentLRMno, default_template_lrm_indices, fileContents);
     });
+
 
   });
 
@@ -148,11 +162,8 @@ if (calcGeomType == "Point") {
 if (calcGeomType == "Route") {
   // 2-point
   // single
-  // FIXME get away from using ids
-  $("#convert1-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
-  $("#convert2-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
-  $("#convert3-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
-  $("#convert4-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
+
+  $(".convert-2point").on('click', function () { lrsSingleRouteQuery(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
 
 
   // 2-point
@@ -167,7 +178,26 @@ if (calcGeomType == "Route") {
     const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
     dragDropEventHandlers(myDropZone);
 
-    document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
+    /**
+      document.getElementById("fieldset-uploadCsv-bulk").addEventListener('drop', async function (e) {
+        console.log(e.dataTransfer.files[0]);
+        GreenToYellow();
+        const fileContents = await readFile(e.dataTransfer.files[0])
+        YellowToGreen();
+        lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
+      });
+  
+      document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
+        GreenToYellow();
+        const fileContents = await readFile(e.target.files[0])
+        YellowToGreen();
+        lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
+      });
+    */
+
+
+
+    $(".upload_dropZone").on('drop', async function (e) {
       console.log(e.dataTransfer.files[0]);
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
@@ -175,12 +205,16 @@ if (calcGeomType == "Route") {
       lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
     });
 
-    document.getElementById("uploadCsv-bulk").addEventListener('change', async function (e) {
+    $(".uploadCsv-bulk").on('change', async function (e) {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       lrsBulkRouteQuery(currentLRMno, route_lrm_indices, fileContents);
     });
+
+
+
+
 
   });
 

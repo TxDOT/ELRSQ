@@ -60,7 +60,7 @@ const staticResults_Card = `
                       <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
                           title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</button>
   
-                      <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
+                      <a id="JSONdownload" href=" " download=" " class="btn btn-primary"
                           title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
   
                       <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
@@ -90,7 +90,7 @@ const staticResults_Card = `
                       <tr>
                           <td >Route Information</td>
                           <td >
-                              <button type="button" class="btn btn-info" onclick="copyRouteDFO()" title="copy"><i
+                              <button type="button" class="btn btn-info copy" onclick="copyRouteDFO()" title="copy"><i
                                       class="fa fa-copy" aria-hidden="true"></i></button>
                               <button type="button" class="btn btn-info"
                                   onclick="makequeryTxDOT_Roadways_Unsegmented()"><i class="fa fa-link"
@@ -126,7 +126,7 @@ const staticResults_Card = `
                   <tbody>
                       <tr>
                           <td >Control Section</td>
-                          <td ><button type="button" class="btn btn-info" onclick="copyControlSection()"
+                          <td ><button type="button" class="btn btn-info copy" onclick="copyControlSection()"
                                   title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                       </tr>
                       <tr>
@@ -150,7 +150,7 @@ const staticResults_Card = `
                   <tbody>
                       <tr>
                           <td >Field Location</td>
-                          <td ><button type="button" class="btn btn-info" onclick="copyFieldLocation()"
+                          <td ><button type="button" class="btn btn-info copy" onclick="copyFieldLocation()"
                                   title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                       </tr>
                       <tr>
@@ -175,7 +175,7 @@ const staticResults_Card = `
                   <tbody>
                       <tr>
                           <td >Coordinates</td>
-                          <td ><button type="button" class="btn btn-info" onclick="copyCoordinates()"
+                          <td ><button type="button" class="btn btn-info copy" onclick="copyCoordinates()"
                                   title="copy"><i class="fa fa-copy" aria-hidden="true"></i></button></td>
                       </tr>
                       <tr>
@@ -212,7 +212,7 @@ const staticResults_Card2 = `
           <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
             title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
 
-          <a id="JSONdownload" type="button" href=" " download=" " class="btn btn-primary"
+          <a id="JSONdownload" href=" " download=" " class="btn btn-primary"
             title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
 
           <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
@@ -240,7 +240,7 @@ const staticResults_Card2 = `
           <tr>
             <td>Route Information</td>
             <td>
-              <button id="copyRouteDFO" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+              <button id="copyRouteDFO" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
                   aria-hidden="true"></i></button>
               <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
                   class="fa fa-link" aria-hidden="true"></i></button>
@@ -275,7 +275,7 @@ const staticResults_Card2 = `
         <tbody>
           <tr>
             <td>Control Section</td>
-            <td><button id="copyControlSection" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+            <td><button id="copyControlSection" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
                   aria-hidden="true"></i></button></td>
           </tr>
           <tr>
@@ -299,7 +299,7 @@ const staticResults_Card2 = `
         <tbody>
           <tr>
             <td>Field Location</td>
-            <td><button id="copyFieldLocation" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+            <td><button id="copyFieldLocation" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
                   aria-hidden="true"></i></button></td>
           </tr>
           <tr>
@@ -324,7 +324,7 @@ const staticResults_Card2 = `
         <tbody>
           <tr>
             <td>Coordinates</td>
-            <td><button id="copyCoordinates" type="button" class="btn btn-info" title="copy"><i class="fa fa-copy"
+            <td><button id="copyCoordinates" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
                   aria-hidden="true"></i></button></td>
           </tr>
           <tr>

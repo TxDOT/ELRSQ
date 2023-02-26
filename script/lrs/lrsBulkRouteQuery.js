@@ -78,10 +78,11 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
     // get right route
     let rtenmformat = "AAdddd"; //TODO use regex to detect
+    let user_input_rte_nm = '';
     if (rtenmformat == "AAdddd") {
-      let user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
+      user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     } else {
-      let user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
+      user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
     }
     let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, B_results, E_results, user_input_rte_nm);
     console.log("routeResultsArr.length");
