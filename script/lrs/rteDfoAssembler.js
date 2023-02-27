@@ -1,5 +1,5 @@
 //get right route
-async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results, E_results, rte_nm) {
+async function rteDfoAssembler(routeQueryOutput, inputMethod, method, results0, results1, rte_nm) {
   let b_output = {};
   let e_output = {};
   let transposed = 0;
@@ -12,8 +12,8 @@ async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results,
   if (method == 1 || method == 3) {
 
     if (inputMethod == "html") {
-      let B_RTENMs = B_results.map(a => a.RTE_DEFN_LN_NM);
-      let E_RTENMs = E_results.map(a => a.RTE_DEFN_LN_NM);
+      let B_RTENMs = results0.map(a => a.RTE_DEFN_LN_NM);
+      let E_RTENMs = results1.map(a => a.RTE_DEFN_LN_NM);
       let BE_RTENMs = B_RTENMs.filter(x => E_RTENMs.includes(x));
 
       if (method == 1) { // FIXME need to dynamically create selector
@@ -37,18 +37,18 @@ async function rteDfoAssembler(routeQueryOutput, inputMethod, method, B_results,
   }
   // end get right route
 
-  let b_index = B_results.findIndex(function (item, i) {
+  let b_index = results0.findIndex(function (item, i) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
 
-  let e_index = E_results.findIndex(function (item, i) {
+  let e_index = results1.findIndex(function (item, i) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
 
-  b_output = B_results[b_index];
-  e_output = E_results[e_index];
-  bdfo = B_results[b_index]['RTE_DFO'];
-  edfo = E_results[e_index]['RTE_DFO'];
+  b_output = results0[b_index];
+  e_output = results1[e_index];
+  bdfo = results0[b_index]['RTE_DFO'];
+  edfo = results1[e_index]['RTE_DFO'];
 
   // check min and max DFOs and transpose if necessary
   if (bdfo > edfo) {
