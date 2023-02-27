@@ -13,6 +13,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, constrainToRouteN
 
   // process rows
   for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
+    console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
     let currentRow = arrayToQuery[rowToQuery];
     let url0 = '';
     let url1 = '';
@@ -20,9 +21,11 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, constrainToRouteN
     // build url
     if (inputMethod == "html") {
       url0 = buildUrl(currentLRMno, currentRow);
+      console.log(url0);
       if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow); }
     } else if (inputMethod == "table") {
       url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      console.log(url0);
       if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
     }
     // end build url
@@ -31,6 +34,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, constrainToRouteN
     let results0 = await queryService(url0);
     let results1 = '';
     if (calcGeomType == "Route") { results1 = await queryService(url1); }
+    console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
     // get row header data
@@ -53,6 +57,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, constrainToRouteN
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
+
         let aRowResultObj = results0[aRowResult]; // but this is an object
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
         refinedData.push(aRowResultObj);
