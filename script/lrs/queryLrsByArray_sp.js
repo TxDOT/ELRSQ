@@ -80,21 +80,21 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
 
   // prepend column heads
   console.log(typeof refinedData);
-  //refinedData.unshift(colhead);
+  // refinedData.unshift(colhead); // OFF for single point
 
 
-  /**
-    // show results
-    showPointResults(refinedData);
-  
-    // export data
-    tabularPointsConvertExport(refinedData);
-  
-    if (useMap == 1) {
-      showPointResultsOnMap(refinedData);
-    }
-  */
-  resultsShowExport(refinedData, inputMethod);
+
+  // show results
+  showPointResults(refinedData);
+
+  // export data
+  tabularPointsConvertExport(refinedData);
+
+  if (useMap == 1) {
+    showPointResultsOnMap(refinedData);
+  }
+
+  //resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }
