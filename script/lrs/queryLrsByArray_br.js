@@ -56,10 +56,18 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
       // assemble data
       let fullRowData = rowhead.concat(resultsArr); // this is an array
       refinedData.push(fullRowData);
+      console.log(refinedData);
+      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+        let aRowResultObj = results0[aRowResult]; // but this is an object
+
+        // Object.assign(aRowResultObj, { Feature: rowhead }); 
+        refinedData.push(aRowResultObj);
+        console.log(refinedData);
+        console.log(typeof refinedData);
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -71,21 +79,22 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  refinedData.unshift(colhead);
+  console.log(typeof refinedData);
+  refinedData.unshift(colhead); // ON for bulk route
 
 
-  /**
-    // show results
-    // future feature showBulkRouteResults(refinedData);
-  
-    // export data
-    tabularRoutesConvertExport(refinedData);
-  
-    if (useMap == 1) {
-      showPointResultsOnMap(refinedData);
-    }
-  */
-  resultsShowExport(refinedData, inputMethod);
+
+  // show results
+  // future feature showBulkRouteResults(refinedData);
+
+  // export data
+  tabularRoutesConvertExport(refinedData);
+
+  if (useMap == 1) {
+    showPointResultsOnMap(refinedData);
+  }
+
+  //resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }
