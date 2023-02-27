@@ -32,6 +32,7 @@ function setIndicesByLrmAndGeom(currentLRMno, calcGeomType) {
     } else if (currentLRMno == 3) {
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
+      rte_nm_lrm_indices = [4]; // optional
       currentRouteFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
     } else if (currentLRMno == 4) {
       lrm_indices0 = [0, 1];
@@ -41,6 +42,7 @@ function setIndicesByLrmAndGeom(currentLRMno, calcGeomType) {
     } else if (currentLRMno == 1) {
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
+      rte_nm_lrm_indices = [4]; // optional
       currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
     }
     // end set fields

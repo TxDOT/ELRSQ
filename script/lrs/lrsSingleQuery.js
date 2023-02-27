@@ -18,35 +18,6 @@ async function lrsSingleQuery(currentLRMno) {
   // putting in a loop for option of processing sequential entries
   let coordinateArr = [];
 
-  /**
-    for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
-  
-      let coordinateArr0 = [];
-      for (let i = 0; i < lrm_indices0.length; i++) {
-        let value = $('#' + currentFieldOrder[lrm_indices0[i]]).val();
-        if ((currentLRMno == 2 || currentLRMno == 4) && rtenmformat == "AAdddd" && i == 0) {
-          value = fixThisVerySpecificTextFormat(value);
-        }
-        coordinateArr0.push(value);
-      }
-      coordinateArr.push(coordinateArr0);
-  
-      let coordinateArr1 = [];
-      if (calcGeomType == "Route") {
-        for (let i = 0; i < lrm_indices1.length; i++) {
-          let value = $('#' + currentFieldOrder[lrm_indices1[i]]).val();
-          if ((currentLRMno == 2 || currentLRMno == 4) && rtenmformat == "AAdddd" && i == 0) {
-            value = fixThisVerySpecificTextFormat(value);
-          }
-          coordinateArr1.push(value);
-        }
-      }
-      coordinateArr.push(coordinateArr1);
-  
-      // or coordinateArr = coordinateArr0.concat(coordinateArr1);
-    }
-  */
-
   // revision to keep everything in one array // much cleaner
 
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {

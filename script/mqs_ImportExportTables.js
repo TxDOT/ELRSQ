@@ -92,6 +92,7 @@ function exportRoutesToCsvFile(resultsArr) {
 
 
 function tabularPointsConvertExport_2(resultsArr) {
+  console.log("tabularPointsConvertExport_2: resultsArr: ");
   console.log(resultsArr);
   exportPointsToCsvFile(resultsArr);
 }

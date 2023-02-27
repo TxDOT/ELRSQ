@@ -62,13 +62,17 @@
   <!-- Refactoring LRS scripts -->
   <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
   <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromHtml.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromIndex.js" defer></script>
-  <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
-
+  <script src="script/lrs/cursorQuery.js" defer></script>
   <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
+  <script src="script/lrs/setIndicesByLrmAndGeom.js" defer></script>
+  <script src="script/lrs/buildUrl.js" defer></script>
+  <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
   <!-- End Refactoring LRS scripts -->
+
+
+
+
+
 
   <script src="script/mqs_EsriMap.js" defer></script>
   <script src="script/mqs_HtmlTables.js" defer></script>
@@ -174,13 +178,13 @@
                       <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
-                    <div class="input-group mb-3">
+                    <!-- <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="coordinates-rte_nm_field" class="form-select candidate">
                       </select>
                       <button id="btn-coordinates-rte_nm_field" class="btn btn-outline-primary confirm"
                         type="button">Select</button>
-                    </div>
+                    </div> -->
 
                     <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
                         class="fa fa-cog" aria-hidden="true"></i> Convert</button>
@@ -297,14 +301,13 @@
                       <button id="btn-mp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                     </div>
 
-
-                    <div class="input-group mb-3">
+                    <!-- <div class="input-group mb-3">
                       <span class="input-group-text">Route Name Field:</span>
                       <select id="controlsection-rte_nm_field" class="form-select candidate">
                       </select>
                       <button id="btn-controlsection-rte_nm_field" class="btn btn-outline-primary confirm"
                         type="button">Select</button>
-                    </div>
+                    </div> -->
 
                     <button class="btn btn-primary bulk-convert" type="button" title="Convert to other LRS"><i
                         class="fa fa-cog" aria-hidden="true"></i> Convert</button>

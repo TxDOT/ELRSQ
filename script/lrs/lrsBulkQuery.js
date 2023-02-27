@@ -23,7 +23,7 @@ async function lrsBulkQuery(currentLRMno, fileContents) {
     }
   }
   // end pre-process data
-  
+
   // end read user-supplied table
   // end read in data
 
