@@ -1,3 +1,7 @@
+
+let inputMethod = '';
+
+
 //FIXME this is not always true
 let currentLRM = `coordinates-tab`;
 let currentLRMno = 1;
@@ -81,7 +85,8 @@ if (calcGeomType == "Point") {
   // 1-point
 
   $(".convert-1point").on('click', function () {
-    lrsSinglePointQuery(currentLRMno);
+    inputMethod = "html";
+    lrsSinglePointQuery(currentLRMno, inputMethod);
   });
 
 
@@ -110,6 +115,7 @@ if (calcGeomType == "Point") {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
+      inputMethod = "table";
       lrsBulkPointQuery(currentLRMno, fileContents);
     });
 
@@ -125,7 +131,8 @@ if (calcGeomType == "Route") {
   // single
 
   $(".convert-2point").on('click', function () {
-    lrsSingleRouteQuery(currentLRMno);
+    inputMethod = "html";
+    lrsSingleRouteQuery(currentLRMno, inputMethod);
   });
 
 
@@ -155,6 +162,7 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
+      inputMethod = "table";
       lrsBulkRouteQuery(currentLRMno, fileContents);
     });
 

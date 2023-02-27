@@ -1,8 +1,11 @@
 async function lrsBulkPointQuery(currentLRMno, fileContents) {
-  let inputMethod = "table";
   let headerRowPresent = 1;
   let constrainToRouteName = 0;
-  // let rtenmformat = "AAdddd"; //TODO use regex to detect
+  let rtenmformat = "AAdddd"; //TODO use regex to detect
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
+  let rte_nm_lrm_indices = [];
+  let other_indices = [];
 
   // read in data
   // read user-supplied table
@@ -11,10 +14,10 @@ async function lrsBulkPointQuery(currentLRMno, fileContents) {
 
   // set fields
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  let lrm_indices0 = field_indices[0][0];
-  let lrm_indices1 = field_indices[0][1];
-  let rte_nm_lrm_indices = field_indices[2];
-  let other_indices = field_indices[1];
+  lrm_indices0 = field_indices[0][0];
+  lrm_indices1 = field_indices[0][1];
+  rte_nm_lrm_indices = field_indices[2];
+  other_indices = field_indices[1];
   // end set fields
 
 

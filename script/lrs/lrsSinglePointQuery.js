@@ -1,7 +1,9 @@
-async function lrsSinglePointQuery(currentLRMno) {
-  let inputMethod = "html";
+async function lrsSinglePointQuery(currentLRMno, inputMethod) {
   let headerRowPresent = 0;
   let constrainToRouteName = 0;
+  let rtenmformat = "AAdddd_dash_KG";
+  let rte_nm_lrm_indices = [];
+  let other_indices = [];
 
   // read in data
   // read user-entered input fields
@@ -10,7 +12,7 @@ async function lrsSinglePointQuery(currentLRMno) {
   let field_indices = setIndicesByLrmAndGeom(currentLRMno, calcGeomType);
   let lrm_indices0 = field_indices[0][0];
   let lrm_indices1 = field_indices[0][1];
-  let rte_nm_lrm_indices = field_indices[1];
+  rte_nm_lrm_indices = field_indices[1];
   let currentFieldOrder = field_indices[2];
   // end set fields
 
