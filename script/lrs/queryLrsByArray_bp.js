@@ -56,6 +56,8 @@ async function queryLrsByArray_bp(inputMethod, arrayToQuery, headerRowPresent, c
       // assemble data
       let fullRowData = rowhead.concat(resultsArr); // this is an array
       refinedData.push(fullRowData);
+      console.log(refinedData);
+      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
@@ -64,6 +66,8 @@ async function queryLrsByArray_bp(inputMethod, arrayToQuery, headerRowPresent, c
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
         refinedData.push(aRowResultObj);
+        console.log(refinedData);
+        console.log(typeof refinedData);
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -75,21 +79,22 @@ async function queryLrsByArray_bp(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  refinedData.unshift(colhead);
+  console.log(typeof refinedData);
+  // refinedData.unshift(colhead); // OFF for bulk point
 
 
-  /**
-    // show results
-    // future feature showBulkPointResults(refinedData);
-  
-    // export data
-    tabularPointsConvertExport_2(refinedData); //FIXME need JS and KML support
-  
-    if (useMap == 1) {
-      showPointResultsOnMap(refinedData);
-    }
-  */
-  resultsShowExport(refinedData, inputMethod);
+
+  // show results
+  // future feature showBulkPointResults(refinedData);
+
+  // export data
+  tabularPointsConvertExport_2(refinedData); //FIXME need JS and KML support
+
+  if (useMap == 1) {
+    showPointResultsOnMap(refinedData);
+  }
+
+  //resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }
