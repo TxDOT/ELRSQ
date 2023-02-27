@@ -1,8 +1,12 @@
-function resultsShowExport(refinedData) {
+function resultsShowExport(refinedData, inputMethod) {
   // show results
   if (inputMethod == "html") {
     if (calcGeomType == "Point") {
+
+
       showPointResults(refinedData);
+
+
     } else if (calcGeomType == "Line") {
       showRouteResults(refinedData);
     }
@@ -14,14 +18,26 @@ function resultsShowExport(refinedData) {
     }
   }
 
+
+
   // export data
   if (calcGeomType == "Point") {
     tabularPointsConvertExport(refinedData);
+
+
   } else if (calcGeomType == "Line") {
     tabularRoutesConvertExport(refinedData);
+
+
   }
 
+
+  // plot to map
   if (useMap == 1) {
+
+
     showPointResultsOnMap(refinedData);
+
+
   }
 }
