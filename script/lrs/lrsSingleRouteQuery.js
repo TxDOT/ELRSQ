@@ -12,8 +12,8 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   GreenToYellow();
 
   //set begin indices
-  let b_lrm_indices = [];
-  let e_lrm_indices = [];
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
   let rte_nm_lrm_indices = '';
   //set begin indices
 
@@ -24,26 +24,26 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   // get indices
   if (currentLRMno == 1) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
     rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 2) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
-    e_lrm_indices = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
 
   else if (currentLRMno == 3) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
     rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 4) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[0], lrm_indices[2]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[2]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
   // end get indices
@@ -55,20 +55,20 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     let queryOutput = [];
 
     // build url
-    let B_url = makeLrsQueryUrl(inputMethod, currentLRMno, b_lrm_indices, currentRouteFieldOrder, 0);
-    let E_url = makeLrsQueryUrl(inputMethod, currentLRMno, e_lrm_indices, currentRouteFieldOrder, 0);
-    console.log(B_url);
-    console.log(E_url);
+    let url0 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices0, currentRouteFieldOrder, 0);
+    let url1 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices1, currentRouteFieldOrder, 0);
+    console.log(url0);
+    console.log(url1);
     // end build url
 
     // perform query
-    let B_results = await queryService(B_url);
-    let E_results = await queryService(E_url);
+    let results0 = await queryService(url0);
+    let results1 = await queryService(url1);
     // end perform query
 
     // get right route
     let user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val() : '';
-    let routeResultsArr = await matchOutputOnCommonRteNm("html", currentLRMno, B_results, E_results, user_input_rte_nm);
+    let routeResultsArr = await matchOutputOnCommonRteNm("html", currentLRMno, results0, results1, user_input_rte_nm);
     // end get right route
 
     // get row header data

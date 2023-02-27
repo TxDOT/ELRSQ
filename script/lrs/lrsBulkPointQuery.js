@@ -50,15 +50,15 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     let queryOutput = [];
 
     // build url
-    let P_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices, 1);
+    let url0 = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices, 1);
     // blank line
-    console.log(P_url);
+    console.log(url0);
     // blank line
     // end build url
 
     // perform query
-    let P_results = await queryService(P_url);
-    console.log("returned " + P_results.length + " results for row: " + rowToQuery);
+    let results0 = await queryService(url0);
+    console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
     // get right route
@@ -69,7 +69,7 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     } else {
       user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
     }
-    let routeResultsArr = await matchOutputOnRteNm("table", currentLRMno, P_results, user_input_rte_nm);
+    let routeResultsArr = await matchOutputOnRteNm("table", currentLRMno, results0, user_input_rte_nm);
     console.log("routeResultsArr.length");
     console.log(routeResultsArr.length);
     // end get right route
@@ -84,9 +84,9 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
     // process multiple returns
     /**
-      for (let aRowResult = 0; aRowResult < P_results.length; aRowResult++) {
-        console.log("processing result: " + (aRowResult + 1) + " of " + (P_results.length));
-        let aRowResultObj = P_results[aRowResult];
+      for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
+        console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+        let aRowResultObj = results0[aRowResult];
         Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
         refinedData.push(aRowResultObj);
       }

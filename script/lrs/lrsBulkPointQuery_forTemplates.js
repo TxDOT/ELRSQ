@@ -43,8 +43,8 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
     // end build url
 
     // perform query
-    let P_results = await queryService(url);
-    console.log("returned " + P_results.length + " results for row: " + rowToQuery);
+    let results0 = await queryService(url);
+    console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
 
@@ -59,9 +59,9 @@ async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
 
 
     // process multiple returns
-    for (let aRowResult = 0; aRowResult < P_results.length; aRowResult++) {
-      console.log("processing result: " + (aRowResult + 1) + " of " + (P_results.length));
-      let aRowResultObj = P_results[aRowResult];
+    for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
+      console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+      let aRowResultObj = results0[aRowResult];
       Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
       refinedData.push(aRowResultObj);
     }

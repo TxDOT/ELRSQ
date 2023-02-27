@@ -20,8 +20,8 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
 
   //set begin indices
-  let b_lrm_indices = [];
-  let e_lrm_indices = [];
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
   let rte_nm_lrm_indices = '';
   //set begin indices
 
@@ -32,26 +32,26 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
 
   // get indices
   if (currentLRMno == 1) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
     rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 2) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
-    e_lrm_indices = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
 
   else if (currentLRMno == 3) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[2], lrm_indices[3]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
     rte_nm_lrm_indices = lrm_indices[4]; // optional
   }
 
   else if (currentLRMno == 4) {
-    b_lrm_indices = [lrm_indices[0], lrm_indices[1]];
-    e_lrm_indices = [lrm_indices[0], lrm_indices[2]];
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[2]];
     rte_nm_lrm_indices = lrm_indices[0];
   }
   // end get indices
@@ -63,17 +63,17 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     let queryOutput = [];
 
     // build url
-    let B_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], b_lrm_indices, 1); // FIXME have this take function as argument
-    let E_url = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], e_lrm_indices, 1);
-    // let B_url = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
-    // let E_url = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0);
-    console.log(B_url);
-    console.log(E_url);
+    let url0 = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices0, 1); // FIXME have this take function as argument
+    let url1 = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices1, 1);
+    // let url0 = makeLrsQueryUrl("table", currentLRMno, b_coord, parsedInputCSV[rowToQuery], 0); //FIXME fix table import
+    // let url1 = makeLrsQueryUrl("table", currentLRMno, e_coord, parsedInputCSV[rowToQuery], 0);
+    console.log(url0);
+    console.log(url1);
     // end build url
 
     // perform query
-    let B_results = await queryService(B_url);
-    let E_results = await queryService(E_url);
+    let results0 = await queryService(url0);
+    let results1 = await queryService(url1);
     // end perform query
 
     // get right route
@@ -84,7 +84,7 @@ async function lrsBulkRouteQuery(currentLRMno, lrm_indices, fileContents) {
     } else {
       user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
     }
-    let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, B_results, E_results, user_input_rte_nm);
+    let routeResultsArr = await matchOutputOnCommonRteNm("table", currentLRMno, results0, results1, user_input_rte_nm);
     console.log("routeResultsArr.length");
     console.log(routeResultsArr.length);
     // end get right route

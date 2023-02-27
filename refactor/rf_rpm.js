@@ -1,17 +1,5 @@
 async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldOrder) {
-  // single 
-  // route
   let inputMethod = "html";
-
-
-  resetGraphics();
-  resetCurrentPagination();
-
-  if (useMap == 1) {
-    clearResultsFromMap();
-  }
-
-  GreenToYellow();
 
   //set begin indices
   let lrm_indices0 = [];
@@ -19,11 +7,6 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   //set begin indices
 
   let rte_nm_lrm_indices = '';
-
-  // make array for output
-  let refinedData = [];
-
-
 
   // get indices
   if (currentLRMno == 1) {
@@ -51,23 +34,52 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   }
   // end get indices
 
+
+
+
+
+
+
+
+
+
+
+  resetGraphics();
+  resetCurrentPagination();
+
+  if (useMap == 1) {
+    clearResultsFromMap();
+  }
+
+  GreenToYellow();
+
+  // make array for output
+  let refinedData = [];
+
   // process rows
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
-    // no header row
-    console.log("processing row " + rowToQuery + " of 1");
     let routeQueryOutput = [];
+    let url0 = '';
+    let url1 = '';
 
     // build url
-    let url0 = makeLrsQueryUrl("html", currentLRMno, lrm_indices0, currentRouteFieldOrder, 0);
-    let url1 = makeLrsQueryUrl("html", currentLRMno, lrm_indices1, currentRouteFieldOrder, 0);
-    console.log(url0);
-    console.log(url1);
+    if (inputMethod == "html") {
+      url0 = makeLrsQueryUrl("html", currentLRMno, lrm_indices0, currentRouteFieldOrder, 0);
+      if (calcGeomType == "Route") { url1 = makeLrsQueryUrl("html", currentLRMno, lrm_indices1, currentRouteFieldOrder, 0); }
+    } else if (inputMethod == "table") {
+      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
+    }
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
-    let results1 = await queryService(url1);
+    let results1 = '';
+    if (calcGeomType == "Route") { results1 = await queryService(url1); }
     // end perform query
+
+    // get row header data
+    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
 
     // get right route
     if (currentLRMno == 1 || currentLRMno == 3) {
@@ -79,8 +91,7 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
     await rteDfoAssembler(routeQueryOutput, "html", currentLRMno, results0, results1, user_input_rte_nm);
     // end get right route
 
-    // get row header data
-    let rowhead = ''; // get from HTML
+
 
     // assemble data
     // let routeQueryOutput = rowhead.concat(routeResultsArr);
@@ -91,11 +102,12 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
 
   }
+  // end process rows
 
-  // set column heads // can this be moved to after the loop?
-  let customhead = ["Feature"];
-  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  // let colhead = customhead.concat(standardhead);
+  // set column heads
+  let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
+  let standardhead = (calcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let colhead = customhead.concat(standardhead);
 
   // prepend column heads
   // refinedData.unshift(colhead);
@@ -104,8 +116,6 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
   // show results
   showRouteResults(refinedData[0]);
 
-  // export data
-  // tabularRoutesConvertExport(routeQueryOutput); // TODO tabular export for routes
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);
