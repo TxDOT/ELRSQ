@@ -3,7 +3,7 @@
 // determine pagination and fill in HTML table results
 //TODO move point on map
 function showPointResults(results, navIndex) {
-  allResults = results; // this is changing the value of a global variable
+  allResults = results; // FIXME this is changing the value of a global variable
   resultCount = allResults.length; // use this somewhere
   const index = navIndex ? navIndex - 1 : 0;
   currentResult = allResults[index];

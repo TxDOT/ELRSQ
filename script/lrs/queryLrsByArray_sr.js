@@ -1,4 +1,4 @@
-async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices) {
+async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -7,6 +7,11 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
   }
 
   GreenToYellow();
+
+  lrm_indices0 = field_indices[0][0];
+  lrm_indices1 = field_indices[0][1];
+  rte_nm_lrm_indices = field_indices[1];
+  let currentFieldOrder = field_indices[2];
 
   // make array for output
   let refinedData = [];
@@ -43,9 +48,12 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
       // get right route
       if (inputMethod == "html") {
         if (rtenmformat == "AAdddd") {
+          user_input_rte_nm = fixThisVerySpecificTextFormat(currentRow[rte_nm_lrm_indices]);
         } else {
           user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
         }
+      } else if (inputMethod == "table") {
+        user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
@@ -72,7 +80,9 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  refinedData.unshift(colhead); // ON for single route
+  if(calcGeomType == "Route") {
+    refinedData.unshift(colhead); // ON for single route
+  }
 
 
 

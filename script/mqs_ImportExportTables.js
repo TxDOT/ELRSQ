@@ -1,4 +1,4 @@
-// tabularPointsConvertExport
+// 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
   console.log(resultsArr);
@@ -7,19 +7,22 @@ function tabularPointsConvertExport(resultsArr) {
   exportPointsToKMLFile(resultsArr);
 }
 
+// 1a) exportPointsToCsvFile
+
 function exportPointsToCsvFile(resultsArr) {
   console.log("CSV export");
 
   //let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] }); // this makes sure msg has quotes
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
-  let exportFileDefaultName = 'results.csv';
+  let exportFileDefaultName = 'pointresults.csv';
 
   let linkElement = document.getElementById('CSVdownload');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
+// 1b) exportPointsToGeoJsonFile
 
 function exportPointsToGeoJsonFile(resultsArr) {
   console.log("geoJSON export");
@@ -27,26 +30,14 @@ function exportPointsToGeoJsonFile(resultsArr) {
   var geojson = jsonFromLrsApiToGeoJson(resultsArr)
   let dataStr = JSON.stringify(geojson);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-  let exportFileDefaultName = 'results.json';
+  let exportFileDefaultName = 'pointresults.json';
 
   let linkElement = document.getElementById('JSONdownload');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
-
-function exportPointsToKMLFile(resultsArr) {
-  console.log("KML export");
-
-  var kmlContent = jsonToKML(resultsArr)
-  let dataUri = encodeURI(kmlContent);
-  let exportFileDefaultName = 'results.kml';
-
-  let linkElement = document.getElementById('KMLdownload');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
-}
-
+// 1bi) jsonFromLrsApiToGeoJson
 
 function jsonFromLrsApiToGeoJson(resultsArr) {
 
@@ -79,6 +70,23 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
   return geojson;
 }
 
+
+// 1c) exportPointsToKMLFile
+
+function exportPointsToKMLFile(resultsArr) {
+  console.log("KML export");
+
+  var kmlContent = jsonToKML(resultsArr)
+  let dataUri = encodeURI(kmlContent);
+  let exportFileDefaultName = 'pointresults.kml';
+
+  let linkElement = document.getElementById('KMLdownload');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+}
+
+
+// 1ci) jsonToKML
 
 function jsonToKML(resultsArr) {
   // build kml file
@@ -115,6 +123,8 @@ function jsonToKML(resultsArr) {
 }
 
 
+// 1cii) addTags
+
 function addTags(theData, theTagType) {
   var taggedData = "";
 
@@ -129,27 +139,123 @@ function addTags(theData, theTagType) {
 }
 
 
-// tabularRoutesConvertExport
+
+// 2) tabularRoutesConvertExport
 
 function tabularRoutesConvertExport(resultsArr) {
+  console.log(resultsArr);
   exportRoutesToCsvFile(resultsArr);
+  exportRoutesToGeoJsonFile(resultsArr);
+  exportRoutesToKMLFile(resultsArr);
 }
 
+// 2a) exportRoutesToCsvFile
 
 function exportRoutesToCsvFile(resultsArr) {
   console.log("CSV export");
 
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
-  let exportFileDefaultName = 'bwdresults.csv';
+  let exportFileDefaultName = 'routeresults.csv';
 
   let linkElement = document.getElementById('CSVdownload');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
+// stub
+function exportRoutesToGeoJsonFile(resultsArr) {
+  let r = resultsArr;
+  console.log("no geoJSON export yet");
+}
 
-function tabularPointsConvertExport_2(resultsArr) {
+// stub
+function exportRoutesToKMLFile(resultsArr) {
+  let r = resultsArr;
+  console.log("no KML export yet");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _tabularPointsConvertExport_2(resultsArr) {
   console.log(resultsArr);
   exportPointsToCsvFile(resultsArr);
 }

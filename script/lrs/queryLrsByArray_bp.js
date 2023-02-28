@@ -82,7 +82,7 @@ async function queryLrsByArray_bp(inputMethod, arrayToQuery, headerRowPresent, c
 
 
   // export data
-  tabularPointsConvertExport_2(refinedData); //FIXME need JS and KML support
+  tabularPointsConvertExport(refinedData);
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);

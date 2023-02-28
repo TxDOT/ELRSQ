@@ -1,19 +1,14 @@
 async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   let headerRowPresent = 0;
-  let constrainToRouteName = 1;
+  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG"; //TODO use regex to detect
-  let lrm_indices0 = [];
-  let lrm_indices1 = [];
   let rte_nm_lrm_indices = [];
-  let other_indices = [];
 
   // read in data
   // read user-entered input fields
   // requires currentLRMno, rtenmformat
   // set fields
-  let field_indices = setIndicesByLrmAndGeom(currentLRMno, calcGeomType);
-  lrm_indices0 = field_indices[0][0];
-  lrm_indices1 = field_indices[0][1];
+  let field_indices = setIndicesByLrmAndGeom(currentLRMno);
   rte_nm_lrm_indices = field_indices[1];
   let currentFieldOrder = field_indices[2];
   // end set fields
@@ -22,8 +17,6 @@ async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   // retrieve data from input fields
   // putting in a loop for option of processing sequential entries
   let coordinateArr = [];
-
-  // revision to keep everything in one array // much cleaner
 
   for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
     let coordinateArr0 = [];
@@ -42,5 +35,5 @@ async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   // end read user-entered input fields
   // end read in data
 
-  queryLrsByArray_sr(inputMethod, coordinateArr, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices, lrm_indices0, lrm_indices1);
+  queryLrsByArray_sr(inputMethod, coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
 }

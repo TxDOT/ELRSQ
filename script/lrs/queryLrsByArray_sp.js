@@ -1,4 +1,4 @@
-async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices) {
+async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -7,6 +7,11 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
   }
 
   GreenToYellow();
+
+  lrm_indices0 = field_indices[0][0];
+  lrm_indices1 = field_indices[0][1];
+  rte_nm_lrm_indices = field_indices[1];
+  let currentFieldOrder = field_indices[2];
 
   // make array for output
   let refinedData = [];
@@ -20,9 +25,9 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
 
     // build url
     if (inputMethod == "html") {
-      url0 = buildUrl(currentLRMno, currentRow);
+      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0); //t
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow); }
+      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); } //t
     } else if (inputMethod == "table") {
       url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
       console.log(url0);
@@ -75,8 +80,9 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  console.log(typeof refinedData);
-  // refinedData.unshift(colhead); // OFF for single point
+  if (calcGeomType == "Route") {
+    refinedData.unshift(colhead); // ON for single route
+  }
 
 
 

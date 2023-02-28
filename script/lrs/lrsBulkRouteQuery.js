@@ -16,8 +16,8 @@ async function lrsBulkRouteQuery(currentLRMno, fileContents) {
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
-  rte_nm_lrm_indices = field_indices[2];
-  other_indices = field_indices[1];
+  rte_nm_lrm_indices = field_indices[1];
+  other_indices = field_indices[2];
   // end set fields
 
   // pre-process data
