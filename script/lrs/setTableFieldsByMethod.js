@@ -1,8 +1,9 @@
 async function setTableFieldsByMethod(method, parsedInputCSV) {
-  console.log(calcGeomType);
   let field_indices = [];
+  let lrm_indices = [];
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
   let candidate_fields = parsedInputCSV[0];
-  console.log(candidate_fields);
   all_fields = [...Array(candidate_fields.length).keys()];
 
 
@@ -15,9 +16,10 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
 
       let lat_field = ~~await confirmFieldChoice("#btn-lat_field", "#lat_field");
       let lon_field = ~~await confirmFieldChoice("#btn-lon_field", "#lon_field");
-      let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
-      lrm_indices = [lat_field, lon_field, rte_nm_field];
+      lrm_indices = lrm_indices0 = [lat_field, lon_field, rte_nm_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 2) {
@@ -30,7 +32,8 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let rm_field = ~~await confirmFieldChoice("#btn-rm_field", "#rm_field");
       let d_field = ~~await confirmFieldChoice("#btn-d_field", "#d_field");
 
-      lrm_indices = [rte_nm_field, rm_field, d_field];
+      lrm_indices = lrm_indices0 = [rte_nm_field, rm_field, d_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 3) {
@@ -40,9 +43,10 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
 
       let cs_field = ~~await confirmFieldChoice("#btn-bs_field", "#cs_field");
       let mpm_field = ~~await confirmFieldChoice("#btn-mpm_field", "#mpm_field");
-      let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
-      lrm_indices = [cs_field, mpm_field, rte_nm_field];
+      lrm_indices = lrm_indices0 = [cs_field, mpm_field, rte_nm_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 4) {
@@ -52,7 +56,8 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field");
       let dfo_field = ~~await confirmFieldChoice("#btn-dfo_field", "#dfo_field");
 
-      lrm_indices = [rte_nm_field, dfo_field];
+      lrm_indices = lrm_indices0 = [rte_nm_field, dfo_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
   }
 
@@ -68,9 +73,12 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let blon_field = ~~await confirmFieldChoice("#btn-blon_field", "#blon_field");
       let elat_field = ~~await confirmFieldChoice("#btn-elat_field", "#elat_field");
       let elon_field = ~~await confirmFieldChoice("#btn-elon_field", "#elon_field");
-      let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
       lrm_indices = [blat_field, blon_field, elat_field, elon_field, rte_nm_field];
+      lrm_indices0 = [blat_field, blon_field];
+      lrm_indices1 = [elat_field, elon_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 2) {
@@ -87,6 +95,9 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let ed_field = ~~await confirmFieldChoice("#btn-ed_field", "#ed_field");
 
       lrm_indices = [rte_nm_field, brm_field, bd_field, erm_field, ed_field];
+      lrm_indices0 = [rte_nm_field, brm_field, bd_field];
+      lrm_indices1 = [rte_nm_field, erm_field, ed_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 3) {
@@ -100,9 +111,12 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let bmpm_field = ~~await confirmFieldChoice("#btn-bmpm_field", "#bmpm_field");
       let ecs_field = ~~await confirmFieldChoice("#btn-ecs_field", "#ecs_field");
       let empm_field = ~~await confirmFieldChoice("#btn-empm_field", "#empm_field");
-      let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
 
       lrm_indices = [bcs_field, bmpm_field, ecs_field, empm_field, rte_nm_field];
+      lrm_indices0 = [bcs_field, bmpm_field];
+      lrm_indices1 = [ecs_field, empm_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
 
     else if (method == 4) {
@@ -115,12 +129,15 @@ async function setTableFieldsByMethod(method, parsedInputCSV) {
       let edfo_field = ~~await confirmFieldChoice("#btn-edfo_field", "#edfo_field");
 
       lrm_indices = [rte_nm_field, bdfo_field, edfo_field];
+      lrm_indices0 = [rte_nm_field, bdfo_field];
+      lrm_indices1 = [rte_nm_field, edfo_field];
+      rte_nm_lrm_indices = [rte_nm_field];
     }
   }
 
   other_indices = all_fields.filter(x => !lrm_indices.includes(x));
 
-  field_indices = [lrm_indices, other_indices];
+  field_indices = [[lrm_indices0, lrm_indices1], other_indices, rte_nm_lrm_indices];
 
   return field_indices;
 }

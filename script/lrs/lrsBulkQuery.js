@@ -1,6 +1,8 @@
 async function lrsBulkQuery(currentLRMno, fileContents) {
   let inputMethod = "table";
   let headerRowPresent = 1;
+  // let constrainToRouteName = 0;
+  // let rtenmformat = "AAdddd"; //TODO use regex to detect
 
   // read in data
   // read user-supplied table

@@ -25,7 +25,7 @@ async function cursorQuery(lat, lon) {
   tabularPointsConvertExport(results);
 
   if (useMap == 1) {
-    showPointResultsOnMap(results); //TODO swap out for similar but slower function
+    showPointResultsOnMap(results); 
   }
 
   YellowToGreen();
