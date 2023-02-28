@@ -1,78 +1,46 @@
-async function lrsSinglePointQuery(currentLRMno, lrm_indices, rowFromArray) {
-    let inputMethod = "html";
-  
-  
-    resetGraphics();
-    resetCurrentPagination();
-  
-    if (useMap == 1) {
-      clearResultsFromMap();
-    }
-  
-    GreenToYellow();
-  
-  
-    // make array for output
-    let refinedData = [];
-  
-  
-  
-  
-    // process rows
-    for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
-      // no header row
-      console.log("processing row " + rowToQuery + " of 1");
-      let queryOutput = [];
-  
-      // build url
-      let url0 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices, rowFromArray, 0);
-      // blank line
-      console.log(url0);
-      // blank line
-      // end build url
-  
-      // perform query
-      let results0 = await queryService(url0);
-      console.log("returned " + results0.length + " results for row: " + rowToQuery);
-      // end perform query
-  
-      // TODO make route dropdown???
-  
-      // get row header data
-      let rowhead = ''; // get from HTML
-  
-      // assemble data
-  
-  
-  
-  
-      // process multiple returns
-      for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
-        console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-        let aRowResultObj = results0[aRowResult];
-        // Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
-        refinedData.push(aRowResultObj);
+async function lrsSinglePointQuery(currentLRMno, inputMethod) {
+  let headerRowPresent = 0;
+  let constrainToRouteName = 0;
+  let rtenmformat = "AAdddd_dash_KG"; //TODO use regex to detect
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
+  let rte_nm_lrm_indices = [];
+  let other_indices = [];
+
+  // read in data
+  // read user-entered input fields
+  // requires currentLRMno, rtenmformat
+  // set fields
+  let field_indices = setIndicesByLrmAndGeom(currentLRMno, calcGeomType);
+  lrm_indices0 = field_indices[0][0];
+  lrm_indices1 = field_indices[0][1];
+  rte_nm_lrm_indices = field_indices[1];
+  let currentFieldOrder = field_indices[2];
+  // end set fields
+
+  // pre-process data
+  // retrieve data from input fields
+  // putting in a loop for option of processing sequential entries
+  let coordinateArr = [];
+
+  // revision to keep everything in one array // much cleaner
+
+  for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
+    let coordinateArr0 = [];
+    for (let i = 0; i < currentFieldOrder.length; i++) {
+      let value = $('#' + currentFieldOrder[i]).val();
+      if ((currentLRMno == 2 || currentLRMno == 4) && rtenmformat == "AAdddd" && i == 0) {
+
       }
+      coordinateArr0.push(value);
     }
-  
-    // set column heads
-    let customhead = ["Feature"];
-    let standardhead = lrsApiFields;
-    let colhead = customhead.concat(standardhead);
-  
-    // prepend column heads
-    // refinedData.unshift(colhead);
-  
-  
-    // show results
-    showPointResults(refinedData);
-  
-    // export data
-    tabularPointsConvertExport(refinedData);
-  
-    if (useMap == 1) {
-      showPointResultsOnMap(refinedData);
-    }
-  
-    YellowToGreen();
+    coordinateArr.push(coordinateArr0);
   }
+
+  // end pre-process data
+  // outputs coordinateArr, an array of user-entered values
+  // end read user-entered input fields
+  // end read in data
+
+  queryLrsByArray_sp(inputMethod, coordinateArr, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices);
+}
