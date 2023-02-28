@@ -35,8 +35,6 @@
   <!-- Repetitive HTML -->
   <script src="components/innerHtmlForSystemHelpers.js"></script>
   <script src="components/innerHtmlForToolbars.js"></script>
-  <script src="components/innerHtmlForInputModals.js"></script>
-  <script src="components/innerHtmlForHelpModals.js"></script>
   <script src="components/innerHtml.js"></script>
   <script src="script/component.js"></script>
 
@@ -53,7 +51,7 @@
 
   <script>
     const calcGeomType = "Route";
-    const useMap = 0;
+    const useMap = 1;
   </script>
 
   <script src="script/init.js" defer></script>
@@ -62,19 +60,23 @@
   <script src="script/eventHandlers.js" defer></script>
 
   <!-- Refactoring LRS scripts -->
-  <script src="script/mqs_LrsService.js" defer></script>
   <script src="script/lrs/lrsSingleRouteQuery.js" defer></script>
   <script src="script/lrs/lrsBulkRouteQuery.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrl.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromHtml.js" defer></script>
-  <script src="script/lrs/makeLrsQueryUrlFromIndex.js" defer></script>
-  <script src="script/lrs/matchOutputOnCommonRteNm.js" defer></script>
-  <script src="script/lrs/rteDfoAssembler.js" defer></script>
+  <script src="script/lrs/cursorQuery.js" defer></script>
+  <script src="script\lrs\queryLrsByArray_br.js" defer></script>
   <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
+  <script src="script/lrs/setIndicesByLrmAndGeom.js" defer></script>
+  <script src="script/lrs/buildUrl.js" defer></script>
+  <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
+  <script src="script\lrs\resultsShowExport.js" defer></script>
   <!-- End Refactoring LRS scripts -->
 
+
+
+
+
+
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_UI.js" defer></script>
   <script src="script/mqs_HtmlTables.js" defer></script>
   <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
