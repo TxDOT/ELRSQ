@@ -52,9 +52,21 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
+      console.log(resultsArr);
       // end get right route
       // assemble data
-      let fullRowData = rowhead.concat(resultsArr); // this is an array
+      let fullRowData = resultsArr;
+      console.log(typeof rowhead !== 'undefined' && rowhead !== '');
+      if (typeof rowhead !== 'undefined' && rowhead !== '') {
+        fullRowData = rowhead.concat(resultsArr); // FIXME only do this if rowheae exists
+      }
+
+
+      // let fullRowData = rowhead.concat(resultsArr); // this is an array
+
+
+
+      console.log(fullRowData);
       refinedData.push(fullRowData);
       console.log(refinedData);
       console.log(typeof refinedData);
@@ -94,7 +106,7 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
     showPointResultsOnMap(refinedData);
   }
 
-  //resultsShowExport(refinedData, inputMethod);
+  // resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }

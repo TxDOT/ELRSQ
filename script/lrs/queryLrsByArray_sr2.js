@@ -1,4 +1,4 @@
-async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices) {
+async function queryLrsByArray_sr2(inputMethod, arrayToQuery, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -36,7 +36,7 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
     // get row header data
-    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
+    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
 
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
@@ -47,20 +47,10 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
-      console.log(resultsArr);
       // end get right route
       // assemble data
-      let fullRowData = resultsArr;
-      console.log(typeof rowhead !== 'undefined' && rowhead !== '');
-      if (typeof rowhead !== 'undefined' && rowhead !== '') {
-        fullRowData = rowhead.concat(resultsArr); // FIXME only do this if rowheae exists
-      }
-
-
-      console.log(fullRowData); // FIXME this does not match what is in the bulk route 
+      let fullRowData = rowhead.concat(resultsArr); // this is an array
       refinedData.push(fullRowData);
-      console.log(refinedData);
-      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
@@ -76,22 +66,20 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  console.log(typeof refinedData);
-  refinedData.unshift(colhead);
+  // refinedData.unshift(colhead);
 
 
-
-  // show results
-  // showRouteResults(refinedData[0]);
-
-  // export data
-  tabularRoutesConvertExport(refinedData); // TODO tabular export for routes
-
-  if (useMap == 1) {
-    showPointResultsOnMap(refinedData);
-  }
-
-  // resultsShowExport(refinedData, inputMethod);
+  /**
+    // show results
+    showRouteResults(refinedData[0]);
+  
+    // export data
+    // tabularRoutesConvertExport(refinedData); // TODO tabular export for routes
+  
+    if (useMap == 1) {
+      showPointResultsOnMap(refinedData);
+    }
+  */
 
   YellowToGreen();
 }

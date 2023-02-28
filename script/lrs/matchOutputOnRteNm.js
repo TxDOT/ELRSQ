@@ -1,10 +1,5 @@
 //get right route
 async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
-  console.log("matchOutputOnRteNm");
-  console.log(rte_nm);
-
-
-  console.log(calcGeomType);
   let output0 = {};
   let output1 = {};
   let RteDfoArr = [];
@@ -15,27 +10,17 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   let RTENMs1 = [];
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
-  console.log(results0);
-  console.log(results1);
-
 
   //get right route
   if (method == 1 || method == 3) {
-    console.log("method 1 or 3");
     if (inputMethod == "html") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
-      console.log("RTENMs0");
-      console.log(RTENMs0);
       if (calcGeomType == "Route") {
         RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
-        console.log("RTENMs1");
-        console.log(RTENMs1);
         candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
-        console.log(candidateRteNms);
       } else {
         candidateRteNms = RTENMs0;
       }
-
       dropDownPopulator("#candidateRTENMs", candidateRteNms); // need to dynamically create selector
       rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
       rte_nm = candidateRteNms[rte_nm_Index];
@@ -49,7 +34,6 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   let index0 = results0.findIndex(function (item, i) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
-  console.log(index0);
 
   output0 = results0[index0];
   console.log(output0);
@@ -58,8 +42,6 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
-    console.log(index1);
-
 
     output1 = results1[index1];
     console.log(output1);
