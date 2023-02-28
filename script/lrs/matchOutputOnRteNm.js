@@ -1,18 +1,13 @@
-//get right route
 async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
-  let output0 = {};
-  let output1 = {};
-  let RteDfoArr = [];
-  let bdfo = '';
-  let edfo = '';
-  let candidateRteNms = '';
-  let RTENMs0 = [];
-  let RTENMs1 = [];
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
 
-  //get right route
+  // get right route
   if (method == 1 || method == 3) {
+    let candidateRteNms = '';
+    let RTENMs0 = [];
+    let RTENMs1 = [];
+
     if (inputMethod == "html") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
       if (calcGeomType == "Route") {
@@ -29,6 +24,9 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   }
   // end get right route
 
+  // match output
+  let output0 = {};
+  let output1 = {};
   let match = [];
 
   let index0 = results0.findIndex(function (item, i) {
@@ -59,7 +57,10 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
     } else {
       match = (Object.values(output0)).concat(Object.values(output1));
     }
-  } else {
+
+  }
+
+  else {
     match = (Object.values(output0));
   }
 

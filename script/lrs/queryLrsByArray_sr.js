@@ -69,6 +69,10 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, f
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+        let aRowResultObj = results0[aRowResult]; // but this is an object
+
+        // Object.assign(aRowResultObj, { Feature: rowhead }); 
+        refinedData.push(aRowResultObj);
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -80,7 +84,7 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, f
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  if(calcGeomType == "Route") {
+  if (calcGeomType == "Route") {
     refinedData.unshift(colhead); // ON for single route
   }
 

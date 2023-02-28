@@ -25,9 +25,9 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, f
 
     // build url
     if (inputMethod == "html") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0); //t
+      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); } //t
+      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
     } else if (inputMethod == "table") {
       url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
       console.log(url0);
@@ -41,7 +41,7 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, f
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
     // get row header data
-    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
+    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
@@ -59,7 +59,11 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, f
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
       // end get right route
       // assemble data
-      let fullRowData = rowhead.concat(resultsArr); // this is an array
+      let fullRowData = resultsArr;
+      if (typeof rowhead !== 'undefined' && rowhead !== '') {
+        fullRowData = rowhead.concat(resultsArr);
+      }
+
       refinedData.push(fullRowData);
     } else {
       // process multiple returns
