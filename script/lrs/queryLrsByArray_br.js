@@ -35,6 +35,7 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
     if (calcGeomType == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
+    
     // get row header data
     let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
