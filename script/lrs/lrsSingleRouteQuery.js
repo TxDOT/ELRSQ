@@ -1,48 +1,6 @@
 async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldOrder) {
   let inputMethod = "html";
-  let headerRowPresent = 0;
-  let constrainToRouteName = 1;
-  let rtenmformat = 'AAdddd_dash_KG';
 
-  // read in data
-  // read user-entered input fields
-  // requires currentLRMno, rtenmformat
-  // set fields
-  let field_indices = setIndicesByLrmAndGeom(currentLRMno, calcGeomType);
-  let lrm_indices0 = field_indices[0][0];
-  let lrm_indices1 = field_indices[0][1];
-  let rte_nm_lrm_indices = field_indices[1];
-  let currentFieldOrder = field_indices[2];
-  // end set fields
-
-  // pre-process data
-  // retrieve data from input fields
-  // putting in a loop for option of processing sequential entries
-  let coordinateArr = [];
-
-  // revision to keep everything in one array // much cleaner
-
-  for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
-    let coordinateArr0 = [];
-    for (let i = 0; i < currentFieldOrder.length; i++) {
-      let value = $('#' + currentFieldOrder[i]).val();
-      if ((currentLRMno == 2 || currentLRMno == 4) && rtenmformat == "AAdddd" && i == 0) {
-        value = fixThisVerySpecificTextFormat(value);
-      }
-      coordinateArr0.push(value);
-    }
-    console.log("coordinateArr0");
-    console.log(coordinateArr0);
-    coordinateArr.push(coordinateArr0);
-  }
-
-  // end pre-process data
-  // outputs coordinateArr, an array of user-entered values
-  // end read user-entered input fields
-  // end read in data
-
-
-  let arrayToQuery = coordinateArr;
 
   resetGraphics();
   resetCurrentPagination();
@@ -53,79 +11,82 @@ async function lrsSingleRouteQuery(currentLRMno, lrm_indices, currentRouteFieldO
 
   GreenToYellow();
 
+  //set begin indices
+  let lrm_indices0 = [];
+  let lrm_indices1 = [];
+  let rte_nm_lrm_indices = '';
+  //set begin indices
+
   // make array for output
   let refinedData = [];
 
+
+
+  // get indices
+  if (currentLRMno == 1) {
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
+  }
+
+  else if (currentLRMno == 2) {
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1], lrm_indices[2]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[3], lrm_indices[4]];
+    rte_nm_lrm_indices = lrm_indices[0];
+  }
+
+  else if (currentLRMno == 3) {
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[2], lrm_indices[3]];
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
+  }
+
+  else if (currentLRMno == 4) {
+    lrm_indices0 = [lrm_indices[0], lrm_indices[1]];
+    lrm_indices1 = [lrm_indices[0], lrm_indices[2]];
+    rte_nm_lrm_indices = lrm_indices[0];
+  }
+  // end get indices
+
   // process rows
-  for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
-    console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
-    let currentRow = arrayToQuery[rowToQuery];
-    let url0 = '';
-    let url1 = '';
+  for (let rowToQuery = 0; rowToQuery < 1; rowToQuery++) {
+    // no header row
+    console.log("processing row " + rowToQuery + " of 1");
+    let queryOutput = [];
 
     // build url
-    if (inputMethod == "html") {
-      // url0 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices0, currentRouteFieldOrder, 0);
-      // url0 = buildUrl(currentLRMno, currentRow);
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
-      console.log(url0);
-      if (calcGeomType == "Route") {
-        // url1 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices1, currentRouteFieldOrder, 0); 
-        // url1 = buildUrl(currentLRMno, currentRow);
-        url1 = buildUrl(currentLRMno, currentRow, lrm_indices1);
-      }
-    } else if (inputMethod == "table") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
-      console.log(url0);
-      if (calcGeomType == "Route") { }
-    }
+    let url0 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices0, currentRouteFieldOrder, 0);
+    let url1 = makeLrsQueryUrl(inputMethod, currentLRMno, lrm_indices1, currentRouteFieldOrder, 0);
+    console.log(url0);
+    console.log(url1);
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
-    let results1 = '';
-    if (calcGeomType == "Route") { results1 = await queryService(url1); }
-    console.log("returned " + results0.length + " results for row: " + rowToQuery);
+    let results1 = await queryService(url1);
     // end perform query
 
-    // get row header data
-    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
+    // get right route
+    let user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val() : '';
+    let routeResultsArr = await matchOutputOnCommonRteNm("html", currentLRMno, results0, results1, user_input_rte_nm);
+    // end get right route
 
-    // return single geom filtered on route name, or return multiple results
-    if (constrainToRouteName == 1) {
-      // get right route
-      if (rtenmformat == "AAdddd") {
-      } else {
-        user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
-        //user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? $('#' + currentRouteFieldOrder[rte_nm_lrm_indices]).val() : '';
-      }
-      console.log(results0);
-      console.log(results1);
-      let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
-      // let resultsArr = await matchOutputOnCommonRteNm("html", currentLRMno, results0, results1, user_input_rte_nm);
-      // end get right route
-      // assemble data
-      let fullRowData = rowhead.concat(resultsArr); // this is an array
-      refinedData.push(fullRowData);
-    } else {
-      // process multiple returns
-      for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
-        console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-      }
-    }
-    // end return single geom filtered on route name, or return multiple results
+    // get row header data
+    let rowhead = ''; // get from HTML
+
+    // assemble data
+    let fullRowData = rowhead.concat(routeResultsArr);
+    refinedData.push(fullRowData);
 
   }
-  // end process rows
 
   // set column heads
-  let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-  let standardhead = (calcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let customhead = ["Feature"];
+  let standardhead = lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  // refinedData.unshift(colhead);
+  refinedData.unshift(colhead);
 
 
   // show results

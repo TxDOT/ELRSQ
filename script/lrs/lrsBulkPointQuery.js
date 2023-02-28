@@ -1,25 +1,8 @@
-async function lrsBulkPointQuery(currentLRMno, fileContents) {
+async function lrsBulkPointQuery(currentLRMno, lrm_indices, fileContents) {
   let inputMethod = "table";
-  let headerRowPresent = 1;
-  let constrainToRouteName = 0;
-  // let rtenmformat = "AAdddd"; //TODO use regex to detect
 
-  // read in data
-  // read user-supplied table
   // input CSV
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
-
-  // set fields
-  let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
-  let lrm_indices0 = field_indices[0][0];
-  let lrm_indices1 = field_indices[0][1];
-  let rte_nm_lrm_indices = field_indices[2];
-  let other_indices = field_indices[1];
-  // end set fields
-
-
-
-  let arrayToQuery = parsedInputCSV;
 
   resetGraphics();
   resetCurrentPagination();
@@ -30,73 +13,93 @@ async function lrsBulkPointQuery(currentLRMno, fileContents) {
 
   GreenToYellow();
 
+  // set fields
+  let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  lrm_indices = field_indices[0]; // why is this replaced the passed data?
+  let other_indices = field_indices[1];
+
+  let rte_nm_lrm_indices = '';
+
   // make array for output
   let refinedData = [];
 
+
+
+  // get indices
+  if (currentLRMno == 1) {
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
+  }
+
+  else if (currentLRMno == 2) {
+    rte_nm_lrm_indices = lrm_indices[0];
+  }
+
+  else if (currentLRMno == 3) {
+    rte_nm_lrm_indices = lrm_indices[4]; // optional
+  }
+
+  else if (currentLRMno == 4) {
+    rte_nm_lrm_indices = lrm_indices[0];
+  }
+  // end get indices
+
   // process rows
-  for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
-    console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
-    let currentRow = arrayToQuery[rowToQuery];
-    let url0 = '';
-    let url1 = '';
+  for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
+    // skipping 0 header row
+    console.log("processing row " + rowToQuery + " of " + (parsedInputCSV.length - 1));
+    let queryOutput = [];
 
     // build url
-    if (inputMethod == "html") {
-      url0 = buildUrl(currentLRMno, currentRow);
-      console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow); }
-    } else if (inputMethod == "table") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
-      console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
-    }
+    let url0 = makeLrsQueryUrlFromIndex(currentLRMno, parsedInputCSV[rowToQuery], lrm_indices, 1);
+    // blank line
+    console.log(url0);
+    // blank line
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
-    let results1 = '';
-    if (calcGeomType == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
-    // get row header data
-    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
-
-    // return single geom filtered on route name, or return multiple results
-    if (constrainToRouteName == 1) {
-      // get right route
-      if (rtenmformat == "AAdddd") {
-        user_input_rte_nm = fixThisVerySpecificTextFormat(currentRow[rte_nm_lrm_indices]);
-      } else {
-        user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
-      }
-
-      let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, results0, user_input_rte_nm);
-      // end get right route
-      // assemble data
-      let fullRowData = rowhead.concat(resultsArr); // this is an array
-      refinedData.push(fullRowData);
+    // get right route
+    let rtenmformat = "AAdddd"; //TODO use regex to detect
+    let user_input_rte_nm = '';
+    if (rtenmformat == "AAdddd") {
+      user_input_rte_nm = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     } else {
-      // process multiple returns
+      user_input_rte_nm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
+    }
+    let routeResultsArr = await matchOutputOnRteNm("table", currentLRMno, results0, user_input_rte_nm);
+    console.log("routeResultsArr.length");
+    console.log(routeResultsArr.length);
+    // end get right route
+
+    // get row header data
+    let rowhead = other_indices.map(i => parsedInputCSV[rowToQuery][i]);
+
+    // assemble data
+    // FIXME need to fix multiple return functionality
+    let fullRowData = rowhead.concat(routeResultsArr);
+    refinedData.push(fullRowData);
+
+    // process multiple returns
+    /**
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-        let aRowResultObj = results0[aRowResult]; // but this is an object
-        // Object.assign(aRowResultObj, { Feature: rowhead }); 
+        let aRowResultObj = results0[aRowResult];
+        Object.assign(aRowResultObj, { Feature: rowhead }); // may need to change this to concat for Objects?
         refinedData.push(aRowResultObj);
       }
-    }
-    // end return single geom filtered on route name, or return multiple results
-
+    */
   }
-  // end process rows
 
   // set column heads
-  let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-  let standardhead = (calcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let customhead = other_indices.map(i => parsedInputCSV[0][i]);
+  let standardhead = lrsApiFields;
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  // refinedData.unshift(colhead);
+  refinedData.unshift(colhead);
 
 
   // show results
