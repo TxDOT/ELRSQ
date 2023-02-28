@@ -1,7 +1,7 @@
 async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   let headerRowPresent = 0;
   let constrainToRouteName = 1;
-  let rtenmformat = "AAdddd_dash_KG";
+  let rtenmformat = "AAdddd_dash_KG"; //TODO use regex to detect
   let lrm_indices0 = [];
   let lrm_indices1 = [];
   let rte_nm_lrm_indices = [];

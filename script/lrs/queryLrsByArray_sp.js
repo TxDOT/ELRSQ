@@ -56,8 +56,6 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
       // assemble data
       let fullRowData = rowhead.concat(resultsArr); // this is an array
       refinedData.push(fullRowData);
-      console.log(refinedData);
-      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
@@ -66,8 +64,6 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
         refinedData.push(aRowResultObj);
-        console.log(refinedData);
-        console.log(typeof refinedData);
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -94,7 +90,7 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, c
     showPointResultsOnMap(refinedData);
   }
 
-  //resultsShowExport(refinedData, inputMethod);
+  // resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }

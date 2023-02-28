@@ -36,7 +36,7 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
     // get row header data
-    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : '';
+    let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
@@ -52,24 +52,14 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
-      console.log(resultsArr);
       // end get right route
       // assemble data
       let fullRowData = resultsArr;
-      console.log(typeof rowhead !== 'undefined' && rowhead !== '');
       if (typeof rowhead !== 'undefined' && rowhead !== '') {
-        fullRowData = rowhead.concat(resultsArr); // FIXME only do this if rowheae exists
+        fullRowData = rowhead.concat(resultsArr);
       }
 
-
-      // let fullRowData = rowhead.concat(resultsArr); // this is an array
-
-
-
-      console.log(fullRowData);
       refinedData.push(fullRowData);
-      console.log(refinedData);
-      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
@@ -78,8 +68,6 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
         refinedData.push(aRowResultObj);
-        console.log(refinedData);
-        console.log(typeof refinedData);
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -91,13 +79,10 @@ async function queryLrsByArray_br(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  console.log(typeof refinedData);
   refinedData.unshift(colhead); // ON for bulk route
 
 
 
-  // show results
-  // future feature showBulkRouteResults(refinedData);
 
   // export data
   tabularRoutesConvertExport(refinedData);

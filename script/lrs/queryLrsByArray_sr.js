@@ -41,26 +41,22 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
       // get right route
-      if (rtenmformat == "AAdddd") {
-      } else {
-        user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
+      if (inputMethod == "html") {
+        if (rtenmformat == "AAdddd") {
+        } else {
+          user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
+        }
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
-      console.log(resultsArr);
       // end get right route
       // assemble data
       let fullRowData = resultsArr;
-      console.log(typeof rowhead !== 'undefined' && rowhead !== '');
       if (typeof rowhead !== 'undefined' && rowhead !== '') {
-        fullRowData = rowhead.concat(resultsArr); // FIXME only do this if rowheae exists
+        fullRowData = rowhead.concat(resultsArr);
       }
 
-
-      console.log(fullRowData); // FIXME this does not match what is in the bulk route 
       refinedData.push(fullRowData);
-      console.log(refinedData);
-      console.log(typeof refinedData);
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
@@ -76,16 +72,13 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, c
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  console.log(typeof refinedData);
-  refinedData.unshift(colhead);
+  refinedData.unshift(colhead); // ON for single route
 
 
 
-  // show results
-  // showRouteResults(refinedData[0]);
 
   // export data
-  tabularRoutesConvertExport(refinedData); // TODO tabular export for routes
+  tabularRoutesConvertExport(refinedData);
 
   if (useMap == 1) {
     showPointResultsOnMap(refinedData);
