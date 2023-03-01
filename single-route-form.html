@@ -56,12 +56,12 @@
     const useMap = 1;
   </script>
 
-  <script src="script/init.js" defer></script>
   <script src="script/config_hardcoded.js" defer></script>
-  <script src="script/lrs_initiators.js" defer></script>
-  <script src="script/eventHandlers.js" defer></script>
 
-  <!-- Refactoring LRS scripts -->
+  <script src="script/ui/init.js" defer></script>
+  <script src="script/ui/lrs_initiators.js" defer></script>
+  <script src="script/ui/eventHandlers.js" defer></script>
+
   <script src="script/lrs/lrsSingleRouteQuery.js" defer></script>
   <script src="script/lrs/lrsBulkRouteQuery.js" defer></script>
   <script src="script/lrs/cursorQuery.js" defer></script>
@@ -71,21 +71,17 @@
   <script src="script/lrs/buildUrl.js" defer></script>
   <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
   <script src="script\lrs\resultsShowExport.js" defer></script>
-  <!-- End Refactoring LRS scripts -->
-
-
-
-
-
 
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_HtmlTables.js" defer></script>
   <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
-  <script src="script/mqs_RouteBuilder.js"></script>
-  <script src="script/mqs_LocalGeoJSONToMap.js"></script>
+
+
+
+  <script src="script/rpm/RouteBuilder.js"></script>
+  <script src="script/rpm/LocalGeoJSONToMap.js"></script>
 
   <script src="script/helper/dragdropupload.js" defer></script>
   <script src="script/helper/dynamic_dropdowns.js" defer></script>
