@@ -1,7 +1,7 @@
-async function lrsBulkRouteQuery(currentLRMno, fileContents) {
+async function lrsBulkRouteQuery(currentLRMno, fileContents, rtenmformat) {
   let headerRowPresent = 1;
-  let constrainToRouteName = 1;
-  let rtenmformat = "AAdddd"; //TODO use regex to detect
+  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
+  //TODO use regex to detect rtenmformat
   let lrm_indices0 = [];
   let lrm_indices1 = [];
   let rte_nm_lrm_indices = [];
@@ -32,5 +32,5 @@ async function lrsBulkRouteQuery(currentLRMno, fileContents) {
   // end read user-supplied table
   // end read in data
 
-  queryLrsByArray_b(inputMethod, parsedInputCSV, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices, lrm_indices0, lrm_indices1);
+  queryLrsByArray(inputMethod, parsedInputCSV, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
 }

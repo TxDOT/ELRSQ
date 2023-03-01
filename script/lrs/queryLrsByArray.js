@@ -1,4 +1,4 @@
-async function queryLrsByArray_s(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
+async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -87,7 +87,7 @@ async function queryLrsByArray_s(inputMethod, arrayToQuery, headerRowPresent, fi
 
   // prepend column heads
   if (calcGeomType == "Route") {
-    refinedData.unshift(colhead); // ON for single route
+    refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
   }
 
 

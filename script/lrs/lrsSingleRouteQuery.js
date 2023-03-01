@@ -1,4 +1,4 @@
-async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
+async function lrsSingleQuery(currentLRMno, inputMethod) {
   let headerRowPresent = 0;
   let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG"; //TODO use regex to detect
@@ -35,5 +35,5 @@ async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   // end read user-entered input fields
   // end read in data
 
-  queryLrsByArray_s(inputMethod, coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
+  queryLrsByArray(inputMethod, coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
 }
