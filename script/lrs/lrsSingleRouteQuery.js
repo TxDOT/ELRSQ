@@ -35,5 +35,5 @@ async function lrsSingleRouteQuery(currentLRMno, inputMethod) {
   // end read user-entered input fields
   // end read in data
 
-  queryLrsByArray_sr(inputMethod, coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
+  queryLrsByArray_s(inputMethod, coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
 }

@@ -46,6 +46,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
     bdfo = output0['RTE_DFO'];
     edfo = output1['RTE_DFO'];
 
+    let RteDfoArr = [];
     RteDfoArr.push(rte_nm);
     RteDfoArr.push(Math.min(bdfo, edfo));
     RteDfoArr.push(Math.max(bdfo, edfo));

@@ -1,4 +1,4 @@
-async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
+async function queryLrsByArray_s(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   resetGraphics();
   resetCurrentPagination();
 
@@ -34,12 +34,14 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, f
       if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
     }
     // end build url
+
     // perform query
     let results0 = await queryService(url0);
     let results1 = '';
     if (calcGeomType == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
+
     // get row header data
     let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
@@ -89,18 +91,7 @@ async function queryLrsByArray_sp(inputMethod, arrayToQuery, headerRowPresent, f
   }
 
 
-
-  // show results
-  showPointResults(refinedData);
-
-  // export data
-  tabularPointsConvertExport(refinedData);
-
-  if (useMap == 1) {
-    showPointResultsOnMap(refinedData);
-  }
-
-  // resultsShowExport(refinedData, inputMethod);
+  resultsShowExport(refinedData, inputMethod);
 
   YellowToGreen();
 }

@@ -1,4 +1,4 @@
-function _resultsShowExport(refinedData, inputMethod) {
+function resultsShowExport(refinedData, inputMethod) {
 
   
   // show TABULAR results
@@ -6,16 +6,16 @@ function _resultsShowExport(refinedData, inputMethod) {
 
     if (calcGeomType == "Point") {
       showPointResults(refinedData);
-    } else if (calcGeomType == "Line") {
-      showRouteResults(refinedData);
+    } else if (calcGeomType == "Route") {
+      //showRouteResults(refinedData);
     }
 
   } else if (inputMethod == "table") {
 
     if (calcGeomType == "Point") {
-      showBulkPointResults(refinedData);
-    } else if (calcGeomType == "Line") {
-      showBulkRouteResults(refinedData);
+      //showBulkPointResults(refinedData);
+    } else if (calcGeomType == "Route") {
+      //showBulkRouteResults(refinedData);
     }
 
   }
@@ -24,7 +24,7 @@ function _resultsShowExport(refinedData, inputMethod) {
   // export data
   if (calcGeomType == "Point") {
     tabularPointsConvertExport(refinedData);
-  } else if (calcGeomType == "Line") {
+  } else if (calcGeomType == "Route") {
     tabularRoutesConvertExport(refinedData);
   }
 
@@ -36,8 +36,8 @@ function _resultsShowExport(refinedData, inputMethod) {
     if (calcGeomType == "Point") {
       showPointResultsOnMap(refinedData);
 
-    } else if (calcGeomType == "Line") {
-      showLineResultsOnMap(refinedData);
+    } else if (calcGeomType == "Route") {
+      //showLineResultsOnMap(refinedData);
     }
   }
 }

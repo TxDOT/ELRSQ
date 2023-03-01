@@ -32,5 +32,5 @@ async function lrsBulkRouteQuery(currentLRMno, fileContents) {
   // end read user-supplied table
   // end read in data
 
-  queryLrsByArray_br(inputMethod, parsedInputCSV, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices, lrm_indices0, lrm_indices1);
+  queryLrsByArray_b(inputMethod, parsedInputCSV, headerRowPresent, constrainToRouteName, rtenmformat, rte_nm_lrm_indices, other_indices, lrm_indices0, lrm_indices1);
 }
