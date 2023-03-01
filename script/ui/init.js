@@ -18,15 +18,17 @@ if (useMap == 1) {
 const useLoadIndicator = 1;
 
 
-let allResults = [];
-function resetAllResults() {
-  allResults = [];
-}
-
-let currentPagination = 1;
-function resetCurrentPagination() {
-  currentPagination = 1;
-}
+/**
+  let allResults = [];
+  function resetAllResults() {
+    allResults = [];
+  }
+  
+  let currentPagination = 1;
+  function resetCurrentPagination() {
+    currentPagination = 1;
+  }
+*/
 
 let graphics = [];
 function resetGraphics() {
