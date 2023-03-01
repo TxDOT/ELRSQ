@@ -1,4 +1,4 @@
-// TODO highlight current nav tab
+
 
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearResultsFromMap(); });
