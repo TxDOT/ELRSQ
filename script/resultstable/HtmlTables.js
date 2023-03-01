@@ -45,10 +45,6 @@ function clearResults() {
 }
 
 
-//clear pagination
-function clearPagination() {
-  $("#result-pagination").html('');
-}
 
 
 

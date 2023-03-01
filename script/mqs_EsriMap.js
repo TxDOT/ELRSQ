@@ -104,11 +104,11 @@ require([
 
     // enable/disable toggles
     if (newZoom > 10) {
-      console.log("enable");
+      //console.log("enable");
       $('#refmrkr-event').bootstrapToggle('enable');
       $('#controlsec-event').bootstrapToggle('enable');
     } else {
-      console.log("off + disable");
+      //console.log("off + disable");
       $('#refmrkr-event').bootstrapToggle('off');
       $('#refmrkr-event').bootstrapToggle('disable');
       $('#controlsec-event').bootstrapToggle('off');
@@ -136,38 +136,38 @@ require([
 
   $('#refmrkr-event').change(function () {
     if ($(this).attr('disabled')) {
-      console.log("hide due to  disabled");
+      //console.log("hide due to  disabled");
       TxDOT_Reference_Markers.visible = false;
     } else if (window.view.zoom < 10) {
-      console.log("hide due to zoom");
+      //console.log("hide due to zoom");
       TxDOT_Reference_Markers.visible = false;
     } else if (!($("#refmrkr-event").prop("checked"))) {
-      console.log("hide due to unchecked");
+      //console.log("hide due to unchecked");
       TxDOT_Reference_Markers.visible = false;
     } else if ($("#refmrkr-event").prop("checked")) {
-      console.log("show due to checked");
+      //console.log("show due to checked");
       TxDOT_Reference_Markers.visible = true;
     } else {
-      console.log("hide due to unknown");
+      //console.log("hide due to unknown");
       TxDOT_Reference_Markers.visible = false;
     }
   })
 
   $('#controlsec-event').change(function () {
     if ($(this).attr('disabled')) {
-      console.log("hide due to  disabled");
+      //console.log("hide due to  disabled");
       TxDOT_Control_Sections.visible = false;
     } else if (window.view.zoom < 10) {
-      console.log("hide due to zoom");
+      //console.log("hide due to zoom");
       TxDOT_Control_Sections.visible = false;
     } else if (!($("#controlsec-event").prop("checked"))) {
-      console.log("hide due to unchecked");
+      //console.log("hide due to unchecked");
       TxDOT_Control_Sections.visible = false;
     } else if ($("#controlsec-event").prop("checked")) {
-      console.log("show due to checked");
+      //console.log("show due to checked");
       TxDOT_Control_Sections.visible = true;
     } else {
-      console.log("hide due to unknown");
+      //console.log("hide due to unknown");
       TxDOT_Control_Sections.visible = false;
     }
   })

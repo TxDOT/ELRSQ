@@ -5,7 +5,7 @@ function resultsShowExport(refinedData, inputMethod) {
   if (inputMethod == "html") {
 
     if (calcGeomType == "Point") {
-      showPointResults(refinedData);
+      paginatedResultsSequence(refinedData);
     } else if (calcGeomType == "Route") {
       //showRouteResults(refinedData);
     }

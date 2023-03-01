@@ -9,16 +9,48 @@ function resetCurrentPagination() {
 }
 
 
+function paginatedResultsSequence(results) {
+  resetCurrentPagination();
+  clearPagination("#result-pagination");
+  destroyPaginationEventHandlers("#result-pagination");
+  createPaginationEventHandlers("#result-pagination", results);
+  showPointResults(results);
+}
+
+//clear pagination
+function clearPagination(someId) {
+  let counterDisplay = `No data`;
+  $(someId + ' > nav > ul > .li_prev').removeClass("active");
+  $(someId + ' > nav > ul > .li_next').removeClass("active");
+  $(someId + ' > nav > ul > .li_prev').addClass("disabled");
+  $(someId + ' > nav > ul > .li_curr').addClass("active");
+  $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
+  $(someId + ' > nav > ul > .li_next').addClass("disabled");
+}
+
+function destroyPaginationEventHandlers(someId) {
+  $(someId + ' > nav > ul > .li_prev').off('click');
+  $(someId + ' > nav > ul > .li_next').off('click');
+}
+
+function createPaginationEventHandlers(someId, results) {
+  $(someId + ' > nav > ul > .li_prev').on('click', function prevResult() { navResults('prev', results); }); //TODO move point on map
+  $(someId + ' > nav > ul > .li_next').on('click', function nextResult() { navResults('next', results); }); // TODO separate out from specific function
+}
+
 //navResults called by pagination buttons in showResults function
-// TODO move point on map
 function navResults(direction, results) {
-  direction == 'next' ? currentPagination++ : currentPagination--;
+
+  if (direction == 'prev' && currentPagination > 1) {
+    currentPagination--;
+  } else if (direction == 'next' && currentPagination < results.length) {
+    currentPagination++;
+  }
 
   if (currentPagination > 0 && currentPagination <= results.length) {
     showPointResults(results, currentPagination)
   }
 }
-
 
 // determine pagination and fill in HTML table results
 //TODO move point on map
@@ -27,150 +59,50 @@ function showPointResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
   console.log(index);
 
-  insertPagination(currentPagination, results);
-  //paginationUpdater("#results-header", currentPagination, results.length);
+  //insertPagination(currentPagination, results);
+  paginationUpdater("#result-pagination", currentPagination, results);
 
   fillInHtmlTable(results[index]);
 }
 
-
-
-// FIXME just use Jquery to change pagination states
-//insert pagination
-function insertPagination(currentPagination, results) {
-  resultCount = results.length;
+function paginationUpdater(someId, currentPagination, results) {
+  //console.log("paginationUpdater");
+  let resultCount = results.length;
   console.log(currentPagination + " of " + resultCount);
-  const btn_prev_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Previous</span></li>`;
-  const btn_next_inactive = `<li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">Next</span></li>`;
-
-  const btn_prev_active = `<li class="page-item"><span id="pagn_prev" class="page-link">Previous</span></li>`;
-  const btn_next_active = `<li class="page-item"><span id="pagn_next" class="page-link">Next</span></li>`;
-
-  const pgnStart = `<nav aria-label="..."><ul class="pagination justify-content-center">`
-  const pgnEnd = `</ul></nav>`
-  const pgnCurrentOpen = `<li class="page-item active" aria-current="page"><span class="page-link">`
-  const pgnCurrentClose = `</span></li>`
-  const pgnCurrentIndicator = `${currentPagination} of ${resultCount}`
-  var pgnCurrent = `<li class="page-item active" aria-current="page"><span class="page-link">` + "No data" + `</span></li>`
-  var navTitle = pgnStart + pgnCurrent + pgnEnd
+  let counterDisplay = `${currentPagination} of ${resultCount}`;
+  //console.log(counterDisplay);
 
   if (resultCount > 1) {
+    console.log("more than 1 result");
     if (currentPagination == 1) {
-      pgnCurrent = btn_prev_inactive + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_active
-    } else if (currentPagination + 0 == resultCount) {
-      pgnCurrent = btn_prev_active + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_inactive
-    } else {
-      pgnCurrent = btn_prev_active + pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose + btn_next_active
-    }
-  } else if (resultCount == 1) {
-    pgnCurrent = pgnCurrentOpen + pgnCurrentIndicator + pgnCurrentClose
-  } else {
-    pgnCurrent = pgnCurrentOpen + "No data" + pgnCurrentClose
-  }
-
-  navTitle = pgnStart + pgnCurrent + pgnEnd
-
-  //insert pagination
-  $("#result-pagination").html(navTitle); // FIXME this is changing the inner HTML instead of dynamically creating elements
-  $("#pagn_prev").on('click', function () { navResults('prev', results); }); //TODO move point on map
-  $("#pagn_next").on('click', function () { navResults('next', results); }); // TODO separate out from specific function
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function _paginationUpdater(someId, currentPagination, resultCount) {
-  console.log(currentPagination + " of " + resultCount);
-
-  if (resultCount > 1) {
-    if (currentPagination == 1) {
+      console.log("on first result");
       $(someId + ' > nav > ul > .li_prev').addClass("disabled");
-      $(someId + ' > nav > ul > .li_curr').addClass("active").html(`${currentPagination} of ${resultCount}`);
+      $(someId + ' > nav > ul > .li_curr').addClass("active");
+      $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
       $(someId + ' > nav > ul > .li_next').removeClass("disabled");
-
     }
 
     else if (currentPagination + 0 == resultCount) {
       $(someId + ' > nav > ul > .li_prev').removeClass("disabled");
-      $(someId + ' > nav > ul > .li_curr').addClass("active").html(`${currentPagination} of ${resultCount}`);
+      $(someId + ' > nav > ul > .li_curr').addClass("active");
+      $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
       $(someId + ' > nav > ul > .li_next').addClass("disabled");
     }
 
     else {
       $(someId + ' > nav > ul > .li_prev').removeClass("disabled");
-      $(someId + ' > nav > ul > .li_curr').addClass("active").html(`${currentPagination} of ${resultCount}`);
+      $(someId + ' > nav > ul > .li_curr').addClass("active");
+      $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
       $(someId + ' > nav > ul > .li_next').removeClass("disabled");
     }
   }
 
   else if (resultCount == 1) {
-    $(someId + ' > nav > ul > .li_curr').addClass("active").html(`${currentPagination} of ${resultCount}`);
+    $(someId + ' > nav > ul > .li_curr > span').addClass("active").html(counterDisplay);
   }
 
   else {
-    $(someId + ' > nav > ul > .li_curr').addClass("active").html(`No data`);
+    $(someId + ' > nav > ul > .li_curr > span').addClass("active").html(`No data`);
   }
 
 }
-
-
-

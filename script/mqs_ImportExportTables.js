@@ -1,7 +1,7 @@
 // 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
-  console.log(resultsArr);
+  //console.log(resultsArr);
   exportPointsToCsvFile(resultsArr);
   exportPointsToGeoJsonFile(resultsArr);
   exportPointsToKMLFile(resultsArr);
@@ -10,7 +10,7 @@ function tabularPointsConvertExport(resultsArr) {
 // 1a) exportPointsToCsvFile
 
 function exportPointsToCsvFile(resultsArr) {
-  console.log("CSV export");
+  //console.log("CSV export");
 
   //let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] }); // this makes sure msg has quotes
   let unparsed = Papa.unparse(resultsArr);
@@ -25,7 +25,7 @@ function exportPointsToCsvFile(resultsArr) {
 // 1b) exportPointsToGeoJsonFile
 
 function exportPointsToGeoJsonFile(resultsArr) {
-  console.log("geoJSON export");
+  //console.log("geoJSON export");
 
   var geojson = jsonFromLrsApiToGeoJson(resultsArr)
   let dataStr = JSON.stringify(geojson);
@@ -74,7 +74,7 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
 // 1c) exportPointsToKMLFile
 
 function exportPointsToKMLFile(resultsArr) {
-  console.log("KML export");
+  //console.log("KML export");
 
   var kmlContent = jsonToKML(resultsArr)
   let dataUri = encodeURI(kmlContent);
