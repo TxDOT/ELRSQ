@@ -14,6 +14,7 @@ async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
 
   // set fields
   let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  console.log(field_indices);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
   rte_nm_lrm_indices = field_indices[1];
@@ -22,7 +23,7 @@ async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
 
   // pre-process data
   // fix route name field
-  if (typeof rte_nm_lrm_indices !== 'undefined' || rtenmformat == "AAdddd") {
+  if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") { //FIXME is this supposed to be and or or???
     for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
       parsedInputCSV[rowToQuery][rte_nm_lrm_indices] = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     }

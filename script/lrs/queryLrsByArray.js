@@ -1,4 +1,5 @@
 async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
+  console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
   resetCurrentPagination();
 

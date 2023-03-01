@@ -60,20 +60,22 @@
 
   <script src="script/ui/init.js" defer></script>
   <!-- <script src="script/ui/lrs_initiators.js" defer></script> -->
+  <script src="script/onepage/lrs_initiators_forOnePage.js" defer></script>
+
   <script src="script/ui/eventHandlers.js" defer></script>
 
-  <script src="script/lrs/lrsSinglePointQuery.js" defer></script>
-  <script src="script/lrs/lrsBulkPointQuery.js" defer></script>
+  <script src="script/lrs/lrsSingleQuery.js" defer></script>
+  <script src="script/lrs/lrsBulkQuery.js" defer></script>
   <script src="script/lrs/cursorQuery.js" defer></script>
-  <script src="script/lrs/queryLrsByArray_sp.js" defer></script>
-  <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
-  <script src="script/lrs/setIndicesByLrmAndGeom.js" defer></script>
+  <script src="script/lrs/queryLrsByArray.js" defer></script>
+  <script src="script/onepage/setTableFieldsByMethod_forOnePage.js" defer></script>
+  <script src="script/onepage/setIndicesByLrmAndGeom_forOnePage.js" defer></script>
   <script src="script/lrs/buildUrl.js" defer></script>
   <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
   <script src="script/lrs/resultsShowExport.js" defer></script>
 
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_ImportExportTables.js" defer></script>
+  <script src="script/onepage/mqs_ImportExportTables_forOnePage.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
@@ -88,9 +90,7 @@
   <script src="script/helper/dynamic_dropdowns.js" defer></script>
   <script src="script/helper/data_functions.js"></script> <!-- look for jquery alternative -->
   <script src="script/helper/arraylast.js"></script>
-
-
-
+  <script src="script/helper/pagination.js"></script>
 
   <style>
     #results_card table thead tr {
@@ -208,193 +208,6 @@
 
   <script>
     $(document).ready(function () {
-      let calcGeomType = 'Point';
-      let currentLRMno = 0;
-
-      $("#topnav_point").on('click', function () { set_topnav_point(); });
-      $("#topnav_route").on('click', function () { set_topnav_route(); });
-
-      $("#btn_lrm_method_referencemarker").on('click', function () { set_lrm_method_referencemarker(); });
-      $("#btn_lrm_method_controlsection").on('click', function () { set_lrm_method_controlsection(); });
-      $("#btn_lrm_method_dfo").on('click', function () { set_lrm_method_dfo(); });
-      $("#btn_lrm_method_coordinates").on('click', function () { set_lrm_method_coordinates(); });
-
-      function set_topnav_point() {
-        calcGeomType = 'Point';
-        $("#input-route-form-card").hide();
-        $("#input-route-form").hide();
-
-        $("#input-point-form-card").show();
-        $("#input-point-form").show();
-
-        $("#input-bulk-route-form-card").hide();
-        $("#input-bulk-route-form").hide();
-
-        $("#input-bulk-point-form-card").show();
-        $("#input-bulk-point-form").show();
-
-        $("#results-table-route-card").hide();
-        $("#results-table-point-card").show();
-      }
-
-
-      function set_topnav_route() {
-        calcGeomType = 'Route';
-        $("#input-point-form-card").hide();
-        $("#input-point-form").hide();
-
-        $("#input-route-form-card").show();
-        $("#input-route-form").show();
-
-        $("#input-bulk-point-form-card").hide();
-        $("#input-bulk-point-form").hide();
-
-        $("#input-bulk-route-form-card").show();
-        $("#input-bulk-route-form").show();
-
-        $("#results-table-point-card").hide();
-        $("#results-table-route-card").show();
-      }
-
-      function set_lrm_method_referencemarker() {
-        currentLRMno = 2;
-        $("#kbPointInputRouteName").show();
-        $("#kbPointInputReferenceMarker").show();
-        $("#kbPointInputControlSection").hide();
-        $("#kbPointInputDistanceFromOrigin").hide();
-        $("#kbPointInputRouteName_optional").hide();
-        $("#kbPointInputCoordinates").hide();
-
-        $("#kbRouteInputRouteName").show();
-        $("#kbRouteInputReferenceMarker").show();
-        $("#kbRouteInputControlSection").hide();
-        $("#kbRouteInputDistanceFromOrigin").hide();
-        $("#kbRouteInputRouteName_optional").hide();
-        $("#kbRouteInputCoordinates").hide();
-
-        $("#csvPointInputRouteName").show();
-        $("#csvPointInputReferenceMarker").show();
-        $("#csvPointInputControlSection").hide();
-        $("#csvPointInputDistanceFromOrigin").hide();
-        $("#csvPointInputRouteName_optional").hide();
-        $("#csvPointInputCoordinates").hide();
-
-        $("#csvRouteInputRouteName").show();
-        $("#csvRouteInputReferenceMarker").show();
-        $("#csvRouteInputControlSection").hide();
-        $("#csvRouteInputDistanceFromOrigin").hide();
-        $("#csvRouteInputRouteName_optional").hide();
-        $("#csvRouteInputCoordinates").hide();
-
-
-
-      }
-
-      function set_lrm_method_controlsection() {
-        currentLRMno = 3;
-        $("#kbPointInputRouteName").hide();
-        $("#kbPointInputReferenceMarker").hide();
-        $("#kbPointInputControlSection").show();
-        $("#kbPointInputDistanceFromOrigin").hide();
-        $("#kbPointInputRouteName_optional").hide();
-        $("#kbPointInputCoordinates").hide();
-
-        $("#kbRouteInputRouteName").hide();
-        $("#kbRouteInputReferenceMarker").hide();
-        $("#kbRouteInputControlSection").show();
-        $("#kbRouteInputDistanceFromOrigin").hide();
-        $("#kbRouteInputRouteName_optional").hide();
-        $("#kbRouteInputCoordinates").hide();
-
-        $("#csvPointInputRouteName").hide();
-        $("#csvPointInputReferenceMarker").hide();
-        $("#csvPointInputControlSection").show();
-        $("#csvPointInputDistanceFromOrigin").hide();
-        $("#csvPointInputRouteName_optional").hide();
-        $("#csvPointInputCoordinates").hide();
-
-        $("#csvRouteInputRouteName").hide();
-        $("#csvRouteInputReferenceMarker").hide();
-        $("#csvRouteInputControlSection").show();
-        $("#csvRouteInputDistanceFromOrigin").hide();
-        $("#csvRouteInputRouteName_optional").hide();
-        $("#csvRouteInputCoordinates").hide();
-
-
-
-      }
-
-      function set_lrm_method_dfo() {
-        currentLRMno = 4;
-        $("#kbPointInputRouteName").show();
-        $("#kbPointInputReferenceMarker").hide();
-        $("#kbPointInputControlSection").hide();
-        $("#kbPointInputDistanceFromOrigin").show();
-        $("#kbPointInputRouteName_optional").hide();
-        $("#kbPointInputCoordinates").hide();
-
-        $("#kbRouteInputRouteName").show();
-        $("#kbRouteInputReferenceMarker").hide();
-        $("#kbRouteInputControlSection").hide();
-        $("#kbRouteInputDistanceFromOrigin").show();
-        $("#kbRouteInputRouteName_optional").hide();
-        $("#kbRouteInputCoordinates").hide();
-
-        $("#csvPointInputRouteName").show();
-        $("#csvPointInputReferenceMarker").hide();
-        $("#csvPointInputControlSection").hide();
-        $("#csvPointInputDistanceFromOrigin").show();
-        $("#csvPointInputRouteName_optional").hide();
-        $("#csvPointInputCoordinates").hide();
-
-        $("#csvRouteInputRouteName").show();
-        $("#csvRouteInputReferenceMarker").hide();
-        $("#csvRouteInputControlSection").hide();
-        $("#csvRouteInputDistanceFromOrigin").show();
-        $("#csvRouteInputRouteName_optional").hide();
-        $("#csvRouteInputCoordinates").hide();
-
-
-
-      }
-
-      function set_lrm_method_coordinates() {
-        currentLRMno = 1;
-        $("#kbPointInputRouteName").hide();
-        $("#kbPointInputReferenceMarker").hide();
-        $("#kbPointInputControlSection").hide();
-        $("#kbPointInputDistanceFromOrigin").hide();
-        $("#kbPointInputRouteName_optional").show();
-        $("#kbPointInputCoordinates").show();
-
-        $("#kbRouteInputRouteName").hide();
-        $("#kbRouteInputReferenceMarker").hide();
-        $("#kbRouteInputControlSection").hide();
-        $("#kbRouteInputDistanceFromOrigin").hide();
-        $("#kbRouteInputRouteName_optional").show();
-        $("#kbRouteInputCoordinates").show();
-
-        $("#csvPointInputRouteName").hide();
-        $("#csvPointInputReferenceMarker").hide();
-        $("#csvPointInputControlSection").hide();
-        $("#csvPointInputDistanceFromOrigin").hide();
-        $("#csvPointInputRouteName_optional").show();
-        $("#csvPointInputCoordinates").show();
-
-        $("#csvRouteInputRouteName").hide();
-        $("#csvRouteInputReferenceMarker").hide();
-        $("#csvRouteInputControlSection").hide();
-        $("#csvRouteInputDistanceFromOrigin").hide();
-        $("#csvRouteInputRouteName_optional").show();
-        $("#csvRouteInputCoordinates").show();
-
-      }
-
-    });
-  </script>
-
-  <script>
-    $(document).ready(function () {
       $("#color").on('click', function () {
         $("#colorInput").val($("#color").val());
       });
@@ -413,7 +226,6 @@
         $("#width").val($("#widthInput").val());
       });
     });
-
   </script>
 
 </head>
@@ -476,16 +288,16 @@
                 <div class="row" id="csvPointInputReferenceMarker">
                   <div class="input-group mb-3">
                     <span class="input-group-text">Reference Marker Field:</span>
-                    <select id="rm_field" class="form-select candidate">
+                    <select id="referencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-rm_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-referencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Displacement Field:</span>
-                    <select id="d_field" class="form-select candidate">
+                    <select id="displacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-d_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-displacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -494,16 +306,16 @@
                 <div class="row" style="display:none" id="csvPointInputControlSection">
                   <div class="input-group mb-3">
                     <span class="input-group-text">Control Section Field:</span>
-                    <select id="cs_field" class="form-select candidate">
+                    <select id="controlsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-cs_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-controlsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Milepoint Marker Field:</span>
-                    <select id="mp_field" class="form-select candidate">
+                    <select id="milepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-mp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-milepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -573,30 +385,30 @@
                 <div class="row" id="csvRouteInputReferenceMarker">
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Reference Marker Field:</span>
-                    <select id="brm_field" class="form-select candidate">
+                    <select id="breferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-brm_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-breferencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Displacement Field:</span>
-                    <select id="bd_field" class="form-select candidate">
+                    <select id="bdisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bd_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bdisplacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Reference Marker Field:</span>
-                    <select id="erm_field" class="form-select candidate">
+                    <select id="ereferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-erm_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-ereferencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Displacement Field:</span>
-                    <select id="ed_field" class="form-select candidate">
+                    <select id="edisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-ed_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-edisplacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -605,30 +417,30 @@
                 <div class="row" style="display:none" id="csvRouteInputControlSection">
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Control Section Field:</span>
-                    <select id="bcs_field" class="form-select candidate">
+                    <select id="bcontrolsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bcs_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Milepoint Marker Field:</span>
-                    <select id="bmp_field" class="form-select candidate">
+                    <select id="bmilepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bmp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bmilepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Control Section Field:</span>
-                    <select id="ecs_field" class="form-select candidate">
+                    <select id="econtrolsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-ecs_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-econtrolsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Milepoint Marker Field:</span>
-                    <select id="emp_field" class="form-select candidate">
+                    <select id="emilepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-emp_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-emilepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -729,9 +541,6 @@
       </div>
     </div>
   </div>
-
-
-
   <!--#endregion -->
   <!-- Mega-Modal END -->
 
@@ -882,7 +691,7 @@
                           Route Name:
                         </div>
                         <div class="col-4">
-                          <input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                          <input id="kbInputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
                             value="FM0060-KG" class="form-control textentry">
                         </div>
                         <div class="col-4">
@@ -906,11 +715,11 @@
                           <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputBeginReferenceMarker" type="number" required name="begin-referencemarker"
+                          <input id="kbInputBeginReferenceMarker" type="number" required name="begin-referencemarker"
                             value="624" class="form-control textentry">
                         </div>
                         <div class="col-4">
-                          <input id="inputBeginDisplacement" type="number" required name="begin-displacement"
+                          <input id="kbInputBeginDisplacement" type="number" required name="begin-displacement"
                             value="1.362" class="form-control textentry">
                         </div>
                       </div>
@@ -919,11 +728,11 @@
                           <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputEndReferenceMarker" type="number" required name="end-referencemarker"
+                          <input id="kbInputEndReferenceMarker" type="number" required name="end-referencemarker"
                             value="632" class="form-control textentry">
                         </div>
                         <div class="col-4">
-                          <input id="inputEndDisplacement" type="number" required name="end-displacement" value="1.950"
+                          <input id="kbInputEndDisplacement" type="number" required name="end-displacement" value="1.950"
                             class="form-control textentry">
                         </div>
                       </div>
@@ -945,12 +754,12 @@
                           <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputBeginControlSection" type="text" required
+                          <input id="kbInputBeginControlSection" type="text" required
                             pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="begin-controlsection" value="012201"
                             class="form-control textentry">
                         </div>
                         <div class="col-4">
-                          <input id="inputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
+                          <input id="kbInputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
                             value="2.394" class="form-control textentry">
                         </div>
                       </div>
@@ -959,12 +768,12 @@
                           <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputEndControlSection" type="text" required
+                          <input id="kbInputEndControlSection" type="text" required
                             pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection" value="012201"
                             class="form-control textentry">
                         </div>
                         <div class="col-4">
-                          <input id="inputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
+                          <input id="kbInputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
                             value="2.394" class="form-control textentry">
                         </div>
                       </div>
@@ -985,7 +794,7 @@
                           <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputBeginDistanceFromOrigin" type="number" required
+                          <input id="kbInputBeginDistanceFromOrigin" type="number" required
                             name="begin-distancefromorigin" value="59.095" class="form-control textentry">
                         </div>
                         <div class="col-4">
@@ -996,7 +805,7 @@
                           <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                         </div>
                         <div class="col-4">
-                          <input id="inputEndDistanceFromOrigin" type="number" required name="end-distancefromorigin"
+                          <input id="kbInputEndDistanceFromOrigin" type="number" required name="end-distancefromorigin"
                             value="220.951" class="form-control textentry">
                         </div>
                         <div class="col-4">
@@ -1008,8 +817,8 @@
                       <div class="row mb-3">
                         <div class="col-3">
                           <button id="useCrosshairs2" class="btn btn-outline-primary" type="button"
-                          title="Get coords from map">
-                          <i class="fa fa-crosshairs" aria-hidden="true"></i> Use Map</button>
+                            title="Get coords from map">
+                            <i class="fa fa-crosshairs" aria-hidden="true"></i> Use Map</button>
                         </div>
                         <div class="col-4">
                           Latitude:
@@ -1024,11 +833,11 @@
                         </div>
                         <div class="col-4">
                           <input type="number" required name="begin-latitude" value="29.652006"
-                            class="form-control textentry" id="inputBeginLatitude">
+                            class="form-control textentry" id="kbInputBeginLatitude">
                         </div>
                         <div class="col-4">
                           <input type="number" required name="begin-longitude" value="-97.659926"
-                            class="form-control textentry" id="inputBeginLongitude">
+                            class="form-control textentry" id="kbInputBeginLongitude">
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -1037,11 +846,11 @@
                         </div>
                         <div class="col-4">
                           <input type="number" required name="end-latitude" value="29.666168"
-                            class="form-control textentry" id="inputEndLatitude">
+                            class="form-control textentry" id="kbInputEndLatitude">
                         </div>
                         <div class="col-4">
                           <input type="number" required name="end-longitude" value="-97.650841"
-                            class="form-control textentry" id="inputEndLongitude">
+                            class="form-control textentry" id="kbInputEndLongitude">
                         </div>
                       </div>
                     </div>
@@ -1116,7 +925,7 @@
                     </div>
 
                     <div class="btn-group me-2 mb-2" role="group">
-                      <button type="button" class="btn btn-primary convert-2point" title="Convert to other LRS"><i
+                      <button type="button" class="btn btn-primary convert" title="Convert to other LRS"><i
                           class="fa fa-cog" aria-hidden="true"></i> Convert</button>
                       <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
                           class="fa fa-undo" aria-hidden="true"></i> Reset</button>

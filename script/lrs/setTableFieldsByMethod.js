@@ -15,7 +15,8 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
 
       let lat_field = ~~await confirmFieldChoice("#btn-lat_field", "#lat_field");
       let lon_field = ~~await confirmFieldChoice("#btn-lon_field", "#lon_field");
-      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      let rte_nm_option = 0;  //TODO make this optional
+      rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = lrm_indices0 = [lat_field, lon_field, rte_nm_field];
       rte_nm_lrm_indices = [rte_nm_field];
@@ -41,7 +42,8 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
 
       let cs_field = ~~await confirmFieldChoice("#btn-bs_field", "#cs_field");
       let mpm_field = ~~await confirmFieldChoice("#btn-mpm_field", "#mpm_field");
-      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      let rte_nm_option = 0;  //TODO make this optional
+      rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = lrm_indices0 = [cs_field, mpm_field, rte_nm_field];
       rte_nm_lrm_indices = [rte_nm_field];
@@ -72,7 +74,8 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       let blon_field = ~~await confirmFieldChoice("#btn-blon_field", "#blon_field");
       let elat_field = ~~await confirmFieldChoice("#btn-elat_field", "#elat_field");
       let elon_field = ~~await confirmFieldChoice("#btn-elon_field", "#elon_field");
-      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      let rte_nm_option = 0;  //TODO make this optional
+      rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = [blat_field, blon_field, elat_field, elon_field, rte_nm_field];
       lrm_indices0 = [blat_field, blon_field];
@@ -110,7 +113,8 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       let bmpm_field = ~~await confirmFieldChoice("#btn-bmpm_field", "#bmpm_field");
       let ecs_field = ~~await confirmFieldChoice("#btn-ecs_field", "#ecs_field");
       let empm_field = ~~await confirmFieldChoice("#btn-empm_field", "#empm_field");
-      // let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field"); //TODO make this optional
+      let rte_nm_option = 0;  //TODO make this optional
+      rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = [bcs_field, bmpm_field, ecs_field, empm_field, rte_nm_field];
       lrm_indices0 = [bcs_field, bmpm_field];

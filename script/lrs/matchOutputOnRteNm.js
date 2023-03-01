@@ -1,4 +1,5 @@
 async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
+  console.log(unfilteredArr);
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
 
