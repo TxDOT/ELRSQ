@@ -1,7 +1,6 @@
 let currentLRM = `coordinates-tab`;
 let currentLRMno = 1;
 let route_lrm_indices = [0, 1, 2, 3];
-default_template_lrm_indices = [2, 1];
 let currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
 
 // get current LRM
@@ -45,7 +44,9 @@ if (calcGeomType == "Route") {
   // 2-point
   // single
 
-  $(".convert-2point").on('click', function () { lrsSingleRouteQuery_RPM(currentLRMno, route_lrm_indices, currentRouteFieldOrder); });
+  $(".convert-2point").on('click', function () { 
+    inputMethod = "html";
+    lrsSingleRouteQuery_RPM(currentLRMno, inputMethod); });
 }
 
 
