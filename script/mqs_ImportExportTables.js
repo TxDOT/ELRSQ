@@ -47,7 +47,7 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
   };
 
   for (i = 0; i < resultsArr.length; i++) {
-    console.log("looping through features, i = " + i);
+    //console.log("looping through features, i = " + i);
     geojson.features.push({
       "type": "Feature",
       "geometry": {

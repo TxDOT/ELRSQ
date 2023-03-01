@@ -3,6 +3,8 @@
 // determine pagination and fill in HTML table results
 //TODO move point on map
 function showPointResults(results, navIndex) {
+  console.log("showPointResults");
+
   allResults = results; // FIXME this is changing the value of a global variable
   resultCount = allResults.length; // use this somewhere
   const index = navIndex ? navIndex - 1 : 0;
@@ -10,6 +12,8 @@ function showPointResults(results, navIndex) {
 
   //insert pagination
   insertPagination(currentPagination, resultCount);
+  //paginationUpdater("#results-header", currentPagination, resultCount);
+
 
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
