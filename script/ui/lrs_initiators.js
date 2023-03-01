@@ -113,7 +113,7 @@ if (calcGeomType == "Point") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkPointQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
+      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
     });
 
     $(".uploadCsv-bulk").on('change', async function (e) {
@@ -121,7 +121,7 @@ if (calcGeomType == "Point") {
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       inputMethod = "table";
-      lrsBulkPointQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
+      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
     });
 
 
@@ -191,7 +191,7 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkRouteQuery(currentLRMno, fileContents, "AAdddd_dash");
+      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
     });
 
     $(".uploadCsv-bulk").on('change', async function (e) {
@@ -199,7 +199,7 @@ if (calcGeomType == "Route") {
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       inputMethod = "table";
-      lrsBulkRouteQuery(currentLRMno, fileContents, "AAdddd_dash");
+      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
     });
 
 

@@ -1,4 +1,4 @@
-async function lrsBulkRouteQuery(currentLRMno, fileContents, rtenmformat) {
+async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
   let headerRowPresent = 1;
   let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
   //TODO use regex to detect rtenmformat
