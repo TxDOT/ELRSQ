@@ -65,7 +65,7 @@ async function queryProjectGeometry(myProjectsArr) {
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +
-    "'&returnGeometry=true&outSR=4326&geometryPrecision=3&returnM=true&orderByFields=BEGIN_DFO"
+    "'&returnGeometry=true&outSR=4326&geometryPrecision=6&returnM=true&orderByFields=BEGIN_DFO"
 
   console.log("queryRoadwayServiceByLine using url: " + url);
   GreenToYellow();
