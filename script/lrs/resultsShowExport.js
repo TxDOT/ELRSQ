@@ -1,11 +1,11 @@
 function resultsShowExport(refinedData, inputMethod) {
 
-
   // show TABULAR results
   if (inputMethod == "html") {
 
     if (calcGeomType == "Point") {
       paginatedResultsSequence(refinedData);
+      readOutPointResults(refinedData);
     } else if (calcGeomType == "Route") {
       //showRouteResults(refinedData);
     }
@@ -14,6 +14,7 @@ function resultsShowExport(refinedData, inputMethod) {
 
     if (calcGeomType == "Point") {
       paginatedResultsSequence(refinedData);
+      readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
     } else if (calcGeomType == "Route") {
       //showBulkRouteResults(refinedData);

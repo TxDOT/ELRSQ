@@ -5,8 +5,8 @@
 
 
 //return to point on map
-// $(".map-return").on('click', function () { returnToPoint(); });
-
+$(".map-return").on('click', function () { returnToPoint(); });
+$(".map-all").on('click', function () { showAllPoints(); });
 
 //route builder
 // $("#addRow").on('click', function () { addProjectToArray(projectsArr); });

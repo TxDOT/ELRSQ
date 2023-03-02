@@ -99,8 +99,6 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
     // end perform query
 
     // get row header data
-    // let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
-    // let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
     let otherAttributesKey = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
     let otherAttributesValue = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
     let otherAttributesObj = {};
@@ -120,26 +118,28 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
         user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
       let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      //let resultsArr = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
       let resultsObj = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
       // end get right route
       // assemble data
-      //let fullRowData = resultsArr;
-      let fullRowData = resultsObj;
-      if (typeof rowhead !== 'undefined' && rowhead !== '') {
-        //fullRowData = rowhead.concat(resultsArr);
-        fullRowData = { ...otherAttributesObj, ...fullRowData };
-      }
 
+      /**
+        let fullRowData = resultsObj;
+        if (typeof otherAttributesObj !== 'undefined' && otherAttributesObj !== '') {
+          fullRowData = { ...otherAttributesObj, ...fullRowData };
+        }
+      */
+      let fullRowData = { ...otherAttributesObj, ...resultsObj };
       refinedData.push(fullRowData);
+
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-        let aRowResultObj = results0[aRowResult]; // but this is an object
+        let aRowResultObj = results0[aRowResult];
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
-        refinedData.push(aRowResultObj);
+        // refinedData.push(aRowResultObj);
+        refinedData.push({ ...otherAttributesObj, ...aRowResultObj });
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -148,17 +148,6 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
 
   }
   // end process rows
-  // set column heads
-  let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-  let standardhead = (calcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  let colhead = customhead.concat(standardhead);
-
-  // prepend column heads
-  // if (calcGeomType == "Route") {
-  //   refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
-  // }
-
-  //refinedData.unshift(colhead);
 
   console.log(refinedData);
 
@@ -433,12 +422,16 @@ function buildUrl(currentLRMno, coordinateArr, lrm_indices) {
 
 
 function resultsShowExport(refinedData, inputMethod) {
+  console.log(resultsShowExport);
+  setProjectGeometry(refinedData);
+  console.log(refinedData);
 
   // show TABULAR results
   if (inputMethod == "html") {
 
     if (calcGeomType == "Point") {
       paginatedResultsSequence(refinedData);
+      readOutPointResults(refinedData);
     } else if (calcGeomType == "Route") {
       //showRouteResults(refinedData);
     }
@@ -447,6 +440,7 @@ function resultsShowExport(refinedData, inputMethod) {
 
     if (calcGeomType == "Point") {
       paginatedResultsSequence(refinedData);
+      readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
     } else if (calcGeomType == "Route") {
       //showBulkRouteResults(refinedData);
@@ -463,17 +457,22 @@ function resultsShowExport(refinedData, inputMethod) {
   }
 
 
-  // plot to map
-  if (useMap == 1) {
-    showPointResultsOnMap(refinedData);
-
-    if (calcGeomType == "Point") {
-      showPointResultsOnMap(refinedData);
-
-    } else if (calcGeomType == "Route") {
-      //showLineResultsOnMap(refinedData);
+  //FIXME turning off plotting by default
+  /**
+    // plot to map
+    if (useMap == 1) {
+      // showPointResultsOnMap(refinedData); //turning off showing all points
+  
+      if (calcGeomType == "Point") {
+        // showPointResultsOnMap(refinedData); //turning off showing all points
+  
+      } else if (calcGeomType == "Route") {
+        //showLineResultsOnMap(refinedData);
+      }
     }
-  }
+  */
+
+
 }
 
 

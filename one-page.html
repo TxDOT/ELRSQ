@@ -58,25 +58,16 @@
 
   <script src="script/config_hardcoded.js" defer></script>
 
-  <script src="script/ui/init.js" defer></script>
-  <!-- <script src="script/ui/lrs_initiators.js" defer></script> -->
+  <script src="script/onepage/init_forOnePage.js" defer></script>
   <script src="script/onepage/lrs_initiators_forOnePage.js" defer></script>
-
   <script src="script/onepage/eventHandlers_forOnePage.js" defer></script>
 
   <script src="script/onepage/lrs_functions.js" defer></script>
-    <!-- <script src="script/lrs/lrsSingleQuery.js" defer></script>
-    <script src="script/lrs/lrsBulkQuery.js" defer></script>
-    <script src="script/lrs/cursorQuery.js" defer></script>
-    <script src="script/onepage/queryLrsByArray_forOnePage.js" defer></script>
-    <script src="script/onepage/setTableFieldsByMethod_forOnePage.js" defer></script>
-    <script src="script/onepage/setIndicesByLrmAndGeom_forOnePage.js" defer></script>
-    <script src="script/lrs/buildUrl.js" defer></script>
-    <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
-    <script src="script/lrs/resultsShowExport.js" defer></script> -->
+  <!-- <script src="script/lrs/cursorQuery.js" defer></script> -->
 
 
   <script src="script/mqs_EsriMap.js" defer></script>
+  <script src="script/mqs_EsriFeatureMapper.js" defer></script>
   <script src="script/onepage/mqs_ImportExportTables_forOnePage.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
@@ -1310,9 +1301,15 @@
           <!-- Map-Controls END -->
 
           <div class="card-body">
-            <button type="button" class="btn btn-primary map-return" title="See all results on map"><i
+            <button type="button" class="btn btn-primary map-return" title="See current result on map"><i
                 class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
           </div>
+
+          <div class="card-body">
+            <button type="button" class="btn btn-primary map-all" title="See all results on map"><i
+                class="fa fa-hand-o-right" aria-hidden="true"></i> Go to All Points</button>
+          </div>
+
         </div>
         <!-- Map Buttons END -->
 

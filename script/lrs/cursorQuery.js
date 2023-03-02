@@ -21,7 +21,7 @@ async function cursorQuery(lat, lon) {
   const url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
 
   const results = await queryService(url);
-  showPointResults(results);
+  readOutPointResults(results);
   tabularPointsConvertExport(results);
 
   if (useMap == 1) {
