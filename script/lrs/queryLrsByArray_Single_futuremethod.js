@@ -1,4 +1,5 @@
 async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
+  console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
   resetCurrentPagination();
 
@@ -34,18 +35,18 @@ async function queryLrsByArray_sr(inputMethod, arrayToQuery, headerRowPresent, f
       if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
     }
     // end build url
+
     // perform query
     let results0 = await queryService(url0);
     let results1 = '';
     if (calcGeomType == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
+
     // get row header data
     let rowhead = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
     // return single geom filtered on route name, or return multiple results
-
-
     if (constrainToRouteName == 1) {
       // get right route
       if (inputMethod == "html") {
