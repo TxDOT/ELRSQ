@@ -82,6 +82,34 @@ require([
   })
 
 
+  window.view.on("click", function (evt) {
+    var onCursor = mapCursorLive;
+    if (onCursor == 1) {
+      console.log("foo");
+      //cursorQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);
+
+      let lat = evt.mapPoint.latitude;
+      let lon = evt.mapPoint.longitude
+      resetGraphics();
+      resetCurrentPagination();
+
+      clearResultsFromMap();
+
+      //go to cursor location, regardless of api results
+      addPointGraphic(lat, lon);
+      view.goTo({
+        center: [parseFloat(lon), parseFloat(lat)],
+        zoom: 17,
+      });
+
+      $("#kbInputLatitude").val(lat);
+      $("#kbInputLongitude").val(lon);
+  
+    }
+  })
+
+
+
 
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {

@@ -24,7 +24,7 @@
   <link href="style/vendor/main.min.css" rel="stylesheet"> <!-- https://www.youtube.com/watch?v=nCX3QVl_PiI -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css">
 
-  <link rel="stylesheet" href="style/show_hide.css">
+  <!-- <link rel="stylesheet" href="style/show_hide.css"> -->
   <link rel="stylesheet" href="style/style_mini_map.css">
   <!-- <link rel="stylesheet" href="style/map_style.css"> -->
   <link rel="stylesheet" href="style/text_style.css">
@@ -179,7 +179,7 @@
 
     #viewDiv {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 3/2;
       object-fit: contain;
       overflow: hidden;
       box-sizing: border-box;
@@ -196,6 +196,136 @@
       margin: 0;
       min-height: 5vh;
       width: 100%;
+    }
+  </style>
+
+  <style>
+    .trafficlight {
+      background: #222;
+      width: 35px;
+      height: 35px;
+      border-radius: 25%;
+      position: relative;
+    }
+
+    .lamp {
+      background-size: 2px 2px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+
+    .red {
+      background: red;
+      background-image: radial-gradient(brown, transparent);
+      animation: 13s red infinite;
+      border: dotted 1px red;
+      box-shadow:
+        0 0 5px #111 inset,
+        0 0 3px red;
+    }
+
+    .yellow {
+      background: yellow;
+      background-image: radial-gradient(orange, transparent);
+      border: dotted 1px yellow;
+      animation: 5s yellow infinite;
+      box-shadow:
+        0 0 5px #111 inset,
+        0 0 3px yellow;
+    }
+
+    .green {
+      background: green;
+      background-image: radial-gradient(lime, transparent);
+      border: dotted 1px lime;
+      box-shadow:
+        0 0 15x #111 inset,
+        0 0 3px lime;
+      animation: 10s green infinite;
+    }
+
+    @keyframes red {
+      0% {
+        opacity: 1
+      }
+
+      20% {
+        opacity: 1
+      }
+
+      40% {
+        opacity: 1
+      }
+
+      60% {
+        opacity: .1
+      }
+
+      80% {
+        opacity: .1
+      }
+
+      100% {
+        opacity: .1
+      }
+    }
+
+    @keyframes yellow {
+      0% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: .5
+      }
+    }
+
+    @keyframes green {
+      0% {
+        opacity: .7
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: .7
+      }
+    }
+
+    @keyframes greenblink {
+      0% {
+        opacity: .1
+      }
+
+      40% {
+        opacity: .1
+      }
+
+      60% {
+        opacity: 1
+      }
+
+      80% {
+        opacity: 1
+      }
+
+      83% {
+        opacity: .1
+      }
+
+      100% {
+        opacity: .1
+      }
     }
   </style>
 
@@ -577,19 +707,39 @@
             <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
               aria-label="Toolbar with button groups">
               <div class="d-flex btn-group" role="group" aria-label="Basic radio toggle button group">
-
                 <input type="radio" class="btn-check" name="btnradio" id="topnav_point" checked>
                 <label class="btn btn-outline-primary" for="topnav_point"><i class="fa fa-asterisk"
                     aria-hidden="true"></i> Point Builder</label>
-
                 <input type="radio" class="btn-check" name="btnradio" id="topnav_route">
                 <label class="btn btn-outline-primary" for="topnav_route"><i class="fa fa-arrows-h"
                     aria-hidden="true"></i> Route Builder</label>
-
               </div>
             </div>
 
-            <indicator-component class="d-flex"></indicator-component>
+            <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar">
+              <span class="d-flex align-items-center justify-content-center me-3">System Status</span>
+              <div class="d-flex align-items-center justify-content-center me-3">
+                <span id="errorBadge" class="badge bg-danger" style="display:none">Error</span>
+                <span id="busyBadge" class="badge bg-warning text-dark" style="display:none">Busy</span>
+                <span id="readyBadge" class="badge bg-success">Ready</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-center me-3">
+                <div class="trafficlight">
+                  <span id="errorIndicator" class="lamp"></span>
+                </div>
+                <div class="trafficlight">
+                  <span id="busyIndicator" class="lamp"></span>
+                </div>
+                <div class="trafficlight">
+                  <span id="readyIndicator" class="green lamp"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar">
+              <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#demoModal"
+                title="Demo Mode"><i class="fa fa-user-secret" aria-hidden="true"></i></button>
+            </div>
 
           </div>
         </div>
@@ -701,7 +851,7 @@
               <!--#region input-route-form  -->
               <div id="input-route-form-card" style="display:none" class="card">
                 <div class="card-body">
-                  <form id="input-route-form" class="mb-3" style="display:none">
+                  <form id="input-route-form" style="display:none">
 
                     <div id="kbRouteInputRouteName">
                       <div class="row mb-3">
@@ -734,7 +884,7 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginReferenceMarker" type="number" required name="begin-referencemarker"
-                            class="form-control textentry">
+                            class="form-control textentry referencemarker">
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginDisplacement" type="number" required name="begin-displacement"
@@ -1296,16 +1446,28 @@
         <!-- Map Buttons START -->
         <div id="controlDiv" class="card map-buttons">
 
-          <!-- Map-Controls START -->
-          <map_controls-component></map_controls-component>
-          <!-- Map-Controls END -->
 
           <div class="card-body">
+            <!-- Map-Controls START -->
+            <input id="basemap-event" type="checkbox" checked data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-camera'     aria-hidden='true'></i> Imagery"
+              data-offlabel="<i class='fa fa-map-signs' aria-hidden='true'></i> TxDOT" data-onstyle="success"
+              data-offstyle="primary">
+
+            <input id="refmrkr-event" type="checkbox" data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ref Mrkr"
+              data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ref Mrkr" data-onstyle="info"
+              data-offstyle="primary" disabled>
+
+            <input id="controlsec-event" type="checkbox" data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ctrl Sec"
+              data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ctrl Sec" data-onstyle="info"
+              data-offstyle="primary" disabled>
+            <!-- Map-Controls END -->
+
             <button type="button" class="btn btn-primary map-return" title="See current result on map"><i
                 class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
-          </div>
 
-          <div class="card-body">
             <button type="button" class="btn btn-primary map-all" title="See all results on map"><i
                 class="fa fa-hand-o-right" aria-hidden="true"></i> Go to All Points</button>
           </div>

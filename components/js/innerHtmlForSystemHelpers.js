@@ -215,7 +215,7 @@ const staticDemo_Modal = `
               <div class="card-body">
                   <input id="demo-mode-toggle"    
                   type="checkbox" 
-                  checked
+                  unchecked
                   data-toggle="toggle" data-html="true" 
                   data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Demo Mode"    
                   data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Demo Mode"    

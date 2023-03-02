@@ -1,8 +1,23 @@
+let mapCursorLive = 0;
 
+$(":reset").on('click', function () { clearResults(); });
+$(":reset").on('click', function () { clearResultsFromMap(); });
+$(":reset").on('click', function () { clearForms(); });
 
-// $(":reset").on('click', function () { clearResults(); });
-// $(":reset").on('click', function () { clearResultsFromMap(); });
+function clearForms() {
+  $("#input-bulk-point-form").trigger("reset");
+  $("#input-bulk-route-form").trigger("reset");
+  $("#input-point-form").trigger("reset");
+  $("#input-route-form").trigger("reset");
+  $("#style-form").trigger("reset");
+}
 
+$("#useCrosshairs").on('click', function () { cursorMode(); });
+
+function cursorMode() {
+  $("#viewDiv").css('cursor', 'crosshair');
+  mapCursorLive = 1;
+}
 
 //return to point on map
 $(".map-return").on('click', function () { returnToPoint(); });
