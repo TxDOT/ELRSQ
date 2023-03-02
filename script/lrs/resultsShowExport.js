@@ -1,6 +1,6 @@
 function resultsShowExport(refinedData, inputMethod) {
 
-  
+
   // show TABULAR results
   if (inputMethod == "html") {
 
@@ -13,6 +13,7 @@ function resultsShowExport(refinedData, inputMethod) {
   } else if (inputMethod == "table") {
 
     if (calcGeomType == "Point") {
+      paginatedResultsSequence(refinedData);
       //showBulkPointResults(refinedData);
     } else if (calcGeomType == "Route") {
       //showBulkRouteResults(refinedData);

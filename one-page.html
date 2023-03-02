@@ -62,7 +62,7 @@
   <!-- <script src="script/ui/lrs_initiators.js" defer></script> -->
   <script src="script/onepage/lrs_initiators_forOnePage.js" defer></script>
 
-  <script src="script/ui/eventHandlers.js" defer></script>
+  <script src="script/onepage/eventHandlers_forOnePage.js" defer></script>
 
   <script src="script/lrs/lrsSingleQuery.js" defer></script>
   <script src="script/lrs/lrsBulkQuery.js" defer></script>
@@ -228,6 +228,19 @@
     });
   </script>
 
+  <script>
+    function updateProgressBar(aCurrentRow, total) {
+
+      let progress = Math.round(100 * aCurrentRow / total);
+      let widthstring = progress.toString() + "%";
+
+      $("#bulkMegaModal .progress-bar").css("width", widthstring);
+      $("#bulkMegaModal .progress-bar").html(widthstring);
+
+    }
+  </script>
+
+
 </head>
 
 <body>
@@ -290,14 +303,16 @@
                     <span class="input-group-text">Reference Marker Field:</span>
                     <select id="referencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-referencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-referencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Displacement Field:</span>
                     <select id="displacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-displacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-displacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -308,14 +323,16 @@
                     <span class="input-group-text">Control Section Field:</span>
                     <select id="controlsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-controlsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-controlsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Milepoint Marker Field:</span>
                     <select id="milepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-milepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-milepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -387,28 +404,32 @@
                     <span class="input-group-text">Begin Reference Marker Field:</span>
                     <select id="breferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-breferencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-breferencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Displacement Field:</span>
                     <select id="bdisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bdisplacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bdisplacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Reference Marker Field:</span>
                     <select id="ereferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-ereferencemarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-ereferencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Displacement Field:</span>
                     <select id="edisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-edisplacement_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-edisplacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -419,28 +440,32 @@
                     <span class="input-group-text">Begin Control Section Field:</span>
                     <select id="bcontrolsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Milepoint Marker Field:</span>
                     <select id="bmilepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bmilepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-bmilepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Control Section Field:</span>
                     <select id="econtrolsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-econtrolsection_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-econtrolsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Milepoint Marker Field:</span>
                     <select id="emilepointmarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-emilepointmarker_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                    <button id="btn-emilepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -512,8 +537,8 @@
           <!--#endregion -->
 
           <div class="progress mt-5 mb-5 ms-3 me-3" style="height: 30px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-              aria-valuemax="100">25%</div>
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+              aria-valuemax="100">0%</div>
           </div>
 
           <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
@@ -617,17 +642,17 @@
                       <label for="kbInputRouteName" class="col-sm-4 col-form-label">Route Name</label>
                       <div class="input-group col-sm-4">
                         <input id="kbInputRouteName" type="text" pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routename"
-                          placeholder="US0077-KG" class="form-control textentry">
+                          class="form-control textentry routename">
                       </div>
                     </div>
 
                     <div class="row" id="kbPointInputReferenceMarker">
                       <label class="col-sm-4 col-form-label">Field Location</label>
                       <div class="input-group">
-                        <input id="kbInputReferenceMarker" type="number" name="referencemarker" placeholder="622"
-                          class="form-control textentry">
-                        <input id="kbInputDisplacement" type="number" name="displacement" placeholder="0.065"
-                          class="form-control textentry">
+                        <input id="kbInputReferenceMarker" type="number" name="referencemarker"
+                          class="form-control textentry referencemarker">
+                        <input id="kbInputDisplacement" type="number" name="displacement"
+                          class="form-control textentry displacement">
                       </div>
                     </div>
 
@@ -635,9 +660,9 @@
                       <label for="kbInputControlSection" class="col-sm-4 col-form-label">Control Section</label>
                       <div class="input-group col-sm-4">
                         <input id="kbInputControlSection" type="text" name="controlsection"
-                          class="form-control textentry" placeholder="012201">
-                        <input id="kbInputMilepointMeasure" type="number" name="mpm" class="form-control textentry"
-                          placeholder="2.394">
+                          class="form-control textentry controlsection">
+                        <input id="kbInputMilepointMeasure" type="number" name="mpm"
+                          class="form-control textentry milepointmeasure">
                       </div>
                     </div>
 
@@ -645,8 +670,8 @@
                       <label for="kbInputDistanceFromOrigin" class="col-sm-4 col-form-label">Distance From
                         Origin</label>
                       <div class="input-group col-sm-4">
-                        <input id="kbInputDistanceFromOrigin" type="number" name="dfo" placeholder="1.606"
-                          class="form-control textentry">
+                        <input id="kbInputDistanceFromOrigin" type="number" name="dfo"
+                          class="form-control textentry dfo">
                       </div>
                     </div>
 
@@ -655,7 +680,7 @@
                         (Optional)</label>
                       <div class="input-group col-sm-4">
                         <input id="kbInputRouteName_optional" type="text" pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                          name="routename" placeholder="US0077-KG" class="form-control textentry">
+                          name="routename" class="form-control textentry routename">
                         <div class="input-group-text">
                           <input id="useRouteName" class="form-check-input mt-0" type="checkbox">
                         </div>
@@ -665,10 +690,10 @@
                     <div class="row" style="display:none" id="kbPointInputCoordinates">
                       <label class="col-sm-4 col-form-label">Latitude &amp; Longitude</label>
                       <div class="input-group">
-                        <input id="kbInputLatitude" type="number" name="lat" placeholder="29.39780972"
-                          class="form-control textentry">
-                        <input id="kbInputLongitude" type="number" name="lon" placeholder="-94.98759004"
-                          class="form-control textentry">
+                        <input id="kbInputLatitude" type="number" name="lat"
+                          class="form-control textentry latlon latitude">
+                        <input id="kbInputLongitude" type="number" name="lon"
+                          class="form-control textentry latlon longitude">
                         <button id="useCrosshairs" class="btn btn-outline-primary" type="button"
                           title="Get coords from map">
                           <i class="fa fa-crosshairs" aria-hidden="true"></i> Use Map</button>
@@ -692,7 +717,7 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                            value="FM0060-KG" class="form-control textentry">
+                            class="form-control textentry routename">
                         </div>
                         <div class="col-4">
                         </div>
@@ -716,11 +741,11 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginReferenceMarker" type="number" required name="begin-referencemarker"
-                            value="624" class="form-control textentry">
+                            class="form-control textentry">
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginDisplacement" type="number" required name="begin-displacement"
-                            value="1.362" class="form-control textentry">
+                            class="form-control textentry displacement">
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -729,11 +754,11 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputEndReferenceMarker" type="number" required name="end-referencemarker"
-                            value="632" class="form-control textentry">
+                            class="form-control textentry referencemarker">
                         </div>
                         <div class="col-4">
-                          <input id="kbInputEndDisplacement" type="number" required name="end-displacement" value="1.950"
-                            class="form-control textentry">
+                          <input id="kbInputEndDisplacement" type="number" required name="end-displacement"
+                            class="form-control textentry displacement">
                         </div>
                       </div>
                     </div>
@@ -755,12 +780,12 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginControlSection" type="text" required
-                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="begin-controlsection" value="012201"
-                            class="form-control textentry">
+                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="begin-controlsection"
+                            class="form-control textentry controlsection">
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
-                            value="2.394" class="form-control textentry">
+                            class="form-control textentry milepointmeasure">
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -769,12 +794,12 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputEndControlSection" type="text" required
-                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection" value="012201"
-                            class="form-control textentry">
+                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection"
+                            class="form-control textentry controlsection">
                         </div>
                         <div class="col-4">
                           <input id="kbInputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
-                            value="2.394" class="form-control textentry">
+                            class="form-control textentry milepointmeasure">
                         </div>
                       </div>
                     </div>
@@ -795,7 +820,7 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginDistanceFromOrigin" type="number" required
-                            name="begin-distancefromorigin" value="59.095" class="form-control textentry">
+                            name="begin-distancefromorigin" class="form-control textentry dfo">
                         </div>
                         <div class="col-4">
                         </div>
@@ -806,7 +831,7 @@
                         </div>
                         <div class="col-4">
                           <input id="kbInputEndDistanceFromOrigin" type="number" required name="end-distancefromorigin"
-                            value="220.951" class="form-control textentry">
+                            class="form-control textentry dfo">
                         </div>
                         <div class="col-4">
                         </div>
@@ -832,12 +857,12 @@
                           <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                         </div>
                         <div class="col-4">
-                          <input type="number" required name="begin-latitude" value="29.652006"
-                            class="form-control textentry" id="kbInputBeginLatitude">
+                          <input id="kbInputBeginLatitude" type="number" required name="begin-latitude"
+                            class="form-control textentry latlon latitude">
                         </div>
                         <div class="col-4">
-                          <input type="number" required name="begin-longitude" value="-97.659926"
-                            class="form-control textentry" id="kbInputBeginLongitude">
+                          <input id="kbInputBeginLongitude" type="number" required name="begin-longitude"
+                            class="form-control textentry latlon longitude">
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -845,12 +870,12 @@
                           <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                         </div>
                         <div class="col-4">
-                          <input type="number" required name="end-latitude" value="29.666168"
-                            class="form-control textentry" id="kbInputEndLatitude">
+                          <input id="kbInputEndLatitude" type="number" required name="end-latitude"
+                            class="form-control textentry latlon latitude">
                         </div>
                         <div class="col-4">
-                          <input type="number" required name="end-longitude" value="-97.650841"
-                            class="form-control textentry" id="kbInputEndLongitude">
+                          <input id="kbInputEndLongitude" type="number" required name="end-longitude"
+                            class="form-control textentry latlon longitude">
                         </div>
                       </div>
                     </div>
@@ -991,18 +1016,38 @@
             <div class="card-body">
               <h5 class="card-title">Results:</h5>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <!-- Pagination-Card START -->
               <div class="card">
-                <div id="results-header" class="card-body">
+                <div id="result-pagination" class="card-body">
                   <nav aria-label="...">
                     <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
+                      <li class="page-item li_prev disabled">
                         <span id="pagn_prev" class="page-link" tabindex="-1" aria-disabled="true">Previous</span>
                       </li>
-                      <li class="page-item active" aria-current="page">
+                      <li class="page-item li_curr active" aria-current="page">
                         <span id="pagn_curr" class="page-link">1 of 1</span>
                       </li>
-                      <li class="page-item disabled">
+                      <li class="page-item li_next disabled">
                         <span id="pagn_next" class="page-link" tabindex="-1" aria-disabled="true">Next</span>
                       </li>
                     </ul>
