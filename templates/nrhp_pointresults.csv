@@ -1,0 +1,914 @@
+LAT,LON,GID,RTE_DEFN_LN_NM,RTE_DFO,ROUTEID,ROUTENUMBER,RTE_PRFX_TYPE_DSCR,RDBD_TYPE_DSCR,RMRKR_PNT_NBR,RMRKR_DISPLACEMENT,CTRL_SECT_LN_NBR,CTRL_SECT_MPT,MSG,distance
+31.841909,-102.364585,1509725804,US0385-KG,346.915,154762,385,Single Roadbed,US Highway,355,0.733,22901,0.317,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.5879106
+31.841909,-102.364585,46218,253117,5.528,161688,253117,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.6918
+30.946166,-97.536823,1599253123,FM2268-KG,0.8,174175,2268,Single Roadbed,Farm to Market,546,0.706,213601,10.687,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.61615283
+30.946805,-97.537441,437152,1209823,0.19,379473,1209823,Single Roadbed,Local City Street,,,LU4069,0.19,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.640490603
+30.946805,-97.537441,437133,1209803,0.11,379454,1209803,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.0422986
+30.946805,-97.537441,437117,1209787,0,379438,1209787,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.2633826
+30.944992,-97.536736,1599253123,FM2268-KG,0.881,174175,2268,Single Roadbed,Farm to Market,546,0.787,213601,10.767,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.1766396
+30.944992,-97.536736,437126,1209795,0.055,379446,1209795,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.6592824
+30.952909,-97.534731,1599253123,FM2268-KG,0.332,174175,2268,Single Roadbed,Farm to Market,546,0.238,213601,10.202,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.6187273
+31.065629,-97.460481,1575321076,SH0317-KG,43.225,154211,317,Single Roadbed,State Highway,388,1.336,39804,15.343,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.75791243
+31.065629,-97.460481,240817,1027937,0.188,203324,1027937,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.7642801
+31.065629,-97.460481,241123,1028201,0.199,203579,1028201,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.9086659
+30.942207,-97.53772,1599253123,FM2268-KG,1.076,174175,2268,Single Roadbed,Farm to Market,546,0.982,213601,10.963,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",104.3912106
+30.945543,-97.537565,437126,1209795,0.026,379446,1209795,Single Roadbed,Local City Street,,,LU4042,0.026,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.9975179
+30.945543,-97.537565,437133,1209803,0.023,379454,1209803,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.5896705
+25.909208,-97.506307,2235,BU0077Z-KG,3.017,160051,77,Single Roadbed,Business US,744,0.972,3910,3.563,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",46.64761323
+25.909208,-97.506307,7828,BU0077Z-RG,2.987,160051,77,Right Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.3552489
+25.909208,-97.506307,40284,265187,7.283,167819,265187,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.5072476
+33.16288,-96.359667,1633910721,1085083,0.883,258764,1085083,Single Roadbed,Local City Street,,,L95330,0.883,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.9809289
+33.16288,-96.359667,300708,1085069,0.087,258751,1085069,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.8335109
+29.34235,-97.069252,3025,FM0531-KG,7.373,175629,531,Single Roadbed,Farm to Market,580,1.391,26910,11.605,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.6958506
+29.448024,-96.997155,2788,FM0340-KG,12.867,175322,340,Single Roadbed,Farm to Market,586,0.898,144501,12.867,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.9570505
+30.167627,-96.396403,7915,BU0290F-LG,1.67,159983,290,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",23.5606402
+30.167627,-96.396403,245075,1031924,0,207198,1031924,Single Roadbed,Local City Street,,,LD1189,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.16040644
+30.167627,-96.396403,8939,SH0105-LG,0,154061,105,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.68688603
+30.167627,-96.396403,1548790197,BU0290F-KG,1.72,159983,290,Single Roadbed,Business US,444,1.607,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.7030558
+30.167627,-96.396403,245142,1031991,0.109,207265,1031991,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.022709
+30.167627,-96.396403,6812,SH0105-KG,0,154061,105,Single Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.8332524
+30.167627,-96.396403,245078,1031927,0,207201,1031927,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.605282
+30.145181,-96.251184,1566233517,FM2447-KG,1.917,174352,2447,Single Roadbed,Farm to Market,444,1.901,129901,11.985,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.0675482
+30.943189,-97.536868,1599253138,1209801,0.021,379452,1209801,Single Roadbed,Local City Street,,,LU4048,0.021,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.1214161
+30.943189,-97.536868,1599253123,FM2268-KG,1.006,174175,2268,Single Roadbed,Farm to Market,546,0.912,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",133.6849183
+28.522022,-99.860027,7594,US0277-KG,490.565,154753,277,Single Roadbed,US Highway,650,1.05,30003,19.126,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.9579791
+28.522022,-99.860027,7144,SL0225-KG,0.334,154380,225,Single Roadbed,State Loop,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.8201083
+28.522022,-99.860027,252729,1039344,0.021,214443,1039344,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.6438449
+32.010488,-97.131229,335341,1117842,0.483,290609,1117842,Single Roadbed,Local City Street,,,LL4889,0.483,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.52381476
+32.010488,-97.131229,6686,SH0022-KG,70.217,154157,22,Single Roadbed,State Highway,582,1.291,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.6149634
+32.010488,-97.131229,335307,1117812,0,290579,1117812,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.1898754
+32.012273,-97.129923,1631664058,SH0081-KG,19.952,154294,81,Single Roadbed,State Highway,338,1.07,1406,17.051,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.4956444
+32.012273,-97.129923,335242,1117751,0.011,290518,1117751,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.44597738
+32.012273,-97.129923,498554,1117864,0.405,290630,1117864,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.9821561
+32.01289,-97.135097,498555,1117864,0.228,290630,1117864,Single Roadbed,Local City Street,,,LL4910,0.228,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.5380354
+32.01289,-97.135097,1634256444,SH0171-KG,68.072,154118,171,Single Roadbed,State Highway,338,1.159,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.5360041
+32.010479,-97.130594,6686,SH0022-KG,70.255,154157,22,Single Roadbed,State Highway,582,1.329,12102,19.113,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",106.887298
+32.010479,-97.130594,1631664058,SH0081-KG,20.074,154294,81,Single Roadbed,State Highway,338,1.192,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.8461728
+32.010474,-97.130277,1631664058,SH0081-KG,20.075,154294,81,Single Roadbed,State Highway,338,1.193,1407,17.229,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",34.82030138
+32.010474,-97.130277,6686,SH0022-KG,70.273,154157,22,Single Roadbed,State Highway,582,1.347,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.7054487
+32.010474,-97.130277,335240,1117750,0,290517,1117750,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.1668075
+32.009933,-97.130288,335367,1117866,0.541,290632,1117866,Single Roadbed,Local City Street,,,LL4912,0.541,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",37.02566617
+32.009933,-97.130288,1631664058,SH0081-KG,20.113,154294,81,Single Roadbed,State Highway,338,1.231,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.60162387
+32.009933,-97.130288,335244,1117753,0,290520,1117753,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.33115363
+29.79476,-98.732217,1599259022,US0087-KG,620.89,154782,87,Single Roadbed,US Highway,658,0.894,7214,24.419,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",1.116578883
+29.79476,-98.732217,243248,1030243,0.135,205551,1030243,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.5117351
+29.79476,-98.732217,6469,RM0474-KG,15.732,154026,474,Single Roadbed,Ranch to Market,476,1.912,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",106.0771141
+32.744318,-97.33804,1636502478,SH0199-KG,53.288,154141,199,Single Roadbed,State Highway,566,5.267,17105,16.626,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",146.7444463
+32.736566,-96.276944,9977,US0080-LG,24.642,154776,80,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.19711194
+32.736566,-96.276944,7529,US0080-KG,24.586,154776,80,Single Roadbed,US Highway,686,1.027,9505,15.078,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.29219494
+32.736566,-96.276944,469385,1239872,0.01,408826,1239872,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.47500209
+32.736566,-96.276944,9989,US0080-RG,24.721,154776,80,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",96.91705506
+32.736566,-96.276944,469434,1239919,1.015,408871,1239919,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.3192299
+30.143675,-96.252471,1566233517,FM2447-KG,1.8,174352,2447,Single Roadbed,Farm to Market,444,1.784,129901,11.867,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",77.78345388
+30.142594,-96.265473,1566233517,FM2447-KG,0.994,174352,2447,Single Roadbed,Farm to Market,444,0.978,129901,11.062,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.85511219
+30.14333,-96.266179,,,,,,,,,,,,,
+30.143422,-96.253308,1566233517,FM2447-KG,1.724,174352,2447,Single Roadbed,Farm to Market,444,1.708,129901,11.791,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.31511642
+30.143422,-96.253308,1566243877,239AA0476,0,98597,476,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.649168
+30.143587,-96.252577,1566233517,FM2447-KG,1.792,174352,2447,Single Roadbed,Farm to Market,444,1.776,129901,11.858,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.28194399
+31.05763,-97.46302,1575321076,SH0317-KG,43.795,154211,317,Single Roadbed,State Highway,388,1.906,1505,20.3,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.55607897
+31.05763,-97.46302,240825,1027944,0.015,203331,1027944,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.4685002
+31.05763,-97.46302,241130,1028206,0.549,203584,1028206,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.4084646
+32.73595,-96.277603,469496,1239968,0.248,408919,1239968,Single Roadbed,Local City Street,,,LX3573,0.248,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",24.24255558
+32.73595,-96.277603,469434,1239919,0.985,408871,1239919,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.76164425
+32.73595,-96.277603,469282,1239775,0,408731,1239775,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",78.2671085
+30.143248,-96.253624,1566233517,FM2447-KG,1.705,174352,2447,Single Roadbed,Farm to Market,444,1.689,129901,11.772,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",3.592099448
+28.401929,-97.749073,1571082240,BU0181J-KG,5.893,160002,181,Single Roadbed,Business US,570,1.879,10107,11.306,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.23594822
+28.401929,-97.749073,1599346998,260366,3.761,165376,260366,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.957404
+28.401929,-97.749073,1599346994,1027311,0.185,202716,1027311,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.0907469
+31.056012,-97.46357,1575321076,SH0317-KG,43.91,154211,317,Single Roadbed,State Highway,388,2.021,1505,20.416,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.089713
+31.056012,-97.46357,48949,269721,0.019,170241,269721,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.7590622
+31.056012,-97.46357,241164,1028227,0.019,203604,1028227,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.3597488
+25.900709,-97.496332,7827,BU0077Z-LG,3.859,160051,77,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.95647206
+25.900709,-97.496332,50759,265216,0.125,167834,265216,Single Roadbed,Local City Street,,,C01914,0.124,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.2784126
+33.215126,-97.132962,1599249205,US0077-KG,4.841,154774,77,Single Roadbed,US Highway,238,0.166,19601,24.834,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",27.37739365
+28.980649,-97.503959,1599252420,SH0072-KG,97.377,154286,72,Single Roadbed,State Highway,572,1.357,27001,0.359,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.71396614
+28.980649,-97.503959,488318,1257824,0.511,426086,1257824,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.2141593
+29.706025,-96.539942,,,,,,,,,,,,,
+29.703515,-98.124925,1672187344,BS0046C-KG,2.237,159962,46,Single Roadbed,Business State,514,0.255,21502,20.383,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.0291768
+29.703515,-98.124925,2000000316,BS0046C-LG,2.249,159962,46,Left Roadbed,Business State,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.1237235
+29.703515,-98.124925,2000000315,BS0046C-RG,2.245,159962,46,Right Roadbed,Business State,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.1604259
+29.703066,-98.125239,2000000315,BS0046C-RG,2.249,159962,46,Right Roadbed,Business State,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",84.79324102
+29.703066,-98.125239,1672187344,BS0046C-KG,2.241,159962,46,Single Roadbed,Business State,514,0.259,21502,20.387,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.38478904
+29.703066,-98.125239,2000000316,BS0046C-LG,2.245,159962,46,Left Roadbed,Business State,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.46400178
+31.508663,-99.920326,411507,1184819,0.471,355476,1184819,Single Roadbed,Local City Street,,,LR9954,0.471,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",81.04237477
+31.508663,-99.920326,7539,US0083-KG,384.07,154779,83,Single Roadbed,US Highway,402,0.795,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.79632597
+31.508663,-99.920326,411471,1184785,0,355442,1184785,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.4373219
+33.495091,-97.289176,3498,FM0922-KG,17.603,176038,922,Single Roadbed,Farm to Market,560,0.861,84503,13.74,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.5314511
+31.434693,-97.750772,321812,1104888,0.266,277973,1104888,Single Roadbed,Local City Street,,,LK2169,0.266,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.59474427
+31.434693,-97.750772,1629331743,US0084-KG,393.198,154780,84,Single Roadbed,US Highway,646,0.026,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.8462003
+31.434693,-97.750772,321762,1104845,0,277934,1104845,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",106.1899883
+32.222087,-98.199516,2312,BU0377J-KG,2.156,160005,377,Single Roadbed,Business US,506,0.238,7907,2.156,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",46.64650214
+32.222087,-98.199516,464054,1234766,0.268,403805,1234766,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.01538973
+32.22012,-98.202293,464047,1234759,0.256,403798,1234759,Single Roadbed,Local City Street,,,LW8446,0.256,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.0374564
+32.22012,-98.202293,1632441727,SH0108-KG,34.41,154063,108,Single Roadbed,State Highway,522,1.29,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.9363864
+32.22012,-98.202293,464108,1234821,0.299,403860,1234821,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.7572636
+32.22012,-98.202293,2312,BU0377J-KG,1.947,160005,377,Single Roadbed,Business US,506,0.029,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.0809133
+32.754212,-97.331238,1670284943,1092391,0.222,265856,1092391,Single Roadbed,Local City Street,,,R81235,0.222,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",72.87081569
+32.754212,-97.331238,45088,267726,0.283,169185,267726,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.58451339
+32.754212,-97.331238,1672272156,BU0287P-KG,16.679,160022,287,Single Roadbed,Business US,270,0.752,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.5405989
+29.904675,-96.878316,1571661033,BS0071E-KG,2.295,159976,71,Single Roadbed,Business State,636,1.439,26514,25.453,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",15.02666159
+32.757329,-97.332995,1672272156,BU0287P-KG,16.449,160022,287,Single Roadbed,Business US,270,0.522,1401,17.824,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.426366694
+32.757329,-97.332995,44880,201871,0.653,160179,201871,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.21985578
+32.757329,-97.332995,1670284959,1092391,0,265856,1092391,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.37742655
+30.275437,-98.873683,313668,1096981,0.055,270240,1096981,Single Roadbed,Local City Street,,,LJ4398,0.055,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.4477508
+30.275437,-98.873683,313623,1096939,0.038,270198,1096939,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.0185655
+29.500923,-97.452118,2274,BU0183V-KG,2.046,160041,183,Single Roadbed,Business US,576,0.843,15303,2.046,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",136.6665229
+32.755323,-97.331431,1672272156,BU0287P-KG,16.614,160022,287,Single Roadbed,Business US,270,0.687,1401,17.989,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",30.43897666
+32.755323,-97.331431,45299,251699,19.068,161067,251699,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.15766067
+32.755323,-97.331431,1670284959,1092391,0.149,265856,1092391,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.73618083
+30.409378,-96.050166,6788,SH0090-KG,40.371,154302,90,Single Roadbed,State Highway,430,1.295,31504,33.13,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.6938685
+30.409378,-96.050166,1506716148,094AA0545,0,109836,545,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.2332526
+30.018336,-96.731703,6969,SH0237-KG,11.605,154166,237,Single Roadbed,State Highway,456,1.195,26701,10.245,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.5712731
+33.178983,-99.17782,471788,1242013,0.014,410926,1242013,Single Roadbed,Local City Street,,,LX5581,0.014,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.91824468
+33.178983,-99.17782,7626,US0380-KG,238.83,154761,380,Single Roadbed,US Highway,470,1.162,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.1333422
+33.178983,-99.17782,7570,US0183-KG,75.741,154747,183,Single Roadbed,US Highway,262,1.744,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.7937757
+33.178485,-99.179052,471799,1242023,0.51,410936,1242023,Single Roadbed,Local City Street,,,LX5591,0.51,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.67559472
+33.178485,-99.179052,7626,US0380-KG,238.759,154761,380,Single Roadbed,US Highway,470,1.091,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.58004263
+33.178485,-99.179052,471781,1242006,0,410919,1242006,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.76627727
+29.884012,-97.941406,1635379324,SL0082-RG,2.093,154519,82,Right Roadbed,State Loop,466,0.04,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.07396129
+29.884012,-97.941406,1490386796,1226393,0.012,395734,1226393,Single Roadbed,Local City Street,,,LW0351,0.012,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",75.00520083
+29.884012,-97.941406,1490387133,1226751,0.542,396084,1226751,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",99.49874921
+29.884012,-97.941406,1631145967,SL0082-KG,2.034,154519,82,Single Roadbed,State Loop,466,0.043,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.7017576
+29.885808,-97.940352,499542,1226572,0.021,395909,1226572,Single Roadbed,Local City Street,,,LW0526,0.021,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.08833514
+29.885808,-97.940352,1631145967,SL0082-KG,1.91,154519,82,Single Roadbed,State Loop,464,1.852,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.7513508
+29.885808,-97.940352,1635379324,SL0082-RG,1.922,154519,82,Right Roadbed,State Loop,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.5436625
+29.885808,-97.940352,1635379322,SL0082-LG,1.922,154519,82,Left Roadbed,State Loop,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.626197
+29.883289,-97.94131,1635379324,SL0082-RG,2.143,154519,82,Right Roadbed,State Loop,466,0.09,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.65463085
+29.883289,-97.94131,1490375949,SH0080-KG,0.009,154293,80,Single Roadbed,State Highway,,,28601,5.009,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.85257134
+29.883289,-97.94131,1490372706,298695,3.131,1490372706,298695,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.6431665
+29.883289,-97.94131,1631145967,SL0082-KG,2.083,154519,82,Single Roadbed,State Loop,466,0.092,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.8200793
+31.922929,-97.656968,394753,1169377,0.21,340547,1169377,Single Roadbed,Local City Street,,,LQ4975,0.21,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.74926828
+31.922929,-97.656968,394764,1169388,0.271,340558,1169388,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",106.2506306
+31.922929,-97.656968,394728,1169353,0,340523,1169353,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.1001985
+31.922929,-97.656968,6686,SH0022-KG,32.618,154157,22,Single Roadbed,State Highway,544,1.312,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",133.4457357
+31.922929,-97.656968,6861,SH0144-KG,39.9,154092,144,Single Roadbed,State Highway,332,1.498,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",135.0129663
+30.096721,-98.422759,1636329637,US0281-KG,284.849,154754,281,Single Roadbed,US Highway,488,0.366,25301,28.351,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.14367393
+30.096721,-98.422759,242692,1029667,0.25,204991,1029667,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.0002112
+31.923267,-97.657387,6686,SH0022-KG,32.609,154157,22,Single Roadbed,State Highway,544,1.303,12101,15.275,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.33062149
+31.923267,-97.657387,6861,SH0144-KG,39.892,154092,144,Single Roadbed,State Highway,332,1.49,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.66503367
+31.923267,-97.657387,394753,1169377,0.237,340547,1169377,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",78.59612446
+29.883272,-97.936951,1490375949,SH0080-KG,0.268,154293,80,Single Roadbed,State Highway,,,28601,5.268,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.2530425
+32.011295,-97.130895,335307,1117812,0.032,290579,1117812,Single Roadbed,Local City Street,,,LL4859,0.032,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.1391134
+32.348545,-97.386545,1634256444,SH0171-KG,39.242,154118,171,Single Roadbed,State Highway,308,1.338,1901,25.639,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",44.20858233
+32.348545,-97.386545,1550254059,1044910,0.03,219840,1044910,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.85771129
+32.348545,-97.386545,1634515324,SH0171-LG,39.259,154118,171,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.3736876
+32.348545,-97.386545,258468,1045080,0,220004,1045080,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.4139618
+29.794712,-98.73082,6469,RM0474-KG,15.658,154026,474,Single Roadbed,Ranch to Market,476,1.838,104201,15.658,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.91406373
+29.794712,-98.73082,243083,1030061,0.076,205374,1030061,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.2222801
+29.794712,-98.73082,243261,1030256,0.02,205564,1030256,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.1444832
+33.164477,-101.795974,467203,1237832,0.605,406834,1237832,Single Roadbed,Local City Street,,,LX1483,0.605,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.7037942
+31.449533,-98.569033,323784,1106865,0.31,279888,1106865,Single Roadbed,Local City Street,,,LK4092,0.31,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.36143103
+31.449533,-98.569033,1670889660,US0183-KG,219.467,154747,183,Single Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",71.40201075
+29.354813,-98.874826,254489,1041103,0.637,216161,1041103,Single Roadbed,Local City Street,,,LE0203,0.637,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.74737172
+30.6336,-97.667273,6695,SH0029-KG,134.046,154196,29,Single Roadbed,State Highway,554,1.523,33702,22.441,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.73886452
+30.6336,-97.667273,322428,1105512,0.344,278574,1105512,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.3133738
+30.517421,-97.661564,1671148808,US0079-KG,272.418,154775,79,Single Roadbed,US Highway,564,0.586,20401,6.179,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.59045915
+30.568722,-97.409472,6794,SH0095-KG,35.688,154307,95,Single Roadbed,State Highway,422,0.459,32101,1.134,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",5.292307899
+30.568722,-97.409472,496928,1238067,0.474,407055,1238067,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.05320672
+30.568722,-97.409472,42518,290801,1.555,170775,290801,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",11.36751032
+28.964886,-96.655708,4519,FM1822-KG,0.526,173718,1822,Single Roadbed,Farm to Market,526,0.505,194501,1.526,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.77782896
+28.964886,-96.655708,1633910462,1075499,0,249592,1075499,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.0346895
+32.250264,-101.478729,1503688123,BI0020G-RG,3.34,159884,20,Right Roadbed,Business IH,310,1.146,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.61248479
+32.250264,-101.478729,1599258906,BU0087M-KG,3.696,1509388269,87,Single Roadbed,Business US,378,0.218,6901,22.317,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.04479065
+29.442381,-96.946552,,,,,,,,,,,,,
+31.135194,-99.334843,1669766573,US0190-KG,176.743,154749,190,Single Roadbed,US Highway,,,12804,30.027,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",18.63482549
+31.135194,-99.334843,1519252622,US0190-RG,176.766,154749,190,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.3099887
+31.135194,-99.334843,1519255385,US0190-LG,176.77,154749,190,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.6959331
+31.135194,-99.334843,1599258974,US0087-KG,517.394,154782,87,Single Roadbed,US Highway,546,1.469,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.7792753
+29.210317,-99.786655,45350,260314,3.021,165337,260314,Single Roadbed,Local City Street,,,B00495,3.021,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.32342278
+29.210317,-99.786655,1630541024,US0083-KG,557.571,154779,83,Single Roadbed,US Highway,582,0.535,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",54.90157019
+29.210317,-99.786655,45351,260315,3.032,165338,260315,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.40870952
+30.016169,-100.208184,432659,1205240,0.031,375058,1205240,Single Roadbed,Local City Street,,,LT9614,0.031,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.29784879
+30.016169,-100.208184,432660,1205241,0.031,375059,1205241,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.3319647
+31.70376,-98.123375,6706,SH0036-KG,114.723,154241,36,Single Roadbed,State Highway,408,1.903,18303,9.901,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.83555349
+31.70376,-98.123375,330382,1113130,0.014,286007,1113130,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.1164188
+31.70376,-98.123375,330422,1113164,0.625,286039,1113164,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.4915036
+29.569495,-97.972885,458439,1229445,0.012,398675,1229445,Single Roadbed,Local City Street,,,LW3310,0.012,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",46.25042521
+29.569495,-97.972885,458195,1229206,0.023,398442,1229206,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.10308213
+29.569495,-97.972885,7489,UA0090-KG,1.629,154741,90,Single Roadbed,US Alternate,520,1.533,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.529679
+29.569495,-97.972885,458292,1229307,0.408,398537,1229307,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.7722845
+33.234323,-97.58693,282059,1066965,0.902,241238,1066965,Single Roadbed,Local City Street,,,LG5344,0.902,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.99739115
+33.234323,-97.58693,281967,1066895,0.015,241168,1066895,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",104.7106033
+33.234323,-97.58693,3261,FM0730-KG,17.26,175837,730,Single Roadbed,Farm to Market,238,0.166,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",129.5842396
+33.234323,-97.58693,282014,1066932,0.877,241205,1066932,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",133.1356624
+29.567264,-97.964546,2180,BS0123B-KG,3.58,159947,123,Single Roadbed,Business State,488,1.617,36612,4.58,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",16.44365915
+29.567264,-97.964546,458002,1229039,0.002,398276,1229039,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.34180467
+29.567264,-97.964546,458401,1229408,0.292,398638,1229408,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.78693461
+26.377658,-98.815667,10060,US0083-RG,792.015,154779,83,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.8334663
+26.377658,-98.815667,430307,1202960,0.01,372820,1202960,Single Roadbed,Local City Street,,,LT7361,0.01,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.94731239
+26.377658,-98.815667,430363,1203017,0.075,372875,1203017,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.49717689
+26.377658,-98.815667,7541,US0083-KG,792.043,154779,83,Single Roadbed,US Highway,820,1.938,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.5533011
+26.377895,-98.81686,10060,US0083-RG,791.94,154779,83,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.5673953
+26.377895,-98.81686,430314,1202969,0,372828,1202969,Single Roadbed,Local City Street,,,LT7369,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.95241325
+30.307912,-96.176279,3485,FM0912-KG,2.8,176028,912,Single Roadbed,Farm to Market,630,0.822,31512,2.8,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.22944268
+30.165497,-96.402687,7917,BU0290F-RG,1.289,159983,290,Right Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.68830429
+30.165497,-96.402687,495046,1032008,0,207282,1032008,Single Roadbed,Local City Street,,,LD1273,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.7035039
+30.148742,-96.364467,1576268079,FM0577-KG,4.707,175678,577,Single Roadbed,Farm to Market,446,1.495,244701,4.706,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.7044373
+29.315267,-98.058028,3036,FM0539-KG,8.581,175637,539,Single Roadbed,Farm to Market,504,0.865,223301,5.853,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",63.07986765
+31.742031,-99.948602,235263,1022578,0.738,198175,1022578,Single Roadbed,Local City Street,,,LC2145,0.738,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.1493667
+30.980629,-96.670408,251789,1038541,0.41,213657,1038541,Single Roadbed,Local City Street,,,LD7672,0.41,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.3299901
+30.980629,-96.670408,4313,FM1644-KG,11.775,173533,1644,Single Roadbed,Farm to Market,394,1.881,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.7633104
+30.165747,-96.415345,1548790197,BU0290F-KG,0.515,159983,290,Single Roadbed,Business US,444,0.402,11409,20.513,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.50805085
+30.165747,-96.415345,245077,1031926,0.028,207200,1031926,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.3319085
+32.235007,-97.755759,323671,1106758,0.07,279781,1106758,Single Roadbed,Local City Street,,,LK3985,0.07,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.37414435
+32.235007,-97.755759,323630,1106716,0.013,279739,1106716,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.2829126
+32.235007,-97.755759,6861,SH0144-KG,16.289,154092,144,Single Roadbed,State Highway,308,1.081,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.2096936
+32.235007,-97.755759,323664,1106750,0.123,279773,1106750,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.3182605
+32.235007,-97.755759,2405,FM0056-KG,22.628,175660,56,Single Roadbed,Farm to Market,316,0.084,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.0766839
+31.026982,-96.487301,,,,,,,,,,,,,
+32.759038,-97.797361,1639699202,US0180-KG,294.403,154745,180,Single Roadbed,US Highway,546,2.019,803,1.915,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.24236346
+32.759038,-97.797361,1639699214,US0180-LG,294.405,154745,180,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.09526656
+32.759038,-97.797361,2394,FM0051-KG,75.53,175607,51,Single Roadbed,Farm to Market,286,0.309,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.40915258
+32.759038,-97.797361,1639699238,US0180-RG,294.409,154745,180,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.5326779
+32.759038,-97.797361,1634256444,SH0171-KG,0,154118,171,Single Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.003963
+32.759038,-97.797361,19450,US0180-TA,0.023,154745,180,Turnaround,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.371153
+32.759038,-97.797361,19449,US0180-TA,0,154745,180,Turnaround,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.9845447
+30.159685,-96.405279,,,,,,,,,,,,,
+30.632982,-97.668637,6695,SH0029-KG,133.964,154196,29,Single Roadbed,State Highway,554,1.441,33702,22.359,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.01362
+30.633572,-97.673429,321883,1104955,0.577,278038,1104955,Single Roadbed,Local City Street,,,LK2234,0.577,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.79210367
+30.633572,-97.673429,6695,SH0029-KG,133.68,154196,29,Single Roadbed,State Highway,554,1.157,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",99.70428416
+30.633528,-97.669047,6695,SH0029-KG,133.941,154196,29,Single Roadbed,State Highway,554,1.418,33702,22.336,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.57273211
+30.632978,-97.66822,52305,258987,0.399,164683,258987,Single Roadbed,Local City Street,,,D00250,0.399,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",64.92994236
+30.632978,-97.66822,6695,SH0029-KG,133.989,154196,29,Single Roadbed,State Highway,554,1.466,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.9067119
+30.633538,-97.670091,322467,1105552,0.675,278614,1105552,Single Roadbed,Local City Street,,,LK2810,0.675,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",44.44810436
+30.633538,-97.670091,6695,SH0029-KG,133.878,154196,29,Single Roadbed,State Highway,554,1.355,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.81392249
+30.633109,-97.663419,6695,SH0029-KG,134.271,154196,29,Single Roadbed,State Highway,554,1.748,33702,22.666,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.6134898
+30.632902,-97.678446,6695,SH0029-KG,133.381,154196,29,Single Roadbed,State Highway,554,0.858,33701,12.033,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.8589537
+30.632902,-97.678446,48950,258972,13.177,164676,258972,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.6350076
+30.632851,-97.673439,321883,1104955,0.526,278038,1104955,Single Roadbed,Local City Street,,,LK2234,0.526,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.7356497
+29.95105,-96.258099,240695,1027813,0.02,203202,1027813,Single Roadbed,Local City Street,,,LC7185,0.02,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.32647136
+29.95105,-96.258099,1599355738,SH0036-KG,292.952,154241,36,Single Roadbed,State Highway,592,1.615,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",131.2994212
+29.95105,-96.258099,240721,1027837,1.03,203226,1027837,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",146.038244
+30.319117,-96.345098,1566393905,239AA0683,0.02,124028,683,Single Roadbed,County roads,,,AA0683,0.019,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.38201348
+30.319117,-96.345098,2849,FM0390-KG,20.658,175487,390,Single Roadbed,Farm to Market,464,0.922,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.4232029
+30.319117,-96.345098,1566393906,239AA0684,0,124103,684,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.1465345
+30.282302,-96.457812,2849,FM0390-KG,12.964,175487,390,Single Roadbed,Farm to Market,456,1.071,33809,1.358,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.6933128
+30.143597,-96.257351,3768,FM1155-KG,20.294,173022,1155,Single Roadbed,Farm to Market,452,0.508,140504,7.17,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.54672785
+30.143597,-96.257351,1566233517,FM2447-KG,1.482,174352,2447,Single Roadbed,Farm to Market,444,1.466,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.318486
+32.391784,-98.981207,257626,1044314,0.026,219266,1044314,Single Roadbed,Local City Street,,,LE3318,0.026,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.6371132
+32.391784,-98.981207,6647,SH0006-KG,176.694,154272,6,Single Roadbed,State Highway,344,1.407,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",136.6112195
+29.725838,-99.072484,6671,SH0016-KG,318.265,154107,16,Single Roadbed,State Highway,552,0.736,29105,14.55,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",4.200042573
+29.725838,-99.072484,235347,1022663,0.811,198252,1022663,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.16610421
+29.706031,-96.540252,7293,SS0052-KG,0.031,154695,52,Single Roadbed,State Spur,476,0.013,26610,1.031,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",77.93012241
+32.014253,-97.129671,1631664058,SH0081-KG,19.815,154294,81,Single Roadbed,State Highway,338,0.933,1406,16.914,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.0070926
+30.310599,-96.167054,,,,,,,,,,,,,
+32.947416,-99.802728,463641,1234404,0.018,403452,1234404,Single Roadbed,Local City Street,,,LW8098,0.018,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",46.79220132
+32.947416,-99.802728,1632873945,SH0006-KG,106.445,154272,6,Single Roadbed,State Highway,270,0.81,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",95.13184103
+32.947416,-99.802728,463738,1234487,0.316,403531,1234487,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.7129456
+32.943987,-99.802911,3846,FM1226-KG,0.011,173094,1226,Single Roadbed,Farm to Market,,,136001,0.011,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",48.10395102
+32.943987,-99.802911,1632873991,SH0006-RG,106.68,154272,6,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.01235258
+32.943987,-99.802911,463734,1234483,0.423,403527,1234483,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.68395311
+32.332449,-96.634944,4400,FM1722-KG,5.36,173611,1722,Single Roadbed,Farm to Market,598,1.317,131703,5.36,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.25166142
+32.332449,-96.634944,8240,FM1722-RG,5.362,173611,1722,Right Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.2309192
+32.332817,-96.63536,8240,FM1722-RG,5.328,173611,1722,Right Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.50079574
+32.332817,-96.63536,4400,FM1722-KG,5.326,173611,1722,Single Roadbed,Farm to Market,598,1.283,131703,5.326,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.1497563
+32.332817,-96.63536,46535,264119,1.294,167200,264119,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",146.9610214
+32.321389,-96.622275,3797,FM1183-KG,0.528,173051,1183,Single Roadbed,Farm to Market,598,0.39,131701,2.255,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",93.96295152
+32.321389,-96.622275,298738,1083061,0.136,256831,1083061,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",96.88252847
+32.331632,-96.620308,2000005257,SH0034-KG,109.686,154227,34,Single Roadbed,State Highway,350,1.221,17301,11.295,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.7523418
+32.328452,-96.62379,298494,1082838,0.187,256615,1082838,Single Roadbed,Local City Street,,,LI0740,0.187,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.48705932
+32.328452,-96.62379,2132,BI0045G-KG,2.326,159885,45,Single Roadbed,Business IH,296,0.104,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.62104778
+32.326068,-96.631287,2301,BU0287S-KG,2.525,160029,287,Single Roadbed,Business US,514,1.721,17212,6.597,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.491732
+32.326068,-96.631287,8240,FM1722-RG,5.848,173611,1722,Right Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.18708559
+32.326068,-96.631287,298685,1083013,0.663,256785,1083013,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.6772673
+32.328307,-96.625705,2301,BU0287S-KG,2.884,160029,287,Single Roadbed,Business US,514,2.08,17212,6.956,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.75756469
+32.331171,-96.634128,4400,FM1722-KG,5.46,173611,1722,Single Roadbed,Farm to Market,598,1.417,131703,5.46,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",72.67548155
+32.331171,-96.634128,8240,FM1722-RG,5.462,173611,1722,Right Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",84.37634017
+32.33043,-96.633085,4400,FM1722-KG,5.534,173611,1722,Single Roadbed,Farm to Market,598,1.491,131703,5.534,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",72.73011861
+32.33043,-96.633085,298734,1083057,0.43,256827,1083057,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",84.63715482
+32.33043,-96.633085,8239,FM1722-LG,5.538,173611,1722,Left Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.03545446
+32.332076,-96.634317,4400,FM1722-KG,5.4,173611,1722,Single Roadbed,Farm to Market,598,1.357,131703,5.4,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.24623329
+32.332076,-96.634317,8239,FM1722-LG,5.404,173611,1722,Left Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.502167
+32.332076,-96.634317,298752,1083073,0.261,256843,1083073,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",138.4071909
+32.328419,-96.63165,8239,FM1722-LG,5.699,173611,1722,Left Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",86.20147316
+32.328419,-96.63165,4400,FM1722-KG,5.696,173611,1722,Single Roadbed,Farm to Market,598,1.653,131703,5.696,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",93.63830017
+32.328419,-96.63165,298726,1083052,0.342,256822,1083052,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.7256315
+32.378933,-96.853936,2418,FM0066-KG,32.564,175764,66,Single Roadbed,Farm to Market,598,0.274,59602,17.922,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.9711649
+32.378933,-96.853936,480778,1250320,0,418920,1250320,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.8005297
+32.380499,-96.861126,4085,FM1446-KG,7.589,173324,1446,Single Roadbed,Farm to Market,578,1.021,116002,7.589,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",95.17720403
+32.381144,-96.856647,4085,FM1446-KG,7.861,173324,1446,Single Roadbed,Farm to Market,578,1.293,116002,7.861,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",77.63635858
+32.381144,-96.856647,480280,1249827,0.132,418436,1249827,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.3440535
+32.38835,-96.835006,3439,FM0878-KG,0.784,175991,878,Single Roadbed,Farm to Market,584,0.738,59604,0.784,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",23.75868629
+32.379301,-96.854352,2418,FM0066-KG,32.558,175764,66,Single Roadbed,Farm to Market,598,0.268,59602,17.916,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",79.99583735
+32.379301,-96.854352,480778,1250320,0.015,418920,1250320,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.9227478
+32.390608,-96.84048,3439,FM0878-KG,0.429,175991,878,Single Roadbed,Farm to Market,584,0.383,59604,0.429,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.67477063
+32.390608,-96.84048,480797,1250340,0.286,418938,1250340,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",81.23236897
+32.393371,-96.843815,1572460528,FM0813-KG,0.07,175925,813,Single Roadbed,Farm to Market,586,0.021,113901,1.07,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.17066548
+32.393371,-96.843815,480216,1249760,0.435,418373,1249760,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",129.8658397
+32.3849,-96.844229,48116,264088,7.061,167178,264088,Single Roadbed,Local City Street,,,B00275,7.061,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.2448363
+32.39152,-96.841096,3439,FM0878-KG,0.369,175991,878,Single Roadbed,Farm to Market,584,0.323,59604,0.369,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.0925253
+32.38397,-96.842551,1547822495,BU0287R-KG,4.83,160026,287,Single Roadbed,Business US,586,0.697,17211,6.33,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.4272397
+32.383779,-96.841918,48301,264089,7.03,167179,264089,Single Roadbed,Local City Street,,,B00485,7.03,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",14.57635597
+32.383779,-96.841918,480418,1249964,0,418570,1249964,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.01877677
+32.383779,-96.841918,480542,1250085,0.142,418688,1250085,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",146.232089
+32.398042,-96.863902,1547822495,BU0287R-KG,3.231,160026,287,Single Roadbed,Business US,584,1.101,17211,4.731,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.66779199
+32.398042,-96.863902,480646,1250189,0.091,418791,1250189,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.68437069
+32.398042,-96.863902,480780,1250322,0.173,418922,1250322,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.6436537
+32.388413,-96.828202,480285,1249832,0,418441,1249832,Single Roadbed,Local City Street,,,LY3129,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",44.3248428
+32.388413,-96.828202,3439,FM0878-KG,1.195,175991,878,Single Roadbed,Farm to Market,584,1.149,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.08652808
+32.388792,-96.829256,480511,1250057,0.026,418661,1250057,Single Roadbed,Local City Street,,,LY3349,0.026,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.89380913
+32.388792,-96.829256,3439,FM0878-KG,1.14,175991,878,Single Roadbed,Farm to Market,584,1.094,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.2324658
+32.387765,-96.832469,3439,FM0878-KG,0.942,175991,878,Single Roadbed,Farm to Market,584,0.896,59604,0.942,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.20641511
+32.37805,-96.85502,480381,1249926,0.166,418535,1249926,Single Roadbed,Local City Street,,,LY3223,0.166,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.86217385
+32.37805,-96.85502,480670,1250215,0.194,418816,1250215,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.95123007
+32.380004,-96.853273,480757,1250298,0.015,418899,1250298,Single Roadbed,Local City Street,,,LY3587,0.015,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.14496012
+32.380004,-96.853273,2418,FM0066-KG,32.639,175764,66,Single Roadbed,Farm to Market,598,0.349,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.67685055
+32.397854,-96.863481,1547822495,BU0287R-KG,3.258,160026,287,Single Roadbed,Business US,584,1.128,17211,4.758,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.02156605
+32.388255,-96.829482,3439,FM0878-KG,1.119,175991,878,Single Roadbed,Farm to Market,584,1.073,59604,1.119,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",30.82272014
+32.388255,-96.829482,480511,1250057,0,418661,1250057,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",71.2016166
+32.388255,-96.829482,480633,1250176,0.855,418778,1250176,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",149.7492724
+32.394795,-96.842719,1572460528,FM0813-KG,0.187,175925,813,Single Roadbed,Farm to Market,586,0.138,113901,1.187,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",14.33489086
+32.394795,-96.842719,480630,1250173,0.003,418775,1250173,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",24.43648118
+32.394795,-96.842719,480218,1249762,0.277,418375,1249762,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",43.33994467
+30.750479,-98.677538,6451,RM0152-KG,27.651,153897,152,Single Roadbed,Ranch to Market,484,0.608,39609,18.556,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",68.27890534
+30.750479,-98.677538,378878,1157062,0.694,328606,1157062,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.9130109
+32.391362,-96.842375,3439,FM0878-KG,0.307,175991,878,Single Roadbed,Farm to Market,584,0.261,59604,0.307,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.58558916
+32.391362,-96.842375,480288,1249835,0,418444,1249835,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.5434985
+32.391362,-96.842375,480570,1250113,0.218,418716,1250113,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.0348007
+32.391362,-96.842375,480575,1250117,0.482,418720,1250117,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.4105961
+32.381104,-96.85431,4085,FM1446-KG,7.997,173324,1446,Single Roadbed,Farm to Market,578,1.429,116002,7.997,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.54723959
+32.381104,-96.85431,480757,1250298,0.115,418899,1250298,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.34856298
+32.381104,-96.85431,480372,1249917,0.056,418526,1249917,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.157807
+28.793905,-96.993614,476699,1246562,0.678,415345,1246562,Single Roadbed,Local City Street,,,LY0014,0.678,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.56057906
+28.805618,-97.004659,476982,1246807,0.016,415585,1246807,Single Roadbed,Local City Street,,,LY0254,0.016,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",2.425172703
+28.805618,-97.004659,2209,BU0059T-KG,7.857,160035,59,Single Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.43038251
+28.805618,-97.004659,1634774402,258204,0,164312,258204,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.47479448
+28.802954,-97.007578,2209,BU0059T-KG,8.148,160035,59,Single Roadbed,Business US,638,0.271,8919,9.612,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",72.61108586
+28.802954,-97.007578,477269,1247077,0.39,415834,1247077,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.5133989
+28.802245,-97.008411,2209,BU0059T-KG,8.212,160035,59,Single Roadbed,Business US,638,0.335,8919,9.676,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.20214499
+28.802245,-97.008411,477273,1247081,0.265,415838,1247081,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.4788677
+32.321389,-96.622275,3797,FM1183-KG,0.528,173051,1183,Single Roadbed,Farm to Market,598,0.39,131701,2.255,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",93.96295152
+32.321389,-96.622275,298738,1083061,0.136,256831,1083061,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",96.88252847
+30.633585,-97.674681,495693,1105670,0.245,278726,1105670,Single Roadbed,Local City Street,,,LK2922,0.245,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.4262907
+30.633585,-97.674681,6695,SH0029-KG,133.606,154196,29,Single Roadbed,State Highway,554,1.083,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.1551872
+32.944005,-99.800129,1632873945,SH0006-KG,106.796,154272,6,Single Roadbed,State Highway,270,1.161,10701,0.203,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.54328465
+32.944005,-99.800129,463700,1234457,0.649,403501,1234457,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",80.43060644
+30.669308,-96.370517,2137,BS0006R-KG,4.97,159939,6,Single Roadbed,Business State,410,0.947,5001,1.371,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.5890241
+30.669308,-96.370517,248739,1035502,0.069,210686,1035502,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.884643
+30.669308,-96.370517,491112,1262867,0,428906,1262867,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.6370113
+30.674318,-96.368503,2551,FM0158-KG,1.268,173465,158,Single Roadbed,Farm to Market,616,0.064,21203,0.083,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.46589978
+30.674318,-96.368503,249129,1035879,0.075,211055,1035879,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.3568977
+30.675388,-96.376821,249139,1035889,0.089,211064,1035889,Single Roadbed,Local City Street,,,LD5055,0.089,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",78.20466837
+30.675388,-96.376821,2551,FM0158-KG,0.769,173465,158,Single Roadbed,Farm to Market,614,0.726,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.4413014
+30.67442,-96.373509,45188,260887,0.395,165648,260887,Single Roadbed,Local City Street,,,B00204,0.395,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.90650327
+30.67442,-96.373509,2551,FM0158-KG,0.972,173465,158,Single Roadbed,Farm to Market,614,0.929,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.85051367
+30.67442,-96.373509,45187,260884,0.393,165647,260884,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",128.8888816
+32.944892,-99.802491,1632873945,SH0006-KG,106.635,154272,6,Single Roadbed,State Highway,270,1,10701,0.043,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.5546932
+32.944892,-99.802491,463637,1234400,0.032,403448,1234400,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.4379982
+32.944892,-99.802491,1632873987,SH0006-LG,106.626,154272,6,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.9739539
+33.194826,-96.613091,389002,1163432,0.766,334785,1163432,Single Roadbed,Local City Street,,,LP9195,0.766,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.166268
+33.194465,-96.613101,389002,1163432,0.752,334785,1163432,Single Roadbed,Local City Street,,,LP9195,0.752,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.7129282
+33.192487,-96.613369,389002,1163432,0.617,334785,1163432,Single Roadbed,Local City Street,,,LP9195,0.617,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.24771259
+33.192487,-96.613369,390726,1165167,0.116,336474,1165167,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",79.5283361
+33.192487,-96.613369,1631232521,SH0005-KG,25.317,154260,5,Single Roadbed,State Highway,238,1.29,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.3204952
+33.194641,-96.612882,1631232521,SH0005-KG,25.165,154260,5,Single Roadbed,State Highway,238,1.138,4705,17.26,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.1370563
+33.193744,-96.613121,389002,1163432,0.702,334785,1163432,Single Roadbed,Local City Street,,,LP9195,0.702,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.9487122
+33.193744,-96.613121,388755,1163188,0.118,334548,1163188,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.1955937
+33.193744,-96.613121,388640,1163075,0.114,334435,1163075,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.0535179
+33.193744,-96.613121,1631232521,SH0005-KG,25.232,154260,5,Single Roadbed,State Highway,238,1.205,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.9754322
+32.089529,-96.468557,6687,SH0022-KG,111.382,154157,22,Single Roadbed,State Highway,626,0.268,12105,25.598,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.4751211
+32.089529,-96.468557,1631059360,BS0031D-KG,5.272,1631059360,31,Single Roadbed,Business State,622,1.373,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",149.3923966
+32.347187,-97.386144,1634256444,SH0171-KG,39.337,154118,171,Single Roadbed,State Highway,308,1.433,1901,25.735,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",26.14654686
+32.347187,-97.386144,1550181564,BU0067M-KG,4.404,160017,67,Single Roadbed,Business US,452,1.26,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.96105634
+32.347187,-97.386144,1634515324,SH0171-LG,39.356,154118,171,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.5625545
+32.347187,-97.386144,7790,BU0067M-LG,4.367,160017,67,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.4942114
+31.457542,-100.452578,2213,BU0067H-KG,0.653,159999,67,Single Roadbed,Business US,360,0.608,7709,2.749,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.4210601
+31.457542,-100.452578,43876,253536,11.784,161879,253536,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.950672
+29.092659,-97.286589,271342,1057218,0.301,231903,1057218,Single Roadbed,Local City Street,,,LF5972,0.301,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.43574103
+29.092659,-97.286589,1599259023,US0087-KG,740.556,154782,87,Single Roadbed,US Highway,782,0.135,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.64198877
+29.092474,-97.286181,1599259023,US0087-KG,740.584,154782,87,Single Roadbed,US Highway,782,0.163,14309,18.241,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.05636342
+29.091749,-97.285988,40246,258103,2.956,164238,258103,Single Roadbed,Local City Street,,,D00300,2.955,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",47.0093195
+29.092102,-97.285366,1599259023,US0087-KG,740.639,154782,87,Single Roadbed,US Highway,782,0.218,14309,18.296,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",29.09069134
+29.092102,-97.285366,40246,258103,2.918,164238,258103,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.898863
+29.092882,-97.289873,271281,1057168,0.033,231855,1057168,Single Roadbed,Local City Street,,,LF5924,0.033,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.20486989
+29.085421,-97.285066,2665,FM0236-KG,0.513,174265,236,Single Roadbed,Farm to Market,520,0.494,84201,1.513,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",36.55404221
+29.085421,-97.285066,271374,1057245,0.101,231930,1057245,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.43739328
+29.085421,-97.285066,271369,1057240,0.316,231925,1057240,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",131.8368249
+29.093588,-97.288629,271335,1057214,0.269,231899,1057214,Single Roadbed,Local City Street,,,LF5968,0.269,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.6102946
+29.093588,-97.288629,1599259023,US0087-KG,740.417,154782,87,Single Roadbed,US Highway,780,2.011,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.1750457
+29.08562,-97.2865,1599318240,1057179,0.323,231865,1057179,Single Roadbed,Local City Street,,,J90255,0.323,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.48876609
+29.08562,-97.2865,2665,FM0236-KG,0.428,174265,236,Single Roadbed,Farm to Market,520,0.409,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",80.92310933
+29.08562,-97.2865,1599323157,1057179,0.339,231865,1057179,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.8739472
+29.086553,-97.28895,2665,FM0236-KG,0.267,174265,236,Single Roadbed,Farm to Market,520,0.248,84201,1.267,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.56404128
+29.086553,-97.28895,271254,1057143,0.159,231830,1057143,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.551885
+29.095931,-97.288384,41020,258114,2.711,164246,258114,Single Roadbed,Local City Street,,,D00514,2.711,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.0641554
+31.454243,-100.441161,1599258974,US0087-KG,441.207,154782,87,Single Roadbed,US Highway,468,0.9,6907,36.92,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.77594618
+31.454243,-100.441161,438562,1211058,0.129,380656,1211058,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.45588712
+31.442585,-100.43488,46248,253429,2.67,161825,253429,Single Roadbed,Local City Street,,,B00330,2.67,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",68.58924698
+31.442585,-100.43488,3842,FM1223-KG,0.159,173091,1223,Single Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.27360614
+31.442585,-100.43488,7328,SS0126-KG,0,154538,126,Single Roadbed,State Spur,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.3647013
+31.442585,-100.43488,437666,1210265,0,379905,1210265,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.5267553
+31.458029,-100.44143,438605,1211082,1.304,380679,1211082,Single Roadbed,Local City Street,,,LU5275,1.304,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.8153427
+31.458029,-100.44143,1599259033,US0087-LG,440.992,154782,87,Left Roadbed,US Highway,468,0.664,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.806352
+31.458029,-100.44143,48103,253456,0,161838,253456,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.6971201
+31.460538,-100.442942,1599258974,US0087-KG,440.759,154782,87,Single Roadbed,US Highway,468,0.452,6907,36.472,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.56021992
+31.460538,-100.442942,45880,253434,2.234,161829,253434,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.82351276
+31.460538,-100.442942,2213,BU0067H-KG,0.05,159999,67,Single Roadbed,Business US,360,0.005,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.85099264
+31.459101,-100.442288,1599258974,US0087-KG,440.865,154782,87,Single Roadbed,US Highway,468,0.558,6907,36.578,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",29.35524365
+31.459101,-100.442288,438617,1211092,1.765,380687,1211092,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.80628834
+30.167569,-96.393498,8942,SH0105-RG,0.157,154061,105,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.52061994
+30.167569,-96.393498,6812,SH0105-KG,0.157,154061,105,Single Roadbed,State Highway,,,31507,13.246,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.9412189
+30.158993,-96.397668,1576259209,BS0036J-KG,2.552,159934,36,Single Roadbed,Business State,444,0.675,18701,0.543,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.3788133
+30.160489,-96.400327,2848,FM0389-KG,20.364,175485,389,Single Roadbed,Farm to Market,476,1.092,31508,13.066,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.98470141
+30.160489,-96.400327,245133,1031982,0.314,207256,1031982,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.7151442
+30.166136,-96.403085,7915,BU0290F-LG,1.257,159983,290,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.29686537
+30.166136,-96.403085,1548790197,BU0290F-KG,1.293,159983,290,Single Roadbed,Business US,444,1.18,11409,21.292,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.80844603
+30.16262,-96.398611,1576259209,BS0036J-KG,2.296,159934,36,Single Roadbed,Business State,444,0.419,18701,0.287,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.8718292
+30.165537,-96.400195,245095,1031945,0.248,207219,1031945,Single Roadbed,Local City Street,,,LD1210,0.248,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.00935358
+30.165537,-96.400195,1576259209,BS0036J-KG,2.079,159934,36,Single Roadbed,Business State,444,0.202,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.4336624
+30.165537,-96.400195,245200,1032051,0,207325,1032051,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.1376698
+30.157476,-96.393971,49330,261164,0.205,165835,261164,Single Roadbed,Local City Street,,,B00985,0.205,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",77.91886078
+30.162541,-96.394668,1548790197,BU0290F-KG,2.046,159983,290,Single Roadbed,Business US,446,0.282,11410,17.546,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",43.06204557
+30.162541,-96.394668,244966,1031821,0.11,207096,1031821,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",99.99428263
+30.166,-96.396238,245142,1031991,0,207265,1031991,Single Roadbed,Local City Street,,,LD1256,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.23052843
+30.166,-96.396238,1548790197,BU0290F-KG,1.814,159983,290,Single Roadbed,Business US,446,0.05,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.0840437
+30.167111,-96.397662,1548790197,BU0290F-KG,1.635,159983,290,Single Roadbed,Business US,444,1.522,11409,21.635,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.453836713
+30.167111,-96.397662,7917,BU0290F-RG,1.608,159983,290,Right Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.8499867
+30.167111,-96.397662,245140,1031988,0.925,207262,1031988,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.6195467
+30.167111,-96.397662,7915,BU0290F-LG,1.589,159983,290,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.6059864
+30.167111,-96.397662,245131,1031980,0.859,207254,1031980,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.088385
+30.16364,-96.39547,245111,1031961,0.045,207235,1031961,Single Roadbed,Local City Street,,,LD1226,0.045,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.5898855
+30.16364,-96.39547,1548790197,BU0290F-KG,1.968,159983,290,Single Roadbed,Business US,446,0.204,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.0173873
+30.162091,-96.399247,245215,1032060,0.338,207334,1032060,Single Roadbed,Local City Street,,,LD1325,0.338,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.0952621
+30.162091,-96.399247,1576259209,BS0036J-KG,2.322,159934,36,Single Roadbed,Business State,444,0.445,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.209881
+30.157908,-96.406623,245201,1032052,0.108,207326,1032052,Single Roadbed,Local City Street,,,LD1317,0.108,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.98779734
+30.157908,-96.406623,2848,FM0389-KG,19.86,175485,389,Single Roadbed,Farm to Market,476,0.588,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.5699146
+31.059073,-97.462997,1575321076,SH0317-KG,43.7,154211,317,Single Roadbed,State Highway,388,1.811,1505,20.205,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.91195759
+31.066073,-97.45995,1575321076,SH0317-KG,43.186,154211,317,Single Roadbed,State Highway,388,1.297,39804,15.305,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",42.43554597
+31.066073,-97.45995,241124,1028202,0.161,203580,1028202,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.2123833
+31.052608,-97.465616,1575321076,SH0317-KG,44.17,154211,317,Single Roadbed,State Highway,390,0.23,1505,20.676,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.1347154
+31.052608,-97.465616,241148,1028217,0.2,203595,1028217,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.5580168
+31.061563,-97.460023,2458,FM0093-KG,6.397,176046,93,Single Roadbed,Farm to Market,,,1505,0.099,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.70404154
+31.061563,-97.460023,49257,253999,0.496,162150,253999,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.6305904
+31.059431,-97.462782,1575321076,SH0317-KG,43.673,154211,317,Single Roadbed,State Highway,388,1.784,1505,20.178,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.02132556
+30.184112,-96.598431,2849,FM0390-KG,0.869,175487,390,Single Roadbed,Farm to Market,444,0.805,33808,1.047,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.7781912
+30.180774,-96.593529,7327,SS0125-KG,0.188,154537,125,Single Roadbed,State Spur,604,0.183,11415,0.188,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",133.071606
+30.180053,-96.593546,7327,SS0125-KG,0.221,154537,125,Single Roadbed,State Spur,604,0.216,11415,0.221,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.77236082
+28.66509,-97.388341,7574,US0183-KG,448.162,154747,183,Single Roadbed,US Highway,642,0.358,15504,0.216,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",48.92738819
+28.66509,-97.388341,1599342309,1106934,0.255,279955,1106934,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.4731007
+28.66509,-97.388341,1599342181,1106919,0.257,279941,1106919,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.3602633
+30.946976,-97.536601,1599253123,FM2268-KG,0.744,174175,2268,Single Roadbed,Farm to Market,546,0.65,213601,10.631,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",96.25916676
+30.946976,-97.536601,437152,1209823,0.22,379473,1209823,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",149.8438844
+32.449512,-99.739768,49243,253675,2.721,161977,253675,Single Roadbed,Local City Street,,,B13260,2.72,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.4247898
+27.506707,-99.507966,1638748883,BI0035A-KG,3.151,159906,35,Single Roadbed,Business IH,634,0.192,1806,20.268,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",6.064497182
+27.506707,-99.507966,1635293004,265980,0.149,168239,265980,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.3590659
+27.506707,-99.507966,1635293002,265903,21.668,168208,265903,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",149.6931654
+29.882017,-97.940185,455343,1226399,0,395739,1226399,Single Roadbed,Local City Street,,,LW0356,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.68532272
+29.882017,-97.940185,1635379322,SL0082-LG,2.159,154519,82,Left Roadbed,State Loop,466,0.187,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.84786179
+29.882562,-97.940655,1631145967,SL0082-KG,2.137,154519,82,Single Roadbed,State Loop,466,0.146,36601,2.225,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.578412
+29.883464,-97.940584,1631145967,SL0082-KG,2.076,154519,82,Single Roadbed,State Loop,466,0.085,1609,2.096,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.48956675
+29.883464,-97.940584,1635379322,SL0082-LG,2.058,154519,82,Left Roadbed,State Loop,466,0.086,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.3525139
+29.883464,-97.940584,1490375949,SH0080-KG,0.055,154293,80,Single Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.9213299
+29.310698,-96.098594,8815,SH0060-LG,23.911,154273,60,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.2329088
+29.310698,-96.098594,483269,1252737,0.02,421193,1252737,Single Roadbed,Local City Street,,,LY5881,0.02,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",108.2183245
+29.310698,-96.098594,1571161877,SH0060-KG,23.959,154273,60,Single Roadbed,State Highway,506,1.412,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.1316418
+29.309963,-96.097997,8817,SH0060-RG,24.044,154273,60,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.60195849
+29.309963,-96.097997,1571161877,SH0060-KG,24.006,154273,60,Single Roadbed,State Highway,506,1.459,24101,1.334,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",86.95114214
+29.309963,-96.097997,483268,1252736,0,421192,1252736,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.81477608
+29.309963,-96.097997,8815,SH0060-LG,23.958,154273,60,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.82296794
+29.309779,-96.097796,8817,SH0060-RG,24.036,154273,60,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.6630359
+29.309779,-96.097796,1571161877,SH0060-KG,24.021,154273,60,Single Roadbed,State Highway,506,1.474,24101,1.349,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",131.9201623
+29.315678,-96.101128,1571161877,SH0060-KG,23.303,154273,60,Single Roadbed,State Highway,506,0.756,8910,38.013,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",36.46058882
+29.31598,-96.100914,1571161877,SH0060-KG,23.279,154273,60,Single Roadbed,State Highway,506,0.732,8910,37.989,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.0453446
+29.31081,-96.103736,483335,1252800,0.398,421256,1252800,Single Roadbed,Local City Street,,,LY5944,0.398,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",23.57430937
+29.31081,-96.103736,7782,BU0059R-RG,7.378,160027,59,Right Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.2872715
+29.31081,-96.103736,2206,BU0059R-KG,7.372,160027,59,Single Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.588394
+29.31081,-96.103736,7781,BU0059R-LG,7.371,160027,59,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.8452701
+29.31081,-96.103736,8817,SH0060-RG,23.671,154273,60,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.3226408
+29.31081,-96.103736,1571161877,SH0060-KG,23.673,154273,60,Single Roadbed,State Highway,506,1.126,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.3226408
+29.315452,-96.101536,483146,1252614,0.149,421072,1252614,Single Roadbed,Local City Street,,,LY5760,0.149,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.5112715
+29.315452,-96.101536,483244,1252711,0.037,421168,1252711,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.662925
+29.315452,-96.101536,1571161877,SH0060-KG,23.33,154273,60,Single Roadbed,State Highway,506,0.783,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.5757916
+29.32618,-96.097126,1571161877,SH0060-KG,22.542,154273,60,Single Roadbed,State Highway,504,1.987,8910,37.252,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.31086972
+29.32618,-96.097126,483141,1252608,0.08,421066,1252608,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.4893861
+28.027157,-97.04992,7727,BS0035L-LG,2.535,159936,35,Left Roadbed,Business State,664,0.01,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",41.50594158
+28.027157,-97.04992,2150,BS0035L-KG,2.524,159936,35,Single Roadbed,Business State,664,0.013,18004,8.424,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.23522772
+28.027157,-97.04992,7728,BS0035L-RG,2.519,159936,35,Right Roadbed,Business State,664,0.015,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.23567738
+32.121385,-99.172075,270686,1056620,0.065,231314,1056620,Single Roadbed,Local City Street,,,LF5381,0.065,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",44.67650506
+32.121385,-99.172075,1599251006,SH0036-KG,42.374,154241,36,Single Roadbed,State Highway,336,0.419,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",75.66508486
+32.97504,-96.33083,435957,1208617,0.012,378289,1208617,Single Roadbed,Local City Street,,,LU2857,0.012,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.2694431
+32.97504,-96.33083,435888,1208545,0.264,378223,1208545,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.7670113
+30.633755,-97.673635,322075,1105161,0.198,278231,1105161,Single Roadbed,Local City Street,,,LK2427,0.198,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",135.2096374
+30.633755,-97.673635,322124,1105204,0.383,278272,1105204,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.1744559
+33.139351,-96.106384,1599353912,SH0034-LG,39.296,154227,34,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.57140005
+33.139351,-96.106384,7401,SS0302-KG,1.843,154620,302,Single Roadbed,State Spur,628,1.825,907,0.016,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.08951975
+33.139351,-96.106384,9528,SS0302-RG,1.887,154620,302,Right Roadbed,State Spur,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.1645456
+33.139351,-96.106384,2000005257,SH0034-KG,39.323,154227,34,Single Roadbed,State Highway,278,1.862,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.0848025
+33.140391,-96.112352,328625,1111528,0.207,284437,1111528,Single Roadbed,Local City Street,,,LK8706,0.207,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",63.37109587
+32.767449,-98.299092,1542762700,182AA0256,0.621,53592,256,Single Roadbed,County roads,,,AA0256,0.621,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.15639034
+32.767449,-98.299092,1542740121,182AA0268,0.108,55861,268,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.8617502
+32.755838,-98.904482,244779,1031641,1.082,206919,1031641,Single Roadbed,Local City Street,,,LD0910,1.082,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.7938643
+30.277271,-97.701115,228484,1015841,0.554,191601,1015841,Single Roadbed,Local City Street,,,LB5546,0.554,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.41688129
+30.277271,-97.701115,1640649618,SL0111-KG,0.402,154325,111,Single Roadbed,State Loop,438,0.349,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.7478898
+33.247795,-100.574233,359586,1137958,0.017,310090,1137958,Single Roadbed,Local City Street,,,LN4422,0.017,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.765309793
+33.247795,-100.574233,359611,1137983,0.19,310115,1137983,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",75.08337489
+33.247795,-100.574233,3685,FM1083-KG,0.028,172945,1083,Single Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.85751999
+33.247795,-100.574233,359596,1137968,0.219,310100,1137968,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.85292401
+32.744762,-97.330774,1638144090,IH0030-KG,14.443,153708,30,Single Roadbed,Interstate,14,0.463,106801,23.214,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",14.87899533
+32.744762,-97.330774,1638316808,IH0030-RG,14.961,153708,30,Right Roadbed,Interstate,14,0.462,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",21.48277744
+32.744762,-97.330774,1634428856,IH0030-LG,15.179,153708,30,Left Roadbed,Interstate,14,0.465,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",47.97235834
+32.744762,-97.330774,1513802563,IH0030-RP,0.082,153708,30,Ramp,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.43927994
+26.215301,-98.326006,1574456889,BU0083S-KG,7.171,160032,83,Single Roadbed,Business US,504,1.25,3903,1.535,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.88175495
+26.215301,-98.326006,6814,SH0107-KG,1.011,154062,107,Single Roadbed,State Highway,504,0.886,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",68.21105215
+26.215301,-98.326006,399437,1173654,0.313,344674,1173654,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.4489981
+27.045225,-99.443561,2249,BU0083N-KG,0.582,160020,83,Single Roadbed,Business US,666,0.551,3808,0.582,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",9.988140434
+27.045225,-99.443561,172385,253AA1223,0.048,13073,1223,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",36.34680802
+27.045225,-99.443561,183607,253AA1601,0.001,28377,1601,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.3980494
+32.732692,-97.318408,1570233272,1090481,3.908,264012,1090481,Single Roadbed,Local City Street,,,LI8158,3.908,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",19.72829277
+32.732692,-97.318408,1570233277,1095827,0.04,269127,1095827,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",82.8610471
+30.888529,-97.924779,7183,SL0308-KG,0.402,154417,308,Single Roadbed,State Loop,524,0.338,27305,1.402,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.35099537
+30.888529,-97.924779,124260,027AA0710,0.183,126831,710,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",64.3060608
+28.401381,-97.748365,,,,,,,,,,,,,
+27.506529,-99.507156,1638748885,BI0035A-LG,3.169,159906,35,Left Roadbed,Business IH,634,0.14,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.12239125
+27.506529,-99.507156,1638748883,BI0035A-KG,3.099,159906,35,Single Roadbed,Business IH,634,0.14,1806,20.215,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.10274591
+27.506529,-99.507156,1635293002,265903,21.68,168208,265903,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.2782336
+27.506529,-99.507156,1635293004,265980,0.178,168239,265980,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",126.6284467
+30.678094,-97.943817,,,,,,,,,,,,,
+28.402108,-97.748968,1571082240,BU0181J-KG,5.885,160002,181,Single Roadbed,Business US,570,1.871,10107,11.298,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.2014335
+28.402108,-97.748968,1599346998,260366,3.772,165376,260366,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.0683687
+29.94475,-99.037226,6471,RM0480-KG,0.394,154028,480,Single Roadbed,Ranch to Market,464,0.36,85501,1.496,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",21.69015452
+29.94475,-99.037226,167692,133AA0163,0,29429,163,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.67826331
+29.988519,-97.87717,366718,1144970,0.345,316919,1144970,Single Roadbed,Local City Street,,,LO1292,0.345,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.81990967
+29.988519,-97.87717,1631232125,RM0150-KG,20.732,153896,150,Single Roadbed,Ranch to Market,468,0.824,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.81518579
+29.988519,-97.87717,366636,1144887,0,316837,1144887,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.8341996
+30.533609,-96.691157,251712,1038470,0.049,213587,1038470,Single Roadbed,Local City Street,,,LD7602,0.049,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",45.66086458
+30.533609,-96.691157,7086,SL0083-KG,0.41,154520,83,Single Roadbed,State Loop,598,0.386,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.7781829
+26.214985,-98.324006,1574456889,BU0083S-KG,7.298,160032,83,Single Roadbed,Business US,504,1.377,3903,1.661,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",71.8108344
+30.710466,-101.200734,148588,053AA5024,0.294,103104,5024,Single Roadbed,County roads,,,AA5024,0.294,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.719188
+30.710466,-101.200734,7236,SL0466-KG,0.818,154470,466,Single Roadbed,State Loop,326,0.818,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.60082978
+32.38643,-96.849295,1547822495,BU0287R-KG,4.402,160026,287,Single Roadbed,Business US,586,0.269,17211,5.903,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",23.92170196
+32.38643,-96.849295,1670457664,US0077-KG,70.674,154774,77,Single Roadbed,US Highway,304,1.55,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",37.8022854
+32.38643,-96.849295,1671062458,US0077-RG,70.662,154774,77,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.0055083
+31.19532,-98.716925,455749,1226846,0.251,396174,1226846,Single Roadbed,Local City Street,,,LW0791,0.251,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.836003
+31.19532,-98.716925,3628,FM1031-KG,0.036,172890,1031,Single Roadbed,Farm to Market,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",133.7569082
+32.756451,-99.896874,7538,US0083-KG,288.236,154779,83,Single Roadbed,US Highway,302,1.289,3304,21.155,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.92918038
+32.756451,-99.896874,10067,US0083-RG,288.284,154779,83,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.3869093
+32.756451,-99.896874,10046,US0083-LG,288.265,154779,83,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.8372902
+30.570353,-97.410071,39459,258968,3.119,164672,258968,Single Roadbed,Local City Street,,,C00845,3.119,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.3225198
+30.570353,-97.410071,6794,SH0095-KG,35.573,154307,95,Single Roadbed,State Highway,422,0.344,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.6909606
+29.989444,-97.879854,1631232125,RM0150-KG,20.563,153896,150,Single Roadbed,Ranch to Market,468,0.655,80504,30.786,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.207796
+29.989444,-97.879854,1631232169,1144889,0.019,316839,1144889,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.9239959
+26.162569,-97.990774,482233,1251721,0.242,420245,1251721,Single Roadbed,Local City Street,,,LY4933,0.242,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",19.50691514
+26.162569,-97.990774,2452,FM0088-KG,22.826,175993,88,Single Roadbed,Farm to Market,726,1.761,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",21.64420051
+26.162569,-97.990774,1599302100,1251289,0.069,419847,1251289,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.79246903
+31.894675,-100.488565,7146,SL0229-KG,1.11,154382,229,Single Roadbed,State Loop,370,1.065,40603,1.11,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.71811846
+30.275254,-97.730977,1629677542,IH0035-RP,0.225,153710,35,Ramp,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.73420387
+30.275254,-97.730977,1629763208,IH0035-RP,0.008,153710,35,Ramp,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",45.54805187
+30.275254,-97.730977,1672187372,IH0035-AG,234.969,153710,35,Right Frontage,Interstate,235,0.312,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",55.21703377
+30.275254,-97.730977,1599355656,IH0035-RG,234.87,153710,35,Right Roadbed,Interstate,235,0.313,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.77484942
+30.275254,-97.730977,1629677490,IH0035-TA,0.058,153710,35,Turnaround,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",79.64568864
+30.275254,-97.730977,1599354530,IH0035-KG,234.854,153710,35,Single Roadbed,Interstate,235,0.311,1513,18.343,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",87.83708409
+30.275254,-97.730977,1599355589,IH0035-LG,234.849,153710,35,Left Roadbed,Interstate,235,0.311,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.7289726
+30.275254,-97.730977,231419,1018763,0.2,194451,1018763,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",136.4439007
+30.275254,-97.730977,228490,1015844,0,191604,1015844,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",136.4439007
+33.16553,-96.36008,2169,BS0078E-KG,1.688,159977,78,Single Roadbed,Business State,238,1.649,28004,2.688,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",54.18037563
+33.16553,-96.36008,300683,1085044,0,258727,1085044,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.2760084
+33.16553,-96.36008,300691,1085053,0.71,258735,1085053,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.2760084
+26.380692,-98.8228,10039,US0083-LG,791.547,154779,83,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",11.00269398
+29.579848,-98.690937,6671,SH0016-KG,347.291,154107,16,Single Roadbed,State Highway,580,1.214,29109,10.606,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.38332383
+29.579848,-98.690937,8610,SH0016-LG,347.292,154107,16,Left Roadbed,State Highway,580,1.212,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",21.69607123
+29.579848,-98.690937,8616,SH0016-RG,347.282,154107,16,Right Roadbed,State Highway,580,1.213,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",42.47661322
+31.402441,-100.089089,1639699303,FM0381-KG,18.335,175479,381,Single Roadbed,Farm to Market,364,1.918,82602,13.949,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",129.1662479
+26.380493,-98.822139,10039,US0083-LG,791.591,154779,83,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.23282301
+26.380493,-98.822139,43602,269613,0.034,170180,269613,Single Roadbed,Local City Street,,,C00525,0.034,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.69797657
+30.656393,-97.001437,432186,1204807,0.021,374633,1204807,Single Roadbed,Local City Street,,,LT9189,0.021,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.0738358
+30.656393,-97.001437,3479,FM0908-KG,12.487,176023,908,Single Roadbed,Farm to Market,580,0.486,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.1740089
+32.930878,-96.458325,47718,264207,0.019,167267,264207,Single Roadbed,Local City Street,,,C00615,0.019,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",57.52175431
+32.930878,-96.458325,6749,SH0066-KG,10.417,154280,66,Single Roadbed,State Highway,606,1.51,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.1073351
+32.930878,-96.458325,8834,SH0066-LG,10.422,154280,66,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.5926286
+32.930878,-96.458325,8836,SH0066-RG,10.413,154280,66,Right Roadbed,State Highway,606,1.52,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.4265433
+29.899172,-96.872738,1599249279,US0077-KG,258.533,154774,77,Single Roadbed,US Highway,496,1.404,26801,13.398,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.0230193
+29.899172,-96.872738,367884,1146156,0.122,318070,1146156,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.9956973
+32.348153,-97.386244,1634515324,SH0171-LG,39.29,154118,171,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.41785618
+32.348153,-97.386244,1634256444,SH0171-KG,39.272,154118,171,Single Roadbed,State Highway,308,1.368,1901,25.67,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.79399416
+32.348153,-97.386244,1550254059,1044910,0.041,219840,1044910,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.88982692
+29.681873,-96.906033,7557,US0090-KG,557.362,154783,90,Single Roadbed,US Highway,734,0.706,2603,16.744,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.9732684
+29.681873,-96.906033,457066,1228110,0.563,397399,1228110,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.8794623
+33.324606,-96.788824,256305,1042999,0.013,217984,1042999,Single Roadbed,Local City Street,,,LE2035,0.013,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.53882672
+33.324606,-96.788824,1630541284,FM0455-KG,73.761,175556,455,Single Roadbed,Farm to Market,602,1.289,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.16044713
+33.324606,-96.788824,256330,1043027,0.526,218011,1043027,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.02048416
+28.701984,-96.215586,,,,,,,,,,,,,
+32.754458,-97.330807,1672272156,BU0287P-KG,16.688,160022,287,Single Roadbed,Business US,270,0.761,1401,18.063,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",23.72201023
+32.754458,-97.330807,45088,267726,0.313,169185,267726,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.1043889
+32.754458,-97.330807,1670284943,1092391,0.219,265856,1092391,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",86.4918562
+28.701276,-96.216229,2149,BS0035H-KG,1.188,159931,35,Single Roadbed,Business State,546,1.148,17914,1.188,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",70.65950498
+30.046243,-99.139378,1635984026,SH0027-KG,20.163,154183,27,Single Roadbed,State Highway,466,0.148,14205,0.371,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.74459561
+30.046243,-99.139378,363124,1141448,0.082,313499,1141448,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",90.06805605
+31.955934,-95.272491,2796,FM0347-KG,3.642,175391,347,Single Roadbed,Farm to Market,318,0.33,37807,10.33,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",77.98611694
+31.955934,-95.272491,491825,1263619,0.939,429621,1263619,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.0580921
+29.300381,-94.788877,8895,SH0087-LG,257.556,154299,87,Left Roadbed,State Highway,580,0.909,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.7358941
+29.3016,-94.785501,8895,SH0087-LG,257.337,154299,87,Left Roadbed,State Highway,580,0.69,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.41616026
+29.3016,-94.785501,6786,SH0087-KG,257.335,154299,87,Single Roadbed,State Highway,580,0.69,5104,3.782,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.8422646
+29.3016,-94.785501,8902,SH0087-RG,257.334,154299,87,Right Roadbed,State Highway,580,0.69,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.6945145
+33.423339,-94.054114,9812,US0067-LG,0.707,154768,67,Left Roadbed,US Highway,212,0.698,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.0661186
+33.423339,-94.054114,469907,1240353,0.278,409300,1240353,Single Roadbed,Local City Street,,,LX3954,0.278,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.1605751
+33.423339,-94.054114,469906,1240353,0.262,409300,1240353,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.3431993
+29.30006,-94.79268,8902,SH0087-RG,257.779,154299,87,Right Roadbed,State Highway,580,1.135,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",19.39904166
+29.30006,-94.79268,6786,SH0087-KG,257.779,154299,87,Single Roadbed,State Highway,580,1.134,5104,4.226,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.77608718
+29.30006,-94.79268,8895,SH0087-LG,257.781,154299,87,Left Roadbed,State Highway,580,1.134,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.38241221
+33.011288,-94.36504,6662,SH0011-KG,154.962,154064,11,Single Roadbed,State Highway,758,1.189,21805,16.971,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",106.0325002
+33.011288,-94.36504,1515432479,FM0125-KG,1.521,173119,125,Single Roadbed,Farm to Market,728,1.476,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.2260696
+33.011288,-94.36504,377588,1155812,0.02,327384,1155812,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.2678001
+33.011288,-94.36504,377643,1155862,0.523,327434,1155862,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.3440802
+29.29473,-94.813174,8902,SH0087-RG,259.068,154299,87,Right Roadbed,State Highway,582,0.686,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",33.68337965
+29.29473,-94.813174,6786,SH0087-KG,259.068,154299,87,Single Roadbed,State Highway,582,0.686,5104,5.515,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.16756391
+29.29473,-94.813174,8895,SH0087-LG,259.07,154299,87,Left Roadbed,State Highway,582,0.686,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.8465527
+32.548637,-94.36854,7529,US0080-KG,139.375,154776,80,Single Roadbed,US Highway,806,0.222,9609,20.263,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.57706439
+32.548637,-94.36854,44273,264429,3.5,167420,264429,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.71860175
+32.761672,-94.352892,6730,SH0049-KG,50.358,154258,49,Single Roadbed,State Highway,742,0.168,22205,15.142,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.44701414
+32.761672,-94.352892,359674,1138043,0.015,310174,1138043,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",83.89386404
+32.761672,-94.352892,359707,1138067,0.496,310198,1138067,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.7334127
+32.757381,-94.345141,359738,1138096,0.276,310227,1138096,Single Roadbed,Local City Street,,,LN4559,0.276,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",26.51785521
+32.757381,-94.345141,359642,1138014,0,310145,1138014,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.10016249
+32.757381,-94.345141,2515,FM0134-KG,0.352,173212,134,Single Roadbed,Farm to Market,260,0.248,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.90528555
+29.299956,-94.793708,8902,SH0087-RG,257.84,154299,87,Right Roadbed,State Highway,580,1.196,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",81.03554304
+29.299956,-94.793708,6786,SH0087-KG,257.841,154299,87,Single Roadbed,State Highway,580,1.196,5104,4.288,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.1245025
+33.138433,-95.600656,1575912158,BU0067V-KG,4.498,160043,67,Single Roadbed,Business US,656,1.179,918,10.01,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.92118977
+33.138433,-95.600656,1575662699,SH0154-KG,20.922,154102,154,Single Roadbed,State Highway,668,1.03,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",84.75703898
+33.138433,-95.600656,1576011741,705021,0.01,1576011741,705021,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",95.06602045
+32.156918,-95.406168,2795,FM0346-KG,5.632,175382,346,Single Roadbed,Farm to Market,676,1.547,176401,1.547,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",43.69167175
+31.532468,-94.167817,,,,,,,,,,,,,
+31.528963,-94.105368,1599257621,SH0021-KG,286.486,154151,21,Single Roadbed,State Highway,816,2.059,11810,12.169,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.09790401
+31.528963,-94.105368,454029,1225159,0.007,394544,1225159,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",147.7332661
+31.526685,-94.107974,4935,FM2213-KG,0.24,174123,2213,Single Roadbed,Farm to Market,344,0.219,168002,0.24,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",135.0313284
+31.526685,-94.107974,454005,1225137,0.117,394522,1225137,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",135.7086666
+31.531764,-94.12041,,,,,,,,,,,,,
+30.092867,-93.735316,410844,1184191,0.071,354867,1184191,Single Roadbed,Local City Street,,,LR9336,0.071,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.57579951
+30.092867,-93.735316,2262,BU0090Y-KG,4.759,160049,90,Single Roadbed,Business US,442,0.614,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.3943539
+32.158198,-94.339028,2199,BU0059D-KG,1.673,160069,59,Single Roadbed,Business US,300,1.585,6312,1.703,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",67.11450125
+32.158198,-94.339028,254347,1040967,0.519,216025,1040967,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.18046465
+30.847791,-93.75995,1572281803,US0190-KG,575.345,154749,190,Single Roadbed,US Highway,866,1.604,24404,15.288,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.48361288
+30.847791,-93.75995,406918,1180624,0.083,351400,1180624,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.8772661
+29.770857,-94.684679,219104,1006555,0.056,182513,1006555,Single Roadbed,Local City Street,,,LA6440,0.056,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",93.74423522
+29.770857,-94.684679,6742,SH0061-KG,21.215,154274,61,Single Roadbed,State Highway,470,1.202,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.6423244
+30.093483,-93.738019,410853,1184193,0.07,354869,1184193,Single Roadbed,Local City Street,,,LR9338,0.07,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.05486042
+30.093483,-93.738019,2262,BU0090Y-KG,4.598,160049,90,Single Roadbed,Business US,442,0.453,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.9745662
+31.258439,-95.978035,,,,,,,,,,,,,
+29.581473,-95.761725,430046,1202683,0.398,372560,1202683,Single Roadbed,Local City Street,,,LT7101,0.398,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",104.154365
+29.581473,-95.761725,429985,1202625,0.38,372506,1202625,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.4419116
+31.35877,-94.749445,385323,1161062,0.283,332511,1161062,Single Roadbed,Local City Street,,,LP6913,0.283,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",47.66125222
+31.356099,-94.746873,7071,SL0036-KG,0.961,154435,36,Single Roadbed,State Loop,358,0.932,19907,0.961,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.6966181
+31.313496,-94.70847,2410,FM0058-KG,1.008,175681,58,Single Roadbed,Farm to Market,360,0.958,57602,1.012,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.5264893
+31.3363,-94.716659,2772,FM0325-KG,0.065,175171,325,Single Roadbed,Farm to Market,714,0.015,31905,1.065,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",86.30412316
+31.341995,-94.735891,7417,SS0339-KG,2.131,154636,339,Single Roadbed,State Spur,714,0.154,33604,2.254,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.9040427
+31.341995,-94.735891,385614,1161341,0.44,332784,1161341,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.250413
+31.339661,-94.735008,6793,SH0094-KG,51.695,154306,94,Single Roadbed,State Highway,742,1.759,31904,10.755,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.60405087
+31.339661,-94.735008,39225,254849,3.507,162652,254849,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",143.9271432
+31.333847,-94.738054,385220,1160969,0.725,332418,1160969,Single Roadbed,Local City Street,,,LP6820,0.725,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.19339342
+31.333847,-94.738054,2771,FM0324-KG,0.316,175161,324,Single Roadbed,Farm to Market,358,0.301,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.7714362
+31.334743,-94.738491,385380,1161116,0.259,332564,1161116,Single Roadbed,Local City Street,,,LP6966,0.259,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",36.54886086
+31.334743,-94.738491,2771,FM0324-KG,0.249,175161,324,Single Roadbed,Farm to Market,358,0.234,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.2762261
+31.320277,-94.727507,1672272112,BU0059G-KG,3.871,159993,59,Single Roadbed,Business US,388,1.879,17603,0.674,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.79569621
+31.358148,-94.75532,385168,1160918,0.765,332368,1160918,Single Roadbed,Local City Street,,,LP6770,0.765,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.60350373
+31.358148,-94.75532,7417,SS0339-KG,0.486,154636,339,Single Roadbed,State Spur,712,0.439,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.6995772
+31.603221,-94.655562,1548883703,BS0007N-KG,2.025,1548883624,7,Single Roadbed,Business State,,,11808,20.048,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.51834486
+31.603221,-94.655562,404210,1178018,0.454,348893,1178018,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.49001194
+31.603221,-94.655562,404086,1177902,0,348777,1177902,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.2641111
+31.602866,-94.655134,403882,1177701,0.071,348577,1177701,Single Roadbed,Local City Street,,,LR3022,0.071,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.67027965
+31.602866,-94.655134,404210,1178018,0.442,348893,1178018,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",76.28848888
+31.602866,-94.655134,1548883703,BS0007N-KG,2.059,1548883624,7,Single Roadbed,Business State,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.1687625
+31.602866,-94.655134,403881,1177701,0,348577,1177701,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.1361789
+31.602521,-94.653863,1548883703,BS0007N-KG,2.131,1548883624,7,Single Roadbed,Business State,,,11808,20.155,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.72436729
+31.602521,-94.653863,403883,1177701,0.143,348577,1177701,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.6655545
+31.602521,-94.653863,404206,1178014,0.395,348889,1178014,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.3651922
+31.605158,-94.65918,499967,1264631,0.019,430563,1264631,Single Roadbed,Local City Street,,,LZ5308,0.019,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.6347874
+31.605158,-94.65918,1548955178,BS0021P-KG,1.596,1548955178,21,Single Roadbed,Business State,780,0.815,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.3956957
+31.605158,-94.65918,404209,1178017,0.199,348892,1178017,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.3626049
+31.764785,-95.626068,7104,SL0127-KG,0.377,154333,127,Single Roadbed,State Loop,658,0.35,20513,0.607,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",121.7815455
+29.299471,-94.79617,8902,SH0087-RG,257.992,154299,87,Right Roadbed,State Highway,580,1.348,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",135.5038971
+29.393997,-94.902926,1488915462,SS0197-KG,0.623,1488915462,197,Single Roadbed,State Spur,498,0.006,38911,0.623,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",93.29277346
+29.393997,-94.902926,470385,1240746,0.69,409690,1240746,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.3441561
+32.359322,-95.297617,474806,1244848,0.186,413699,1244848,Single Roadbed,Local City Street,,,LX8362,0.186,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",41.66852784
+32.359322,-95.297617,9489,SS0147-RG,1.313,154551,147,Right Roadbed,State Spur,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.15392596
+32.359322,-95.297617,474342,1244436,0.132,413305,1244436,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.09113729
+32.359322,-95.297617,7342,SS0147-KG,1.309,154551,147,Single Roadbed,State Spur,674,1.257,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",95.08552809
+32.359322,-95.297617,9488,SS0147-LG,1.311,154551,147,Left Roadbed,State Spur,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",118.3452231
+32.347047,-95.298157,49218,254711,4.079,162570,254711,Single Roadbed,Local City Street,,,B01635,4.079,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",95.02875948
+32.347047,-95.298157,1631145622,SH0031-KG,120.58,154207,31,Single Roadbed,State Highway,698,1.437,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.4466879
+31.762737,-95.629176,7104,SL0127-KG,0.154,154333,127,Single Roadbed,State Loop,658,0.127,20513,0.384,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.85687052
+31.762737,-95.629176,411632,1184940,0,355590,1184940,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.4003012
+31.764227,-95.626896,7104,SL0127-KG,0.323,154333,127,Single Roadbed,State Loop,658,0.296,20513,0.553,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.73910141
+31.764227,-95.626896,6679,SH0019-KG,144.816,154134,19,Single Roadbed,State Highway,346,0.48,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.16783563
+31.764227,-95.626896,8625,SH0019-LG,144.825,154134,19,Left Roadbed,State Highway,346,0.479,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.16417903
+31.764227,-95.626896,46782,268994,0.369,169960,268994,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",72.76676147
+31.764227,-95.626896,411716,1185017,0.039,355667,1185017,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.2669343
+31.764227,-95.626896,8631,SH0019-RG,144.809,154134,19,Right Roadbed,State Highway,346,0.475,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.4363476
+30.711127,-94.933933,378778,1156964,0.121,328509,1156964,Single Roadbed,Local City Street,,,LP2905,0.121,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",3.374906041
+30.711127,-94.933933,1572281803,US0190-KG,500.054,154749,190,Single Roadbed,US Highway,786,0.823,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.22925608
+31.342445,-93.849156,1599251387,SH0184-KG,11.012,154130,184,Single Roadbed,State Highway,766,1.011,43101,11.011,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.08764824
+31.342445,-93.849156,333247,1115856,0.004,288671,1115856,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",46.88595227
+31.342445,-93.849156,333260,1115869,0.23,288684,1115869,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.9660238
+30.592253,-95.128649,259514,1046028,0.03,220920,1046028,Single Roadbed,Local City Street,,,LE4972,0.03,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.2098169
+32.874687,-95.764954,6677,SH0019-KG,58.549,154134,19,Single Roadbed,State Highway,260,1.775,10810,7.689,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",99.0031763
+32.874687,-95.764954,5507,FM2795-KG,3.644,174704,2795,Single Roadbed,Farm to Market,646,1.642,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.491519
+31.605577,-94.65476,,,,,,,,,,,,,
+31.963733,-95.270144,1635206464,US0079-KG,86.392,154775,79,Single Roadbed,US Highway,372,1.229,20604,7.263,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.94211138
+31.963733,-95.270144,1599263971,US0069-KG,162.33,154769,69,Single Roadbed,US Highway,360,0.245,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",136.5255504
+31.529905,-94.111224,1599257621,SH0021-KG,286.136,154151,21,Single Roadbed,State Highway,816,1.709,11810,11.818,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.2378895
+31.05595,-95.126121,6793,SH0094-KG,19.253,154306,94,Single Roadbed,State Highway,,,31902,0.11,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",48.0372818
+31.05595,-95.126121,498205,1111951,0.067,284852,1111951,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",92.62700282
+30.944618,-95.375754,,,,,,,,,,,,,
+32.152991,-94.795624,2237,BU0079F-KG,0.626,159986,79,Single Roadbed,Business US,340,0.596,24518,20.626,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",71.70016483
+32.349069,-95.317745,1599263971,US0069-KG,134.405,154769,69,Single Roadbed,US Highway,331,0.855,24506,13.231,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.58050403
+32.349069,-95.317745,1599264120,US0069-LG,134.402,154769,69,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.48845008
+32.349069,-95.317745,1599264126,US0069-RG,134.408,154769,69,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",57.43079723
+32.349069,-95.317745,49273,254706,4.016,162567,254706,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",123.7527982
+28.984791,-95.970258,1571161877,SH0060-KG,48.625,154273,60,Single Roadbed,State Highway,532,0.551,24102,11.532,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.76710954
+28.984791,-95.970258,235843,1023171,0.21,198717,1023171,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.9160608
+30.110546,-97.316196,7112,SL0150-KG,0.928,154344,150,Single Roadbed,State Loop,560,0.884,26510,0.928,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.79798254
+30.110546,-97.316196,497833,1023042,0.397,198590,1023042,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",34.57424118
+30.105294,-97.317512,1638316897,266934,0.024,168760,266934,Single Roadbed,Local City Street,,,T37937,0.024,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.41797151
+30.105294,-97.317512,1640131215,SH0021-XG,41.736,154151,21,Left Frontage,State Highway,568,1.771,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",57.38109795
+30.105294,-97.317512,8644,SH0021-LG,41.727,154151,21,Left Roadbed,State Highway,568,1.769,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",127.1348629
+30.110704,-97.317601,1638316897,266934,0.396,168760,266934,Single Roadbed,Local City Street,,,T37937,0.396,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.85360186
+30.110704,-97.317601,7112,SL0150-KG,0.844,154344,150,Single Roadbed,State Loop,560,0.8,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",48.05067217
+30.110684,-97.317474,1638316897,266934,0.395,168760,266934,Single Roadbed,Local City Street,,,T37937,0.395,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",11.09098782
+30.110684,-97.317474,7112,SL0150-KG,0.852,154344,150,Single Roadbed,State Loop,560,0.808,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.20711139
+30.110657,-97.316128,7112,SL0150-KG,0.932,154344,150,Single Roadbed,State Loop,560,0.888,26510,0.932,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",29.1861677
+30.110657,-97.316128,497833,1023042,0.405,198590,1023042,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.42460494
+30.110656,-97.316174,7112,SL0150-KG,0.93,154344,150,Single Roadbed,State Loop,560,0.886,26510,0.93,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",29.15911535
+30.110656,-97.316174,497833,1023042,0.405,198590,1023042,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",41.90443756
+30.110656,-97.316221,497833,1023042,0.405,198590,1023042,Single Roadbed,Local City Street,,,LC2573,0.405,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",27.0729783
+30.110656,-97.316221,7112,SL0150-KG,0.927,154344,150,Single Roadbed,State Loop,560,0.883,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",29.50412399
+30.110686,-97.315004,493554,1023027,0.375,198576,1023027,Single Roadbed,Local City Street,,,LC2559,0.375,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.81091797
+30.110686,-97.315004,7112,SL0150-KG,1,154344,150,Single Roadbed,State Loop,560,0.956,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.51400567
+30.111145,-97.312708,1652400214,1023014,0.034,198563,1023014,Single Roadbed,Local City Street,,,MH3479,0.035,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",54.86417665
+32.728691,-97.414487,10477,US0377-LG,96.517,154760,377,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.5746488
+32.728691,-97.414487,313168,1096515,0.11,269779,1096515,Single Roadbed,Local City Street,,,LJ3934,0.11,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.0120157
+32.728691,-97.414487,7619,US0377-KG,96.516,154760,377,Single Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",145.5630286
+27.227326,-98.144307,2291,BU0281T-KG,0.867,160033,281,Single Roadbed,Business US,710,0.45,25503,3.167,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.67593134
+33.220566,-98.158307,359063,1137460,0.023,309605,1137460,Single Roadbed,Local City Street,,,LN3937,0.023,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.29430101
+33.220566,-98.158307,1565622412,US0281-KG,55.914,154754,281,Single Roadbed,US Highway,250,0.74,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",134.3825881
+32.754505,-97.330494,1672272156,BU0287P-KG,16.711,160022,287,Single Roadbed,Business US,270,0.784,1401,18.085,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.88301857
+32.754505,-97.330494,48239,270284,0.654,170508,270284,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.9547851
+32.754505,-97.330494,45088,267726,0.331,169185,267726,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",105.7651972
+32.754505,-97.330494,1670284904,BU0287P-LG,16.704,160022,287,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.9962776
+32.955537,-95.291557,486614,1255990,0.288,424337,1255990,Single Roadbed,Local City Street,,,LY9033,0.288,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",37.33247302
+29.08931,-97.292809,1599259023,US0087-KG,739.983,154782,87,Single Roadbed,US Highway,780,1.577,14308,17.602,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.8382636
+29.08931,-97.292809,271311,1057195,0.163,231881,1057195,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.7579364
+29.08931,-97.292809,271410,1057273,0.427,231958,1057273,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.5926022
+33.001046,-97.229284,1639613299,US0377-KG,71.29,154760,377,Single Roadbed,US Highway,264,0.981,8103,12.612,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",9.955637472
+32.744343,-97.326353,1513802554,IH0030-CN,0.187,153708,30,Connector,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.65719746
+32.744343,-97.326353,1638316808,IH0030-RG,15.218,153708,30,Right Roadbed,Interstate,14,0.719,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.48195334
+32.744343,-97.326353,1638144090,IH0030-KG,14.699,153708,30,Single Roadbed,Interstate,14,0.719,106801,23.47,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.0970836
+32.744343,-97.326353,46475,251400,22.65,160937,251400,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",148.8720556
+29.767626,-95.357393,1599356377,IH0010-RG,769.52,153703,10,Right Roadbed,Interstate,769,0.301,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",9.569207237
+29.767626,-95.357393,1599355075,IH0010-KG,769.539,153703,10,Single Roadbed,Interstate,769,0.292,50801,0.58,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.36448485
+29.767626,-95.357393,1599356091,IH0010-LG,769.569,153703,10,Left Roadbed,Interstate,769,0.28,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.15171856
+29.767626,-95.357393,352771,1131454,0.039,303854,1131454,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",79.93977726
+29.767626,-95.357393,1632096092,IH0010-XG,769.54,153703,10,Left Frontage,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.7955538
+30.852645,-93.753545,406928,1180634,0.531,351409,1180634,Single Roadbed,Local City Street,,,LR5865,0.531,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.22679324
+30.852645,-93.753545,7252,SL0505-KG,1.372,154488,505,Single Roadbed,State Loop,388,1.349,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.9156671
+29.462783,-98.477523,,,,,,,,,,,,,
+29.299496,-94.794317,40470,255439,0.572,163021,255439,Single Roadbed,Local City Street,,,B00750,0.571,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",1.403687724
+29.299496,-94.794317,6786,SH0087-KG,257.885,154299,87,Single Roadbed,State Highway,580,1.24,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.17127978
+29.299496,-94.794317,8902,SH0087-RG,257.885,154299,87,Right Roadbed,State Highway,580,1.241,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",24.35922142
+29.299496,-94.794317,8895,SH0087-LG,257.887,154299,87,Left Roadbed,State Highway,580,1.24,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.1422293
+32.033793,-94.042286,,,,,,,,,,,,,
+30.265248,-97.726428,6900,SH0165-KG,0.411,154112,165,Single Roadbed,State Highway,,,41401,0.411,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",75.78789706
+30.105157,-97.322929,1640131215,SH0021-XG,41.411,154151,21,Left Frontage,State Highway,568,1.446,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",31.80023201
+30.105157,-97.322929,1638316887,SH0021-TA,0.27,154151,21,Turnaround,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.58508214
+30.105157,-97.322929,1551296458,SH0021-RP,0.012,154151,21,Ramp,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",101.2504145
+30.105157,-97.322929,8644,SH0021-LG,41.403,154151,21,Left Roadbed,State Highway,568,1.445,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.349738
+30.105157,-97.322929,6682,SH0021-KG,41.399,154151,21,Single Roadbed,State Highway,568,1.447,26504,14.785,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.0766782
+32.760065,-97.33463,1672272156,BU0287P-KG,16.237,160022,287,Single Roadbed,Business US,270,0.31,1401,17.613,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",75.27053105
+27.058222,-99.43536,7541,US0083-KG,722.108,154779,83,Single Roadbed,US Highway,750,1.695,3803,16.19,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.69386966
+26.403969,-99.018656,211658,TL0026-KG,0.203,159816,26,Single Roadbed,Toll,,,TL0026,0.203,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",45.97697986
+32.760061,-97.334972,1672272156,BU0287P-KG,16.228,160022,287,Single Roadbed,Business US,270,0.301,1401,17.603,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.02109549
+28.80068,-97.000245,,,,,,,,,,,,,
+29.308646,-96.103797,2206,BU0059R-KG,7.518,160027,59,Single Roadbed,Business US,,,8910,39.147,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",7.850002299
+29.308646,-96.103797,7782,BU0059R-RG,7.519,160027,59,Right Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.67526782
+29.308646,-96.103797,7781,BU0059R-LG,7.518,160027,59,Left Roadbed,Business US,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",49.48251256
+30.265536,-97.756362,7195,SL0343-KG,3.729,154429,343,Single Roadbed,State Loop,566,1.348,11312,1.342,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",85.67771038
+30.265,-97.756992,7195,SL0343-KG,3.682,154429,343,Single Roadbed,State Loop,566,1.301,11312,1.295,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",36.13154831
+32.690363,-99.164952,3113,FM0601-KG,7.455,175705,601,Single Roadbed,Farm to Market,448,1.444,10703,12.455,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",16.06586157
+32.93276,-99.215246,1575390285,US0283-KG,113.81,154755,283,Single Roadbed,US Highway,270,0.386,12504,7.389,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.8150403
+29.655526,-97.601004,10182,US0090-RG,514.372,154783,90,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.29930268
+29.655526,-97.601004,7557,US0090-KG,514.371,154783,90,Single Roadbed,US Highway,692,0.754,2903,6.87,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.6838771
+29.655526,-97.601004,10159,US0090-LG,514.372,154783,90,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",144.8705887
+29.205888,-99.902195,1630454780,US0090-RG,365.99,154783,90,Right Roadbed,US Highway,482,1.079,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.12460187
+29.205888,-99.902195,7556,US0090-KG,365.983,154783,90,Single Roadbed,US Highway,482,1.075,2305,14.044,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.39702127
+32.426717,-96.462845,2000005257,SH0034-KG,98.16,154227,34,Single Roadbed,State Highway,338,0.543,17302,11.701,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.57827266
+29.706223,-96.53601,7557,US0090-KG,580.052,154783,90,Single Roadbed,US Highway,758,0.611,2701,16.695,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",5.827503185
+29.501395,-98.186711,1632096042,IH0010-XG,594.409,153703,10,Left Frontage,Interstate,594,0.186,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",41.87843885
+29.501395,-98.186711,1632700950,IH0010-TA,0.064,153703,10,Turnaround,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.43025161
+29.501395,-98.186711,1599356091,IH0010-LG,594.367,153703,10,Left Roadbed,Interstate,594,0.187,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",119.7387393
+30.748343,-98.396978,,,,,,,,,,,,,
+30.245413,-97.691349,1670889710,US0183-AG,327.335,154747,183,Right Frontage,US Highway,522,0.649,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.51315163
+30.245413,-97.691349,1639527189,TL0183-RP,0,1638489730,183,Ramp,Toll,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",65.99150718
+30.245413,-97.691349,1670889725,TL0183-RG,327.324,1638489730,183,Right Roadbed,Toll,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",140.7775423
+31.066315,-97.442549,3374,FM0817-KG,0.952,175929,817,Single Roadbed,Farm to Market,552,0.919,1505,1.352,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.2073565
+29.901889,-96.884588,1571661033,BS0071E-KG,1.872,159976,71,Single Roadbed,Business State,636,1.016,26514,25.031,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",10.69462127
+29.900335,-96.88897,1571661033,BS0071E-KG,1.589,159976,71,Single Roadbed,Business State,636,0.733,26514,24.748,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.93224564
+29.06541,-97.322475,1599259023,US0087-KG,737.438,154782,87,Single Roadbed,US Highway,778,1.031,14308,15.057,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.5420062
+33.500149,-99.801866,1632873945,SH0006-KG,64.655,154272,6,Single Roadbed,State Highway,224,0.582,9805,16.334,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.3438106
+30.487947,-99.762723,1670371233,SL0481-KG,0.586,154478,481,Single Roadbed,State Loop,416,0.551,14216,1.856,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.08092376
+30.487947,-99.762723,1670457606,1138856,1.551,310962,1138856,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",129.8563195
+30.484894,-99.760198,1670371233,SL0481-KG,0.845,154478,481,Single Roadbed,State Loop,416,0.81,14216,2.115,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",17.81431491
+30.484894,-99.760198,17173,SL0481-CN,0.042,154478,481,Connector,State Loop,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.886557
+31.218037,-98.5641,1669766573,US0190-KG,228.005,154749,190,Single Roadbed,US Highway,506,1.936,27205,0.218,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",61.81858287
+32.641609,-98.100277,1565622412,US0281-KG,98.8,154754,281,Single Roadbed,US Highway,292,1.858,25002,25.509,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",0.584961305
+30.66122,-99.10972,1599258974,US0087-KG,555.728,154782,87,Single Roadbed,US Highway,584,1.778,7104,9.748,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",3.750153611
+30.66122,-99.10972,1599259060,US0087-RG,555.724,154782,87,Right Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",40.994894
+30.66122,-99.10972,1599259038,US0087-LG,555.735,154782,87,Left Roadbed,US Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",56.11342897
+30.042397,-97.842419,1629763587,IH0035-RP,0.022,153710,35,Ramp,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",34.38675095
+30.042397,-97.842419,1629418008,IH0035-XG,217.274,153710,35,Left Frontage,Interstate,217,0.714,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.10826978
+30.042397,-97.842419,1599355589,IH0035-LG,217.26,153710,35,Left Roadbed,Interstate,217,0.715,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",57.7770234
+30.042397,-97.842419,1599354530,IH0035-KG,217.266,153710,35,Single Roadbed,Interstate,217,0.714,1602,20.264,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",88.94926894
+30.042397,-97.842419,1599355656,IH0035-RG,217.283,153710,35,Right Roadbed,Interstate,217,0.716,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",116.0286378
+31.064117,-93.523416,6745,SH0063-KG,63.852,154277,63,Single Roadbed,State Highway,799,0.001,21403,10.275,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",2.637673679
+29.764151,-95.369616,22246,IH0045-RP,0.067,153716,45,Ramp,Interstate,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",81.96385587
+29.764151,-95.369616,42118,256787,19.692,163569,256787,Single Roadbed,Local City Street,,,B44185,19.692,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",109.9561541
+29.764151,-95.369616,1639008446,IH0045-LG,48.05,153716,45,Left Roadbed,Interstate,47,1.024,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",117.3105799
+31.457232,-94.726229,1599257512,US0059-LG,173.62,154765,59,Left Roadbed,US Highway,378,0.949,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.44622283
+31.457232,-94.726229,1672272110,US0059-KG,173.628,154765,59,Single Roadbed,US Highway,378,0.949,17601,32.806,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",69.46712799
+31.457232,-94.726229,1599257513,US0059-RG,173.626,154765,59,Right Roadbed,US Highway,378,0.949,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.56843961
+29.054328,-95.557113,1631059362,SH0332-LG,0.96,154221,332,Left Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.50051698
+29.054328,-95.557113,1631059336,SH0332-KG,0.96,154221,332,Single Roadbed,State Highway,672,0.922,84703,0.96,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",43.06683484
+29.054328,-95.557113,1631059354,SH0332-RG,0.962,154221,332,Right Roadbed,State Highway,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",58.56407836
+30.057794,-94.819354,1549310285,US0090-KG,692.554,154783,90,Single Roadbed,US Highway,876,0.146,2803,13.063,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",49.14521429
+30.85262,-94.181194,,,,,,,,,,,,,
+31.063949,-93.520375,6745,SH0063-KG,64.031,154277,63,Single Roadbed,State Highway,799,0.18,21403,10.454,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.9728569
+31.040142,-104.831674,476143,1246075,0.41,414879,1246075,Single Roadbed,Local City Street,,,LX9545,0.41,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.65291254
+31.040142,-104.831674,1634256118,BI0010D-KG,2.194,159914,10,Single Roadbed,Business IH,114,0.009,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.7434481
+31.7585,-106.486748,45086,266522,26.847,168548,266522,Single Roadbed,Local City Street,,,B44040,26.847,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.97009438
+31.7585,-106.486748,40551,266668,22.515,168610,266668,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",74.48206075
+31.7585,-106.486748,43665,266671,22.123,168611,266671,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.5083417
+31.7585,-106.486748,46858,266523,0,168549,266523,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.5083417
+31.759315,-106.486529,1549569266,SH0020-KG,20.047,154142,20,Single Roadbed,State Highway,328,0.098,103,1.608,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.18873088
+31.759315,-106.486529,1552328628,266699,2.85,168630,266699,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",68.5267962
+31.759315,-106.486529,1644192301,266559,22,168564,266559,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",113.8490671
+31.75952,-106.48794,40548,266530,22.045,168553,266530,Single Roadbed,Local City Street,,,B44440,22.045,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",1.040205368
+31.75952,-106.48794,1549569266,SH0020-KG,19.933,154142,20,Single Roadbed,State Highway,326,1.974,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",37.67714477
+31.759841,-106.487868,1549569266,SH0020-KG,19.918,154142,20,Single Roadbed,State Highway,326,1.959,103,1.479,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",49.96231262
+31.759841,-106.487868,40548,266530,22.062,168553,266530,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",81.54275739
+31.75929,-106.48791,40548,266530,22.037,168553,266530,Single Roadbed,Local City Street,,,B44440,22.037,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",71.89664017
+31.75929,-106.48791,1549569266,SH0020-KG,19.947,154142,20,Single Roadbed,State Highway,326,1.988,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",80.13346479
+31.759339,-106.48631,1552328628,266699,2.857,168630,266699,Single Roadbed,Local City Street,,,B64480,2.849,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.058208909
+31.759339,-106.48631,1549569266,SH0020-KG,20.058,154142,20,Single Roadbed,State Highway,328,0.109,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",21.34010703
+31.759339,-106.48631,1644192301,266559,22,168564,266559,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",60.28412031
+31.757216,-106.496261,1638921713,US0085-LG,5.166,154781,85,Left Roadbed,US Highway,326,0.666,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.6179046
+31.75876,-106.48719,45086,266522,26.818,168548,266522,Single Roadbed,Local City Street,,,B44040,26.818,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",15.57458764
+31.75876,-106.48719,297365,1081699,0.058,255531,1081699,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",22.23231786
+31.75876,-106.48719,1549569266,SH0020-KG,19.996,154142,20,Single Roadbed,State Highway,328,0.047,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",32.00701724
+31.691066,-106.327658,1488491289,FM0258-KG,0.05,174492,258,Single Roadbed,Farm to Market,348,0.01,214,0.05,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.17165
+31.767317,-106.494924,293551,1078016,0.049,252013,1078016,Single Roadbed,Local City Street,,,LH6136,0.049,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",52.49855674
+31.767317,-106.494924,1549569266,SH0020-KG,19.258,154142,20,Single Roadbed,State Highway,326,1.299,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",73.14147499
+31.758798,-106.486795,1549569266,SH0020-KG,20.013,154142,20,Single Roadbed,State Highway,328,0.064,103,1.574,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",89.86788663
+31.758798,-106.486795,45086,266522,26.829,168548,266522,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",91.45737614
+31.758798,-106.486795,297365,1081699,0.062,255531,1081699,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",122.2657172
+36.06161,-102.522354,488987,1260590,0.047,426722,1260590,Single Roadbed,Local City Street,,,LZ1459,0.047,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",63.77903026
+36.06161,-102.522354,1599305594,1057597,0.048,232279,1057597,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",114.2365183
+36.06161,-102.522354,1669075250,US0054-KG,60.9,154763,54,Single Roadbed,US Highway,272,1.233,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.538514
+31.760932,-106.489405,42740,266432,22.167,168499,266432,Single Roadbed,Local City Street,,,B26550,22.167,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",27.62159859
+31.760932,-106.489405,1549569266,SH0020-KG,19.804,154142,20,Single Roadbed,State Highway,326,1.845,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",96.30713716
+31.760932,-106.489405,42739,266431,22.5,168498,266431,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",100.1009453
+33.578272,-101.860098,,,,,,,,,,,,,
+33.569813,-96.207436,,,,,,,,,,,,,
+33.595087,-98.625063,220445,1007752,0.641,183673,1007752,Single Roadbed,Local City Street,,,LA7607,0.641,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.91358485
+33.814728,-98.195362,333805,1116345,0.348,289151,1116345,Single Roadbed,Local City Street,,,LL3431,0.348,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.15918093
+33.814728,-98.195362,1571342201,US0082-KG,313.255,154778,82,Single Roadbed,US Highway,544,0.316,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",13.48950506
+33.814728,-98.195362,3818,FM1197-KG,13.333,173066,1197,Single Roadbed,Farm to Market,196,1.523,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",13.49773939
+33.621978,-100.835458,7534,US0082-KG,149.333,154778,82,Single Roadbed,US Highway,372,1.214,13201,1.011,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",48.60042516
+33.621978,-100.835458,286873,1071504,0.293,245705,1071504,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",59.81057839
+33.759398,-96.537101,2496,FM0120-KG,12.568,173069,120,Single Roadbed,Farm to Market,604,0.96,72801,8.753,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",55.59639827
+33.759398,-96.537101,1599263971,US0069-KG,4.769,154769,69,Single Roadbed,US Highway,196,0.475,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",125.6205344
+33.754965,-96.531831,2496,FM0120-KG,13.17,173069,120,Single Roadbed,Farm to Market,604,1.562,72802,1.205,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",79.22596643
+33.754965,-96.531831,42248,250027,14.09,160203,250027,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",107.0302483
+33.667033,-101.500433,1552338911,US0062-RG,255.716,154767,62,Right Roadbed,US Highway,352,1.465,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",7.661915613
+33.667033,-101.500433,1552334658,US0062-KG,255.715,154767,62,Single Roadbed,US Highway,352,1.465,13103,4.533,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",38.89073158
+33.667033,-101.500433,1552407766,US0062-LG,255.716,154767,62,Left Roadbed,US Highway,352,1.465,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",66.4183628
+36.398016,-100.803077,7536,US0083-KG,7.076,154779,83,Single Roadbed,US Highway,16,1.14,3002,7.06,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",111.3845367
+33.623963,-97.145637,45719,251731,5.15,161080,251731,Single Roadbed,Local City Street,,,B00230,5.149,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.45993347
+33.623963,-97.145637,2392,FM0051-KG,0.706,175607,51,Single Roadbed,Farm to Market,208,0.705,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",115.0948941
+33.623963,-97.145637,45722,251744,4.381,161088,251744,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",142.5163134
+35.211186,-101.865185,1599249174,SL0279-KG,2.294,154401,279,Single Roadbed,State Loop,290,0.112,9005,19.294,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",94.4748089
+35.211186,-101.865185,218172,1005972,1.521,181940,1005972,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",132.8334648
+35.226941,-100.248259,459049,1230018,0.861,399230,1230018,Single Roadbed,Local City Street,,,LW3866,0.861,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.0436696
+33.578452,-101.844487,496162,1159843,0.435,331347,1159843,Single Roadbed,Local City Street,,,LP5748,0.435,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",28.41059114
+36.23389,-100.27071,1670284953,SS0188-KG,0.364,154570,188,Single Roadbed,State Spur,,,58205,0.528,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",137.5760989
+34.726576,-100.536792,394308,1168961,0.87,340144,1168961,Single Roadbed,Local City Street,,,LQ4572,0.87,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",98.37313583
+34.726576,-100.536792,394318,1168970,0.875,340153,1168970,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",112.3954156
+33.613284,-95.051441,2154,BS0037C-KG,0.579,159960,37,Single Roadbed,Business State,204,0.525,18902,17.829,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",103.2380357
+33.613284,-95.051441,257975,1044616,0.539,219564,1044616,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",120.2311864
+33.613284,-95.051441,257980,1044618,0.392,219566,1044618,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",130.028586
+33.613284,-95.051441,257891,1044549,0.167,219497,1044549,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",141.3619166
+35.232112,-100.601002,1599251371,BI0040H-KG,2.174,159888,40,Single Roadbed,Business IH,366,0.324,27523,24.318,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",16.19283923
+30.313242,-104.022003,6674,SH0017-KG,94.158,154116,17,Single Roadbed,State Highway,454,0.413,10405,8.417,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",97.39685272
+30.313242,-104.022003,392758,1167198,0.563,338440,1167198,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",110.7597099
+35.829274,-101.442847,1599257047,SH0136-KG,50.628,154085,136,Single Roadbed,State Highway,62,0.057,35506,18.533,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",35.09955346
+35.829274,-101.442847,464205,1234906,0.006,403941,1234906,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",51.20695554
+35.829274,-101.442847,464247,1234947,0.329,403980,1234947,Single Roadbed,Local City Street,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",62.66157524
+35.207453,-101.838344,46071,252265,11.691,161354,252265,Single Roadbed,Local City Street,,,B05536,11.691,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",20.83645198
+35.207453,-101.838344,1599249174,SL0279-KG,3.834,154401,279,Single Roadbed,State Loop,290,1.652,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",139.3703215
+33.905973,-98.90516,5044,FM2326-KG,9.808,174234,2326,Single Roadbed,Farm to Market,466,0.876,221502,2.85,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",30.14088951
+34.957705,-100.221271,7537,US0083-KG,122.28,154779,83,Single Roadbed,US Highway,134,0.262,3103,9.536,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",8.845193616
+34.957705,-100.221271,10061,US0083-RG,122.29,154779,83,Right Roadbed,US Highway,134,0.262,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",50.63686984
+34.957705,-100.221271,10040,US0083-LG,122.291,154779,83,Left Roadbed,US Highway,134,0.262,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",53.15486571
+33.753017,-96.196113,6769,SH0078-KG,0.019,154290,78,Single Roadbed,State Highway,,,27902,0.219,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",39.03427863
+34.13299,-98.090953,6771,SH0079-KG,0,154291,79,Single Roadbed,State Highway,,,28201,0,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",12.38060273
+34.131421,-98.098236,6771,SH0079-KG,0.429,154291,79,Single Roadbed,State Highway,,,28201,0.429,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",14.22735157
+35.209374,-101.382834,1632873909,SH0207-KG,102.263,154149,207,Single Roadbed,State Highway,114,1.584,35603,34.327,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",124.6245042
+33.612125,-95.747448,4160,FM1509-KG,3.777,173391,1509,Single Roadbed,Farm to Market,644,1.777,4514,4.777,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",5.425985481
+33.612125,-95.747448,1599259840,139AA4750,0.005,98460,4750,Single Roadbed,County roads,,,,,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",102.2820454
+33.661084,-95.673319,4161,FM1510-KG,1.343,173393,1510,Single Roadbed,Farm to Market,646,1.294,4515,2.343,"Disclaimer: No sale, repackaging, or reposting allowed of conversions",3.070351525

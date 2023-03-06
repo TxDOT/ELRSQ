@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>serviceUrl</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/css/main.css">
+
+    <style>
+     html,
+     body,
+     #viewDiv {
+         padding: 0;
+         margin: 0;
+         height: 100%;
+         width: 100%;
+     }
+     .title {
+         top: 1em;
+         right: 1em;
+         position: absolute;
+         background-color: white;
+         padding: 1em;
+     }
+    </style>
+
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+
+    <script>
+     require([
+       "esri/Map",
+       "esri/Graphic",
+       "esri/views/MapView",
+       "esri/layers/FeatureLayer",
+       "esri/layers/support/Field"
+     ], function(Map, Graphic, MapView, FeatureLayer, Field) {
+       let counter = 0;
+       map = new Map({
+         // basemap: "dark-gray-vector"
+         basemap: "gray-vector"
+         // basemap: "streets-vector"
+       });
+       view = new MapView({
+         container: "viewDiv",
+         map: map,
+         zoom: 16,
+         center: [-122.46530332507831, 37.80177349898467]
+       });
+       var popupTemplate = {
+         // autocasts as new PopupTemplate()
+         title: "station: {Station_Name}",
+         content: [
+           {
+             // It is also possible to set the fieldInfos outside of the content
+             // directly in the popupTemplate. If no fieldInfos is specifically set
+             // in the content, it defaults to whatever may be set within the popupTemplate.
+             type: "fields",
+             fieldInfos: [
+               {
+                 fieldName: "Fuel_Type_Code",
+                 label: "Fuel type"
+               },
+               {
+                 fieldName: "EV_Network",
+                 label: "EV network"
+               },
+               {
+                 fieldName: "EV_Connector_Types",
+                 label: "EV connection types"
+               },
+               {
+                 fieldName: "Federal_Agency_Name",
+                 label: "Federal agency name"
+               }
+             ]
+           }
+         ]
+       };
+       const attributes = {
+         ObjectID: 1,
+         Fuel_Type_Code: "ELEC",
+         //EV_Network: "eVgo Network",
+         EV_Connector_Types: "CHADEMO",
+         Station_Name: "test"
+       };
+       scale = 34567;
+       layer_3 = new FeatureLayer({
+         // url:
+         //   "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/Alternative_Fuel_Station_March2018/FeatureServer",
+         source: [
+           new Graphic({
+             geometry: {
+               type: "point",
+               x: -13633296.119848348,
+               y: 4551401.482251689,
+               spatialReference: {
+                 wkid: 102100,
+                 latestWkid: 3857
+               }
+             },
+             attributes
+           })
+         ],
+         objectIdField: "ObjectID",
+         fields: [
+           new Field({
+             name: "ObjectID",
+             alias: "ObjectID",
+             type: "oid"
+           }),
+           new Field({
+             name: "Fuel_Type_Code",
+             alias: "Fuel_Type_Code",
+             type: "string"
+           }),
+           new Field({
+             name: "EV_Network",
+             alias: "EV_Network",
+             type: "string"
+           }),
+           new Field({
+             name: "EV_Connector_Types",
+             alias: "EV_Connector_Types",
+             type: "string"
+           }),
+           new Field({
+             name: "Station_Name",
+             alias: "Station_Name",
+             type: "string"
+           })
+         ],
+         outFields: ["*"],
+         popupTemplate,
+         renderer: {
+           type: "simple",
+           symbol: {
+              type: "cim",
+              data: {
+                type: "CIMSymbolReference",
+                primitiveOverrides: [
+                  {
+                    type: "CIMPrimitiveOverride",
+                    primitiveName: "textGraphic",
+                    propertyName: "TextString",
+                    valueExpressionInfo: {
+                      type: "CIMExpressionInfo",
+                      title: "Custom",
+                      expression: "$feature.Station_Name", 
+                      returnType: "Default"
+                    }
+                  }
+                ],
+                symbol: getPointSymbolData()
+              }
+            }
+         },
+         spatialReference: 102100,
+         minScale: 50000,
+         maxScale: 0
+       });
+       //map.add(layer_1);
+       //map.add(layer_2);
+       map.add(layer_3);
+       view.on("click", function(event) {
+         // Search for graphics at the clicked location. View events can be used
+         // as screen locations as they expose an x,y coordinate that conforms
+         // to the ScreenPoint definition.
+         view
+           .hitTest(event)
+           .then(function(response) {
+             var geometry = view.toMap(response.screenPoint);
+             return addFeature(geometry);
+           })
+           .then((result) => {
+             console.log(result);
+           })
+           .catch((error) => {
+             console.log(error);
+           });
+       });
+       function addFeature(geometry) {
+         const attributes = {};
+         attributes["Fuel_Type_Code"] = "CNG";
+         attributes["EV_Connector_Types"] = "J1772 TESLA";
+         attributes["EV_Network"] = "ChargePoint Network";
+         attributes["Station_Name"] = "Test" + counter++;
+         const addFeature = new Graphic({
+           geometry: geometry,
+           attributes: attributes
+         });
+         const promise = layer_3.applyEdits({
+           addFeatures: [addFeature]
+         });
+         return promise;
+       }
+       function getPointSymbolData() {
+         return {
+  "type": "CIMPointSymbol",
+  "symbolLayers": [
+    {
+      "type": "CIMVectorMarker",
+      "enable": true,
+      "size": 10,
+      "colorLocked": true,
+      "anchorPointUnits": "Relative",
+      "frame": {
+        "xmin": -5,
+        "ymin": -5,
+        "xmax": 5,
+        "ymax": 5
+      },
+      "markerGraphics": [
+        {
+          "type": "CIMMarkerGraphic",
+          primitiveName: "textGraphic",
+          "geometry": {
+            "x": 0,
+            "y": 0
+          },
+          "symbol": {
+            "type": "CIMTextSymbol",
+            "fontFamilyName": "Arial",
+            "fontStyleName": "Bold",
+            "height": 10,
+            "horizontalAlignment": "Center",
+            "offsetX": 0,
+            "offsetY": 5.5,
+            "symbol": {
+              "type": "CIMPolygonSymbol",
+              "symbolLayers": [
+                {
+                  "type": "CIMSolidFill",
+                  "enable": true,
+                  "color": [
+                    214,
+                    41,
+                    41,
+                    255
+                  ]
+                }
+              ]
+            },
+            "verticalAlignment": "Center",
+            "font": {
+              "family": "Arial",
+              "decoration": "none",
+              "style": "normal",
+              "weight": "bold"
+            }
+          },
+          "textString": "text"
+        }
+      ],
+      "scaleSymbolsProportionally": true,
+      "respectFrame": true
+    },
+    {
+      "type": "CIMVectorMarker",
+      "enable": true,
+      "anchorPoint": {
+        "x": 0,
+        "y": -0.5
+      },
+      "anchorPointUnits": "Relative",
+      "dominantSizeAxis3D": "Y",
+      "size": 40,
+      "billboardMode3D": "FaceNearPlane",
+      "frame": {
+        "xmin": 0,
+        "ymin": 0,
+        "xmax": 21,
+        "ymax": 21
+      },
+      "markerGraphics": [
+        {
+          "type": "CIMMarkerGraphic",
+          "geometry": {
+            "rings": [
+              [
+                [
+                  21,
+                  21
+                ],
+                [
+                  21,
+                  6.76
+                ],
+                [
+                  14,
+                  6.56
+                ],
+                [
+                  10.5,
+                  0
+                ],
+                [
+                  7.22,
+                  6.56
+                ],
+                [
+                  0,
+                  6.56
+                ],
+                [
+                  0,
+                  21
+                ],
+                [
+                  21,
+                  21
+                ]
+              ]
+            ]
+          },
+          "symbol": {
+            "type": "CIMPolygonSymbol",
+            "symbolLayers": [
+              {
+                "type": "CIMSolidStroke",
+                "enable": true,
+                "capStyle": "Round",
+                "joinStyle": "Round",
+                "lineStyle3D": "Strip",
+                "miterLimit": 10,
+                "width": 1,
+                "color": [
+                  0,
+                  0,
+                  0,
+                  255
+                ]
+              },
+              {
+                "type": "CIMSolidFill",
+                "enable": true,
+                "color": [
+                  228,
+                  226,
+                  226,
+                  255
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "scaleSymbolsProportionally": true,
+      "respectFrame": true,
+      "offsetX": 0,
+      "offsetY": -18
+    }
+  ]
+};
+        }
+     });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

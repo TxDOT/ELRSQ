@@ -1,4 +1,3 @@
-// TODO split out and extend these functions
 // creates point graphic at lat/lon of each result
 
 function showPointResultsOnMap(results) {

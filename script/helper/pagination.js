@@ -34,8 +34,8 @@ function destroyPaginationEventHandlers(someId) {
 }
 
 function createPaginationEventHandlers(someId, results) {
-  $(someId + ' > nav > ul > .li_prev').on('click', function prevResult() { navResults('prev', results); }); //TODO move point on map
-  $(someId + ' > nav > ul > .li_next').on('click', function nextResult() { navResults('next', results); }); // TODO separate out from specific function
+  $(someId + ' > nav > ul > .li_prev').on('click', function prevResult() { navResults('prev', results); });
+  $(someId + ' > nav > ul > .li_next').on('click', function nextResult() { navResults('next', results); });
 }
 
 //navResults called by pagination buttons in showResults function

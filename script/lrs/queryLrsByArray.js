@@ -79,6 +79,9 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
       }
     }
     // end return single geom filtered on route name, or return multiple results
+
+    updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
+
   }
   // end process rows
   // set column heads
