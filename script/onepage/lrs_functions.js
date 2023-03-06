@@ -83,11 +83,11 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
     if (inputMethod == "html") {
       url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
+      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); console.log(url1); }
     } else if (inputMethod == "table") {
       url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
+      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); console.log(url1); }
     }
     // end build url
 
@@ -362,11 +362,11 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
     }
 
     else if (currentLRMno == 4) {
-      dropDownPopulator("#rte_nm_field", candidate_fields);
+      dropDownPopulator("#route_rte_nm_field", candidate_fields);
       dropDownPopulator("#bdfo_field", candidate_fields);
       dropDownPopulator("#edfo_field", candidate_fields);
 
-      let rte_nm_field = ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field");
+      let rte_nm_field = ~~await confirmFieldChoice("#btn-route_rte_nm_field", "#route_rte_nm_field");
       let bdfo_field = ~~await confirmFieldChoice("#btn-bdfo_field", "#bdfo_field");
       let edfo_field = ~~await confirmFieldChoice("#btn-edfo_field", "#edfo_field");
 
