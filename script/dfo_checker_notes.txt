@@ -1,0 +1,149 @@
+  console.log('PUT A DFO CHECKER HERE');
+
+  if (currentLRMno == 4) {
+
+    let trimdfotolimit = 1;
+    if (trimdfotolimit == 1) {
+
+      for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
+        let rtenm = parsedInputCSV[rowToQuery][rte_nm_lrm_indices];
+        let candidatedfo = parsedInputCSV[rowToQuery][lrm_indices0[1]];
+        //parsedInputCSV[rowToQuery][lrm_indices0[0]] = await fixThisDfoIssue(rtenm, candidatedfo);
+        let foo = await fixThisDfoIssue(rtenm, candidatedfo);
+        //console.log(foo);
+      }
+
+    }
+  }
+
+
+
+
+
+async function fixThisDfoIssue(routeName, candidatedfo) {
+  let url = `https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways_Unsegmented/FeatureServer/0/query?f=json&` +
+    `where=RTE_NM%3D%27${routeName}%27&outFields=RTE_NM%2C+BEGIN_DFO%2C+END_DFO&` +
+    `returnGeometry=false&orderByFields=END_DFO&returnExceededLimitFeatures=true&`
+
+  let minmaxdfo = await rdwayQuery(url);
+
+  console.log("minmaxdfo");
+  console.log(minmaxdfo);
+
+  // function call to answer queries
+  let included = answerQueries(minmaxdfo, candidatedfo);
+  console.log(included);
+
+  console.log(included);
+
+
+  return included;
+  // return newDFO;
+}
+
+
+
+
+
+
+
+
+
+// Javascript program to check if the
+// number lies in given range
+
+// Function that answers every query
+function answerQueries(a, qu) {
+
+  // container to store all range
+  let v = [];
+
+  // hash the L and R
+  let mpp = new Map();
+
+  // Push the element to container
+  // and hash the L and R
+  for (let i = 0; i < a.length; i++) {
+    v.push(a[i][0]);
+    mpp.set(a[i][0], 1);
+    v.push(a[i][1]);
+    mpp.set(a[i][1], 2);
+  }
+
+  // sort the elements in container
+  v.sort(function (a, b) { return a - b; });
+
+
+  // get the number same or greater than integer
+  let ind = lowerBound(v, qu);
+  console.log(ind);
+
+  // if it lies
+
+
+  if (ind >= 0) {
+    if (v[ind] == qu) {
+      console.log("Yes");
+      return [1, qu, v[ind]];
+    } else if (mpp.get(v[ind]) == 2) {
+      console.log("Yes");
+      return [1, qu, v[ind]];
+    } else {
+      console.log("No");
+      return [0, qu, v[ind]];
+    }
+
+  } else {
+    console.log("No");
+    return [0, qu, v[ind]];
+  }
+
+
+
+}
+
+
+
+
+// Lower bound implementation
+function lowerBound(array, value) {
+  let low = 0;
+  let high = array.length;
+
+  while (low < high) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (value <= array[mid]) {
+      high = mid;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  console.log(low + "," + high);
+  return low;
+}
+
+
+
+
+
+
+  let minmaxarr = [];
+  for (let i = 0; i < results.features.length; i = i + 1) {
+    let min_DFO = results.features[i].attributes.BEGIN_DFO;
+    let max_DFO = results.features[i].attributes.END_DFO;
+    minmaxarr.push([min_DFO, max_DFO]);
+  }
+
+  return minmaxarr;
+}
+
+
+
+//TODO RouteBuilder: do something with these results
+// pull out min and max DFO
+async function rdwayQuerySingle(url) {
+  GreenToYellow();
+  const results = await queryRoadwayService(url);
+  YellowToGreen();
