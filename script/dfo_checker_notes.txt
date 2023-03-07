@@ -1,6 +1,6 @@
   console.log('PUT A DFO CHECKER HERE');
 
-  if (currentLRMno == 4) {
+  if (CURRENTLRMNO == 4) {
 
     let trimdfotolimit = 1;
     if (trimdfotolimit == 1) {

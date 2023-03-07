@@ -1,4 +1,4 @@
-let mapCursorLive = 0;
+let MAPCURSORLIVE = 0;
 
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearResultsFromMap(); });
@@ -16,7 +16,7 @@ $("#useCrosshairs").on('click', function () { cursorMode(); });
 
 function cursorMode() {
   $("#viewDiv").css('cursor', 'crosshair');
-  mapCursorLive = 1;
+  MAPCURSORLIVE = 1;
 }
 
 //return to point on map
@@ -24,9 +24,9 @@ $(".map-return").on('click', function () { returnToPoint(); });
 $(".map-all").on('click', function () { showAllPoints(); });
 
 //route builder
-// $("#addRow").on('click', function () { addProjectToArray(projectsArr); });
-// $("#dropRow").on('click', function () { dropLastProjectFromArray(projectsArr, projectLines); });
-// $("#clearRows").on('click', function () { clearProjectsFromArray(projectsArr, projectLines); });
+// $("#addRow").on('click', function () { addProjectToArray(PROJECTSARR); });
+// $("#dropRow").on('click', function () { dropLastProjectFromArray(PROJECTSARR, PROJECTLINES); });
+// $("#clearRows").on('click', function () { clearProjectsFromArray(PROJECTSARR, PROJECTLINES); });
 
 
 // toggle buttons for showing/hiding layers
@@ -71,9 +71,9 @@ $('#demo-mode-toggle').change(function () {
 
 
 
-    // projectsArr is an array containing JS objects
+    // PROJECTSARR is an array containing JS objects
     /**
-        projectsArr = [
+        PROJECTSARR = [
           {
             RTE_NM: "IH0035-KG",
             BDFO: "121.243",

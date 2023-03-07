@@ -1,7 +1,7 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within projectsArr array
-//// add to projectsArr array if it is not a duplicate
+//// retrieve position within PROJECTSARR array
+//// add to PROJECTSARR array if it is not a duplicate
 
 //do not delete
 function addProjectToArray_old(myProjectsArr) {
@@ -71,7 +71,7 @@ function makeRouteProjectsTable(myProjectsArr) {
 }
 
 
-// removes last project in projectsArr array
+// removes last project in PROJECTSARR array
 function dropLastProjectFromArray(myProjectsArr, myProjectLines) {
   console.log("dropLastProjectFromArray");
   myProjectsArr.pop();

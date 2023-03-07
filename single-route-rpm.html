@@ -51,8 +51,8 @@
   <script src="script/vendor/papaparse.js"></script>
 
   <script>
-    const calcGeomType = "Route";
-    const useMap = 1;
+    const CALCGEOMTYPE = "Route";
+    const USEMAP = 1;
   </script>
 
   <script src="script/config_hardcoded.js" defer></script>
@@ -631,9 +631,9 @@
 
                     <!-- Process to Map START -->
                     <div class="btn-group mb-2" role="group">
-                      <button type="button" onclick="queryProjectGeometry(projectsArr)" class="btn btn-primary"
+                      <button type="button" onclick="queryProjectGeometry(PROJECTSARR)" class="btn btn-primary"
                         title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Convert</button>
-                      <button id="localGeoJSONToMap-button" type="button" onclick="localGeoJSONToMap(projectLines)"
+                      <button id="localGeoJSONToMap-button" type="button" onclick="localGeoJSONToMap(PROJECTLINES)"
                         class="btn btn-primary" title="localGeoJSONToMap"><i class="fa fa-map" aria-hidden="true"></i>
                         localGeoJSONToMap</button>
                     </div>

@@ -1,33 +1,33 @@
-function setIndicesByLrmAndGeom(currentLRMno) {
+function setIndicesByLrmAndGeom(CURRENTLRMNO) {
   let field_indices = [];
   let lrm_indices = [];
   let lrm_indices0 = [];
   let lrm_indices1 = [];
 
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['inputLatitude', 'inputLongitude'];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
 
       lrm_indices = lrm_indices0 = [0, 1, 2];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['inputControlSection', 'inputMilepointMeasure'];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [0];
@@ -35,9 +35,9 @@ function setIndicesByLrmAndGeom(currentLRMno) {
     }
   }
 
-  else if (calcGeomType == "Route") {
+  else if (CALCGEOMTYPE == "Route") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
@@ -45,7 +45,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
 
       lrm_indices0 = [0, 1, 2];
       lrm_indices1 = [0, 3, 4];
@@ -53,7 +53,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
@@ -61,7 +61,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];

@@ -3,9 +3,9 @@ async function cursorQuery(lat, lon) {
   resetGraphics();
   resetCurrentPagination();
 
-  let useMap = 1;
+  let USEMAP = 1;
 
-  if (useMap == 1) {
+  if (USEMAP == 1) {
     clearResultsFromMap();
   }
 
@@ -24,7 +24,7 @@ async function cursorQuery(lat, lon) {
   readOutPointResults(results);
   tabularPointsConvertExport(results);
 
-  if (useMap == 1) {
+  if (USEMAP == 1) {
     showPointResultsOnMap(results); 
   }
 

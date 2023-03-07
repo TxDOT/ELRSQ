@@ -1,5 +1,5 @@
-let calcGeomType = 'Point'; // these are not always valid
-let currentLRMno = 2; // these are not always valid
+let CALCGEOMTYPE = 'Point'; // these are not always valid
+let CURRENTLRMNO = 2; // these are not always valid
 
 $(document).ready(function () {
   $("#topnav_point").on('click', function () { set_topnav_point(); });
@@ -11,7 +11,7 @@ $(document).ready(function () {
   $("#btn_lrm_method_coordinates").on('click', function () { set_lrm_method_coordinates(); });
 
   function set_topnav_point() {
-    calcGeomType = 'Point';
+    CALCGEOMTYPE = 'Point';
     $("#input-route-form-card").hide();
     $("#input-route-form").hide();
 
@@ -29,7 +29,7 @@ $(document).ready(function () {
   }
 
   function set_topnav_route() {
-    calcGeomType = 'Route';
+    CALCGEOMTYPE = 'Route';
     $("#input-point-form-card").hide();
     $("#input-point-form").hide();
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
   }
 
   function set_lrm_method_referencemarker() {
-    currentLRMno = 2;
+    CURRENTLRMNO = 2;
     $("#kbPointInputRouteName").show();
     $("#kbPointInputReferenceMarker").show();
     $("#kbPointInputControlSection").hide();
@@ -79,7 +79,7 @@ $(document).ready(function () {
   }
 
   function set_lrm_method_controlsection() {
-    currentLRMno = 3;
+    CURRENTLRMNO = 3;
     $("#kbPointInputRouteName").hide();
     $("#kbPointInputReferenceMarker").hide();
     $("#kbPointInputControlSection").show();
@@ -111,7 +111,7 @@ $(document).ready(function () {
   }
 
   function set_lrm_method_dfo() {
-    currentLRMno = 4;
+    CURRENTLRMNO = 4;
     $("#kbPointInputRouteName").show();
     $("#kbPointInputReferenceMarker").hide();
     $("#kbPointInputControlSection").hide();
@@ -143,7 +143,7 @@ $(document).ready(function () {
   }
 
   function set_lrm_method_coordinates() {
-    currentLRMno = 1;
+    CURRENTLRMNO = 1;
     $("#kbPointInputRouteName").hide();
     $("#kbPointInputReferenceMarker").hide();
     $("#kbPointInputControlSection").hide();
@@ -180,7 +180,7 @@ $(document).ready(function () {
 
   $(".convert").on('click', function () {
     inputMethod = "html";
-    lrsSingleQuery(currentLRMno, inputMethod);
+    lrsSingleQuery(CURRENTLRMNO, inputMethod);
   });
 
 
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
     const fileContents = await readFile(file);
     inputMethod = "table";
-    lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
+    lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
 
   });
 
@@ -207,8 +207,8 @@ $(document).ready(function () {
     const fileContents = await readFile(e.target.files[0])
     YellowToGreen();
     inputMethod = "table";
-    lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
-    // lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
+    lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
+    // lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash");
   });
 
 });

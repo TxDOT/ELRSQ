@@ -4,7 +4,7 @@ let inputMethod = '';
 
 //FIXME this is not always true
 let currentLRM = `coordinates-tab`;
-let currentLRMno = 1;
+let CURRENTLRMNO = 1;
 // let lrm_indices = [0, 1];
 // let routlrm_indices1 = [0, 1, 2, 3];
 // default_templatlrm_indices1 = [2, 1];
@@ -46,28 +46,28 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   }
 
   if (currentLRM == `referencemarker-tab`) {
-    currentLRMno = 2;
+    CURRENTLRMNO = 2;
     // lrm_indices = [0, 1, 2];
     // routlrm_indices1 = [0, 1, 2, 3, 4];
     // default_templatlrm_indices1 = [1, 2, 3];
     // currentPointFieldOrder = ['inputRouteName_2', 'inputReferenceMarker', 'inputDisplacement'];
     // currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
   } else if (currentLRM == `controlsection-tab`) {
-    currentLRMno = 3;
+    CURRENTLRMNO = 3;
     // lrm_indices = [0, 1];
     // routlrm_indices1 = [0, 1, 2, 3];
     // default_templatlrm_indices1 = [1, 2];
     // currentPointFieldOrder = ['inputControlSection', 'inputMilepointMeasure'];
     // currentRouteFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
   } else if (currentLRM == `distancefromorigin-tab`) {
-    currentLRMno = 4;
+    CURRENTLRMNO = 4;
     // lrm_indices = [0, 1];
     // routlrm_indices1 = [0, 1, 2];
     // default_templatlrm_indices1 = [1, 2];
     // currentPointFieldOrder = ['inputRouteName_4', 'inputDistanceFromOrigin'];
     // currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
   } else {
-    currentLRMno = 1;
+    CURRENTLRMNO = 1;
     // lrm_indices = [0, 1];
     // routlrm_indices1 = [0, 1, 2, 3];
     // default_templatlrm_indices1 = [2, 1];
@@ -81,12 +81,12 @@ $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 // begin event handler
 
-if (calcGeomType == "Point") {
+if (CALCGEOMTYPE == "Point") {
   // 1-point
 
   $(".convert-1point").on('click', function () {
     inputMethod = "html";
-    lrsSingleQuery(currentLRMno, inputMethod);
+    lrsSingleQuery(CURRENTLRMNO, inputMethod);
   });
 
 
@@ -112,7 +112,7 @@ if (calcGeomType == "Point") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
+      lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
     });
 
     $(".uploadCsv-bulk").on('change', async function (e) {
@@ -120,7 +120,7 @@ if (calcGeomType == "Point") {
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       inputMethod = "table";
-      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
+      lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
     });
 
 
@@ -158,13 +158,13 @@ if (calcGeomType == "Point") {
 }
 
 // begin event handler
-if (calcGeomType == "Route") {
+if (CALCGEOMTYPE == "Route") {
   // 2-point
   // single
 
   $(".convert-2point").on('click', function () {
     inputMethod = "html";
-    lrsSingleQuery(currentLRMno, inputMethod);
+    lrsSingleQuery(CURRENTLRMNO, inputMethod);
   });
 
 
@@ -190,7 +190,7 @@ if (calcGeomType == "Route") {
       GreenToYellow();
       const fileContents = await readFile(e.dataTransfer.files[0])
       YellowToGreen();
-      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
+      lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash");
     });
 
     $(".uploadCsv-bulk").on('change', async function (e) {
@@ -198,7 +198,7 @@ if (calcGeomType == "Route") {
       const fileContents = await readFile(e.target.files[0])
       YellowToGreen();
       inputMethod = "table";
-      lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
+      lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash");
     });
 
 

@@ -9,9 +9,9 @@ $(".map-return").on('click', function () { returnToPoint(); });
 
 
 //route builder
-$("#addRow").on('click', function () { addProjectToArray(projectsArr); });
-$("#dropRow").on('click', function () { dropLastProjectFromArray(projectsArr, projectLines); });
-$("#clearRows").on('click', function () { clearProjectsFromArray(projectsArr, projectLines); });
+$("#addRow").on('click', function () { addProjectToArray(PROJECTSARR); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(PROJECTSARR, PROJECTLINES); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(PROJECTSARR, PROJECTLINES); });
 
 
 // toggle buttons for showing/hiding layers
@@ -42,8 +42,8 @@ $('#demo-mode-toggle').change(function () {
     $("#inputEndControlSection").val("012201");
     $("#inputEndMilepointMeasure").val("2.394");
 
-    // projectsArr is an array containing JS objects
-    projectsArr = [
+    // PROJECTSARR is an array containing JS objects
+    PROJECTSARR = [
       {
         RTE_NM: "IH0035-KG",
         BDFO: "121.243",

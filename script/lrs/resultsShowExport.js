@@ -3,20 +3,20 @@ function resultsShowExport(refinedData, inputMethod) {
   // show TABULAR results
   if (inputMethod == "html") {
 
-    if (calcGeomType == "Point") {
+    if (CALCGEOMTYPE == "Point") {
       paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
-    } else if (calcGeomType == "Route") {
+    } else if (CALCGEOMTYPE == "Route") {
       //showRouteResults(refinedData);
     }
 
   } else if (inputMethod == "table") {
 
-    if (calcGeomType == "Point") {
+    if (CALCGEOMTYPE == "Point") {
       paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
-    } else if (calcGeomType == "Route") {
+    } else if (CALCGEOMTYPE == "Route") {
       //showBulkRouteResults(refinedData);
     }
 
@@ -24,21 +24,21 @@ function resultsShowExport(refinedData, inputMethod) {
 
 
   // export data
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
     tabularPointsConvertExport(refinedData);
-  } else if (calcGeomType == "Route") {
+  } else if (CALCGEOMTYPE == "Route") {
     tabularRoutesConvertExport(refinedData);
   }
 
 
   // plot to map
-  if (useMap == 1) {
+  if (USEMAP == 1) {
     showPointResultsOnMap(refinedData);
 
-    if (calcGeomType == "Point") {
+    if (CALCGEOMTYPE == "Point") {
       showPointResultsOnMap(refinedData);
 
-    } else if (calcGeomType == "Route") {
+    } else if (CALCGEOMTYPE == "Route") {
       //showLineResultsOnMap(refinedData);
     }
   }

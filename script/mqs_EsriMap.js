@@ -83,7 +83,7 @@ require([
 
 
   window.view.on("click", function (evt) {
-    var onCursor = mapCursorLive;
+    var onCursor = MAPCURSORLIVE;
     if (onCursor == 1) {
       console.log("foo");
       //cursorQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);

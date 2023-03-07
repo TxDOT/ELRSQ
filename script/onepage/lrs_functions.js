@@ -1,10 +1,10 @@
-async function lrsSingleQuery(currentLRMno, inputMethod) {
+async function lrsSingleQuery(CURRENTLRMNO, inputMethod) {
   let headerRowPresent = 0;
-  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
+  let constrainToRouteName = (CALCGEOMTYPE == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG";
   let rte_nm_lrm_indices = [];
 
-  let field_indices = setIndicesByLrmAndGeom(currentLRMno);
+  let field_indices = setIndicesByLrmAndGeom(CURRENTLRMNO);
   rte_nm_lrm_indices = field_indices[1];
   let currentFieldOrder = field_indices[2];
 
@@ -14,7 +14,7 @@ async function lrsSingleQuery(currentLRMno, inputMethod) {
     let coordinateArr0 = [];
     for (let i = 0; i < currentFieldOrder.length; i++) {
       let value = $('#' + currentFieldOrder[i]).val();
-      if ((currentLRMno == 2 || currentLRMno == 4) && rtenmformat == "AAdddd" && i == 0) {
+      if ((CURRENTLRMNO == 2 || CURRENTLRMNO == 4) && rtenmformat == "AAdddd" && i == 0) {
         value = fixThisVerySpecificTextFormat(value);
       }
       coordinateArr0.push(value);
@@ -26,9 +26,9 @@ async function lrsSingleQuery(currentLRMno, inputMethod) {
 }
 
 
-async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
+async function lrsBulkQuery(CURRENTLRMNO, fileContents, rtenmformat) {
   let headerRowPresent = 1;
-  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
+  let constrainToRouteName = (CALCGEOMTYPE == "Route") ? 1 : 0;
   let lrm_indices0 = [];
   let lrm_indices1 = [];
   let rte_nm_lrm_indices = [];
@@ -36,7 +36,7 @@ async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
 
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
-  let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  let field_indices = await setTableFieldsByMethod(CURRENTLRMNO, parsedInputCSV);
   //console.log(field_indices);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
@@ -58,7 +58,7 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
   resetGraphics();
   resetCurrentPagination();
 
-  if (useMap == 1) {
+  if (USEMAP == 1) {
     clearResultsFromMap();
   }
 
@@ -81,20 +81,20 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
 
     // build url
     if (inputMethod == "html") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      url0 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); console.log(url1); }
+      if (CALCGEOMTYPE == "Route") { url1 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices1); console.log(url1); }
     } else if (inputMethod == "table") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      url0 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); console.log(url1); }
+      if (CALCGEOMTYPE == "Route") { url1 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices1); console.log(url1); }
     }
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
     let results1 = '';
-    if (calcGeomType == "Route") { results1 = await queryService(url1); }
+    if (CALCGEOMTYPE == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
@@ -117,8 +117,8 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
       } else if (inputMethod == "table") {
         user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
-      let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsObj = await matchOutputOnRteNm(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm);
+      let unfilteredArr = (CALCGEOMTYPE == "Point") ? [results0, results0] : [results0, results1];
+      let resultsObj = await matchOutputOnRteNm(inputMethod, CURRENTLRMNO, unfilteredArr, user_input_rte_nm);
       // end get right route
       // assemble data
 
@@ -157,36 +157,36 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
 }
 
 
-function setIndicesByLrmAndGeom(currentLRMno) {
+function setIndicesByLrmAndGeom(CURRENTLRMNO) {
   let field_indices = [];
   let lrm_indices = [];
   let lrm_indices0 = [];
   let lrm_indices1 = [];
 
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputLatitude', 'kbInputLongitude'];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
 
       lrm_indices = lrm_indices0 = [0, 1, 2];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['kbInputRouteName', 'kbInputReferenceMarker', 'kbInputDisplacement'];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputControlSection', 'kbInputMilepointMeasure'];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
 
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [0];
@@ -194,9 +194,9 @@ function setIndicesByLrmAndGeom(currentLRMno) {
     }
   }
 
-  else if (calcGeomType == "Route") {
+  else if (CALCGEOMTYPE == "Route") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
@@ -204,7 +204,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['kbInputBeginLatitude', 'kbInputBeginLongitude', 'kbInputEndLatitude', 'kbInputEndLongitude'];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
 
       lrm_indices0 = [0, 1, 2];
       lrm_indices1 = [0, 3, 4];
@@ -212,7 +212,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['kbInputRouteName_2', 'kbInputBeginReferenceMarker', 'kbInputBeginDisplacement', 'kbInputEndReferenceMarker', 'kbInputEndDisplacement'];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
@@ -220,7 +220,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
       currentFieldOrder = ['kbInputBeginControlSection', 'kbInputBeginMilepointMeasure', 'kbInputEndControlSection', 'kbInputEndMilepointMeasure'];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
 
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];
@@ -236,7 +236,7 @@ function setIndicesByLrmAndGeom(currentLRMno) {
 }
 
 
-async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
+async function setTableFieldsByMethod(CURRENTLRMNO, parsedInputCSV) {
   let field_indices = [];
   // let lrm_indices = [];
   let lrm_indices0 = [];
@@ -245,9 +245,9 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
   let candidate_fields = parsedInputCSV[0];
   all_fields = [...Array(candidate_fields.length).keys()];
 
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
       dropDownPopulator("#lat_field", candidate_fields);
       dropDownPopulator("#lon_field", candidate_fields);
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
@@ -261,7 +261,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
       dropDownPopulator("#referencemarker_field", candidate_fields);
       dropDownPopulator("#displacement_field", candidate_fields);
@@ -274,7 +274,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
       dropDownPopulator("#controlsection_field", candidate_fields);
       dropDownPopulator("#milepointmarker_field", candidate_fields);
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
@@ -288,7 +288,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
       dropDownPopulator("#dfo_field", candidate_fields);
 
@@ -300,9 +300,9 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
     }
   }
 
-  else if (calcGeomType == "Route") {
+  else if (CALCGEOMTYPE == "Route") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
       dropDownPopulator("#blat_field", candidate_fields);
       dropDownPopulator("#blon_field", candidate_fields);
       dropDownPopulator("#elat_field", candidate_fields);
@@ -322,7 +322,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
       dropDownPopulator("#route_rte_nm_field", candidate_fields);
       dropDownPopulator("#breferencemarker_field", candidate_fields);
       dropDownPopulator("#bdisplacement_field", candidate_fields);
@@ -341,7 +341,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
       dropDownPopulator("#bcontrolsection_field", candidate_fields);
       dropDownPopulator("#bmilepointmarker_field", candidate_fields);
       dropDownPopulator("#econtrolsection_field", candidate_fields);
@@ -361,7 +361,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
       dropDownPopulator("#route_rte_nm_field", candidate_fields);
       dropDownPopulator("#bdfo_field", candidate_fields);
       dropDownPopulator("#edfo_field", candidate_fields);
@@ -385,33 +385,33 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
 }
 
 
-function buildUrl(currentLRMno, coordinateArr, lrm_indices) {
+function buildUrl(CURRENTLRMNO, coordinateArr, lrm_indices) {
   let url = '';
 
   let index0 = (typeof lrm_indices !== 'undefined') ? lrm_indices[0] : 0;
   let index1 = (typeof lrm_indices !== 'undefined') ? lrm_indices[1] : 1;
   let index2 = (typeof lrm_indices !== 'undefined') ? lrm_indices[2] : 2;
 
-  if (currentLRMno == 1) {
+  if (CURRENTLRMNO == 1) {
     lat = coordinateArr[index0];
     lon = coordinateArr[index1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
   }
 
-  else if (currentLRMno == 2) {
+  else if (CURRENTLRMNO == 2) {
     routeName = coordinateArr[index0];
     refMarker = coordinateArr[index1];
     displacement = coordinateArr[index2];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs2?RouteID=${routeName}&ReferenceMarker=${refMarker}&Displacement=${displacement}`;
   }
 
-  else if (currentLRMno == 3) {
+  else if (CURRENTLRMNO == 3) {
     controlSecNum = coordinateArr[index0];
     milePointMeasure = coordinateArr[index1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
   }
 
-  else if (currentLRMno == 4) {
+  else if (CURRENTLRMNO == 4) {
     routeName = coordinateArr[index0];
     dfo = coordinateArr[index1];
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
@@ -429,20 +429,20 @@ function resultsShowExport(refinedData, inputMethod) {
   // show TABULAR results
   if (inputMethod == "html") {
 
-    if (calcGeomType == "Point") {
+    if (CALCGEOMTYPE == "Point") {
       paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
-    } else if (calcGeomType == "Route") {
+    } else if (CALCGEOMTYPE == "Route") {
       //showRouteResults(refinedData);
     }
 
   } else if (inputMethod == "table") {
 
-    if (calcGeomType == "Point") {
+    if (CALCGEOMTYPE == "Point") {
       paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
-    } else if (calcGeomType == "Route") {
+    } else if (CALCGEOMTYPE == "Route") {
       //showBulkRouteResults(refinedData);
     }
 
@@ -450,9 +450,9 @@ function resultsShowExport(refinedData, inputMethod) {
 
 
   // export data
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
     tabularPointsConvertExport(refinedData);
-  } else if (calcGeomType == "Route") {
+  } else if (CALCGEOMTYPE == "Route") {
     tabularRoutesConvertExport(refinedData);
   }
 
@@ -460,13 +460,13 @@ function resultsShowExport(refinedData, inputMethod) {
   //FIXME turning off plotting by default
   /**
     // plot to map
-    if (useMap == 1) {
+    if (USEMAP == 1) {
       // showPointResultsOnMap(refinedData); //turning off showing all points
   
-      if (calcGeomType == "Point") {
+      if (CALCGEOMTYPE == "Point") {
         // showPointResultsOnMap(refinedData); //turning off showing all points
   
-      } else if (calcGeomType == "Route") {
+      } else if (CALCGEOMTYPE == "Route") {
         //showLineResultsOnMap(refinedData);
       }
     }
@@ -489,7 +489,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
 
     if (inputMethod == "html") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
-      if (calcGeomType == "Route") {
+      if (CALCGEOMTYPE == "Route") {
         RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
         candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
       } else {
@@ -516,7 +516,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   output0 = results0[index0];
   console.log(output0);
 
-  if (calcGeomType == "Route") {
+  if (CALCGEOMTYPE == "Route") {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });

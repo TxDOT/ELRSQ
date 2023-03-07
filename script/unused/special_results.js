@@ -8,13 +8,13 @@ function exportKML() {
     var kmlContent = "data:text/kml;charset=utf-8,";
     kmlContent += headerTags;
 
-    for (var i = 0; i < projectLines.length; i++) {
-        var theProjectFrom = projectLines[i][1][0];
-        var theProjectTo = projectLines[i][1][1];
-        var theProjectRTE = projectLines[i][1][2];
-        var theProjectWidth = projectLines[i][1][3];
-        var theProjectColor = projectLines[i][1][4];
-        var theProjectDesc = projectLines[i][1][5];
+    for (var i = 0; i < PROJECTLINES.length; i++) {
+        var theProjectFrom = PROJECTLINES[i][1][0];
+        var theProjectTo = PROJECTLINES[i][1][1];
+        var theProjectRTE = PROJECTLINES[i][1][2];
+        var theProjectWidth = PROJECTLINES[i][1][3];
+        var theProjectColor = PROJECTLINES[i][1][4];
+        var theProjectDesc = PROJECTLINES[i][1][5];
 
         var newKMLColor = getRightCharacters(theProjectColor, 6);
         var newKMLRR = getLeftCharacters(newKMLColor, 2);
@@ -43,7 +43,7 @@ function exportKML() {
         kmlContent += addTags("Style", "Close");
         kmlContent += addTags("LineString", "Open");
         kmlContent += addTags("coordinates", "Open");
-        kmlContent += kmlGeom(projectLines[i][0]);
+        kmlContent += kmlGeom(PROJECTLINES[i][0]);
         kmlContent += addTags("coordinates", "Close");
         kmlContent += addTags("LineString", "Close");
         kmlContent += addTags("Placemark", "Close");

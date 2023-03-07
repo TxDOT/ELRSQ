@@ -18,7 +18,7 @@
     <script src="script/data_functions.js"></script>
     <script src="script/print_geometry.js"></script>
     <script>
-        let projectsArr = [
+        let PROJECTSARR = [
             [
                 "IH0035-KG",
                 "121.243",
@@ -45,7 +45,7 @@
             ]
         ]
 
-        /*let projectsArr = [
+        /*let PROJECTSARR = [
             [
                 "IH0010-KG",
                 "500",
@@ -56,12 +56,12 @@
             ]
         ]*/
 
-        //let projectsArr = [];
-        var projectLines = [];
+        //let PROJECTSARR = [];
+        var PROJECTLINES = [];
     </script>
 </head>
 
-<body onload="makeRouteProjectsTable(projectsArr)">
+<body onload="makeRouteProjectsTable(PROJECTSARR)">
     <div id="index" style="width: 25%;">
 
 
@@ -105,15 +105,15 @@
 
         <div id="mapButtons">
             <button class="halfSizeButton" title="Save current project and add another"
-                onclick="addProjectToArray(projectsArr)">Add</button>
+                onclick="addProjectToArray(PROJECTSARR)">Add</button>
             <button class="halfSizeButton" title="Remove last project on list"
-                onclick="dropLastProjectFromArray(projectsArr, projectLines)">Drop</button>
+                onclick="dropLastProjectFromArray(PROJECTSARR, PROJECTLINES)">Drop</button>
             <button class="halfSizeButton" title="Clear project(s) from the map"
-                onclick="clearProjectsFromArray(projectsArr, projectLines)">Clear</button>
+                onclick="clearProjectsFromArray(PROJECTSARR, PROJECTLINES)">Clear</button>
         </div>
 
-        <button title="Convert" onclick="queryProjectGeometry(projectsArr)">Convert</button>
-        <button title="Show in Console" onclick="printGeometry(projectLines)">Show in Console</button>
+        <button title="Convert" onclick="queryProjectGeometry(PROJECTSARR)">Convert</button>
+        <button title="Show in Console" onclick="printGeometry(PROJECTLINES)">Show in Console</button>
 
     </div>
 </body>

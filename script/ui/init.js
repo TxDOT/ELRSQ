@@ -1,6 +1,6 @@
 //screen pane slider
 
-if (useMap == 1) {
+if (USEMAP == 1) {
 
   if (screen.width >= 768) {
     const GUTTER_SIZE = 30;
@@ -15,7 +15,7 @@ if (useMap == 1) {
 
 
 
-const useLoadIndicator = 1;
+const USELOADINDICATOR = 1;
 
 
 /**
@@ -35,14 +35,14 @@ function resetGraphics() {
   graphics = [];
 }
 
-let projectsArr = [];
+let PROJECTSARR = [];
 function resetProjects() {
-  projectsArr = [];
+  PROJECTSARR = [];
 }
 
-var projectLines = [];
+var PROJECTLINES = [];
 function resetProjectLines() {
-  projectLines = [];
+  PROJECTLINES = [];
 }
 
 

@@ -39,9 +39,9 @@ async function rdwayQuery(url) {
 }
 
 
-//iterates over projectsArr array
+//iterates over PROJECTSARR array
 //for each project, queries queryRecordFromServiceGeometry
-//FIXME add projectLines as an argument instead of hardcoded
+//FIXME add PROJECTLINES as an argument instead of hardcoded
 async function queryProjectGeometry(myProjectsArr) {
   console.log(myProjectsArr);
   resetProjectLines();
@@ -53,8 +53,8 @@ async function queryProjectGeometry(myProjectsArr) {
     let myProjectData = myProjectsArr[i]
 
     let results = await queryRoadwayServiceByLine(myProjectData);
-    myClippedLine = getSegment(results, myProjectData, projectsArr);
-    projectLines.push(myClippedLine);
+    myClippedLine = getSegment(results, myProjectData, PROJECTSARR);
+    PROJECTLINES.push(myClippedLine);
   }
 
   YellowToGreen();

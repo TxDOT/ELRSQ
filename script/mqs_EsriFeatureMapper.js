@@ -199,7 +199,7 @@ function returnToPoint() {
 }
 
 function showAllPoints() {
-  showFullPointResultsOnMap(projectGeometry);
+  showFullPointResultsOnMap(PROJECTGEOMETRY);
 }
 
 

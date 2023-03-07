@@ -2,7 +2,7 @@ async function queryLrsByArray_forRPM(inputMethod, arrayToQuery, headerRowPresen
   resetGraphics();
   resetCurrentPagination();
 
-  if (useMap == 1) {
+  if (USEMAP == 1) {
     clearResultsFromMap();
   }
 
@@ -26,20 +26,20 @@ async function queryLrsByArray_forRPM(inputMethod, arrayToQuery, headerRowPresen
 
     // build url
     if (inputMethod == "html") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      url0 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
+      if (CALCGEOMTYPE == "Route") { url1 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices1); }
     } else if (inputMethod == "table") {
-      url0 = buildUrl(currentLRMno, currentRow, lrm_indices0);
+      url0 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices0);
       console.log(url0);
-      if (calcGeomType == "Route") { url1 = buildUrl(currentLRMno, currentRow, lrm_indices1); }
+      if (CALCGEOMTYPE == "Route") { url1 = buildUrl(CURRENTLRMNO, currentRow, lrm_indices1); }
     }
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
     let results1 = '';
-    if (calcGeomType == "Route") { results1 = await queryService(url1); }
+    if (CALCGEOMTYPE == "Route") { results1 = await queryService(url1); }
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
@@ -58,8 +58,8 @@ async function queryLrsByArray_forRPM(inputMethod, arrayToQuery, headerRowPresen
       } else if (inputMethod == "table") {
         user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
-      let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsArr = await matchOutputOnRteNm_forRPM(inputMethod, currentLRMno, unfilteredArr, user_input_rte_nm, RteDfoArr);
+      let unfilteredArr = (CALCGEOMTYPE == "Point") ? [results0, results0] : [results0, results1];
+      let resultsArr = await matchOutputOnRteNm_forRPM(inputMethod, CURRENTLRMNO, unfilteredArr, user_input_rte_nm, RteDfoArr);
       // end get right route
       // assemble data
       let fullRowData = resultsArr;
@@ -83,11 +83,11 @@ async function queryLrsByArray_forRPM(inputMethod, arrayToQuery, headerRowPresen
   // end process rows
   // set column heads
   let customhead = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-  let standardhead = (calcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+  let standardhead = (CALCGEOMTYPE == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
   let colhead = customhead.concat(standardhead);
 
   // prepend column heads
-  if (calcGeomType == "Route") {
+  if (CALCGEOMTYPE == "Route") {
     refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
   }
 

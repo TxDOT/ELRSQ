@@ -1,4 +1,4 @@
-async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
+async function setTableFieldsByMethod(CURRENTLRMNO, parsedInputCSV) {
   let field_indices = [];
   // let lrm_indices = [];
   let lrm_indices0 = [];
@@ -7,9 +7,9 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
   let candidate_fields = parsedInputCSV[0];
   all_fields = [...Array(candidate_fields.length).keys()];
 
-  if (calcGeomType == "Point") {
+  if (CALCGEOMTYPE == "Point") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
       dropDownPopulator("#lat_field", candidate_fields);
       dropDownPopulator("#lon_field", candidate_fields);
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
@@ -23,7 +23,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
       dropDownPopulator("#referencemarker_field", candidate_fields);
       dropDownPopulator("#displacement_field", candidate_fields);
@@ -36,7 +36,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
       dropDownPopulator("#controlsection_field", candidate_fields);
       dropDownPopulator("#milepointmarker_field", candidate_fields);
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
@@ -50,7 +50,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
       dropDownPopulator("#point_rte_nm_field", candidate_fields);
       dropDownPopulator("#dfo_field", candidate_fields);
 
@@ -62,9 +62,9 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
     }
   }
 
-  else if (calcGeomType == "Route") {
+  else if (CALCGEOMTYPE == "Route") {
 
-    if (currentLRMno == 1) {
+    if (CURRENTLRMNO == 1) {
       dropDownPopulator("#blat_field", candidate_fields);
       dropDownPopulator("#blon_field", candidate_fields);
       dropDownPopulator("#elat_field", candidate_fields);
@@ -84,7 +84,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 2) {
+    else if (CURRENTLRMNO == 2) {
       dropDownPopulator("#route_rte_nm_field", candidate_fields);
       dropDownPopulator("#breferencemarker_field", candidate_fields);
       dropDownPopulator("#bdisplacement_field", candidate_fields);
@@ -103,7 +103,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 3) {
+    else if (CURRENTLRMNO == 3) {
       dropDownPopulator("#bcontrolsection_field", candidate_fields);
       dropDownPopulator("#bmilepointmarker_field", candidate_fields);
       dropDownPopulator("#econtrolsection_field", candidate_fields);
@@ -123,7 +123,7 @@ async function setTableFieldsByMethod(currentLRMno, parsedInputCSV) {
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
-    else if (currentLRMno == 4) {
+    else if (CURRENTLRMNO == 4) {
       dropDownPopulator("#rte_nm_field", candidate_fields);
       dropDownPopulator("#bdfo_field", candidate_fields);
       dropDownPopulator("#edfo_field", candidate_fields);

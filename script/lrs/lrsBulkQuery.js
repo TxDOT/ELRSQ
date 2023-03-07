@@ -1,6 +1,6 @@
-async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
+async function lrsBulkQuery(CURRENTLRMNO, fileContents, rtenmformat) {
   let headerRowPresent = 1;
-  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
+  let constrainToRouteName = (CALCGEOMTYPE == "Route") ? 1 : 0;
   //TODO use regex to detect rtenmformat
   let lrm_indices0 = [];
   let lrm_indices1 = [];
@@ -13,7 +13,7 @@ async function lrsBulkQuery(currentLRMno, fileContents, rtenmformat) {
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
   // set fields
-  let field_indices = await setTableFieldsByMethod(currentLRMno, parsedInputCSV);
+  let field_indices = await setTableFieldsByMethod(CURRENTLRMNO, parsedInputCSV);
   console.log(field_indices);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];

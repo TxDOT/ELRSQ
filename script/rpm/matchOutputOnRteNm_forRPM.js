@@ -10,7 +10,7 @@ async function matchOutputOnRteNm_forRPM(inputMethod, method, unfilteredArr, rte
 
     if (inputMethod == "html") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
-      if (calcGeomType == "Route") {
+      if (CALCGEOMTYPE == "Route") {
         RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
         candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
       } else {
@@ -36,7 +36,7 @@ async function matchOutputOnRteNm_forRPM(inputMethod, method, unfilteredArr, rte
   output0 = results0[index0];
   console.log(output0);
 
-  if (calcGeomType == "Route") {
+  if (CALCGEOMTYPE == "Route") {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
