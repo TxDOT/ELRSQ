@@ -48,8 +48,6 @@ $(document).ready(function () {
 
   function set_lrm_method_referencemarker() {
     currentLRMno = 2;
-    console.log("currentLRMno");
-    console.log(currentLRMno);
     $("#kbPointInputRouteName").show();
     $("#kbPointInputReferenceMarker").show();
     $("#kbPointInputControlSection").hide();
@@ -187,25 +185,21 @@ $(document).ready(function () {
 
 
   // FIXME Bulk Upload: change to use Convert button instead of automatic
-  let condition = 0; // FIXME get away from using ids
 
-  if (condition == 1) {
-    const myDropZone = document.getElementById("fieldset-uploadCsv-bulk");
-    dragDropEventHandlers(myDropZone);
-  } else {
-    const dropZones = document.querySelectorAll('.upload_dropZone');
-    for (const zone of dropZones) {
-      dragDropEventHandlers(zone);
-    }
-  }
+  const myDropZone = document.getElementById("bulk-fieldset");
+  dragDropEventHandlers(myDropZone);
 
-  $(".upload_dropZone").on('drop', async function (e) {
-    console.log(e.dataTransfer.files[0]);
-    GreenToYellow();
-    const fileContents = await readFile(e.dataTransfer.files[0])
-    YellowToGreen();
-    lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
-    // lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash");
+
+  myDropZone.addEventListener('drop', async (event) => {
+    event.preventDefault();
+
+    const file = event.dataTransfer.files[0];
+    const reader = new FileReader();
+
+    const fileContents = await readFile(file);
+    inputMethod = "table";
+    lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
+
   });
 
   $(".uploadCsv-bulk").on('change', async function (e) {
