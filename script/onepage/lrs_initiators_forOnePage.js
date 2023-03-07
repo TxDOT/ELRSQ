@@ -198,7 +198,7 @@ $(document).ready(function () {
 
     const fileContents = await readFile(file);
     inputMethod = "table";
-    lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash_KG");
+    lrsBulkQuery(currentLRMno, fileContents, "AAdddd_dash_KG");
 
   });
 
