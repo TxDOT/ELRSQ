@@ -2,6 +2,8 @@
 
 function tabularPointsConvertExport(resultsArr) {
   //console.log(resultsArr);
+  $("#bulk-convert-download-bar").show();
+  $("#bulk-convert-progress-bar").hide();
 
   if (inputMethod == "html") {
     btn_suffix = "Main";

@@ -63,6 +63,7 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
   }
 
   GreenToYellow();
+  $("#bulk-convert-progress-bar").show();
 
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
