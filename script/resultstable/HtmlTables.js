@@ -68,6 +68,8 @@ function fillInPointHtmlTable(currentResult) {
 function fillInRouteHtmlTable(currentResult) {
   // fill in HTML results
   console.log("Hello there!");
+  console.log(currentResult);
+  console.log(currentResult['END_RMRKR_DISPLACEMENT']);
 
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);

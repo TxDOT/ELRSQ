@@ -42,9 +42,9 @@ const outputFieldIDs = {
   RMRKR_PNT_NBR_BEGIN: "#p_returned_RMRKR_PNT_NBR_BEGIN",
   RMRKR_DISPLACEMENT_BEGIN: "#p_returned_RMRKR_DISPLACEMENT_BEGIN",
   RMRKR_PNT_NBR_END: "#p_returned_RMRKR_PNT_NBR_END",
-  RMRKR_DISPLACEMENT_END: "p_returned_RMRKR_DISPLACEMENT_END",
-  LAT_BEGIN: "p_returned_LAT_BEGIN",
-  LON_BEGIN: "p_returned_LON_BEGIN",
+  RMRKR_DISPLACEMENT_END: "#p_returned_RMRKR_DISPLACEMENT_END",
+  LAT_BEGIN: "#p_returned_LAT_BEGIN",
+  LON_BEGIN: "#p_returned_LON_BEGIN",
   LAT_END: "#p_returned_LAT_END",
   LON_END: "#p_returned_LON_END"
 
