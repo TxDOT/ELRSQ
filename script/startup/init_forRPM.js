@@ -18,22 +18,21 @@ if (USEMAP == 1) {
 const USELOADINDICATOR = 1;
 
 
-/**
-  let allResults = [];
-  function resetAllResults() {
-    allResults = [];
-  }
-  
-  let currentPagination = 1;
-  function resetCurrentPagination() {
-    currentPagination = 1;
-  }
-*/
+let allResults = [];
+function resetAllResults() {
+  allResults = [];
+}
+
+let currentPagination = 1;
+function resetCurrentPagination() {
+  currentPagination = 1;
+}
 
 let graphics = [];
 function resetGraphics() {
   graphics = [];
 }
+
 
 let PROJECTSARR = [];
 function resetProjects() {
@@ -108,13 +107,24 @@ function ToGreen() {
 
 // add results card
 $(document).ready(function () {
-  $("results_card-component").load("components/html/results_card.html", function (response, status, xhr) {
-    if (status == "error") { $("results_card-component").html(staticResults_Card); }
-    $("#copyRouteDFO").on('click', function () { copyRouteDFO(); });
-    $("#makequeryTxDOT_Roadways_Unsegmented").on('click', function () { makequeryTxDOT_Roadways_Unsegmented(); });
-    $("#copyControlSection").on('click', function () { copyControlSection(); });
-    $("#copyFieldLocation").on('click', function () { copyFieldLocation(); });
-    $("#copyCoordinates").on('click', function () { copyCoordinates(); });
-  });
+  /**
+    $("results_card-component").load("components/html/results_card.html", function (response, status, xhr) {
+      if (status == "error") { $("results_card-component").html(staticResults_Card); }
+      $("#copyRouteDFO").on('click', function () { copyRouteDFO(); });
+      $("#makequeryTxDOT_Roadways_Unsegmented").on('click', function () { makequeryTxDOT_Roadways_Unsegmented(); });
+      $("#copyControlSection").on('click', function () { copyControlSection(); });
+      $("#copyFieldLocation").on('click', function () { copyFieldLocation(); });
+      $("#copyCoordinates").on('click', function () { copyCoordinates(); });
+    });
+  */
+
+
+  $("#copyRouteDFO").on('click', function () { copyRouteDFO(); });
+  $("#makequeryTxDOT_Roadways_Unsegmented").on('click', function () { makequeryTxDOT_Roadways_Unsegmented(); });
+  $("#copyControlSection").on('click', function () { copyControlSection(); });
+  $("#copyFieldLocation").on('click', function () { copyFieldLocation(); });
+  $("#copyCoordinates").on('click', function () { copyCoordinates(); });
+
+
 
 });

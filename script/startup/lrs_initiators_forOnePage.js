@@ -12,6 +12,7 @@ $(document).ready(function () {
 
   function set_topnav_point() {
     CALCGEOMTYPE = 'Point';
+    console.log("setting CALCGEOMTYPE to: " + CALCGEOMTYPE);
     $("#input-route-form-card").hide();
     $("#input-route-form").hide();
 
@@ -26,10 +27,15 @@ $(document).ready(function () {
 
     $("#results-table-route-card").hide();
     $("#results-table-point-card").show();
+
+    $("#bulk-route-templates-toolbar").hide();
+    $("#bulk-point-templates-toolbar").show();
+
   }
 
   function set_topnav_route() {
     CALCGEOMTYPE = 'Route';
+    console.log("setting CALCGEOMTYPE to: " + CALCGEOMTYPE);
     $("#input-point-form-card").hide();
     $("#input-point-form").hide();
 
@@ -44,6 +50,10 @@ $(document).ready(function () {
 
     $("#results-table-point-card").hide();
     $("#results-table-route-card").show();
+
+    $("#bulk-point-templates-toolbar").hide();
+    $("#bulk-route-templates-toolbar").show();
+
   }
 
   function set_lrm_method_referencemarker() {
@@ -75,6 +85,11 @@ $(document).ready(function () {
     $("#csvRouteInputDistanceFromOrigin").hide();
     $("#csvRouteInputRouteName_optional").hide();
     $("#csvRouteInputCoordinates").hide();
+
+    $(".referencemarker-template").show();
+    $(".controlsection-template").hide();
+    $(".dfo-template").hide();
+    $(".coordinates-template").hide();
 
   }
 
@@ -108,6 +123,11 @@ $(document).ready(function () {
     $("#csvRouteInputRouteName_optional").hide();
     $("#csvRouteInputCoordinates").hide();
 
+    $(".controlsection-template").show();
+    $(".referencemarker-template").hide();
+    $(".dfo-template").hide();
+    $(".coordinates-template").hide();
+
   }
 
   function set_lrm_method_dfo() {
@@ -140,6 +160,11 @@ $(document).ready(function () {
     $("#csvRouteInputRouteName_optional").hide();
     $("#csvRouteInputCoordinates").hide();
 
+    $(".dfo-template").show();
+    $(".referencemarker-template").hide();
+    $(".controlsection-template").hide();
+    $(".coordinates-template").hide();
+
   }
 
   function set_lrm_method_coordinates() {
@@ -171,6 +196,11 @@ $(document).ready(function () {
     $("#csvRouteInputDistanceFromOrigin").hide();
     $("#csvRouteInputRouteName_optional").show();
     $("#csvRouteInputCoordinates").show();
+
+    $(".coordinates-template").show();
+    $(".referencemarker-template").hide();
+    $(".controlsection-template").hide();
+    $(".dfo-template").hide();
 
   }
 
