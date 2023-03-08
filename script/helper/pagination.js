@@ -14,7 +14,6 @@ function paginatedResultsSequence(results) {
   clearPagination("#result-pagination");
   destroyPaginationEventHandlers("#result-pagination");
   createPaginationEventHandlers("#result-pagination", results);
-  // readOutPointResults(results); // moving this to parent function
 }
 
 //clear pagination
@@ -39,7 +38,7 @@ function createPaginationEventHandlers(someId, results) {
 }
 
 //navResults called by pagination buttons in showResults function
-function navResults(direction, results) {
+function navResults(direction, results) { //FIXME have function as an input
 
   if (direction == 'prev' && currentPagination > 1) {
     currentPagination--;
@@ -48,24 +47,11 @@ function navResults(direction, results) {
   }
 
   if (currentPagination > 0 && currentPagination <= results.length) {
-    readOutPointResults(results, currentPagination)
+    readOutResults(results, currentPagination)
   }
 }
 
-// determine pagination and fill in HTML table results
-//TODO move point on map
-function readOutPointResults(results, navIndex) {
-  console.log("readOutPointResults");
-  const index = navIndex ? navIndex - 1 : 0;
-  console.log(index);
 
-  //insertPagination(currentPagination, results);
-  paginationUpdater("#result-pagination", currentPagination, results);
-
-  fillInHtmlTable(results[index]);
-  // plot point for results[index]
-  showThisPointResultOnMap(results[index]);
-}
 
 function paginationUpdater(someId, currentPagination, results) {
   //console.log("paginationUpdater");

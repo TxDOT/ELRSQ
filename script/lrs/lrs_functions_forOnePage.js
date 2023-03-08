@@ -429,22 +429,26 @@ function resultsShowExport(refinedData, inputMethod) {
 
   // show TABULAR results
   if (inputMethod == "html") {
+    paginatedResultsSequence(refinedData);
 
     if (CALCGEOMTYPE == "Point") {
-      paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
     } else if (CALCGEOMTYPE == "Route") {
       //showRouteResults(refinedData);
+      readOutRouteResults(refinedData);
     }
 
-  } else if (inputMethod == "table") {
+  }
+
+  else if (inputMethod == "table") {
+    paginatedResultsSequence(refinedData);
 
     if (CALCGEOMTYPE == "Point") {
-      paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
     } else if (CALCGEOMTYPE == "Route") {
       //showBulkRouteResults(refinedData);
+      readOutRouteResults(refinedData);
     }
 
   }

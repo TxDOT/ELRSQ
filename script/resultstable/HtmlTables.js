@@ -1,6 +1,53 @@
 // TODO add functions for bulk and routes
 
-function fillInHtmlTable(currentResult) {
+
+
+function readOutResults(results, navIndex) {
+
+  if (CALCGEOMTYPE == "Point") {
+    readOutPointResults(results, navIndex);
+  } else if (CALCGEOMTYPE == "Route") {
+    readOutRouteResults(results, navIndex);
+  }
+
+}
+
+
+
+// determine pagination and fill in HTML table results
+//TODO move point on map
+function readOutPointResults(results, navIndex) {
+  console.log("readOutPointResults");
+  const index = navIndex ? navIndex - 1 : 0;
+  console.log(index);
+
+  //insertPagination(currentPagination, results);
+  paginationUpdater("#result-pagination", currentPagination, results);
+
+  fillInPointHtmlTable(results[index]);
+  // plot point for results[index]
+  showThisPointResultOnMap(results[index]);
+}
+
+
+// determine pagination and fill in HTML table results
+//TODO move route on map
+function readOutRouteResults(results, navIndex) {
+  console.log("readOutRouteResults");
+  const index = navIndex ? navIndex - 1 : 0;
+  console.log(index);
+
+  //insertPagination(currentPagination, results);
+  paginationUpdater("#result-pagination", currentPagination, results);
+
+  fillInRouteHtmlTable(results[index]);
+  // plot route for results[index]
+  // showThisRouteResultOnMap(results[index]); // TODO put RPM here
+}
+
+
+
+function fillInPointHtmlTable(currentResult) {
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM).html(currentResult['RTE_DEFN_LN_NM']);
@@ -16,6 +63,43 @@ function fillInHtmlTable(currentResult) {
   $(outputFieldIDs.LAT).html(currentResult['LAT']);
   $(outputFieldIDs.LON).html(currentResult['LON']);
 }
+
+
+function fillInRouteHtmlTable(currentResult) {
+  // fill in HTML results
+  console.log("Hello there!");
+
+  $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
+  $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);
+  $(outputFieldIDs.RDBD_TYPE_DSCR_ROUTE).html(currentResult['BEGIN_RDBD_TYPE_DSCR']);
+
+  $(outputFieldIDs.RTE_DFO_BEGIN).html(currentResult['BEGIN_RTE_DFO']);
+  $(outputFieldIDs.RTE_DFO_END).html(currentResult['END_RTE_DFO']);
+
+
+  $(outputFieldIDs.CTRL_SECT_LN_NBR_BEGIN).html(currentResult['BEGIN_CTRL_SECT_LN_NBR']);
+  $(outputFieldIDs.CTRL_SECT_MPT_BEGIN).html(currentResult['BEGIN_CTRL_SECT_MPT']);
+  $(outputFieldIDs.CTRL_SECT_LN_NBR_END).html(currentResult['END_CTRL_SECT_LN_NBR']);
+  $(outputFieldIDs.CTRL_SECT_MPT_END).html(currentResult['END_CTRL_SECT_MPT']);
+
+  $(outputFieldIDs.RMRKR_PNT_NBR_BEGIN).html(currentResult['BEGIN_RMRKR_PNT_NBR']);
+  $(outputFieldIDs.RMRKR_DISPLACEMENT_BEGIN).html(currentResult['BEGIN_RMRKR_DISPLACEMENT']);
+  $(outputFieldIDs.RMRKR_PNT_NBR_END).html(currentResult['END_RMRKR_PNT_NBR']);
+  $(outputFieldIDs.RMRKR_DISPLACEMENT_END).html(currentResult['END_RMRKR_DISPLACEMENT']);
+
+  $(outputFieldIDs.LAT_BEGIN).html(currentResult['BEGIN_LAT']);
+  $(outputFieldIDs.LON_BEGIN).html(currentResult['BEGIN_LON']);
+  $(outputFieldIDs.LAT_END).html(currentResult['END_LAT']);
+  $(outputFieldIDs.LON_END).html(currentResult['END_LON']);
+}
+
+
+
+
+
+
+
+
 
 
 function clearResults() {
