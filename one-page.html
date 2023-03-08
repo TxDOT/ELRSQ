@@ -391,6 +391,47 @@
         <div class="modal-body">
           <!-- Horizontal Form -->
 
+
+          <div id="bulk-point-templates-toolbar" class="btn-toolbar mb-3 justify-content-center"
+            role="toolbar" aria-label="Toolbar with button groups">
+            <a type="button" id="tmpl-latlon" href="templates/queryPointByCoordinates.csv"
+              download="queryPointByCoordinates.csv" class="btn btn-primary point-template coordinates-template"
+              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Lat/Lon
+              Template</a>
+            <a type="button" id="tmpl-field" href="templates/queryPointByReferenceMarker.csv"
+              download="queryPointByReferenceMarker.csv" class="btn btn-primary point-template referencemarker-template"
+              title="Download a fillable template"><i class="fa fa-download"></i> Reference Marker
+              Template</a>
+            <a type="button" id="tmpl-controlsection" href="templates/queryPointByControlSection.csv"
+              download="queryPointByControlSection.csv" class="btn btn-primary point-template controlsection-template"
+              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section
+              Template</a>
+            <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv"
+              class="btn btn-primary point-template dfo-template" style="display:none"
+              title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
+          </div>
+
+          <div id="bulk-route-templates-toolbar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+            role="toolbar" aria-label="Toolbar with button groups">
+            <a type="button" id="tmpl-latlon-route" href="templates/queryRouteByCoordinates.csv"
+              download="queryRouteByCoordinates.csv" class="btn btn-primary route-template coordinates-template"
+              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Lat/Lon
+              Template</a>
+            <a type="button" id="tmpl-field-route" href="templates/queryRouteByReferenceMarker.csv"
+              download="queryRouteByReferenceMarker.csv" class="btn btn-primary route-template referencemarker-template"
+              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Reference Marker
+              Template</a>
+            <a type="button" id="tmpl-controlsection-route" href="templates/queryRouteByControlSection.csv"
+              download="queryRouteByControlSection.csv" class="btn btn-primary route-template controlsection-template"
+              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section
+              Template</a>
+            <a type="button" id="tmpl-dfo-route" href="templates/queryRouteByDFO.csv" download="queryRouteByDFO.csv"
+              class="btn btn-primary route-template dfo-template" style="display:none"
+              title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
+          </div>
+
+
+
           <!-- Upload Form -->
           <form id="modal-upload">
             <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
@@ -659,12 +700,13 @@
           </div>
           <!--#endregion -->
 
-          <div class="progress mt-5 mb-5 ms-3 me-3" style="height: 30px;">
+          <div id="bulk-convert-progress-bar" class="progress mt-5 mb-5 ms-3 me-3" style="display:none; height: 30px;">
             <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
               aria-valuemax="100">0%</div>
           </div>
 
-          <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+          <div id="bulk-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+            role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
               <a id="CSVdownloadModal" type="text/csv" class="btn btn-primary"
                 title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
