@@ -56,7 +56,6 @@ $('#demo-mode-toggle').change(function () {
 
     $("#kbInputBeginControlSection").val("012201");
     $("#kbInputBeginMilepointMeasure").val("2.394");
-    $("#kbInputEndControlSection").val("012201");
     $("#kbInputEndMilepointMeasure").val("2.394");
 
     $("#kbInputBeginDistanceFromOrigin").val("59.095");

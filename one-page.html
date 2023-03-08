@@ -601,7 +601,7 @@
                 <!-- Control Section Field Picker Form -->
                 <div class="row" style="display:none" id="csvRouteInputControlSection">
                   <div class="input-group mb-3">
-                    <span class="input-group-text">Begin Control Section Field:</span>
+                    <span class="input-group-text">Control Section Field:</span>
                     <select id="bcontrolsection_field" class="form-select candidate">
                     </select>
                     <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm"
@@ -613,14 +613,6 @@
                     <select id="bmilepoint_field" class="form-select candidate">
                     </select>
                     <button id="btn-bmilepoint_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">End Control Section Field:</span>
-                    <select id="econtrolsection_field" class="form-select candidate">
-                    </select>
-                    <button id="btn-econtrolsection_field" class="btn btn-outline-primary confirm"
                       type="button">Select</button>
                   </div>
 
@@ -951,17 +943,7 @@
                     <div style="display:none" id="kbRouteInputControlSection">
                       <div class="row mb-3">
                         <div class="col-3">
-                        </div>
-                        <div class="col-4">
                           Control Section:
-                        </div>
-                        <div class="col-4">
-                          Milepoint Measure:
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-3">
-                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                         </div>
                         <div class="col-4">
                           <input id="kbInputBeginControlSection" type="text" required
@@ -969,8 +951,27 @@
                             class="form-control textentry controlsection">
                         </div>
                         <div class="col-4">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-4">
+                          Milepoint Measure:
+                        </div>
+                        <div class="col-4">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
+                        </div>
+
+                        <div class="col-4">
                           <input id="kbInputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
                             class="form-control textentry milepointmeasure">
+                        </div>
+                        <div class="col-4">
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -978,13 +979,10 @@
                           <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                         </div>
                         <div class="col-4">
-                          <input id="kbInputEndControlSection" type="text" required
-                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection"
-                            class="form-control textentry controlsection">
-                        </div>
-                        <div class="col-4">
                           <input id="kbInputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
                             class="form-control textentry milepointmeasure">
+                        </div>
+                        <div class="col-4">
                         </div>
                       </div>
                     </div>
@@ -1200,25 +1198,6 @@
           <div id="results_card" class="card">
             <div class="card-body">
               <h5 class="card-title">Results:</h5>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
               <!-- Pagination-Card START -->

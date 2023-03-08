@@ -216,9 +216,9 @@ function setIndicesByLrmAndGeom(CURRENTLRMNO) {
     else if (CURRENTLRMNO == 3) {
 
       lrm_indices0 = [0, 1];
-      lrm_indices1 = [2, 3];
-      rte_nm_lrm_indices = [4]; // optional
-      currentFieldOrder = ['kbInputBeginControlSection', 'kbInputBeginMilepointMeasure', 'kbInputEndControlSection', 'kbInputEndMilepointMeasure'];
+      lrm_indices1 = [0, 2];
+      rte_nm_lrm_indices = [3]; // optional
+      currentFieldOrder = ['kbInputBeginControlSection', 'kbInputBeginMilepointMeasure', 'kbInputEndMilepointMeasure'];
     }
 
     else if (CURRENTLRMNO == 4) {
@@ -345,20 +345,18 @@ async function setTableFieldsByMethod(CURRENTLRMNO, parsedInputCSV) {
     else if (CURRENTLRMNO == 3) {
       dropDownPopulator("#bcontrolsection_field", candidate_fields);
       dropDownPopulator("#bmilepoint_field", candidate_fields);
-      dropDownPopulator("#econtrolsection_field", candidate_fields);
       dropDownPopulator("#emilepoint_field", candidate_fields);
       dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let bcontrolsection_field = ~~await confirmFieldChoice("#btn-bcontrolsection_field", "#bcontrolsection_field");
       let bmilepoint_field = ~~await confirmFieldChoice("#btn-bmilepoint_field", "#bmilepoint_field");
-      let econtrolsection_field = ~~await confirmFieldChoice("#btn-econtrolsection_field", "#econtrolsection_field");
       let emilepoint_field = ~~await confirmFieldChoice("#btn-emilepoint_field", "#emilepoint_field");
       let rte_nm_option = 0;  //TODO make this optional
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
-      lrm_indices = [bcontrolsection_field, bmilepoint_field, econtrolsection_field, emilepoint_field, rte_nm_field];
+      lrm_indices = [bcontrolsection_field, bmilepoint_field, emilepoint_field, rte_nm_field];
       lrm_indices0 = [bcontrolsection_field, bmilepoint_field];
-      lrm_indices1 = [econtrolsection_field, emilepoint_field];
+      lrm_indices1 = [bcontrolsection_field, emilepoint_field];
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
@@ -487,7 +485,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   let results1 = unfilteredArr[1];
 
   // get right route
-  if (method == 1 || method == 3) {
+  if (method == 1) {
     let candidateRteNms = '';
     let RTENMs0 = [];
     let RTENMs1 = [];
@@ -505,7 +503,35 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
       rte_nm = candidateRteNms[rte_nm_Index];
     }
 
+  } else if (method == 3) {
+    let candidateRteNms = '';
+    let RTENMs0 = [];
+    let RTENMs1 = [];
+
+    if (inputMethod == "html") {
+      RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
+      if (CALCGEOMTYPE == "Route") {
+        RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
+        candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
+      } else {
+        candidateRteNms = RTENMs0;
+      }
+      rte_nm = candidateRteNms[0]; // this is picking the first available candidate route name
+    }
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
   // end get right route
 
   // match output
