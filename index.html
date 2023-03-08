@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>TxDOT MQS Point Form View</title>
+  <title>TxDOT MQS Replacement</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -24,9 +24,9 @@
   <link href="style/vendor/main.min.css" rel="stylesheet"> <!-- https://www.youtube.com/watch?v=nCX3QVl_PiI -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css">
 
-  <link rel="stylesheet" href="style/show_hide.css">
+  <!-- <link rel="stylesheet" href="style/show_hide.css"> -->
   <link rel="stylesheet" href="style/style_mini_map.css">
-  <link rel="stylesheet" href="style/map_style.css">
+  <!-- <link rel="stylesheet" href="style/map_style.css"> -->
   <link rel="stylesheet" href="style/text_style.css">
   <link rel="stylesheet" href="style/dropzone.css">
   <link rel="stylesheet" href="style/split.css">
@@ -52,28 +52,23 @@
   <script src="script/vendor/papaparse.js"></script>
 
   <script>
-    const CALCGEOMTYPE = "Point";
+    //const CALCGEOMTYPE = "Point";
     const USEMAP = 1;
   </script>
 
   <script src="script/config_hardcoded.js" defer></script>
 
-  <script src="script/ui/init.js" defer></script>
-  <script src="script/ui/lrs_initiators.js" defer></script>
-  <script src="script/ui/eventHandlers.js" defer></script>
+  <script src="script/onepage/init_forOnePage.js" defer></script>
+  <script src="script/onepage/lrs_initiators_forOnePage.js" defer></script>
+  <script src="script/onepage/eventHandlers_forOnePage.js" defer></script>
 
-  <script src="script/lrs/lrsSingleQuery.js" defer></script>
-  <script src="script/lrs/lrsBulkQuery.js" defer></script>
-  <script src="script/lrs/cursorQuery.js" defer></script>
-  <script src="script/lrs/queryLrsByArray.js" defer></script>
-  <script src="script/lrs/setTableFieldsByMethod.js" defer></script>
-  <script src="script/lrs/setIndicesByLrmAndGeom.js" defer></script>
-  <script src="script/lrs/buildUrl.js" defer></script>
-  <script src="script/lrs/matchOutputOnRteNm.js" defer></script>
-  <script src="script/lrs/resultsShowExport.js" defer></script>
+  <script src="script/onepage/lrs_functions.js" defer></script>
+  <!-- <script src="script/lrs/cursorQuery.js" defer></script> -->
+
 
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_ImportExportTables.js" defer></script>
+  <script src="script/mqs_EsriFeatureMapper.js" defer></script>
+  <script src="script/onepage/mqs_ImportExportTables_forOnePage.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
@@ -131,18 +126,251 @@
       border-right: solid 2px;
     }
   </style>
+
+  <style>
+    .minitable {
+      border-top: solid 2px;
+      border-bottom: solid 2px;
+      border-left: solid 2px;
+      border-right: solid 2px;
+    }
+
+    .group-header {
+      font-weight: bold;
+      border-bottom: solid black 1px;
+    }
+
+    .attribute-header {
+      /*font-weight: bold;*/
+      border-bottom: solid black 1px;
+    }
+
+    .datacell {
+      font-weight: bold;
+      border-left: solid black 1px;
+      background-color: var(--bs-gray-300);
+    }
+
+    .attribute-data:not(:last-child) .datacell {
+      border-bottom: solid black 1px;
+    }
+  </style>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden
+    }
+
+
+    #split-0 {
+      max-height: 100vh;
+    }
+
+
+    #split-1 {
+      resize: both;
+      overflow: hidden;
+      min-width: 50px;
+      min-height: 50px;
+    }
+
+    #viewDiv {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+      overflow: hidden;
+      box-sizing: border-box;
+      display: flex;
+      margin: auto;
+    }
+
+    #viewDiv {
+      cursor: move;
+    }
+
+    #mapButtonsDiv {
+      padding: 0;
+      margin: 0;
+      min-height: 5vh;
+      width: 100%;
+    }
+  </style>
+
+  <style>
+    .trafficlight {
+      background: #222;
+      width: 35px;
+      height: 35px;
+      border-radius: 25%;
+      position: relative;
+    }
+
+    .lamp {
+      background-size: 2px 2px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+
+    .red {
+      background: red;
+      background-image: radial-gradient(brown, transparent);
+      animation: 13s red infinite;
+      border: dotted 1px red;
+      box-shadow:
+        0 0 5px #111 inset,
+        0 0 3px red;
+    }
+
+    .yellow {
+      background: yellow;
+      background-image: radial-gradient(orange, transparent);
+      border: dotted 1px yellow;
+      animation: 5s yellow infinite;
+      box-shadow:
+        0 0 5px #111 inset,
+        0 0 3px yellow;
+    }
+
+    .green {
+      background: green;
+      background-image: radial-gradient(lime, transparent);
+      border: dotted 1px lime;
+      box-shadow:
+        0 0 15x #111 inset,
+        0 0 3px lime;
+      animation: 10s green infinite;
+    }
+
+    @keyframes red {
+      0% {
+        opacity: 1
+      }
+
+      20% {
+        opacity: 1
+      }
+
+      40% {
+        opacity: 1
+      }
+
+      60% {
+        opacity: .1
+      }
+
+      80% {
+        opacity: .1
+      }
+
+      100% {
+        opacity: .1
+      }
+    }
+
+    @keyframes yellow {
+      0% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: .5
+      }
+    }
+
+    @keyframes green {
+      0% {
+        opacity: .7
+      }
+
+      50% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: .7
+      }
+    }
+
+    @keyframes greenblink {
+      0% {
+        opacity: .1
+      }
+
+      40% {
+        opacity: .1
+      }
+
+      60% {
+        opacity: 1
+      }
+
+      80% {
+        opacity: 1
+      }
+
+      83% {
+        opacity: .1
+      }
+
+      100% {
+        opacity: .1
+      }
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+      $("#color").on('click', function () {
+        $("#colorInput").val($("#color").val());
+      });
+
+      $("#colorInput").on('change', function () {
+        $("#color").val($("#colorInput").val());
+      });
+    });
+
+    $(document).ready(function () {
+      $("#width").on('click', function () {
+        $("#widthInput").val($("#width").val());
+      });
+
+      $("#widthInput").on('change', function () {
+        $("#width").val($("#widthInput").val());
+      });
+    });
+  </script>
+
+  <script>
+    function updateProgressBar(aCurrentRow, total) {
+
+      let progress = Math.round(100 * aCurrentRow / total);
+      let widthstring = progress.toString() + "%";
+
+      $("#bulkMegaModal .progress-bar").css("width", widthstring);
+      $("#bulkMegaModal .progress-bar").html(widthstring);
+
+    }
+  </script>
+
+
 </head>
 
 <body>
 
   <!-- Modal START -->
-  <div name="modal-parent">
+  <div id="modal-parent">
     <demo_modal-component></demo_modal-component>
-    <bulk_modal-component></bulk_modal-component>
-    <bulk_modal_reference_marker-component></bulk_modal_reference_marker-component>
-    <bulk_modal_latlon-component></bulk_modal_latlon-component>
-    <bulk_modal_controlsection-component></bulk_modal_controlsection-component>
-    <bulk_modal_dfo-component></bulk_modal_dfo-component>
     <form_help_modal-component></form_help_modal-component>
     <cursor_help_modal-component></cursor_help_modal-component>
     <results_help_modal-component></results_help_modal-component>
@@ -151,375 +379,828 @@
   </div>
   <!-- Modal END -->
 
+
+  <!-- Mega-Modal START -->
+  <!--#region mega-modal  -->
+  <div class="modal fade" id="bulkMegaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Horizontal Form -->
+
+          <!-- Upload Form -->
+          <form id="modal-upload">
+            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+              <legend class="visually-hidden">CSV uploader</legend>
+              <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
+              <input id="uploadCsv-bulk" data-post-name="csv-bulk"
+                class="position-absolute invisible form-control uploadCsv-bulk" type="file" placeholder="Select file"
+                accept=".csv" />
+              <label class="btn btn-upload mb-3" for="uploadCsv-bulk">Choose file(s)</label>
+            </fieldset>
+          </form>
+          <!-- End Upload Form -->
+
+          <!--#region input-bulk-point-form  -->
+          <div id="input-bulk-point-form-card" class="card">
+            <div class="card-body">
+
+              <form id="input-bulk-point-form">
+
+                <div class="row" id="csvPointInputRouteName">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Route Name Field:</span>
+                    <select id="point_rte_nm_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-point_rte_nm_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+
+                <!-- Reference Marker Field Picker Form -->
+                <div class="row" id="csvPointInputReferenceMarker">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Reference Marker Field:</span>
+                    <select id="referencemarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-referencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Displacement Field:</span>
+                    <select id="displacement_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-displacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Reference Marker Field Picker Form -->
+
+                <!-- Control Section Field Picker Form -->
+                <div class="row" style="display:none" id="csvPointInputControlSection">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Control Section Field:</span>
+                    <select id="controlsection_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-controlsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Milepoint Marker Field:</span>
+                    <select id="milepointmarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-milepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Control Section Field Picker Form -->
+
+                <div class="row" style="display:none" id="csvPointInputRouteName_optional">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Route Name Field (Optional):</span>
+                    <select id="optional-rte_nm_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-optional-rte_nm_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+
+                <!-- DFO Field Picker Form -->
+                <div class="row" style="display:none" id="csvPointInputDistanceFromOrigin">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">DFO Field:</span>
+                    <select id="dfo_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-dfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End DFO Field Picker Form -->
+
+                <!-- Coordinates Field Picker Form -->
+                <div class="row" style="display:none" id="csvPointInputCoordinates">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Latitude Field:</span>
+                    <select id="lat_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-lat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Longitude Field:</span>
+                    <select id="lon_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Coordinates Field Picker Form -->
+
+              </form>
+
+            </div>
+          </div>
+          <!--#endregion -->
+
+          <!--#region input-bulk-route-form  -->
+          <div id="input-bulk-route-form-card" style="display:none" class="card">
+            <div class="card-body">
+
+              <form id="input-bulk-route-form">
+
+                <div class="row" id="csvRouteInputRouteName">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Route Name Field:</span>
+                    <select id="route_rte_nm_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-route_rte_nm_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+
+                <!-- Reference Marker Field Picker Form -->
+                <div class="row" id="csvRouteInputReferenceMarker">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Reference Marker Field:</span>
+                    <select id="breferencemarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-breferencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Displacement Field:</span>
+                    <select id="bdisplacement_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-bdisplacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Reference Marker Field:</span>
+                    <select id="ereferencemarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-ereferencemarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Displacement Field:</span>
+                    <select id="edisplacement_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-edisplacement_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Reference Marker Field Picker Form -->
+
+                <!-- Control Section Field Picker Form -->
+                <div class="row" style="display:none" id="csvRouteInputControlSection">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Control Section Field:</span>
+                    <select id="bcontrolsection_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Milepoint Marker Field:</span>
+                    <select id="bmilepointmarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-bmilepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Control Section Field:</span>
+                    <select id="econtrolsection_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-econtrolsection_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Milepoint Marker Field:</span>
+                    <select id="emilepointmarker_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-emilepointmarker_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Control Section Field Picker Form -->
+
+                <div class="row" style="display:none" id="csvRouteInputRouteName_optional">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Route Name Field (Optional):</span>
+                    <select id="optional-route_rte_nm_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-optional-Route_rte_nm_field" class="btn btn-outline-primary confirm"
+                      type="button">Select</button>
+                  </div>
+                </div>
+
+                <!-- DFO Field Picker Form -->
+                <div class="row" style="display:none" id="csvRouteInputDistanceFromOrigin">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin DFO Field:</span>
+                    <select id="bdfo_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-bdfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End DFO Field:</span>
+                    <select id="edfo_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-edfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End DFO Field Picker Form -->
+
+                <!-- Coordinates Field Picker Form -->
+                <div class="row" style="display:none" id="csvRouteInputCoordinates">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Latitude Field:</span>
+                    <select id="blat_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-blat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Begin Longitude Field:</span>
+                    <select id="blon_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-blon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Latitude Field:</span>
+                    <select id="elat_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-elat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">End Longitude Field:</span>
+                    <select id="elon_field" class="form-select candidate">
+                    </select>
+                    <button id="btn-elon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
+                  </div>
+                </div>
+                <!-- End Coordinates Field Picker Form -->
+
+              </form>
+
+            </div>
+          </div>
+          <!--#endregion -->
+
+          <div class="progress mt-5 mb-5 ms-3 me-3" style="height: 30px;">
+            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+              aria-valuemax="100">0%</div>
+          </div>
+
+          <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+              <a id="CSVdownloadModal" type="text/csv" class="btn btn-primary"
+                title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
+
+              <a id="JSONdownloadModal" type="application/geo+json" class="btn btn-primary"
+                title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+
+              <a id="KMLdownloadModal" type="application/vnd.google-earth.kml+xml" class="btn btn-primary"
+                title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+            </div>
+            <div class="btn-group mb-2" role="group" aria-label="download group">
+              <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
+                title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+            </div>
+          </div>
+
+          <!-- End Horizontal Form -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--#endregion -->
+  <!-- Mega-Modal END -->
+
+
   <main id="main" class="main">
 
     <!-- On Screen Content START -->
-    <div id="onscreencontent" class="row">
+    <div id="onscreencontent" class="row d-flex flex-wrap">
 
       <!-- Left side columns -->
-      <div class="col-md-4" style="max-height: 100vh" id="split-0">
+      <div class="col-md-4" id="split-0">
 
-        <!-- Nav-Bar START -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <div id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                  <a class="nav-link " href="index.html">
-                    <span>Point Builder</span>
-                  </a>
-                </li>
-                <!-- End Form View Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link " href="bulk-point-wizard.html">
-                    <span>Bulk Point Wizard</span>
-                  </a>
-                </li>
-                <!-- End Bulk Conversion Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="single-route-form.html">
-                    <span>Route Builder</span>
-                  </a>
-                </li>
-                <!-- End Build Routes Page Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="bulk-route-wizard.html">
-                    <span>Bulk Route Wizard</span>
-                  </a>
-                </li>
-                <!-- End Bulk Routes Page Nav -->
-
-                <li class="nav-item">
-                  <a class="nav-link collapsed" href="single-route-rpm.html">
-                    <span>Future RPM Replacement</span>
-                  </a>
-                </li>
-                <!-- End Build Routes Page Nav -->
-
-              </ul>
+        <!-- Geom-Type-Bar START -->
+        <div class="card">
+          <div class="card-body d-flex align-items-center justify-content-center gap-3">
+            <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+              aria-label="Toolbar with button groups">
+              <div class="d-flex btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="topnav_point" checked>
+                <label class="btn btn-outline-primary" for="topnav_point"><i class="fa fa-asterisk"
+                    aria-hidden="true"></i> Point Builder</label>
+                <input type="radio" class="btn-check" name="btnradio" id="topnav_route">
+                <label class="btn btn-outline-primary" for="topnav_route"><i class="fa fa-arrows-h"
+                    aria-hidden="true"></i> Route Builder</label>
+              </div>
             </div>
-          </div>
-        </nav>
-        <!-- Nav-Bar END -->
 
-        <!-- Status-Indicator START -->
-        <indicator-component></indicator-component>
-        <!-- Status-Indicator END -->
+            <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar">
+              <span class="d-flex align-items-center justify-content-center me-3">System Status</span>
+              <div class="d-flex align-items-center justify-content-center me-3">
+                <span id="errorBadge" class="badge bg-danger" style="display:none">Error</span>
+                <span id="busyBadge" class="badge bg-warning text-dark" style="display:none">Busy</span>
+                <span id="readyBadge" class="badge bg-success">Ready</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-center me-3">
+                <div class="trafficlight">
+                  <span id="errorIndicator" class="lamp"></span>
+                </div>
+                <div class="trafficlight">
+                  <span id="busyIndicator" class="lamp"></span>
+                </div>
+                <div class="trafficlight">
+                  <span id="readyIndicator" class="green lamp"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar">
+              <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#demoModal"
+                title="Demo Mode"><i class="fa fa-user-secret" aria-hidden="true"></i></button>
+            </div>
+
+          </div>
+        </div>
+        <!-- Geom-Type-Bar END -->
 
         <!-- Scrolling Column START -->
-        <div class="overflow-scroll" style="max-height: 90vh">
+        <div class="overflow-scroll" style="overflow-x: hidden; max-height: 90vh">
 
           <!-- Calculator-Card START -->
-          <div name="CalculatorCard" class="card">
-            <div name="CalculatorCardBody" class="card-body">
-              <h5 class="card-title">Query by:</h5>
+          <div id="CalculatorCard" class="card">
+            <div id="CalculatorCardBody" class="card-body">
 
-              <!-- Tabs START -->
-              <ul class="nav nav-tabs d-flex" id="calculator-tablist" role="tablist">
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100 active" id="coordinates-tab" data-bs-toggle="tab"
-                    data-bs-target="#coordinates-tabpane" type="button" role="tab" aria-controls="coordinates-tabpane"
-                    aria-selected="true">Coordinates</button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="referencemarker-tab" data-bs-toggle="tab"
-                    data-bs-target="#referencemarker-tabpane" type="button" role="tab"
-                    aria-controls="referencemarker-tabpane" aria-selected="false">Reference Marker</button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="distancefromorigin-tab" data-bs-toggle="tab"
-                    data-bs-target="#distancefromorigin-tabpane" type="button" role="tab"
-                    aria-controls="distancefromorigin-tabpane" aria-selected="false">DFO</button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="controlsection-tab" data-bs-toggle="tab"
-                    data-bs-target="#controlsection-tabpane" type="button" role="tab"
-                    aria-controls="controlsection-tabpane" aria-selected="false">Control Section</button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="mapcursor-tab" data-bs-toggle="tab"
-                    data-bs-target="#mapcursor-tabpane" type="button" role="tab" aria-controls="mapcursor-tabpane"
-                    aria-selected="false">Map Cursor</button>
-                </li>
-              </ul>
-              <!-- Tabs END -->
+              <!-- Lrm-Method-Bar START -->
+              <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+                aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
-              <!-- Tab Bodies START -->
-              <div class="card-body tab-content pt-2" id="calculator-tabcontent">
+                  <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_referencemarker"
+                    checked>
+                  <label class="btn btn-outline-primary" for="btn_lrm_method_referencemarker">Field Location</label>
 
-                <!-- Coordinates Tab Body START -->
-                <div class="tab-pane fade show active" id="coordinates-tabpane" role="tabpanel"
-                  aria-labelledby="coordinates-tab">
-                  <!-- Single Conversion Form -->
-                  <form>
-                    <div class="row mb-3">
-                      <label for="inputLatitude" class="col-sm-6 col-form-label">Latitude</label>
-                      <div class="col-sm-6">
-                        <input id="inputLatitude" type="number" required name="latitude" value="29.397809"
-                          class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="inputLongitude" class="col-sm-6 col-form-label">Longitude</label>
-                      <div class="col-sm-6">
-                        <input id="inputLongitude" type="number" required name="longitude" value="-94.987590"
-                          class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                      aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery1 group">
-                        <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
-                            class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalLatLon" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End Single Conversion Form -->
+                  <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_controlsection">
+                  <label class="btn btn-outline-primary" for="btn_lrm_method_controlsection">Control Section</label>
+
+                  <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_dfo">
+                  <label class="btn btn-outline-primary" for="btn_lrm_method_dfo">DFO</label>
+
+                  <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_coordinates">
+                  <label class="btn btn-outline-primary" for="btn_lrm_method_coordinates">Coordinates</label>
+
                 </div>
-                <!-- Coordinates Tab Body END -->
-
-                <!-- Reference Marker Tab Body START -->
-                <div class="tab-pane fade" id="referencemarker-tabpane" role="tabpanel"
-                  aria-labelledby="referencemarker-tab">
-                  <!-- Single Conversion Form -->
-                  <form>
-                    <div class="row mb-3">
-                      <label for="inputRouteName_2" class="col-sm-6 col-form-label">Route Name</label>
-                      <div class="col-sm-6">
-                        <input id="inputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                          name="routeid_2" value="US0077-KG" class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="inputReferenceMarker" class="col-sm-6 col-form-label">Reference Marker</label>
-                      <div class="col-sm-6">
-                        <input id="inputReferenceMarker" type="number" required name="referencemarker" value="622"
-                          class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="inputDisplacement" class="col-sm-6 col-form-label">Displacement</label>
-                      <div class="col-sm-6">
-                        <input id="inputDisplacement" type="number" required name="displacement" value="0.065"
-                          class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                      aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery2 group">
-                        <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
-                            class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalReferenceMarker"
-                          title="Upload a table to convert multiple points"><i class="fa fa-table"
-                            aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End Single Conversion Form -->
-                </div>
-                <!-- Reference Marker Tab Body END -->
-
-                <!-- DFO Tab Body START -->
-                <div class="tab-pane fade" id="distancefromorigin-tabpane" role="tabpanel"
-                  aria-labelledby="distancefromorigin-tab">
-                  <!-- Single Conversion Form -->
-                  <form>
-                    <div class="row mb-3">
-                      <label for="inputRouteName_4" class="col-sm-6 col-form-label">Route Name</label>
-                      <div class="col-sm-6">
-                        <input id="inputRouteName_4" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
-                          name="routeid_4" value="FM1818-KG" class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="inputDistanceFromOrigin" class="col-sm-6 col-form-label">Distance From Origin</label>
-                      <div class="col-sm-6">
-                        <input id="inputDistanceFromOrigin" type="number" required name="distancefromorigin"
-                          value="1.606" class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                      aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery4 group">
-                        <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
-                            class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalDFO" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End Single Conversion Form -->
-                </div>
-                <!-- DFO Tab Body END -->
-
-                <!-- Control Section Tab Body START -->
-                <div class="tab-pane fade" id="controlsection-tabpane" role="tabpanel"
-                  aria-labelledby="controlsection-tab">
-                  <!-- Single Conversion Form -->
-                  <form id="form-controlsection-1point">
-                    <div class="row mb-3">
-                      <label for="inputControlSection" class="col-sm-6 col-form-label">Control Section</label>
-                      <div class="col-sm-6">
-                        <input id="inputControlSection" type="text" required pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}"
-                          name="controlsection" value="012201" class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label for="inputMilepointMeasure" class="col-sm-6 col-form-label">Milepoint Measure</label>
-                      <div class="col-sm-6">
-                        <input id="inputMilepointMeasure" type="number" required name="milepointmeasure" value="2.394"
-                          class="form-control textentry">
-                      </div>
-                    </div>
-                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                      aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group" aria-label="lrsquery3 group">
-                        <button type="button" class="btn btn-primary convert-1point" title="Convert to other LRS"><i
-                            class="fa fa-cog" aria-hidden="true"></i> Convert</button>
-                        <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
-                            class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
-                          data-bs-target="#bulkModalControlSection" title="Upload a table to convert multiple points"><i
-                            class="fa fa-table" aria-hidden="true"></i> Bulk Conversion</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#formHelpModal" title="Form Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End Single Conversion Form -->
-                </div>
-                <!-- Control Section Tab Body END -->
-
-                <!-- Map Cursor Tab Body START -->
-                <div class="tab-pane fade" id="mapcursor-tabpane" role="tabpanel" aria-labelledby="mapcursor-tab">
-                  <strong class="mb-2">Use the "crosshairs" map cursor to select a point on the map.</strong>
-                  <!-- Single Conversion Form -->
-                  <form>
-                    <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                      aria-label="Toolbar with button groups">
-                      <div class="btn-group me-2 mb-2" role="group">
-                        <button id="reset-mapcursor" type="reset" class="btn btn-secondary reset"
-                          title="Reset to default values"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
-                      </div>
-                      <div class="btn-group mb-2" role="group">
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                          data-bs-target="#cursorHelpModal" title="Cursor Help"><i class="fa fa-question"
-                            aria-hidden="true"></i> Help</button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- End Single Conversion Form -->
-                </div>
-                <!-- Map Cursor Tab Body END -->
-
               </div>
-              <!-- Tab Bodies END -->
+              <!-- Lrm-Method-Bar END -->
+
+              <!-- Input Form START -->
+
+              <!--#region input-point-form  -->
+              <div id="input-point-form-card" class="card">
+                <div class="card-body">
+                  <form id="input-point-form">
+
+                    <div class="row" id="kbPointInputRouteName">
+                      <label for="kbInputRouteName" class="col-sm-4 col-form-label">Route Name</label>
+                      <div class="input-group col-sm-4">
+                        <input id="kbInputRouteName" type="text" pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" name="routename"
+                          class="form-control textentry routename">
+                      </div>
+                    </div>
+
+                    <div class="row" id="kbPointInputReferenceMarker">
+                      <label class="col-sm-4 col-form-label">Field Location</label>
+                      <div class="input-group">
+                        <input id="kbInputReferenceMarker" type="number" name="referencemarker"
+                          class="form-control textentry referencemarker">
+                        <input id="kbInputDisplacement" type="number" name="displacement"
+                          class="form-control textentry displacement">
+                      </div>
+                    </div>
+
+                    <div class="row" style="display:none" id="kbPointInputControlSection">
+                      <label for="kbInputControlSection" class="col-sm-4 col-form-label">Control Section</label>
+                      <div class="input-group col-sm-4">
+                        <input id="kbInputControlSection" type="text" name="controlsection"
+                          class="form-control textentry controlsection">
+                        <input id="kbInputMilepointMeasure" type="number" name="mpm"
+                          class="form-control textentry milepointmeasure">
+                      </div>
+                    </div>
+
+                    <div class="row" style="display:none" id="kbPointInputDistanceFromOrigin">
+                      <label for="kbInputDistanceFromOrigin" class="col-sm-4 col-form-label">Distance From
+                        Origin</label>
+                      <div class="input-group col-sm-4">
+                        <input id="kbInputDistanceFromOrigin" type="number" name="dfo"
+                          class="form-control textentry dfo">
+                      </div>
+                    </div>
+
+                    <div class="row" style="display:none" id="kbPointInputRouteName_optional">
+                      <label for="kbInputRouteName_optional" class="col-sm-4 col-form-label">Route Name
+                        (Optional)</label>
+                      <div class="input-group col-sm-4">
+                        <input id="kbInputRouteName_optional" type="text" pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                          name="routename" class="form-control textentry routename">
+                        <div class="input-group-text">
+                          <input id="useRouteName" class="form-check-input mt-0" type="checkbox">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row" style="display:none" id="kbPointInputCoordinates">
+                      <label class="col-sm-4 col-form-label">Latitude &amp; Longitude</label>
+                      <div class="input-group">
+                        <input id="kbInputLatitude" type="number" name="lat"
+                          class="form-control textentry latlon latitude">
+                        <input id="kbInputLongitude" type="number" name="lon"
+                          class="form-control textentry latlon longitude">
+                        <button id="useCrosshairs" class="btn btn-outline-primary" type="button"
+                          title="Get coords from map">
+                          <i class="fa fa-crosshairs" aria-hidden="true"></i> Use Map</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+              <!--#endregion -->
+
+              <!--#region input-route-form  -->
+              <div id="input-route-form-card" style="display:none" class="card">
+                <div class="card-body">
+                  <form id="input-route-form" style="display:none">
+
+                    <div id="kbRouteInputRouteName">
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          Route Name:
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputRouteName_2" type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}"
+                            class="form-control textentry routename">
+                        </div>
+                        <div class="col-4">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="kbRouteInputReferenceMarker">
+                      <div class="row mb-3">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-4">
+                          Reference Marker:
+                        </div>
+                        <div class="col-4">
+                          Displacement:
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginReferenceMarker" type="number" required name="begin-referencemarker"
+                            class="form-control textentry referencemarker">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginDisplacement" type="number" required name="begin-displacement"
+                            class="form-control textentry displacement">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndReferenceMarker" type="number" required name="end-referencemarker"
+                            class="form-control textentry referencemarker">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndDisplacement" type="number" required name="end-displacement"
+                            class="form-control textentry displacement">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:none" id="kbRouteInputControlSection">
+                      <div class="row mb-3">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-4">
+                          Control Section:
+                        </div>
+                        <div class="col-4">
+                          Milepoint Measure:
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginControlSection" type="text" required
+                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="begin-controlsection"
+                            class="form-control textentry controlsection">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginMilepointMeasure" type="number" required name="begin-milepointmeasure"
+                            class="form-control textentry milepointmeasure">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndControlSection" type="text" required
+                            pattern="[A-Z0-9]{2}([0-9]|A|H|P)[0-9]{3}" name="end-controlsection"
+                            class="form-control textentry controlsection">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndMilepointMeasure" type="number" required name="end-milepointmeasure"
+                            class="form-control textentry milepointmeasure">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:none" id="kbRouteInputDistanceFromOrigin">
+                      <div class="row mb-3">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-4">
+                          DFO:
+                        </div>
+                        <div class="col-4">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginDistanceFromOrigin" type="number" required
+                            name="begin-distancefromorigin" class="form-control textentry dfo">
+                        </div>
+                        <div class="col-4">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndDistanceFromOrigin" type="number" required name="end-distancefromorigin"
+                            class="form-control textentry dfo">
+                        </div>
+                        <div class="col-4">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:none" id="kbRouteInputCoordinates">
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <button id="useCrosshairs2" class="btn btn-outline-primary" type="button"
+                            title="Get coords from map">
+                            <i class="fa fa-crosshairs" aria-hidden="true"></i> Use Map</button>
+                        </div>
+                        <div class="col-4">
+                          Latitude:
+                        </div>
+                        <div class="col-4">
+                          Longitude:
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginLatitude" type="number" required name="begin-latitude"
+                            class="form-control textentry latlon latitude">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputBeginLongitude" type="number" required name="begin-longitude"
+                            class="form-control textentry latlon longitude">
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-3">
+                          <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndLatitude" type="number" required name="end-latitude"
+                            class="form-control textentry latlon latitude">
+                        </div>
+                        <div class="col-4">
+                          <input id="kbInputEndLongitude" type="number" required name="end-longitude"
+                            class="form-control textentry latlon longitude">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:none" id="kbRouteInputRouteName_optional">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Route Name:</span>
+                        <select id="candidateRTENMs" class="form-select candidate"></select>
+                        <button id="btn-candidateRTENMs" class="btn btn-outline-primary" type="button">Select
+                          Route</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+              <!--#endregion -->
+
+              <!--#region style-form  -->
+              <div class="card collapse" id="style-form-card">
+                <div class="card-body">
+
+                  <form id="style-form">
+                    <div class="col input-group d-flex mb-2 justify-content-center">
+                      <span class="input-group-text" id="colorsLabel">Color</span>
+
+                      <select id="color" class="form-select" aria-label="line color selector">
+                        <option value="#14375a" selected="selected">TxDOT Blue</option>
+                        <option value="#ff0000">Red</option>
+                        <option value="#ff8000">Orange</option>
+                        <option value="#ffff00">Yellow</option>
+                        <option value="#009933">Green</option>
+                        <option value="#00bfff">Light Blue</option>
+                        <option value="#000000">Black</option>
+                        <option value="#cc6600">Brown</option>
+                        <option value="#ff00ff">Magenta</option>
+                      </select>
+
+                      <input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"
+                        title="Choose your color">
+                    </div>
+
+                    <div class="col input-group d-flex mb-2 justify-content-center">
+                      <span class="input-group-text" id="widthLabel">Width</span>
+                      <input id="width" type="number" value="1" min="1" max="5" class="form-control textentry">
+                      <span class="justify-content-center input-group-text" style="width: 50%;">
+                        <input id="widthInput" type="range" class="form-range" value="1" min="1" max="5">
+                      </span>
+                    </div>
+
+                    <div class="col input-group d-flex mb-2 justify-content-center">
+                      <span class="input-group-text" id="descriptionLabel">Feature Name</span>
+                      <input id="description" type="text" value="Yet another I-35 project"
+                        class="form-control textentry">
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+              <!--#endregion -->
+
+              <!--#region input-toolbar  -->
+              <div class="card">
+                <div class="card-body">
+                  <div id="input-toolbar" class="btn-toolbar justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#style-form-card" aria-expanded="false" aria-controls="style-form-card">
+                        <i class="fa fa-paint-brush" aria-hidden="true"></i> Style</button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-primary convert" title="Convert to other LRS"><i
+                          class="fa fa-cog" aria-hidden="true"></i> Convert</button>
+                      <button type="reset" class="btn btn-secondary reset" title="Reset to default values"><i
+                          class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                    </div>
+
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button type="button" class="btn btn-secondary open-input-modal" data-bs-toggle="modal"
+                        data-bs-target="#bulkMegaModal" title="Upload a table to convert multiple points"><i
+                          class="fa fa-table" aria-hidden="true"></i>
+                        Bulk Conversion</button>
+                    </div>
+
+                    <div class="btn-group mb-2" role="group">
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#routeHelpModal"
+                        title="Form Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--#endregion -->
+
+              <!-- Input Form END -->
 
             </div>
           </div>
           <!-- Calculator-Card END -->
 
+          <!-- Download-Card START -->
+          <div id="DownloadCard" class="card">
+            <div id="DownloadCardBody" class="card-body">
+
+              <div class="progress mt-5 mb-5 ms-3 me-3" style="display:none; height: 30px;">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                  aria-valuemax="100">25%</div>
+              </div>
+
+              <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
+
+                  <a id="CSVdownloadMain" type="text/csv" class="btn btn-primary" href="#"
+                    title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
+
+                  <a id="JSONdownloadMain" type="application/geo+json" class="btn btn-primary" href="#"
+                    title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+
+                  <a id="KMLdownloadMain" type="application/vnd.google-earth.kml+xml" class="btn btn-primary" href="#"
+                    title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+
+                </div>
+                <div class="btn-group mb-2" role="group" aria-label="download group">
+                  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
+                    title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- Download-Card END -->
+
           <!-- Results-Card START -->
-
-
-
-
-
-
           <div id="results_card" class="card">
             <div class="card-body">
               <h5 class="card-title">Results:</h5>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <!-- Pagination-Card START -->
               <div class="card">
-                <div id="results-header" class="card-body">
-
-
-
-
-                  <!-- <div id="result-pagination"></div> -->
-
-                  <div id="result-pagination" class="card-body">
-                    <nav aria-label="...">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item li_prev disabled">
-                          <span id="pagn_prev" class="page-link" tabindex="-1" aria-disabled="true">Previous</span>
-                        </li>
-                        <li class="page-item li_curr active" aria-current="page">
-                          <span id="pagn_curr" class="page-link">1 of 1</span>
-                        </li>
-                        <li class="page-item li_next disabled">
-                          <span id="pagn_next" class="page-link" tabindex="-1" aria-disabled="true">Next</span>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-
-
-
-                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
-                    aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                      <a id="CSVdownload" type="button" class="btn btn-primary"
-                        title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
-
-                      <a id="JSONdownload" type="button" class="btn btn-primary"
-                        title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
-
-                      <a id="KMLdownload" type="button" class="btn btn-primary"
-                        title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
-                    </div>
-                    <div class="btn-group mb-2" role="group" aria-label="download group">
-                      <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                        data-bs-target="#resultsHelpModal" title="Results Help"><i class="fa fa-question"
-                          aria-hidden="true"></i> Help</button>
-                    </div>
-                  </div>
+                <div id="result-pagination" class="card-body">
+                  <nav aria-label="...">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item li_prev disabled">
+                        <span id="pagn_prev" class="page-link" tabindex="-1" aria-disabled="true">Previous</span>
+                      </li>
+                      <li class="page-item li_curr active" aria-current="page">
+                        <span id="pagn_curr" class="page-link">1 of 1</span>
+                      </li>
+                      <li class="page-item li_next disabled">
+                        <span id="pagn_next" class="page-link" tabindex="-1" aria-disabled="true">Next</span>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
+              <!-- Pagination-Card END -->
 
-
-              <div class="card">
+              <!--#region results-table-point  -->
+              <div id="results-table-point-card" class="card">
                 <div class="card-body">
                   <!-- Bordered Table -->
                   <table class="table table-sm">
@@ -633,28 +1314,118 @@
 
                 </div>
               </div>
+              <!--#endregion -->
+
+              <!--#region results-table-route  -->
+              <div id="results-table-route-card" class="card" style="display:none">
+                <div class="card-body">
+
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-12 text-center">Route Information</div>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name">RouteID</div>
+                      <span class="col datacell textout">123456</span>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name">Route </div>
+                      <span class="col datacell textout">123456</span>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name"><i class="fa fa-flag-o" aria-hidden="true"></i> Begin DFO </div>
+                      <span class="col datacell textout">123456</span>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name"><i class="fa fa-flag-checkered" aria-hidden="true"></i> End DFO
+                      </div>
+                      <span class="col datacell textout">123456</span>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name">Roadbed Type </div>
+                      <span class="col datacell textout">123456</span>
+                    </div>
+
+                  </div>
+
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-12 text-center">Control Section</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Control Section</div>
+                      <div class="col text-center attributecell">Mile Point</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-o" aria-hidden="true"></i>
+                          Begin</strong></div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                          End</strong>
+                      </div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                  </div>
+
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-12 text-center">Field Location</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Reference Marker</div>
+                      <div class="col text-center attributecell">Displacement</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-o" aria-hidden="true"></i>
+                          Begin</strong></div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                          End</strong>
+                      </div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                  </div>
+
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-12 text-center">Coordinates</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Latitude</div>
+                      <div class="col text-center attributecell">Longitude</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-o" aria-hidden="true"></i>
+                          Begin</strong></div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                          End</strong>
+                      </div>
+                      <span class="col datacell textout">123456</span>
+                      <span class="col datacell textout">9.876</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!--#endregion -->
 
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <!-- Results-Card END -->
 
         </div>
@@ -664,27 +1435,47 @@
       <!-- End Left side columns -->
 
       <!-- Right side columns -->
-      <div class="col-md-8 d-none d-md-block" id="split-1">
+      <div class="col-md-8 d-none d-md-block d-flex flex-column justify-content-between" id="split-1">
 
         <!-- Map START -->
-        <div id="viewDiv" class="col-7 map-container">
+        <div id="viewDiv" class="map-container">
           <div></div>
         </div>
         <!-- Map END -->
 
         <!-- Map Buttons START -->
-        <div class="card map-buttons">
+        <div id="controlDiv" class="card map-buttons">
 
-          <!-- Map-Controls START -->
-          <map_controls-component></map_controls-component>
-          <!-- Map-Controls END -->
 
           <div class="card-body">
-            <button type="button" class="btn btn-primary map-return" title="See all results on map"><i
+            <!-- Map-Controls START -->
+            <input id="basemap-event" type="checkbox" checked data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-camera'     aria-hidden='true'></i> Imagery"
+              data-offlabel="<i class='fa fa-map-signs' aria-hidden='true'></i> TxDOT" data-onstyle="success"
+              data-offstyle="primary">
+
+            <input id="refmrkr-event" type="checkbox" data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ref Mrkr"
+              data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ref Mrkr" data-onstyle="info"
+              data-offstyle="primary" disabled>
+
+            <input id="controlsec-event" type="checkbox" data-toggle="toggle" data-html="true"
+              data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ctrl Sec"
+              data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ctrl Sec" data-onstyle="info"
+              data-offstyle="primary" disabled>
+            <!-- Map-Controls END -->
+
+            <button type="button" class="btn btn-primary map-return" title="See current result on map"><i
                 class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
+
+            <button type="button" class="btn btn-primary map-all" title="See all results on map"><i
+                class="fa fa-hand-o-right" aria-hidden="true"></i> Go to All Points</button>
           </div>
+
         </div>
         <!-- Map Buttons END -->
+
+        <div></div>
 
       </div>
       <!-- End Right side columns -->
