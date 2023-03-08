@@ -58,17 +58,17 @@
 
   <script src="script/config_hardcoded.js" defer></script>
 
-  <script src="script/onepage/init_forOnePage.js" defer></script>
-  <script src="script/onepage/lrs_initiators_forOnePage.js" defer></script>
-  <script src="script/onepage/eventHandlers_forOnePage.js" defer></script>
+  <script src="script/startup/init_forOnePage.js" defer></script>
+  <script src="script/startup/lrs_initiators_forOnePage.js" defer></script>
+  <script src="script/startup/eventHandlers_forOnePage.js" defer></script>
 
-  <script src="script/onepage/lrs_functions.js" defer></script>
+  <script src="script/lrs/lrs_functions_forOnePage.js" defer></script>
   <!-- <script src="script/lrs/cursorQuery.js" defer></script> -->
 
 
   <script src="script/mqs_EsriMap.js" defer></script>
   <script src="script/mqs_EsriFeatureMapper.js" defer></script>
-  <script src="script/onepage/mqs_ImportExportTables_forOnePage.js" defer></script>
+  <script src="script/mqs_ImportExportTables_forOnePage.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
@@ -76,8 +76,8 @@
   <script src="script/resultstable/HtmlTables.js" defer></script>
 
 
-  <script src="script/rpm/RouteBuilder.js"></script>
-  <script src="script/rpm/LocalGeoJSONToMap.js"></script>
+  <script src="script/mqs_RouteBuilder.js"></script>
+  <script src="script/mqs_LocalGeoJSONToMap.js"></script>
 
   <script src="script/helper/dragdropupload.js" defer></script>
   <script src="script/helper/dynamic_dropdowns.js" defer></script>
@@ -759,7 +759,7 @@
 
                   <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_referencemarker"
                     checked>
-                  <label class="btn btn-outline-primary" for="btn_lrm_method_referencemarker">Field Location</label>
+                  <label class="btn btn-outline-primary" for="btn_lrm_method_referencemarker">Reference Marker</label>
 
                   <input type="radio" class="btn-check" name="btn_lrm_method" id="btn_lrm_method_controlsection">
                   <label class="btn btn-outline-primary" for="btn_lrm_method_controlsection">Control Section</label>
@@ -790,7 +790,7 @@
                     </div>
 
                     <div class="row" id="kbPointInputReferenceMarker">
-                      <label class="col-sm-4 col-form-label">Field Location</label>
+                      <label class="col-sm-4 col-form-label">Reference Marker</label>
                       <div class="input-group">
                         <input id="kbInputReferenceMarker" type="number" name="referencemarker"
                           class="form-control textentry referencemarker">

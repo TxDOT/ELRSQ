@@ -11,7 +11,7 @@ const staticBulk_Modal = `
           <!-- Horizontal Form -->
           <h3>Placeholder for Bulk Conversion UI</h3>
           <a type="button" id="tmpl-latlon" href="templates/queryPointByCoordinates.csv" download="queryPointByCoordinates.csv" class="btn btn-primary" title="Download a fillable template"><i class="fa fa-download"></i> Lat/Lon Template</a>
-          <a type="button" id="tmpl-field" href="templates/queryPointByReferenceMarker.csv" download="queryPointByReferenceMarker.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Field Location Template</a>
+          <a type="button" id="tmpl-field" href="templates/queryPointByReferenceMarker.csv" download="queryPointByReferenceMarker.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Reference Marker</a>
           <a type="button" id="tmpl-controlsection" href="templates/queryPointByControlSection.csv" download="queryPointByControlSection.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Control Section Template</a>
           <a type="button" id="tmpl-dfo" href="templates/queryPointByDFO.csv" download="queryPointByDFO.csv" class="btn btn-primary" style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> DFO Template</a>
           
