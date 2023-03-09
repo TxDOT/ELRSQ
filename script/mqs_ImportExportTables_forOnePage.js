@@ -152,7 +152,9 @@ function addTags(theData, theTagType) {
 // 2) tabularRoutesConvertExport
 
 function tabularRoutesConvertExport(resultsArr) {
-  console.log(resultsArr);
+  //console.log(resultsArr);
+  $("#bulk-convert-download-bar").show();
+  $("#bulk-convert-progress-bar").hide();
 
   if (inputMethod == "html") {
     btn_suffix = "Main";
