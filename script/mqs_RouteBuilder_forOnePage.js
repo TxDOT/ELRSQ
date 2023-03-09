@@ -1,7 +1,7 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within PROJECTSARR array
-//// add to PROJECTSARR array if it is not a duplicate
+//// retrieve position within GLOBALPROJECTDATA.ProjectsArr array
+//// add to GLOBALPROJECTDATA.ProjectsArr array if it is not a duplicate
 
 function addProjectToArray(currentResult) {
   console.log("addProjectToArray");
@@ -23,7 +23,7 @@ function addProjectToArray(currentResult) {
   let projString = JSON.stringify(projObj);
   console.log(projString);
 
-  if (PROJECTSARR.indexOf(projObj) < 0) { PROJECTSARR.push(projObj); }
+  if (GLOBALPROJECTDATA.ProjectsArr.indexOf(projObj) < 0) { GLOBALPROJECTDATA.ProjectsArr.push(projObj); }
 
 }
 

@@ -5,9 +5,9 @@ function tabularPointsConvertExport(resultsArr) {
   $("#bulk-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
-  if (inputMethod == "html") {
+  if (GLOBALSETTINGS.InputMethod == "html") {
     btn_suffix = "Main";
-  } else if (inputMethod == "table") {
+  } else if (GLOBALSETTINGS.InputMethod == "table") {
     btn_suffix = "Modal";
   }
 
@@ -156,9 +156,9 @@ function tabularRoutesConvertExport(resultsArr) {
   $("#bulk-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
-  if (inputMethod == "html") {
+  if (GLOBALSETTINGS.InputMethod == "html") {
     btn_suffix = "Main";
-  } else if (inputMethod == "table") {
+  } else if (GLOBALSETTINGS.InputMethod == "table") {
     btn_suffix = "Modal";
   }
 

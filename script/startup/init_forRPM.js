@@ -1,6 +1,6 @@
 //screen pane slider
 
-if (USEMAP == 1) {
+if (GLOBALSETTINGS.UseMap == 1) {
 
   if (screen.width >= 768) {
     const GUTTER_SIZE = 30;
@@ -15,7 +15,7 @@ if (USEMAP == 1) {
 
 
 
-const USELOADINDICATOR = 1;
+GLOBALSETTINGS.UseLoadIndicator = 1;
 
 
 let allResults = [];
@@ -33,15 +33,16 @@ function resetGraphics() {
   graphics = [];
 }
 
+const GLOBALPROJECTDATA = {};
 
-let PROJECTSARR = [];
+GLOBALPROJECTDATA.ProjectsArr = [];
 function resetProjects() {
-  PROJECTSARR = [];
+  GLOBALPROJECTDATA.ProjectsArr = [];
 }
 
-var PROJECTLINES = [];
+GLOBALPROJECTDATA.ProjectLines = [];
 function resetProjectLines() {
-  PROJECTLINES = [];
+  GLOBALPROJECTDATA.ProjectLines = [];
 }
 
 

@@ -1,4 +1,4 @@
-let MAPCURSORLIVE = 0;
+GLOBALSETTINGS.MapCursorLive = 0;
 
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearResultsFromMap(); });
@@ -16,7 +16,7 @@ $("#useCrosshairs").on('click', function () { cursorMode(); });
 
 function cursorMode() {
   $("#viewDiv").css('cursor', 'crosshair');
-  MAPCURSORLIVE = 1;
+  GLOBALSETTINGS.MapCursorLive = 1;
 }
 
 //return to point on map
@@ -24,9 +24,9 @@ $(".map-return").on('click', function () { returnToPoint(); });
 $(".map-all").on('click', function () { showAllPoints(); });
 
 //route builder
-$("#addRow").on('click', function () { addProjectToArray(PROJECTSARR); });
-$("#dropRow").on('click', function () { dropLastProjectFromArray(PROJECTSARR, PROJECTLINES); });
-$("#clearRows").on('click', function () { clearProjectsFromArray(PROJECTSARR, PROJECTLINES); });
+$("#addRow").on('click', function () { addProjectToArray(GLOBALPROJECTDATA.ProjectsArr); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines); });
 
 
 // toggle buttons for showing/hiding layers

@@ -4,9 +4,9 @@
 
 function readOutResults(results, navIndex) {
 
-  if (CALCGEOMTYPE == "Point") {
+  if (GLOBALSETTINGS.CalcGeomType == "Point") {
     readOutPointResults(results, navIndex);
-  } else if (CALCGEOMTYPE == "Route") {
+  } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
     readOutRouteResults(results, navIndex);
   }
 
@@ -51,7 +51,7 @@ async function showThisRouteResultOnMap(currentResult) {
   console.log(currentResult);
   addProjectToArray(currentResult);
   await queryProjectGeometry();
-  localGeoJSONToMap(PROJECTLINES);
+  localGeoJSONToMap(GLOBALPROJECTDATA.ProjectLines);
 }
 
 

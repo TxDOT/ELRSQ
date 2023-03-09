@@ -39,24 +39,24 @@ async function rdwayQuery(url) {
 }
 
 
-//iterates over PROJECTSARR array
+//iterates over GLOBALPROJECTDATA.ProjectsArr array
 //for each project, queries queryRecordFromServiceGeometry
 async function queryProjectGeometry() {
-  PROJECTSARR, PROJECTLINES
-  console.log("PROJECTSARR");
-  console.log(PROJECTSARR);
+  // GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines // FIXME what is this?
+  console.log("GLOBALPROJECTDATA.ProjectsArr");
+  console.log(GLOBALPROJECTDATA.ProjectsArr);
   resetProjectLines();
 
   GreenToYellow();
 
   //get segment is called within a loop, for each project
-  for (var i = 0; i < PROJECTSARR.length; i++) {
-    let results = await queryRoadwayServiceByLine(PROJECTSARR[i]);
-    PROJECTLINES.push(getSegment(results, PROJECTSARR[i], PROJECTSARR));
+  for (var i = 0; i < GLOBALPROJECTDATA.ProjectsArr.length; i++) {
+    let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectsArr[i]);
+    GLOBALPROJECTDATA.ProjectLines.push(getSegment(results, GLOBALPROJECTDATA.ProjectsArr[i], GLOBALPROJECTDATA.ProjectsArr));
   }
 
-  console.log("PROJECTLINES");
-  console.log(PROJECTLINES);
+  console.log("GLOBALPROJECTDATA.ProjectLines");
+  console.log(GLOBALPROJECTDATA.ProjectLines);
   YellowToGreen();
 
 }

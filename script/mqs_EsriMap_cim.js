@@ -181,7 +181,7 @@ require([
 
 
   window.view.on("click", function (evt) {
-    var onCursor = MAPCURSORLIVE;
+    var onCursor = GLOBALSETTINGS.MapCursorLive;
     if (onCursor == 1) {
       console.log("foo");
       //cursorQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);
