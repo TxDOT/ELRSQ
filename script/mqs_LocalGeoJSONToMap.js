@@ -4,6 +4,8 @@
 // this function works on global variable PROJECTLINES
 function localGeoJSONToMap(localGeoJSON) {
   console.log('localGeoJSONToMap');
+  console.log("localGeoJSON.length");
+  console.log(localGeoJSON.length);
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
@@ -22,6 +24,8 @@ function localGeoJSONToMap(localGeoJSON) {
         renderer: renderer_line,
       });
 
+      console.log("projectLayer");
+      console.log(projectLayer);
       view.map.add(projectLayer); // adds the layer to the map
 
       // When the layer is loaded, query for the extent

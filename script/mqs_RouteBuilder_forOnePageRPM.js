@@ -3,14 +3,14 @@
 //// retrieve position within PROJECTSARR array
 //// add to PROJECTSARR array if it is not a duplicate
 
-function addProjectToArray(myProjectsArr) {
+function addProjectToArray(currentResult) {
   console.log("addProjectToArray");
-  let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
-  let BDFO = $(outputFieldIDs.BDFO).html();
-  let EDFO = $(outputFieldIDs.EDFO).html();
-  let Color = $('#colors').val();
-  let Width = $('#width').val();
-  let Desc = $('#description').val();
+  let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM']; //FIXME reference something here
+  let BDFO = currentResult['BEGIN_RTE_DFO'];
+  let EDFO = currentResult['END_RTE_DFO'];
+  let Color = currentResult['Color'];
+  let Width = currentResult['Width'];
+  let Desc = currentResult['Feature'];
 
 
   let projObj = new Object();
@@ -23,9 +23,8 @@ function addProjectToArray(myProjectsArr) {
   let projString = JSON.stringify(projObj);
   console.log(projString);
 
-  if (myProjectsArr.indexOf(projObj) < 0) { myProjectsArr.push(projObj); }
+  if (PROJECTSARR.indexOf(projObj) < 0) { PROJECTSARR.push(projObj); }
 
-  makeRouteProjectsTable(myProjectsArr);
 }
 
 

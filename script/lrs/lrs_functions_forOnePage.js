@@ -99,9 +99,14 @@ async function queryLrsByArray(inputMethod, arrayToQuery, headerRowPresent, fiel
     console.log("returned " + results0.length + " results for row: " + rowToQuery);
     // end perform query
 
+
+    let featureDescription = $("#description").val() || 'feature';
+    let featureColor = $("#color").val() || "#14375a";
+    let featureWidth = $("#width").val() || "1";
+
     // get row header data
-    let otherAttributesKey = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-    let otherAttributesValue = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
+    let otherAttributesKey = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature", "Color", "Width"];
+    let otherAttributesValue = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : [featureDescription, featureColor, featureWidth];
     let otherAttributesObj = {};
 
     otherAttributesKey.forEach((otherAttributesKey, i) => otherAttributesObj[otherAttributesKey] = otherAttributesValue[i]);
@@ -537,7 +542,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
 
   console.log(index0);
   matchError = index0; // if index0 is -1 it will set matchError to that value
-  output0 = results0[index0]; 
+  output0 = results0[index0];
 
   console.log(output0);
 
@@ -548,7 +553,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
 
     console.log(index1);
     matchError = index1; // if index1 is -1 it will set matchError to that value
-    output1 = results1[index1]; 
+    output1 = results1[index1];
     console.log(output1);
 
     if (matchError >= 0) {
