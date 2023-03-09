@@ -259,7 +259,7 @@ async function setTableFieldsByMethod(parsedInputCSV) {
   let lrm_indices = [];
   let lrm_indices0 = [];
   let lrm_indices1 = [];
-
+  let rte_nm_lrm_indices = []; //test
   let candidate_fields = parsedInputCSV[0];
   all_fields = [...Array(candidate_fields.length).keys()];
 
@@ -473,13 +473,14 @@ function resultsShowExport(refinedData) {
   }
 
 
+  //FIXME turning off plotting by default
   /**
     // plot to map
     if (GLOBALSETTINGS.UseMap == 1) {
-      showPointResultsOnMap(refinedData);
+      // showPointResultsOnMap(refinedData); //turning off showing all points
   
       if (GLOBALSETTINGS.CalcGeomType == "Point") {
-        showPointResultsOnMap(refinedData);
+        // showPointResultsOnMap(refinedData); //turning off showing all points
   
       } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
         //showLineResultsOnMap(refinedData);
