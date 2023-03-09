@@ -481,8 +481,11 @@ function resultsShowExport(refinedData, inputMethod) {
 
 async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
   console.log(unfilteredArr);
+  let matchError = 0;
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
+  let notmatch0 = { ...results0 };
+  let notmatch1 = { ...results0, ...results1 };
 
   // get right route
   if (method == 1) {
@@ -520,18 +523,6 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
     }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
   // end get right route
 
   // match output
@@ -544,49 +535,64 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
 
-  output0 = results0[index0];
+  console.log(index0);
+  matchError = index0; // if index0 is -1 it will set matchError to that value
+  output0 = results0[index0]; // TODO error handling return results0[0]
+
   console.log(output0);
 
-  if (CALCGEOMTYPE == "Route") {
+  if (CALCGEOMTYPE == "Route" && matchError >= 0) {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
 
-    output1 = results1[index1];
+    console.log(index1);
+    matchError = index1; // if index1 is -1 it will set matchError to that value
+    output1 = results1[index1]; // TODO error handling return results1[0]
     console.log(output1);
-    bdfo = output0['RTE_DFO'];
-    edfo = output1['RTE_DFO'];
 
-    /**
-      RteDfoArr = [];
-      RteDfoArr.push(rte_nm);
-      RteDfoArr.push(Math.min(bdfo, edfo));
-      RteDfoArr.push(Math.max(bdfo, edfo));
-      console.log(RteDfoArr);
-    */
+    if (matchError >= 0) {
+      bdfo = output0['RTE_DFO'];
+      edfo = output1['RTE_DFO'];
 
-    // check min and max DFOs and transpose if necessary
-    let preBEGIN = `BEGIN_`;
-    let preEND = `END_`;
-    let begin = {};
-    let end = {};
+      /**
+        RteDfoArr = [];
+        RteDfoArr.push(rte_nm);
+        RteDfoArr.push(Math.min(bdfo, edfo));
+        RteDfoArr.push(Math.max(bdfo, edfo));
+        console.log(RteDfoArr);
+      */
 
-    if (bdfo > edfo) {
-      begin = Object.keys(output1).reduce((a, c) => (a[`${preBEGIN}${c}`] = output1[c], a), {});
-      end = Object.keys(output0).reduce((a, c) => (a[`${preEND}${c}`] = output0[c], a), {});
-      //match = (Object.values(output1)).concat(Object.values(output0));
+      // check min and max DFOs and transpose if necessary
+      let preBEGIN = `BEGIN_`;
+      let preEND = `END_`;
+      let begin = {};
+      let end = {};
+
+      if (bdfo > edfo) {
+        begin = Object.keys(output1).reduce((a, c) => (a[`${preBEGIN}${c}`] = output1[c], a), {});
+        end = Object.keys(output0).reduce((a, c) => (a[`${preEND}${c}`] = output0[c], a), {});
+        //match = (Object.values(output1)).concat(Object.values(output0));
+      } else {
+        begin = Object.keys(output0).reduce((a, c) => (a[`${preBEGIN}${c}`] = output0[c], a), {});
+        end = Object.keys(output1).reduce((a, c) => (a[`${preEND}${c}`] = output1[c], a), {});
+        //match = (Object.values(output0)).concat(Object.values(output1));
+      }
+
+      match = { ...begin, ...end };
     } else {
-      begin = Object.keys(output0).reduce((a, c) => (a[`${preBEGIN}${c}`] = output0[c], a), {});
-      end = Object.keys(output1).reduce((a, c) => (a[`${preEND}${c}`] = output1[c], a), {});
-      //match = (Object.values(output0)).concat(Object.values(output1));
+      match = notmatch1;
     }
 
-    match = { ...begin, ...end };
+  }
+
+  else if (CALCGEOMTYPE == "Point" && matchError >= 0) {
+    match = { ...output0 };
+    // match = (Object.values(output0));
   }
 
   else {
-    match = { ...output0 };
-    // match = (Object.values(output0));
+    match = notmatch0;
   }
 
   return (match);
