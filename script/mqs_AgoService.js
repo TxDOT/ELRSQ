@@ -46,7 +46,7 @@ async function queryProjectGeometry() {
     console.log("GLOBALPROJECTDATA.ProjectDrawParameters: ");
     console.log(GLOBALPROJECTDATA.ProjectDrawParameters);
   }
-  resetProjectLines();
+  resetProjectFeatureCollections();
 
   GreenToYellow();
 

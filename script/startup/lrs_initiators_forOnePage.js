@@ -238,7 +238,7 @@ $(document).ready(function () {
     YellowToGreen();
     GLOBALSETTINGS.InputMethod = "table";
     lrsBulkQuery(fileContents, "AAdddd_dash_KG");
-    // lrsBulkQuery(CURRENTLRMNO, fileContents, "AAdddd_dash");
+    // lrsBulkQuery(fileContents, "AAdddd_dash");
   });
 
 });

@@ -76,8 +76,8 @@ function dropLastProjectFromArray(myProjectsArr, myProjectLines) {
 //clears the arrays
 function clearProjectsFromArray(myProjectsArr, myProjectLines) {
   console.log("clearProjectsFromArray");
-  resetProjects();
-  resetProjectLines();
+  resetProjectDrawParameters();
+  resetProjectFeatureCollections();
   makeRouteProjectsTable(myProjectsArr);
   parseGeometryToGeoJSON(myProjectLines);
 }

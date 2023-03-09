@@ -109,7 +109,7 @@ $('#demo-mode-toggle').change(function () {
     $(".milepointmeasure").val('');
     $(".routename").val('');
 
-    resetProjects();
+    resetProjectDrawParameters();
   }
 })
 

@@ -36,12 +36,12 @@ function resetGraphics() {
 const GLOBALPROJECTDATA = {};
 
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
-function resetProjects() {
+function resetProjectDrawParameters() {
   GLOBALPROJECTDATA.ProjectDrawParameters = [];
 }
 
 GLOBALPROJECTDATA.ProjectFeatureCollections = [];
-function resetProjectLines() {
+function resetProjectFeatureCollections() {
   GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 }
 
