@@ -537,7 +537,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
 
   console.log(index0);
   matchError = index0; // if index0 is -1 it will set matchError to that value
-  output0 = results0[index0]; // TODO error handling return results0[0]
+  output0 = results0[index0]; 
 
   console.log(output0);
 
@@ -548,7 +548,7 @@ async function matchOutputOnRteNm(inputMethod, method, unfilteredArr, rte_nm) {
 
     console.log(index1);
     matchError = index1; // if index1 is -1 it will set matchError to that value
-    output1 = results1[index1]; // TODO error handling return results1[0]
+    output1 = results1[index1]; 
     console.log(output1);
 
     if (matchError >= 0) {

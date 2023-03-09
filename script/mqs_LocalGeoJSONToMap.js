@@ -1,5 +1,7 @@
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
 
+
+// this function works on global variable PROJECTLINES
 function localGeoJSONToMap(localGeoJSON) {
   console.log('localGeoJSONToMap');
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
