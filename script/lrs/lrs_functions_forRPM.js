@@ -134,15 +134,18 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
         user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
       let unfilteredArr = (GLOBALSETTINGS.CalcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsArr = await matchOutputOnRteNm_forRPM(unfilteredArr, user_input_rte_nm, RteDfoArr);
+      let resultsObj = await matchOutputOnRteNm_forRPM(unfilteredArr, user_input_rte_nm, RteDfoArr);
 
       // end get right route
       // assemble data
-      let fullRowData = resultsArr;
-      if (typeof rowhead !== 'undefined' && rowhead !== '') {
-        fullRowData = rowhead.concat(resultsArr);
-      }
 
+      /**
+        let fullRowData = resultsArr;
+        if (typeof rowhead !== 'undefined' && rowhead !== '') {
+          fullRowData = rowhead.concat(resultsArr);
+        }
+      */
+      let fullRowData = { ...otherAttributesObj, ...resultsObj };
       refinedData.push(fullRowData);
 
     } else {
@@ -152,8 +155,8 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
         let aRowResultObj = results0[aRowResult];
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
-        refinedData.push(aRowResultObj);
-
+        // refinedData.push(aRowResultObj);
+        refinedData.push({ ...otherAttributesObj, ...aRowResultObj });
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -162,17 +165,22 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
 
   }
   // end process rows
-  // set column heads
-  let customhead = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-  let standardhead = (GLOBALSETTINGS.CalcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-  let colhead = customhead.concat(standardhead);
-
-  // prepend column heads
-  if (GLOBALSETTINGS.CalcGeomType == "Route") {
-    refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
-  }
+  /**
+    // set column heads
+    let customhead = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
+    let standardhead = (GLOBALSETTINGS.CalcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
+    let colhead = customhead.concat(standardhead);
+  
+    // prepend column heads
+    if (GLOBALSETTINGS.CalcGeomType == "Route") {
+      refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
+    }
+  */
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
+
+  resultsShowExport(refinedData);
+
 
   // show results
   $(outputFieldIDs.RTE_DEFN_LN_NM).html(RteDfoArr[0]);

@@ -1,33 +1,42 @@
 // 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
-  exportPointsToCsvFile(resultsArr);
-  exportPointsToGeoJsonFile(resultsArr);
-  exportPointsToKMLFile(resultsArr);
+  $("#bulk-convert-download-bar").show();
+  $("#bulk-convert-progress-bar").hide();
+
+  if (GLOBALSETTINGS.InputMethod == "html") {
+    btn_suffix = "Main";
+  } else if (GLOBALSETTINGS.InputMethod == "table") {
+    btn_suffix = "Modal";
+  }
+
+
+  exportPointsToCsvFile(resultsArr, btn_suffix);
+  exportPointsToGeoJsonFile(resultsArr, btn_suffix);
+  exportPointsToKMLFile(resultsArr, btn_suffix);
 }
 
 // 1a) exportPointsToCsvFile
 
-function exportPointsToCsvFile(resultsArr) {
-  //let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] }); // this makes sure msg has quotes
+function exportPointsToCsvFile(resultsArr, btn_suffix) {
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'pointresults.csv';
 
-  let linkElement = document.getElementById('CSVdownload');
+  let linkElement = document.getElementById('CSVdownload' + btn_suffix);
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
 // 1b) exportPointsToGeoJsonFile
 
-function exportPointsToGeoJsonFile(resultsArr) {
+function exportPointsToGeoJsonFile(resultsArr, btn_suffix) {
   var geojson = jsonFromLrsApiToGeoJson(resultsArr)
   let dataStr = JSON.stringify(geojson);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
   let exportFileDefaultName = 'pointresults.json';
 
-  let linkElement = document.getElementById('JSONdownload');
+  let linkElement = document.getElementById('JSONdownload' + btn_suffix);
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
@@ -42,6 +51,7 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
   };
 
   for (i = 0; i < resultsArr.length; i++) {
+    //console.log("looping through features, i = " + i);
     geojson.features.push({
       "type": "Feature",
       "geometry": {
@@ -67,12 +77,12 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
 
 // 1c) exportPointsToKMLFile
 
-function exportPointsToKMLFile(resultsArr) {
+function exportPointsToKMLFile(resultsArr, btn_suffix) {
   var kmlContent = jsonToKML(resultsArr)
   let dataUri = encodeURI(kmlContent);
   let exportFileDefaultName = 'pointresults.kml';
 
-  let linkElement = document.getElementById('KMLdownload');
+  let linkElement = document.getElementById('KMLdownload' + btn_suffix);
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
@@ -135,37 +145,43 @@ function addTags(theData, theTagType) {
 // 2) tabularRoutesConvertExport
 
 function tabularRoutesConvertExport(resultsArr) {
-  console.log(resultsArr);
-  exportRoutesToCsvFile(resultsArr);
-  exportRoutesToGeoJsonFile(resultsArr);
-  exportRoutesToKMLFile(resultsArr);
+  $("#bulk-convert-download-bar").show();
+  $("#bulk-convert-progress-bar").hide();
+
+  if (GLOBALSETTINGS.InputMethod == "html") {
+    btn_suffix = "Main";
+  } else if (GLOBALSETTINGS.InputMethod == "table") {
+    btn_suffix = "Modal";
+  }
+
+  exportRoutesToCsvFile(resultsArr, btn_suffix);
+  exportRoutesToGeoJsonFile(resultsArr, btn_suffix);
+  exportRoutesToKMLFile(resultsArr, btn_suffix);
 }
 
 // 2a) exportRoutesToCsvFile
 
-function exportRoutesToCsvFile(resultsArr) {
+function exportRoutesToCsvFile(resultsArr, btn_suffix) {
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'routeresults.csv';
 
-  let linkElement = document.getElementById('CSVdownload');
+  let linkElement = document.getElementById('CSVdownload' + btn_suffix);
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
 }
 
 // stub
-function exportRoutesToGeoJsonFile(resultsArr) {
+function exportRoutesToGeoJsonFile(resultsArr, btn_suffix) {
   let r = resultsArr;
-  console.log("no geoJSON export yet");
+  // console.log("no geoJSON export yet");
 }
 
 // stub
-function exportRoutesToKMLFile(resultsArr) {
+function exportRoutesToKMLFile(resultsArr, btn_suffix) {
   let r = resultsArr;
-  console.log("no KML export yet");
+  // console.log("no KML export yet");
 }
-
-
 
 
 
