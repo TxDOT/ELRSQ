@@ -256,7 +256,7 @@ function setIndicesByLrmAndGeom() {
 
 async function setTableFieldsByMethod(parsedInputCSV) {
   let field_indices = [];
-  let lrm_indices = [];
+  // let lrm_indices = [];
   let lrm_indices0 = [];
   let lrm_indices1 = [];
   let rte_nm_lrm_indices = []; //test
@@ -541,7 +541,7 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
   // match output
   let output0 = {};
   let output1 = {};
-  let match = [];
+  let match = {};
 
   let index0 = results0.findIndex(function (item, i) {
     return item.RTE_DEFN_LN_NM === rte_nm;
@@ -552,7 +552,7 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
 
   // console.log(output0);
 
-  if (GLOBALSETTINGS.CalcGeomType == "Route") {
+  if (GLOBALSETTINGS.CalcGeomType == "Route" && matchError >= 0) {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
@@ -560,30 +560,46 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
     matchError = index1; // if index1 is -1 it will set matchError to that value
     output1 = results1[index1];
     // console.log(output1);
-    bdfo = output0['RTE_DFO'];
-    edfo = output1['RTE_DFO'];
 
-    RteDfoArr.push(rte_nm);
-    RteDfoArr.push(Math.min(bdfo, edfo));
-    RteDfoArr.push(Math.max(bdfo, edfo));
-    console.log(RteDfoArr);
+    if (matchError >= 0) {
+      bdfo = output0['RTE_DFO'];
+      edfo = output1['RTE_DFO'];
 
-    // check min and max DFOs and transpose if necessary
-    let preBEGIN = `BEGIN_`;
-    let preEND = `END_`;
-    let begin = {};
-    let end = {};
+      RteDfoArr.push(rte_nm);
+      RteDfoArr.push(Math.min(bdfo, edfo));
+      RteDfoArr.push(Math.max(bdfo, edfo));
+      console.log(RteDfoArr);
 
-    if (bdfo > edfo) {
-      match = (Object.values(output1)).concat(Object.values(output0));
+      // check min and max DFOs and transpose if necessary
+      let preBEGIN = `BEGIN_`;
+      let preEND = `END_`;
+      let begin = {};
+      let end = {};
+
+      if (bdfo > edfo) {
+        begin = Object.keys(output1).reduce((a, c) => (a[`${preBEGIN}${c}`] = output1[c], a), {});
+        end = Object.keys(output0).reduce((a, c) => (a[`${preEND}${c}`] = output0[c], a), {});
+        //match = (Object.values(output1)).concat(Object.values(output0));
+      } else {
+        begin = Object.keys(output0).reduce((a, c) => (a[`${preBEGIN}${c}`] = output0[c], a), {});
+        end = Object.keys(output1).reduce((a, c) => (a[`${preEND}${c}`] = output1[c], a), {});
+        //match = (Object.values(output0)).concat(Object.values(output1));
+      }
+
+      match = { ...begin, ...end };
     } else {
-      match = (Object.values(output0)).concat(Object.values(output1));
+      match = notmatch1;
     }
 
   }
 
+  else if (GLOBALSETTINGS.CalcGeomType == "Point" && matchError >= 0) {
+    match = { ...output0 };
+    // match = (Object.values(output0));
+  }
+
   else {
-    match = (Object.values(output0));
+    match = notmatch0;
   }
 
   return (match);
@@ -594,7 +610,7 @@ function noMatchOutputOnRteNm(unfilteredArr) {
   let results0 = unfilteredArr[0];
   let output0 = results0[0];
   console.log(output0);
-  let nomatch = (Object.values(output0));
+  let nomatch = { ...output0 };
   return (nomatch);
 }
 
