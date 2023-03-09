@@ -42,7 +42,7 @@ function readOutRouteResults(results, navIndex) {
 
   fillInRouteHtmlTable(results[index]);
   // plot route for results[index]
-  // showThisRouteResultOnMap(results[index]); // TODO put RPM here
+  showThisRouteResultOnMap(results[index]); // TODO put RPM here //TEST
 }
 
 
