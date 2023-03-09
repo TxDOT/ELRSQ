@@ -62,7 +62,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
   }
 
   GreenToYellow();
-
+  $("#bulk-convert-progress-bar").show();
 
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
@@ -109,7 +109,16 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end perform query
 
+
+    let featureDescription = $("#description").val() || 'feature';
+    let featureColor = $("#color").val() || "#14375a";
+    let featureWidth = $("#width").val() || "1";
+
     // get row header data
+    let otherAttributesKey = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature", "Color", "Width"];
+    let otherAttributesValue = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => currentRow[i]) : [featureDescription, featureColor, featureWidth];
+    let otherAttributesObj = {};
+
     let rowhead = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
 
     // return single geom filtered on route name, or return multiple results
@@ -149,7 +158,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     }
     // end return single geom filtered on route name, or return multiple results
 
-
+    updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
 
   }
   // end process rows
@@ -163,6 +172,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
   }
 
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
   // show results
   $(outputFieldIDs.RTE_DEFN_LN_NM).html(RteDfoArr[0]);
@@ -463,23 +473,31 @@ function resultsShowExport(refinedData) {
   }
 
 
-  // plot to map
-  if (GLOBALSETTINGS.UseMap == 1) {
-    showPointResultsOnMap(refinedData);
-
-    if (GLOBALSETTINGS.CalcGeomType == "Point") {
+  /**
+    // plot to map
+    if (GLOBALSETTINGS.UseMap == 1) {
       showPointResultsOnMap(refinedData);
-
-    } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
-      //showLineResultsOnMap(refinedData);
+  
+      if (GLOBALSETTINGS.CalcGeomType == "Point") {
+        showPointResultsOnMap(refinedData);
+  
+      } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        //showLineResultsOnMap(refinedData);
+      }
     }
-  }
+  */
+
+
 }
 
 
 async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(unfilteredArr); }
+  let matchError = 0;
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
+  let notmatch0 = { ...results0 };
+  let notmatch1 = { ...results0, ...results1 };
 
   // get right route
   if (GLOBALSETTINGS.CurrentLrmNo == 1) {
@@ -528,6 +546,7 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
 
+  matchError = index0; // if index0 is -1 it will set matchError to that value
   output0 = results0[index0];
 
   // console.log(output0);
@@ -537,6 +556,7 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
 
+    matchError = index1; // if index1 is -1 it will set matchError to that value
     output1 = results1[index1];
     // console.log(output1);
     bdfo = output0['RTE_DFO'];
@@ -548,6 +568,11 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
     console.log(RteDfoArr);
 
     // check min and max DFOs and transpose if necessary
+    let preBEGIN = `BEGIN_`;
+    let preEND = `END_`;
+    let begin = {};
+    let end = {};
+
     if (bdfo > edfo) {
       match = (Object.values(output1)).concat(Object.values(output0));
     } else {
