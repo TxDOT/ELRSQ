@@ -77,26 +77,27 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
   for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
     if (GLOBALSETTINGS.PrintIterations == 1) {
       console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
-    } let currentRow = arrayToQuery[rowToQuery];
+    }
+    let currentRow = arrayToQuery[rowToQuery];
     let url0 = '';
     let url1 = '';
 
     // build url
     if (GLOBALSETTINGS.InputMethod == "html") {
       url0 = buildUrl(currentRow, lrm_indices0);
-      console.log(url0);
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
       if (GLOBALSETTINGS.CalcGeomType == "Route") {
         url1 = buildUrl(currentRow, lrm_indices1);
-        console.log(url1);
+        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
       }
     }
 
     else if (GLOBALSETTINGS.InputMethod == "table") {
       url0 = buildUrl(currentRow, lrm_indices0);
-      console.log(url0);
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
       if (GLOBALSETTINGS.CalcGeomType == "Route") {
         url1 = buildUrl(currentRow, lrm_indices1);
-        console.log(url1);
+        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
       }
     }
     // end build url
@@ -125,6 +126,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
       }
       let unfilteredArr = (GLOBALSETTINGS.CalcGeomType == "Point") ? [results0, results0] : [results0, results1];
       let resultsArr = await matchOutputOnRteNm_forRPM(unfilteredArr, user_input_rte_nm, RteDfoArr);
+
       // end get right route
       // assemble data
       let fullRowData = resultsArr;
@@ -188,7 +190,7 @@ function setIndicesByLrmAndGeom() {
     else if (GLOBALSETTINGS.CurrentLrmNo == 2) {
       lrm_indices = lrm_indices0 = [0, 1, 2];
       rte_nm_lrm_indices = [0];
-      currentFieldOrder = ['kbInputRouteName_2', 'kbInputReferenceMarker', 'kbInputDisplacement'];
+      currentFieldOrder = ['kbInputRouteName', 'kbInputReferenceMarker', 'kbInputDisplacement'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
@@ -200,7 +202,7 @@ function setIndicesByLrmAndGeom() {
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [0];
-      currentFieldOrder = ['kbInputRouteName_4', 'kbInputDistanceFromOrigin'];
+      currentFieldOrder = ['kbInputRouteName', 'kbInputDistanceFromOrigin'];
     }
   }
 
@@ -222,16 +224,16 @@ function setIndicesByLrmAndGeom() {
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
       lrm_indices0 = [0, 1];
-      lrm_indices1 = [2, 3];
-      rte_nm_lrm_indices = [4]; // optional
-      currentFieldOrder = ['kbInputBeginControlSection', 'kbInputBeginMilepointMeasure', 'kbInputEndControlSection', 'kbInputEndMilepointMeasure'];
+      lrm_indices1 = [0, 2];
+      rte_nm_lrm_indices = [3]; // optional
+      currentFieldOrder = ['kbInputBeginControlSection', 'kbInputBeginMilepointMeasure', 'kbInputEndMilepointMeasure'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];
       rte_nm_lrm_indices = [0];
-      currentFieldOrder = ['kbInputRouteName_4', 'kbInputBeginDistanceFromOrigin', 'kbInputEndDistanceFromOrigin'];
+      currentFieldOrder = ['kbInputRouteName_2', 'kbInputBeginDistanceFromOrigin', 'kbInputEndDistanceFromOrigin'];
     }
   }
 
@@ -350,20 +352,18 @@ async function setTableFieldsByMethod(parsedInputCSV) {
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
       dropDownPopulator("#bcontrolsection_field", candidate_fields);
       dropDownPopulator("#bmilepoint_field", candidate_fields);
-      dropDownPopulator("#econtrolsection_field", candidate_fields);
       dropDownPopulator("#emilepoint_field", candidate_fields);
       dropDownPopulator("#rte_nm_field", candidate_fields);
 
       let bcontrolsection_field = ~~await confirmFieldChoice("#btn-bcontrolsection_field", "#bcontrolsection_field");
       let bmilepoint_field = ~~await confirmFieldChoice("#btn-bmilepoint_field", "#bmilepoint_field");
-      let econtrolsection_field = ~~await confirmFieldChoice("#btn-econtrolsection_field", "#econtrolsection_field");
       let emilepoint_field = ~~await confirmFieldChoice("#btn-emilepoint_field", "#emilepoint_field");
       let rte_nm_option = 0;  //TODO make this optional
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
-      lrm_indices = [bcontrolsection_field, bmilepoint_field, econtrolsection_field, emilepoint_field, rte_nm_field];
+      lrm_indices = [bcontrolsection_field, bmilepoint_field, emilepoint_field, rte_nm_field];
       lrm_indices0 = [bcontrolsection_field, bmilepoint_field];
-      lrm_indices1 = [econtrolsection_field, emilepoint_field];
+      lrm_indices1 = [bcontrolsection_field, emilepoint_field];
       rte_nm_lrm_indices = [rte_nm_field];
     }
 
@@ -529,7 +529,8 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
   });
 
   output0 = results0[index0];
-  console.log(output0);
+
+  // console.log(output0);
 
   if (GLOBALSETTINGS.CalcGeomType == "Route") {
     let index1 = results1.findIndex(function (item, i) {
@@ -537,7 +538,7 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
     });
 
     output1 = results1[index1];
-    console.log(output1);
+    // console.log(output1);
     bdfo = output0['RTE_DFO'];
     edfo = output1['RTE_DFO'];
 

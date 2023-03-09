@@ -50,24 +50,23 @@
   <script src="script/vendor/papaparse.js"></script>
 
   <script>
-    //const CALCGEOMTYPE = "Point";
+    const CALCGEOMTYPE = "Route";
     const GLOBALSETTINGS = {};
     GLOBALSETTINGS.UseMap = 1;
   </script>
 
   <script src="script/config_hardcoded.js" defer></script>
 
-  <script src="script/startup/init_forOnePage.js" defer></script>
-  <script src="script/startup/lrs_initiators_forOnePage.js" defer></script>
-  <script src="script/startup/eventHandlers_forOnePage.js" defer></script>
+  <script src="script/startup/init_forRPM.js" defer></script>
+  <script src="script/startup/rpm_initiators.js" defer></script>
+  <script src="script/startup/eventHandlers_forRPM.js" defer></script>
 
-  <script src="script/lrs/lrs_functions_forOnePage.js" defer></script>
-  <!-- <script src="script/lrs/cursorQuery.js" defer></script> -->
+  <script src="script/lrs/lrs_functions_forRPM.js" defer></script>
 
 
   <script src="script/mqs_EsriMap.js" defer></script>
   <script src="script/mqs_EsriFeatureMapper.js" defer></script>
-  <script src="script/mqs_ImportExportTables_forOnePage.js" defer></script>
+  <script src="script/mqs_ImportExportTables.js" defer></script>
   <script src="script/mqs_AgoService.js" defer></script>
   <script src="script/mqs_Fetch.js" defer></script>
   <script src="script/mqs_RouteNameFixer.js" defer></script>
@@ -75,7 +74,7 @@
   <script src="script/resultstable/HtmlTables.js" defer></script>
 
 
-  <script src="script/mqs_RouteBuilder_forOnePage.js"></script>
+  <script src="script/mqs_RouteBuilder.js"></script>
   <script src="script/mqs_LocalGeoJSONToMap.js"></script>
 
   <script src="script/helper/dragdropupload.js" defer></script>
@@ -739,10 +738,10 @@
             <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
               aria-label="Toolbar with button groups">
               <div class="d-flex btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="topnav_point" checked>
+                <input type="radio" class="btn-check" name="btnradio" id="topnav_point">
                 <label class="btn btn-outline-primary" for="topnav_point"><i class="fa fa-asterisk"
                     aria-hidden="true"></i> Point Builder</label>
-                <input type="radio" class="btn-check" name="btnradio" id="topnav_route">
+                <input type="radio" class="btn-check" name="btnradio" id="topnav_route" checked>
                 <label class="btn btn-outline-primary" for="topnav_route"><i class="fa fa-arrows-h"
                     aria-hidden="true"></i> Route Builder</label>
               </div>
@@ -809,9 +808,9 @@
               <!-- Input Form START -->
 
               <!--#region input-point-form  -->
-              <div id="input-point-form-card" class="card">
+              <div id="input-point-form-card" style="display:none" class="card">
                 <div class="card-body">
-                  <form id="input-point-form">
+                  <form id="input-point-form" style="display:none">
 
                     <div class="row" id="kbPointInputRouteName">
                       <label for="kbInputRouteName" class="col-sm-4 col-form-label">Route Name</label>
@@ -881,9 +880,9 @@
               <!--#endregion -->
 
               <!--#region input-route-form  -->
-              <div id="input-route-form-card" style="display:none" class="card">
+              <div id="input-route-form-card" class="card">
                 <div class="card-body">
-                  <form id="input-route-form" style="display:none">
+                  <form id="input-route-form">
 
                     <div id="kbRouteInputRouteName">
                       <div class="row mb-3">
@@ -1083,7 +1082,7 @@
                     <div class="col input-group d-flex mb-2 justify-content-center">
                       <span class="input-group-text" id="colorsLabel">Color</span>
 
-                      <select id="color" class="form-select" aria-label="line color selector">
+                      <select id="colors" class="form-select" aria-label="line color selector">
                         <option value="#14375a" selected="selected">TxDOT Blue</option>
                         <option value="#ff0000">Red</option>
                         <option value="#ff8000">Orange</option>
@@ -1102,9 +1101,6 @@
                     <div class="col input-group d-flex mb-2 justify-content-center">
                       <span class="input-group-text" id="widthLabel">Width</span>
                       <input id="width" type="number" value="1" min="1" max="5" class="form-control textentry">
-                      <span class="justify-content-center input-group-text" style="width: 50%;">
-                        <input id="widthInput" type="range" class="form-range" value="1" min="1" max="5">
-                      </span>
                     </div>
 
                     <div class="col input-group d-flex mb-2 justify-content-center">
@@ -1186,6 +1182,11 @@
                   <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
                     title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                 </div>
+                <div class="btn-group mb-2" role="group" aria-label="download group">
+                  <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                    data-bs-target="#routeStyleHelpModal" title="Route Style Help"><i class="fa fa-question"
+                      aria-hidden="true"></i> Help</button>
+                </div>
               </div>
 
             </div>
@@ -1219,7 +1220,7 @@
               <!-- Pagination-Card END -->
 
               <!--#region results-table-point  -->
-              <div id="results-table-point-card" class="card">
+              <div id="results-table-point-card" class="card" style="display:none">
                 <div class="card-body">
                   <!-- Bordered Table -->
                   <table class="table table-sm">
@@ -1245,7 +1246,7 @@
                       </tr>
                       <tr>
                         <td>Route:</td>
-                        <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary"></td>
+                        <td id="_p_returned_RTE_DEFN_LN_NM" class="textout table-secondary"></td>
                       </tr>
                       <tr>
                         <td>Roadbed Type:</td>
@@ -1336,7 +1337,7 @@
               <!--#endregion -->
 
               <!--#region results-table-route  -->
-              <div id="results-table-route-card" class="card" style="display:none">
+              <div id="results-table-route-card" class="card">
                 <div class="card-body">
 
                   <div class="container minitable mb-3">
@@ -1349,7 +1350,7 @@
                     </div>
                     <div class="row row-cols-2 attribute-data">
                       <div class="col attribute-name">Route </div>
-                      <span id="p_returned_RTE_DEFN_LN_NM_ROUTE" class="col datacell textout"></span>
+                      <span id="_p_returned_RTE_DEFN_LN_NM_ROUTE" class="col datacell textout"></span>
                     </div>
                     <div class="row row-cols-2 attribute-data">
                       <div class="col attribute-name"><i class="fa fa-flag-o" aria-hidden="true"></i> Begin DFO </div>
@@ -1443,9 +1444,81 @@
               </div>
               <!--#endregion -->
 
+              <!-- RoutesTable-Card START -->
+              <div class="card">
+                <div class="card-body">
+                  <div id="routes-table"></div>
+                </div>
+              </div>
+              <!-- RoutesTable-Card END -->
+
+              <!-- StyleBuilder-Card START -->
+              <div class="card">
+                <div class="card-body">
+                  <!-- Bordered Table -->
+                  <table class="table table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Route:</th>
+                        <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Begin DFO:</th>
+                        <td id="p_returned_RTE_DFO_begin" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">End DFO:</th>
+                        <td id="p_returned_RTE_DFO_end" class="textout table-secondary border border-dark"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Bordered Table -->
+
+                </div>
+              </div>
+              <!-- StyleBuilder-Card END -->
+
+              <!-- RouteBuilderTools-Card START -->
+              <div class="card">
+                <div class="card-body">
+
+                  <!-- RouteBuilderToolbar START -->
+                  <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                    aria-label="Toolbar with button groups">
+
+                    <!-- Add/Drop/Clear START -->
+                    <div class="btn-group me-2 mb-2" role="group">
+                      <button id="addRow" type="button" class="btn btn-success"
+                        title="Save current project and add another"><i class="fa fa-plus-circle"
+                          aria-hidden="true"></i> Add Row</button>
+                      <button id="dropRow" type="button" class="btn btn-danger" title="Remove last project on list"><i
+                          class="fa fa-minus-circle" aria-hidden="true"></i> Drop Row</button>
+                      <button id="clearRows" type="button" class="btn btn-secondary"
+                        title="Clear project(s) from the map"><i class="fa fa-trash" aria-hidden="true"></i>
+                        Clear</button>
+                    </div>
+                    <!-- Add/Drop/Clear END -->
+
+                    <!-- Process to Map START -->
+                    <div class="btn-group mb-2" role="group">
+                      <button id="queryProjectGeometry-button" type="button" class="btn btn-primary"
+                        title="Map your project(s)"><i class="fa fa-map" aria-hidden="true"></i> Convert</button>
+                      <button id="localGeoJSONToMap-button" type="button" class="btn btn-primary"
+                        title="localGeoJSONToMap"><i class="fa fa-map" aria-hidden="true"></i>
+                        localGeoJSONToMap</button>
+                    </div>
+                    <!-- Process to Map END -->
+
+                  </div>
+                  <!-- RouteBuilderToolbar END -->
+
+                </div>
+              </div>
+              <!-- RouteBuilderTools-Card END -->
+
             </div>
           </div>
-          <!-- Results-Card END -->
+          <!-- StyleBuilderAndTools-Card END -->
 
         </div>
         <!-- Scrolling Column END -->

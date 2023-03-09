@@ -533,7 +533,6 @@ async function matchOutputOnRteNm(unfilteredArr, rte_nm) {
   // match output
   let output0 = {};
   let output1 = {};
-  //let match = [];
   let match = {};
 
   let index0 = results0.findIndex(function (item, i) {
