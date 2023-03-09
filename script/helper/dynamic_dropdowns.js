@@ -8,6 +8,11 @@ function dropDownPopulator(dropDownId, candidate_fields) {
   }
 }
 
+function dropDownDepopulator(dropDownId) {
+  $(dropDownId).empty();
+}
+
+
 async function confirmFieldChoice(buttonId, dropDownId) {
   result = (await
     new Promise(async function (resolve) {

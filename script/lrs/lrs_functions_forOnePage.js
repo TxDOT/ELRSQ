@@ -1,10 +1,10 @@
-async function lrsSingleQuery(lrmNo) {
+async function lrsSingleQuery() {
   let headerRowPresent = 0;
   let constrainToRouteName = (GLOBALSETTINGS.CalcGeomType == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG";
   let rte_nm_lrm_indices = [];
 
-  let field_indices = setIndicesByLrmAndGeom(lrmNo);
+  let field_indices = setIndicesByLrmAndGeom();
   rte_nm_lrm_indices = field_indices[1];
   let currentFieldOrder = field_indices[2];
 
@@ -14,7 +14,7 @@ async function lrsSingleQuery(lrmNo) {
     let coordinateArr0 = [];
     for (let i = 0; i < currentFieldOrder.length; i++) {
       let value = $('#' + currentFieldOrder[i]).val();
-      if ((lrmNo == 2 || lrmNo == 4) && rtenmformat == "AAdddd" && i == 0) {
+      if ((GLOBALSETTINGS.CurrentLrmNo == 2 || GLOBALSETTINGS.CurrentLrmNo == 4) && rtenmformat == "AAdddd" && i == 0) {
         value = fixThisVerySpecificTextFormat(value);
       }
       coordinateArr0.push(value);
@@ -105,9 +105,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     let results0 = await queryService(url0);
     let results1 = '';
     if (GLOBALSETTINGS.CalcGeomType == "Route") { results1 = await queryService(url1); }
-    if(GLOBALSETTINGS.PrintIterations == 1) {
-      console.log("returned " + results0.length + " results for row: " + rowToQuery);
-    }
+    if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end perform query
 
 
@@ -151,9 +149,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
-        if(GLOBALSETTINGS.PrintIterations == 1) {
-          console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-        }
+        if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length)); }
         let aRowResultObj = results0[aRowResult];
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
@@ -168,9 +164,7 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
   }
   // end process rows
 
-  if(GLOBALSETTINGS.PrintIterations == 1) {
-    console.log(refinedData);
-  }
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
   resultsShowExport(refinedData);
 
@@ -187,28 +181,24 @@ function setIndicesByLrmAndGeom() {
   if (GLOBALSETTINGS.CalcGeomType == "Point") {
 
     if (GLOBALSETTINGS.CurrentLrmNo == 1) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputLatitude', 'kbInputLongitude'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 2) {
-
       lrm_indices = lrm_indices0 = [0, 1, 2];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['kbInputRouteName', 'kbInputReferenceMarker', 'kbInputDisplacement'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputControlSection', 'kbInputMilepointMeasure'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['kbInputRouteName', 'kbInputDistanceFromOrigin'];
@@ -218,7 +208,6 @@ function setIndicesByLrmAndGeom() {
   else if (GLOBALSETTINGS.CalcGeomType == "Route") {
 
     if (GLOBALSETTINGS.CurrentLrmNo == 1) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
       rte_nm_lrm_indices = [4]; // optional
@@ -226,7 +215,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 2) {
-
       lrm_indices0 = [0, 1, 2];
       lrm_indices1 = [0, 3, 4];
       rte_nm_lrm_indices = [0];
@@ -234,7 +222,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];
       rte_nm_lrm_indices = [3]; // optional
@@ -242,7 +229,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];
       rte_nm_lrm_indices = [0];
@@ -397,7 +383,6 @@ async function setTableFieldsByMethod(parsedInputCSV) {
   }
 
   other_indices = all_fields.filter(x => !lrm_indices.includes(x));
-
   field_indices = [[lrm_indices0, lrm_indices1], rte_nm_lrm_indices, other_indices];
 
   return field_indices;
@@ -473,7 +458,9 @@ function resultsShowExport(refinedData) {
   // export data
   if (GLOBALSETTINGS.CalcGeomType == "Point") {
     tabularPointsConvertExport(refinedData);
-  } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
+  }
+
+  else if (GLOBALSETTINGS.CalcGeomType == "Route") {
     tabularRoutesConvertExport(refinedData);
   }
 
@@ -498,9 +485,7 @@ function resultsShowExport(refinedData) {
 
 
 async function matchOutputOnRteNm(unfilteredArr, rte_nm) {
-  if(GLOBALSETTINGS.PrintIterations == 1) {
-    console.log(unfilteredArr);
-  }
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(unfilteredArr); }
   let matchError = 0;
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];

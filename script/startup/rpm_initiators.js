@@ -1,50 +1,110 @@
-GLOBALSETTINGS.currentLRM = `coordinates-tab`;
-GLOBALSETTINGS.CurrentLrmNo = 1;
-let route_lrm_indices = [0, 1, 2, 3];
-let currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
+GLOBALSETTINGS.CalcGeomType = 'Route'; // these are not always valid
+GLOBALSETTINGS.CurrentLrmNo = 2;
 
-// get current LRM
+$(document).ready(function () {
+  $("#topnav_route").on('click', function () { set_topnav_route(); });
 
-$('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-  GLOBALSETTINGS.currentLRM = $(e.target).attr("id") // activated tab
+  $("#btn_lrm_method_referencemarker").on('click', function () { set_lrm_method_referencemarker(); });
+  $("#btn_lrm_method_controlsection").on('click', function () { set_lrm_method_controlsection(); });
+  $("#btn_lrm_method_dfo").on('click', function () { set_lrm_method_dfo(); });
+  $("#btn_lrm_method_coordinates").on('click', function () { set_lrm_method_coordinates(); });
 
-  if (GLOBALSETTINGS.currentLRM == `mapcursor-tab`) {
-    $("#viewDiv").css('cursor', 'crosshair');
-  } else {
-    $("#viewDiv").css('cursor', 'move');
+
+  function set_topnav_route() {
+    GLOBALSETTINGS.CalcGeomType = 'Route';
+    console.log("setting CALCGEOMTYPE to: " + GLOBALSETTINGS.CalcGeomType);
+
+    $("#input-route-form-card").show();
+    $("#input-route-form").show();
+
+    $("#results-table-route-card").show();
+
+    $("#bulk-route-templates-toolbar").show();
+
   }
 
-  if (GLOBALSETTINGS.currentLRM == `referencemarker-tab`) {
+  function set_lrm_method_referencemarker() {
     GLOBALSETTINGS.CurrentLrmNo = 2;
-    route_lrm_indices = [0, 1, 2, 3, 4];
-    currentRouteFieldOrder = ['inputRouteName_2', 'inputBeginReferenceMarker', 'inputBeginDisplacement', 'inputEndReferenceMarker', 'inputEndDisplacement'];
-  } else if (GLOBALSETTINGS.currentLRM == `controlsection-tab`) {
+
+    $("#kbRouteInputRouteName").show();
+    $("#kbRouteInputReferenceMarker").show();
+    $("#kbRouteInputControlSection").hide();
+    $("#kbRouteInputDistanceFromOrigin").hide();
+    $("#kbRouteInputRouteName_optional").hide();
+    $("#kbRouteInputCoordinates").hide();
+
+
+
+
+  }
+
+  function set_lrm_method_controlsection() {
     GLOBALSETTINGS.CurrentLrmNo = 3;
-    route_lrm_indices = [0, 1, 2, 3];
-    currentRouteFieldOrder = ['inputBeginControlSection', 'inputBeginMilepointMeasure', 'inputEndControlSection', 'inputEndMilepointMeasure'];
-  } else if (GLOBALSETTINGS.currentLRM == `distancefromorigin-tab`) {
+
+
+    $("#kbRouteInputRouteName").hide();
+    $("#kbRouteInputReferenceMarker").hide();
+    $("#kbRouteInputControlSection").show();
+    $("#kbRouteInputDistanceFromOrigin").hide();
+    $("#kbRouteInputRouteName_optional").hide();
+    $("#kbRouteInputCoordinates").hide();
+
+
+
+  }
+
+  function set_lrm_method_dfo() {
     GLOBALSETTINGS.CurrentLrmNo = 4;
-    route_lrm_indices = [0, 1, 2];
-    currentRouteFieldOrder = ['inputRouteName_4', 'inputBeginDistanceFromOrigin', 'inputEndDistanceFromOrigin'];
-  } else {
+
+
+    $("#kbRouteInputRouteName").show();
+    $("#kbRouteInputReferenceMarker").hide();
+    $("#kbRouteInputControlSection").hide();
+    $("#kbRouteInputDistanceFromOrigin").show();
+    $("#kbRouteInputRouteName_optional").hide();
+    $("#kbRouteInputCoordinates").hide();
+
+
+
+  }
+
+  function set_lrm_method_coordinates() {
     GLOBALSETTINGS.CurrentLrmNo = 1;
-    route_lrm_indices = [0, 1, 2, 3];
-    currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inputEndLatitude', 'inputEndLongitude'];
+
+
+    $("#kbRouteInputRouteName").hide();
+    $("#kbRouteInputReferenceMarker").hide();
+    $("#kbRouteInputControlSection").hide();
+    $("#kbRouteInputDistanceFromOrigin").hide();
+    $("#kbRouteInputRouteName_optional").show();
+    $("#kbRouteInputCoordinates").show();
+
+
+
   }
 
 });
 
-// end get current LRM
+$(document).ready(function () {
 
-
-
-if (GLOBALSETTINGS.CalcGeomType == "Route") {
-  // 2-point
-  // single
-
-  $(".convert-2point").on('click', function () { 
+  $(".convert").on('click', function () {
     GLOBALSETTINGS.InputMethod = "html";
-    lrsSingleRouteQuery_RPM(); });
-}
+    lrsSingleRouteQuery_RPM();
+  });
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
 
 

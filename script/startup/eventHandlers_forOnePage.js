@@ -105,7 +105,6 @@ $('#demo-mode-toggle').change(function () {
 
 
 
-
   } else {
     clearDemoKeyboardInputs();
     function clearDemoKeyboardInputs() {

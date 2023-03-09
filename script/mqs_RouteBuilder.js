@@ -21,7 +21,11 @@ function addProjectToArray(myProjectsArr) {
   projObj.Width = Width;
   projObj.Desc = Desc;
   let projString = JSON.stringify(projObj);
-  console.log(projString);
+
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("addProjectToArray: ");
+    console.log(projString);
+  }
 
   if (myProjectsArr.indexOf(projObj) < 0) { myProjectsArr.push(projObj); }
 
@@ -188,7 +192,9 @@ function setVertexNumbers(feature, myFrom, myTo) {
 // clips
 function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   let aFeatureCollectionArray = [];
-  console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  if (GLOBALSETTINGS.PrintIterations == 1) {
+    console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  }
 
   //Clipping to desired From and To
   var newBeginPoint = [];

@@ -1,3 +1,41 @@
+GLOBALSETTINGS.UseLoadIndicator = 1;
+GLOBALSETTINGS.PrintUrls = 0;
+GLOBALSETTINGS.PrintIterations = 0;
+GLOBALSETTINGS.PrintProjGeom = 1;
+
+
+let graphics = [];
+function resetGraphics() {
+  graphics = [];
+}
+
+const GLOBALPROJECTDATA = {};
+GLOBALPROJECTDATA.ProjectDrawParameters = [];
+GLOBALPROJECTDATA.ProjectGeometry = [];
+GLOBALPROJECTDATA.ProjectFeatureCollections = [];
+
+
+
+function resetProjectDrawParameters() {
+  GLOBALPROJECTDATA.ProjectDrawParameters = [];
+}
+
+function resetProjectGeometry() {
+  GLOBALPROJECTDATA.ProjectGeometry = [];
+}
+
+function resetProjectFeatureCollections() {
+  GLOBALPROJECTDATA.ProjectFeatureCollections = [];
+}
+
+
+function setProjectGeometry(someProjectGeometry) {
+  GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
+  //console.log(GLOBALPROJECTDATA.ProjectGeometry);
+}
+
+
+
 //screen pane slider
 
 if (GLOBALSETTINGS.UseMap == 1) {
@@ -15,10 +53,6 @@ if (GLOBALSETTINGS.UseMap == 1) {
 
 
 
-GLOBALSETTINGS.UseLoadIndicator = 1;
-GLOBALSETTINGS.PrintUrls = 0;
-GLOBALSETTINGS.PrintIterations = 0;
-GLOBALSETTINGS.PrintProjGeom = 1;
 
 /**
   let allResults = [];
@@ -32,35 +66,6 @@ GLOBALSETTINGS.PrintProjGeom = 1;
   }
 */
 
-let graphics = [];
-function resetGraphics() {
-  graphics = [];
-}
-
-const GLOBALPROJECTDATA = {};
-
-GLOBALPROJECTDATA.ProjectDrawParameters = [];
-
-function resetProjectDrawParameters() {
-  GLOBALPROJECTDATA.ProjectDrawParameters = [];
-}
-
-GLOBALPROJECTDATA.ProjectGeometry = [];
-
-function resetProjectGeometry() {
-  GLOBALPROJECTDATA.ProjectGeometry = [];
-}
-
-function setProjectGeometry(someProjectGeometry) {
-  GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
-  //console.log(GLOBALPROJECTDATA.ProjectGeometry);
-}
-
-GLOBALPROJECTDATA.ProjectFeatureCollections = [];
-
-function resetProjectFeatureCollections() {
-  GLOBALPROJECTDATA.ProjectFeatureCollections = [];
-}
 
 
 

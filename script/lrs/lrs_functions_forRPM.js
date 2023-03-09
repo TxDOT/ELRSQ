@@ -53,7 +53,7 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
 
 
 async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
-  console.log(constrainToRouteName + ", " + rtenmformat);
+  // console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
   resetCurrentPagination();
 
@@ -62,6 +62,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
   }
 
   GreenToYellow();
+
 
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
@@ -74,8 +75,9 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
 
   // process rows
   for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
-    console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
-    let currentRow = arrayToQuery[rowToQuery];
+    if (GLOBALSETTINGS.PrintIterations == 1) {
+      console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
+    } let currentRow = arrayToQuery[rowToQuery];
     let url0 = '';
     let url1 = '';
 
@@ -83,13 +85,19 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     if (GLOBALSETTINGS.InputMethod == "html") {
       url0 = buildUrl(currentRow, lrm_indices0);
       console.log(url0);
-      if (GLOBALSETTINGS.CalcGeomType == "Route") { url1 = buildUrl(currentRow, lrm_indices1); console.log(url1); }
+      if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        url1 = buildUrl(currentRow, lrm_indices1);
+        console.log(url1);
+      }
     }
 
     else if (GLOBALSETTINGS.InputMethod == "table") {
       url0 = buildUrl(currentRow, lrm_indices0);
       console.log(url0);
-      if (GLOBALSETTINGS.CalcGeomType == "Route") { url1 = buildUrl(currentRow, lrm_indices1); console.log(url1); }
+      if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        url1 = buildUrl(currentRow, lrm_indices1);
+        console.log(url1);
+      }
     }
     // end build url
 
@@ -97,7 +105,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     let results0 = await queryService(url0);
     let results1 = '';
     if (GLOBALSETTINGS.CalcGeomType == "Route") { results1 = await queryService(url1); }
-    console.log("returned " + results0.length + " results for row: " + rowToQuery);
+    if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end perform query
 
     // get row header data
@@ -129,8 +137,8 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
-        console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
-        let aRowResultObj = results0[aRowResult]; // but this is an object
+        if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length)); }
+        let aRowResultObj = results0[aRowResult];
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
         refinedData.push(aRowResultObj);
@@ -172,28 +180,24 @@ function setIndicesByLrmAndGeom() {
   if (GLOBALSETTINGS.CalcGeomType == "Point") {
 
     if (GLOBALSETTINGS.CurrentLrmNo == 1) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputLatitude', 'kbInputLongitude'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 2) {
-
       lrm_indices = lrm_indices0 = [0, 1, 2];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['kbInputRouteName_2', 'kbInputReferenceMarker', 'kbInputDisplacement'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [2]; // optional
       currentFieldOrder = ['kbInputControlSection', 'kbInputMilepointMeasure'];
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
-
       lrm_indices = lrm_indices0 = [0, 1];
       rte_nm_lrm_indices = [0];
       currentFieldOrder = ['kbInputRouteName_4', 'kbInputDistanceFromOrigin'];
@@ -203,7 +207,6 @@ function setIndicesByLrmAndGeom() {
   else if (GLOBALSETTINGS.CalcGeomType == "Route") {
 
     if (GLOBALSETTINGS.CurrentLrmNo == 1) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
       rte_nm_lrm_indices = [4]; // optional
@@ -211,7 +214,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 2) {
-
       lrm_indices0 = [0, 1, 2];
       lrm_indices1 = [0, 3, 4];
       rte_nm_lrm_indices = [0];
@@ -219,7 +221,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [2, 3];
       rte_nm_lrm_indices = [4]; // optional
@@ -227,7 +228,6 @@ function setIndicesByLrmAndGeom() {
     }
 
     else if (GLOBALSETTINGS.CurrentLrmNo == 4) {
-
       lrm_indices0 = [0, 1];
       lrm_indices1 = [0, 2];
       rte_nm_lrm_indices = [0];
@@ -384,7 +384,6 @@ async function setTableFieldsByMethod(parsedInputCSV) {
   }
 
   other_indices = all_fields.filter(x => !lrm_indices.includes(x));
-
   field_indices = [[lrm_indices0, lrm_indices1], rte_nm_lrm_indices, other_indices];
 
   return field_indices;
@@ -431,9 +430,9 @@ function resultsShowExport(refinedData) {
 
   // show TABULAR results
   if (GLOBALSETTINGS.InputMethod == "html") {
+    paginatedResultsSequence(refinedData);
 
     if (GLOBALSETTINGS.CalcGeomType == "Point") {
-      paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
     } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
       //showRouteResults(refinedData);
@@ -442,9 +441,9 @@ function resultsShowExport(refinedData) {
   }
 
   else if (GLOBALSETTINGS.InputMethod == "table") {
+    paginatedResultsSequence(refinedData);
 
     if (GLOBALSETTINGS.CalcGeomType == "Point") {
-      paginatedResultsSequence(refinedData);
       readOutPointResults(refinedData);
       //showBulkPointResults(refinedData);
     } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
@@ -457,7 +456,9 @@ function resultsShowExport(refinedData) {
   // export data
   if (GLOBALSETTINGS.CalcGeomType == "Point") {
     tabularPointsConvertExport(refinedData);
-  } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
+  }
+
+  else if (GLOBALSETTINGS.CalcGeomType == "Route") {
     tabularRoutesConvertExport(refinedData);
   }
 
@@ -476,17 +477,12 @@ function resultsShowExport(refinedData) {
 }
 
 
-
-
-
-
-
 async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
 
   // get right route
-  if (GLOBALSETTINGS.CurrentLrmNo == 1 || GLOBALSETTINGS.CurrentLrmNo == 3) {
+  if (GLOBALSETTINGS.CurrentLrmNo == 1) {
     let candidateRteNms = '';
     let RTENMs0 = [];
     let RTENMs1 = [];
@@ -502,6 +498,22 @@ async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
       dropDownPopulator("#candidateRTENMs", candidateRteNms); // need to dynamically create selector
       rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
       rte_nm = candidateRteNms[rte_nm_Index];
+    }
+
+  } else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
+    let candidateRteNms = '';
+    let RTENMs0 = [];
+    let RTENMs1 = [];
+
+    if (GLOBALSETTINGS.InputMethod == "html") {
+      RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
+      if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
+        candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
+      } else {
+        candidateRteNms = RTENMs0;
+      }
+      rte_nm = candidateRteNms[0]; // this is picking the first available candidate route name
     }
 
   }

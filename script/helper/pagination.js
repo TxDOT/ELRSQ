@@ -1,11 +1,15 @@
-let allResults = [];
+let PAGINATION = {};
+
+PAGINATION.allResults = [];
+
 function resetAllResults() {
-  allResults = [];
+  PAGINATION.allResults = [];
 }
 
-let currentPagination = 1;
+PAGINATION.currentPagination = 1;
+
 function resetCurrentPagination() {
-  currentPagination = 1;
+  PAGINATION.currentPagination = 1;
 }
 
 
@@ -40,32 +44,32 @@ function createPaginationEventHandlers(someId, results) {
 //navResults called by pagination buttons in showResults function
 function navResults(direction, results) { //FIXME have function as an input
 
-  if (direction == 'prev' && currentPagination > 1) {
-    currentPagination--;
-  } else if (direction == 'next' && currentPagination < results.length) {
-    currentPagination++;
+  if (direction == 'prev' && PAGINATION.currentPagination > 1) {
+    PAGINATION.currentPagination--;
+  } else if (direction == 'next' && PAGINATION.currentPagination < results.length) {
+    PAGINATION.currentPagination++;
   }
 
-  if (currentPagination > 0 && currentPagination <= results.length) {
-    readOutResults(results, currentPagination)
+  if (PAGINATION.currentPagination > 0 && PAGINATION.currentPagination <= results.length) {
+    readOutResults(results, PAGINATION.currentPagination)
   }
 }
 
 
 
-function paginationUpdater(someId, currentPagination, results) {
+function paginationUpdater(someId, results) {
   let resultCount = results.length;
-  let counterDisplay = `${currentPagination} of ${resultCount}`;
+  let counterDisplay = `${PAGINATION.currentPagination} of ${resultCount}`;
 
   if (resultCount > 1) {
-    if (currentPagination == 1) {
+    if (PAGINATION.currentPagination == 1) {
       $(someId + ' > nav > ul > .li_prev').addClass("disabled");
       $(someId + ' > nav > ul > .li_curr').addClass("active");
       $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
       $(someId + ' > nav > ul > .li_next').removeClass("disabled");
     }
 
-    else if (currentPagination + 0 == resultCount) {
+    else if (PAGINATION.currentPagination + 0 == resultCount) {
       $(someId + ' > nav > ul > .li_prev').removeClass("disabled");
       $(someId + ' > nav > ul > .li_curr').addClass("active");
       $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);
