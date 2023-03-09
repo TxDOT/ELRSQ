@@ -37,7 +37,6 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
   let field_indices = await setTableFieldsByMethod(parsedInputCSV);
-  //console.log(field_indices);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
   rte_nm_lrm_indices = field_indices[1];

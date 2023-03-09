@@ -106,8 +106,6 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectsArr) {
   for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
     var returnedLineString = [];
     let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
-    console.log(vertexNumbers.vertexBeginNumber);
-    console.log(vertexNumbers.vertexEndNumber);
     if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
       for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
         returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);

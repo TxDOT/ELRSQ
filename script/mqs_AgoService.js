@@ -39,24 +39,27 @@ async function rdwayQuery(url) {
 }
 
 
-//iterates over GLOBALPROJECTDATA.ProjectsArr array
+//iterates over GLOBALPROJECTDATA.ProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
 async function queryProjectGeometry() {
-  // GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines // FIXME what is this?
-  console.log("GLOBALPROJECTDATA.ProjectsArr");
-  console.log(GLOBALPROJECTDATA.ProjectsArr);
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("GLOBALPROJECTDATA.ProjectDrawParameters: ");
+    console.log(GLOBALPROJECTDATA.ProjectDrawParameters);
+  }
   resetProjectLines();
 
   GreenToYellow();
 
   //get segment is called within a loop, for each project
-  for (var i = 0; i < GLOBALPROJECTDATA.ProjectsArr.length; i++) {
-    let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectsArr[i]);
-    GLOBALPROJECTDATA.ProjectLines.push(getSegment(results, GLOBALPROJECTDATA.ProjectsArr[i], GLOBALPROJECTDATA.ProjectsArr));
+  for (var i = 0; i < GLOBALPROJECTDATA.ProjectDrawParameters.length; i++) {
+    let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectDrawParameters[i]);
+    GLOBALPROJECTDATA.ProjectFeatureCollections.push(getSegment(results, GLOBALPROJECTDATA.ProjectDrawParameters[i], GLOBALPROJECTDATA.ProjectDrawParameters));
   }
 
-  console.log("GLOBALPROJECTDATA.ProjectLines");
-  console.log(GLOBALPROJECTDATA.ProjectLines);
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: ");
+    console.log(GLOBALPROJECTDATA.ProjectFeatureCollections);
+  }
   YellowToGreen();
 
 }
@@ -67,10 +70,14 @@ async function queryRoadwayServiceByLine(myProjectData) {
     myProjectData.RTE_NM +
     "'&returnGeometry=true&outSR=4326&geometryPrecision=6&returnM=true&orderByFields=BEGIN_DFO"
 
-  console.log("queryRoadwayServiceByLine using url: " + url);
+  if(GLOBALSETTINGS.PrintUrls == 1) {
+    console.log("queryRoadwayServiceByLine using url: " + url);
+  }
   GreenToYellow();
   const results = await queryRoadwayService(url);
   YellowToGreen();
-  console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
+  if(GLOBALSETTINGS.PrintIterations == 1) {
+    console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
+  }
   return results;
 }

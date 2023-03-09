@@ -48,14 +48,12 @@ function makeDateTime() {
 	var hour = dateObj.getUTCHours();
 	var minutes = dateObj.getUTCMinutes();
 	var newdate = month + "/" + day + "/" + year + " " + hour + ":" + minutes;
-    // 	console.log(dateObj);
     return [monthArray[month],year];
 }
 //---------------------------------------
 
 //Numberic Operations--------------------
 function roundToDecimalPlace(value,decimals) {
-    // console.log(Number(Math.round(value+'e'+decimals)+'e-'+decimals));
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
@@ -63,21 +61,18 @@ function roundToDecimalPlace(value,decimals) {
 function getRandomIntInclusive(min,max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    console.log(Math.floor(Math.random() * (max - min + 1)) + min);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 //Find Minimum value in an array
 function findMin(theArray) {
    var minInArray = Math.min.apply(Math, theArray);
-   console.log(minInArray);
    return minInArray;
 }
 
 //Find Maximum value in an array
 function findMax(theArray) {
    var maxInArray = Math.max.apply(Math, theArray);
-   console.log(maxInArray);
    return maxInArray;
 }
 
@@ -87,7 +82,6 @@ function sumNumericArray(theArray) {
     for (var i = 0, len = theArray.length; i < len; i++) {
         sum += theArray[i];
     }
-    console.log(sum);
     return sum;
 }
 //---------------------------------------
@@ -95,17 +89,14 @@ function sumNumericArray(theArray) {
 //String Operations Left,Right,Mid,Commas
 //---------------------------------------
 function getLeftCharacters(theData,theNumber) {
-    console.log(theData.substring(0, theNumber));
     return theData.substring(0, theNumber);
 }
 
 function getRightCharacters(theData,theNumber) {
-    // console.log(theData.substring(theData.length-theNumber, theData.length));
     return theData.substring(theData.length-theNumber, theData.length);
 }
 
 function getMiddleCharacters(theData,beginNumber,endNumber) {
-    console.log(theData.substring(beginNumber, beginNumber+endNumber));
     return theData.substring(beginNumber, beginNumber+endNumber);
 }
 
@@ -118,19 +109,16 @@ function addCommas(nStr) {
     while (rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
-    console.log(x1 + x2);
     return x1 + x2;
 }
 
 function removeCommas(theString) {
     var newStr = theString.replace(/,/g, '');
-    console.log(newStr);
     return newStr;
 }
 
 function replaceCharacter(theText,theReplacement) {
     var newText = theText.replace(/[^a-zA-Z0-9 ]/g,theReplacement);
-    console.log(newText);
     return newText;
 }
 //---------------------------------------

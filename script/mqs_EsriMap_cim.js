@@ -183,7 +183,6 @@ require([
   window.view.on("click", function (evt) {
     var onCursor = GLOBALSETTINGS.MapCursorLive;
     if (onCursor == 1) {
-      console.log("foo");
       //cursorQuery(evt.mapPoint.latitude, evt.mapPoint.longitude);
 
       let lat = evt.mapPoint.latitude;
@@ -211,16 +210,13 @@ require([
 
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {
-    //console.log("Zoom: ", newZoom);
 
     //// do not delete
     //// enable/disable checkboxes
     /* if (newZoom > 10) {
-       console.log("enable");
        $("#refmrkr-event").prop("disabled", false);
        $("#controlsec-event").prop("disabled", false);
      } else {
-       console.log("off + disable");
        $("#refmrkr-event").prop("checked", false);
        $("#refmrkr-event").prop("disabled", true);
        $("#controlsec-event").prop("checked", false);
@@ -230,11 +226,9 @@ require([
 
     // enable/disable toggles
     if (newZoom > 10) {
-      //console.log("enable");
       $('#refmrkr-event').bootstrapToggle('enable');
       $('#controlsec-event').bootstrapToggle('enable');
     } else {
-      //console.log("off + disable");
       $('#refmrkr-event').bootstrapToggle('off');
       $('#refmrkr-event').bootstrapToggle('disable');
       $('#controlsec-event').bootstrapToggle('off');
@@ -262,38 +256,28 @@ require([
 
   $('#refmrkr-event').change(function () {
     if ($(this).attr('disabled')) {
-      //console.log("hide due to  disabled");
       TxDOT_Reference_Markers.visible = false;
     } else if (window.view.zoom < 10) {
-      //console.log("hide due to zoom");
       TxDOT_Reference_Markers.visible = false;
     } else if (!($("#refmrkr-event").prop("checked"))) {
-      //console.log("hide due to unchecked");
       TxDOT_Reference_Markers.visible = false;
     } else if ($("#refmrkr-event").prop("checked")) {
-      //console.log("show due to checked");
       TxDOT_Reference_Markers.visible = true;
     } else {
-      //console.log("hide due to unknown");
       TxDOT_Reference_Markers.visible = false;
     }
   })
 
   $('#controlsec-event').change(function () {
     if ($(this).attr('disabled')) {
-      //console.log("hide due to  disabled");
       TxDOT_Control_Sections.visible = false;
     } else if (window.view.zoom < 10) {
-      //console.log("hide due to zoom");
       TxDOT_Control_Sections.visible = false;
     } else if (!($("#controlsec-event").prop("checked"))) {
-      //console.log("hide due to unchecked");
       TxDOT_Control_Sections.visible = false;
     } else if ($("#controlsec-event").prop("checked")) {
-      //console.log("show due to checked");
       TxDOT_Control_Sections.visible = true;
     } else {
-      //console.log("hide due to unknown");
       TxDOT_Control_Sections.visible = false;
     }
   })

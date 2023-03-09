@@ -1,7 +1,6 @@
 // 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
-  //console.log(resultsArr);
   $("#bulk-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
@@ -20,8 +19,6 @@ function tabularPointsConvertExport(resultsArr) {
 // 1a) exportPointsToCsvFile
 
 function exportPointsToCsvFile(resultsArr, btn_suffix) {
-  //console.log("CSV export");
-
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'pointresults.csv';
@@ -34,8 +31,6 @@ function exportPointsToCsvFile(resultsArr, btn_suffix) {
 // 1b) exportPointsToGeoJsonFile
 
 function exportPointsToGeoJsonFile(resultsArr, btn_suffix) {
-  //console.log("geoJSON export");
-
   var geojson = jsonFromLrsApiToGeoJson(resultsArr)
   let dataStr = JSON.stringify(geojson);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
@@ -83,8 +78,6 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
 // 1c) exportPointsToKMLFile
 
 function exportPointsToKMLFile(resultsArr, btn_suffix) {
-  //console.log("KML export");
-
   var kmlContent = jsonToKML(resultsArr)
   let dataUri = encodeURI(kmlContent);
   let exportFileDefaultName = 'pointresults.kml';
@@ -152,7 +145,6 @@ function addTags(theData, theTagType) {
 // 2) tabularRoutesConvertExport
 
 function tabularRoutesConvertExport(resultsArr) {
-  //console.log(resultsArr);
   $("#bulk-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
@@ -170,8 +162,6 @@ function tabularRoutesConvertExport(resultsArr) {
 // 2a) exportRoutesToCsvFile
 
 function exportRoutesToCsvFile(resultsArr, btn_suffix) {
-  console.log("CSV export");
-
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'routeresults.csv';
@@ -184,90 +174,14 @@ function exportRoutesToCsvFile(resultsArr, btn_suffix) {
 // stub
 function exportRoutesToGeoJsonFile(resultsArr, btn_suffix) {
   let r = resultsArr;
-  console.log("no geoJSON export yet");
+  // console.log("no geoJSON export yet");
 }
 
 // stub
 function exportRoutesToKMLFile(resultsArr, btn_suffix) {
   let r = resultsArr;
-  console.log("no KML export yet");
+  // console.log("no KML export yet");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -281,7 +195,6 @@ function _tabularPointsConvertExport_2(resultsArr) {
 
 
 function readFile(file) {
-  console.log("reader load");
   const reader = new FileReader();
 
   return new Promise((resolve, reject) => {

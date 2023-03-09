@@ -1,7 +1,6 @@
 // 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
-  //console.log(resultsArr);
   exportPointsToCsvFile(resultsArr);
   exportPointsToGeoJsonFile(resultsArr);
   exportPointsToKMLFile(resultsArr);
@@ -10,8 +9,6 @@ function tabularPointsConvertExport(resultsArr) {
 // 1a) exportPointsToCsvFile
 
 function exportPointsToCsvFile(resultsArr) {
-  //console.log("CSV export");
-
   //let unparsed = Papa.unparse(jsonData, { "quotes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0] }); // this makes sure msg has quotes
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
@@ -25,8 +22,6 @@ function exportPointsToCsvFile(resultsArr) {
 // 1b) exportPointsToGeoJsonFile
 
 function exportPointsToGeoJsonFile(resultsArr) {
-  //console.log("geoJSON export");
-
   var geojson = jsonFromLrsApiToGeoJson(resultsArr)
   let dataStr = JSON.stringify(geojson);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
@@ -47,7 +42,6 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
   };
 
   for (i = 0; i < resultsArr.length; i++) {
-    //console.log("looping through features, i = " + i);
     geojson.features.push({
       "type": "Feature",
       "geometry": {
@@ -74,8 +68,6 @@ function jsonFromLrsApiToGeoJson(resultsArr) {
 // 1c) exportPointsToKMLFile
 
 function exportPointsToKMLFile(resultsArr) {
-  //console.log("KML export");
-
   var kmlContent = jsonToKML(resultsArr)
   let dataUri = encodeURI(kmlContent);
   let exportFileDefaultName = 'pointresults.kml';
@@ -152,8 +144,6 @@ function tabularRoutesConvertExport(resultsArr) {
 // 2a) exportRoutesToCsvFile
 
 function exportRoutesToCsvFile(resultsArr) {
-  console.log("CSV export");
-
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'routeresults.csv';
@@ -189,7 +179,6 @@ function _tabularPointsConvertExport_2(resultsArr) {
 
 
 function readFile(file) {
-  console.log("reader load");
   const reader = new FileReader();
 
   return new Promise((resolve, reject) => {

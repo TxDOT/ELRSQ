@@ -24,15 +24,14 @@ $(".map-return").on('click', function () { returnToPoint(); });
 $(".map-all").on('click', function () { showAllPoints(); });
 
 //route builder
-$("#addRow").on('click', function () { addProjectToArray(GLOBALPROJECTDATA.ProjectsArr); });
-$("#dropRow").on('click', function () { dropLastProjectFromArray(GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines); });
-$("#clearRows").on('click', function () { clearProjectsFromArray(GLOBALPROJECTDATA.ProjectsArr, GLOBALPROJECTDATA.ProjectLines); });
+$("#addRow").on('click', function () { addProjectToArray(GLOBALPROJECTDATA.ProjectDrawParameters); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
 
 
 // toggle buttons for showing/hiding layers
 $('#demo-mode-toggle').change(function () {
   if ($(this).prop('checked')) {
-    console.log("demo checked");
 
     $("#kbInputRouteName_2").val("US0077-KG");
     $("#kbInputReferenceMarker").val("622");
@@ -100,7 +99,6 @@ $('#demo-mode-toggle').change(function () {
 
 
   } else {
-    console.log("demo unchecked");
 
     $(".latitude").val('');
     $(".longitude").val('');
@@ -118,7 +116,6 @@ $('#demo-mode-toggle').change(function () {
 
 // set input min-max values
 $(document).ready(function () {
-  console.log("setting min-max values");
   $(".latitude").attr({
     "max": 37,
     "min": 24,

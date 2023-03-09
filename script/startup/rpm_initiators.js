@@ -7,8 +7,6 @@ let currentRouteFieldOrder = ['inputBeginLatitude', 'inputBeginLongitude', 'inpu
 
 $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   GLOBALSETTINGS.currentLRM = $(e.target).attr("id") // activated tab
-  console.log(GLOBALSETTINGS.currentLRM);
-
 
   if (GLOBALSETTINGS.currentLRM == `mapcursor-tab`) {
     $("#viewDiv").css('cursor', 'crosshair');

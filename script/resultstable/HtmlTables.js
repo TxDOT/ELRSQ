@@ -17,9 +17,7 @@ function readOutResults(results, navIndex) {
 // determine pagination and fill in HTML table results
 //TODO move point on map
 function readOutPointResults(results, navIndex) {
-  console.log("readOutPointResults");
   const index = navIndex ? navIndex - 1 : 0;
-  console.log(index);
 
   //insertPagination(currentPagination, results);
   paginationUpdater("#result-pagination", currentPagination, results);
@@ -33,9 +31,7 @@ function readOutPointResults(results, navIndex) {
 // determine pagination and fill in HTML table results
 //TODO move route on map
 function readOutRouteResults(results, navIndex) {
-  console.log("readOutRouteResults");
   const index = navIndex ? navIndex - 1 : 0;
-  console.log(index);
 
   //insertPagination(currentPagination, results);
   paginationUpdater("#result-pagination", currentPagination, results);
@@ -47,11 +43,13 @@ function readOutRouteResults(results, navIndex) {
 
 
 async function showThisRouteResultOnMap(currentResult) {
-  console.log("currentResult");
-  console.log(currentResult);
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("currentResult: ");
+    console.log(currentResult);
+  }
   addProjectToArray(currentResult);
   await queryProjectGeometry();
-  localGeoJSONToMap(GLOBALPROJECTDATA.ProjectLines);
+  localGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections);
 }
 
 
@@ -75,9 +73,6 @@ function fillInPointHtmlTable(currentResult) {
 
 function fillInRouteHtmlTable(currentResult) {
   // fill in HTML results
-  console.log("Hello there!");
-  console.log(currentResult);
-  console.log(currentResult['END_RMRKR_DISPLACEMENT']);
 
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);

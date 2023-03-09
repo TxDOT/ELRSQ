@@ -37,7 +37,6 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
   let field_indices = await setTableFieldsByMethod(parsedInputCSV);
-  //console.log(field_indices);
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
   rte_nm_lrm_indices = field_indices[1];
@@ -54,7 +53,7 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
 
 
 async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
-  console.log(constrainToRouteName + ", " + rtenmformat);
+  // console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
   resetCurrentPagination();
 
@@ -75,7 +74,9 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
 
   // process rows
   for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
-    console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
+    if (GLOBALSETTINGS.PrintIterations == 1) {
+      console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
+    }
     let currentRow = arrayToQuery[rowToQuery];
     let url0 = '';
     let url1 = '';
@@ -83,14 +84,20 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     // build url
     if (GLOBALSETTINGS.InputMethod == "html") {
       url0 = buildUrl(currentRow, lrm_indices0);
-      console.log(url0);
-      if (GLOBALSETTINGS.CalcGeomType == "Route") { url1 = buildUrl(currentRow, lrm_indices1); console.log(url1); }
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
+      if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        url1 = buildUrl(currentRow, lrm_indices1);
+        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
+      }
     }
 
     else if (GLOBALSETTINGS.InputMethod == "table") {
       url0 = buildUrl(currentRow, lrm_indices0);
-      console.log(url0);
-      if (GLOBALSETTINGS.CalcGeomType == "Route") { url1 = buildUrl(currentRow, lrm_indices1); console.log(url1); }
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
+      if (GLOBALSETTINGS.CalcGeomType == "Route") {
+        url1 = buildUrl(currentRow, lrm_indices1);
+        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
+      }
     }
     // end build url
 
@@ -98,7 +105,9 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     let results0 = await queryService(url0);
     let results1 = '';
     if (GLOBALSETTINGS.CalcGeomType == "Route") { results1 = await queryService(url1); }
-    console.log("returned " + results0.length + " results for row: " + rowToQuery);
+    if(GLOBALSETTINGS.PrintIterations == 1) {
+      console.log("returned " + results0.length + " results for row: " + rowToQuery);
+    }
     // end perform query
 
 
@@ -142,7 +151,9 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     } else {
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
-        console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+        if(GLOBALSETTINGS.PrintIterations == 1) {
+          console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length));
+        }
         let aRowResultObj = results0[aRowResult];
 
         // Object.assign(aRowResultObj, { Feature: rowhead }); 
@@ -157,7 +168,9 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
   }
   // end process rows
 
-  console.log(refinedData);
+  if(GLOBALSETTINGS.PrintIterations == 1) {
+    console.log(refinedData);
+  }
 
   resultsShowExport(refinedData);
 
@@ -428,9 +441,7 @@ function buildUrl(coordinateArr, lrm_indices) {
 
 
 function resultsShowExport(refinedData) {
-  console.log(resultsShowExport);
   setProjectGeometry(refinedData);
-  console.log(refinedData);
 
   // show TABULAR results
   if (GLOBALSETTINGS.InputMethod == "html") {
@@ -487,7 +498,9 @@ function resultsShowExport(refinedData) {
 
 
 async function matchOutputOnRteNm(unfilteredArr, rte_nm) {
-  console.log(unfilteredArr);
+  if(GLOBALSETTINGS.PrintIterations == 1) {
+    console.log(unfilteredArr);
+  }
   let matchError = 0;
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
@@ -542,21 +555,19 @@ async function matchOutputOnRteNm(unfilteredArr, rte_nm) {
     return item.RTE_DEFN_LN_NM === rte_nm;
   });
 
-  console.log(index0);
   matchError = index0; // if index0 is -1 it will set matchError to that value
   output0 = results0[index0];
 
-  console.log(output0);
+  // console.log(output0);
 
   if (GLOBALSETTINGS.CalcGeomType == "Route" && matchError >= 0) {
     let index1 = results1.findIndex(function (item, i) {
       return item.RTE_DEFN_LN_NM === rte_nm;
     });
 
-    console.log(index1);
     matchError = index1; // if index1 is -1 it will set matchError to that value
     output1 = results1[index1];
-    console.log(output1);
+    // console.log(output1);
 
     if (matchError >= 0) {
       bdfo = output0['RTE_DFO'];

@@ -54,16 +54,11 @@ function navResults(direction, results) { //FIXME have function as an input
 
 
 function paginationUpdater(someId, currentPagination, results) {
-  //console.log("paginationUpdater");
   let resultCount = results.length;
-  console.log(currentPagination + " of " + resultCount);
   let counterDisplay = `${currentPagination} of ${resultCount}`;
-  //console.log(counterDisplay);
 
   if (resultCount > 1) {
-    console.log("more than 1 result");
     if (currentPagination == 1) {
-      console.log("on first result");
       $(someId + ' > nav > ul > .li_prev').addClass("disabled");
       $(someId + ' > nav > ul > .li_curr').addClass("active");
       $(someId + ' > nav > ul > .li_curr > span').html(counterDisplay);

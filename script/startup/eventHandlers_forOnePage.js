@@ -32,7 +32,6 @@ $(".map-all").on('click', function () { showAllPoints(); });
 // toggle buttons for showing/hiding layers
 $('#demo-mode-toggle').change(function () {
   if ($(this).prop('checked')) {
-    console.log("demo checked");
 
     $("#kbInputRouteName").val("US0077-KG");
     $("#kbInputReferenceMarker").val("622");
@@ -103,8 +102,6 @@ $('#demo-mode-toggle').change(function () {
 
 
   } else {
-    console.log("demo unchecked");
-
     $(".latitude").val('');
     $(".longitude").val('');
     $(".referencemarker").val('');
@@ -121,7 +118,6 @@ $('#demo-mode-toggle').change(function () {
 
 // set input min-max values
 $(document).ready(function () {
-  console.log("setting min-max values");
   $(".latitude").attr({
     "max": 37,
     "min": 24,

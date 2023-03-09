@@ -10,7 +10,6 @@
         let candidatedfo = parsedInputCSV[rowToQuery][lrm_indices0[1]];
         //parsedInputCSV[rowToQuery][lrm_indices0[0]] = await fixThisDfoIssue(rtenm, candidatedfo);
         let foo = await fixThisDfoIssue(rtenm, candidatedfo);
-        //console.log(foo);
       }
 
     }
@@ -27,15 +26,10 @@ async function fixThisDfoIssue(routeName, candidatedfo) {
 
   let minmaxdfo = await rdwayQuery(url);
 
-  console.log("minmaxdfo");
-  console.log(minmaxdfo);
+
 
   // function call to answer queries
   let included = answerQueries(minmaxdfo, candidatedfo);
-  console.log(included);
-
-  console.log(included);
-
 
   return included;
   // return newDFO;
@@ -76,25 +70,20 @@ function answerQueries(a, qu) {
 
   // get the number same or greater than integer
   let ind = lowerBound(v, qu);
-  console.log(ind);
 
   // if it lies
 
 
   if (ind >= 0) {
     if (v[ind] == qu) {
-      console.log("Yes");
       return [1, qu, v[ind]];
     } else if (mpp.get(v[ind]) == 2) {
-      console.log("Yes");
       return [1, qu, v[ind]];
     } else {
-      console.log("No");
       return [0, qu, v[ind]];
     }
 
   } else {
-    console.log("No");
     return [0, qu, v[ind]];
   }
 

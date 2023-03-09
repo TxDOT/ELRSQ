@@ -1,11 +1,11 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within GLOBALPROJECTDATA.ProjectsArr array
-//// add to GLOBALPROJECTDATA.ProjectsArr array if it is not a duplicate
+//// retrieve position within GLOBALPROJECTDATA.ProjectDrawParameters array
+//// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
 
 function addProjectToArray(currentResult) {
-  console.log("addProjectToArray");
-  let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM']; //FIXME reference something here
+
+  let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   let BDFO = currentResult['BEGIN_RTE_DFO'];
   let EDFO = currentResult['END_RTE_DFO'];
   let Color = currentResult['Color'];
@@ -21,9 +21,13 @@ function addProjectToArray(currentResult) {
   projObj.Width = Width;
   projObj.Desc = Desc;
   let projString = JSON.stringify(projObj);
-  console.log(projString);
 
-  if (GLOBALPROJECTDATA.ProjectsArr.indexOf(projObj) < 0) { GLOBALPROJECTDATA.ProjectsArr.push(projObj); }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("addProjectToArray: ");
+    console.log(projString);
+  }
+
+  if (GLOBALPROJECTDATA.ProjectDrawParameters.indexOf(projObj) < 0) { GLOBALPROJECTDATA.ProjectDrawParameters.push(projObj); }
 
 }
 
@@ -105,8 +109,6 @@ function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectsArr) {
   for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
     var returnedLineString = [];
     let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
-    console.log(vertexNumbers.vertexBeginNumber);
-    console.log(vertexNumbers.vertexEndNumber);
     if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
       for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
         returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);
@@ -189,7 +191,9 @@ function setVertexNumbers(feature, myFrom, myTo) {
 // clips
 function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   let aFeatureCollectionArray = [];
-  console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  if (GLOBALSETTINGS.PrintIterations == 1) {
+    console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  }
 
   //Clipping to desired From and To
   var newBeginPoint = [];
