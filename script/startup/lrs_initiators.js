@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   $(".convert").on('click', function () {
     GLOBALSETTINGS.InputMethod = "html";
-    lrsSingleQuery();
+    lrsSingleQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod);
   });
 
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     const fileContents = await readFile(file);
     GLOBALSETTINGS.InputMethod = "table";
-    lrsBulkQuery(fileContents, "AAdddd_dash_KG");
+    lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash_KG");
 
   });
 
@@ -39,8 +39,8 @@ $(document).ready(function () {
     const fileContents = await readFile(e.target.files[0])
     YellowToGreen();
     GLOBALSETTINGS.InputMethod = "table";
-    lrsBulkQuery(fileContents, "AAdddd_dash_KG");
-    // lrsBulkQuery(fileContents, "AAdddd_dash");
+    lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash_KG");
+    // lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash");
   });
 
 });
