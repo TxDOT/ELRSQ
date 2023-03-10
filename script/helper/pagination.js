@@ -1,9 +1,9 @@
 
-function paginatedResultsSequence(results) {
+function paginatedResultsSequence(results, fn) {
   resetCurrentPagination();
   clearPagination("#result-pagination");
   destroyPaginationEventHandlers("#result-pagination");
-  createPaginationEventHandlers("#result-pagination", results);
+  createPaginationEventHandlers("#result-pagination", results, fn);
 }
 
 //clear pagination
@@ -22,13 +22,13 @@ function destroyPaginationEventHandlers(someId) {
   $(someId + ' > nav > ul > .li_next').off('click');
 }
 
-function createPaginationEventHandlers(someId, results) {
-  $(someId + ' > nav > ul > .li_prev').on('click', function prevResult() { navResults('prev', results); });
-  $(someId + ' > nav > ul > .li_next').on('click', function nextResult() { navResults('next', results); });
+function createPaginationEventHandlers(someId, results, fn) {
+  $(someId + ' > nav > ul > .li_prev').on('click', function prevResult() { navResults('prev', results, fn); });
+  $(someId + ' > nav > ul > .li_next').on('click', function nextResult() { navResults('next', results, fn); });
 }
 
 //navResults called by pagination buttons in showResults function
-function navResults(direction, results) { //FIXME have function as an input
+function navResults(direction, results, fn) { //FIXME have function as an input
 
   if (direction == 'prev' && PAGINATION.currentPagination > 1) {
     PAGINATION.currentPagination--;
@@ -37,7 +37,7 @@ function navResults(direction, results) { //FIXME have function as an input
   }
 
   if (PAGINATION.currentPagination > 0 && PAGINATION.currentPagination <= results.length) {
-    readOutResults(results, PAGINATION.currentPagination)
+    fn(results, PAGINATION.currentPagination);
   }
 }
 

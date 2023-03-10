@@ -422,7 +422,7 @@ function resultsShowExport(refinedData) {
 
   // show TABULAR results
   if (GLOBALSETTINGS.InputMethod == "html") {
-    paginatedResultsSequence(refinedData);
+    paginatedResultsSequence(refinedData, readOutResults);
 
     if (GLOBALSETTINGS.CalcGeomType == "Point") {
       readOutPointResults(refinedData);
@@ -434,7 +434,7 @@ function resultsShowExport(refinedData) {
   }
 
   else if (GLOBALSETTINGS.InputMethod == "table") {
-    paginatedResultsSequence(refinedData);
+    paginatedResultsSequence(refinedData, readOutResults);
 
     if (GLOBALSETTINGS.CalcGeomType == "Point") {
       readOutPointResults(refinedData);
