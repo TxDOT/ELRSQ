@@ -67,7 +67,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
   rte_nm_lrm_indices = field_indices[1];
-  let currentFieldOrder = field_indices[2];
+  let currentFieldOrder = field_indices[2]; // FIXME other_indices is never redefined
 
   // make array for output
   let refinedData = [];
@@ -374,7 +374,8 @@ async function setTableFieldsByMethod(calcGeomType, currentLrmNo, parsedInputCSV
     }
   }
 
-  other_indices = all_fields.filter(x => !lrm_indices.includes(x));
+  // other_indices = all_fields.filter(x => !lrm_indices.includes(x));
+  other_indices = all_fields; // returning all input fields
   field_indices = [[lrm_indices0, lrm_indices1], rte_nm_lrm_indices, other_indices];
 
   return field_indices;
