@@ -21,7 +21,7 @@ function readOutRouteResults(results, navIndex) {
 
   fillInRouteHtmlTable(results[index]);
   // plot route for results[index]
-  showThisRouteResultOnMap(results[index]); 
+  showThisRouteResultOnMap(results[index]);
 }
 
 
@@ -30,9 +30,16 @@ async function showThisRouteResultOnMap(currentResult) {
     console.log("currentResult: ");
     console.log(currentResult);
   }
+  /**
+    addProjectToArray(currentResult);
+    await queryProjectGeometry(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections);
+    localGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections);
+  */
+
   addProjectToArray(currentResult);
-  await queryProjectGeometry();
-  localGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections);
+  let projObj = addProjectToArray_pg(currentResult);
+  let aProjectFeatureCollection = await queryProjectGeometry_pg(projObj);
+  localGeoJSONToMap([aProjectFeatureCollection]);
 }
 
 

@@ -61,7 +61,7 @@ $(".map-all").on('click', function () { showAllPoints(); });
 $("#addRow").on('click', function () { addProjectToArray_sequential(GLOBALPROJECTDATA.ProjectDrawParameters); });
 $("#dropRow").on('click', function () { dropLastProjectFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
 $("#clearRows").on('click', function () { clearProjectsFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
-$("#queryProjectGeometry-button").on('click', function () { queryProjectGeometry() });
+$("#queryProjectGeometry-button").on('click', function () { queryProjectGeometry(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections) });
 $("#localGeoJSONToMap-button").on('click', function () { localGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections) });
 
 

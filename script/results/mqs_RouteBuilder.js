@@ -1,11 +1,14 @@
-function getSegment(myRoadwayQueryResults, myPrjAttributes, myProjectDrawParameters) {
+function getSegment(myRoadwayQueryResults, myPrjAttributes) {
   //// multiple results are orderByFields=BEGIN_DFO
 
-  if (myRoadwayQueryResults.features.length == 0) {
-    myProjectDrawParameters.pop();
-    makeRouteProjectsTable(myProjectDrawParameters);
-    return;
-  }
+  //FIXME move this out of this function
+  /**
+    if (myRoadwayQueryResults.features.length == 0) {
+      myProjectDrawParameters.pop();
+      makeRouteProjectsTable(myProjectDrawParameters);
+      return;
+    }
+  */
 
   var theFrom = roundToDecimalPlace(myPrjAttributes.BDFO, 3);
   var theTo = roundToDecimalPlace(myPrjAttributes.EDFO, 3);

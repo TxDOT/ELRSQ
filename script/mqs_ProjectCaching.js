@@ -33,6 +33,29 @@ function addProjectToArray(currentResult) {
 
 }
 
+
+function addProjectToArray_pg(currentResult) {
+  let projObj = new Object();
+  projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
+  projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
+  projObj.EDFO = currentResult['END_RTE_DFO'];
+  projObj.Color = currentResult['Color'];
+  projObj.Width = currentResult['Width'];
+  projObj.Desc = currentResult['Feature'];
+  let projString = JSON.stringify(projObj);
+
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("addProjectToArray_pg: ");
+    console.log(projString);
+  }
+
+return projObj;
+
+}
+
+
+
+
 function addProjectToArray_sequential(myProjectDrawParameters) {
   /**
     let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();

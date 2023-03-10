@@ -39,6 +39,7 @@ async function rdwayQuery(url) {
 }
 
 
+
 //iterates over GLOBALPROJECTDATA.ProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
 //FIXME change to a return function
@@ -55,7 +56,7 @@ async function queryProjectGeometry() {
   for (var i = 0; i < GLOBALPROJECTDATA.ProjectDrawParameters.length; i++) {
     console.log("pushing segment to GLOBALPROJECTDATA.ProjectFeatureCollections");
     let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectDrawParameters[i]);
-    GLOBALPROJECTDATA.ProjectFeatureCollections.push(getSegment(results, GLOBALPROJECTDATA.ProjectDrawParameters[i], GLOBALPROJECTDATA.ProjectDrawParameters));
+    GLOBALPROJECTDATA.ProjectFeatureCollections.push(getSegment(results, GLOBALPROJECTDATA.ProjectDrawParameters[i]));
   }
 
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
@@ -66,19 +67,83 @@ async function queryProjectGeometry() {
 
 }
 
+
+
+async function queryProjectGeometry_pg(projObj) {
+
+  resetProjectFeatureCollections();
+
+  GreenToYellow();
+
+  //get segment is called within a loop, for each project
+    let results = await queryRoadwayServiceByLine(projObj);
+    let aProjectFeatureCollection = getSegment(results, projObj);
+
+  YellowToGreen();
+
+  return aProjectFeatureCollection;
+
+}
+
+
+
+
+
+
+//iterates over myProjectDrawParameters array
+//for each project, queries queryRecordFromServiceGeometry
+//FIXME change to a return function
+async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCollections) {
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("myProjectDrawParameters: ");
+    console.log(myProjectDrawParameters);
+  }
+  resetProjectFeatureCollections();
+
+  GreenToYellow();
+
+  //get segment is called within a loop, for each project
+  let localProjectFeatureCollections = [];
+
+  for (var i = 0; i < myProjectDrawParameters.length; i++) {
+    console.log("pushing segment to myProjectFeatureCollections");
+    let results = await queryRoadwayServiceByLine(myProjectDrawParameters[i]);
+    localProjectFeatureCollections.push(getSegment(results, myProjectDrawParameters[i]));
+  }
+
+  myProjectFeatureCollections.concat(localProjectFeatureCollections);
+
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("myProjectFeatureCollections: ");
+    console.log(myProjectFeatureCollections);
+  }
+  YellowToGreen();
+
+}
+
+
+
+
+
+
+
+
+
+
+
 // added output spatial reference to return WGS84
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +
     "'&returnGeometry=true&outSR=4326&geometryPrecision=6&returnM=true&orderByFields=BEGIN_DFO"
 
-  if(GLOBALSETTINGS.PrintUrls == 1) {
+  if (GLOBALSETTINGS.PrintUrls == 1) {
     console.log("queryRoadwayServiceByLine using url: " + url);
   }
   GreenToYellow();
   const results = await queryRoadwayService(url);
   YellowToGreen();
-  if(GLOBALSETTINGS.PrintIterations == 1) {
+  if (GLOBALSETTINGS.PrintIterations == 1) {
     console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
   }
   return results;
