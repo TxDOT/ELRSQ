@@ -119,7 +119,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
     let otherAttributesValue = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => currentRow[i]) : [featureDescription, featureColor, featureWidth];
     let otherAttributesObj = {};
 
-    let rowhead = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => currentRow[i]) : ['feature'];
+    otherAttributesKey.forEach((otherAttributesKey, i) => otherAttributesObj[otherAttributesKey] = otherAttributesValue[i]);
 
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
@@ -139,12 +139,6 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
       // end get right route
       // assemble data
 
-      /**
-        let fullRowData = resultsArr;
-        if (typeof rowhead !== 'undefined' && rowhead !== '') {
-          fullRowData = rowhead.concat(resultsArr);
-        }
-      */
       let fullRowData = { ...otherAttributesObj, ...resultsObj };
       refinedData.push(fullRowData);
 
@@ -165,17 +159,6 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
 
   }
   // end process rows
-  /**
-    // set column heads
-    let customhead = (GLOBALSETTINGS.InputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature"];
-    let standardhead = (GLOBALSETTINGS.CalcGeomType == "Point") ? lrsApiFields : lrsApiFields.map(i => 'BEGIN_' + i).concat(lrsApiFields.map(i => 'END_' + i));
-    let colhead = customhead.concat(standardhead);
-  
-    // prepend column heads
-    if (GLOBALSETTINGS.CalcGeomType == "Route") {
-      refinedData.unshift(colhead); // ON for route // OFF for point // needs a fix
-    }
-  */
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
@@ -445,6 +428,7 @@ function buildUrl(coordinateArr, lrm_indices) {
 
 
 function resultsShowExport(refinedData) {
+  setProjectGeometry(refinedData);
 
   // show TABULAR results
   if (GLOBALSETTINGS.InputMethod == "html") {
@@ -454,6 +438,7 @@ function resultsShowExport(refinedData) {
       readOutPointResults(refinedData);
     } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
       //showRouteResults(refinedData);
+      readOutRouteResults(refinedData);
     }
 
   }
@@ -466,6 +451,7 @@ function resultsShowExport(refinedData) {
       //showBulkPointResults(refinedData);
     } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
       //showBulkRouteResults(refinedData);
+      readOutRouteResults(refinedData);
     }
 
   }
@@ -620,86 +606,4 @@ function noMatchOutputOnRteNm(unfilteredArr) {
   console.log(output0);
   let nomatch = { ...output0 };
   return (nomatch);
-}
-
-
-//get right route
-async function rteDfoAssembler(routeQueryOutput, B_results, E_results, rte_nm) {
-  let b_output = {};
-  let e_output = {};
-  let transposed = 0;
-  let RteDfoArr = [];
-  let bdfo = '';
-  let edfo = '';
-
-  //get right route
-
-  if (GLOBALSETTINGS.CurrentLrmNo == 1 || GLOBALSETTINGS.CurrentLrmNo == 3) {
-
-    if (GLOBALSETTINGS.InputMethod == "html") {
-      let B_RTENMs = B_results.map(a => a.RTE_DEFN_LN_NM);
-      let E_RTENMs = E_results.map(a => a.RTE_DEFN_LN_NM);
-      let BE_RTENMs = B_RTENMs.filter(x => E_RTENMs.includes(x));
-
-      if (GLOBALSETTINGS.CurrentLrmNo == 1) { // FIXME need to dynamically create selector
-        dropDownPopulator("#candidateRTENMs", BE_RTENMs);
-        rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
-        rte_nm = BE_RTENMs[rte_nm_Index];
-      } else if (GLOBALSETTINGS.CurrentLrmNo == 3) {
-        dropDownPopulator("#candidateRTENMs_2", BE_RTENMs);
-        rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs_2", "#candidateRTENMs_2");
-        rte_nm = BE_RTENMs[rte_nm_Index];
-      }
-
-      routeQueryOutput.push(rte_nm);
-
-    }
-
-    else if (GLOBALSETTINGS.InputMethod == "table") {
-
-    }
-
-  }
-  // end get right route
-
-  let b_index = B_results.findIndex(function (item, i) {
-    return item.RTE_DEFN_LN_NM === rte_nm;
-  });
-
-  let e_index = E_results.findIndex(function (item, i) {
-    return item.RTE_DEFN_LN_NM === rte_nm;
-  });
-
-  b_output = B_results[b_index];
-  e_output = E_results[e_index];
-  bdfo = B_results[b_index]['RTE_DFO'];
-  edfo = E_results[e_index]['RTE_DFO'];
-
-  // check min and max DFOs and transpose if necessary
-  if (bdfo > edfo) {
-    transposed = 1;
-  }
-
-  routeQueryOutput.push(Math.min(bdfo, edfo));
-  routeQueryOutput.push(Math.max(bdfo, edfo));
-
-
-  let matchOutputOnCommonRteNmOutput = [];
-
-  if (transposed == 0) {
-    matchOutputOnCommonRteNmOutput = (Object.values(b_output)).concat(Object.values(e_output));
-  } else {
-    matchOutputOnCommonRteNmOutput = (Object.values(e_output)).concat(Object.values(b_output));
-  }
-
-  /**
-    try {
-      matchOutputOnCommonRteNmOutput = (Object.values(b_output)).concat(Object.values(e_output));
-    } catch (err) {
-      matchOutputOnCommonRteNmOutput = lrsApiFields.concat(lrsApiFields);
-    }
-  */
-
-
-  //return (matchOutputOnCommonRteNmOutput); //TODO change to a return function
 }

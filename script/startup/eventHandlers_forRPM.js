@@ -55,18 +55,14 @@ $('#demo-mode-toggle').change(function () {
       $("#kbInputLatitude").val("29.397809");
       $("#kbInputLongitude").val("-94.987590");
 
-      $("#kbInputRouteName_4").val("FM1818-KG");
-      $("#kbInputDistanceFromOrigin").val("1.606");
 
-
-      $("#kbInputBeginReferenceMarker").val("622");
-      $("#kbInputBeginDisplacement").val("0.065");
-      $("#kbInputEndReferenceMarker").val("622");
-      $("#kbInputEndDisplacement").val("0.065");
+      $("#kbInputBeginReferenceMarker").val("624");
+      $("#kbInputBeginDisplacement").val("1.362");
+      $("#kbInputEndReferenceMarker").val("632");
+      $("#kbInputEndDisplacement").val("1.950");
 
       $("#kbInputBeginControlSection").val("012201");
       $("#kbInputBeginMilepointMeasure").val("2.394");
-      $("#kbInputEndControlSection").val("012201");
       $("#kbInputEndMilepointMeasure").val("2.394");
 
       $("#kbInputBeginDistanceFromOrigin").val("59.095");

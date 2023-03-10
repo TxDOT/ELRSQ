@@ -40,7 +40,7 @@ $('#demo-mode-toggle').change(function () {
       $("#kbInputReferenceMarker").val("622");
       $("#kbInputDisplacement").val("0.065");
 
-      //$("#inputRouteName_4").val("FM1818-KG");
+      //$("#kbInputRouteName_4").val("FM1818-KG");
       $("#kbInputDistanceFromOrigin").val("1.606");
 
       $("#kbInputControlSection").val("012201");
@@ -48,7 +48,6 @@ $('#demo-mode-toggle').change(function () {
 
       $("#kbInputLatitude").val("29.397809");
       $("#kbInputLongitude").val("-94.987590");
-
 
       $("#kbInputRouteName_2").val("FM0060-KG");
       $("#kbInputBeginReferenceMarker").val("624");

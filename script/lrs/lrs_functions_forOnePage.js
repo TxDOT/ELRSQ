@@ -137,12 +137,6 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
       // end get right route
       // assemble data
 
-      /**
-        let fullRowData = resultsObj;
-        if (typeof otherAttributesObj !== 'undefined' && otherAttributesObj !== '') {
-          fullRowData = { ...otherAttributesObj, ...fullRowData };
-        }
-      */
       let fullRowData = { ...otherAttributesObj, ...resultsObj };
       refinedData.push(fullRowData);
 
