@@ -1,7 +1,4 @@
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
-
-
-// this function works on global variable PROJECTLINES
 function localRouteGeoJSONToMap(localGeoJSON) {
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
@@ -26,7 +23,6 @@ function localRouteGeoJSONToMap(localGeoJSON) {
       // When the layer is loaded, query for the extent
       // of all features in the layer. Then set the view's
       // extent to the returned extent of all features.
-
       projectLayer
         .when(() => {
           return projectLayer.queryExtent();

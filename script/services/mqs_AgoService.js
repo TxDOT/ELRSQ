@@ -69,27 +69,6 @@ async function queryProjectGeometry() {
 
 
 
-async function queryProjectGeometry_pg(projObj) {
-
-  resetProjectFeatureCollections();
-
-  GreenToYellow();
-
-  //get segment is called within a loop, for each project
-    let results = await queryRoadwayServiceByLine(projObj);
-    let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj);
-
-  YellowToGreen();
-
-  return aProjectFeatureCollection;
-
-}
-
-
-
-
-
-
 //iterates over myProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
 //FIXME change to a return function
@@ -122,15 +101,6 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
 }
 
 
-
-
-
-
-
-
-
-
-
 // added output spatial reference to return WGS84
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
@@ -140,11 +110,14 @@ async function queryRoadwayServiceByLine(myProjectData) {
   if (GLOBALSETTINGS.PrintUrls == 1) {
     console.log("queryRoadwayServiceByLine using url: " + url);
   }
+
   GreenToYellow();
   const results = await queryRoadwayService(url);
   YellowToGreen();
+
   if (GLOBALSETTINGS.PrintIterations == 1) {
     console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
   }
+
   return results;
 }
