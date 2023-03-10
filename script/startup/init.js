@@ -1,10 +1,11 @@
 GLOBALSETTINGS.UseLoadIndicator = 1;
-GLOBALSETTINGS.PrintUrls = 0;
-GLOBALSETTINGS.PrintIterations = 0;
+GLOBALSETTINGS.PrintUrls = 1;
+GLOBALSETTINGS.PrintIterations = 1;
 GLOBALSETTINGS.PrintProjGeom = 1;
-
+GLOBALSETTINGS.DemoMode = 0;
 
 let graphics = [];
+
 function resetGraphics() {
   graphics = [];
 }
@@ -13,8 +14,6 @@ const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
 GLOBALPROJECTDATA.ProjectGeometry = [];
 GLOBALPROJECTDATA.ProjectFeatureCollections = [];
-
-
 
 function resetProjectDrawParameters() {
   GLOBALPROJECTDATA.ProjectDrawParameters = [];
@@ -31,7 +30,6 @@ function resetProjectFeatureCollections() {
 
 function setProjectGeometry(someProjectGeometry) {
   GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
-  //console.log(GLOBALPROJECTDATA.ProjectGeometry);
 }
 
 

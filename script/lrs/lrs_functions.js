@@ -108,7 +108,6 @@ async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, co
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end perform query
 
-
     let featureDescription = $("#description").val() || 'feature';
     let featureColor = $("#color").val() || "#14375a";
     let featureWidth = $("#width").val() || "1";
@@ -230,13 +229,12 @@ function setIndicesByLrmAndGeom() {
     }
   }
 
-
   field_indices = [[lrm_indices0, lrm_indices1], rte_nm_lrm_indices, currentFieldOrder];
 
   return field_indices;
 }
 
-
+// FIXME this changes the DOM
 async function setTableFieldsByMethod(parsedInputCSV) {
   let field_indices = [];
   // let lrm_indices = [];

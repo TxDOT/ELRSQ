@@ -13,6 +13,8 @@ $(document).ready(function () {
   function set_topnav_point() {
     GLOBALSETTINGS.CalcGeomType = 'Point';
     console.log("setting CALCGEOMTYPE to: " + GLOBALSETTINGS.CalcGeomType);
+    // resetLRMVariables();
+
     $("#input-route-form-card").hide();
     $("#input-route-form").hide();
 
@@ -36,6 +38,8 @@ $(document).ready(function () {
   function set_topnav_route() {
     GLOBALSETTINGS.CalcGeomType = 'Route';
     console.log("setting CALCGEOMTYPE to: " + GLOBALSETTINGS.CalcGeomType);
+    // resetLRMVariables();
+    
     $("#input-point-form-card").hide();
     $("#input-point-form").hide();
 
@@ -58,150 +62,74 @@ $(document).ready(function () {
 
   function set_lrm_method_referencemarker() {
     GLOBALSETTINGS.CurrentLrmNo = 2;
+    resetLRMVariables();
+    
     $("#kbPointInputRouteName").show();
     $("#kbPointInputReferenceMarker").show();
-    $("#kbPointInputControlSection").hide();
-    $("#kbPointInputDistanceFromOrigin").hide();
-    $("#kbPointInputRouteName_optional").hide();
-    $("#kbPointInputCoordinates").hide();
 
     $("#kbRouteInputRouteName").show();
     $("#kbRouteInputReferenceMarker").show();
-    $("#kbRouteInputControlSection").hide();
-    $("#kbRouteInputDistanceFromOrigin").hide();
-    $("#kbRouteInputRouteName_optional").hide();
-    $("#kbRouteInputCoordinates").hide();
 
     $("#csvPointInputRouteName").show();
     $("#csvPointInputReferenceMarker").show();
-    $("#csvPointInputControlSection").hide();
-    $("#csvPointInputDistanceFromOrigin").hide();
-    $("#csvPointInputRouteName_optional").hide();
-    $("#csvPointInputCoordinates").hide();
 
     $("#csvRouteInputRouteName").show();
     $("#csvRouteInputReferenceMarker").show();
-    $("#csvRouteInputControlSection").hide();
-    $("#csvRouteInputDistanceFromOrigin").hide();
-    $("#csvRouteInputRouteName_optional").hide();
-    $("#csvRouteInputCoordinates").hide();
 
     $(".referencemarker-template").show();
-    $(".controlsection-template").hide();
-    $(".dfo-template").hide();
-    $(".coordinates-template").hide();
-
   }
 
   function set_lrm_method_controlsection() {
     GLOBALSETTINGS.CurrentLrmNo = 3;
-    $("#kbPointInputRouteName").hide();
-    $("#kbPointInputReferenceMarker").hide();
+    resetLRMVariables();
+    
     $("#kbPointInputControlSection").show();
-    $("#kbPointInputDistanceFromOrigin").hide();
-    $("#kbPointInputRouteName_optional").hide();
-    $("#kbPointInputCoordinates").hide();
 
-    $("#kbRouteInputRouteName").hide();
-    $("#kbRouteInputReferenceMarker").hide();
     $("#kbRouteInputControlSection").show();
-    $("#kbRouteInputDistanceFromOrigin").hide();
-    $("#kbRouteInputRouteName_optional").hide();
-    $("#kbRouteInputCoordinates").hide();
 
-    $("#csvPointInputRouteName").hide();
-    $("#csvPointInputReferenceMarker").hide();
     $("#csvPointInputControlSection").show();
-    $("#csvPointInputDistanceFromOrigin").hide();
-    $("#csvPointInputRouteName_optional").hide();
-    $("#csvPointInputCoordinates").hide();
 
-    $("#csvRouteInputRouteName").hide();
-    $("#csvRouteInputReferenceMarker").hide();
     $("#csvRouteInputControlSection").show();
-    $("#csvRouteInputDistanceFromOrigin").hide();
-    $("#csvRouteInputRouteName_optional").hide();
-    $("#csvRouteInputCoordinates").hide();
 
     $(".controlsection-template").show();
-    $(".referencemarker-template").hide();
-    $(".dfo-template").hide();
-    $(".coordinates-template").hide();
-
   }
 
   function set_lrm_method_dfo() {
     GLOBALSETTINGS.CurrentLrmNo = 4;
+    resetLRMVariables();
+    
     $("#kbPointInputRouteName").show();
-    $("#kbPointInputReferenceMarker").hide();
-    $("#kbPointInputControlSection").hide();
     $("#kbPointInputDistanceFromOrigin").show();
-    $("#kbPointInputRouteName_optional").hide();
-    $("#kbPointInputCoordinates").hide();
 
     $("#kbRouteInputRouteName").show();
-    $("#kbRouteInputReferenceMarker").hide();
-    $("#kbRouteInputControlSection").hide();
     $("#kbRouteInputDistanceFromOrigin").show();
-    $("#kbRouteInputRouteName_optional").hide();
-    $("#kbRouteInputCoordinates").hide();
 
     $("#csvPointInputRouteName").show();
-    $("#csvPointInputReferenceMarker").hide();
-    $("#csvPointInputControlSection").hide();
     $("#csvPointInputDistanceFromOrigin").show();
-    $("#csvPointInputRouteName_optional").hide();
-    $("#csvPointInputCoordinates").hide();
 
     $("#csvRouteInputRouteName").show();
-    $("#csvRouteInputReferenceMarker").hide();
-    $("#csvRouteInputControlSection").hide();
     $("#csvRouteInputDistanceFromOrigin").show();
-    $("#csvRouteInputRouteName_optional").hide();
-    $("#csvRouteInputCoordinates").hide();
 
     $(".dfo-template").show();
-    $(".referencemarker-template").hide();
-    $(".controlsection-template").hide();
-    $(".coordinates-template").hide();
-
   }
 
   function set_lrm_method_coordinates() {
     GLOBALSETTINGS.CurrentLrmNo = 1;
-    $("#kbPointInputRouteName").hide();
-    $("#kbPointInputReferenceMarker").hide();
-    $("#kbPointInputControlSection").hide();
-    $("#kbPointInputDistanceFromOrigin").hide();
+    resetLRMVariables();
+    
     $("#kbPointInputRouteName_optional").show();
     $("#kbPointInputCoordinates").show();
 
-    $("#kbRouteInputRouteName").hide();
-    $("#kbRouteInputReferenceMarker").hide();
-    $("#kbRouteInputControlSection").hide();
-    $("#kbRouteInputDistanceFromOrigin").hide();
     $("#kbRouteInputRouteName_optional").show();
     $("#kbRouteInputCoordinates").show();
 
-    $("#csvPointInputRouteName").hide();
-    $("#csvPointInputReferenceMarker").hide();
-    $("#csvPointInputControlSection").hide();
-    $("#csvPointInputDistanceFromOrigin").hide();
     $("#csvPointInputRouteName_optional").show();
     $("#csvPointInputCoordinates").show();
 
-    $("#csvRouteInputRouteName").hide();
-    $("#csvRouteInputReferenceMarker").hide();
-    $("#csvRouteInputControlSection").hide();
-    $("#csvRouteInputDistanceFromOrigin").hide();
     $("#csvRouteInputRouteName_optional").show();
     $("#csvRouteInputCoordinates").show();
 
     $(".coordinates-template").show();
-    $(".referencemarker-template").hide();
-    $(".controlsection-template").hide();
-    $(".dfo-template").hide();
-
   }
 
 });
@@ -218,7 +146,6 @@ $(document).ready(function () {
 
   const myDropZone = document.getElementById("bulk-fieldset");
   dragDropEventHandlers(myDropZone);
-
 
   myDropZone.addEventListener('drop', async (event) => {
     event.preventDefault();

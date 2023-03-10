@@ -52,6 +52,7 @@ async function queryProjectGeometry() {
 
   //get segment is called within a loop, for each project
   for (var i = 0; i < GLOBALPROJECTDATA.ProjectDrawParameters.length; i++) {
+    console.log("pushing segment to GLOBALPROJECTDATA.ProjectFeatureCollections");
     let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectDrawParameters[i]);
     GLOBALPROJECTDATA.ProjectFeatureCollections.push(getSegment(results, GLOBALPROJECTDATA.ProjectDrawParameters[i], GLOBALPROJECTDATA.ProjectDrawParameters));
   }

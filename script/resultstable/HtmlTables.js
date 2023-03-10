@@ -1,6 +1,3 @@
-// TODO add functions for bulk and routes
-
-
 
 function readOutResults(results, navIndex) {
 
@@ -38,7 +35,7 @@ function readOutRouteResults(results, navIndex) {
 
   fillInRouteHtmlTable(results[index]);
   // plot route for results[index]
-  showThisRouteResultOnMap(results[index]); // TODO put RPM here //TEST
+  showThisRouteResultOnMap(results[index]); 
 }
 
 
@@ -73,14 +70,12 @@ function fillInPointHtmlTable(currentResult) {
 
 function fillInRouteHtmlTable(currentResult) {
   // fill in HTML results
-
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);
   $(outputFieldIDs.RDBD_TYPE_DSCR_ROUTE).html(currentResult['BEGIN_RDBD_TYPE_DSCR']);
 
   $(outputFieldIDs.RTE_DFO_BEGIN).html(currentResult['BEGIN_RTE_DFO']);
   $(outputFieldIDs.RTE_DFO_END).html(currentResult['END_RTE_DFO']);
-
 
   $(outputFieldIDs.CTRL_SECT_LN_NBR_BEGIN).html(currentResult['BEGIN_CTRL_SECT_LN_NBR']);
   $(outputFieldIDs.CTRL_SECT_MPT_BEGIN).html(currentResult['BEGIN_CTRL_SECT_MPT']);
@@ -101,7 +96,6 @@ function fillInRouteHtmlTable(currentResult) {
 
 function clearResults() {
   //TODO find way to use different selector child/class
-
 
   //clear pagination
   clearPagination();
