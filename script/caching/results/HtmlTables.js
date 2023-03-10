@@ -30,11 +30,6 @@ async function showThisRouteResultOnMap(currentResult) {
     console.log("currentResult: ");
     console.log(currentResult);
   }
-  /**
-    addProjectToArray(currentResult);
-    await queryProjectGeometry(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections);
-    localRouteGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections);
-  */
 
   addProjectToArray(currentResult); // this may not be doing anything
   let projObj = objectifyRouteProject(currentResult);
@@ -136,16 +131,6 @@ function copyRouteDFO() {
   let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
   let dfo = $(outputFieldIDs.RTE_DFO).html();
   navigator.clipboard.writeText(`RouteID: ${routeName}, DistanceFromOrigin: ${dfo}`);
-}
-
-
-// fill in HTML table results
-function showRouteResults(routeQueryOutput) {
-
-  // fill in HTML results
-  $(outputFieldIDs.RTE_DEFN_LN_NM).html(routeQueryOutput[0]);
-  $(outputFieldIDs.BDFO).html(routeQueryOutput[1]);
-  $(outputFieldIDs.EDFO).html(routeQueryOutput[2]);
 }
 
 

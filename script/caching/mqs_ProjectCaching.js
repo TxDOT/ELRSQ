@@ -4,15 +4,6 @@
 //// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
 
 function addProjectToArray(currentResult) {
-  /**
-    let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
-    let BDFO = currentResult['BEGIN_RTE_DFO'];
-    let EDFO = currentResult['END_RTE_DFO'];
-    let Color = currentResult['Color'];
-    let Width = currentResult['Width'];
-    let Desc = currentResult['Feature'];
-  */
-
   let projObj = new Object();
   projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
@@ -34,38 +25,7 @@ function addProjectToArray(currentResult) {
 }
 
 
-function objectifyRouteProject(currentResult) {
-  let projObj = new Object();
-  projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
-  projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
-  projObj.EDFO = currentResult['END_RTE_DFO'];
-  projObj.Color = currentResult['Color'];
-  projObj.Width = currentResult['Width'];
-  projObj.Desc = currentResult['Feature'];
-  let projString = JSON.stringify(projObj);
-
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("objectifyRouteProject: ");
-    console.log(projString);
-  }
-
-return projObj;
-
-}
-
-
-
-
 function addProjectToArray_sequential(myProjectDrawParameters) {
-  /**
-    let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();
-    let BDFO = $(outputFieldIDs.RTE_DFO_BEGIN).html();
-    let EDFO = $(outputFieldIDs.RTE_DFO_END).html();
-    let Color = $('#color').val();
-    let Width = $('#width').val();
-    let Desc = $('#description').val();
-  */
-
   let projObj = new Object();
   projObj.RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();
   projObj.BDFO = $(outputFieldIDs.RTE_DFO_BEGIN).html();
