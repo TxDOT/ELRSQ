@@ -28,7 +28,7 @@ function createPaginationEventHandlers(someId, results, fn) {
 }
 
 //navResults called by pagination buttons in showResults function
-function navResults(direction, results, fn) { //FIXME have function as an input
+function navResults(direction, results, fn) { 
 
   if (direction == 'prev' && PAGINATION.currentPagination > 1) {
     PAGINATION.currentPagination--;

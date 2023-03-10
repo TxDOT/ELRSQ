@@ -183,28 +183,3 @@ function exportRoutesToKMLFile(resultsArr, btn_suffix) {
 }
 
 
-
-
-
-function _tabularPointsConvertExport_2(resultsArr) {
-  console.log(resultsArr);
-  exportPointsToCsvFile(resultsArr);
-}
-
-
-
-function readFile(file) {
-  const reader = new FileReader();
-
-  return new Promise((resolve, reject) => {
-    reader.onerror = () => {
-      reader.abort();
-      reject(new DOMException("Problem parsing input file."));
-    };
-
-    reader.onload = () => {
-      resolve(reader.result);
-    };
-    reader.readAsText(file);
-  });
-};

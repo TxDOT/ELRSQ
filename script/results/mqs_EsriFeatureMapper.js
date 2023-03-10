@@ -96,8 +96,6 @@ function showFullPointResultsOnMap(results) {
 }
 
 
-
-
 function showThisPointResultOnMap(result) {
   //go through each result and add on map
 

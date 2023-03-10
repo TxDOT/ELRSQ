@@ -58,30 +58,27 @@
     GLOBALSETTINGS.UseMap = 1;
   </script>
 
-  <script src="script/config_hardcoded.js" defer></script>
-
+  <script src="script/startup/config_hardcoded.js" defer></script>
   <script src="script/startup/init.js" defer></script>
   <script src="script/startup/lrs_initiators.js" defer></script>
   <script src="script/startup/ui_functions.js" defer></script>
 
-  <script src="script/lrs/lrs_functions.js" defer></script>
+  <script src="script/services/lrs_functions.js" defer></script>
+  <script src="script/services/mqs_AgoService.js" defer></script>
+  <script src="script/services/mqs_Fetch.js" defer></script>
+
   <script src="script/mqs_EsriMap.js" defer></script>
-  <script src="script/mqs_EsriFeatureMapper.js" defer></script>
-  <script src="script/mqs_ImportExportTables.js" defer></script>
-  <script src="script/mqs_AgoService.js" defer></script>
-  <script src="script/mqs_Fetch.js" defer></script>
-  <script src="script/mqs_RouteNameFixer.js" defer></script>
+  <script src="script/mqs_ProjectCaching.js" defer></script>
 
-  <script src="script/resultstable/HtmlTables.js" defer></script>
+  <script src="script/results/mqs_ExportTables.js" defer></script>
+  <script src="script/results/HtmlTables.js" defer></script>
+  <script src="script/results/mqs_RouteBuilder.js"></script>
+  <script src="script/results/mqs_EsriFeatureMapper.js" defer></script>
+  <script src="script/results/mqs_LocalGeoJSONToMap.js"></script>
 
-
-  <script src="script/mqs_RouteBuilder.js"></script>
-  <script src="script/mqs_LocalGeoJSONToMap.js"></script>
-
+  <script src="script/helper/helpers.js" defer></script>
   <script src="script/helper/dragdropupload.js" defer></script>
-  <script src="script/helper/dynamic_dropdowns.js" defer></script>
   <script src="script/helper/data_functions.js"></script> <!-- look for jquery alternative -->
-  <script src="script/helper/arraylast.js"></script>
   <script src="script/helper/pagination.js"></script>
 
 </head>

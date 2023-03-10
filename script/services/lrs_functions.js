@@ -42,7 +42,7 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
   rte_nm_lrm_indices = field_indices[1];
   other_indices = field_indices[2];
 
-  if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") { //FIXME is this supposed to be and or or???
+  if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") { 
     for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
       parsedInputCSV[rowToQuery][rte_nm_lrm_indices] = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     }
@@ -234,7 +234,7 @@ function setIndicesByLrmAndGeom() {
   return field_indices;
 }
 
-// FIXME this changes the DOM
+// this changes the DOM
 async function setTableFieldsByMethod(parsedInputCSV) {
   let field_indices = [];
   // let lrm_indices = [];

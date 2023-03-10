@@ -41,6 +41,7 @@ async function rdwayQuery(url) {
 
 //iterates over GLOBALPROJECTDATA.ProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
+//FIXME change to a return function
 async function queryProjectGeometry() {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     console.log("GLOBALPROJECTDATA.ProjectDrawParameters: ");
