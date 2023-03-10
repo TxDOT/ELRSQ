@@ -7,8 +7,8 @@ function localRouteGeoJSONToMap(localGeoJSON) {
 
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {
       let geojson_line = localGeoJSON[i]; // is this a feature collection? do we need another loop over features?
-      let color = localGeoJSON[i].features[0].properties.Color;
-      let width = localGeoJSON[i].features[0].properties.Width + "px";
+      let color = localGeoJSON[i].features[0].properties.Color || "#ff8000";
+      let width = (localGeoJSON[i].features[0].properties.Width || "3") + "px";
       const renderer_line = JSON.parse(`{"type": "simple", "symbol": {"type": "simple-line", "color": "${color}", "width": "${width}"}}`);
 
       let blob = new Blob([JSON.stringify(geojson_line)], {
