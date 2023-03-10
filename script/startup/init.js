@@ -18,6 +18,7 @@ function cursorMode() {
 const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
 GLOBALPROJECTDATA.ProjectGeometry = [];
+GLOBALPROJECTDATA.ProjectGeometryCache = [];
 GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 
 function resetProjectDrawParameters() {
@@ -32,8 +33,10 @@ function resetProjectFeatureCollections() {
   GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 }
 
+//FIXME add caching by making this a push
 function setProjectGeometry(someProjectGeometry) {
   GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
+  GLOBALPROJECTDATA.ProjectGeometryCache.push(someProjectGeometry);
 }
 
 

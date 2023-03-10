@@ -1,16 +1,4 @@
 
-function readOutResults(results, navIndex) {
-
-  if (GLOBALSETTINGS.CalcGeomType == "Point") {
-    readOutPointResults(results, navIndex);
-  } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
-    readOutRouteResults(results, navIndex);
-  }
-
-}
-
-
-
 // determine pagination and fill in HTML table results
 //TODO move point on map
 function readOutPointResults(results, navIndex) {

@@ -418,60 +418,26 @@ function buildUrl(coordinateArr, lrm_indices) {
 
 
 function resultsShowExport(refinedData) {
-  setProjectGeometry(refinedData);
 
-  // show TABULAR results
-  if (GLOBALSETTINGS.InputMethod == "html") {
-    paginatedResultsSequence(refinedData, readOutResults);
+  setProjectGeometry(refinedData); // FIXME add results caching
 
-    if (GLOBALSETTINGS.CalcGeomType == "Point") {
-      readOutPointResults(refinedData);
-    } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
-      //showRouteResults(refinedData);
-      readOutRouteResults(refinedData);
-    }
-
-  }
-
-  else if (GLOBALSETTINGS.InputMethod == "table") {
-    paginatedResultsSequence(refinedData, readOutResults);
-
-    if (GLOBALSETTINGS.CalcGeomType == "Point") {
-      readOutPointResults(refinedData);
-      //showBulkPointResults(refinedData);
-    } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
-      //showBulkRouteResults(refinedData);
-      readOutRouteResults(refinedData);
-    }
-
-  }
-
-
-  // export data
   if (GLOBALSETTINGS.CalcGeomType == "Point") {
+    // show TABULAR results
+    paginatedResultsSequence(refinedData, readOutPointResults);
+    readOutPointResults(refinedData);
+
+    // export data
     tabularPointsConvertExport(refinedData);
   }
 
   else if (GLOBALSETTINGS.CalcGeomType == "Route") {
+    // show TABULAR results
+    paginatedResultsSequence(refinedData, readOutRouteResults);
+    readOutRouteResults(refinedData);
+
+    // export data
     tabularRoutesConvertExport(refinedData);
   }
-
-
-  //FIXME turning off plotting by default
-  /**
-    // plot to map
-    if (GLOBALSETTINGS.UseMap == 1) {
-      // showPointResultsOnMap(refinedData); //turning off showing all points
-  
-      if (GLOBALSETTINGS.CalcGeomType == "Point") {
-        // showPointResultsOnMap(refinedData); //turning off showing all points
-  
-      } else if (GLOBALSETTINGS.CalcGeomType == "Route") {
-        //showLineResultsOnMap(refinedData);
-      }
-    }
-  */
-
 
 }
 
