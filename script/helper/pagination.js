@@ -1,17 +1,3 @@
-let PAGINATION = {};
-
-PAGINATION.allResults = [];
-
-function resetAllResults() {
-  PAGINATION.allResults = [];
-}
-
-PAGINATION.currentPagination = 1;
-
-function resetCurrentPagination() {
-  PAGINATION.currentPagination = 1;
-}
-
 
 function paginatedResultsSequence(results) {
   resetCurrentPagination();

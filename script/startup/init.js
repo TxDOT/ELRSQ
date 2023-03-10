@@ -1,14 +1,19 @@
+GLOBALSETTINGS.CalcGeomType = 'Point'; // these are not always valid
+GLOBALSETTINGS.CurrentLrmNo = 2; // these are not always valid
+
 GLOBALSETTINGS.UseLoadIndicator = 1;
 GLOBALSETTINGS.PrintUrls = 1;
 GLOBALSETTINGS.PrintIterations = 1;
 GLOBALSETTINGS.PrintProjGeom = 1;
 GLOBALSETTINGS.DemoMode = 0;
+GLOBALSETTINGS.MapCursorLive = 0;
 
-let graphics = [];
-
-function resetGraphics() {
-  graphics = [];
+// TODO this changes a global variable
+function cursorMode() {
+  $("#viewDiv").css('cursor', 'crosshair');
+  GLOBALSETTINGS.MapCursorLive = 1;
 }
+
 
 const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
@@ -27,11 +32,30 @@ function resetProjectFeatureCollections() {
   GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 }
 
-
 function setProjectGeometry(someProjectGeometry) {
   GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
 }
 
+
+let PAGINATION = {};
+
+PAGINATION.allResults = [];
+PAGINATION.currentPagination = 1;
+
+function resetAllResults() {
+  PAGINATION.allResults = [];
+}
+
+function resetCurrentPagination() {
+  PAGINATION.currentPagination = 1;
+}
+
+
+let graphics = [];
+
+function resetGraphics() {
+  graphics = [];
+}
 
 
 //screen pane slider
@@ -71,44 +95,6 @@ $(document).ready(function () {
 });
 
 
-// status indicator functions
-
-function GreenToYellow() {
-  $('#readyIndicator').removeClass('green');
-  $('#busyIndicator').addClass('yellow');
-  $('#readyBadge').hide();
-  $('#busyBadge').show();
-}
-
-function YellowToGreen() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#readyIndicator').addClass('green');
-  $('#busyBadge').hide();
-  $('#readyBadge').show();
-}
-
-function ToRed() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#readyIndicator').removeClass('green');
-  $('#busyBadge').hide();
-  $('#readyBadge').hide();
-  $('#errorIndicator').addClass('red');
-  $('#errorBadge').show();
-}
-
-function ToGreen() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#errorIndicator').removeClass('red');
-  $('#readyIndicator').addClass('green');
-  $('#busyBadge').hide();
-  $('#errorBadge').hide();
-  $('#readyBadge').show();
-}
-
-// end status indicator functions
-
-
-
 // add results card
 $(document).ready(function () {
   /**
@@ -122,13 +108,10 @@ $(document).ready(function () {
     });
   */
 
-
   $("#copyRouteDFO").on('click', function () { copyRouteDFO(); });
   $("#makequeryTxDOT_Roadways_Unsegmented").on('click', function () { makequeryTxDOT_Roadways_Unsegmented(); });
   $("#copyControlSection").on('click', function () { copyControlSection(); });
   $("#copyFieldLocation").on('click', function () { copyFieldLocation(); });
   $("#copyCoordinates").on('click', function () { copyCoordinates(); });
-
-
 
 });

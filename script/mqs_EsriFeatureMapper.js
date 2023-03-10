@@ -142,11 +142,6 @@ function showThisPointResultOnMap(result) {
 }
 
 
-
-
-
-
-
 function addPointGraphic(lat, lon) {
   require(["esri/Graphic"], (Graphic) => {
     let point = {

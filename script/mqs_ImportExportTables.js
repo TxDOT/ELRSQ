@@ -10,7 +10,6 @@ function tabularPointsConvertExport(resultsArr) {
     btn_suffix = "Modal";
   }
 
-
   exportPointsToCsvFile(resultsArr, btn_suffix);
   exportPointsToGeoJsonFile(resultsArr, btn_suffix);
   exportPointsToKMLFile(resultsArr, btn_suffix);
