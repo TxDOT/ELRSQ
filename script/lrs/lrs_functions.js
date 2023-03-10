@@ -551,14 +551,6 @@ async function matchOutputOnRteNm(unfilteredArr, rte_nm) {
       bdfo = output0['RTE_DFO'];
       edfo = output1['RTE_DFO'];
 
-      /**
-        RteDfoArr = [];
-        RteDfoArr.push(rte_nm);
-        RteDfoArr.push(Math.min(bdfo, edfo));
-        RteDfoArr.push(Math.max(bdfo, edfo));
-        console.log(RteDfoArr);
-      */
-
       // check min and max DFOs and transpose if necessary
       let preBEGIN = `BEGIN_`;
       let preEND = `END_`;

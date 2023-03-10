@@ -3,7 +3,34 @@
 //// retrieve position within GLOBALPROJECTDATA.ProjectDrawParameters array
 //// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
 
-function addProjectToArray(myProjectsArr) {
+function addProjectToArray(currentResult) {
+  let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
+  let BDFO = currentResult['BEGIN_RTE_DFO'];
+  let EDFO = currentResult['END_RTE_DFO'];
+  let Color = currentResult['Color'];
+  let Width = currentResult['Width'];
+  let Desc = currentResult['Feature'];
+
+
+  let projObj = new Object();
+  projObj.RTE_NM = RTE_NM;
+  projObj.BDFO = BDFO;
+  projObj.EDFO = EDFO;
+  projObj.Color = Color;
+  projObj.Width = Width;
+  projObj.Desc = Desc;
+  let projString = JSON.stringify(projObj);
+
+  if (GLOBALSETTINGS.PrintProjGeom == 1) {
+    console.log("addProjectToArray: ");
+    console.log(projString);
+  }
+
+  if (GLOBALPROJECTDATA.ProjectDrawParameters.indexOf(projObj) < 0) { GLOBALPROJECTDATA.ProjectDrawParameters.push(projObj); }
+
+}
+
+function addProjectToArray_sequential(myProjectsArr) {
   let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();
   let BDFO = $(outputFieldIDs.RTE_DFO_BEGIN).html();
   let EDFO = $(outputFieldIDs.RTE_DFO_END).html();
@@ -30,7 +57,6 @@ function addProjectToArray(myProjectsArr) {
 
   makeRouteProjectsTable(myProjectsArr);
 }
-
 
 
 //// validate that there is an input
