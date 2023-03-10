@@ -1,4 +1,4 @@
-GLOBALSETTINGS.CalcGeomType = 'Route'; // these are not always valid
+GLOBALSETTINGS.CalcGeomType = 'Point'; // these are not always valid
 GLOBALSETTINGS.CurrentLrmNo = 2; // these are not always valid
 
 $(document).ready(function () {
@@ -210,7 +210,7 @@ $(document).ready(function () {
 
   $(".convert").on('click', function () {
     GLOBALSETTINGS.InputMethod = "html";
-    lrsSingleRouteQuery_RPM();
+    lrsSingleQuery();
   });
 
 

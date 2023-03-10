@@ -53,22 +53,6 @@ if (GLOBALSETTINGS.UseMap == 1) {
 
 
 
-
-/**
-  let allResults = [];
-  function resetAllResults() {
-    allResults = [];
-  }
-  
-  let currentPagination = 1;
-  function resetCurrentPagination() {
-    currentPagination = 1;
-  }
-*/
-
-
-
-
 // add nav bar and status indicator
 $(document).ready(function () {
 

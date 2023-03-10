@@ -4,7 +4,6 @@
 //// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
 
 function addProjectToArray(currentResult) {
-
   let RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   let BDFO = currentResult['BEGIN_RTE_DFO'];
   let EDFO = currentResult['END_RTE_DFO'];

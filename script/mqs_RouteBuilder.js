@@ -1,14 +1,13 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within PROJECTSARR array
-//// add to PROJECTSARR array if it is not a duplicate
+//// retrieve position within GLOBALPROJECTDATA.ProjectDrawParameters array
+//// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
 
 function addProjectToArray(myProjectsArr) {
-  console.log("addProjectToArray");
-  let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
-  let BDFO = $(outputFieldIDs.BDFO).html();
-  let EDFO = $(outputFieldIDs.EDFO).html();
-  let Color = $('#colors').val();
+  let RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();
+  let BDFO = $(outputFieldIDs.RTE_DFO_BEGIN).html();
+  let EDFO = $(outputFieldIDs.RTE_DFO_END).html();
+  let Color = $('#color').val();
   let Width = $('#width').val();
   let Desc = $('#description').val();
 

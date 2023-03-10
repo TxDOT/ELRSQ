@@ -24,9 +24,9 @@ $(".map-return").on('click', function () { returnToPoint(); });
 $(".map-all").on('click', function () { showAllPoints(); });
 
 //route builder
-// $("#addRow").on('click', function () { addProjectToArray(PROJECTSARR); });
-// $("#dropRow").on('click', function () { dropLastProjectFromArray(PROJECTSARR, PROJECTLINES); });
-// $("#clearRows").on('click', function () { clearProjectsFromArray(PROJECTSARR, PROJECTLINES); });
+$("#addRow").on('click', function () { addProjectToArray(PROJECTSARR); });
+$("#dropRow").on('click', function () { dropLastProjectFromArray(PROJECTSARR, PROJECTLINES); });
+$("#clearRows").on('click', function () { clearProjectsFromArray(PROJECTSARR, PROJECTLINES); });
 
 
 // toggle buttons for showing/hiding layers

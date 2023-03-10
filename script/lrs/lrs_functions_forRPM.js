@@ -1,4 +1,4 @@
-async function lrsSingleRouteQuery_RPM() {
+async function lrsSingleQuery() {
   let headerRowPresent = 0;
   let constrainToRouteName = (GLOBALSETTINGS.CalcGeomType == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG";
@@ -22,7 +22,7 @@ async function lrsSingleRouteQuery_RPM() {
     coordinateArr.push(coordinateArr0);
   }
 
-  queryLrsByArray_forRPM(coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
+  queryLrsByArray(coordinateArr, headerRowPresent, field_indices, constrainToRouteName, rtenmformat);
 }
 
 
@@ -52,7 +52,7 @@ async function lrsBulkQuery(fileContents, rtenmformat) {
 }
 
 
-async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
+async function queryLrsByArray(arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   // console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
   resetCurrentPagination();
@@ -134,7 +134,7 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
         user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
       }
       let unfilteredArr = (GLOBALSETTINGS.CalcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsObj = await matchOutputOnRteNm_forRPM(unfilteredArr, user_input_rte_nm, RteDfoArr);
+      let resultsObj = await matchOutputOnRteNm(unfilteredArr, user_input_rte_nm, RteDfoArr);
 
       // end get right route
       // assemble data
@@ -166,9 +166,11 @@ async function queryLrsByArray_forRPM(arrayToQuery, headerRowPresent, field_indi
 
 
   // show results
-  $(outputFieldIDs.RTE_DEFN_LN_NM).html(RteDfoArr[0]);
-  $(outputFieldIDs.BDFO).html(RteDfoArr[1]);
-  $(outputFieldIDs.EDFO).html(RteDfoArr[2]);
+  /**
+    $(outputFieldIDs.RTE_DEFN_LN_NM).html(RteDfoArr[0]);
+    $(outputFieldIDs.BDFO).html(RteDfoArr[1]);
+    $(outputFieldIDs.EDFO).html(RteDfoArr[2]);
+  */
 
   YellowToGreen();
 }
@@ -486,7 +488,7 @@ function resultsShowExport(refinedData) {
 }
 
 
-async function matchOutputOnRteNm_forRPM(unfilteredArr, rte_nm, RteDfoArr) {
+async function matchOutputOnRteNm(unfilteredArr, rte_nm, RteDfoArr) {
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(unfilteredArr); }
   let matchError = 0;
   let results0 = unfilteredArr[0];
