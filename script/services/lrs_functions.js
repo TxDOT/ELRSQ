@@ -42,7 +42,7 @@ async function lrsBulkQuery(calcGeomType, currentLrmNo, inputMethod, fileContent
   rte_nm_lrm_indices = field_indices[1];
   other_indices = field_indices[2];
 
-  if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") { 
+  if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") {
     for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
       parsedInputCSV[rowToQuery][rte_nm_lrm_indices] = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     }
@@ -70,6 +70,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   let currentFieldOrder = field_indices[2]; // FIXME other_indices is never redefined
 
   // make array for output
+  let lrsQueryObjsArr = [];
   let refinedData = [];
 
   // process rows
@@ -77,34 +78,37 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     if (GLOBALSETTINGS.PrintIterations == 1) {
       console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - headerRowPresent));
     }
+
+    let lrsQueryObj = {};
+    lrsQueryObj.url = [];
+    lrsQueryObj.results = [];
+    lrsQueryObj.data = [];
+    lrsQueryObj.geojson = "";
+
+    let refinedRowData = [];
     let currentRow = arrayToQuery[rowToQuery];
     let url0 = '';
     let url1 = '';
 
     // build url
-    if (inputMethod == "html") {
-      url0 = buildUrl(currentLrmNo, currentRow, lrm_indices0);
-      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
-      if (calcGeomType == "Route") {
-        url1 = buildUrl(currentLrmNo, currentRow, lrm_indices1);
-        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
-      }
-    }
-
-    else if (inputMethod == "table") {
-      url0 = buildUrl(currentLrmNo, currentRow, lrm_indices0);
-      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
-      if (calcGeomType == "Route") {
-        url1 = buildUrl(currentLrmNo, currentRow, lrm_indices1);
-        if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
-      }
+    url0 = buildUrl(currentLrmNo, currentRow, lrm_indices0);
+    lrsQueryObj.url[0] = url0;
+    if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
+    if (calcGeomType == "Route") {
+      url1 = buildUrl(currentLrmNo, currentRow, lrm_indices1);
+      lrsQueryObj.url[1] = url1;
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
     }
     // end build url
 
     // perform query
     let results0 = await queryService(url0);
+    lrsQueryObj.results[0] = results0;
     let results1 = '';
-    if (calcGeomType == "Route") { results1 = await queryService(url1); }
+    if (calcGeomType == "Route") {
+      results1 = await queryService(url1);
+      lrsQueryObj.results[1] = results1;
+    }
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end perform query
 
@@ -136,8 +140,8 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       // end get right route
       // assemble data
 
-      let fullRowData = { ...otherAttributesObj, ...resultsObj };
-      refinedData.push(fullRowData);
+      refinedRowData.push({ ...otherAttributesObj, ...resultsObj });
+      refinedData.push({ ...otherAttributesObj, ...resultsObj });
 
     } else {
       // process multiple returns
@@ -145,17 +149,39 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
         if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length)); }
         let aRowResultObj = results0[aRowResult];
 
-        // Object.assign(aRowResultObj, { Feature: rowhead }); 
-        // refinedData.push(aRowResultObj);
+        refinedRowData.push({ ...otherAttributesObj, ...aRowResultObj });
         refinedData.push({ ...otherAttributesObj, ...aRowResultObj });
       }
     }
     // end return single geom filtered on route name, or return multiple results
 
-    updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
+    lrsQueryObj.data = refinedRowData;
 
+    if (calcGeomType == "Point") {
+      try {
+        let pointGeoJson = jsonFromLrsApiToPointGeoJson(refinedRowData);
+        lrsQueryObj.geojson = pointGeoJson;
+      } catch { }
+    }
+
+    if (calcGeomType == "Route") {
+      try {
+        let projObj = objectifyRouteProject(refinedRowData[0]); // this objectifies the drawing data
+        let results = await queryRoadwayServiceByLine(projObj);
+        let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
+        lrsQueryObj.geojson = aProjectFeatureCollection;
+      } catch { }
+    }
+
+    lrsQueryObjsArr.push(lrsQueryObj);
+
+
+    updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
+    console.log(lrsQueryObj);
   }
   // end process rows
+
+  console.log(lrsQueryObjsArr);
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
@@ -419,21 +445,26 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
 
 
 function resultsShowExport(calcGeomType, refinedData) {
+  // refinedData is similar to lrsQueryObj.data for all rows in result
 
-  setProjectGeometry(refinedData); // FIXME add results caching
+  setProjectGeometry(refinedData); // FIXME add results caching // this sets GLOBALPROJECTDATA.ProjectGeometry equal to refinedData
 
   if (calcGeomType == "Point") {
     // show TABULAR results
+    // this sets prev/next event handlers to cycle through refinedData and use readOutPointResults to fill in table and plot on map
     paginatedResultsSequence(refinedData, readOutPointResults);
+    // this fill in table using object values from refinedData, and then showThisPointResultOnMap using graphics
     readOutPointResults(refinedData);
 
     // export data
     tabularPointsConvertExport(refinedData);
   }
 
-  else if (calcGeomType == "Route") {
+  if (calcGeomType == "Route") {
     // show TABULAR results
+    // this sets prev/next event handlers to cycle through refinedData and use readOutRouteResults to fill in table and plot on map
     paginatedResultsSequence(refinedData, readOutRouteResults);
+    // this fill in table using object values from refinedData, and then showThisRouteResultOnMap using geoJSON
     readOutRouteResults(refinedData);
 
     // export data
