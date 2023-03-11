@@ -138,10 +138,10 @@ function clearResultsFromMap() {
 
 function returnToPoint() {
 
-  if (onegraphic.length > 0) {
+  if (graphics.length > 0) {
     //zoom to all graphics
     view.goTo({
-      target: onegraphic,
+      target: graphics,
       zoom: 17
     })
   }

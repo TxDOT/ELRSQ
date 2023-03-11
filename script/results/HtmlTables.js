@@ -8,7 +8,7 @@ function readOutPointResults(results, navIndex) {
 
   fillInPointHtmlTable(results[index]);
   // plot point for results[index]
-  showThisPointResultOnMap(results[index]);
+  try { showThisPointResultOnMap(results[index]); } catch { }
 }
 
 
@@ -21,7 +21,7 @@ function readOutRouteResults(results, navIndex) {
 
   fillInRouteHtmlTable(results[index]);
   // plot route for results[index]
-  showThisRouteResultOnMap(results[index]);
+  try { showThisRouteResultOnMap(results[index]); } catch { }
 }
 
 
@@ -31,10 +31,12 @@ async function showThisRouteResultOnMap(currentResult) {
     console.log(currentResult);
   }
 
-  addProjectToArray(currentResult); // this may not be doing anything
-  let projObj = objectifyRouteProject(currentResult);
-  let aProjectFeatureCollection = await queryProjectGeometry_pg(projObj);
-  localRouteGeoJSONToMap([aProjectFeatureCollection]);
+  try {
+    addProjectToArray(currentResult); // this may not be doing anything
+    let projObj = objectifyRouteProject(currentResult);
+    let aProjectFeatureCollection = await queryProjectGeometry_pg(projObj);
+    localRouteGeoJSONToMap([aProjectFeatureCollection]);
+  } catch { }
 }
 
 

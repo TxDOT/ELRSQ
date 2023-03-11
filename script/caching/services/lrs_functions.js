@@ -67,7 +67,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   lrm_indices0 = field_indices[0][0];
   lrm_indices1 = field_indices[0][1];
   rte_nm_lrm_indices = field_indices[1];
-  let currentFieldOrder = field_indices[2];
+  let currentFieldOrder = field_indices[2]; // FIXME other_indices is never redefined
 
   // make array for output
   let lrsQueryObjsArr = [];
@@ -156,15 +156,19 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     lrsQueryObj.data = refinedRowData;
 
     if (calcGeomType == "Point") {
-      let pointGeoJson = jsonFromLrsApiToPointGeoJson(refinedRowData);
-      lrsQueryObj.geojson = pointGeoJson;
+      try {
+        let pointGeoJson = jsonFromLrsApiToPointGeoJson(refinedRowData);
+        lrsQueryObj.geojson = pointGeoJson;
+      } catch { }
     }
-  
+
     if (calcGeomType == "Route") {
-      let projObj = objectifyRouteProject(refinedRowData[0]); // this objectifies the drawing data
-      let results = await queryRoadwayServiceByLine(projObj);
-      let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
-      lrsQueryObj.geojson = aProjectFeatureCollection;
+      try {
+        let projObj = objectifyRouteProject(refinedRowData[0]); // this objectifies the drawing data
+        let results = await queryRoadwayServiceByLine(projObj);
+        let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
+        lrsQueryObj.geojson = aProjectFeatureCollection;
+      } catch { }
     }
 
     lrsQueryObjsArr.push(lrsQueryObj);
@@ -436,7 +440,8 @@ async function setTableFieldsByMethod(calcGeomType, currentLrmNo, parsedInputCSV
     }
   }
 
-  other_indices = all_fields.filter(x => !lrm_indices.includes(x));
+  // other_indices = all_fields.filter(x => !lrm_indices.includes(x));
+  other_indices = all_fields; // returning all input fields
   field_indices = [[lrm_indices0, lrm_indices1], rte_nm_lrm_indices, other_indices];
 
   return field_indices;
@@ -477,6 +482,48 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
 
   return url;
 }
+
+
+async function resultsShowExport(calcGeomType, refinedData) {
+  // refinedData is similar to lrsQueryObj.data for all rows in result
+
+  setProjectGeometry(refinedData); // FIXME add results caching
+
+  if (calcGeomType == "Point") {
+    // show TABULAR results
+    // this sets prev/next event handlers to cycle through refinedData and use readOutPointResults to fill in table and plot on map
+    paginatedResultsSequence(refinedData, readOutPointResults);
+    // this fill in table using object values from refinedData, and then showThisPointResultOnMap using graphics
+    paginationUpdater("#result-pagination", refinedData);
+    fillInPointHtmlTable(refinedData[0]);
+
+    var geojson = jsonFromLrsApiToPointGeoJson(refinedData); // this creates a geoJSON feature collection of points
+    showThisPointResultOnMap(refinedData[0]);  // this plots a point graphic using esri graphics
+
+    // export data
+    tabularPointsConvertExport(refinedData);
+  }
+
+  if (calcGeomType == "Route") {
+    // show TABULAR results
+    // this sets prev/next event handlers to cycle through refinedData and use readOutRouteResults to fill in table and plot on map
+    paginatedResultsSequence(refinedData, readOutRouteResults);
+    // this fill in table using object values from refinedData, and then showThisRouteResultOnMap using geoJSON
+    paginationUpdater("#result-pagination", refinedData);
+    fillInRouteHtmlTable(refinedData[0]);
+
+    let projObj = objectifyRouteProject(refinedData[0]); // this objectifies the drawing data
+    let results = await queryRoadwayServiceByLine(projObj);
+    let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
+
+    localRouteGeoJSONToMap([aProjectFeatureCollection]); // this plots a line GeoJSONLayer on the map
+
+    // export data
+    tabularRoutesConvertExport(refinedData);
+  }
+
+}
+
 
 async function matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr, rte_nm) {
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(unfilteredArr); }
