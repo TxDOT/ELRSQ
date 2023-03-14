@@ -49,3 +49,36 @@ const outputFieldIDs = {
   LON_END: "#p_returned_LON_END"
 
 };
+
+const measureRanges = {
+  latitude: {
+    "max": 37,
+    "min": 24,
+    "step": 0.000001
+  },
+  longitude: {
+    "max": -93,
+    "min": -107,
+    "step": 0.000001
+  },
+  referencemarker: {
+    "max": 1000,
+    "min": 0,
+    "step": 1
+  },
+  displacement: {
+    "max": 2,
+    "min": 0,
+    "step": 0.001
+  },
+  dfo: {
+    "max": 1000,
+    "min": 0,
+    "step": 0.001
+  },
+  milepointmeasure: {
+    "max": 1000,
+    "min": 0,
+    "step": 0.001
+  }
+}
