@@ -1,4 +1,6 @@
 function objectifyRouteProject(currentResult) {
+  console.log("objectifyRouteProject: currentResult: ");
+  console.log(currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   projObj.BDFO = currentResult['BEGIN_RTE_DFO'];

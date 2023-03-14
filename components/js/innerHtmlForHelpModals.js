@@ -55,7 +55,6 @@ const staticForm_Help_Modal = `
                       If multiple results are returned, navigation buttons appear.
                   </p>
                   <br>
-                  <p>The input table should be formatted like this:</p>
                   <table class="table">
                       <thead>
                           <tr>
@@ -140,7 +139,6 @@ const staticRoute_Help_Modal = `
                     The routes will appear on the map, and route information will appear in the table.
                 </p>
                 <br>
-                <p>The input table should be formatted like this:</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

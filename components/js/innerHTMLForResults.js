@@ -57,13 +57,13 @@ const staticResults_Card = `
               <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
                   aria-label="Toolbar with button groups">
                   <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-                      <a id="CSVdownload" type="button" href=" " download=" " class="btn btn-primary"
+                      <a id="CSVdownload" style="display:none;" type="button" href=" " download=" " class="btn btn-primary"
                           title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</button>
   
-                      <a id="JSONdownload" href=" " download=" " class="btn btn-primary"
+                      <a id="JSONdownload" style="display:none;" href=" " download=" " class="btn btn-primary"
                           title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
   
-                      <a id="KMLdownload" type="button" href=" " download=" " class="btn btn-primary"
+                      <a id="KMLdownload" style="display:none;" type="button" href=" " download=" " class="btn btn-primary"
                           title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
                   </div>
                   <div class="btn-group mb-2" role="group" aria-label="download group">

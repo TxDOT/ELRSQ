@@ -1,6 +1,3 @@
-
-
-
 async function queryProjectGeometry_pg(projObj) {
 
   resetProjectFeatureCollections();
