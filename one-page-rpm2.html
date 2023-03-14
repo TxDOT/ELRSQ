@@ -75,6 +75,7 @@
   <script src="script/plotting/objectifyRouteProject.js"></script>
   <script src="script/plotting/queryProjectGeometry_pg.js"></script>
   <script src="script/plotting/showThisPointResultOnMap.js"></script>
+
   <script src="script/results/mqs_ExportTables.js" defer></script>
   <script src="script/results/HtmlTables.js" defer></script>
   <script src="script/results/mqs_RouteBuilder.js"></script>
@@ -420,14 +421,16 @@
           <div id="bulk-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
             role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
-              <a id="CSVdownloadModal" type="text/csv" class="btn btn-primary"
+              <a id="CSVdownloadModal" style="display:none;" type="text/csv" class="btn btn-primary tabular-download"
                 title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
 
-              <a id="JSONdownloadModal" type="application/geo+json" class="btn btn-primary"
-                title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+              <a id="JSONdownloadModal" style="display:none;" type="application/geo+json"
+                class="btn btn-primary tabular-download" title="Export a JSON file of all points"><i
+                  class="fa fa-download"></i> JSON</a>
 
-              <a id="KMLdownloadModal" type="application/vnd.google-earth.kml+xml" class="btn btn-primary"
-                title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+              <a id="KMLdownloadModal" style="display:none;" type="application/vnd.google-earth.kml+xml"
+                class="btn btn-primary tabular-download" title="Export a KML file of all points"><i
+                  class="fa fa-download"></i> KML</a>
             </div>
             <div class="btn-group mb-2" role="group" aria-label="download group">
               <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
@@ -677,7 +680,7 @@
                         <div class="col-3">
                         </div>
                         <div class="col-4">
-                          Milepoint Measure:
+                          Milepoint:
                         </div>
                         <div class="col-4">
                         </div>
@@ -806,9 +809,9 @@
                       <span class="input-group-text" id="colorsLabel">Color</span>
 
                       <select id="color" class="form-select" aria-label="line color selector">
-                        <option value="#14375a" selected="selected">TxDOT Blue</option>
+                        <option value="#14375a">TxDOT Blue</option>
                         <option value="#ff0000">Red</option>
-                        <option value="#ff8000">Orange</option>
+                        <option value="#ff8000" selected="selected">Orange</option>
                         <option value="#ffff00">Yellow</option>
                         <option value="#009933">Green</option>
                         <option value="#00bfff">Light Blue</option>
@@ -817,15 +820,15 @@
                         <option value="#ff00ff">Magenta</option>
                       </select>
 
-                      <input id="colorInput" type="color" class="form-control form-control-color" value="#14375A"
+                      <input id="colorInput" type="color" class="form-control form-control-color" value="#ff8000"
                         title="Choose your color">
                     </div>
 
                     <div class="col input-group d-flex mb-2 justify-content-center">
                       <span class="input-group-text" id="widthLabel">Width</span>
-                      <input id="width" type="number" value="1" min="1" max="5" class="form-control textentry">
+                      <input id="width" type="number" value="3" min="1" max="5" class="form-control textentry">
                       <span class="justify-content-center input-group-text" style="width: 50%;">
-                        <input id="widthInput" type="range" class="form-range" value="1" min="1" max="5">
+                        <input id="widthInput" type="range" class="form-range" value="3" min="1" max="5">
                       </span>
                     </div>
 
@@ -891,17 +894,20 @@
                   aria-valuemax="100">25%</div>
               </div>
 
-              <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+              <div id="form-convert-download-bar" class="btn-toolbar justify-content-center" role="toolbar"
+                aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
-                  <a id="CSVdownloadMain" type="text/csv" class="btn btn-primary" href="#"
+                  <a id="CSVdownloadMain" style="display:none;" type="text/csv" class="btn btn-primary tabular-download"
                     title="Export a CSV file of all points"><i class="fa fa-download"></i> CSV</a>
 
-                  <a id="JSONdownloadMain" type="application/geo+json" class="btn btn-primary" href="#"
-                    title="Export a JSON file of all points"><i class="fa fa-download"></i> JSON</a>
+                  <a id="JSONdownloadMain" style="display:none;" type="application/geo+json"
+                    class="btn btn-primary tabular-download" title="Export a JSON file of all points"><i
+                      class="fa fa-download"></i> JSON</a>
 
-                  <a id="KMLdownloadMain" type="application/vnd.google-earth.kml+xml" class="btn btn-primary" href="#"
-                    title="Export a KML file of all points"><i class="fa fa-download"></i> KML</a>
+                  <a id="KMLdownloadMain" style="display:none;" type="application/vnd.google-earth.kml+xml"
+                    class="btn btn-primary tabular-download" title="Export a KML file of all points"><i
+                      class="fa fa-download"></i> KML</a>
 
                 </div>
                 <div class="btn-group mb-2" role="group" aria-label="download group">

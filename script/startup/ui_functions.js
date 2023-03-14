@@ -105,10 +105,10 @@ function set_lrm_method_coordinates() {
   GLOBALSETTINGS.CurrentLrmNo = 1;
   resetLRMVariables();
 
-  $("#kbPointInputRouteName_optional").show();
+  $("#kbPointInputRouteName_optional").hide(); //FIXME hiding this until it is needed
   $("#kbPointInputCoordinates").show();
 
-  $("#kbRouteInputRouteName_optional").show();
+  $("#kbRouteInputRouteName_optional").hide(); //FIXME hiding this until it is needed
   $("#kbRouteInputCoordinates").show();
 
   $("#csvPointInputRouteName_optional").show();
@@ -321,6 +321,16 @@ function resetTemplates() {
   $(".referencemarker-template").hide();
 }
 
+
+function resetProgressAndDownloads(){
+  $("#bulk-convert-download-bar").hide();
+  $("#form-convert-download-bar").hide();
+  $("#bulk-convert-progress-bar").hide();
+
+  $(".tabular-download").hide();
+  $(".tabular-download").removeAttr('href');
+  $(".tabular-download").removeAttr('download');
+}
 
 
 // status indicator functions

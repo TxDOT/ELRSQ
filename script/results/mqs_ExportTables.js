@@ -2,6 +2,7 @@
 
 function tabularPointsConvertExport(resultsArr) {
   $("#bulk-convert-download-bar").show();
+  $("#form-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
   if (GLOBALSETTINGS.InputMethod == "html") {
@@ -22,9 +23,12 @@ function exportPointsToCsvFile(resultsArr, btn_suffix) {
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'pointresults.csv';
 
-  let linkElement = document.getElementById('CSVdownload' + btn_suffix);
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
+  // linkElement.setAttribute('href', dataUri);
+  // linkElement.setAttribute('download', exportFileDefaultName);
+  $("#CSVdownload" + btn_suffix).show();
+  $("#CSVdownload" + btn_suffix).attr('href', dataUri);
+  $("#CSVdownload" + btn_suffix).attr('download', exportFileDefaultName);
 }
 
 // 1b) exportPointsToGeoJsonFile
@@ -35,9 +39,12 @@ function exportPointsToGeoJsonFile(resultsArr, btn_suffix) {
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
   let exportFileDefaultName = 'pointresults.json';
 
-  let linkElement = document.getElementById('JSONdownload' + btn_suffix);
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  // let linkElement = document.getElementById('JSONdownload' + btn_suffix);
+  // linkElement.setAttribute('href', dataUri);
+  // linkElement.setAttribute('download', exportFileDefaultName);
+  $("#JSONdownload" + btn_suffix).show();
+  $("#JSONdownload" + btn_suffix).attr('href', dataUri);
+  $("#JSONdownload" + btn_suffix).attr('download', exportFileDefaultName);
 }
 
 // 1c) exportPointsToKMLFile
@@ -47,9 +54,12 @@ function exportPointsToKMLFile(resultsArr, btn_suffix) {
   let dataUri = encodeURI(kmlContent);
   let exportFileDefaultName = 'pointresults.kml';
 
-  let linkElement = document.getElementById('KMLdownload' + btn_suffix);
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  // let linkElement = document.getElementById('KMLdownload' + btn_suffix);
+  // linkElement.setAttribute('href', dataUri);
+  // linkElement.setAttribute('download', exportFileDefaultName);
+  $("#KMLdownload" + btn_suffix).show();
+  $("#KMLdownload" + btn_suffix).attr('href', dataUri);
+  $("#KMLdownload" + btn_suffix).attr('download', exportFileDefaultName);
 }
 
 
@@ -111,6 +121,7 @@ function addTags(theData, theTagType) {
 
 function tabularRoutesConvertExport(resultsArr) {
   $("#bulk-convert-download-bar").show();
+  $("#form-convert-download-bar").show();
   $("#bulk-convert-progress-bar").hide();
 
   if (GLOBALSETTINGS.InputMethod == "html") {
@@ -131,9 +142,12 @@ function exportRoutesToCsvFile(resultsArr, btn_suffix) {
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = 'routeresults.csv';
 
-  let linkElement = document.getElementById('CSVdownload' + btn_suffix);
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
+  // linkElement.setAttribute('href', dataUri);
+  // linkElement.setAttribute('download', exportFileDefaultName);
+  $("#CSVdownload" + btn_suffix).show();
+  $("#CSVdownload" + btn_suffix).attr('href', dataUri);
+  $("#CSVdownload" + btn_suffix).attr('download', exportFileDefaultName);
 }
 
 // stub
