@@ -536,16 +536,124 @@ async function resultsShowExport(calcGeomType, refinedData) {
 
 }
 
-
+/**
+ * 
+ * @param {*} calcGeomType is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} inputMethod is a value of either "html" or "table"
+ * @param {*} unfilteredArr is an array with two elements, each of which is an array
+ * @param {*} rte_nm is a user-provided Route Name
+ * @returns an object with values for each LRM conversion data point
+ *  if there is no data, each data point should be null
+ */
 async function matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr, rte_nm) {
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(unfilteredArr); }
   let matchError = 0;
+  let preBEGIN = `BEGIN_`;
+  let preEND = `END_`;
+
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
-  let notmatch0 = { ...results0 };
-  let notmatch1 = { ...results0, ...results1 };
 
-  // get right route
+  let notmatch0 = lrsDummy;
+  let notmatchbegin = Object.keys(lrsDummy).reduce((a, c) => (a[`${preBEGIN}${c}`] = lrsDummy[c], a), {});
+  Object.keys(notmatchbegin).forEach((i) => notmatchbegin[i] = null);
+  let notmatchend = Object.keys(lrsDummy).reduce((a, c) => (a[`${preEND}${c}`] = lrsDummy[c], a), {});
+  Object.keys(notmatchend).forEach((i) => notmatchend[i] = null);
+
+
+  let notmatch1 = { ...notmatchbegin, ...notmatchend }; //test //FIXME this needs the correct field names
+
+  // get right rte_nm
+  if (currentLrmNo == 1 || currentLrmNo == 3) {
+    rte_nm = await getRightRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr);
+  }
+
+
+  // match output
+  let output0 = {};
+  let output1 = {};
+  let match = {};
+
+  let index0 = results0.findIndex(function (item, i) {
+    return item.RTE_DEFN_LN_NM === rte_nm;
+  });
+
+  output0 = results0[index0];
+
+  if (calcGeomType == "Point") {
+    matchError = index0; // if index0 is -1 it will set matchError to that value
+
+    if (matchError >= 0) {
+      match = { ...output0 };
+    }
+
+    else {
+      match = notmatch0;
+    }
+  }
+
+
+  if (calcGeomType == "Route") {
+    matchError = index0; // if index0 is -1 it will set matchError to that value
+
+    if (matchError >= 0) {
+
+      let index1 = results1.findIndex(function (item, i) {
+        return item.RTE_DEFN_LN_NM === rte_nm;
+      });
+
+      matchError = index1; // if index1 is -1 it will set matchError to that value
+      output1 = results1[index1];
+
+      if (matchError >= 0) {
+        bdfo = output0['RTE_DFO'];
+        edfo = output1['RTE_DFO'];
+
+        // check min and max DFOs and transpose if necessary
+
+        let begin = {};
+        let end = {};
+
+        if (bdfo > edfo) {
+          begin = Object.keys(output1).reduce((a, c) => (a[`${preBEGIN}${c}`] = output1[c], a), {});
+          end = Object.keys(output0).reduce((a, c) => (a[`${preEND}${c}`] = output0[c], a), {});
+        } else {
+          begin = Object.keys(output0).reduce((a, c) => (a[`${preBEGIN}${c}`] = output0[c], a), {});
+          end = Object.keys(output1).reduce((a, c) => (a[`${preEND}${c}`] = output1[c], a), {});
+        }
+
+        match = { ...begin, ...end };
+      }
+
+      else {
+        match = notmatch1;
+      }
+    }
+
+    else {
+      match = notmatch1;
+    }
+
+  }
+
+  return (match);
+}
+
+
+function noMatchOutputOnRteNm(unfilteredArr) {
+  let results0 = unfilteredArr[0];
+  let output0 = results0[0];
+  console.log(output0);
+  let nomatch = { ...output0 };
+  return (nomatch);
+}
+
+
+async function getRightRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr) {
+  let results0 = unfilteredArr[0];
+  let results1 = unfilteredArr[1];
+
   if (currentLrmNo == 1) {
     let candidateRteNms = '';
     let RTENMs0 = [];
@@ -559,12 +667,33 @@ async function matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfil
       } else {
         candidateRteNms = RTENMs0;
       }
-      dropDownPopulator("#candidateRTENMs", candidateRteNms); // need to dynamically create selector
-      rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
-      rte_nm = candidateRteNms[rte_nm_Index];
+
+      // this only presents the selector if multiple candidate matches occur
+      if (candidateRteNms.length > 1) {
+        $("#kbRouteInputRouteName_optional").show();
+        dropDownPopulator("#candidateRTENMs", candidateRteNms); // need to dynamically create selector
+        rte_nm_Index = await confirmFieldChoice("#btn-candidateRTENMs", "#candidateRTENMs");
+        rte_nm = candidateRteNms[rte_nm_Index];
+      } else {
+        rte_nm = candidateRteNms[0];
+      }
+
     }
 
-  } else if (currentLrmNo == 3) {
+    if (inputMethod == "table") {
+      RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
+      if (calcGeomType == "Route") {
+        RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
+        candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
+      } else {
+        candidateRteNms = RTENMs0;
+      }
+      rte_nm = candidateRteNms[0]; // this is picking the first available candidate route name
+    }
+
+  }
+
+  if (currentLrmNo == 3) {
     let candidateRteNms = '';
     let RTENMs0 = [];
     let RTENMs1 = [];
@@ -580,76 +709,18 @@ async function matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfil
       rte_nm = candidateRteNms[0]; // this is picking the first available candidate route name
     }
 
-  }
-  // end get right route
-
-  // match output
-  let output0 = {};
-  let output1 = {};
-  let match = {};
-
-  let index0 = results0.findIndex(function (item, i) {
-    return item.RTE_DEFN_LN_NM === rte_nm;
-  });
-
-  matchError = index0; // if index0 is -1 it will set matchError to that value
-  output0 = results0[index0];
-
-  // console.log(output0);
-
-  if (calcGeomType == "Route" && matchError >= 0) {
-    let index1 = results1.findIndex(function (item, i) {
-      return item.RTE_DEFN_LN_NM === rte_nm;
-    });
-
-    matchError = index1; // if index1 is -1 it will set matchError to that value
-    output1 = results1[index1];
-    // console.log(output1);
-
-    if (matchError >= 0) {
-      bdfo = output0['RTE_DFO'];
-      edfo = output1['RTE_DFO'];
-
-      // check min and max DFOs and transpose if necessary
-      let preBEGIN = `BEGIN_`;
-      let preEND = `END_`;
-      let begin = {};
-      let end = {};
-
-      if (bdfo > edfo) {
-        begin = Object.keys(output1).reduce((a, c) => (a[`${preBEGIN}${c}`] = output1[c], a), {});
-        end = Object.keys(output0).reduce((a, c) => (a[`${preEND}${c}`] = output0[c], a), {});
-        //match = (Object.values(output1)).concat(Object.values(output0));
+    if (inputMethod == "table") {
+      RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
+      if (calcGeomType == "Route") {
+        RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
+        candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
       } else {
-        begin = Object.keys(output0).reduce((a, c) => (a[`${preBEGIN}${c}`] = output0[c], a), {});
-        end = Object.keys(output1).reduce((a, c) => (a[`${preEND}${c}`] = output1[c], a), {});
-        //match = (Object.values(output0)).concat(Object.values(output1));
+        candidateRteNms = RTENMs0;
       }
-
-      match = { ...begin, ...end };
-    } else {
-      match = notmatch1;
+      rte_nm = candidateRteNms[0]; // this is picking the first available candidate route name
     }
 
   }
 
-  else if (calcGeomType == "Point" && matchError >= 0) {
-    match = { ...output0 };
-    // match = (Object.values(output0));
-  }
-
-  else {
-    match = notmatch0;
-  }
-
-  return (match);
-}
-
-
-function noMatchOutputOnRteNm(unfilteredArr) {
-  let results0 = unfilteredArr[0];
-  let output0 = results0[0];
-  console.log(output0);
-  let nomatch = { ...output0 };
-  return (nomatch);
+  return rte_nm;
 }

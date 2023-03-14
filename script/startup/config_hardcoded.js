@@ -16,6 +16,24 @@ const lrsApiFields = [
   "distance"
 ]
 
+const lrsDummy = {
+  "LAT": null,
+  "LON": null,
+  "GID": null,
+  "RTE_DEFN_LN_NM": null,
+  "RTE_DFO": null,
+  "ROUTEID": null,
+  "ROUTENUMBER": null,
+  "RTE_PRFX_TYPE_DSCR": null,
+  "RDBD_TYPE_DSCR": null,
+  "RMRKR_PNT_NBR": null,
+  "RMRKR_DISPLACEMENT": null,
+  "CTRL_SECT_LN_NBR": null,
+  "CTRL_SECT_MPT": null,
+  "MSG": null,
+  "distance": null
+}
+
 
 const outputFieldIDs = {
   ROUTEID: "#p_returned_ROUTEID",
