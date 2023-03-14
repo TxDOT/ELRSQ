@@ -62,6 +62,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   }
 
   GreenToYellow();
+  resetProgressAndDownloads(); // this hides and resets the progress bar and download buttons
   $("#bulk-convert-progress-bar").show();
 
   lrm_indices0 = field_indices[0][0];
@@ -466,8 +467,9 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
   let index2 = (typeof lrm_indices !== 'undefined') ? lrm_indices[2] : 2;
 
   if (currentLrmNo == 1) {
-    lat = coordinateArr[index0];
-    lon = coordinateArr[index1];
+    //console.log(measureRanges.latitude.min);
+    lat = coordinateArr[index0] || -90;
+    lon = coordinateArr[index1] || 0;
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
   }
 

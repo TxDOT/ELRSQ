@@ -428,8 +428,9 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
   let index2 = (typeof lrm_indices !== 'undefined') ? lrm_indices[2] : 2;
 
   if (currentLrmNo == 1) {
-    lat = coordinateArr[index0];
-    lon = coordinateArr[index1];
+    //console.log(measureRanges.latitude.min);
+    lat = coordinateArr[index0] || -90;
+    lon = coordinateArr[index1] || 0;
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs1?Lat=${lat}&Lon=${lon}`;
   }
 
