@@ -128,7 +128,6 @@ function clearForms() {
   $("#style-form").trigger("reset");
 }
 
-
 function resetLRMVariables() {
   clearResults();
   clearResultsFromMap();

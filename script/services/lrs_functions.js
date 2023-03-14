@@ -62,6 +62,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   }
 
   GreenToYellow();
+  resetProgressAndDownloads(); // this hides and resets the progress bar and download buttons
   $("#bulk-convert-progress-bar").show();
 
   lrm_indices0 = field_indices[0][0];
@@ -140,6 +141,9 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       // end get right route
       // assemble data
 
+      console.log("resultsObj");
+      console.log(resultsObj);
+
       refinedRowData.push({ ...otherAttributesObj, ...resultsObj });
       refinedData.push({ ...otherAttributesObj, ...resultsObj });
 
@@ -154,6 +158,10 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       }
     }
     // end return single geom filtered on route name, or return multiple results
+
+
+    console.log("refinedRowData");
+    console.log(refinedRowData);
 
     lrsQueryObj.data = refinedRowData;
 
@@ -177,14 +185,18 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
 
 
     updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
+    console.log("lrsQueryObj");
     console.log(lrsQueryObj);
   }
-  // end process rows
-
+  // end process rows for loop
+  console.log("process rows for loop complete");
+  console.log("lrsQueryObjsArr");
   console.log(lrsQueryObjsArr);
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
+  console.log("refinedData");
+  console.log(refinedData);
   resultsShowExport(calcGeomType, refinedData);
 
   YellowToGreen();

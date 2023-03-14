@@ -140,6 +140,9 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       // end get right route
       // assemble data
 
+      console.log("resultsObj");
+      console.log(resultsObj);
+
       refinedRowData.push({ ...otherAttributesObj, ...resultsObj });
 
     } else {
@@ -152,6 +155,10 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       }
     }
     // end return single geom filtered on route name, or return multiple results
+
+
+    console.log("refinedRowData");
+    console.log(refinedRowData);
 
     lrsQueryObj.data = refinedRowData;
 
@@ -175,11 +182,16 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     refinedData = refinedData.concat(refinedRowData);
 
     updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
+    console.log("lrsQueryObj");
     console.log(lrsQueryObj);
   }
-  // end process rows
-
+  // end process rows for loop
+  console.log("process rows for loop complete");
+  console.log("lrsQueryObjsArr");
   console.log(lrsQueryObjsArr);
+  console.log("refinedData");
+  console.log(refinedData);
+
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
@@ -210,8 +222,6 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     // export data
     tabularRoutesConvertExport(refinedData);
   }
-
-
 
   if (calcGeomType == "Point") {
     var geojson = jsonFromLrsApiToPointGeoJson(refinedData); // this creates a geoJSON feature collection of points
