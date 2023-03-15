@@ -164,7 +164,7 @@ function setVertexNumbers(feature, myFrom, myTo) {
  * @param {*} myPrjAttributes 
  * @returns a feature collection
  */
-function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) { //FIXME make this two separate functions
+function _clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) { 
   if (GLOBALSETTINGS.PrintIterations == 1) {
     console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
   }

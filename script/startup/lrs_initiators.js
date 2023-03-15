@@ -13,7 +13,12 @@ $(document).ready(function () {
 
   $(".convert").on('click', function () {
     GLOBALSETTINGS.InputMethod = "html";
-    lrsSingleQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod);
+    let convertSessionParams = new Object();
+    convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
+    convertSessionParams.currentLrmNo = GLOBALSETTINGS.CurrentLrmNo;
+    convertSessionParams.inputMethod = GLOBALSETTINGS.InputMethod;
+
+    lrsSingleQuery(convertSessionParams);
   });
 
 
@@ -26,21 +31,30 @@ $(document).ready(function () {
     event.preventDefault();
 
     const file = event.dataTransfer.files[0];
-    const reader = new FileReader();
+    // const reader = new FileReader(); // test
 
     const fileContents = await readFile(file);
+
     GLOBALSETTINGS.InputMethod = "table";
-    lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash_KG");
+    let convertSessionParams = new Object();
+    convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
+    convertSessionParams.currentLrmNo = GLOBALSETTINGS.CurrentLrmNo;
+    convertSessionParams.inputMethod = GLOBALSETTINGS.InputMethod;
+    lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash_KG");
 
   });
 
   $(".uploadCsv-bulk").on('change', async function (e) {
-    GreenToYellow();
+
     const fileContents = await readFile(e.target.files[0])
-    YellowToGreen();
+    
     GLOBALSETTINGS.InputMethod = "table";
-    lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash_KG");
-    // lrsBulkQuery(GLOBALSETTINGS.CalcGeomType, GLOBALSETTINGS.CurrentLrmNo, GLOBALSETTINGS.InputMethod, fileContents, "AAdddd_dash");
+    let convertSessionParams = new Object();
+    convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
+    convertSessionParams.currentLrmNo = GLOBALSETTINGS.CurrentLrmNo;
+    convertSessionParams.inputMethod = GLOBALSETTINGS.InputMethod;
+    lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash_KG");
+    //// lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash");
   });
 
 });
