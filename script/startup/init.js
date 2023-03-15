@@ -26,6 +26,7 @@ function resetProjectDrawParameters() {
 }
 
 function resetProjectGeometry() {
+  //WATCH this sets a global variable
   GLOBALPROJECTDATA.ProjectGeometry = [];
 }
 

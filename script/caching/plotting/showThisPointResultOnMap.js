@@ -1,3 +1,10 @@
+
+/**
+ * 
+ * plots a point on the map as a graphic
+ * 
+ * @param {*} result input is a point object with lat/lon attributes
+ */
 function showThisPointResultOnMap(result) {
   //go through each result and add on map
   require(["esri/Graphic"], (Graphic) => {

@@ -1,5 +1,12 @@
-// 1bi) jsonFromLrsApiToPointGeoJson
+// 1bi) json-FromLrsApi-ToPointGeoJson
+
+/**
+ * 
+ * @param {*} resultsArr 
+ * @returns a geoJSON feature collection of points
+ */
 function jsonFromLrsApiToPointGeoJson(resultsArr) {
+  //WATCH this is on the data to geojson to map chain
 
   var geojson = {
     type: "FeatureCollection",
@@ -31,7 +38,33 @@ function jsonFromLrsApiToPointGeoJson(resultsArr) {
 }
 
 
-function jsonFromLrsApiToPointGeoJson_singular(resultsArr) {
+function jsonFromLrsApiToPointGeoJson_singular_B(myPrjAttributes) {
+  //WATCH this could be on the data to geojson to map chain
+
+  let aGeometryObj = new Object();
+  aGeometryObj.type = "Point";
+  aGeometryObj.coordinates = [myPrjAttributes.LON, myPrjAttributes.LAT];
+
+  let aFeatureObj = new Object();
+  aFeatureObj.type = "Feature";
+  aFeatureObj.properties = myPrjAttributes;
+  aFeatureObj.geometry = aGeometryObj;
+  aFeatureObj.id = "abc123";
+
+  let aFeatureCollectionArray = [(aFeatureObj)];
+
+  let metadata = [];
+  let aFeatureCollectionObj = new Object();
+  aFeatureCollectionObj.type = "FeatureCollection";
+  aFeatureCollectionObj.metadata = metadata;
+  aFeatureCollectionObj.features = aFeatureCollectionArray;
+
+  return aFeatureCollectionObj;
+}
+
+
+// this is never used
+function json_FromLrsApi_ToPointGeoJson_singular(resultsArr) {
 
   var geojson = {
     type: "FeatureCollection",
@@ -60,7 +93,8 @@ function jsonFromLrsApiToPointGeoJson_singular(resultsArr) {
 }
 
 
-function jsonFromLrsApiToPointGeoJson_B(resultsArr) {
+// this is never used
+function json_FromLrsApi_ToPointGeoJson_B(resultsArr) {
 
   let aFeatureCollectionArray = [];
 
@@ -68,7 +102,7 @@ function jsonFromLrsApiToPointGeoJson_B(resultsArr) {
     let aGeometryObj = new Object();
     aGeometryObj.type = "Point";
     aGeometryObj.coordinates = [resultsArr[i].LON, resultsArr[i].LAT];
-  
+
     let aFeatureObj = new Object();
     aFeatureObj.type = "Feature";
     aFeatureObj.properties = resultsArr;
@@ -86,29 +120,3 @@ function jsonFromLrsApiToPointGeoJson_B(resultsArr) {
   return aFeatureCollectionObj;
 
 }
-
-
-function jsonFromLrsApiToPointGeoJson_singular_B(myPrjAttributes) {
-
-  let aGeometryObj = new Object();
-  aGeometryObj.type = "Point";
-  aGeometryObj.coordinates = [myPrjAttributes.LON, myPrjAttributes.LAT];
-
-  let aFeatureObj = new Object();
-  aFeatureObj.type = "Feature";
-  aFeatureObj.properties = myPrjAttributes;
-  aFeatureObj.geometry = aGeometryObj;
-  aFeatureObj.id = "abc123";
-
-  let aFeatureCollectionArray = [(aFeatureObj)];
-
-  let metadata = [];
-  let aFeatureCollectionObj = new Object();
-  aFeatureCollectionObj.type = "FeatureCollection";
-  aFeatureCollectionObj.metadata = metadata;
-  aFeatureCollectionObj.features = aFeatureCollectionArray;
-
-  return aFeatureCollectionObj;
-}
-
-

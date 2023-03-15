@@ -9,16 +9,16 @@
  * @param {*} constrainToRouteName a binary value of whether results should be filtered to match on route name
  * @param {*} rtenmformat an alphanumeric format for the input route name
  */
-async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryParams, field_indicesObj) {
+async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQuery, field_indicesObj) {
   resetGraphics();
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearResultsFromMap();
+    clearResultsFromMap(); //WATCH map reset
   }
 
   GreenToYellow();
-  resetProgressAndDownloads(); // this hides and resets the progress bar and download buttons
+  resetProgressAndDownloads(); // WATCH this hides and resets the progress bar and download buttons
   $("#bulk-convert-progress-bar").show();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -115,9 +115,15 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
   console.log("process rows for loop complete");
 
   let flattenedQueryObjData = lrsQueryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
+  //WATCH where does this get stored?
+
+  console.log(lrsQueryObjsArr);
+  //WATCH what happens to the rest of lrsQueryObjsArr ???
+
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
 
-  resultsShowExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
+  resultsShow(convertSessionParams.calcGeomType, flattenedQueryObjData);
+  resultsExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
 
   YellowToGreen();
 }
@@ -128,9 +134,10 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-function resultsShowExport(calcGeomType, formEntryReturnedData) {
+function resultsShow(calcGeomType, formEntryReturnedData) {
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
+  // WATCH sets GLOBALPROJECTDATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     // show TABULAR results
@@ -139,8 +146,7 @@ function resultsShowExport(calcGeomType, formEntryReturnedData) {
     // this fill in table using object values from formEntryReturnedData, and then showThisPointResultOnMap using graphics
     readOutPointResults(formEntryReturnedData);
 
-    // export data
-    tabularPointsConvertExport(formEntryReturnedData);
+
   }
 
   if (calcGeomType == "Route") {
@@ -150,9 +156,27 @@ function resultsShowExport(calcGeomType, formEntryReturnedData) {
     // this fill in table using object values from formEntryReturnedData, and then showThisRouteResultOnMap using geoJSON
     readOutRouteResults(formEntryReturnedData);
 
-    // export data
-    tabularRoutesConvertExport(formEntryReturnedData);
+
   }
 
 }
 
+
+
+
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} formEntryReturnedData 
+ */
+function resultsExport(calcGeomType, formEntryReturnedData) {
+
+  if (calcGeomType == "Point") {
+    tabularPointsConvertExport(formEntryReturnedData);
+  }
+
+  if (calcGeomType == "Route") {
+    tabularRoutesConvertExport(formEntryReturnedData);
+  }
+
+}

@@ -1,6 +1,11 @@
+/**
+ * 
+ * @param {*} currentResult is an object with route characteristics
+ * @returns a project object consisting of route, DFOs, and drawing characteristics
+ */
 function objectifyRouteProject(currentResult) {
-  console.log("objectifyRouteProject: currentResult: ");
-  console.log(currentResult);
+  //WATCH this is on the data to geojson to map chain
+  console.log("objectify-Route-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
@@ -11,19 +16,17 @@ function objectifyRouteProject(currentResult) {
 
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     let projString = JSON.stringify(projObj);
-    console.log("objectifyRouteProject: ");
-    console.log(projString);
+    console.log("objectify-Route-Project: " + projString);
   }
 
   return projObj;
-
 }
 
 
 
 function objectifyPointProject(currentResult) {
-  console.log("objectifyPointProject: currentResult: ");
-  console.log(currentResult);
+  //WATCH this could be on the data to geojson to map chain
+  console.log("objectify-Point-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['RTE_DEFN_LN_NM'];
   projObj.LAT = currentResult['LAT'];
@@ -34,10 +37,8 @@ function objectifyPointProject(currentResult) {
 
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     let projString = JSON.stringify(projObj);
-    console.log("objectifyPointProject: ");
-    console.log(projString);
+    console.log("objectify-Point-Project: " + projString);
   }
 
   return projObj;
-
 }

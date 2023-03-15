@@ -20,12 +20,11 @@ async function lrsBulkQuery(convertSessionParams, fileContents, rtenmformat) {
   let field_indicesObj = await setTableFieldsByMethod(convertSessionParams, parsedInputCSV);
   let rte_nm_lrm_indices = field_indicesObj.rte_nm_lrm_indices;
 
-
   if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") {
     for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
       parsedInputCSV[rowToQuery][rte_nm_lrm_indices] = fixThisVerySpecificTextFormat(parsedInputCSV[rowToQuery][rte_nm_lrm_indices]);
     }
   }
 
-  queryLrsByArray(convertSessionParams, parsedInputCSV, formEntryParams, field_indicesObj);
+  queryLrsByArray(convertSessionParams, formEntryParams, parsedInputCSV, field_indicesObj);
 }

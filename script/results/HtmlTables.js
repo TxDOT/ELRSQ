@@ -1,61 +1,9 @@
-/** determine pagination and fill in HTML table results
- * 
- * @param {*} results 
- * @param {*} navIndex 
- */
-function readOutPointResults(results, navIndex) {
-  const index = navIndex ? navIndex - 1 : 0;
-
-  //insertPagination(currentPagination, results);
-  paginationUpdater("#result-pagination", results);
-
-  fillInPointHtmlTable(results[index]);
-  // plot point for results[index]
-  try { showThisPointResultOnMap(results[index]); } catch { }
-}
-
-
-/** determine pagination and fill in HTML table results
- * 
- * @param {*} results 
- * @param {*} navIndex 
- */
-function readOutRouteResults(results, navIndex) {
-  const index = navIndex ? navIndex - 1 : 0;
-
-  //insertPagination(currentPagination, results);
-  paginationUpdater("#result-pagination", results);
-
-  fillInRouteHtmlTable(results[index]);
-  // plot route for results[index]
-  try { showThisRouteResultOnMap(results[index]); } catch { }
-}
-
-
-/**
- * 
- * @param {*} currentResult 
- */
-async function showThisRouteResultOnMap(currentResult) {
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("currentResult: ");
-    console.log(currentResult);
-  }
-
-  try {
-    addProjectToArray(currentResult); // this may not be doing anything
-    let projObj = objectifyRouteProject(currentResult);
-    let aProjectFeatureCollection = await queryProjectGeometry_pg(projObj);
-    localRouteGeoJSONToMap([aProjectFeatureCollection]);
-  } catch { }
-}
-
-
 /**
  * 
  * @param {*} currentResult 
  */
 function fillInPointHtmlTable(currentResult) {
+  //WATCH this should not affect caching
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM).html(currentResult['RTE_DEFN_LN_NM']);
@@ -78,6 +26,7 @@ function fillInPointHtmlTable(currentResult) {
  * @param {*} currentResult 
  */
 function fillInRouteHtmlTable(currentResult) {
+  //WATCH this should not affect caching
   // fill in HTML results
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);

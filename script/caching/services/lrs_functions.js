@@ -9,16 +9,16 @@
  * @param {*} constrainToRouteName a binary value of whether results should be filtered to match on route name
  * @param {*} rtenmformat an alphanumeric format for the input route name
  */
-async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryParams, field_indicesObj) {
+async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQuery, field_indicesObj) {
   resetGraphics();
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearResultsFromMap();
+    clearResultsFromMap(); //WATCH map reset -- this only removes graphics
   }
 
   GreenToYellow();
-  resetProgressAndDownloads(); // this hides and resets the progress bar and download buttons
+  resetProgressAndDownloads(); // WATCH this hides and resets the progress bar and download buttons
   $("#bulk-convert-progress-bar").show();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -94,7 +94,7 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
 
     if (convertSessionParams.calcGeomType == "Point") {
       try {
-        let pointGeoJson = jsonFromLrsApiToPointGeoJson(lrsQueryObj.data);
+        let pointGeoJson = jsonFromLrsApiToPointGeoJson(lrsQueryObj.data); // WATCH this creates a geoJSON feature collection of points
         lrsQueryObj.geojson = pointGeoJson;
 
         /**
@@ -107,9 +107,9 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
 
     if (convertSessionParams.calcGeomType == "Route") {
       try {
-        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // this objectifies the drawing data
-        let results = await queryRoadwayServiceByLine(projObj);
-        let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
+        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data
+        let results = await queryRoadwayServiceByLine(projObj); // WATCH this returns line geometry
+        let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // WATCH this creates a geoJSON feature collection of routes
         lrsQueryObj.geojson = aProjectFeatureCollection;
       } catch { }
     }
@@ -121,9 +121,15 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
   console.log("process rows for loop complete");
 
   let flattenedQueryObjData = lrsQueryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
+  //WATCH where does this get stored?
+
+  console.log(lrsQueryObjsArr);
+  //WATCH what happens to the rest of lrsQueryObjsArr ???
+
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
 
-  resultsShowExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
+  resultsShow(convertSessionParams.calcGeomType, flattenedQueryObjData);
+  resultsExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
 
   YellowToGreen();
 }
@@ -134,9 +140,10 @@ async function queryLrsByArray(convertSessionParams, arrayToQuery, formEntryPara
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-async function resultsShowExport(calcGeomType, formEntryReturnedData) {
+async function resultsShow(calcGeomType, formEntryReturnedData) {
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
+  // WATCH sets GLOBALPROJECTDATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     // show TABULAR results
@@ -146,11 +153,15 @@ async function resultsShowExport(calcGeomType, formEntryReturnedData) {
     paginationUpdater("#result-pagination", formEntryReturnedData);
     fillInPointHtmlTable(formEntryReturnedData[0]);
 
+
+    /**
+  let projObj = objectifyPointProject(lrsQueryObj.data[0]); // this objectifies the drawing data
+  let aProjectFeatureCollection = jsonFromLrsApiToPointGeoJson_singular_B(projObj);
+  lrsQueryObj.geojson = aProjectFeatureCollection;
+*/
+
     var geojson = jsonFromLrsApiToPointGeoJson(formEntryReturnedData); // this creates a geoJSON feature collection of points
     showThisPointResultOnMap(formEntryReturnedData[0]);  // this plots a point graphic using esri graphics
-
-    // export data
-    tabularPointsConvertExport(formEntryReturnedData);
   }
 
   if (calcGeomType == "Route") {
@@ -165,11 +176,27 @@ async function resultsShowExport(calcGeomType, formEntryReturnedData) {
     let results = await queryRoadwayServiceByLine(projObj);
     let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
 
-    localRouteGeoJSONToMap([aProjectFeatureCollection]); // this plots a line GeoJSONLayer on the map
-
-    // export data
-    tabularRoutesConvertExport(formEntryReturnedData);
+    localRouteGeoJSONToMap([aProjectFeatureCollection]); // WATCH this plots a line GeoJSONLayer on the map
   }
 
 }
 
+
+
+
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} formEntryReturnedData 
+ */
+function resultsExport(calcGeomType, formEntryReturnedData) {
+
+  if (calcGeomType == "Point") {
+    tabularPointsConvertExport(formEntryReturnedData);
+  }
+
+  if (calcGeomType == "Route") {
+    tabularRoutesConvertExport(formEntryReturnedData);
+  }
+
+}

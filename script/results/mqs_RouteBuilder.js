@@ -5,6 +5,8 @@
  * @returns  a feature collection
  */
 function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, myPrjAttributes) {
+  //WATCH this is on the data to geojson to map chain
+
   //// multiple results are orderByFields=BEGIN_DFO
 
   //FIXME move this out of this function
@@ -164,7 +166,7 @@ function setVertexNumbers(feature, myFrom, myTo) {
  * @param {*} myPrjAttributes 
  * @returns a feature collection
  */
-function _clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) { 
+function _clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   if (GLOBALSETTINGS.PrintIterations == 1) {
     console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
   }

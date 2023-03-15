@@ -30,5 +30,5 @@ async function lrsSingleQuery(convertSessionParams) {
     coordinateArr.push(coordinateArr0);
   }
 
-  queryLrsByArray(convertSessionParams, coordinateArr, formEntryParams, field_indicesObj);
+  queryLrsByArray(convertSessionParams, formEntryParams, coordinateArr, field_indicesObj);
 }

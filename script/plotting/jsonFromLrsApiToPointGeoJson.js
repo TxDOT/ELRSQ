@@ -1,4 +1,4 @@
-// 1bi) jsonFromLrsApiToPointGeoJson
+// 1bi) json-FromLrsApi-ToPointGeoJson
 
 /**
  * 

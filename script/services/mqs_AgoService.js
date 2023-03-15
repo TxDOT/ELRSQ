@@ -123,21 +123,19 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
  * @returns 
  */
 async function queryRoadwayServiceByLine(myProjectData) {
+  //WATCH this is on the data to geojson to map chain
+
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +
     "'&returnGeometry=true&outSR=4326&geometryPrecision=6&returnM=true&orderByFields=BEGIN_DFO"
 
-  if (GLOBALSETTINGS.PrintUrls == 1) {
-    console.log("queryRoadwayServiceByLine using url: " + url);
-  }
+  if (GLOBALSETTINGS.PrintUrls == 1) { console.log("query-Roadway-Service-By-Line using url: " + url); }
 
   GreenToYellow();
   const results = await queryRoadwayService(url);
   YellowToGreen();
 
-  if (GLOBALSETTINGS.PrintIterations == 1) {
-    console.log("queryRoadwayServiceByLine feature count: " + results.features.length);
-  }
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log("query-Roadway-Service-By-Line feature count: " + results.features.length); }
 
   return results;
 }

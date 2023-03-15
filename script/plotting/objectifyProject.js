@@ -4,8 +4,8 @@
  * @returns a project object consisting of route, DFOs, and drawing characteristics
  */
 function objectifyRouteProject(currentResult) {
-  //console.log("objectifyRouteProject: currentResult: ");
-  //console.log(currentResult);
+  //WATCH this is on the data to geojson to map chain
+  //console.log("objectify-Route-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
