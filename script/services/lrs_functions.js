@@ -1,3 +1,12 @@
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} inputMethod is a value of either "html" or "table"
+ * 
+ * adds values to coordinateArr
+ * starts queryLrsByArray
+ */
 async function lrsSingleQuery(calcGeomType, currentLrmNo, inputMethod) {
   let headerRowPresent = 0;
   let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
@@ -26,6 +35,17 @@ async function lrsSingleQuery(calcGeomType, currentLrmNo, inputMethod) {
 }
 
 
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} inputMethod is a value of either "html" or "table"
+ * @param {*} fileContents CSV file to be parsed
+ * @param {*} rtenmformat an alphanumeric format for the input route name
+ * 
+ * parses CSV file
+ * starts queryLrsByArray
+ */
 async function lrsBulkQuery(calcGeomType, currentLrmNo, inputMethod, fileContents, rtenmformat) {
   let headerRowPresent = 1;
   let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
@@ -52,6 +72,17 @@ async function lrsBulkQuery(calcGeomType, currentLrmNo, inputMethod, fileContent
 }
 
 
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} inputMethod is a value of either "html" or "table"
+ * @param {*} arrayToQuery 
+ * @param {*} headerRowPresent 
+ * @param {*} field_indices 
+ * @param {*} constrainToRouteName a binary value of whether results should be filtered to match on route name
+ * @param {*} rtenmformat an alphanumeric format for the input route name
+ */
 async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQuery, headerRowPresent, field_indices, constrainToRouteName, rtenmformat) {
   // console.log(constrainToRouteName + ", " + rtenmformat);
   resetGraphics();
@@ -203,6 +234,12 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
 }
 
 
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @returns an array with field indices and names
+ */
 function setIndicesByLrmAndGeom(calcGeomType, currentLrmNo) {
   let field_indices = [];
   let lrm_indices = [];
@@ -273,6 +310,16 @@ function setIndicesByLrmAndGeom(calcGeomType, currentLrmNo) {
 }
 
 // this changes the DOM
+
+/**
+ * 
+ * uses drop downs to get field names
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} parsedInputCSV 
+ * @returns 
+ */
 async function setTableFieldsByMethod(calcGeomType, currentLrmNo, parsedInputCSV) {
   let field_indices = [];
   // let lrm_indices = [];
@@ -420,6 +467,13 @@ async function setTableFieldsByMethod(calcGeomType, currentLrmNo, parsedInputCSV
 }
 
 
+/**
+ * 
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} coordinateArr 
+ * @param {*} lrm_indices 
+ * @returns a url for the LRS query
+ */
 function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
   let url = '';
 
@@ -457,6 +511,11 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
 }
 
 
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} refinedData 
+ */
 function resultsShowExport(calcGeomType, refinedData) {
   // refinedData is similar to lrsQueryObj.data for all rows in result
 
@@ -591,6 +650,11 @@ async function matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfil
 }
 
 
+/**
+ * 
+ * @param {*} unfilteredArr 
+ * @returns 
+ */
 function noMatchOutputOnRteNm(unfilteredArr) {
   let results0 = unfilteredArr[0];
   let output0 = results0[0];
@@ -600,6 +664,14 @@ function noMatchOutputOnRteNm(unfilteredArr) {
 }
 
 
+/**
+ * 
+ * @param {*} calcGeomType  is a value of either "Point" or "Route"
+ * @param {*} currentLrmNo is a value of 1-4 representing which linear referencing method is used
+ * @param {*} inputMethod is a value of either "html" or "table"
+ * @param {*} unfilteredArr an array containing results from 1 or 2 queries
+ * @returns a route name
+ */
 async function getRightRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr) {
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
