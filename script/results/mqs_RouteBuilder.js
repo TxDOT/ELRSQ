@@ -29,22 +29,60 @@ function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, myPrjAttributes) {
   }
 
   //vertex numbers
+  /**
+    var returnedFeatureGeom = [];
+    for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
+      var returnedLineString = [];
+      let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
+      if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
+        for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
+          returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);
+        }
+        returnedFeatureGeom.push(returnedLineString);
+      }
+    }
+  */
+
+  //console.log("myRoadwayQueryResults.features.length");
+  //console.log(myRoadwayQueryResults.features.length);
+
   var returnedFeatureGeom = [];
   for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
-    var returnedLineString = [];
-    let vertexNumbers = setVertexNumbers(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
-    if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
-      for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
-        returnedLineString.push(myRoadwayQueryResults.features[aFeature].geometry.paths[0][vertex]);
-      }
-      returnedFeatureGeom.push(returnedLineString);
-    }
+    let returnedLineStrings = makeLineString(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
+    returnedFeatureGeom = returnedFeatureGeom.concat(returnedLineStrings);
+    //console.log("concat returnedLineStrings: ");
+    //console.log(returnedLineStrings);
+    //console.log("returnedFeatureGeom");
+    //console.log(returnedFeatureGeom);
   }
 
   //Clipping to desired From and To
-  let aFeatureCollectionObj = clipFromToAndMakeGeoJson(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
-  return aFeatureCollectionObj;
+  //let aFeatureCollectionObj = clipFromToAndMakeGeoJson(returnedFeatureGeom, theFrom, theTo, myPrjAttributes);
+  //return aFeatureCollectionObj;
+
+  let clippedLine = clipLine(returnedFeatureGeom, theFrom, theTo);
+  let flatClippedLine = clippedLine.flat();
+  //return makeRouteGeoJson(clippedLine, myPrjAttributes);
+  return makeRouteGeoJson([flatClippedLine], myPrjAttributes);
+
 }
+
+
+function makeLineString(feature, myFrom, myTo) {
+  let returnedLineStrings = [];
+  let returnedLineString = [];
+  let vertexNumbers = setVertexNumbers(feature, myFrom, myTo);
+  if (!(vertexNumbers.vertexBeginNumber == vertexNumbers.vertexEndNumber)) {
+    for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
+      returnedLineString.push(feature.geometry.paths[0][vertex]);
+    }
+    //console.log("pushing line string: ");
+    //console.log(returnedLineString);
+    returnedLineStrings.push(returnedLineString);
+  }
+  return returnedLineStrings;
+}
+
 
 
 /**
@@ -126,8 +164,7 @@ function setVertexNumbers(feature, myFrom, myTo) {
  * @param {*} myPrjAttributes 
  * @returns a feature collection
  */
-function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
-  let aFeatureCollectionArray = [];
+function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) { //FIXME make this two separate functions
   if (GLOBALSETTINGS.PrintIterations == 1) {
     console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
   }
@@ -146,6 +183,8 @@ function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttr
   myReturnedFeatureGeom[0].unshift(newBeginPoint);
   myReturnedFeatureGeom.last().pop();
   myReturnedFeatureGeom.last().push(newEndPoint);
+
+  let aFeatureCollectionArray = [];
 
   for (var b = 0; b < myReturnedFeatureGeom.length; b++) {
 
@@ -170,6 +209,64 @@ function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttr
 
   return aFeatureCollectionObj;
 }
+
+
+
+
+function clipLine(myReturnedFeatureGeom, myFrom, myTo) {
+  if (GLOBALSETTINGS.PrintIterations == 1) {
+    console.log("clipFromToAndMakeGeoJson myReturnedFeatureGeom.length : " + myReturnedFeatureGeom.length);
+  }
+
+  //Clipping to desired From
+  var newBeginPoint = [];
+  Array.prototype.push.apply(newBeginPoint, locatePointOnLine(myReturnedFeatureGeom[0], myFrom));
+  newBeginPoint.push(myFrom);
+  myReturnedFeatureGeom[0].shift();
+  myReturnedFeatureGeom[0].unshift(newBeginPoint);
+
+
+  //Clipping to desired To
+  var newEndPoint = [];
+  Array.prototype.push.apply(newEndPoint, locatePointOnLine(myReturnedFeatureGeom.last(), myTo));
+  newEndPoint.push(myTo);
+  myReturnedFeatureGeom.last().pop();
+  myReturnedFeatureGeom.last().push(newEndPoint);
+
+  //console.log(myReturnedFeatureGeom);
+  return myReturnedFeatureGeom;
+}
+
+
+
+function makeRouteGeoJson(myReturnedFeatureGeom, myPrjAttributes) {
+
+  let aFeatureCollectionArray = [];
+
+  for (var b = 0; b < myReturnedFeatureGeom.length; b++) {
+
+    let aGeometryObj = new Object();
+    aGeometryObj.type = "LineString";
+    aGeometryObj.coordinates = myReturnedFeatureGeom[b];
+
+    let aFeatureObj = new Object();
+    aFeatureObj.type = "Feature";
+    aFeatureObj.properties = myPrjAttributes;
+    aFeatureObj.geometry = aGeometryObj;
+    aFeatureObj.id = "abc123";
+
+    aFeatureCollectionArray.push(aFeatureObj);
+  }
+
+  let metadata = [];
+  let aFeatureCollectionObj = new Object();
+  aFeatureCollectionObj.type = "FeatureCollection";
+  aFeatureCollectionObj.metadata = metadata;
+  aFeatureCollectionObj.features = aFeatureCollectionArray;
+
+  return aFeatureCollectionObj;
+}
+
 
 
 

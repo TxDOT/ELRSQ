@@ -183,6 +183,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       try {
         let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // this objectifies the drawing data
         let results = await queryRoadwayServiceByLine(projObj);
+        console.log(results);
         let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
         lrsQueryObj.geojson = aProjectFeatureCollection;
       } catch { }

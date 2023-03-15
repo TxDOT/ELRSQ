@@ -2,7 +2,7 @@ GLOBALSETTINGS.CalcGeomType = 'Point'; // these are not always valid
 GLOBALSETTINGS.CurrentLrmNo = 2; // these are not always valid
 
 GLOBALSETTINGS.UseLoadIndicator = 1;
-GLOBALSETTINGS.PrintUrls = 0;
+GLOBALSETTINGS.PrintUrls = 1;
 GLOBALSETTINGS.PrintIterations = 0;
 GLOBALSETTINGS.PrintProjGeom = 0;
 GLOBALSETTINGS.DemoMode = 0;
