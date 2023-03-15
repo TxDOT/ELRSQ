@@ -11,10 +11,10 @@ async function lrsSingleQuery(calcGeomType, currentLrmNo, inputMethod) {
   let headerRowPresent = 0;
   let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
   let rtenmformat = "AAdddd_dash_KG";
-  let rte_nm_lrm_indices = [];
+  //let rte_nm_lrm_indices = [];
 
   let field_indices = setIndicesByLrmAndGeom(calcGeomType, currentLrmNo);
-  rte_nm_lrm_indices = field_indices[1];
+  //rte_nm_lrm_indices = field_indices[1];
   let currentFieldOrder = field_indices[2];
 
   let coordinateArr = [];
@@ -48,19 +48,20 @@ async function lrsSingleQuery(calcGeomType, currentLrmNo, inputMethod) {
  */
 async function lrsBulkQuery(calcGeomType, currentLrmNo, inputMethod, fileContents, rtenmformat) {
   let headerRowPresent = 1;
-  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
-  let lrm_indices0 = [];
-  let lrm_indices1 = [];
-  let rte_nm_lrm_indices = [];
-  let other_indices = [];
+  //let constrainToRouteName = (calcGeomType == "Route") ? 1 : 0;
+  let constrainToRouteName = (calcGeomType == "Route") ? 1 : 1; // changing this so bulk points are constrained as well
+  //let lrm_indices0 = [];
+  //let lrm_indices1 = [];
+  //let rte_nm_lrm_indices = [];
+  //let other_indices = [];
 
   let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
 
   let field_indices = await setTableFieldsByMethod(calcGeomType, currentLrmNo, parsedInputCSV);
-  lrm_indices0 = field_indices[0][0];
-  lrm_indices1 = field_indices[0][1];
-  rte_nm_lrm_indices = field_indices[1];
-  other_indices = field_indices[2];
+  //let lrm_indices0 = field_indices[0][0];
+  //let lrm_indices1 = field_indices[0][1];
+  let rte_nm_lrm_indices = field_indices[1];
+  //let other_indices = field_indices[2];
 
   if (typeof rte_nm_lrm_indices !== 'undefined' && rtenmformat == "AAdddd") {
     for (let rowToQuery = 1; rowToQuery < parsedInputCSV.length; rowToQuery++) {
@@ -96,10 +97,10 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
   resetProgressAndDownloads(); // this hides and resets the progress bar and download buttons
   $("#bulk-convert-progress-bar").show();
 
-  lrm_indices0 = field_indices[0][0];
-  lrm_indices1 = field_indices[0][1];
-  rte_nm_lrm_indices = field_indices[1];
-  let currentFieldOrder = field_indices[2]; // FIXME other_indices is never redefined
+  let lrm_indices0 = field_indices[0][0];
+  let lrm_indices1 = field_indices[0][1];
+  let rte_nm_lrm_indices = field_indices[1];
+  let other_indices = field_indices[2]; // FIXME other_indices is never redefined
 
   // make array for output
   let lrsQueryObjsArr = [];
@@ -119,40 +120,38 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
 
     let refinedRowData = [];
     let currentRow = arrayToQuery[rowToQuery];
-    let url0 = '';
-    let url1 = '';
+    let unfilteredResultsArr = [];
+    let results1 = '';
 
-    // build url
-    url0 = buildUrl(currentLrmNo, currentRow, lrm_indices0);
+    // build url & perform query
+    let url0 = buildUrl(currentLrmNo, currentRow, lrm_indices0);
     lrsQueryObj.url[0] = url0;
-    if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
-    if (calcGeomType == "Route") {
-      url1 = buildUrl(currentLrmNo, currentRow, lrm_indices1);
-      lrsQueryObj.url[1] = url1;
-      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
-    }
-    // end build url
-
-    // perform query
     let results0 = await queryService(url0);
     lrsQueryObj.results[0] = results0;
-    let results1 = '';
+    if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
+
     if (calcGeomType == "Route") {
+      let url1 = buildUrl(currentLrmNo, currentRow, lrm_indices1);
+      lrsQueryObj.url[1] = url1;
       results1 = await queryService(url1);
       lrsQueryObj.results[1] = results1;
+      unfilteredResultsArr = [results0, results1];
+      if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
+    } else {
+      unfilteredResultsArr = [results0, results0];
     }
+
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
-    // end perform query
+    // end build url & perform query
 
     let featureDescription = $("#description").val() || 'feature';
     let featureColor = $("#color").val() || "#14375a";
-    let featureWidth = $("#width").val() || "1";
+    let featureWidth = $("#width").val() || "3";
 
     // get row header data
     let otherAttributesKey = (inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature", "Color", "Width"];
     let otherAttributesValue = (inputMethod == "table") ? other_indices.map(i => currentRow[i]) : [featureDescription, featureColor, featureWidth];
     let otherAttributesObj = {};
-
     otherAttributesKey.forEach((otherAttributesKey, i) => otherAttributesObj[otherAttributesKey] = otherAttributesValue[i]);
 
     // return single geom filtered on route name, or return multiple results
@@ -179,6 +178,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       refinedData.push({ ...otherAttributesObj, ...resultsObj });
 
     } else {
+
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length)); }
@@ -190,9 +190,6 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     }
     // end return single geom filtered on route name, or return multiple results
 
-
-    console.log("refinedRowData");
-    console.log(refinedRowData);
 
     lrsQueryObj.data = refinedRowData;
 
@@ -213,21 +210,15 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     }
 
     lrsQueryObjsArr.push(lrsQueryObj);
-
-
     updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
-    console.log("lrsQueryObj");
-    console.log(lrsQueryObj);
   }
   // end process rows for loop
   console.log("process rows for loop complete");
-  console.log("lrsQueryObjsArr");
-  console.log(lrsQueryObjsArr);
+
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
 
-  console.log("refinedData");
-  console.log(refinedData);
+
   resultsShowExport(calcGeomType, refinedData);
 
   YellowToGreen();
