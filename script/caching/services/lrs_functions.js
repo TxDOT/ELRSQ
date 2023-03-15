@@ -100,7 +100,6 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
 
   // make array for output
   let lrsQueryObjsArr = [];
-  let refinedData = [];
 
   // process rows
   for (let rowToQuery = headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
@@ -114,7 +113,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     lrsQueryObj.data = [];
     lrsQueryObj.geojson = "";
 
-    let refinedRowData = [];
+    //let refinedRowData = [];
     let currentRow = arrayToQuery[rowToQuery];
     let unfilteredResultsArr = [];
     let results1 = '';
@@ -162,81 +161,81 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0.length; aRowResult++) {
         if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0.length)); }
-        let aRowResultObj = results0[aRowResult];
-
-        refinedRowData.push({ ...otherAttributesObj, ...aRowResultObj });
+        lrsQueryObj.data.push({ ...otherAttributesObj, ...results0[aRowResult] });
       }
     }
     // end return single geom filtered on route name, or return multiple results
 
-
-    console.log("refinedRowData");
-    console.log(refinedRowData);
-
-    lrsQueryObj.data = refinedRowData;
-
     if (calcGeomType == "Point") {
       try {
-        let pointGeoJson = jsonFromLrsApiToPointGeoJson(refinedRowData);
+        let pointGeoJson = jsonFromLrsApiToPointGeoJson(lrsQueryObj.data);
         lrsQueryObj.geojson = pointGeoJson;
+
+        /**
+          let projObj = objectifyPointProject(lrsQueryObj.data[0]); // this objectifies the drawing data
+          let aProjectFeatureCollection = jsonFromLrsApiToPointGeoJson_singular_B(projObj);
+          lrsQueryObj.geojson = aProjectFeatureCollection;
+        */
       } catch { }
     }
 
     if (calcGeomType == "Route") {
       try {
-        let projObj = objectifyRouteProject(refinedRowData[0]); // this objectifies the drawing data
+        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // this objectifies the drawing data
         let results = await queryRoadwayServiceByLine(projObj);
         let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
         lrsQueryObj.geojson = aProjectFeatureCollection;
       } catch { }
     }
 
-    lrsQueryObjsArr.push(lrsQueryObj);
-    refinedData = refinedData.concat(refinedRowData);
+    console.log("lrsQueryObj.geojson");
+    console.log(lrsQueryObj.geojson);
 
+    lrsQueryObjsArr.push(lrsQueryObj);
     updateProgressBar(rowToQuery, (arrayToQuery.length - headerRowPresent));
   }
   // end process rows for loop
   console.log("process rows for loop complete");
 
-  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(refinedData); }
+  let flattenedQueryObjData = lrsQueryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
+  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
 
-  setProjectGeometry(refinedData); // FIXME add results caching
+  setProjectGeometry(flattenedQueryObjData); // FIXME add results caching
 
   if (calcGeomType == "Point") {
     // show TABULAR results
-    paginatedResultsSequence(refinedData, readOutPointResults);
+    paginatedResultsSequence(flattenedQueryObjData, readOutPointResults);
 
     //insertPagination(currentPagination, results);
-    paginationUpdater("#result-pagination", refinedData);
+    paginationUpdater("#result-pagination", flattenedQueryObjData);
 
-    fillInPointHtmlTable(refinedData[0]);
+    fillInPointHtmlTable(flattenedQueryObjData[0]);
 
     // export data
-    tabularPointsConvertExport(refinedData);
+    tabularPointsConvertExport(flattenedQueryObjData);
   }
 
   if (calcGeomType == "Route") {
     // show TABULAR results
-    paginatedResultsSequence(refinedData, readOutRouteResults);
+    paginatedResultsSequence(flattenedQueryObjData, readOutRouteResults);
 
     //insertPagination(currentPagination, results);
-    paginationUpdater("#result-pagination", refinedData);
+    paginationUpdater("#result-pagination", flattenedQueryObjData);
 
-    fillInRouteHtmlTable(refinedData[0]);
+    fillInRouteHtmlTable(flattenedQueryObjData[0]);
 
     // export data
-    tabularRoutesConvertExport(refinedData);
+    tabularRoutesConvertExport(flattenedQueryObjData);
   }
 
   if (calcGeomType == "Point") {
-    var geojson = jsonFromLrsApiToPointGeoJson(refinedData); // this creates a geoJSON feature collection of points
+    var geojson = jsonFromLrsApiToPointGeoJson(flattenedQueryObjData); // this creates a geoJSON feature collection of points
 
-    showThisPointResultOnMap(refinedData[0]);  // this plots a point graphic using esri graphics
+    showThisPointResultOnMap(flattenedQueryObjData[0]);  // this plots a point graphic using esri graphics
   }
 
   if (calcGeomType == "Route") {
-    let projObj = objectifyRouteProject(refinedData[0]); // this objectifies the drawing data
+    let projObj = objectifyRouteProject(flattenedQueryObjData[0]); // this objectifies the drawing data
     let results = await queryRoadwayServiceByLine(projObj);
     let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
 
