@@ -57,8 +57,7 @@ async function rdwayQuery(url) {
  */
 async function queryProjectGeometry() {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("GLOBALPROJECTDATA.ProjectDrawParameters: ");
-    console.log(GLOBALPROJECTDATA.ProjectDrawParameters);
+    console.log("GLOBALPROJECTDATA.ProjectDrawParameters: " + GLOBALPROJECTDATA.ProjectDrawParameters);
   }
   resetProjectFeatureCollections();
 
@@ -72,8 +71,7 @@ async function queryProjectGeometry() {
   }
 
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: ");
-    console.log(GLOBALPROJECTDATA.ProjectFeatureCollections);
+    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections);
   }
   YellowToGreen();
 
@@ -92,8 +90,7 @@ async function queryProjectGeometry() {
  */
 async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCollections) {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("myProjectDrawParameters: ");
-    console.log(myProjectDrawParameters);
+    console.log("myProjectDrawParameters: " + myProjectDrawParameters);
   }
   resetProjectFeatureCollections();
 
@@ -111,8 +108,7 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
   myProjectFeatureCollections.concat(localProjectFeatureCollections);
 
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("myProjectFeatureCollections: ");
-    console.log(myProjectFeatureCollections);
+    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections);
   }
   YellowToGreen();
 

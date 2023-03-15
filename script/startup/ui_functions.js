@@ -1,3 +1,5 @@
+// BEGIN CONVERT-SESSION level reset
+
 function set_topnav_point() {
   GLOBALSETTINGS.CalcGeomType = 'Point';
   console.log("setting CALCGEOMTYPE to: " + GLOBALSETTINGS.CalcGeomType);
@@ -119,6 +121,19 @@ function set_lrm_method_coordinates() {
 
   $(".coordinates-template").show();
 }
+
+// END CONVERT-SESSION level reset
+
+
+
+
+
+
+
+
+
+
+
 
 function clearForms() {
   $("#input-bulk-point-form").trigger("reset");
@@ -255,8 +270,6 @@ function setDemoProjectData() {
   ];
 }
 
-
-// FIXME this changes the DOM
 function resetDropdowns() {
   dropDownDepopulator("#bcontrolsection_field");
   dropDownDepopulator("#bdfo_field");

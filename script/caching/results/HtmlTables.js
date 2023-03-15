@@ -27,8 +27,7 @@ function readOutRouteResults(results, navIndex) {
 
 async function showThisRouteResultOnMap(currentResult) {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("currentResult: ");
-    console.log(currentResult);
+    console.log("currentResult: " + currentResult);
   }
 
   try {
