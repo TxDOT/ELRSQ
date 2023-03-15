@@ -136,6 +136,7 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
     } else {
       unfilteredResultsArr = [results0, results0];
     }
+
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0.length + " results for row: " + rowToQuery); }
     // end build url & perform query
 
@@ -151,25 +152,10 @@ async function queryLrsByArray(calcGeomType, currentLrmNo, inputMethod, arrayToQ
 
     // return single geom filtered on route name, or return multiple results
     if (constrainToRouteName == 1) {
-      // get right route
-      if (inputMethod == "html") {
-        if (rtenmformat == "AAdddd") {
-          user_input_rte_nm = fixThisVerySpecificTextFormat(currentRow[rte_nm_lrm_indices]);
-        } else {
-          user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
-        }
-      } else if (inputMethod == "table") {
-        user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
-      }
-      let unfilteredArr = (calcGeomType == "Point") ? [results0, results0] : [results0, results1];
-      let resultsObj = await matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredArr, user_input_rte_nm);
-      // end get right route
-      // assemble data
-
-      console.log("resultsObj");
-      console.log(resultsObj);
-
-      refinedRowData.push({ ...otherAttributesObj, ...resultsObj });
+      // in this case only a single element is pushed to lrsQueryObj.data
+      let user_input_rte_nm = getRightRouteName_Pre(inputMethod, rtenmformat, rte_nm_lrm_indices, currentRow);
+      let matchObj = await matchOutputOnRteNm(calcGeomType, currentLrmNo, inputMethod, unfilteredResultsArr, user_input_rte_nm);
+      lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj }); // this makes an object from the attribute values and lrs values and pushes it to an array
 
     } else {
       // in this case multiple elements are pushed to lrsQueryObj.data
@@ -783,4 +769,19 @@ async function getRightRteNm(calcGeomType, currentLrmNo, inputMethod, unfiltered
   }
 
   return rte_nm;
+}
+
+
+function getRightRouteName_Pre(inputMethod, rtenmformat, rte_nm_lrm_indices, currentRow) {
+  if (inputMethod == "html") {
+    if (rtenmformat == "AAdddd") {
+      user_input_rte_nm = fixThisVerySpecificTextFormat(currentRow[rte_nm_lrm_indices]);
+    } else {
+      user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
+    }
+  } else if (inputMethod == "table") {
+    user_input_rte_nm = (typeof rte_nm_lrm_indices !== 'undefined') ? currentRow[rte_nm_lrm_indices] : '';
+  }
+
+  return user_input_rte_nm;
 }
