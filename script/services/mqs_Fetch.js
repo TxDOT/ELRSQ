@@ -1,5 +1,11 @@
 
 // calls API
+
+/**
+ * 
+ * @param {*} url 
+ * @returns 
+ */
 async function queryService(url) {
 
   GreenToYellow();
@@ -22,6 +28,11 @@ async function queryService(url) {
 }
 
 
+/**
+ * 
+ * @param {*} url 
+ * @returns 
+ */
 async function queryRoadwayService(url) {
 
   GreenToYellow();

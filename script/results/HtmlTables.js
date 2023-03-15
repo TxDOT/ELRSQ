@@ -1,5 +1,8 @@
-
-// determine pagination and fill in HTML table results
+/** determine pagination and fill in HTML table results
+ * 
+ * @param {*} results 
+ * @param {*} navIndex 
+ */
 function readOutPointResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
 
@@ -12,7 +15,11 @@ function readOutPointResults(results, navIndex) {
 }
 
 
-// determine pagination and fill in HTML table results
+/** determine pagination and fill in HTML table results
+ * 
+ * @param {*} results 
+ * @param {*} navIndex 
+ */
 function readOutRouteResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
 
@@ -25,6 +32,10 @@ function readOutRouteResults(results, navIndex) {
 }
 
 
+/**
+ * 
+ * @param {*} currentResult 
+ */
 async function showThisRouteResultOnMap(currentResult) {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     console.log("currentResult: ");
@@ -40,6 +51,10 @@ async function showThisRouteResultOnMap(currentResult) {
 }
 
 
+/**
+ * 
+ * @param {*} currentResult 
+ */
 function fillInPointHtmlTable(currentResult) {
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
@@ -58,6 +73,10 @@ function fillInPointHtmlTable(currentResult) {
 }
 
 
+/**
+ * 
+ * @param {*} currentResult 
+ */
 function fillInRouteHtmlTable(currentResult) {
   // fill in HTML results
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
@@ -84,6 +103,9 @@ function fillInRouteHtmlTable(currentResult) {
 }
 
 
+/**
+ * 
+ */
 function clearResults() {
   //TODO find way to use different selector child/class
 
@@ -110,12 +132,19 @@ function clearResults() {
 }
 
 
+/**
+ * 
+ */
 function copyCoordinates() {
   let lat = $(outputFieldIDs.LAT).html();
   let lon = $(outputFieldIDs.LON).html();
   navigator.clipboard.writeText(`${lat}, ${lon}`);
 }
 
+
+/**
+ * 
+ */
 function copyFieldLocation() {
   let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
   let refMarker = $(outputFieldIDs.RMRKR_PNT_NBR).html();
@@ -123,12 +152,20 @@ function copyFieldLocation() {
   navigator.clipboard.writeText(`RouteID: ${routeName}, ReferenceMarker: ${refMarker}, Displacement: ${displacement}`);
 }
 
+
+/**
+ * 
+ */
 function copyControlSection() {
   let controlSecNum = $(outputFieldIDs.CTRL_SECT_LN_NBR).html();
   let milePointMeasure = $(outputFieldIDs.CTRL_SECT_MPT).html();
   navigator.clipboard.writeText(`ControlSectionNumber: ${controlSecNum}, MilePointMeasure: ${milePointMeasure}`);
 }
 
+
+/**
+ * 
+ */
 function copyRouteDFO() {
   let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
   let dfo = $(outputFieldIDs.RTE_DFO).html();

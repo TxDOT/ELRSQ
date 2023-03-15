@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} projObj 
+ * @returns a geoJSON feature collection of routes
+ */
 async function queryProjectGeometry_pg(projObj) {
 
   resetProjectFeatureCollections();

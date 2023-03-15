@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} currentResult is an object with route characteristics
+ * @returns a project object consisting of route, DFOs, and drawing characteristics
+ */
 function objectifyRouteProject(currentResult) {
   //console.log("objectifyRouteProject: currentResult: ");
   //console.log(currentResult);

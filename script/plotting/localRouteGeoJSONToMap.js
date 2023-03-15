@@ -1,4 +1,12 @@
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
+
+/**
+ * takes a geoJSON route input
+ * creates a new GeoJSON layer and adds it to the map view
+ * then zooms to the layer
+ * 
+ * @param {*} localGeoJSON 
+ */
 function localRouteGeoJSONToMap(localGeoJSON) {
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 

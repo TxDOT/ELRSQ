@@ -1,5 +1,7 @@
 
-
+/**
+ * 
+ */
 function makequeryTxDOT_Roadways_Unsegmented() {
   let routeName = $(outputFieldIDs.RTE_DEFN_LN_NM).html();
   let lat = $(outputFieldIDs.LAT).html();
@@ -27,6 +29,12 @@ function makequeryTxDOT_Roadways_Unsegmented() {
 
 //TODO RouteBuilder: do something with these results
 // pull out min and max DFO
+
+/**
+ * 
+ * @param {*} url 
+ * @returns an array with min and max DFOs
+ */
 async function rdwayQuery(url) {
   GreenToYellow();
   const results = await queryRoadwayService(url);
@@ -43,6 +51,10 @@ async function rdwayQuery(url) {
 //iterates over GLOBALPROJECTDATA.ProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
 //FIXME change to a return function
+
+/**
+ * 
+ */
 async function queryProjectGeometry() {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     console.log("GLOBALPROJECTDATA.ProjectDrawParameters: ");
@@ -72,6 +84,12 @@ async function queryProjectGeometry() {
 //iterates over myProjectDrawParameters array
 //for each project, queries queryRecordFromServiceGeometry
 //FIXME change to a return function
+
+/**
+ * 
+ * @param {*} myProjectDrawParameters 
+ * @param {*} myProjectFeatureCollections 
+ */
 async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCollections) {
   if (GLOBALSETTINGS.PrintProjGeom == 1) {
     console.log("myProjectDrawParameters: ");
@@ -102,6 +120,12 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
 
 
 // added output spatial reference to return WGS84
+
+/**
+ * 
+ * @param {*} myProjectData 
+ * @returns 
+ */
 async function queryRoadwayServiceByLine(myProjectData) {
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +

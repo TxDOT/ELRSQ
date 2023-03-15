@@ -1,4 +1,10 @@
 // 1bi) jsonFromLrsApiToPointGeoJson
+
+/**
+ * 
+ * @param {*} resultsArr 
+ * @returns a geoJSON feature collection of points
+ */
 function jsonFromLrsApiToPointGeoJson(resultsArr) {
 
   var geojson = {

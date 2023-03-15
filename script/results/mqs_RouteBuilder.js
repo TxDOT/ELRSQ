@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {*} myRoadwayQueryResults 
+ * @param {*} myPrjAttributes an object with RTE_NM, BDFO, and EDFO attributes
+ * @returns  a feature collection
+ */
 function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, myPrjAttributes) {
   //// multiple results are orderByFields=BEGIN_DFO
 
@@ -41,7 +47,13 @@ function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, myPrjAttributes) {
 }
 
 
-//function setVertexNumbers(theData, a, theFrom, theTo)
+/**
+ * 
+ * @param {*} feature 
+ * @param {*} myFrom 
+ * @param {*} myTo 
+ * @returns an object with beginning and ending vertex numbers
+ */
 function setVertexNumbers(feature, myFrom, myTo) {
   //returnedFeatureGeomPart = [];
   var vertexBeginNumber = 0;
@@ -106,7 +118,14 @@ function setVertexNumbers(feature, myFrom, myTo) {
 }
 
 
-// clips
+/**
+ * 
+ * @param {*} myReturnedFeatureGeom 
+ * @param {*} myFrom beginning M measure
+ * @param {*} myTo ending M measure
+ * @param {*} myPrjAttributes 
+ * @returns a feature collection
+ */
 function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttributes) {
   let aFeatureCollectionArray = [];
   if (GLOBALSETTINGS.PrintIterations == 1) {
@@ -153,7 +172,13 @@ function clipFromToAndMakeGeoJson(myReturnedFeatureGeom, myFrom, myTo, myPrjAttr
 }
 
 
-//The Line with Geometry and Desired M value
+
+/**
+ * 
+ * @param {*} theLine  The Line with Geometry
+ * @param {*} pointMeasure Desired M value
+ * @returns an array with an  x and Y value
+ */
 function locatePointOnLine(theLine, pointMeasure) {
   var pointLocation = [];
   var PrevCoordM;
