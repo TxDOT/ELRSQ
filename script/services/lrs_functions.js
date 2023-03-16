@@ -18,7 +18,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   }
 
   GreenToYellow();
-  resetProgressAndDownloads(); // WATCH this hides and resets the progress bar and download buttons
+  resetProgressAndDownloads();
   $("#bulk-convert-progress-bar").show();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -115,10 +115,8 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   console.log("process rows for loop complete");
 
   let flattenedQueryObjData = lrsQueryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
-  //WATCH where does this get stored?
 
   console.log(lrsQueryObjsArr);
-  //WATCH what happens to the rest of lrsQueryObjsArr ???
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
 
@@ -137,7 +135,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 function resultsShow(calcGeomType, formEntryReturnedData) {
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-  // WATCH sets GLOBALPROJECTDATA.ProjectGeometry equal to flattenedQueryObjData
+  // WATCH sets GLOBAL-PROJECT-DATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     // show TABULAR results

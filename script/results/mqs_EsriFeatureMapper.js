@@ -123,7 +123,7 @@ function addPointGraphic(lat, lon) {
   });
 }
 
-
+// TODO rename this only removes graphics
 function clearResultsFromMap() {
 
   graphics = [];

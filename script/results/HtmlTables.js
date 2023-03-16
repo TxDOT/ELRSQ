@@ -3,7 +3,6 @@
  * @param {*} currentResult 
  */
 function fillInPointHtmlTable(currentResult) {
-  //WATCH this should not affect caching
   // fill in HTML results
   $(outputFieldIDs.ROUTEID).html(currentResult['ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM).html(currentResult['RTE_DEFN_LN_NM']);
@@ -26,7 +25,6 @@ function fillInPointHtmlTable(currentResult) {
  * @param {*} currentResult 
  */
 function fillInRouteHtmlTable(currentResult) {
-  //WATCH this should not affect caching
   // fill in HTML results
   $(outputFieldIDs.ROUTEID_ROUTE).html(currentResult['BEGIN_ROUTEID']);
   $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html(currentResult['BEGIN_RTE_DEFN_LN_NM']);

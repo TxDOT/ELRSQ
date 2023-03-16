@@ -4,8 +4,6 @@
  * @returns a project object consisting of route, DFOs, and drawing characteristics
  */
 function objectifyRouteProject(currentResult) {
-  //WATCH this is on the data to geojson to map chain
-  console.log("objectify-Route-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['BEGIN_RTE_DEFN_LN_NM'];
   projObj.BDFO = currentResult['BEGIN_RTE_DFO'];
@@ -27,14 +25,12 @@ function objectifyRouteProject(currentResult) {
  * @returns  a feature collection
  */
 function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, projObj) {
-  //WATCH this is on the data to geojson to map chain
   let flatClippedLine = makeClippedLineStrings(myRoadwayQueryResults, projObj);
   return makeRouteGeoJson([flatClippedLine], projObj);
 }
 
 
 function makeRouteGeoJson(myReturnedFeatureGeom, projObj) {
-  //WATCH this is on the data to geojson to map chain
   let geojson_featureArr = [];
 
   for (let i = 0; i < myReturnedFeatureGeom.length; i++) {
@@ -69,8 +65,16 @@ function makeRouteGeoJson(myReturnedFeatureGeom, projObj) {
  * @param {*} localGeoJSON
  */
 function localRouteGeoJSONToMap(localGeoJSONArr) {
-  // WATCH 
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
+
+    let removePreviousGeoJson = 1;
+    if (removePreviousGeoJson == 1) {
+      view.map.layers.forEach((layer) => {
+        if (layer.type == 'geojson') {
+          layer.destroy();
+        }
+      });
+    }
 
     for (let i = 0; i < localGeoJSONArr.length; i = i + 1) {
       let geojson_line = localGeoJSONArr[i];

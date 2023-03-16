@@ -14,11 +14,11 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearResultsFromMap(); //WATCH map reset -- this only removes graphics
+    clearResultsFromMap(); //this only removes graphics
   }
 
   GreenToYellow();
-  resetProgressAndDownloads(); // WATCH this hides and resets the progress bar and download buttons
+  resetProgressAndDownloads();
   $("#bulk-convert-progress-bar").show();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -94,17 +94,17 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
     if (convertSessionParams.calcGeomType == "Point") {
       try {
-        let projObj = objectifyPointProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data // this may need to have a loop somewhere
-        let aProjectFeatureArr = jsonFromLrsApiToPointGeoJson(projObj); // WATCH
+        let projObj = objectifyPointProject(lrsQueryObj.data[0]); // TODO this may need to have a loop somewhere
+        let aProjectFeatureArr = jsonFromLrsApiToPointGeoJson(projObj);
         lrsQueryObj.geojson = aProjectFeatureArr;
       } catch { }
     }
 
     if (convertSessionParams.calcGeomType == "Route") {
       try {
-        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data -- returns the minimum data needed to map it
-        let results = await queryRoadwayServiceByLine(projObj); // WATCH this returns line geometry
-        let aProjectFeatureArr = jsonFromAgoApiToRouteGeoJson(results, projObj); // WATCH this creates an array of geoJSON route features -- not a feature collection
+        let projObj = objectifyRouteProject(lrsQueryObj.data[0]);
+        let results = await queryRoadwayServiceByLine(projObj);
+        let aProjectFeatureArr = jsonFromAgoApiToRouteGeoJson(results, projObj);
         lrsQueryObj.geojson = aProjectFeatureArr; // this is an array with one or many features
       } catch { }
     }
@@ -134,7 +134,7 @@ async function resultsShow(calcGeomType) {
   ONSCREENMATCH = SESSIONHISTORYARR.last()[0];
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-  // WATCH sets GLOBALPROJECTDATA.ProjectGeometry equal to flattenedQueryObjData
+  // WATCH sets GLOBAL-PROJECT-DATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     paginatedResultsSequence(formEntryReturnedData, readOutPointResults);

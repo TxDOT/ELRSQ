@@ -1,6 +1,5 @@
 
 function paginatedResultsSequence(results, fn) {
-  //WATCH this affects global variables
   resetCurrentPagination();
   clearPagination("#result-pagination");
   destroyPaginationEventHandlers("#result-pagination");
@@ -45,7 +44,6 @@ function navResults(direction, results, fn) {
 
 
 function paginationUpdater(someId, resultCount) {
-  //WATCH this should not affect caching
   let counterDisplay = `${PAGINATION.currentPagination} of ${resultCount}`;
 
   if (resultCount > 1) {

@@ -8,7 +8,7 @@ GLOBALSETTINGS.PrintProjGeom = 1;
 GLOBALSETTINGS.DemoMode = 0;
 GLOBALSETTINGS.MapCursorLive = 0;
 
-// TODO this changes a global variable
+// WATCH this changes a global variable
 function cursorMode() {
   $("#viewDiv").css('cursor', 'crosshair');
   GLOBALSETTINGS.MapCursorLive = 1;

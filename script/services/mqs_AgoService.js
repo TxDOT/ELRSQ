@@ -48,52 +48,29 @@ async function rdwayQuery(url) {
 
 
 
-//iterates over GLOBALPROJECTDATA.ProjectDrawParameters array
-//for each project, queries queryRecordFromServiceGeometry
-//FIXME change to a return function
 
-/**
- * 
- */
+//FIXME this can probably be removed
 async function queryProjectGeometry() {
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("GLOBALPROJECTDATA.ProjectDrawParameters: " + GLOBALPROJECTDATA.ProjectDrawParameters);
-  }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectDrawParameters: " + GLOBALPROJECTDATA.ProjectDrawParameters); }
   resetProjectFeatureCollections();
-
   GreenToYellow();
 
   //get segment is called within a loop, for each project
   for (var i = 0; i < GLOBALPROJECTDATA.ProjectDrawParameters.length; i++) {
-    console.log("pushing segment to GLOBALPROJECTDATA.ProjectFeatureCollections");
+    console.log("pushing segment to GLOBAL-PROJECT-DATA.ProjectFeatureCollections");
     let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectDrawParameters[i]);
     GLOBALPROJECTDATA.ProjectFeatureCollections.push(jsonFromAgoApiToRouteGeoJson(results, GLOBALPROJECTDATA.ProjectDrawParameters[i]));
   }
 
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections);
-  }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections); }
   YellowToGreen();
-
 }
 
 
-
-//iterates over myProjectDrawParameters array
-//for each project, queries queryRecordFromServiceGeometry
-//FIXME change to a return function
-
-/**
- * 
- * @param {*} myProjectDrawParameters 
- * @param {*} myProjectFeatureCollections 
- */
+//FIXME this can probably be removed
 async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCollections) {
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("myProjectDrawParameters: " + myProjectDrawParameters);
-  }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("myProjectDrawParameters: " + myProjectDrawParameters); }
   resetProjectFeatureCollections();
-
   GreenToYellow();
 
   //get segment is called within a loop, for each project
@@ -107,11 +84,8 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
 
   myProjectFeatureCollections.concat(localProjectFeatureCollections);
 
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("GLOBALPROJECTDATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections);
-  }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections); }
   YellowToGreen();
-
 }
 
 
@@ -123,7 +97,6 @@ async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCo
  * @returns 
  */
 async function queryRoadwayServiceByLine(myProjectData) {
-  //WATCH this is on the data to geojson to map chain
 
   url = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Roadways/FeatureServer/0" + "/query?f=json&where=" + "RTE_NM" + "='" +
     myProjectData.RTE_NM +

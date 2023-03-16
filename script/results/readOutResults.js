@@ -37,7 +37,6 @@ function readOutRouteResults(results, navIndex) {
  * @param {*} currentResult 
  */
 async function showThisRouteResultOnMap(currentResult) {
-  // WATCH what calls this?
   if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("currentResult: " + currentResult); }
 
   try {
@@ -56,7 +55,7 @@ async function showThisRouteResultOnMap(currentResult) {
  */
 async function queryProjectGeometry_pg(projObj) {
 
-  resetProjectFeatureCollections(); //WATCH
+  resetProjectFeatureCollections();
 
   GreenToYellow();
 
@@ -81,7 +80,6 @@ async function queryProjectGeometry_pg(projObj) {
  * @param {*} localGeoJSON 
  */
 function localRouteGeoJSONToMap(localGeoJSON) {
-  // WATCH 
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
     for (let i = 0; i < localGeoJSON.length; i = i + 1) {

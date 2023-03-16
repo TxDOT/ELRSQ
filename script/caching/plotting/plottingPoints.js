@@ -4,7 +4,6 @@
  * @returns 
  */
 function objectifyPointProject(currentResult) {
-  //WATCH this is on the data to geojson to map chain
   console.log("objectify-Point-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['RTE_DEFN_LN_NM'];
@@ -27,14 +26,12 @@ function objectifyPointProject(currentResult) {
  * @returns 
  */
 function jsonFromLrsApiToPointGeoJson(projObj) {
-  //WATCH this is on the data to geojson to map chain
   let point2d = [projObj.LON, projObj.LAT];
   return makePointGeoJson([point2d], projObj);
 }
 
 
 function makePointGeoJson(myReturnedFeatureGeom, projObj) {
-  //WATCH this is on the data to geojson to map chain
   let geojson_featureArr = [];
 
   for (let i = 0; i < myReturnedFeatureGeom.length; i++) {
@@ -69,7 +66,6 @@ function makePointGeoJson(myReturnedFeatureGeom, projObj) {
  * @param {*} localGeoJSON
  */
 function localPointGeoJSONToMap(localGeoJSONArr) {
-  // WATCH 
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
     for (let i = 0; i < localGeoJSONArr.length; i = i + 1) {

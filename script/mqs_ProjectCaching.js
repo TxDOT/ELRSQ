@@ -1,7 +1,7 @@
 //// validate that there is an input
 //// validate that input is a KG
-//// retrieve position within GLOBALPROJECTDATA.ProjectDrawParameters array
-//// add to GLOBALPROJECTDATA.ProjectDrawParameters array if it is not a duplicate
+//// retrieve position within GLOBAL-PROJECT-DATA.ProjectDrawParameters array
+//// add to GLOBAL-PROJECT-DATA.ProjectDrawParameters array if it is not a duplicate
 
 function addProjectToArray(currentResult) {
   let projObj = new Object();
@@ -18,31 +18,25 @@ function addProjectToArray(currentResult) {
     console.log(projString);
   }
 
-  if (GLOBALPROJECTDATA.ProjectDrawParameters.indexOf(projObj) < 0) {
-    GLOBALPROJECTDATA.ProjectDrawParameters.push(projObj);
-  }
+  if (GLOBALPROJECTDATA.ProjectDrawParameters.indexOf(projObj) < 0) { GLOBALPROJECTDATA.ProjectDrawParameters.push(projObj); }
 
 }
 
 
+// RPM caching function
 function addProjectToArray_sequential(myProjectDrawParameters) {
   let projObj = new Object();
   projObj.RTE_NM = $(outputFieldIDs.RTE_DEFN_LN_NM_ROUTE).html();
   projObj.BDFO = $(outputFieldIDs.RTE_DFO_BEGIN).html();
   projObj.EDFO = $(outputFieldIDs.RTE_DFO_END).html();
   projObj.Color = $('#color').val();
-  projObj.Width = ('#width').val();
+  projObj.Width = $('#width').val();
   projObj.Desc = $('#description').val();
   let projString = JSON.stringify(projObj);
 
-  if (GLOBALSETTINGS.PrintProjGeom == 1) {
-    console.log("addProjectToArray: ");
-    console.log(projString);
-  }
+  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("addProjectToArray: "); console.log(projString); }
 
-  if (myProjectDrawParameters.indexOf(projObj) < 0) {
-    myProjectDrawParameters.push(projObj);
-  }
+  if (myProjectDrawParameters.indexOf(projObj) < 0) { myProjectDrawParameters.push(projObj); }
 
   makeRouteProjectsTable(myProjectDrawParameters);
 }
@@ -54,7 +48,7 @@ function addProjectToArray_sequential(myProjectDrawParameters) {
 //// validate that input is a KG
 //function routeCenterlineValidator()
 
-
+// RPM caching function
 function makeRouteProjectsTable(myProjectDrawParameters) {
   var arrayForTable = [["ID", "Route", "From", "To", "Color", "Width", "Description"]];
 
@@ -72,22 +66,19 @@ function makeRouteProjectsTable(myProjectDrawParameters) {
   }
 }
 
-
+//RPM caching function
 // removes last project in myProjectDrawParameters array
 function dropLastProjectFromArray(myProjectDrawParameters, myProjectFeatureCollections) {
   console.log("dropLastProjectFromArray");
   myProjectDrawParameters.pop();
 
-  if (myProjectDrawParameters.length == 0) {
-    clearProjectsFromArray(myProjectDrawParameters, myProjectFeatureCollections);
-  }
-
+  if (myProjectDrawParameters.length == 0) { clearProjectsFromArray(myProjectDrawParameters, myProjectFeatureCollections); }
   myProjectFeatureCollections.pop();
   makeRouteProjectsTable(myProjectDrawParameters);
   // parseGeometryToGeoJSON(myProjectFeatureCollections); // lost function
 }
 
-
+//RPM caching function
 //clears the arrays
 function clearProjectsFromArray(myProjectDrawParameters, myProjectFeatureCollections) {
   console.log("clearProjectsFromArray");
