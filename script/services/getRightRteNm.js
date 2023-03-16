@@ -41,7 +41,7 @@ async function getRightRteNm(convertSessionParams, unfilteredArr) {
 
     if (convertSessionParams.inputMethod == "table") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
-      if (calcGeomType == "Route") {
+      if (convertSessionParams.calcGeomType == "Route") {
         RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
         candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
       } else {
@@ -70,7 +70,7 @@ async function getRightRteNm(convertSessionParams, unfilteredArr) {
 
     if (convertSessionParams.inputMethod == "table") {
       RTENMs0 = results0.map(a => a.RTE_DEFN_LN_NM);
-      if (calcGeomType == "Route") {
+      if (convertSessionParams.calcGeomType == "Route") {
         RTENMs1 = results1.map(a => a.RTE_DEFN_LN_NM);
         candidateRteNms = RTENMs0.filter(x => RTENMs1.includes(x));
       } else {

@@ -39,7 +39,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
     lrsQueryObj.url = [];
     lrsQueryObj.results = [];
     lrsQueryObj.data = [];
-    lrsQueryObj.geojson = "";
+    lrsQueryObj.geojson = []; // this is now an array to account for multiple returns
 
     let currentRow = arrayToQuery[rowToQuery];
     let unfilteredResultsArr = [];
@@ -94,23 +94,18 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
     if (convertSessionParams.calcGeomType == "Point") {
       try {
-        let pointGeoJson = jsonFromLrsApiToPointGeoJson(lrsQueryObj.data); // WATCH this creates a geoJSON feature collection of points
-        lrsQueryObj.geojson = pointGeoJson;
-
-        /**
-          let projObj = objectifyPointProject(lrsQueryObj.data[0]); // this objectifies the drawing data
-          let aProjectFeatureCollection = jsonFromLrsApiToPointGeoJson_singular_B(projObj);
-          lrsQueryObj.geojson = aProjectFeatureCollection;
-        */
+        let projObj = objectifyPointProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data // this may need to have a loop somewhere
+        let aProjectFeatureArr = jsonFromLrsApiToPointGeoJson(projObj); // WATCH
+        lrsQueryObj.geojson = aProjectFeatureArr;
       } catch { }
     }
 
     if (convertSessionParams.calcGeomType == "Route") {
       try {
-        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data
+        let projObj = objectifyRouteProject(lrsQueryObj.data[0]); // WATCH this objectifies the drawing data -- returns the minimum data needed to map it
         let results = await queryRoadwayServiceByLine(projObj); // WATCH this returns line geometry
-        let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // WATCH this creates a geoJSON feature collection of routes
-        lrsQueryObj.geojson = aProjectFeatureCollection;
+        let aProjectFeatureArr = jsonFromAgoApiToRouteGeoJson(results, projObj); // WATCH this creates an array of geoJSON route features -- not a feature collection
+        lrsQueryObj.geojson = aProjectFeatureArr; // this is an array with one or many features
       } catch { }
     }
 
@@ -120,16 +115,10 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   // end process rows for loop
   console.log("process rows for loop complete");
 
-  let flattenedQueryObjData = lrsQueryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
-  //WATCH where does this get stored?
+  SESSIONHISTORYARR.push(lrsQueryObjsArr);
 
-  console.log(lrsQueryObjsArr);
-  //WATCH what happens to the rest of lrsQueryObjsArr ???
-
-  if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
-
-  resultsShow(convertSessionParams.calcGeomType, flattenedQueryObjData);
-  resultsExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
+  resultsShow(convertSessionParams.calcGeomType);
+  resultsExport(convertSessionParams.calcGeomType);
 
   YellowToGreen();
 }
@@ -140,48 +129,28 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-async function resultsShow(calcGeomType, formEntryReturnedData) {
+async function resultsShow(calcGeomType) {
+  let formEntryReturnedData = SESSIONHISTORYARR.last().map(queryObj => queryObj.data).flat(); // data may have multiple elements
+  ONSCREENMATCH = SESSIONHISTORYARR.last()[0];
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
   // WATCH sets GLOBALPROJECTDATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
-    // show TABULAR results
-    // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutPointResults to fill in table and plot on map
     paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
-    // this fill in table using object values from formEntryReturnedData, and then showThisPointResultOnMap using graphics
-    paginationUpdater("#result-pagination", formEntryReturnedData);
-    fillInPointHtmlTable(formEntryReturnedData[0]);
-
-
-    /**
-  let projObj = objectifyPointProject(lrsQueryObj.data[0]); // this objectifies the drawing data
-  let aProjectFeatureCollection = jsonFromLrsApiToPointGeoJson_singular_B(projObj);
-  lrsQueryObj.geojson = aProjectFeatureCollection;
-*/
-
-    var geojson = jsonFromLrsApiToPointGeoJson(formEntryReturnedData); // this creates a geoJSON feature collection of points
-    showThisPointResultOnMap(formEntryReturnedData[0]);  // this plots a point graphic using esri graphics
+    paginationUpdater("#result-pagination", formEntryReturnedData.length);
+    fillInPointHtmlTable(ONSCREENMATCH.data[0]);
+    localPointGeoJSONToMap(ONSCREENMATCH.geojson);
   }
 
   if (calcGeomType == "Route") {
-    // show TABULAR results
-    // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutRouteResults to fill in table and plot on map
     paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
-    // this fill in table using object values from formEntryReturnedData, and then showThisRouteResultOnMap using geoJSON
-    paginationUpdater("#result-pagination", formEntryReturnedData);
-    fillInRouteHtmlTable(formEntryReturnedData[0]);
-
-    let projObj = objectifyRouteProject(formEntryReturnedData[0]); // this objectifies the drawing data
-    let results = await queryRoadwayServiceByLine(projObj);
-    let aProjectFeatureCollection = jsonFromAgoApiToRouteGeoJson(results, projObj); // this creates a geoJSON feature collection of routes
-
-    localRouteGeoJSONToMap([aProjectFeatureCollection]); // WATCH this plots a line GeoJSONLayer on the map
+    paginationUpdater("#result-pagination", formEntryReturnedData.length);
+    fillInRouteHtmlTable(ONSCREENMATCH.data[0]);
+    localRouteGeoJSONToMap(ONSCREENMATCH.geojson);
   }
 
 }
-
-
 
 
 /**
@@ -189,14 +158,11 @@ async function resultsShow(calcGeomType, formEntryReturnedData) {
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-function resultsExport(calcGeomType, formEntryReturnedData) {
+function resultsExport(calcGeomType) {
+  let sessionHistoryArr = SESSIONHISTORYARR;
+  let queryObjsArr = sessionHistoryArr.last();
+  let formEntryReturnedData = queryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
 
-  if (calcGeomType == "Point") {
-    tabularPointsConvertExport(formEntryReturnedData);
-  }
-
-  if (calcGeomType == "Route") {
-    tabularRoutesConvertExport(formEntryReturnedData);
-  }
-
+  if (calcGeomType == "Point") { tabularPointsConvertExport(formEntryReturnedData); }
+  if (calcGeomType == "Route") { tabularRoutesConvertExport(formEntryReturnedData); }
 }

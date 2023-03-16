@@ -7,7 +7,7 @@ function readOutPointResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
 
   //insertPagination(currentPagination, results);
-  paginationUpdater("#result-pagination", results);
+  paginationUpdater("#result-pagination", results.length);
 
   fillInPointHtmlTable(results[index]);
   // plot point for results[index]
@@ -24,7 +24,7 @@ function readOutRouteResults(results, navIndex) {
   const index = navIndex ? navIndex - 1 : 0;
 
   //insertPagination(currentPagination, results);
-  paginationUpdater("#result-pagination", results);
+  paginationUpdater("#result-pagination", results.length);
 
   fillInRouteHtmlTable(results[index]);
   // plot route for results[index]

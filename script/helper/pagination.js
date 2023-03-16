@@ -44,9 +44,8 @@ function navResults(direction, results, fn) {
 
 
 
-function paginationUpdater(someId, results) {
+function paginationUpdater(someId, resultCount) {
   //WATCH this should not affect caching
-  let resultCount = results.length;
   let counterDisplay = `${PAGINATION.currentPagination} of ${resultCount}`;
 
   if (resultCount > 1) {

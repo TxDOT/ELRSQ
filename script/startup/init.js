@@ -14,6 +14,11 @@ function cursorMode() {
   GLOBALSETTINGS.MapCursorLive = 1;
 }
 
+// WATCH added for caching
+let SESSIONHISTORYARR = [];
+let ONSCREENMATCH = {};
+
+
 
 const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
