@@ -68,6 +68,15 @@ function makePointGeoJson(myReturnedFeatureGeom, projObj) {
 function localPointGeoJSONToMap(localGeoJSONArr) {
   require(["esri/layers/GeoJSONLayer"], (GeoJSONLayer) => {
 
+    let removePreviousGeoJson = 1;
+    if (removePreviousGeoJson == 1) {
+      view.map.layers.forEach((layer) => {
+        if (layer.type == 'geojson') {
+          layer.destroy();
+        }
+      });
+    }
+
     for (let i = 0; i < localGeoJSONArr.length; i = i + 1) {
       let geojson_point = localGeoJSONArr[i];
       let color = geojson_point.properties.Color || "#ff8000";
