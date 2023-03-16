@@ -38,6 +38,5 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs4?RouteID=${routeName}&DistanceFromOrigin=${dfo}`;
   }
 
-  console.log(url);
   return url;
 }

@@ -14,7 +14,7 @@ const lrsApiFields = [
   "CTRL_SECT_MPT",
   "MSG",
   "distance"
-]
+];
 
 const lrsDummy = {
   "LAT": null,
@@ -32,7 +32,22 @@ const lrsDummy = {
   "CTRL_SECT_MPT": null,
   "MSG": null,
   "distance": null
-}
+};
+
+
+const lrsDummy2 = {
+  "LAT": null,
+  "LON": null,
+  "RTE_DEFN_LN_NM": null,
+  "RTE_DFO": null,
+  "RTE_PRFX_TYPE_DSCR": null,
+  "RMRKR_PNT_NBR": null,
+  "RMRKR_DISPLACEMENT": null,
+  "CTRL_SECT_LN_NBR": null,
+  "CTRL_SECT_MPT": null,
+  "distance": null
+};
+
 
 
 const outputFieldIDs = {
@@ -99,4 +114,42 @@ const measureRanges = {
     "min": 0,
     "step": 0.001
   }
-}
+};
+
+const fieldsKeep = [
+  "LAT", "LON",
+  "RTE_DEFN_LN_NM", "RTE_DFO",
+  "RMRKR_PNT_NBR", "RMRKR_DISPLACEMENT",
+  "CTRL_SECT_LN_NBR", "CTRL_SECT_MPT",
+  "distance"];
+
+const fieldsPoint = [
+  "LAT", "LON",
+  "RTE_DEFN_LN_NM", "RTE_DFO",
+  "RMRKR_PNT_NBR", "RMRKR_DISPLACEMENT",
+  "CTRL_SECT_LN_NBR", "CTRL_SECT_MPT",
+  "distance"];
+
+const fieldsRoute = [
+  "BEGIN_LAT", "BEGIN_LON",
+  "END_LAT", "END_LON",
+  "BEGIN_RTE_DEFN_LN_NM", "END_RTE_DEFN_LN_NM",
+  "BEGIN_RTE_DFO", "END_RTE_DFO",
+  "BEGIN_RMRKR_PNT_NBR", "BEGIN_RMRKR_DISPLACEMENT",
+  "END_RMRKR_PNT_NBR", "END_RMRKR_DISPLACEMENT",
+  "BEGIN_CTRL_SECT_LN_NBR", "BEGIN_CTRL_SECT_MPT",
+  "END_CTRL_SECT_LN_NBR", "END_CTRL_SECT_MPT",
+  "BEGIN_distance", "END_distance"];
+
+const fieldsPointDrop = ["GID", "ROUTEID", "ROUTENUMBER", "RTE_PRFX_TYPE_DSCR", "RDBD_TYPE_DSCR", "MSG"];
+
+const fieldsRouteDrop = [
+  "BEGIN_GID", "END_GID", "BEGIN_ROUTEID", "END_ROUTEID", "BEGIN_ROUTENUMBER",
+  "END_ROUTENUMBER", "BEGIN_RTE_PRFX_TYPE_DSCR", "END_RTE_PRFX_TYPE_DSCR",
+  "BEGIN_RDBD_TYPE_DSCR", "END_RDBD_TYPE_DSCR", "BEGIN_MSG", "END_MSG"];
+
+const noResultErrorMessage = "Input location not found. Enter a valid location combination.";
+
+
+
+

@@ -80,7 +80,8 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
       // in this case only a single element is pushed to lrsQueryObj.data
       let user_input_rte_nm = getRightRouteName_Pre(convertSessionParams.inputMethod, formEntryParams.rtenmformat, rte_nm_lrm_indices, currentRow);
       let matchObj = await matchOutputOnRteNm(convertSessionParams, unfilteredResultsArr, user_input_rte_nm);
-      lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj }); // this makes an object from the attribute values and lrs values and pushes it to an array
+      
+      lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj.match }); // this makes an object from the attribute values and lrs values and pushes it to an array
 
     } else {
       // in this case multiple elements are pushed to lrsQueryObj.data

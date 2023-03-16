@@ -34,6 +34,19 @@ async function confirmFieldChoice(buttonId, dropDownId) {
 }
 
 
+async function confirmFieldChoices(buttonId) {
+  result = (await
+    new Promise(async function (resolve) {
+      $(buttonId).on("click", function (e) {
+        resolve("1");
+      });
+    })
+  );
+  console.log(result);
+  return result;
+}
+
+
 /**
   function updateProgressBar(current, total) {
   

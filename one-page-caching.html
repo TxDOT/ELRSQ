@@ -69,7 +69,7 @@
   <script src="script/services/lrsSingleQuery.js" defer></script>
   <script src="script/services/lrsBulkQuery.js" defer></script>
   <script src="script/services/setIndicesByLrmAndGeom.js" defer></script>
-  <script src="script/services/setTableFieldsByMethod.js" defer></script>
+  <script src="script/services/setTableFieldsByMethod_2.js" defer></script>
   <script src="script/services/buildUrl.js" defer></script>
   <script src="script/services/getRightRouteName_Pre.js" defer></script>
   <script src="script/services/getRightRteNm.js" defer></script>
@@ -252,8 +252,6 @@
                     <span class="input-group-text">Route Name Field:</span>
                     <select id="point_rte_nm_field" class="form-select candidate">
                     </select>
-                    <button id="btn-point_rte_nm_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
 
@@ -263,16 +261,12 @@
                     <span class="input-group-text">Reference Marker Field:</span>
                     <select id="referencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-referencemarker_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Displacement Field:</span>
                     <select id="displacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-displacement_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -283,16 +277,12 @@
                     <span class="input-group-text">Control Section Field:</span>
                     <select id="controlsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-controlsection_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Milepoint Field:</span>
                     <select id="milepoint_field" class="form-select candidate">
                     </select>
-                    <button id="btn-milepoint_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -302,8 +292,6 @@
                     <span class="input-group-text">Route Name Field (Optional):</span>
                     <select id="optional-rte_nm_field" class="form-select candidate">
                     </select>
-                    <button id="btn-optional-rte_nm_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
 
@@ -313,7 +301,6 @@
                     <span class="input-group-text">DFO Field:</span>
                     <select id="dfo_field" class="form-select candidate">
                     </select>
-                    <button id="btn-dfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End DFO Field Picker Form -->
@@ -324,14 +311,12 @@
                     <span class="input-group-text">Latitude Field:</span>
                     <select id="lat_field" class="form-select candidate">
                     </select>
-                    <button id="btn-lat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Longitude Field:</span>
                     <select id="lon_field" class="form-select candidate">
                     </select>
-                    <button id="btn-lon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Coordinates Field Picker Form -->
@@ -353,8 +338,6 @@
                     <span class="input-group-text">Route Name Field:</span>
                     <select id="route_rte_nm_field" class="form-select candidate">
                     </select>
-                    <button id="btn-route_rte_nm_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
 
@@ -364,32 +347,24 @@
                     <span class="input-group-text">Begin Reference Marker Field:</span>
                     <select id="breferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-breferencemarker_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Displacement Field:</span>
                     <select id="bdisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bdisplacement_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Reference Marker Field:</span>
                     <select id="ereferencemarker_field" class="form-select candidate">
                     </select>
-                    <button id="btn-ereferencemarker_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Displacement Field:</span>
                     <select id="edisplacement_field" class="form-select candidate">
                     </select>
-                    <button id="btn-edisplacement_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Reference Marker Field Picker Form -->
@@ -400,24 +375,18 @@
                     <span class="input-group-text">Control Section Field:</span>
                     <select id="bcontrolsection_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bcontrolsection_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Milepoint Field:</span>
                     <select id="bmilepoint_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bmilepoint_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Milepoint Field:</span>
                     <select id="emilepoint_field" class="form-select candidate">
                     </select>
-                    <button id="btn-emilepoint_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Control Section Field Picker Form -->
@@ -427,8 +396,6 @@
                     <span class="input-group-text">Route Name Field (Optional):</span>
                     <select id="optional-route_rte_nm_field" class="form-select candidate">
                     </select>
-                    <button id="btn-optional-Route_rte_nm_field" class="btn btn-outline-primary confirm"
-                      type="button">Select</button>
                   </div>
                 </div>
 
@@ -438,14 +405,12 @@
                     <span class="input-group-text">Begin DFO Field:</span>
                     <select id="bdfo_field" class="form-select candidate">
                     </select>
-                    <button id="btn-bdfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End DFO Field:</span>
                     <select id="edfo_field" class="form-select candidate">
                     </select>
-                    <button id="btn-edfo_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End DFO Field Picker Form -->
@@ -456,28 +421,24 @@
                     <span class="input-group-text">Begin Latitude Field:</span>
                     <select id="blat_field" class="form-select candidate">
                     </select>
-                    <button id="btn-blat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">Begin Longitude Field:</span>
                     <select id="blon_field" class="form-select candidate">
                     </select>
-                    <button id="btn-blon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Latitude Field:</span>
                     <select id="elat_field" class="form-select candidate">
                     </select>
-                    <button id="btn-elat_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
 
                   <div class="input-group mb-3">
                     <span class="input-group-text">End Longitude Field:</span>
                     <select id="elon_field" class="form-select candidate">
                     </select>
-                    <button id="btn-elon_field" class="btn btn-outline-primary confirm" type="button">Select</button>
                   </div>
                 </div>
                 <!-- End Coordinates Field Picker Form -->
@@ -487,6 +448,11 @@
             </div>
           </div>
           <!--#endregion -->
+
+
+          <button id="confirm-fields" type="button" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i>
+            Confirm</button>
+
 
           <div id="bulk-convert-progress-bar" class="progress mt-5 mb-5 ms-3 me-3" style="display:none; height: 30px;">
             <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
@@ -994,6 +960,10 @@
               <!--#region input-toolbar  -->
               <div class="card">
                 <div class="card-body">
+                  <div>
+                    <span id="input-toolbar-msg" style="display:none;">Input location not found. Enter a valid location
+                      combination.</span>
+                  </div>
                   <div id="input-toolbar" class="btn-toolbar justify-content-center" role="toolbar"
                     aria-label="Toolbar with button groups">
 
@@ -1367,11 +1337,13 @@
               data-offstyle="primary" disabled>
             <!-- Map-Controls END -->
 
-            <button type="button" class="btn btn-primary map-return" title="See current result on map"><i
-                class="fa fa-hand-o-right" aria-hidden="true"></i> Return to Point</button>
+            <button type="button" class="btn btn-primary map-return" style="display:none;"
+              title="See current result on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Return to
+              Point</button>
 
-            <button type="button" class="btn btn-primary map-all" title="See all results on map"><i
-                class="fa fa-hand-o-right" aria-hidden="true"></i> Go to All Points</button>
+            <button type="button" class="btn btn-primary map-all" style="display:none;"
+              title="See all results on map"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Go to All
+              Points</button>
           </div>
 
         </div>

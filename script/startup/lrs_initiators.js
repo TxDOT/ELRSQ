@@ -35,6 +35,8 @@ $(document).ready(function () {
 
     const fileContents = await readFile(file);
 
+    file = ''; //WATCH reset file test
+
     GLOBALSETTINGS.InputMethod = "table";
     let convertSessionParams = new Object();
     convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
@@ -47,6 +49,8 @@ $(document).ready(function () {
   $(".uploadCsv-bulk").on('change', async function (e) {
 
     const fileContents = await readFile(e.target.files[0])
+
+    //e.target.files = []; //WATCH reset file test
     
     GLOBALSETTINGS.InputMethod = "table";
     let convertSessionParams = new Object();

@@ -18,10 +18,13 @@ async function matchOutputOnRteNm(convertSessionParams, unfilteredArr, rte_nm) {
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
 
-  let notmatch0 = lrsDummy;
-  let notmatchbegin = Object.keys(lrsDummy).reduce((a, c) => (a[`${preBEGIN}${c}`] = lrsDummy[c], a), {});
+
+  if (results0[0].RTE_DEFN_LN_NM == null) { matchError = -1; };
+
+  let notmatch0 = lrsDummy2;
+  let notmatchbegin = Object.keys(lrsDummy2).reduce((a, c) => (a[`${preBEGIN}${c}`] = lrsDummy2[c], a), {});
   Object.keys(notmatchbegin).forEach((i) => notmatchbegin[i] = null);
-  let notmatchend = Object.keys(lrsDummy).reduce((a, c) => (a[`${preEND}${c}`] = lrsDummy[c], a), {});
+  let notmatchend = Object.keys(lrsDummy2).reduce((a, c) => (a[`${preEND}${c}`] = lrsDummy2[c], a), {});
   Object.keys(notmatchend).forEach((i) => notmatchend[i] = null);
 
   let notmatch1 = { ...notmatchbegin, ...notmatchend };
@@ -42,10 +45,14 @@ async function matchOutputOnRteNm(convertSessionParams, unfilteredArr, rte_nm) {
 
   output0 = results0[index0];
 
+
   if (convertSessionParams.calcGeomType == "Point") {
-    matchError = index0; // if index0 is -1 it will set matchError to that value
+    if (matchError >= 0) {
+      matchError = index0;
+    } // if index0 is -1 it will set matchError to that value
 
     if (matchError >= 0) {
+
       match = { ...output0 };
     }
 
@@ -56,8 +63,9 @@ async function matchOutputOnRteNm(convertSessionParams, unfilteredArr, rte_nm) {
 
 
   if (convertSessionParams.calcGeomType == "Route") {
-    matchError = index0; // if index0 is -1 it will set matchError to that value
-
+    if (matchError >= 0) {
+      matchError = index0;
+    } // if index0 is -1 it will set matchError to that value
     if (matchError >= 0) {
 
       let index1 = results1.findIndex(function (item, i) {
@@ -84,6 +92,7 @@ async function matchOutputOnRteNm(convertSessionParams, unfilteredArr, rte_nm) {
         }
 
         match = { ...begin, ...end };
+
       }
 
       else {
@@ -97,5 +106,11 @@ async function matchOutputOnRteNm(convertSessionParams, unfilteredArr, rte_nm) {
 
   }
 
-  return (match);
+
+
+  let matchObj = {};
+  matchObj.match = match;
+  matchObj.matcherror = matchError;
+
+  return (matchObj);
 }
