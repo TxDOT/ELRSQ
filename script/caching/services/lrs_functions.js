@@ -20,6 +20,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   GreenToYellow();
   resetProgressAndDownloads();
   $("#bulk-convert-progress-bar").show();
+  $("#input-toolbar-msg").hide();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
   let lrm_indices1 = field_indicesObj.lrm_indices1;
@@ -83,7 +84,10 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
       let matchObj = await matchOutputOnRteNm(convertSessionParams, unfilteredResultsArr, user_input_rte_nm);
       lrsQueryObj.matcherror = matchObj.matcherror;
       lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj.match }); // this makes an object from the attribute values and lrs values and pushes it to an array
-    } else {
+      if (lrsQueryObj.matcherror < 0) { $("#input-toolbar-msg").show() }; //WATCH need to reset this for next run
+    }
+
+    else {
       // in this case multiple elements are pushed to lrsQueryObj.data
       // process multiple returns
       for (let aRowResult = 0; aRowResult < results0_filtered.length; aRowResult++) {
