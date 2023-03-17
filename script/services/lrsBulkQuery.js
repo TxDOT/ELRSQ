@@ -15,7 +15,7 @@ async function lrsBulkQuery(convertSessionParams, fileContents, rtenmformat) {
   formEntryParams.constrainToRouteName = (convertSessionParams.calcGeomType == "Route") ? 1 : 1; // changing this so bulk points are constrained as well
   formEntryParams.rtenmformat = rtenmformat;
 
-  let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": true }).data;
+  let parsedInputCSV = Papa.parse(fileContents, { "skipEmptyLines": 'greedy' }).data;
 
   let field_indicesObj = await setTableFieldsByMethod(convertSessionParams, parsedInputCSV);
   let rte_nm_lrm_indices = field_indicesObj.rte_nm_lrm_indices;
