@@ -335,6 +335,7 @@ function resetTemplates() {
 
 
 function resetProgressAndDownloads(){
+  zeroProgressBar();
   $("#bulk-convert-download-bar").hide();
   $("#form-convert-download-bar").hide();
   $("#bulk-convert-progress-bar").hide();
@@ -392,7 +393,15 @@ function updateProgressBar(aCurrentRow, total) {
 }
 
 
+function zeroProgressBar() {
 
+  let progress = 0;
+  let widthstring = progress.toString() + "%";
+
+  $("#bulkMegaModal .progress-bar").css("width", widthstring);
+  $("#bulkMegaModal .progress-bar").html(widthstring);
+
+}
 
 
 
