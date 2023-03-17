@@ -36,20 +36,21 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
     let lrsQueryObj = {};
     lrsQueryObj.url = [];
-    lrsQueryObj.results = [];
+    lrsQueryObj.resultswide = [];
+    lrsQueryObj.resultsnarrow = [];
     lrsQueryObj.data = [];
     lrsQueryObj.geojson = []; // this is now an array to account for multiple returns
     lrsQueryObj.matcherror = 0;
 
     let currentRow = arrayToQuery[rowToQuery];
-    let unfilteredResultsArr = [];
 
     // build url & perform query
     let url0 = buildUrl(convertSessionParams.currentLrmNo, currentRow, lrm_indices0);
     lrsQueryObj.url[0] = url0;
     let results0 = await queryService(url0);
     var results0_filtered = results0.map(function (e) { e = _.pick(e, fieldsKeep); return e; });
-    lrsQueryObj.results[0] = results0_filtered;
+    lrsQueryObj.resultswide[0] = results0;
+    lrsQueryObj.resultsnarrow[0] = results0_filtered;
     if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url0); }
 
     if (convertSessionParams.calcGeomType == "Route") {
@@ -57,11 +58,9 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
       lrsQueryObj.url[1] = url1;
       let results1 = await queryService(url1);
       var results1_filtered = results1.map(function (e) { e = _.pick(e, fieldsKeep); return e; });
-      lrsQueryObj.results[1] = results1_filtered;
-      unfilteredResultsArr = [results0_filtered, results1_filtered];
+      lrsQueryObj.resultswide[1] = results1;
+      lrsQueryObj.resultsnarrow[1] = results1_filtered;
       if (GLOBALSETTINGS.PrintUrls == 1) { console.log(url1); }
-    } else {
-      unfilteredResultsArr = [results0_filtered, results0_filtered];
     }
 
     if (GLOBALSETTINGS.PrintIterations == 1) { console.log("returned " + results0_filtered.length + " results for row: " + rowToQuery); }
@@ -81,20 +80,24 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
     if (formEntryParams.constrainToRouteName == 1) {
       // in this case only a single element is pushed to lrsQueryObj.data
       let user_input_rte_nm = getRightRouteName_Pre(convertSessionParams.inputMethod, formEntryParams.rtenmformat, rte_nm_lrm_indices, currentRow);
-      let matchObj = await matchOutputOnRteNm(convertSessionParams, unfilteredResultsArr, user_input_rte_nm);
+      let matchObj = await matchOutputOnRteNm(convertSessionParams, lrsQueryObj.resultsnarrow, user_input_rte_nm);
       lrsQueryObj.matcherror = matchObj.matcherror;
       lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj.match }); // this makes an object from the attribute values and lrs values and pushes it to an array
-      if (lrsQueryObj.matcherror < 0) { $("#input-toolbar-msg").show() }; //WATCH need to reset this for next run
+      if (lrsQueryObj.matcherror < 0) { $("#input-toolbar-msg").show() };
     }
 
     else {
       // in this case multiple elements are pushed to lrsQueryObj.data
       // process multiple returns
-      for (let aRowResult = 0; aRowResult < results0_filtered.length; aRowResult++) {
-        if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (results0_filtered.length)); }
-        lrsQueryObj.data.push({ ...otherAttributesObj, ...results0_filtered[aRowResult] });
-        if (results0_filtered[aRowResult].RTE_DEFN_LN_NM == null) { lrsQueryObj.matcherror = -1; };
-        if (lrsQueryObj.matcherror < 0) { $("#input-toolbar-msg").show() }; //WATCH need to reset this for next run
+      let matchObj = filterMultipleReturns(convertSessionParams, lrsQueryObj.resultswide);
+      lrsQueryObj.matcherror = matchObj.matcherror;
+      lrsQueryObj.resultsnarrow[0] = matchObj.filteredresults.map(function (e) { e = _.pick(e, fieldsKeep); return e; });
+
+      for (let aRowResult = 0; aRowResult < lrsQueryObj.resultsnarrow[0].length; aRowResult++) {
+        if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing result: " + (aRowResult + 1) + " of " + (lrsQueryObj.resultsnarrow[0].length)); }
+        lrsQueryObj.data.push({ ...otherAttributesObj, ...lrsQueryObj.resultsnarrow[0][aRowResult] });
+        if (lrsQueryObj.resultsnarrow[0][aRowResult].RTE_DEFN_LN_NM == null) { lrsQueryObj.matcherror = -1; };
+        if (lrsQueryObj.matcherror < 0) { $("#input-toolbar-msg").show() };
       }
     }
     // end return single geom filtered on route name, or return multiple results
@@ -102,18 +105,22 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
     if (lrsQueryObj.matcherror >= 0) {
       if (convertSessionParams.calcGeomType == "Point") {
         try {
-          let projObj = objectifyPointProject(lrsQueryObj.data[0]); // TODO this may need to have a loop somewhere
-          let aProjectFeatureArr = jsonFromLrsApiToPointGeoJson(projObj);
-          lrsQueryObj.geojson = aProjectFeatureArr;
+          for (let i = 0; i < lrsQueryObj.data.length; i = i + 1) {
+            let projObj = objectifyPointProject(lrsQueryObj.data[i]);
+            let aProjectFeatureArr = jsonFromLrsApiToPointGeoJson(projObj);
+            lrsQueryObj.geojson.push(aProjectFeatureArr);
+          }
         } catch { }
       }
 
       if (convertSessionParams.calcGeomType == "Route") {
         try {
-          let projObj = objectifyRouteProject(lrsQueryObj.data[0]);
-          let results = await queryRoadwayServiceByLine(projObj);
-          let aProjectFeatureArr = jsonFromAgoApiToRouteGeoJson(results, projObj);
-          lrsQueryObj.geojson = aProjectFeatureArr; // this is an array with one or many features
+          for (let i = 0; i < lrsQueryObj.data.length; i = i + 1) {
+            let projObj = objectifyRouteProject(lrsQueryObj.data[i]);
+            let results = await queryRoadwayServiceByLine(projObj);
+            let aProjectFeatureArr = jsonFromAgoApiToRouteGeoJson(results, projObj);
+            lrsQueryObj.geojson.push(aProjectFeatureArr); // this is an array with one or many features
+          }
         } catch { }
       }
     }
@@ -140,6 +147,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
  */
 async function resultsShow(calcGeomType) {
   let formEntryReturnedData = SESSIONHISTORYARR.last().map(queryObj => queryObj.data).flat(); // data may have multiple elements
+  let formEntryReturnedGeom = SESSIONHISTORYARR.last().map(queryObj => queryObj.geojson).flat(); // data may have multiple elements
   ONSCREENMATCH = SESSIONHISTORYARR.last()[0];
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
@@ -149,14 +157,14 @@ async function resultsShow(calcGeomType) {
     paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
     paginationUpdater("#result-pagination", formEntryReturnedData.length);
     fillInPointHtmlTable(ONSCREENMATCH.data[0]);
-    localPointGeoJSONToMap(ONSCREENMATCH.geojson);
+    localPointGeoJSONToMap(ONSCREENMATCH.geojson[0]);
   }
 
   if (calcGeomType == "Route") {
     paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
     paginationUpdater("#result-pagination", formEntryReturnedData.length);
     fillInRouteHtmlTable(ONSCREENMATCH.data[0]);
-    localRouteGeoJSONToMap(ONSCREENMATCH.geojson);
+    localRouteGeoJSONToMap(ONSCREENMATCH.geojson[0]);
   }
 
 }
