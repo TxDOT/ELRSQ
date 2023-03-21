@@ -177,7 +177,8 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
   }
 
   else if (currentLrmNo == 3) {
-    controlSecNum = coordinateArr[index0];
+    //controlSecNum = coordinateArr[index0];
+    controlSecNum = (coordinateArr[index0].toString().padStart(6, '0'))
     milePointMeasure = coordinateArr[index1] || 0;
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
   }
@@ -195,7 +196,7 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
 function getRightRouteName_Pre(inputMethod, rtenmformat, rte_nm_lrm_indices, currentRow) {
 
   let user_input_rte_nm = '';
-  
+
   if (inputMethod == "html") {
     if (rtenmformat == "AAdddd") {
       user_input_rte_nm = fixThisVerySpecificTextFormat(currentRow[rte_nm_lrm_indices]);
@@ -221,7 +222,7 @@ function getRightRouteName_Pre(inputMethod, rtenmformat, rte_nm_lrm_indices, cur
 
 async function getRightRteNm(convertSessionParams, unfilteredArr) {
   let rte_nm = '';
-  
+
   let results0 = unfilteredArr[0];
   let results1 = unfilteredArr[1];
 
