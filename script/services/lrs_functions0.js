@@ -178,7 +178,7 @@ function buildUrl(currentLrmNo, coordinateArr, lrm_indices) {
 
   else if (currentLrmNo == 3) {
     //controlSecNum = coordinateArr[index0];
-    controlSecNum = (coordinateArr[index0].toString().padStart(6, '0'))
+    controlSecNum = (coordinateArr[index0].toString().padStart(6, '0'));
     milePointMeasure = coordinateArr[index1] || 0;
     url = `https://lrs-ext.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=${controlSecNum}&MilePointMeasure=${milePointMeasure}`;
   }
