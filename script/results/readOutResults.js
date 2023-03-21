@@ -70,6 +70,19 @@ async function queryProjectGeometry_pg(projObj) {
 }
 
 
+/**
+ *
+ * @param {*} myRoadwayQueryResults
+ * @param {*} myPrjAttributes an object with RTE_NM, BDFO, and EDFO attributes
+ * @returns  a feature collection
+ */
+function jsonFromAgoApiToRouteGeoJson(myRoadwayQueryResults, myPrjAttributes) {
+  let flatClippedLine = makeClippedLineStrings(myRoadwayQueryResults, myPrjAttributes);
+  return makeRouteGeoJson([flatClippedLine], myPrjAttributes);
+}
+
+
+
 // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GeoJSONLayer.html
 
 /**
@@ -113,4 +126,6 @@ function localRouteGeoJSONToMap(localGeoJSON) {
     }
   });
 }
+
+
 

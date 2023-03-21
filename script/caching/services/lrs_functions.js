@@ -14,7 +14,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearResultsFromMap(); //this only removes graphics
+    clearGraphicsFromMap(); //this only removes graphics
   }
 
   GreenToYellow();
@@ -151,7 +151,6 @@ async function resultsShow(calcGeomType) {
   ONSCREENMATCH = SESSIONHISTORYARR.last()[0];
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-  // WATCH sets GLOBAL-PROJECT-DATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     paginatedResultsSequence(formEntryReturnedData, readOutPointResults);

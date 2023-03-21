@@ -47,48 +47,6 @@ async function rdwayQuery(url) {
 }
 
 
-
-
-//FIXME this can probably be removed
-async function queryProjectGeometry() {
-  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectDrawParameters: " + GLOBALPROJECTDATA.ProjectDrawParameters); }
-  resetProjectFeatureCollections();
-  GreenToYellow();
-
-  //get segment is called within a loop, for each project
-  for (var i = 0; i < GLOBALPROJECTDATA.ProjectDrawParameters.length; i++) {
-    console.log("pushing segment to GLOBAL-PROJECT-DATA.ProjectFeatureCollections");
-    let results = await queryRoadwayServiceByLine(GLOBALPROJECTDATA.ProjectDrawParameters[i]);
-    GLOBALPROJECTDATA.ProjectFeatureCollections.push(jsonFromAgoApiToRouteGeoJson(results, GLOBALPROJECTDATA.ProjectDrawParameters[i]));
-  }
-
-  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections); }
-  YellowToGreen();
-}
-
-
-//FIXME this can probably be removed
-async function queryProjectGeometry2(myProjectDrawParameters, myProjectFeatureCollections) {
-  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("myProjectDrawParameters: " + myProjectDrawParameters); }
-  resetProjectFeatureCollections();
-  GreenToYellow();
-
-  //get segment is called within a loop, for each project
-  let localProjectFeatureCollections = [];
-
-  for (var i = 0; i < myProjectDrawParameters.length; i++) {
-    console.log("pushing segment to myProjectFeatureCollections");
-    let results = await queryRoadwayServiceByLine(myProjectDrawParameters[i]);
-    localProjectFeatureCollections.push(jsonFromAgoApiToRouteGeoJson(results, myProjectDrawParameters[i]));
-  }
-
-  myProjectFeatureCollections.concat(localProjectFeatureCollections);
-
-  if (GLOBALSETTINGS.PrintProjGeom == 1) { console.log("GLOBAL-PROJECT-DATA.ProjectFeatureCollections: " + GLOBALPROJECTDATA.ProjectFeatureCollections); }
-  YellowToGreen();
-}
-
-
 // added output spatial reference to return WGS84
 
 /**

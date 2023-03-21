@@ -1,15 +1,6 @@
 function makeClippedLineStrings(myRoadwayQueryResults, myPrjAttributes) {
   //// multiple results are orderByFields=BEGIN_DFO
 
-  //FIXME move this out of this function
-  /**
-    if (myRoadwayQueryResults.features.length == 0) {
-      myProjectDrawParameters.pop();
-      makeRouteProjectsTable(myProjectDrawParameters);
-      return;
-    }
-  */
-
   var theFrom = roundToDecimalPlace(myPrjAttributes.BDFO, 3);
   var theTo = roundToDecimalPlace(myPrjAttributes.EDFO, 3);
 
@@ -22,16 +13,10 @@ function makeClippedLineStrings(myRoadwayQueryResults, myPrjAttributes) {
 
 
   //vertex numbers
-  //console.log("myRoadwayQueryResults.features.length");
-  //console.log(myRoadwayQueryResults.features.length);
   var returnedFeatureGeom = [];
   for (var aFeature = 0; aFeature < myRoadwayQueryResults.features.length; aFeature++) {
     let returnedLineStrings = makeLineString(myRoadwayQueryResults.features[aFeature], theFrom, theTo);
     returnedFeatureGeom = returnedFeatureGeom.concat(returnedLineStrings);
-    //console.log("concat returnedLineStrings: ");
-    //console.log(returnedLineStrings);
-    //console.log("returnedFeatureGeom");
-    //console.log(returnedFeatureGeom);
   }
 
   //Clipping to desired From and To
@@ -49,8 +34,6 @@ function makeLineString(feature, myFrom, myTo) {
     for (var vertex = vertexNumbers.vertexBeginNumber; vertex <= vertexNumbers.vertexEndNumber; vertex++) {
       returnedLineString.push(feature.geometry.paths[0][vertex]);
     }
-    //console.log("pushing line string: ");
-    //console.log(returnedLineString);
     returnedLineStrings.push(returnedLineString);
   }
   return returnedLineStrings;

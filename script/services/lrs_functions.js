@@ -14,7 +14,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearResultsFromMap(); //WATCH map reset
+    clearGraphicsFromMap(); //WATCH map reset
   }
 
   GreenToYellow();
@@ -136,7 +136,6 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 function resultsShow(calcGeomType, formEntryReturnedData) {
 
   setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-  // WATCH sets GLOBAL-PROJECT-DATA.ProjectGeometry equal to flattenedQueryObjData
 
   if (calcGeomType == "Point") {
     // show TABULAR results

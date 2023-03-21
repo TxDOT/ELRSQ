@@ -22,8 +22,6 @@ $(document).ready(function () {
   });
 
 
-  // FIXME Bulk Upload: change to use Convert button instead of automatic
-
   const myDropZone = document.getElementById("bulk-fieldset");
   dragDropEventHandlers(myDropZone);
 
@@ -51,7 +49,7 @@ $(document).ready(function () {
     const fileContents = await readFile(e.target.files[0])
 
     //e.target.files = []; //WATCH reset file test
-    
+
     GLOBALSETTINGS.InputMethod = "table";
     let convertSessionParams = new Object();
     convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
@@ -65,7 +63,7 @@ $(document).ready(function () {
 
 
 $(":reset").on('click', function () { clearResults(); });
-$(":reset").on('click', function () { clearResultsFromMap(); });
+$(":reset").on('click', function () { clearGraphicsFromMap(); });
 $(":reset").on('click', function () { clearForms(); });
 
 
@@ -79,8 +77,8 @@ $(".map-all").on('click', function () { showAllPoints(); });
 $("#addRow").on('click', function () { addProjectToArray_sequential(GLOBALPROJECTDATA.ProjectDrawParameters); });
 $("#dropRow").on('click', function () { dropLastProjectFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
 $("#clearRows").on('click', function () { clearProjectsFromArray(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections); });
-$("#queryProjectGeometry-button").on('click', function () { queryProjectGeometry(GLOBALPROJECTDATA.ProjectDrawParameters, GLOBALPROJECTDATA.ProjectFeatureCollections) });
-$("#localRouteGeoJSONToMap-button").on('click', function () { localRouteGeoJSONToMap(GLOBALPROJECTDATA.ProjectFeatureCollections) });
+$("#queryProjectGeometry-button").on('click', function () { });
+$("#localRouteGeoJSONToMap-button").on('click', function () { });
 
 
 // toggle buttons for showing/hiding layers

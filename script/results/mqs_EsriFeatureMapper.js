@@ -123,8 +123,7 @@ function addPointGraphic(lat, lon) {
   });
 }
 
-// TODO rename this only removes graphics
-function clearResultsFromMap() {
+function clearGraphicsFromMap() {
 
   graphics = [];
   view.graphics.removeAll();
@@ -133,8 +132,6 @@ function clearResultsFromMap() {
     center: [-99.90, 31.96], // Longitude, latitude of Texas
     zoom: 6, // Zoom level
   })
-
-  //FIXME also remove routes
   
 }
 
@@ -150,8 +147,10 @@ function returnToPoint() {
   }
 }
 
-function showAllPoints() {
-  showFullPointResultsOnMap(GLOBALPROJECTDATA.ProjectGeometry);
-}
+/**
+  function showAllPoints() {
+    showFullPointResultsOnMap(GLOBALPROJECTDATA.ProjectGeometry);
+  }
+*/
 
 

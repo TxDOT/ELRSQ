@@ -145,7 +145,7 @@ function clearForms() {
 
 function resetLRMVariables() {
   clearResults();
-  clearResultsFromMap();
+  clearGraphicsFromMap();
   clearForms();
   resetDropdowns();
   resetKeyboard();

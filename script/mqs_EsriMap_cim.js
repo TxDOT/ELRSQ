@@ -190,7 +190,7 @@ require([
       resetGraphics();
       resetCurrentPagination();
 
-      clearResultsFromMap();
+      clearGraphicsFromMap();
 
       //go to cursor location, regardless of api results
       addPointGraphic(lat, lon);

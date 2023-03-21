@@ -8,42 +8,43 @@ GLOBALSETTINGS.PrintProjGeom = 0;
 GLOBALSETTINGS.DemoMode = 0;
 GLOBALSETTINGS.MapCursorLive = 0;
 
-// WATCH this changes a global variable
 function cursorMode() {
   $("#viewDiv").css('cursor', 'crosshair');
   GLOBALSETTINGS.MapCursorLive = 1;
 }
 
-// WATCH added for caching
 let SESSIONHISTORYARR = [];
 let ONSCREENMATCH = {};
 
 
-
 const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
-GLOBALPROJECTDATA.ProjectGeometry = [];
-GLOBALPROJECTDATA.ProjectGeometryCache = [];
+/**
+  GLOBALPROJECTDATA.ProjectGeometry = [];
+  GLOBALPROJECTDATA.ProjectGeometryCache = [];
+*/
 GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 
 function resetProjectDrawParameters() {
   GLOBALPROJECTDATA.ProjectDrawParameters = [];
 }
 
-function resetProjectGeometry() {
-  //WATCH this sets a global variable
-  GLOBALPROJECTDATA.ProjectGeometry = [];
-}
+/**
+  function resetProjectGeometry() {
+    GLOBALPROJECTDATA.ProjectGeometry = [];
+  }
+*/
 
 function resetProjectFeatureCollections() {
   GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 }
 
-//FIXME add caching by making this a push
-function setProjectGeometry(someProjectGeometry) {
-  GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
-  GLOBALPROJECTDATA.ProjectGeometryCache.push(someProjectGeometry);
-}
+/**
+  function setProjectGeometry(someProjectGeometry) {
+    GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
+    GLOBALPROJECTDATA.ProjectGeometryCache.push(someProjectGeometry);
+  }
+*/
 
 
 let PAGINATION = {};
