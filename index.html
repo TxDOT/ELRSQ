@@ -996,115 +996,97 @@
               <!--#region results-table-point  -->
               <div id="results-table-point-card" class="card">
                 <div class="card-body">
-                  <!-- Bordered Table -->
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Route Information</td>
-                        <td>
-                          <button id="copyRouteDFO" type="button" class="btn btn-info copy" title="copy"><i
-                              class="fa fa-copy" aria-hidden="true"></i></button>
-                          <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
-                              class="fa fa-link" aria-hidden="true"></i></button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>RouteID:</td>
-                        <td id="p_returned_ROUTEID" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>Route:</td>
-                        <td id="p_returned_RTE_DEFN_LN_NM" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>Roadbed Type:</td>
-                        <td id="p_returned_RDBD_TYPE_DSCR" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>DFO:</td>
-                        <td id="p_returned_RTE_DFO" class="textout table-secondary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
 
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Control Section</td>
-                        <td><button id="copyControlSection" type="button" class="btn btn-info copy" title="copy"><i
-                              class="fa fa-copy" aria-hidden="true"></i></button></td>
-                      </tr>
-                      <tr>
-                        <td>Control Section:</td>
-                        <td id="p_returned_CTRL_SECT_LN_NBR" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>Mile Point:</td>
-                        <td id="p_returned_CTRL_SECT_MPT" class="textout table-secondary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <!-- RTE DFO RESULT -->
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-6 text-center">Route Information</div>
+                      <div class="col-6 text-center">
+                        <button id="copyRouteDFO" type="button" class="btn btn-info copy" title="copy"><i
+                            class="fa fa-copy" aria-hidden="true"></i></button>
+                        <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
+                            class="fa fa-link" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name">Route </div>
+                      <span id="p_returned_RTE_DEFN_LN_NM" class="col datacell textout"></span>
+                    </div>
+                    <div class="row row-cols-2 attribute-data">
+                      <div class="col attribute-name"><i class="fa fa-flag" aria-hidden="true"></i> DFO </div>
+                      <span id="p_returned_RTE_DFO" class="col datacell textout"></span>
+                    </div>
+                  </div>
+                  <!-- END RTE DFO RESULT -->
 
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Field Location</td>
-                        <td><button id="copyFieldLocation" type="button" class="btn btn-info copy" title="copy"><i
-                              class="fa fa-copy" aria-hidden="true"></i></button></td>
-                      </tr>
-                      <tr>
-                        <td>Reference Marker:</td>
-                        <td id="p_returned_RMRKR_PNT_NBR" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>Displacement:</td>
-                        <td id="p_returned_RMRKR_DISPLACEMENT" class="textout table-secondary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <!-- CS MP RESULT -->
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-6 text-center">Control Section</div>
+                      <div class="col-6 text-center">
+                        <button id="copyControlSection" type="button" class="btn btn-info copy" title="copy"><i
+                            class="fa fa-copy" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Control Section</div>
+                      <div class="col text-center attributecell">Mile Point</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag" aria-hidden="true"></i>
+                          Point</strong></div>
+                      <span id="p_returned_CTRL_SECT_LN_NBR" class="col datacell textout"></span>
+                      <span id="p_returned_CTRL_SECT_MPT" class="col datacell textout"></span>
+                    </div>
+                  </div>
+                  <!-- END CS MP RESULT -->
 
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Coordinates</td>
-                        <td><button id="copyCoordinates" type="button" class="btn btn-info copy" title="copy"><i
-                              class="fa fa-copy" aria-hidden="true"></i></button></td>
-                      </tr>
-                      <tr>
-                        <td>Latitude:</td>
-                        <td id="p_returned_LAT" class="textout table-secondary"></td>
-                      </tr>
-                      <tr>
-                        <td>Longitude:</td>
-                        <td id="p_returned_LON" class="textout table-secondary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End Bordered Table -->
+                  <!-- RM RESULT -->
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-6 text-center">Field Location</div>
+                      <div class="col-6 text-center">
+                        <button id="copyFieldLocation" type="button" class="btn btn-info copy" title="copy"><i
+                            class="fa fa-copy" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Reference Marker</div>
+                      <div class="col text-center attributecell">Displacement</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag" aria-hidden="true"></i>
+                          Point</strong></div>
+                      <span id="p_returned_RMRKR_PNT_NBR" class="col datacell textout"></span>
+                      <span id="p_returned_RMRKR_DISPLACEMENT" class="col datacell textout"></span>
+                    </div>
+                  </div>
+                  <!-- END RM RESULT -->
+
+                  <!-- LAT LON RESULT -->
+                  <div class="container minitable mb-3">
+                    <div class="row row-cols-1 group-header">
+                      <div class="col-6 text-center">Coordinates</div>
+                      <div class="col-6 text-center">
+                        <button id="copyCoordinates" type="button" class="btn btn-info copy" title="copy"><i
+                          class="fa fa-copy" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                    <div class="row row-cols-3 attribute-header">
+                      <div class="col"></div>
+                      <div class="col text-center attributecell">Latitude</div>
+                      <div class="col text-center attributecell">Longitude</div>
+                    </div>
+                    <div class="row row-cols-3 attribute-data">
+                      <div class="col attribute-name"><strong><i class="fa fa-flag" aria-hidden="true"></i>
+                          Point</strong></div>
+                      <span id="p_returned_LAT" class="col datacell textout"></span>
+                      <span id="p_returned_LON" class="col datacell textout"></span>
+                    </div>
+                  </div>
+                  <!-- END LAT LON RESULT -->
 
                 </div>
               </div>

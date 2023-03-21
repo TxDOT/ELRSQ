@@ -34,16 +34,6 @@ require([
   imagery.visible = false;
 
 
-
-
-
-
-
-
-
-
-
-
   //FIXME change format of TxDOT_Control_SectionsLabelClass
   const TxDOT_Control_SectionsLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.CTRL_SECT_NBR" },
@@ -59,9 +49,6 @@ require([
   TxDOT_Control_Sections.labelingInfo = [TxDOT_Control_SectionsLabelClass];
   map.add(TxDOT_Control_Sections);
   TxDOT_Control_Sections.visible = false;
-
-
-
 
 
   //FIXME change format of TxDOT_Reference_MarkersLabelClass
