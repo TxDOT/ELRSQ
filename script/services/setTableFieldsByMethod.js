@@ -25,7 +25,7 @@ async function setTableFieldsByMethod(convertSessionParams, parsedInputCSV) {
 
       let lat_field = ~~await confirmFieldChoice("#btn-lat_field", "#lat_field");
       let lon_field = ~~await confirmFieldChoice("#btn-lon_field", "#lon_field");
-      let rte_nm_option = 0; //TODO make this optional
+      let rte_nm_option = 0; 
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-point_rte_nm_field", "#point_rte_nm_field") : '';
 
       lrm_indices = lrm_indices0 = [lat_field, lon_field, rte_nm_field];
@@ -52,7 +52,7 @@ async function setTableFieldsByMethod(convertSessionParams, parsedInputCSV) {
 
       let controlsection_field = ~~await confirmFieldChoice("#btn-controlsection_field", "#controlsection_field");
       let milepoint_field = ~~await confirmFieldChoice("#btn-milepoint_field", "#milepoint_field");
-      let rte_nm_option = 0; //TODO make this optional
+      let rte_nm_option = 0; 
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-point_rte_nm_field", "#point_rte_nm_field") : '';
 
       lrm_indices = lrm_indices0 = [controlsection_field, milepoint_field, rte_nm_field];
@@ -84,7 +84,7 @@ async function setTableFieldsByMethod(convertSessionParams, parsedInputCSV) {
       let blon_field = ~~await confirmFieldChoice("#btn-blon_field", "#blon_field");
       let elat_field = ~~await confirmFieldChoice("#btn-elat_field", "#elat_field");
       let elon_field = ~~await confirmFieldChoice("#btn-elon_field", "#elon_field");
-      let rte_nm_option = 0; //TODO make this optional
+      let rte_nm_option = 0; 
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = [blat_field, blon_field, elat_field, elon_field, rte_nm_field];
@@ -121,7 +121,7 @@ async function setTableFieldsByMethod(convertSessionParams, parsedInputCSV) {
       let bcontrolsection_field = ~~await confirmFieldChoice("#btn-bcontrolsection_field", "#bcontrolsection_field");
       let bmilepoint_field = ~~await confirmFieldChoice("#btn-bmilepoint_field", "#bmilepoint_field");
       let emilepoint_field = ~~await confirmFieldChoice("#btn-emilepoint_field", "#emilepoint_field");
-      let rte_nm_option = 0; //TODO make this optional
+      let rte_nm_option = 0; 
       let rte_nm_field = (rte_nm_option == 1) ? ~~await confirmFieldChoice("#btn-rte_nm_field", "#rte_nm_field") : '';
 
       lrm_indices = [bcontrolsection_field, bmilepoint_field, emilepoint_field, rte_nm_field];
