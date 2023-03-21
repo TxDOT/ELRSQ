@@ -33,21 +33,16 @@ require([
   map.add(imagery);
   imagery.visible = false;
 
-  //FIXME change format of TxDOT_Reference_MarkersLabelClass
-  const TxDOT_Reference_MarkersLabelClass = new LabelClass({
-    labelExpressionInfo: { expression: "$feature.MRKR_NBR" },
-    symbol: {
-      type: "text",  // autocasts as new TextSymbol()
-      color: "black",
-      haloSize: 1,
-      haloColor: "white"
-    }
-  });
 
-  TxDOT_Reference_Markers = new FeatureLayer("https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0");
-  TxDOT_Reference_Markers.labelingInfo = [TxDOT_Reference_MarkersLabelClass];
-  map.add(TxDOT_Reference_Markers);
-  TxDOT_Reference_Markers.visible = false;
+
+
+
+
+
+
+
+
+
 
   //FIXME change format of TxDOT_Control_SectionsLabelClass
   const TxDOT_Control_SectionsLabelClass = new LabelClass({
@@ -55,7 +50,7 @@ require([
     symbol: {
       type: "text",  // autocasts as new TextSymbol()
       color: "black",
-      haloSize: 1,
+      haloSize: 2,
       haloColor: "white"
     }
   });
@@ -64,6 +59,64 @@ require([
   TxDOT_Control_Sections.labelingInfo = [TxDOT_Control_SectionsLabelClass];
   map.add(TxDOT_Control_Sections);
   TxDOT_Control_Sections.visible = false;
+
+
+
+
+
+  //FIXME change format of TxDOT_Reference_MarkersLabelClass
+  const TxDOT_Reference_MarkersLabelClass = new LabelClass({
+    labelExpressionInfo: { expression: "$feature.MRKR_NBR" },
+    symbol: {
+      type: "text",  // autocasts as new TextSymbol()
+      color: "black",
+      haloSize: 2,
+      haloColor: "white"
+    }
+  });
+
+  TxDOT_Reference_Markers = new FeatureLayer({
+    url: "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0",
+    definitionExpression: "RDBD_TYPE = 'KG'"
+  });
+  //TxDOT_Reference_Markers.definitionExpression("RDBD_TYPE IN ('KG')");
+  TxDOT_Reference_Markers.labelingInfo = [TxDOT_Reference_MarkersLabelClass];
+  map.add(TxDOT_Reference_Markers);
+  TxDOT_Reference_Markers.visible = false;
+
+
+  TxDOT_Reference_Markers.renderer = {
+    type: "simple",  // autocasts as new SimpleRenderer()
+    symbol: {
+      type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+      size: 4,
+      color: "red",
+      outline: {  // autocasts as new SimpleLineSymbol()
+        width: 0.5,
+        color: "white"
+      }
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   window.view = new MapView({
@@ -103,7 +156,7 @@ require([
 
       $("#kbInputLatitude").val(lat);
       $("#kbInputLongitude").val(lon);
-  
+
     }
   })
 
