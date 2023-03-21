@@ -19,32 +19,26 @@ let ONSCREENMATCH = {};
 
 const GLOBALPROJECTDATA = {};
 GLOBALPROJECTDATA.ProjectDrawParameters = [];
-/**
-  GLOBALPROJECTDATA.ProjectGeometry = [];
-  GLOBALPROJECTDATA.ProjectGeometryCache = [];
-*/
+GLOBALPROJECTDATA.ProjectGeometry = [];
+GLOBALPROJECTDATA.ProjectGeometryCache = [];
 GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 
 function resetProjectDrawParameters() {
   GLOBALPROJECTDATA.ProjectDrawParameters = [];
 }
 
-/**
-  function resetProjectGeometry() {
-    GLOBALPROJECTDATA.ProjectGeometry = [];
-  }
-*/
+function resetProjectGeometry() {
+  GLOBALPROJECTDATA.ProjectGeometry = [];
+}
 
 function resetProjectFeatureCollections() {
   GLOBALPROJECTDATA.ProjectFeatureCollections = [];
 }
 
-/**
-  function setProjectGeometry(someProjectGeometry) {
-    GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
-    GLOBALPROJECTDATA.ProjectGeometryCache.push(someProjectGeometry);
-  }
-*/
+function setProjectGeometry(someProjectGeometry) {
+  GLOBALPROJECTDATA.ProjectGeometry = someProjectGeometry;
+  GLOBALPROJECTDATA.ProjectGeometryCache.push(someProjectGeometry);
+}
 
 
 let PAGINATION = {};
