@@ -44,26 +44,34 @@ function adjustApp() {
 }
 
 
-
-
 //Diagram Specifications
 let DIAGRAMRANGE = {};
 let DIAGRAMSPECS = {};
+let DRAWEVENTS = [];
 
 let DIAGRAMLENMILES_MI = 0;
 
 async function fastSRD(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi) {
   console.log(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi);
-
-  let roadwayObj = checkLRMInputs(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi);
-  DIAGRAMRANGE.roadway = roadwayObj;
-
   let drawing = {};
 
-  drawing.getRouteAttributesObj = await getRouteAttributes("TxDOT_Roadways_Unsegmented", "RTE_NM", roadwayObj.routename);
+  DIAGRAMRANGE.roadway_input = { "routename": diagramRteNm, "dfo_fm": diagramDFOBeg_mi, "dfo_to": diagramDFOEnd_mi };
+  DIAGRAMRANGE.roadway = { "routename": diagramRteNm, "dfo_fm": '', "dfo_to": '' };
+
+  drawing.getRouteAttributesObj = await getRouteAttributes("TxDOT_Roadways_Unsegmented", "RTE_NM", DIAGRAMRANGE.roadway_input.routename);
+  let checkLRMObj = checkLRMInputs(DIAGRAMRANGE.roadway_input.routename);
+
+  setDiagramBase();
+  clearDrawings();
+  setDiagramScale(DIAGRAMRANGE.roadway.dfo_fm, DIAGRAMRANGE.roadway.dfo_to);
+
+
   drawing.addControlSectionsObj = await addControlSections("TxDOT_Control_Sections", "CTRL_SECT_NBR", "Control Sections", 0);
+
   drawing.addFeatAttrPointObj = await addFeatAttrPoint("TxDOT_Reference_Markers_SRD", "MRKR_NBR", "Reference Markers", 1);
+
   drawing.addFeatAttrBandObj = await addFeatAttrBand("TxDOT_Route_County_SRD", "CNTY_NM", "County", 2, 0);
+
   drawing.addConcurrencyObj = await addConcurrency("service", "servicefield", "Concurrency", drawing.getRouteAttributesObj.dfoGapArr, 3, 1);
 
   return drawing;
@@ -83,65 +91,55 @@ function drawSRD(drawing) {
 }
 
 
-function checkLRMInputs(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi) {
-  setDiagramBase();
-  clearDrawings();
-
-  /**
-    var diagramRteNm = document.getElementById("inpRouteID").value;
-    var diagramDFOBeg_mi = Number(document.getElementById("inpFromDFO").value);
-    var diagramDFOEnd_mi = Number(document.getElementById("inpToDFO").value);
-  */
-  /**
-    var diagramRteNm = "FM0051-KG";
-    var diagramDFOBeg_mi = Number(0);
-    var diagramDFOEnd_mi = Number(122.667);
-  */
-
-  setDiagramScale(diagramDFOBeg_mi, diagramDFOEnd_mi);
-
+function checkLRMInputs(diagramRteNm) {
   var theLRM = "";
-
   if (diagramRteNm.length == 8 && isNaN(diagramRteNm) == true && diagramRteNm.indexOf(" ") < 0) { theLRM = "DFO"; }
   else if (diagramRteNm.length == 9 && isNaN(diagramRteNm) == true && diagramRteNm.indexOf(" ") < 0) { theLRM = "DFO"; }
   else if (diagramRteNm.length == 10 && isNaN(diagramRteNm) == true && diagramRteNm.indexOf(" ") < 0) { theLRM = "DFO"; }
   else { alert("Unrecognized Roadway ID, please try again."); return; }
 
   //Add roadway inputs to diagram specs
-  return { "routename": diagramRteNm, "dfo_fm": diagramDFOBeg_mi, "dfo_to": diagramDFOEnd_mi, "theLRM": theLRM };
+  return { "theLRM": theLRM };
 }
 
+async function getRouteAttributes(service, servicefield, theAttribute) {
+  //Add Inventory Layer, fields, route, and DFO's
+  let getRouteAttributesObj = {
+    "layer": service, "field": servicefield, "routename_input": DIAGRAMRANGE.roadway_input.routename,
+    "dfo_fm_input": DIAGRAMRANGE.roadway_input.dfo_fm, "dfo_to_input": DIAGRAMRANGE.roadway_input.dfo_to
+  };
 
+  let featureService = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/" + service + "/FeatureServer/0";
 
+  let theField = servicefield;
+  let theFields = "RTE_NM%2C+BEGIN_DFO%2C+END_DFO&";
+  let theOrder = "END_DFO ASC";
+  let theService = queryRoadwayfromService(featureService, theField, theAttribute, theFields, theOrder);
+  let response = await queryRoadwayService(theService);
 
+  let segmentDfoRangeObj = getSegmentDfoRange(response);
+  segmentDfoRangeObj.dfoGapArr = getDfoGapArr(response);
 
-async function new_xmlRequestWithProcessing(theService) {
-  const response = await fetch(theService, { method: 'POST' });
-  return response.json(); // parses JSON response into native JavaScript objects
+  return { ...getRouteAttributesObj, ...segmentDfoRangeObj };
 }
-
-function queryRoadwayfromService(theServiceName, theField, theAttribute, theFields, theOrder) {
-  var theRequest = theServiceName + "/query?f=json&where=" + theField + "='" + theAttribute +
-    "'&outFields=" + theFields + "returnGeometry=true&outSR=4326" + "&orderByFields=" + theOrder;
-  return theRequest;
-}
-
-async function queryRoadwayService(url) {
-  const response = await fetch(url, { method: 'GET', });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
-
-function queryRecordFromService(theServiceName, theQuery, theOrder, theFields) {
-  var theRequest = theServiceName + "/query?f=json&orderByFields=" + theOrder + "&returnGeometry=false&where=" + theQuery + "&outFields=" + theFields;
-  return theRequest;
-}
-
 
 
 function getSegmentDfoRange(results) {
   let min_DFO = results.features[0].attributes.BEGIN_DFO;
   let max_DFO = results.features.last().attributes.END_DFO;
-  if (DIAGRAMRANGE.roadway.dfo_to > max_DFO) { console.log(`Entered end DFO exceeds roadway end DFO of ${max_DFO}`); }
+  if (DIAGRAMRANGE.roadway_input.dfo_fm < min_DFO) {
+    console.log(`Entered begin DFO exceeds roadway begin DFO of ${min_DFO}`);
+    DIAGRAMRANGE.roadway.dfo_fm = min_DFO;
+  } else {
+    DIAGRAMRANGE.roadway.dfo_fm = DIAGRAMRANGE.roadway_input.dfo_fm;
+  }
+
+  if (DIAGRAMRANGE.roadway_input.dfo_to > max_DFO) {
+    console.log(`Entered end DFO exceeds roadway end DFO of ${max_DFO}`);
+    DIAGRAMRANGE.roadway.dfo_to = max_DFO;
+  } else {
+    DIAGRAMRANGE.roadway.dfo_to = DIAGRAMRANGE.roadway_input.dfo_to;
+  }
   return { "min_DFO": min_DFO, "max_DFO": max_DFO };
 }
 
@@ -180,5 +178,26 @@ async function getConcurrenciesByLatLon(routeName, lat, lon) {
 
   results = await queryRoadwayService(url);
   return results;
+}
+
+async function new_xmlRequestWithProcessing(theService) {
+  const response = await fetch(theService, { method: 'POST' });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+function queryRoadwayfromService(theServiceName, theField, theAttribute, theFields, theOrder) {
+  var theRequest = theServiceName + "/query?f=json&where=" + theField + "='" + theAttribute +
+    "'&outFields=" + theFields + "returnGeometry=true&outSR=4326" + "&orderByFields=" + theOrder;
+  return theRequest;
+}
+
+async function queryRoadwayService(url) {
+  const response = await fetch(url, { method: 'GET', });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+function queryRecordFromService(theServiceName, theQuery, theOrder, theFields) {
+  var theRequest = theServiceName + "/query?f=json&orderByFields=" + theOrder + "&returnGeometry=false&where=" + theQuery + "&outFields=" + theFields;
+  return theRequest;
 }
 

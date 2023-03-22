@@ -70,6 +70,21 @@ function drawFeatAttrBands(feature, lineNo, bandArr) {
   if (bandArr.length == 0) { drawNoLoad_nopix(lineNo); }
 }
 
+// general scaling functions
+
+function setDiagramBase() {
+  CHARTWIDTH_px = document.getElementById("content").style.width;
+  CHARTHEIGHT_px = document.getElementById("content").style.height;
+  CHARTWIDTH_px = getLeftCharacters(CHARTWIDTH_px, CHARTWIDTH_px.length - 2);
+  CHARTHEIGHT_px = getLeftCharacters(CHARTHEIGHT_px, CHARTHEIGHT_px.length - 2);
+  DIAGRAMLENPIXELS_px = calcDiagramLen();
+
+  var baseCanvas = document.getElementById("srdCanvas");
+  baseCanvas.style.width = CHARTWIDTH_px + "px";
+  baseCanvas.style.height = CHARTHEIGHT_px + "px";
+  baseCanvas.width = baseCanvas.offsetWidth;
+  baseCanvas.height = baseCanvas.offsetHeight;
+}
 
 // pathway 1 scaling functions
 
@@ -188,22 +203,9 @@ let DiagramTermLabelColor = "#DC143C";
 let CSLabelColor = "#DC143C";
 let CSDividerColor = "#DC143C";
 
-function setDiagramBase() {
-  CHARTWIDTH_px = document.getElementById("content").style.width; //1125px
-  CHARTHEIGHT_px = document.getElementById("content").style.height; //960px
-  CHARTWIDTH_px = getLeftCharacters(CHARTWIDTH_px, CHARTWIDTH_px.length - 2); //1125
-  CHARTHEIGHT_px = getLeftCharacters(CHARTHEIGHT_px, CHARTHEIGHT_px.length - 2); //960
-
-  DIAGRAMLENPIXELS_px = calcDiagramLen();  //925
-}
-
 function drawDiagramBase_nopix() {
   clearDrawings();
-  var baseCanvas = document.getElementById("srdCanvas");
-  baseCanvas.style.width = CHARTWIDTH_px + "px";  //1125px
-  baseCanvas.style.height = CHARTHEIGHT_px + "px";  //960px
-  baseCanvas.width = baseCanvas.offsetWidth;  //1125
-  baseCanvas.height = baseCanvas.offsetHeight;  //960
+
 
   drawBgColor_nopix();
   drawHeaderBox_nopix();  //#4682B4

@@ -312,26 +312,6 @@ async function processConcurrency(dfoGaps_Arr, lineNo, colour) {
 
 
 
-async function getRouteAttributes(service, servicefield, theAttribute) {
-  //Add Inventory Layer, fields, route, and DFO's
-  let getRouteAttributesObj = {
-    "layer": service, "field": servicefield, "routename": DIAGRAMRANGE.roadway.routename,
-    "dfo_fm": DIAGRAMRANGE.roadway.dfo_fm, "dfo_to": DIAGRAMRANGE.roadway.dfo_to
-  };
-
-  let featureService = "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/" + service + "/FeatureServer/0";
-
-  let theField = servicefield;
-  let theFields = "RTE_NM%2C+BEGIN_DFO%2C+END_DFO&";
-  let theOrder = "END_DFO ASC";
-  let theService = queryRoadwayfromService(featureService, theField, theAttribute, theFields, theOrder);
-  let response = await queryRoadwayService(theService);
-
-  let segmentDfoRangeObj = getSegmentDfoRange(response);
-  segmentDfoRangeObj.dfoGapArr = getDfoGapArr(response);
-
-  return { ...getRouteAttributesObj, ...segmentDfoRangeObj };
-}
 
 
 
