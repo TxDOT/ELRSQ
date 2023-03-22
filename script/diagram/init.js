@@ -53,6 +53,7 @@ let DIAGRAMSPECS = {};
 let DIAGRAMLENMILES_MI = 0;
 
 async function fastSRD(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi) {
+  console.log(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi);
 
   let roadwayObj = checkLRMInputs(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi);
   DIAGRAMRANGE.roadway = roadwayObj;
@@ -79,9 +80,6 @@ function drawSRD(drawing) {
 
   let imagedata = document.getElementById("srdCanvas").toDataURL("image/png");
   document.getElementById("img").src = imagedata;
-
-  console.log(imagedata);
-
 }
 
 
@@ -94,9 +92,11 @@ function checkLRMInputs(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi) {
     var diagramDFOBeg_mi = Number(document.getElementById("inpFromDFO").value);
     var diagramDFOEnd_mi = Number(document.getElementById("inpToDFO").value);
   */
-  var diagramRteNm = "FM0051-KG";
-  var diagramDFOBeg_mi = Number(0);
-  var diagramDFOEnd_mi = Number(122.667);
+  /**
+    var diagramRteNm = "FM0051-KG";
+    var diagramDFOBeg_mi = Number(0);
+    var diagramDFOEnd_mi = Number(122.667);
+  */
 
   setDiagramScale(diagramDFOBeg_mi, diagramDFOEnd_mi);
 

@@ -16,8 +16,6 @@ function buildDfoAxis(dfo_fm, dfo_to) {
 
   let imagedata = document.getElementById("srdCanvas").toDataURL("image/png");
   document.getElementById("img").src = imagedata;
-
-  console.log(imagedata);
 }
 
 function buildMptAxis() {
@@ -222,7 +220,7 @@ function drawHeaderBox_nopix() {
 }
 
 function drawHeaderTitle_nopix() {
-  drawText("Simplified Roadway Diagram", 250, 40, HeaderTitleColor, "36");
+  drawText("Complicated Roadway Diagram", 350, 40, HeaderTitleColor, "36");
 }
 
 function drawNeatline_nopix() {
@@ -355,6 +353,11 @@ let RMLabelColor = "#000000";
 
 const ATTRIBUTECOLOR = ["DodgerBlue", "Tomato", "Orange", "Violet", "Gray", "SlateBlue", "MediumSeaGreen"];
 const ATTRIBUTECOLORLIGHT = ["#66b3ff", "#ffa899", "#ffc966", "#f6bcf6", "#b3b3b3", "#958adb", "#66cc94"];
+
+function drawNoLoad_nopix(lineNo) {
+  drawRectangle((CHARTWIDTH_px / 2) - 40, getYBaseline(lineNo) - 8, 80, 16, "#696969");
+  drawText("No Records", CHARTWIDTH_px / 2, getYBaseline(lineNo) + 5, NoLoadingTextColor, "14");
+}
 
 function drawLoadingText_nopix(INVENTORYATTRIBUTE_lbl, lineNo) {
   drawText("Loading " + INVENTORYATTRIBUTE_lbl, Math.round(CHARTWIDTH_px / 2), getYBaseline(lineNo), LoadingTextColor, "10");
