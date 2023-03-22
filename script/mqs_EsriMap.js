@@ -86,26 +86,6 @@ require([
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   window.view = new MapView({
     map: map,
     center: [-99.90, 31.96], // Longitude, latitude of Texas
@@ -148,33 +128,18 @@ require([
   })
 
 
-
-
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {
     //// do not delete
     //// enable/disable checkboxes
-    /* if (newZoom > 10) {
-       $("#refmrkr-event").prop("disabled", false);
-       $("#controlsec-event").prop("disabled", false);
-     } else {
-       $("#refmrkr-event").prop("checked", false);
-       $("#refmrkr-event").prop("disabled", true);
-       $("#controlsec-event").prop("checked", false);
-       $("#controlsec-event").prop("disabled", true);
-     }  */
-
-
-    // enable/disable toggles
     if (newZoom > 10) {
-      $('#refmrkr-event').bootstrapToggle('enable');
-      $('#controlsec-event').bootstrapToggle('enable');
+      $("#refmrkr-event").prop("disabled", false);
+      $("#controlsec-event").prop("disabled", false);
     } else {
-      $('#refmrkr-event').bootstrapToggle('off');
-      $('#refmrkr-event').bootstrapToggle('disable');
-      $('#controlsec-event').bootstrapToggle('off');
-      $('#controlsec-event').bootstrapToggle('disable');
-
+      $("#refmrkr-event").prop("checked", false);
+      $("#refmrkr-event").prop("disabled", true);
+      $("#controlsec-event").prop("checked", false);
+      $("#controlsec-event").prop("disabled", true);
     }
 
     //show/hide layers

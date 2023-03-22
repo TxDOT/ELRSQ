@@ -1,4 +1,4 @@
-GLOBALSETTINGS.CalcGeomType = 'Point'; // these are not always valid
+//GLOBALSETTINGS.CalcGeomType = 'Point'; // these are not always valid
 GLOBALSETTINGS.CurrentLrmNo = 2; // these are not always valid
 
 GLOBALSETTINGS.UseLoadIndicator = 1;
@@ -61,21 +61,6 @@ function resetGraphics() {
   graphics = [];
 }
 
-
-//screen pane slider
-
-if (GLOBALSETTINGS.UseMap == 1) {
-
-  if (screen.width >= 768) {
-    const GUTTER_SIZE = 30;
-    Split(['#split-0', '#split-1'], {
-      sizes: [33, 66],
-      minSize: [300, 400],
-      expandToMin: false
-    });
-  }
-
-}
 
 
 
