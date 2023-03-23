@@ -44,8 +44,9 @@
           <br>
           <br>
 
+          <span class="col-form-label col-sm-2 pt-0"><strong>What kind of data do you have?</strong></span>
+
           <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">What kind of data do you have?</legend>
             <div class="col-sm-10">
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="geomType" id="geomType-point" value="point">
@@ -58,8 +59,9 @@
             </div>
           </fieldset>
 
+          <span class="col-form-label col-sm-2 pt-0"><strong>How much data do you have?</strong></span>
+
           <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">How much data do you have?</legend>
             <div class="col-sm-10">
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="inputType" id="inputType-html" value="html">
@@ -72,13 +74,15 @@
             </div>
           </fieldset>
 
-          <button id="gotoConverter" class="btn btn-primary">Show me the link </button>
-
-          <a href="point_single.html"> <button>Single Point</button> </a>
-          <a href="route_single.html"> <button>Single Route</button> </a>
-          <a href="point_bulk.html"> <button>Bulk Point</button> </a>
-          <a href="route_bulk.html"> <button>Bulk Route</button> </a>
         </form>
+
+        <button onClick="getConverter()" id="gotoConverter" class="btn btn-primary">Show me the link </button>
+
+        <a id="point_single" class="btn" style="display: none;" href="point_single.html"> Single Point </a>
+        <a id="route_single" class="btn" style="display: none;" href="route_single.html"> Single Route </a>
+        <a id="point_bulk" class="btn" style="display: none;" href="point_bulk.html"> Bulk Point </a>
+        <a id="route_bulk" class="btn" style="display: none;" href="route_bulk.html"> Bulk Route </a>
+
 
       </div>
     </div>
@@ -95,7 +99,24 @@
 
 
   <script defer>
+    function getConverter() {
+      let geomType = document.querySelector('input[name="geomType"]:checked').value;
+      let inputType = document.querySelector('input[name="inputType"]:checked').value;
+      console.log(geomType, inputType);
 
+      if (geomType == "point" && inputType == "html") {
+        document.querySelector('#point_single').style.display = 'block';
+      }
+      if (geomType == "route" && inputType == "html") {
+        document.querySelector('#route_single').style.display = 'block';
+      }
+      if (geomType == "point" && inputType == "table") {
+        document.querySelector('#point_bulk').style.display = 'block';
+      }
+      if (geomType == "route" && inputType == "table") {
+        document.querySelector('#route_bulk').style.display = 'block';
+      }
+    }
   </script>
 
 </body>
