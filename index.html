@@ -26,7 +26,10 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
-
+  <script>
+    let INPUTTYPE = '';
+    let GEOMTYPE = '';
+  </script>
 
 
 </head>
@@ -38,52 +41,47 @@
 
     <div class="card col-md-6 h-50">
       <div class="card-body">
-        <form>
 
-          <h1 class="display-6">Welcome to the Enterprise Linear Referencing Query Tool</h1>
-          <br>
-          <span>Select an Option Below to Get Started</span>
-          <br>
-          <br>
-          <span class="col-form-label col-sm-2 pt-0"><strong>What kind of data do you have?</strong></span>
+        <h1 class="display-6">Welcome to the Enterprise Linear Referencing Query Tool</h1>
+        <br>
+        <span>Select an Option Below to Get Started</span>
+        <br>
+        <br>
 
+        <div id="inputType">
+          <span class="col-form-label col-sm-2 pt-0"><strong>What would you like to
+              do?</strong></span>
           <fieldset class="row mb-3">
             <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="geomType" id="geomType-point" value="point">
-                <label class="form-check-label" for="geomType-point"> Single Point (I have a single location) </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="geomType" id="geomType-route" value="route">
-                <label class="form-check-label" for="geomType-route"> Route (I have a start and end location) </label>
-              </div>
+              <button id="inputType-html" class="btn btn-primary inputType">Enter a Conversion
+                Manually</button>
+              <button id="inputType-table" class="btn btn-primary inputType">Upload a Bulk
+                Conversion</button>
             </div>
           </fieldset>
+        </div>
 
-          <span class="col-form-label col-sm-2 pt-0"><strong>How much data do you have?</strong></span>
-
+        <div id="geomType" style="display: none;">
+          <span class="col-form-label col-sm-2 pt-0"><strong>What type of conversion?</strong></span>
           <fieldset class="row mb-3">
             <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="inputType" id="inputType-html" value="html">
-                <label class="form-check-label" for="inputType-html"> Just one </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="inputType" id="inputType-table" value="table">
-                <label class="form-check-label" for="inputType-table"> A whole lot ... in a CSV </label>
-              </div>
+              <button id="geomType-point" class="btn btn-primary geomType">Single Point (I have a single
+                location)</button>
+              <button id="geomType-route" class="btn btn-primary geomType">Route (I have a start and end
+                location)</button>
             </div>
           </fieldset>
+        </div>
 
-        </form>
-
-        <button onClick="getConverter()" id="gotoConverter" class="btn btn-primary">Show me the link </button>
-
-        <a id="point_single" class="btn" style="display: none;" href="point_single.html"> Single Point </a>
-        <a id="route_single" class="btn" style="display: none;" href="route_single.html"> Single Route </a>
-        <a id="point_bulk" class="btn" style="display: none;" href="point_bulk.html"> Bulk Point </a>
-        <a id="route_bulk" class="btn" style="display: none;" href="route_bulk.html"> Bulk Route </a>
-
+        <div id="button-links" style="display: none;">
+          <span class="col-form-label col-sm-2 pt-0"><strong>Go here!</strong></span>
+          <a id="point_single" class="btn btn-primary" style="display: none;" href="point_single.html"> Single Point
+          </a>
+          <a id="route_single" class="btn btn-primary" style="display: none;" href="route_single.html"> Single Route
+          </a>
+          <a id="point_bulk" class="btn btn-primary" style="display: none;" href="point_bulk.html"> Bulk Point </a>
+          <a id="route_bulk" class="btn btn-primary" style="display: none;" href="route_bulk.html"> Bulk Route </a>
+        </div>
 
       </div>
     </div>
@@ -100,24 +98,50 @@
 
 
   <script defer>
-    function getConverter() {
-      let geomType = document.querySelector('input[name="geomType"]:checked').value;
-      let inputType = document.querySelector('input[name="inputType"]:checked').value;
-      console.log(geomType, inputType);
 
-      if (geomType == "point" && inputType == "html") {
-        document.querySelector('#point_single').style.display = 'block';
+    $('.inputType').on("click", function () {
+      INPUTTYPE = $(this).attr('id');
+      console.log(INPUTTYPE);
+      if (INPUTTYPE == "inputType-html") {
+        $("#inputType-table").hide();
+      } else if (INPUTTYPE == "inputType-table") {
+        $("#inputType-html").hide();
       }
-      if (geomType == "route" && inputType == "html") {
-        document.querySelector('#route_single').style.display = 'block';
+      $("#geomType").show();
+    });
+
+
+    $('.geomType').on("click", function () {
+      GEOMTYPE = $(this).attr('id');
+      console.log(INPUTTYPE);
+      if (INPUTTYPE == "geomType-point") {
+        $("#geomType-route").hide();
+      } else if (INPUTTYPE == "geomType-route") {
+        $("#geomType-point").hide();
       }
-      if (geomType == "point" && inputType == "table") {
-        document.querySelector('#point_bulk').style.display = 'block';
+
+      $("#button-links").show();
+
+
+      if (GEOMTYPE == "geomType-point" && INPUTTYPE == "inputType-html") {
+        $('#point_single').show();
       }
-      if (geomType == "route" && inputType == "table") {
-        document.querySelector('#route_bulk').style.display = 'block';
+      if (GEOMTYPE == "geomType-route" && INPUTTYPE == "inputType-html") {
+        $('#route_single').show();
       }
-    }
+      if (GEOMTYPE == "geomType-point" && INPUTTYPE == "inputType-table") {
+        $('#point_bulk').show();
+      }
+      if (GEOMTYPE == "geomType-route" && INPUTTYPE == "inputType-table") {
+        $('#route_bulk').show();
+      }
+
+    });
+
+
+
+
+
   </script>
 
 </body>
