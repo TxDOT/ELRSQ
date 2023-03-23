@@ -42,9 +42,23 @@ async function confirmFieldChoices(buttonId) {
       });
     })
   );
+  return result;
+}
+
+async function confirmResultsShow(buttonId) {
+  result = (await
+    new Promise(async function (resolve) {
+      $(buttonId).on("click", function (e) {
+        resolve("1");
+      });
+    })
+  );
   console.log(result);
   return result;
 }
+
+
+
 
 
 function readFile(file) {

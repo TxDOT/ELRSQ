@@ -17,8 +17,8 @@ function set_topnav_point() {
   $("#input-bulk-point-form-card").show();
   $("#input-bulk-point-form").show();
 
-  $("#results-table-route-card").hide();
-  $("#results-table-point-card").show();
+  // $("#results-table-route-card").hide();
+  // $("#results-table-point-card").show();
 
   $("#bulk-route-templates-toolbar").hide();
   $("#bulk-point-templates-toolbar").show();
@@ -42,8 +42,8 @@ function set_topnav_route() {
   $("#input-bulk-route-form-card").show();
   $("#input-bulk-route-form").show();
 
-  $("#results-table-point-card").hide();
-  $("#results-table-route-card").show();
+  // $("#results-table-point-card").hide();
+  // $("#results-table-route-card").show();
 
   $("#bulk-point-templates-toolbar").hide();
   $("#bulk-route-templates-toolbar").show();
@@ -126,21 +126,22 @@ function set_lrm_method_coordinates() {
 
 
 
-
-
-
-
-
-
-
-
-
 function clearForms() {
   $("#input-bulk-point-form").trigger("reset");
   $("#input-bulk-route-form").trigger("reset");
   $("#input-point-form").trigger("reset");
   $("#input-route-form").trigger("reset");
   $("#style-form").trigger("reset");
+
+  $("#bulk-point-templates-toolbar").show();
+  $("#modal-upload").show();
+  $("#input-bulk-point-form-card").show();
+
+  $("#DownloadCard").hide();
+  $("#PaginationCard").hide();
+  $("#results-table-route-card").hide();
+  $("#results-table-point-card").hide();
+
 }
 
 function resetLRMVariables() {
@@ -205,38 +206,54 @@ function setKeyboardInputValidation() {
   $(".latitude").attr({
     "max": 37,
     "min": 24,
-    "step": 0.000001
+    "step": 0.000001,
+    "placeholder": 29.652006
   });
 
   $(".longitude").attr({
     "max": -93,
     "min": -107,
-    "step": 0.000001
+    "step": 0.000001,
+    "placeholder": -97.659926
   });
 
   $(".referencemarker").attr({
     "max": 1000,
     "min": 0,
-    "step": 1
+    "step": 1,
+    "placeholder": 622
   });
 
   $(".displacement").attr({
     "max": 2,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 0.065
   });
 
   $(".dfo").attr({
     "max": 1000,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 1.606
   });
 
   $(".milepointmeasure").attr({
     "max": 1000,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 2.394
   });
+
+
+  $(".controlsection").attr({
+    "placeholder": "012201"
+  });
+
+  $(".routename").attr({
+    "placeholder": "FM0060-KG"
+  });
+
 }
 
 function setDemoProjectData() {
@@ -334,11 +351,10 @@ function resetTemplates() {
 }
 
 
-function resetProgressAndDownloads(){
+function resetProgressAndDownloads() {
   zeroProgressBar();
-  $("#bulk-convert-download-bar").hide();
-  $("#form-convert-download-bar").hide();
-  $("#bulk-convert-progress-bar").hide();
+  $("#convert-download-bar").hide();
+  $("#convert-progress-bar").hide();
 
   $(".tabular-download").hide();
   $(".tabular-download").removeAttr('href');
@@ -346,49 +362,16 @@ function resetProgressAndDownloads(){
 }
 
 
-// status indicator functions
 
-function GreenToYellow() {
-  $('#readyIndicator').removeClass('green');
-  $('#busyIndicator').addClass('yellow');
-  $('#readyBadge').hide();
-  $('#busyBadge').show();
-}
-
-function YellowToGreen() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#readyIndicator').addClass('green');
-  $('#busyBadge').hide();
-  $('#readyBadge').show();
-}
-
-function ToRed() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#readyIndicator').removeClass('green');
-  $('#busyBadge').hide();
-  $('#readyBadge').hide();
-  $('#errorIndicator').addClass('red');
-  $('#errorBadge').show();
-}
-
-function ToGreen() {
-  $('#busyIndicator').removeClass('yellow');
-  $('#errorIndicator').removeClass('red');
-  $('#readyIndicator').addClass('green');
-  $('#busyBadge').hide();
-  $('#errorBadge').hide();
-  $('#readyBadge').show();
-}
-
-// end status indicator functions
 
 function updateProgressBar(aCurrentRow, total) {
+  console.log("updateProgressBar");
 
   let progress = Math.round(100 * aCurrentRow / total);
   let widthstring = progress.toString() + "%";
 
-  $("#bulkMegaModal .progress-bar").css("width", widthstring);
-  $("#bulkMegaModal .progress-bar").html(widthstring);
+  $(".progress-bar").css("width", widthstring);
+  $(".progress-bar").html(widthstring);
 
 }
 
@@ -398,8 +381,8 @@ function zeroProgressBar() {
   let progress = 0;
   let widthstring = progress.toString() + "%";
 
-  $("#bulkMegaModal .progress-bar").css("width", widthstring);
-  $("#bulkMegaModal .progress-bar").html(widthstring);
+  $(".progress-bar").css("width", widthstring);
+  $(".progress-bar").html(widthstring);
 
 }
 

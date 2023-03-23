@@ -87,32 +87,38 @@ const measureRanges = {
   latitude: {
     "max": 37,
     "min": 24,
-    "step": 0.000001
+    "step": 0.000001,
+    "placeholder": 29.652006
   },
   longitude: {
     "max": -93,
     "min": -107,
-    "step": 0.000001
+    "step": 0.000001,
+    "placeholder": -97.659926
   },
   referencemarker: {
     "max": 1000,
     "min": 0,
-    "step": 1
+    "step": 1,
+    "placeholder": 622
   },
   displacement: {
     "max": 2,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 0.065
   },
   dfo: {
     "max": 1000,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 1.606
   },
   milepointmeasure: {
     "max": 1000,
     "min": 0,
-    "step": 0.001
+    "step": 0.001,
+    "placeholder": 2.394
   }
 };
 

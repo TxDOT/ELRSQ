@@ -1,9 +1,9 @@
 // 1) tabularPointsConvertExport
 
 function tabularPointsConvertExport(resultsArr) {
-  $("#bulk-convert-download-bar").show();
-  $("#form-convert-download-bar").show();
-  $("#bulk-convert-progress-bar").hide();
+  $("#DownloadCard").show();
+  $("#convert-download-bar").show();
+  $("#convert-progress-bar").hide();
 
   if (GLOBALSETTINGS.InputMethod == "html") {
     btn_suffix = "Main";
@@ -15,6 +15,29 @@ function tabularPointsConvertExport(resultsArr) {
   exportPointsToGeoJsonFile(resultsArr, btn_suffix);
   exportPointsToKMLFile(resultsArr, btn_suffix);
 }
+
+// 2) tabularRoutesConvertExport
+
+function tabularRoutesConvertExport(resultsArr) {
+  $("#DownloadCard").show();
+  $("#convert-download-bar").show();
+  $("#convert-progress-bar").hide();
+
+  if (GLOBALSETTINGS.InputMethod == "html") {
+    btn_suffix = "Main";
+  } else if (GLOBALSETTINGS.InputMethod == "table") {
+    btn_suffix = "Modal";
+  }
+
+  exportRoutesToCsvFile(resultsArr, btn_suffix);
+  exportRoutesToGeoJsonFile(resultsArr, btn_suffix);
+  exportRoutesToKMLFile(resultsArr, btn_suffix);
+}
+
+
+
+
+
 
 // 1a) exportPointsToCsvFile
 
@@ -117,23 +140,7 @@ function addTags(theData, theTagType) {
 
 
 
-// 2) tabularRoutesConvertExport
 
-function tabularRoutesConvertExport(resultsArr) {
-  $("#bulk-convert-download-bar").show();
-  $("#form-convert-download-bar").show();
-  $("#bulk-convert-progress-bar").hide();
-
-  if (GLOBALSETTINGS.InputMethod == "html") {
-    btn_suffix = "Main";
-  } else if (GLOBALSETTINGS.InputMethod == "table") {
-    btn_suffix = "Modal";
-  }
-
-  exportRoutesToCsvFile(resultsArr, btn_suffix);
-  exportRoutesToGeoJsonFile(resultsArr, btn_suffix);
-  exportRoutesToKMLFile(resultsArr, btn_suffix);
-}
 
 // 2a) exportRoutesToCsvFile
 

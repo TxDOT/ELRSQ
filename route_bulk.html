@@ -274,7 +274,7 @@
           <!--#endregion -->
 
           <!--#region style-form  -->
-          <div class="card collapse" id="style-form-card">
+          <div id="style-form-card" class="card collapse">
             <div class="card-body">
 
               <form id="style-form">
@@ -354,13 +354,13 @@
           <div id="DownloadCard" class="card" style="display: none;">
             <div id="DownloadCardBody" class="card-body">
 
-              <div id="bulk-convert-progress-bar" class="progress mt-5 mb-5 ms-3 me-3"
+              <div id="convert-progress-bar" class="progress mt-5 mb-5 ms-3 me-3"
                 style="display:none; height: 30px;">
                 <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
                   aria-valuemax="100">0%</div>
               </div>
 
-              <div id="bulk-convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
+              <div id="convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
                 role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
@@ -378,6 +378,10 @@
 
                 </div>
                 <div class="btn-group mb-2" role="group" aria-label="download group">
+                  <button id="view-results" type="button" class="btn btn-primary"
+                    title="View results on table and map"><i class="fa fa-map" aria-hidden="true"></i> View
+                    Results</button>
+
                   <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#resultsHelpModal"
                     title="Results Help"><i class="fa fa-question" aria-hidden="true"></i> Help</button>
                 </div>
@@ -409,15 +413,14 @@
 
           <!-- Results-Card START -->
           <!--#region results-table-route  -->
-          <div id="results-table-route-card" class="card results_card">
+          <div id="results-table-route-card" class="card results_card" style="display: none;">
             <div class="card-body">
 
               <!-- RTE DFO RESULT -->
               <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Route Information</div>
-                  <div class="col-6 text-center"></div>
-
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-2 attribute-data">
                   <div class="col attribute-name">Route </div>
@@ -493,8 +496,7 @@
               <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Coordinates</div>
-                  <div class="col-6 text-center"></div>
-
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>

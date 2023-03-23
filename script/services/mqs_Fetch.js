@@ -8,8 +8,6 @@
  */
 async function queryService(url) {
 
-  GreenToYellow();
-
   const response = await fetch(url, {
     method: 'GET',
     mode: 'cors',
@@ -22,8 +20,6 @@ async function queryService(url) {
     referrerPolicy: 'no-referrer'
   });
 
-  YellowToGreen();
-
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -35,13 +31,9 @@ async function queryService(url) {
  */
 async function queryRoadwayService(url) {
 
-  GreenToYellow();
-
   const response = await fetch(url, {
     method: 'GET',
   });
-
-  YellowToGreen();
   
   return response.json(); // parses JSON response into native JavaScript objects
 }

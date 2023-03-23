@@ -9,17 +9,18 @@
  * @param {*} constrainToRouteName a binary value of whether results should be filtered to match on route name
  * @param {*} rtenmformat an alphanumeric format for the input route name
  */
-async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQuery, field_indicesObj) {
+async function _queryLrsByArray(convertSessionParams, formEntryParams, arrayToQuery, field_indicesObj) {
   resetGraphics();
   resetCurrentPagination();
 
   if (GLOBALSETTINGS.UseMap == 1) {
-    clearGraphicsFromMap(); //WATCH map reset
+    clearGraphicsFromMap(); //this only removes graphics
   }
 
-  GreenToYellow();
   resetProgressAndDownloads();
-  $("#bulk-convert-progress-bar").show();
+  $("#convert-progress-bar").show();
+  console.log("#convert-progress-bar");
+  $("#input-toolbar-msg").hide();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
   let lrm_indices1 = field_indicesObj.lrm_indices1;
@@ -31,9 +32,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
   // process rows
   for (let rowToQuery = formEntryParams.headerRowPresent; rowToQuery < arrayToQuery.length; rowToQuery++) {
-    if (GLOBALSETTINGS.PrintIterations == 1) {
-      console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - formEntryParams.headerRowPresent));
-    }
+    if (GLOBALSETTINGS.PrintIterations == 1) { console.log("processing row " + rowToQuery + " of " + (arrayToQuery.length - formEntryParams.headerRowPresent)); }
 
     let lrsQueryObj = {};
     lrsQueryObj.url = [];
@@ -80,7 +79,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
       // in this case only a single element is pushed to lrsQueryObj.data
       let user_input_rte_nm = getRightRouteName_Pre(convertSessionParams.inputMethod, formEntryParams.rtenmformat, rte_nm_lrm_indices, currentRow);
       let matchObj = await matchOutputOnRteNm(convertSessionParams, unfilteredResultsArr, user_input_rte_nm);
-      
+
       lrsQueryObj.data.push({ ...otherAttributesObj, ...matchObj.match }); // this makes an object from the attribute values and lrs values and pushes it to an array
 
     } else {
@@ -121,10 +120,9 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log(flattenedQueryObjData); }
 
-  resultsShow(convertSessionParams.calcGeomType, flattenedQueryObjData);
   resultsExport(convertSessionParams.calcGeomType, flattenedQueryObjData);
-
-  YellowToGreen();
+  console.log("hello");
+  await resultsShow(convertSessionParams.calcGeomType, convertSessionParams.inputMethod, flattenedQueryObjData);
 }
 
 
@@ -133,33 +131,39 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-function resultsShow(calcGeomType, formEntryReturnedData) {
-
-  setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-
-  if (calcGeomType == "Point") {
-    // show TABULAR results
-    // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutPointResults to fill in table and plot on map
-    paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
-    // this fill in table using object values from formEntryReturnedData, and then showThisPointResultOnMap using graphics
-    readOutPointResults(formEntryReturnedData);
+async function _resultsShow(calcGeomType, inputMethod, formEntryReturnedData) {
+  let confirmed = 0;
 
 
+  if (inputMethod == "table") {
+    console.log("confirmResultsShow");
+    confirmed = ~~await confirmResultsShow("#view-results");
+    console.log(confirmed);
+  } else {
+    confirmed = 1;
   }
 
-  if (calcGeomType == "Route") {
-    // show TABULAR results
-    // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutRouteResults to fill in table and plot on map
-    paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
-    // this fill in table using object values from formEntryReturnedData, and then showThisRouteResultOnMap using geoJSON
-    readOutRouteResults(formEntryReturnedData);
+  if (confirmed == 1) {
+    setProjectGeometry(formEntryReturnedData); // FIXME add results caching
 
+    if (calcGeomType == "Point") {
+      // show TABULAR results
+      // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutPointResults to fill in table and plot on map
+      paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
+      // this fill in table using object values from formEntryReturnedData, and then showThisPointResultOnMap using graphics
+      readOutPointResults(formEntryReturnedData);
+    }
 
+    if (calcGeomType == "Route") {
+      // show TABULAR results
+      // this sets prev/next event handlers to cycle through formEntryReturnedData and use readOutRouteResults to fill in table and plot on map
+      paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
+      // this fill in table using object values from formEntryReturnedData, and then showThisRouteResultOnMap using geoJSON
+      readOutRouteResults(formEntryReturnedData);
+    }
   }
 
 }
-
-
 
 
 /**
@@ -167,14 +171,8 @@ function resultsShow(calcGeomType, formEntryReturnedData) {
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-function resultsExport(calcGeomType, formEntryReturnedData) {
+function _resultsExport(calcGeomType, formEntryReturnedData) {
 
-  if (calcGeomType == "Point") {
-    tabularPointsConvertExport(formEntryReturnedData);
-  }
-
-  if (calcGeomType == "Route") {
-    tabularRoutesConvertExport(formEntryReturnedData);
-  }
-
+  if (calcGeomType == "Point") { tabularPointsConvertExport(formEntryReturnedData); }
+  if (calcGeomType == "Route") { tabularRoutesConvertExport(formEntryReturnedData); }
 }

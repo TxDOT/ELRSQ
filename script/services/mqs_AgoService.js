@@ -36,9 +36,7 @@ function makequeryTxDOT_Roadways_Unsegmented() {
  * @returns an array with min and max DFOs
  */
 async function rdwayQuery(url) {
-  GreenToYellow();
   const results = await queryRoadwayService(url);
-  YellowToGreen();
   let min_DFO = results.features[0].attributes.BEGIN_DFO;
   let max_DFO = results.features[0].attributes.END_DFO;
   console.log(min_DFO);
@@ -62,9 +60,7 @@ async function queryRoadwayServiceByLine(myProjectData) {
 
   if (GLOBALSETTINGS.PrintUrls == 1) { console.log("query-Roadway-Service-By-Line using url: " + url); }
 
-  GreenToYellow();
   const results = await queryRoadwayService(url);
-  YellowToGreen();
 
   if (GLOBALSETTINGS.PrintIterations == 1) { console.log("query-Roadway-Service-By-Line feature count: " + results.features.length); }
 

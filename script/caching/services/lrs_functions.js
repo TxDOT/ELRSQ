@@ -10,16 +10,21 @@
  * @param {*} rtenmformat an alphanumeric format for the input route name
  */
 async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQuery, field_indicesObj) {
+  console.log("queryLrsByArray");
   resetGraphics();
   resetCurrentPagination();
+
+
 
   if (GLOBALSETTINGS.UseMap == 1) {
     clearGraphicsFromMap(); //this only removes graphics
   }
 
-  GreenToYellow();
   resetProgressAndDownloads();
-  $("#bulk-convert-progress-bar").show();
+  $("#DownloadCard").show();
+  $("#convert-progress-bar").show();
+  console.log("hello");
+
   $("#input-toolbar-msg").hide();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -131,12 +136,17 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   // end process rows for loop
   console.log("process rows for loop complete");
 
+  $("#bulk-point-templates-toolbar").hide();
+  $("#modal-upload").hide();
+  $("#input-bulk-point-form-card").hide();
+  $("#style-form-card").hide();
+
+
   SESSIONHISTORYARR.push(lrsQueryObjsArr);
 
-  resultsShow(convertSessionParams.calcGeomType);
   resultsExport(convertSessionParams.calcGeomType);
-
-  YellowToGreen();
+  console.log("hello");
+  await resultsShow(convertSessionParams.calcGeomType, convertSessionParams.inputMethod);
 }
 
 
@@ -145,25 +155,42 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-async function resultsShow(calcGeomType) {
+async function resultsShow(calcGeomType, inputMethod) {
+  let confirmed = 0;
+
   let formEntryReturnedData = SESSIONHISTORYARR.last().map(queryObj => queryObj.data).flat(); // data may have multiple elements
   let formEntryReturnedGeom = SESSIONHISTORYARR.last().map(queryObj => queryObj.geojson).flat(); // data may have multiple elements
   ONSCREENMATCH = SESSIONHISTORYARR.last()[0];
 
-  setProjectGeometry(formEntryReturnedData); // FIXME add results caching
-
-  if (calcGeomType == "Point") {
-    paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
-    paginationUpdater("#result-pagination", formEntryReturnedData.length);
-    fillInPointHtmlTable(ONSCREENMATCH.data[0]);
-    localPointGeoJSONToMap(ONSCREENMATCH.geojson[0]);
+  if (inputMethod == "table") {
+    console.log("confirmResultsShow");
+    confirmed = ~~await confirmResultsShow("#view-results");
+    console.log(confirmed);
+  } else {
+    confirmed = 1;
   }
 
-  if (calcGeomType == "Route") {
-    paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
-    paginationUpdater("#result-pagination", formEntryReturnedData.length);
-    fillInRouteHtmlTable(ONSCREENMATCH.data[0]);
-    localRouteGeoJSONToMap(ONSCREENMATCH.geojson[0]);
+  if (confirmed == 1) {
+    setProjectGeometry(formEntryReturnedData); // FIXME add results caching
+    $("#PaginationCard").show();
+
+    if (calcGeomType == "Point") {
+      $("#results-table-route-card").hide();
+      $("#results-table-point-card").show();
+      paginatedResultsSequence(formEntryReturnedData, readOutPointResults);
+      paginationUpdater("#result-pagination", formEntryReturnedData.length);
+      fillInPointHtmlTable(ONSCREENMATCH.data[0]);
+      localPointGeoJSONToMap(ONSCREENMATCH.geojson[0]);
+    }
+
+    if (calcGeomType == "Route") {
+      $("#results-table-route-card").show();
+      $("#results-table-point-card").hide();
+      paginatedResultsSequence(formEntryReturnedData, readOutRouteResults);
+      paginationUpdater("#result-pagination", formEntryReturnedData.length);
+      fillInRouteHtmlTable(ONSCREENMATCH.data[0]);
+      localRouteGeoJSONToMap(ONSCREENMATCH.geojson[0]);
+    }
   }
 
 }
