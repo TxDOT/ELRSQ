@@ -85,15 +85,10 @@ require([
     view.map.remove(osmLayer);
     view.map.remove(txdotLightGray);
 
-
-    //layer0 = map.getLayer(view.map.layerIds[0]); //This should be the SPM Basemap layer
-    //layer1 = map.getLayer(view.map.layerIds[1]); //This will be INRIX if present
-
-    var newBasemap = basemap_btn;
+    let newBasemap = basemap_btn;
     //document.getElementsByClassName("basemap").style.color = "";
     $('.basemap').css("color", "");
     document.getElementById(newBasemap).style.color = "red";
-    //view.map.removeLayer(layer0);
 
     if (newBasemap == "TxDOT") {
       view.map.add(TxDOTVectorTileLayer);
@@ -104,20 +99,17 @@ require([
       //imageryZoomOut(); // prevent zoom past 21 on imagery -mw
       view.map.add(google);
       view.map.reorder(google, 0);
-
     }
 
     if (newBasemap == "openStreetMap") {
       view.map.add(osmLayer);
       view.map.reorder(osmLayer, 0);
-
     }
 
     if (newBasemap == "txdotLightGray") {
       if (serviceError == 0) {
         view.map.add(txdotLightGray);
         view.map.reorder(TxDOTVecttxdotLightGrayorTileLayer, 0);
-
       }
       else {
         alert("This basemap service is temporarily unavailable");
