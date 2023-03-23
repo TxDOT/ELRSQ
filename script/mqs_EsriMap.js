@@ -35,9 +35,17 @@ require([
   );
   map.add(TxDOTVectorTileLayer);
 
-  let imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
-  map.add(imagery);
-  imagery.visible = false;
+  let txdotLightGray = new VectorTileLayer(
+    "https://www.arcgis.com/sharing/rest/content/items/507a9905e7154ce484617c7327ee8bc4/resources/styles/root.json?f=pjson"
+  );
+
+  let osmLayer = new OpenStreetMapLayer();
+
+  /**
+    let imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
+    map.add(imagery);
+    imagery.visible = false;
+  */
 
   // Add Google Imagery WMTS layer
   //let GoogleLayerInfo = new WMTSLayerInfo({ identifier: "texas", tileMatrixSet: "0to20", format: "png", });
@@ -47,21 +55,18 @@ require([
 
 
 
-
-
-
-
-
   // toggle buttons for showing/hiding layers
-  $('#basemap-event').change(function () {
-    if ($(this).prop('checked')) {
-      imagery.visible = false;
-      TxDOTVectorTileLayer.visible = true;
-    } else {
-      TxDOTVectorTileLayer.visible = false;
-      imagery.visible = true;
-    }
-  })
+  /**
+    $('#basemap-event').change(function () {
+      if ($(this).prop('checked')) {
+        imagery.visible = false;
+        TxDOTVectorTileLayer.visible = true;
+      } else {
+        TxDOTVectorTileLayer.visible = false;
+        imagery.visible = true;
+      }
+    })
+  */
 
 
   $('.basemap').on("click", function () {
@@ -75,6 +80,12 @@ require([
 
   function changeBaseMap(basemap_btn) {
 
+    view.map.remove(TxDOTVectorTileLayer);
+    view.map.remove(google);
+    view.map.remove(osmLayer);
+    view.map.remove(txdotLightGray);
+
+
     //layer0 = map.getLayer(view.map.layerIds[0]); //This should be the SPM Basemap layer
     //layer1 = map.getLayer(view.map.layerIds[1]); //This will be INRIX if present
 
@@ -86,20 +97,27 @@ require([
 
     if (newBasemap == "TxDOT") {
       view.map.add(TxDOTVectorTileLayer);
+      view.map.reorder(TxDOTVectorTileLayer, 0);
     }
 
     if (newBasemap == "Google") {
       //imageryZoomOut(); // prevent zoom past 21 on imagery -mw
       view.map.add(google);
+      view.map.reorder(google, 0);
+
+    }
+
+    if (newBasemap == "openStreetMap") {
+      view.map.add(osmLayer);
+      view.map.reorder(osmLayer, 0);
 
     }
 
     if (newBasemap == "txdotLightGray") {
       if (serviceError == 0) {
-        txdotLightGray = new VectorTileLayer(
-          "https://www.arcgis.com/sharing/rest/content/items/507a9905e7154ce484617c7327ee8bc4/resources/styles/root.json?f=pjson"
-        );
         view.map.add(txdotLightGray);
+        view.map.reorder(TxDOTVecttxdotLightGrayorTileLayer, 0);
+
       }
       else {
         alert("This basemap service is temporarily unavailable");
@@ -108,36 +126,6 @@ require([
         document.getElementById("TxDOT").style.color = "red";
       }
     }
-
-    if (newBasemap == "txdotDarkGray") {
-      if (serviceError == 0) {
-        txdotDarkGray = new VectorTileLayer(
-          "https://www.arcgis.com/sharing/rest/content/items/4bd376c56f314bc5a36446630db604a6/resources/styles/root.json?f=pjson"
-        );
-        view.map.add(txdotDarkGray);
-      }
-      else {
-        alert("This basemap service is temporarily unavailable");
-        view.map.add(TxDOTVectorTileLayer);
-        document.getElementById(newBasemap).style.color = "";
-        document.getElementById("TxDOT").style.color = "red";
-      }
-    }
-
-    if (newBasemap == "esriStreets") {
-      esriStreets = new VectorTileLayer(
-        "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer"
-      );
-      view.map.add(esriStreets);
-    }
-
-    if (newBasemap == "openStreetMap") {
-      osmLayer = new OpenStreetMapLayer();
-      view.map.add(osmLayer);
-    }
-
-
-
   }
 
 
