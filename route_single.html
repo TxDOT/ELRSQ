@@ -101,7 +101,7 @@
 
 
           <!-- Lrm-Method-Bar START -->
-          <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+          <div class="btn-toolbar mt-2 mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
@@ -127,7 +127,7 @@
               <form id="input-route-form">
 
                 <div id="kbRouteInputRouteName">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       Route Name:
                     </div>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div id="kbRouteInputReferenceMarker">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -151,7 +151,7 @@
                       Displacement:
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                     </div>
@@ -180,7 +180,7 @@
                 </div>
 
                 <div style="display:none" id="kbRouteInputControlSection">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       Control Section:
                     </div>
@@ -192,7 +192,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -201,7 +201,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                     </div>
@@ -226,7 +226,7 @@
                 </div>
 
                 <div style="display:none" id="kbRouteInputDistanceFromOrigin">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -235,7 +235,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                     </div>
@@ -246,7 +246,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                     </div>
@@ -260,7 +260,7 @@
                 </div>
 
                 <div style="display:none" id="kbRouteInputCoordinates">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <button id="useCrosshairs2" class="btn btn-outline-primary" type="button"
                         title="Get coords from map">
@@ -273,7 +273,7 @@
                       Longitude:
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-o" aria-hidden="true"></i> Begin</strong>
                     </div>
@@ -286,7 +286,7 @@
                         class="form-control textentry latlon longitude">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <strong><i class="fa fa-flag-checkered" aria-hidden="true"></i> End</strong>
                     </div>
@@ -405,7 +405,7 @@
                   aria-valuemax="100">0%</div>
               </div>
 
-              <div id="form-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+              <div id="form-convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
                 role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
@@ -457,9 +457,11 @@
             <div class="card-body">
 
               <!-- RTE DFO RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Route Information</div>
+                  <div class="col-6 text-center">Route Information</div>
+                  <div class="col-6 text-center"></div>
+
                 </div>
                 <div class="row row-cols-2 attribute-data">
                   <div class="col attribute-name">Route </div>
@@ -478,9 +480,10 @@
               <!-- END RTE DFO RESULT -->
 
               <!-- CS MP RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Control Section</div>
+                  <div class="col-6 text-center">Control Section</div>
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -504,9 +507,10 @@
               <!-- END CS MP RESULT -->
 
               <!-- RM RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Field Location</div>
+                  <div class="col-6 text-center">Field Location</div>
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -530,9 +534,11 @@
               <!-- END RM RESULT -->
 
               <!-- LAT LON RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Coordinates</div>
+                  <div class="col-6 text-center">Coordinates</div>
+                  <div class="col-6 text-center"></div>
+
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -562,6 +568,15 @@
 
           <!-- Map Buttons START -->
           <div id="controlDiv" class="card map-buttons">
+
+            <div class="btn-group-vertical">
+              <button class="btn basemap" id="TxDOT" style="color:red; font-weight: bold;">TxDOT</button>
+              <button class="btn basemap" id="Google">Texas Imagery Service</button>
+              <button class="btn basemap" id="txdotLightGray">TxDOT Light Gray</button>
+              <button class="btn basemap" id="txdotDarkGray">TxDOT Dark Gray</button>
+              <button class="btn basemap" id="esriStreets">Esri Streets</button>
+              <button class="btn basemap" id="openStreetMap">Open Street Map</button>
+            </div>
 
             <div class="card-body">
               <!-- Map-Controls START -->

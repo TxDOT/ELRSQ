@@ -101,7 +101,7 @@
 
 
           <!-- Lrm-Method-Bar START -->
-          <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+          <div class="btn-toolbar mt-2 mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
@@ -127,7 +127,7 @@
               <form id="input-point-form">
 
                 <div id="kbPointInputRouteName">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       Route Name:
                     </div>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div id="kbPointInputReferenceMarker">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -151,7 +151,7 @@
                       Displacement:
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -166,7 +166,7 @@
                 </div>
 
                 <div style="display:none" id="kbPointInputControlSection">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       Control Section:
                     </div>
@@ -177,7 +177,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -186,7 +186,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -199,7 +199,7 @@
                 </div>
 
                 <div style="display:none" id="kbPointInputDistanceFromOrigin">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -208,7 +208,7 @@
                     <div class="col-4">
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -221,7 +221,7 @@
                 </div>
 
                 <div style="display:none" id="kbPointInputCoordinates">
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                       <button id="useCrosshairs" class="btn btn-outline-primary" type="button"
                         title="Get coords from map">
@@ -234,7 +234,7 @@
                       Longitude:
                     </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row mb-0">
                     <div class="col-3">
                     </div>
                     <div class="col-4">
@@ -355,7 +355,7 @@
                   aria-valuemax="100">0%</div>
               </div>
 
-              <div id="form-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+              <div id="form-convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
                 role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
@@ -407,14 +407,10 @@
             <div class="card-body">
 
               <!-- RTE DFO RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Route Information</div>
                   <div class="col-6 text-center">
-                    <button id="copyRouteDFO" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
-                        aria-hidden="true"></i></button>
-                    <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
-                        class="fa fa-link" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-2 attribute-data">
@@ -429,12 +425,10 @@
               <!-- END RTE DFO RESULT -->
 
               <!-- CS MP RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Control Section</div>
                   <div class="col-6 text-center">
-                    <button id="copyControlSection" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -452,12 +446,10 @@
               <!-- END CS MP RESULT -->
 
               <!-- RM RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Field Location</div>
                   <div class="col-6 text-center">
-                    <button id="copyFieldLocation" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -475,12 +467,10 @@
               <!-- END RM RESULT -->
 
               <!-- LAT LON RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Coordinates</div>
                   <div class="col-6 text-center">
-                    <button id="copyCoordinates" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -504,6 +494,15 @@
 
           <!-- Map Buttons START -->
           <div id="controlDiv" class="card map-buttons">
+
+            <div class="btn-group-vertical">
+              <button class="btn basemap" id="TxDOT" style="color:red; font-weight: bold;">TxDOT</button>
+              <button class="btn basemap" id="Google">Texas Imagery Service</button>
+              <button class="btn basemap" id="txdotLightGray">TxDOT Light Gray</button>
+              <button class="btn basemap" id="txdotDarkGray">TxDOT Dark Gray</button>
+              <button class="btn basemap" id="esriStreets">Esri Streets</button>
+              <button class="btn basemap" id="openStreetMap">Open Street Map</button>
+            </div>
 
             <div class="card-body">
               <!-- Map-Controls START -->

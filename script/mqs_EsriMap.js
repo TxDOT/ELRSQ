@@ -6,6 +6,8 @@ require([
   "esri/layers/FeatureLayer",
   "esri/layers/VectorTileLayer",
   "esri/layers/TileLayer",
+  "esri/layers/WMTSLayer",
+  "esri/layers/OpenStreetMapLayer",
   "esri/layers/GeoJSONLayer",
   "esri/layers/support/LabelClass"
 ], function (
@@ -16,22 +18,161 @@ require([
   FeatureLayer,
   VectorTileLayer,
   TileLayer,
+  WMTSLayer,
+  OpenStreetMapLayer,
   GeoJSONLayer,
   LabelClass
 ) {
 
   esriConfig.apiKey = "";
+  let vectorURL = "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer";
+  let serviceError = 0;
 
   const map = new Map({});
 
-  TxDOTVectorTileLayer = new VectorTileLayer(
+  let TxDOTVectorTileLayer = new VectorTileLayer(
     "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
   );
   map.add(TxDOTVectorTileLayer);
 
-  imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
+  let imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
   map.add(imagery);
   imagery.visible = false;
+
+  // Add Google Imagery WMTS layer
+  //let GoogleLayerInfo = new WMTSLayerInfo({ identifier: "texas", tileMatrixSet: "0to20", format: "png", });
+  //let GoogleLayerOptions = { serviceMode: "KVP", layerInfo: GoogleLayerInfo };
+  let GoogleLayerOptions = { serviceMode: "KVP" };
+  let google = new WMTSLayer("https://txgi.tnris.org/login/path/corner-express-popcorn-compact/wmts", GoogleLayerOptions);
+
+
+
+
+
+
+
+
+  // toggle buttons for showing/hiding layers
+  $('#basemap-event').change(function () {
+    if ($(this).prop('checked')) {
+      imagery.visible = false;
+      TxDOTVectorTileLayer.visible = true;
+    } else {
+      TxDOTVectorTileLayer.visible = false;
+      imagery.visible = true;
+    }
+  })
+
+
+  $('.basemap').on("click", function () {
+    let basemap_btn = $(this).attr('id');
+    console.log(basemap_btn);
+    changeBaseMap(basemap_btn);
+  });
+
+
+  serviceCheck();
+
+  function changeBaseMap(basemap_btn) {
+
+    //layer0 = map.getLayer(view.map.layerIds[0]); //This should be the SPM Basemap layer
+    //layer1 = map.getLayer(view.map.layerIds[1]); //This will be INRIX if present
+
+    var newBasemap = basemap_btn;
+    //document.getElementsByClassName("basemap").style.color = "";
+    $('.basemap').css("color", "");
+    document.getElementById(newBasemap).style.color = "red";
+    //view.map.removeLayer(layer0);
+
+    if (newBasemap == "TxDOT") {
+      view.map.add(TxDOTVectorTileLayer);
+    }
+
+    if (newBasemap == "Google") {
+      //imageryZoomOut(); // prevent zoom past 21 on imagery -mw
+      view.map.add(google);
+
+    }
+
+    if (newBasemap == "txdotLightGray") {
+      if (serviceError == 0) {
+        txdotLightGray = new VectorTileLayer(
+          "https://www.arcgis.com/sharing/rest/content/items/507a9905e7154ce484617c7327ee8bc4/resources/styles/root.json?f=pjson"
+        );
+        view.map.add(txdotLightGray);
+      }
+      else {
+        alert("This basemap service is temporarily unavailable");
+        view.map.add(TxDOTVectorTileLayer);
+        document.getElementById(newBasemap).style.color = "";
+        document.getElementById("TxDOT").style.color = "red";
+      }
+    }
+
+    if (newBasemap == "txdotDarkGray") {
+      if (serviceError == 0) {
+        txdotDarkGray = new VectorTileLayer(
+          "https://www.arcgis.com/sharing/rest/content/items/4bd376c56f314bc5a36446630db604a6/resources/styles/root.json?f=pjson"
+        );
+        view.map.add(txdotDarkGray);
+      }
+      else {
+        alert("This basemap service is temporarily unavailable");
+        view.map.add(TxDOTVectorTileLayer);
+        document.getElementById(newBasemap).style.color = "";
+        document.getElementById("TxDOT").style.color = "red";
+      }
+    }
+
+    if (newBasemap == "esriStreets") {
+      esriStreets = new VectorTileLayer(
+        "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer"
+      );
+      view.map.add(esriStreets);
+    }
+
+    if (newBasemap == "openStreetMap") {
+      osmLayer = new OpenStreetMapLayer();
+      view.map.add(osmLayer);
+    }
+
+
+
+  }
+
+
+
+  function serviceCheck() {
+    let request = new XMLHttpRequest();
+    request.open("GET", vectorURL, false);
+    request.onreadystatechange = function () {
+      if (request.readyState === XMLHttpRequest.DONE && request.response.includes("error")) {
+        console.log(JSON.parse(request.response));
+        vectorURL = "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap_BACKUP/VectorTileServer";
+        serviceError = 1;
+      }
+    }
+    request.send();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //FIXME change format of TxDOT_Control_SectionsLabelClass
@@ -128,6 +269,14 @@ require([
   })
 
 
+
+
+
+
+
+
+
+
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {
     //// do not delete
@@ -149,16 +298,7 @@ require([
     }
   });
 
-  // toggle buttons for showing/hiding layers
-  $('#basemap-event').change(function () {
-    if ($(this).prop('checked')) {
-      imagery.visible = false;
-      TxDOTVectorTileLayer.visible = true;
-    } else {
-      TxDOTVectorTileLayer.visible = false;
-      imagery.visible = true;
-    }
-  })
+
 
   $('#refmrkr-event').change(function () {
     if ($(this).attr('disabled')) {

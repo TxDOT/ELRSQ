@@ -101,7 +101,7 @@
 
 
           <!-- Lrm-Method-Bar START -->
-          <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+          <div class="btn-toolbar mt-2 mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
@@ -121,7 +121,7 @@
           </div>
           <!-- Lrm-Method-Bar END -->
 
-          <div id="bulk-route-templates-toolbar" class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+          <div id="bulk-route-templates-toolbar" class="btn-toolbar mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <a type="button" id="tmpl-latlon-route" href="templates/queryRouteByCoordinates.csv"
               download="queryRouteByCoordinates.csv" class="btn btn-primary route-template coordinates-template"
@@ -129,7 +129,7 @@
               Template</a>
             <a type="button" id="tmpl-field-route" href="templates/queryRouteByReferenceMarker.csv"
               download="queryRouteByReferenceMarker.csv" class="btn btn-primary route-template referencemarker-template"
-              style="display:none" title="Download a fillable template"><i class="fa fa-download"></i> Reference Marker
+              title="Download a fillable template"><i class="fa fa-download"></i> Reference Marker
               Template</a>
             <a type="button" id="tmpl-controlsection-route" href="templates/queryRouteByControlSection.csv"
               download="queryRouteByControlSection.csv" class="btn btn-primary route-template controlsection-template"
@@ -142,7 +142,7 @@
 
           <!-- Upload Form -->
           <form id="modal-upload">
-            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-0 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
               <input id="uploadCsv-bulk" data-post-name="csv-bulk"
@@ -159,7 +159,7 @@
               <form id="input-bulk-route-form">
 
                 <div class="row" id="csvRouteInputRouteName">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Route Name Field:</span>
                     <select id="route_rte_nm_field" class="form-select candidate">
                     </select>
@@ -168,25 +168,25 @@
 
                 <!-- Reference Marker Field Picker Form -->
                 <div class="row" id="csvRouteInputReferenceMarker">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin Reference Marker Field:</span>
                     <select id="breferencemarker_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin Displacement Field:</span>
                     <select id="bdisplacement_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End Reference Marker Field:</span>
                     <select id="ereferencemarker_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End Displacement Field:</span>
                     <select id="edisplacement_field" class="form-select candidate">
                     </select>
@@ -196,19 +196,19 @@
 
                 <!-- Control Section Field Picker Form -->
                 <div class="row" style="display:none" id="csvRouteInputControlSection">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Control Section Field:</span>
                     <select id="bcontrolsection_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin Milepoint Field:</span>
                     <select id="bmilepoint_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End Milepoint Field:</span>
                     <select id="emilepoint_field" class="form-select candidate">
                     </select>
@@ -217,7 +217,7 @@
                 <!-- End Control Section Field Picker Form -->
 
                 <div class="row" style="display:none" id="csvRouteInputRouteName_optional">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Route Name Field (Optional):</span>
                     <select id="optional-route_rte_nm_field" class="form-select candidate">
                     </select>
@@ -226,13 +226,13 @@
 
                 <!-- DFO Field Picker Form -->
                 <div class="row" style="display:none" id="csvRouteInputDistanceFromOrigin">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin DFO Field:</span>
                     <select id="bdfo_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End DFO Field:</span>
                     <select id="edfo_field" class="form-select candidate">
                     </select>
@@ -242,25 +242,25 @@
 
                 <!-- Coordinates Field Picker Form -->
                 <div class="row" style="display:none" id="csvRouteInputCoordinates">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin Latitude Field:</span>
                     <select id="blat_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Begin Longitude Field:</span>
                     <select id="blon_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End Latitude Field:</span>
                     <select id="elat_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">End Longitude Field:</span>
                     <select id="elon_field" class="form-select candidate">
                     </select>
@@ -360,7 +360,7 @@
                   aria-valuemax="100">0%</div>
               </div>
 
-              <div id="bulk-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+              <div id="bulk-convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
                 role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
@@ -409,13 +409,15 @@
 
           <!-- Results-Card START -->
           <!--#region results-table-route  -->
-          <div id="results-table-route-card" class="card">
+          <div id="results-table-route-card" class="card results_card">
             <div class="card-body">
 
               <!-- RTE DFO RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Route Information</div>
+                  <div class="col-6 text-center">Route Information</div>
+                  <div class="col-6 text-center"></div>
+
                 </div>
                 <div class="row row-cols-2 attribute-data">
                   <div class="col attribute-name">Route </div>
@@ -434,9 +436,10 @@
               <!-- END RTE DFO RESULT -->
 
               <!-- CS MP RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Control Section</div>
+                  <div class="col-6 text-center">Control Section</div>
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -460,9 +463,10 @@
               <!-- END CS MP RESULT -->
 
               <!-- RM RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Field Location</div>
+                  <div class="col-6 text-center">Field Location</div>
+                  <div class="col-6 text-center"> </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -486,9 +490,11 @@
               <!-- END RM RESULT -->
 
               <!-- LAT LON RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
-                  <div class="col-12 text-center">Coordinates</div>
+                  <div class="col-6 text-center">Coordinates</div>
+                  <div class="col-6 text-center"></div>
+
                 </div>
                 <div class="row row-cols-3 attribute-header">
                   <div class="col"></div>
@@ -518,6 +524,15 @@
 
           <!-- Map Buttons START -->
           <div id="controlDiv" class="card map-buttons">
+
+            <div class="btn-group-vertical">
+              <button class="btn basemap" id="TxDOT" style="color:red; font-weight: bold;">TxDOT</button>
+              <button class="btn basemap" id="Google">Texas Imagery Service</button>
+              <button class="btn basemap" id="txdotLightGray">TxDOT Light Gray</button>
+              <button class="btn basemap" id="txdotDarkGray">TxDOT Dark Gray</button>
+              <button class="btn basemap" id="esriStreets">Esri Streets</button>
+              <button class="btn basemap" id="openStreetMap">Open Street Map</button>
+            </div>
 
             <div class="card-body">
               <!-- Map-Controls START -->

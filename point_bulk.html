@@ -101,7 +101,7 @@
 
 
           <!-- Lrm-Method-Bar START -->
-          <div class="btn-toolbar mt-2 mb-3 justify-content-center" role="toolbar"
+          <div class="btn-toolbar mt-2 mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
@@ -121,7 +121,7 @@
           </div>
           <!-- Lrm-Method-Bar END -->
 
-          <div id="bulk-point-templates-toolbar" class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+          <div id="bulk-point-templates-toolbar" class="btn-toolbar mb-0 justify-content-center" role="toolbar"
             aria-label="Toolbar with button groups">
             <a type="button" id="tmpl-latlon" href="templates/queryPointByCoordinates.csv"
               download="queryPointByCoordinates.csv" class="btn btn-primary point-template coordinates-template"
@@ -142,7 +142,7 @@
 
           <!-- Upload Form -->
           <form id="modal-upload">
-            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-3 p-4">
+            <fieldset id="bulk-fieldset" class="upload_dropZone text-center mb-0 p-4">
               <legend class="visually-hidden">CSV uploader</legend>
               <p class="small my-2">Drag &amp; Drop CSV inside dashed region<br><i>or</i></p>
               <input id="uploadCsv-bulk" data-post-name="csv-bulk"
@@ -159,7 +159,7 @@
               <form id="input-bulk-point-form">
 
                 <div class="row" id="csvPointInputRouteName">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Route Name Field:</span>
                     <select id="point_rte_nm_field" class="form-select candidate">
                     </select>
@@ -168,13 +168,13 @@
 
                 <!-- Reference Marker Field Picker Form -->
                 <div class="row" id="csvPointInputReferenceMarker">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Reference Marker Field:</span>
                     <select id="referencemarker_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Displacement Field:</span>
                     <select id="displacement_field" class="form-select candidate">
                     </select>
@@ -184,13 +184,13 @@
 
                 <!-- Control Section Field Picker Form -->
                 <div class="row" style="display:none" id="csvPointInputControlSection">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Control Section Field:</span>
                     <select id="controlsection_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Milepoint Field:</span>
                     <select id="milepoint_field" class="form-select candidate">
                     </select>
@@ -199,7 +199,7 @@
                 <!-- End Control Section Field Picker Form -->
 
                 <div class="row" style="display:none" id="csvPointInputRouteName_optional">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Route Name Field (Optional):</span>
                     <select id="optional-rte_nm_field" class="form-select candidate">
                     </select>
@@ -208,7 +208,7 @@
 
                 <!-- DFO Field Picker Form -->
                 <div class="row" style="display:none" id="csvPointInputDistanceFromOrigin">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">DFO Field:</span>
                     <select id="dfo_field" class="form-select candidate">
                     </select>
@@ -218,13 +218,13 @@
 
                 <!-- Coordinates Field Picker Form -->
                 <div class="row" style="display:none" id="csvPointInputCoordinates">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Latitude Field:</span>
                     <select id="lat_field" class="form-select candidate">
                     </select>
                   </div>
 
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-2">
                     <span class="input-group-text">Longitude Field:</span>
                     <select id="lon_field" class="form-select candidate">
                     </select>
@@ -324,7 +324,7 @@
                   aria-valuemax="100">0%</div>
               </div>
 
-              <div id="bulk-convert-download-bar" class="btn-toolbar mb-3 justify-content-center" style="display:none"
+              <div id="bulk-convert-download-bar" class="btn-toolbar mb-0 justify-content-center" style="display:none"
                 role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-2 mb-2" role="group" aria-label="download group">
 
@@ -377,14 +377,10 @@
             <div class="card-body">
 
               <!-- RTE DFO RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Route Information</div>
                   <div class="col-6 text-center">
-                    <button id="copyRouteDFO" type="button" class="btn btn-info copy" title="copy"><i class="fa fa-copy"
-                        aria-hidden="true"></i></button>
-                    <button id="makequeryTxDOT_Roadways_Unsegmented" type="button" class="btn btn-info"><i
-                        class="fa fa-link" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-2 attribute-data">
@@ -399,12 +395,10 @@
               <!-- END RTE DFO RESULT -->
 
               <!-- CS MP RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Control Section</div>
                   <div class="col-6 text-center">
-                    <button id="copyControlSection" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -422,12 +416,10 @@
               <!-- END CS MP RESULT -->
 
               <!-- RM RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Field Location</div>
                   <div class="col-6 text-center">
-                    <button id="copyFieldLocation" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -445,12 +437,10 @@
               <!-- END RM RESULT -->
 
               <!-- LAT LON RESULT -->
-              <div class="container minitable mb-3">
+              <div class="container minitable mb-2">
                 <div class="row row-cols-1 group-header">
                   <div class="col-6 text-center">Coordinates</div>
                   <div class="col-6 text-center">
-                    <button id="copyCoordinates" type="button" class="btn btn-info copy" title="copy"><i
-                        class="fa fa-copy" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <div class="row row-cols-3 attribute-header">
@@ -474,6 +464,15 @@
 
           <!-- Map Buttons START -->
           <div id="controlDiv" class="card map-buttons">
+
+            <div class="btn-group-vertical">
+              <button class="btn basemap" id="TxDOT" style="color:red; font-weight: bold;">TxDOT</button>
+              <button class="btn basemap" id="Google">Texas Imagery Service</button>
+              <button class="btn basemap" id="txdotLightGray">TxDOT Light Gray</button>
+              <button class="btn basemap" id="txdotDarkGray">TxDOT Dark Gray</button>
+              <button class="btn basemap" id="esriStreets">Esri Streets</button>
+              <button class="btn basemap" id="openStreetMap">Open Street Map</button>
+            </div>
 
             <div class="card-body">
               <!-- Map-Controls START -->
