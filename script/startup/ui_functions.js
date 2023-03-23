@@ -1,5 +1,7 @@
 // BEGIN CONVERT-SESSION level reset
 
+GLOBALSETTINGS.FileName = '';
+
 function set_topnav_point() {
   GLOBALSETTINGS.CalcGeomType = 'Point';
   console.log("setting CALCGEOMTYPE to: " + GLOBALSETTINGS.CalcGeomType);

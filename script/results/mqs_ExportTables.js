@@ -44,7 +44,7 @@ function tabularRoutesConvertExport(resultsArr) {
 function exportPointsToCsvFile(resultsArr, btn_suffix) {
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
-  let exportFileDefaultName = 'pointresults.csv';
+  let exportFileDefaultName = GLOBALSETTINGS.FileName + 'pointresults.csv';
 
   // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
   // linkElement.setAttribute('href', dataUri);
@@ -147,7 +147,7 @@ function addTags(theData, theTagType) {
 function exportRoutesToCsvFile(resultsArr, btn_suffix) {
   let unparsed = Papa.unparse(resultsArr);
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
-  let exportFileDefaultName = 'routeresults.csv';
+  let exportFileDefaultName = GLOBALSETTINGS.FileName + 'routeresults.csv';
 
   // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
   // linkElement.setAttribute('href', dataUri);

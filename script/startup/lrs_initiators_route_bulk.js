@@ -16,10 +16,10 @@ $(document).ready(function () {
   myDropZone.addEventListener('drop', async (event) => {
     event.preventDefault();
 
-    const file = event.dataTransfer.files[0];
-    // const reader = new FileReader(); // test
+    let file = event.dataTransfer.files[0];
 
     const fileContents = await readFile(file);
+    GLOBALSETTINGS.FileName = file.name.split('.')[0];
 
     file = ''; //WATCH reset file test
 
@@ -28,13 +28,15 @@ $(document).ready(function () {
     convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
     convertSessionParams.currentLrmNo = GLOBALSETTINGS.CurrentLrmNo;
     convertSessionParams.inputMethod = GLOBALSETTINGS.InputMethod;
+    convertSessionParams.fileName = GLOBALSETTINGS.FileName;
     lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash_KG");
 
   });
 
   $(".uploadCsv-bulk").on('change', async function (e) {
 
-    const fileContents = await readFile(e.target.files[0])
+    const fileContents = await readFile(e.target.files[0]);
+    GLOBALSETTINGS.FileName = e.target.files[0].name.split('.')[0];
 
     //e.target.files = []; //WATCH reset file test
 
@@ -43,6 +45,7 @@ $(document).ready(function () {
     convertSessionParams.calcGeomType = GLOBALSETTINGS.CalcGeomType;
     convertSessionParams.currentLrmNo = GLOBALSETTINGS.CurrentLrmNo;
     convertSessionParams.inputMethod = GLOBALSETTINGS.InputMethod;
+    convertSessionParams.fileName = GLOBALSETTINGS.FileName;
     lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash_KG");
     //// lrsBulkQuery(convertSessionParams, fileContents, "AAdddd_dash");
   });
