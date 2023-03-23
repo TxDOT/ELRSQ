@@ -158,23 +158,6 @@ require([
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //FIXME change format of TxDOT_Control_SectionsLabelClass
   const TxDOT_Control_SectionsLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.CTRL_SECT_NBR" },
@@ -267,12 +250,6 @@ require([
 
     }
   })
-
-
-
-
-
-
 
 
 
