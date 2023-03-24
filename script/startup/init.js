@@ -7,6 +7,7 @@ GLOBALSETTINGS.PrintIterations = 0;
 GLOBALSETTINGS.PrintProjGeom = 0;
 GLOBALSETTINGS.DemoMode = 0;
 GLOBALSETTINGS.MapCursorLive = 0;
+GLOBALSETTINGS.continueConversion = 1;
 
 function cursorMode() {
   $("#viewDiv").css('cursor', 'crosshair');

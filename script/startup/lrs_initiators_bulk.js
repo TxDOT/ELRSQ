@@ -18,7 +18,6 @@ $(document).ready(function () {
     event.preventDefault();
 
     const file = event.dataTransfer.files[0];
-    // const reader = new FileReader(); // test
 
     const fileContents = await readFile(file);
 
@@ -54,6 +53,7 @@ $(document).ready(function () {
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearGraphicsFromMap(); });
 $(":reset").on('click', function () { clearForms(); });
+$(":cancel").on('click', function () { GLOBALSETTINGS.continueConversion = 0; });
 
 
 $("#useCrosshairs").on('click', function () { cursorMode(); });
