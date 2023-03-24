@@ -49,6 +49,17 @@ const lrsDummy2 = {
 };
 
 
+const exportFields = {
+  point_rtenm: ["RTE_DEFN_LN_NM", "RTE_DFO"],
+  point_controlsection: ["CTRL_SECT_LN_NBR", "CTRL_SECT_MPT"],
+  point_fieldlocation: ["RMRKR_PNT_NBR", "RMRKR_DISPLACEMENT"],
+  point_coordinates: ["LAT", "LON", "distance"],
+  route_rtenm: ["BEGIN_RTE_DEFN_LN_NM", "END_RTE_DEFN_LN_NM", "BEGIN_RTE_DFO", "END_RTE_DFO"],
+  route_controlsection: ["BEGIN_CTRL_SECT_LN_NBR", "END_CTRL_SECT_LN_NBR", "BEGIN_CTRL_SECT_MPT", "END_CTRL_SECT_MPT"],
+  route_fieldlocation: ["BEGIN_RMRKR_PNT_NBR", "BEGIN_RMRKR_DISPLACEMENT", "END_RMRKR_PNT_NBR", "END_RMRKR_DISPLACEMENT"],
+  route_coordinates: ["BEGIN_LAT", "BEGIN_LON", "END_LAT", "END_LON", "BEGIN_distance", "END_distance"]
+}
+
 
 const outputFieldIDs = {
   ROUTEID: "#p_returned_ROUTEID",

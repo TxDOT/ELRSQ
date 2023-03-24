@@ -23,8 +23,6 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
   resetProgressAndDownloads();
   $("#DownloadCard").show();
   $("#convert-progress-bar").show();
-  console.log("hello");
-
   $("#input-toolbar-msg").hide();
 
   let lrm_indices0 = field_indicesObj.lrm_indices0;
@@ -132,6 +130,7 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
     lrsQueryObjsArr.push(lrsQueryObj);
     updateProgressBar(rowToQuery, (arrayToQuery.length - formEntryParams.headerRowPresent));
+
   }
   // end process rows for loop
   console.log("process rows for loop complete");
@@ -143,9 +142,9 @@ async function queryLrsByArray(convertSessionParams, formEntryParams, arrayToQue
 
 
   SESSIONHISTORYARR.push(lrsQueryObjsArr);
+  let fieldnames = (convertSessionParams.inputMethod == "table") ? other_indices.map(i => arrayToQuery[0][i]) : ["Feature", "Color", "Width"];
 
-  resultsExport(convertSessionParams.calcGeomType);
-  console.log("hello");
+  resultsExport(convertSessionParams.calcGeomType, fieldnames);
   await resultsShow(convertSessionParams.calcGeomType, convertSessionParams.inputMethod);
 }
 
@@ -201,11 +200,11 @@ async function resultsShow(calcGeomType, inputMethod) {
  * @param {*} calcGeomType  is a value of either "Point" or "Route"
  * @param {*} formEntryReturnedData 
  */
-function resultsExport(calcGeomType) {
+function resultsExport(calcGeomType, fieldnames) {
   let sessionHistoryArr = SESSIONHISTORYARR;
   let queryObjsArr = sessionHistoryArr.last();
   let formEntryReturnedData = queryObjsArr.map(queryObj => queryObj.data).flat(); // data may have multiple elements
 
-  if (calcGeomType == "Point") { tabularPointsConvertExport(formEntryReturnedData); }
-  if (calcGeomType == "Route") { tabularRoutesConvertExport(formEntryReturnedData); }
+  if (calcGeomType == "Point") { tabularPointsConvertExport(formEntryReturnedData, fieldnames); }
+  if (calcGeomType == "Route") { tabularRoutesConvertExport(formEntryReturnedData, fieldnames); }
 }

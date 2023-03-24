@@ -1,6 +1,7 @@
 // 1) tabularPointsConvertExport
 
-function tabularPointsConvertExport(resultsArr) {
+function tabularPointsConvertExport(resultsArr, fieldnames) {
+
   $("#DownloadCard").show();
   $("#convert-download-bar").show();
   $("#convert-progress-bar").hide();
@@ -11,14 +12,14 @@ function tabularPointsConvertExport(resultsArr) {
     btn_suffix = "Modal";
   }
 
-  exportPointsToCsvFile(resultsArr, btn_suffix);
+  exportPointsToCsvFile(resultsArr, fieldnames, btn_suffix);
   exportPointsToGeoJsonFile(resultsArr, btn_suffix);
   exportPointsToKMLFile(resultsArr, btn_suffix);
 }
 
 // 2) tabularRoutesConvertExport
 
-function tabularRoutesConvertExport(resultsArr) {
+function tabularRoutesConvertExport(resultsArr, fieldnames) {
   $("#DownloadCard").show();
   $("#convert-download-bar").show();
   $("#convert-progress-bar").hide();
@@ -29,7 +30,7 @@ function tabularRoutesConvertExport(resultsArr) {
     btn_suffix = "Modal";
   }
 
-  exportRoutesToCsvFile(resultsArr, btn_suffix);
+  exportRoutesToCsvFile(resultsArr, fieldnames, btn_suffix);
   exportRoutesToGeoJsonFile(resultsArr, btn_suffix);
   exportRoutesToKMLFile(resultsArr, btn_suffix);
 }
@@ -41,18 +42,47 @@ function tabularRoutesConvertExport(resultsArr) {
 
 // 1a) exportPointsToCsvFile
 
-function exportPointsToCsvFile(resultsArr, btn_suffix) {
-  let unparsed = Papa.unparse(resultsArr);
+function exportPointsToCsvFile(resultsArr, fieldnames, btn_suffix) {
+
+  let fieldnames_rtenm = exportFields.point_rtenm;
+  let fieldnames_controlsection = ($('#outputControlSection').is(':checked')) ? exportFields.point_controlsection : [];
+  let fieldnames_fieldlocation = ($('#outputFieldLocation').is(':checked')) ? exportFields.point_fieldlocation : [];
+  let fieldnames_coordinates = ($('#outputCoordinates').is(':checked')) ? exportFields.point_coordinates : [];
+  let fieldorder = [...fieldnames, ...fieldnames_rtenm, ...fieldnames_controlsection, ...fieldnames_fieldlocation, ...fieldnames_coordinates];
+
+
+  let unparsed = Papa.unparse({ fields: fieldorder, data: resultsArr });
   let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
   let exportFileDefaultName = GLOBALSETTINGS.FileName + 'pointresults.csv';
 
-  // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
-  // linkElement.setAttribute('href', dataUri);
-  // linkElement.setAttribute('download', exportFileDefaultName);
   $("#CSVdownload" + btn_suffix).show();
   $("#CSVdownload" + btn_suffix).attr('href', dataUri);
   $("#CSVdownload" + btn_suffix).attr('download', exportFileDefaultName);
 }
+
+// 2a) exportRoutesToCsvFile
+
+function exportRoutesToCsvFile(resultsArr, fieldnames, btn_suffix) {
+
+  let fieldnames_rtenm = exportFields.route_rtenm;
+  let fieldnames_controlsection = ($('#outputControlSection').is(':checked')) ? exportFields.route_controlsection : [];
+  let fieldnames_fieldlocation = ($('#outputFieldLocation').is(':checked')) ? exportFields.route_fieldlocation : [];
+  let fieldnames_coordinates = ($('#outputCoordinates').is(':checked')) ? exportFields.route_coordinates : [];
+  let fieldorder = [...fieldnames, ...fieldnames_rtenm, ...fieldnames_controlsection, ...fieldnames_fieldlocation, ...fieldnames_coordinates];
+
+  let unparsed = Papa.unparse({ fields: fieldorder, data: resultsArr });
+  let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
+  let exportFileDefaultName = GLOBALSETTINGS.FileName + 'routeresults.csv';
+
+  $("#CSVdownload" + btn_suffix).show();
+  $("#CSVdownload" + btn_suffix).attr('href', dataUri);
+  $("#CSVdownload" + btn_suffix).attr('download', exportFileDefaultName);
+}
+
+
+
+
+
 
 // 1b) exportPointsToGeoJsonFile
 
@@ -142,20 +172,7 @@ function addTags(theData, theTagType) {
 
 
 
-// 2a) exportRoutesToCsvFile
 
-function exportRoutesToCsvFile(resultsArr, btn_suffix) {
-  let unparsed = Papa.unparse(resultsArr);
-  let dataUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(unparsed);
-  let exportFileDefaultName = GLOBALSETTINGS.FileName + 'routeresults.csv';
-
-  // let linkElement = document.getElementById('CSVdownload' + btn_suffix);
-  // linkElement.setAttribute('href', dataUri);
-  // linkElement.setAttribute('download', exportFileDefaultName);
-  $("#CSVdownload" + btn_suffix).show();
-  $("#CSVdownload" + btn_suffix).attr('href', dataUri);
-  $("#CSVdownload" + btn_suffix).attr('download', exportFileDefaultName);
-}
 
 // stub
 function exportRoutesToGeoJsonFile(resultsArr, btn_suffix) {

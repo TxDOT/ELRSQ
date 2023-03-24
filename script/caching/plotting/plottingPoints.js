@@ -4,7 +4,6 @@
  * @returns 
  */
 function objectifyPointProject(currentResult) {
-  console.log("objectify-Point-Project: currentResult: " + currentResult);
   let projObj = new Object();
   projObj.RTE_NM = currentResult['RTE_DEFN_LN_NM'];
   projObj.LAT = currentResult['LAT'];

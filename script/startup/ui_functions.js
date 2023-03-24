@@ -367,7 +367,6 @@ function resetProgressAndDownloads() {
 
 
 function updateProgressBar(aCurrentRow, total) {
-  console.log("updateProgressBar");
 
   let progress = Math.round(100 * aCurrentRow / total);
   let widthstring = progress.toString() + "%";
