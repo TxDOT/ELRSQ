@@ -56,7 +56,7 @@ $(document).ready(function () {
 $(":reset").on('click', function () { clearResults(); });
 $(":reset").on('click', function () { clearGraphicsFromMap(); });
 $(":reset").on('click', function () { clearForms(); });
-$(":cancel").on('click', function () { GLOBALSETTINGS.continueConversion = 0; });
+$(".cancel").on('click', function () { GLOBALSETTINGS.continueConversion = 0; location.reload(); });
 
 
 $("#useCrosshairs").on('click', function () { cursorMode(); });
