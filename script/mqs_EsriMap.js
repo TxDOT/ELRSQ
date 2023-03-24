@@ -34,6 +34,7 @@ require([
     "https://tiles.arcgis.com/tiles/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Vector_Tile_Basemap/VectorTileServer"
   );
   map.add(TxDOTVectorTileLayer);
+  //TxDOTVectorTileLayer.visible = true;
 
   let txdotLightGray = new VectorTileLayer(
     "https://www.arcgis.com/sharing/rest/content/items/507a9905e7154ce484617c7327ee8bc4/resources/styles/root.json?f=pjson"
@@ -41,32 +42,13 @@ require([
 
   let osmLayer = new OpenStreetMapLayer();
 
-  /**
-    let imagery = new TileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer");
-    map.add(imagery);
-    imagery.visible = false;
-  */
+
 
   // Add Google Imagery WMTS layer
   //let GoogleLayerInfo = new WMTSLayerInfo({ identifier: "texas", tileMatrixSet: "0to20", format: "png", });
   //let GoogleLayerOptions = { serviceMode: "KVP", layerInfo: GoogleLayerInfo };
   let GoogleLayerOptions = { serviceMode: "KVP" };
   let google = new WMTSLayer("https://txgi.tnris.org/login/path/corner-express-popcorn-compact/wmts", GoogleLayerOptions);
-
-
-
-  // toggle buttons for showing/hiding layers
-  /**
-    $('#basemap-event').change(function () {
-      if ($(this).prop('checked')) {
-        imagery.visible = false;
-        TxDOTVectorTileLayer.visible = true;
-      } else {
-        TxDOTVectorTileLayer.visible = false;
-        imagery.visible = true;
-      }
-    })
-  */
 
 
   $('.basemap').on("click", function () {
@@ -80,13 +62,11 @@ require([
 
   function changeBaseMap(basemap_btn) {
 
-    view.map.remove(TxDOTVectorTileLayer);
-    view.map.remove(google);
-    view.map.remove(osmLayer);
-    view.map.remove(txdotLightGray);
+    map.remove(google);
+    map.remove(osmLayer);
+    map.remove(txdotLightGray);
 
     let newBasemap = basemap_btn;
-    //document.getElementsByClassName("basemap").style.color = "";
     $('.basemap').css("color", "");
     document.getElementById(newBasemap).style.color = "red";
 
@@ -97,19 +77,21 @@ require([
 
     if (newBasemap == "Google") {
       //imageryZoomOut(); // prevent zoom past 21 on imagery -mw
-      view.map.add(google);
-      view.map.reorder(google, 0);
+      map.add(google);
+      map.reorder(google, 1);
+
     }
 
     if (newBasemap == "openStreetMap") {
-      view.map.add(osmLayer);
-      view.map.reorder(osmLayer, 0);
+      map.add(osmLayer);
+      map.reorder(osmLayer, 1);
     }
 
     if (newBasemap == "txdotLightGray") {
       if (serviceError == 0) {
-        view.map.add(txdotLightGray);
-        view.map.reorder(TxDOTVecttxdotLightGrayorTileLayer, 0);
+        map.add(txdotLightGray);
+        map.reorder(txdotLightGray, 1);
+
       }
       else {
         alert("This basemap service is temporarily unavailable");
@@ -119,8 +101,6 @@ require([
       }
     }
   }
-
-
 
   function serviceCheck() {
     let request = new XMLHttpRequest();
@@ -138,7 +118,6 @@ require([
 
 
 
-  //FIXME change format of TxDOT_Control_SectionsLabelClass
   const TxDOT_Control_SectionsLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.CTRL_SECT_NBR" },
     symbol: {
@@ -155,7 +134,6 @@ require([
   TxDOT_Control_Sections.visible = false;
 
 
-  //FIXME change format of TxDOT_Reference_MarkersLabelClass
   const TxDOT_Reference_MarkersLabelClass = new LabelClass({
     labelExpressionInfo: { expression: "$feature.MRKR_NBR" },
     symbol: {
@@ -170,7 +148,6 @@ require([
     url: "https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/TxDOT_Reference_Markers/FeatureServer/0",
     definitionExpression: "RDBD_TYPE = 'KG'"
   });
-  //TxDOT_Reference_Markers.definitionExpression("RDBD_TYPE IN ('KG')");
   TxDOT_Reference_Markers.labelingInfo = [TxDOT_Reference_MarkersLabelClass];
   map.add(TxDOT_Reference_Markers);
   TxDOT_Reference_Markers.visible = false;
@@ -236,7 +213,6 @@ require([
 
   // watch handler
   var zoomHandle = view.watch('zoom', function (newZoom) {
-    //// do not delete
     //// enable/disable checkboxes
     if (newZoom > 10) {
       $("#refmrkr-event").prop("disabled", false);

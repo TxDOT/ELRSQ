@@ -595,31 +595,30 @@
           <!-- Results-Card END -->
 
           <!-- Map Buttons START -->
-          <div id="controlDiv" class="card map-buttons">
-
+          <div id="controlDiv" class="col-6 card map-buttons">
+            <span>Select a basemap</span>
+            <br>
             <div class="btn-group-vertical">
-              <button class="btn basemap" id="TxDOT" style="color:red; font-weight: bold;">TxDOT</button>
-              <button class="btn basemap" id="Google">Texas Imagery Service</button>
-              <button class="btn basemap" id="txdotLightGray">TxDOT Light Gray</button>
-              <button class="btn basemap" id="openStreetMap">Open Street Map</button>
+              <button class="btn  btn-outline-secondary basemap" id="TxDOT"
+                style="color:red; font-weight: bold;">TxDOT</button>
+              <button class="btn  btn-outline-secondary basemap" id="Google">Texas Imagery Service</button>
+              <button class="btn  btn-outline-secondary basemap" id="txdotLightGray">TxDOT Light Gray</button>
+              <button class="btn  btn-outline-secondary basemap" id="openStreetMap">Open Street Map</button>
             </div>
 
             <div class="card-body">
               <!-- Map-Controls START -->
-              <input id="basemap-event" type="checkbox" checked data-toggle="toggle" data-html="true"
-                data-onlabel="<i class='fa fa-camera'     aria-hidden='true'></i> Imagery"
-                data-offlabel="<i class='fa fa-map-signs' aria-hidden='true'></i> TxDOT" data-onstyle="success"
-                data-offstyle="primary">
 
-              <input id="refmrkr-event" type="checkbox" data-toggle="toggle" data-html="true"
-                data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ref Mrkr"
-                data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ref Mrkr" data-onstyle="info"
-                data-offstyle="primary" disabled>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="refmrkr-event" disabled>
+                <label class="form-check-label" for="refmrkr-event">Ref Mrkr</label>
+              </div>
 
-              <input id="controlsec-event" type="checkbox" data-toggle="toggle" data-html="true"
-                data-onlabel="<i class='fa fa-toggle-off' aria-hidden='true'></i> Ctrl Sec"
-                data-offlabel="<i class='fa fa-toggle-on' aria-hidden='true'></i> Ctrl Sec" data-onstyle="info"
-                data-offstyle="primary" disabled>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="controlsec-event" disabled>
+                <label class="form-check-label" for="controlsec-event">Ctrl Sec</label>
+              </div>
+
               <!-- Map-Controls END -->
 
               <button type="button" class="btn btn-primary map-return" style="display:none;"
