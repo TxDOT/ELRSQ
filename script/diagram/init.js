@@ -67,11 +67,8 @@ async function fastSRD(diagramRteNm, diagramDFOBeg_mi, diagramDFOEnd_mi) {
 
 
   drawing.addControlSectionsObj = await addControlSections("TxDOT_Control_Sections", "CTRL_SECT_NBR", "Control Sections", 0);
-
   drawing.addFeatAttrPointObj = await addFeatAttrPoint("TxDOT_Reference_Markers_SRD", "MRKR_NBR", "Reference Markers", 1);
-
   drawing.addFeatAttrBandObj = await addFeatAttrBand("TxDOT_Route_County_SRD", "CNTY_NM", "County", 2, 0);
-
   drawing.addConcurrencyObj = await addConcurrency("service", "servicefield", "Concurrency", drawing.getRouteAttributesObj.dfoGapArr, 3, 1);
 
   return drawing;

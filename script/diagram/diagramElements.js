@@ -1,17 +1,32 @@
 function drawDiagramBaseAndTitle(routename) {
+  let drawDiagramBaseAndTitleArr = [];
+
+  drawDiagramBaseAndTitleArr.push({ "drawDiagramBaseAndTitle": '' });
+
+  drawDiagramBaseAndTitleArr.push({ "drawDiagramBase_nopix": '' });
   drawDiagramBase_nopix();
+
+  drawDiagramBaseAndTitleArr.push({ "drawDiagramTitle_nopix": routename });
   drawDiagramTitle_nopix(routename);
 }
 
 function buildDfoAxis(dfo_fm, dfo_to) {
+  let buildDfoAxisArr = [];
+
+  buildDfoAxisArr.push({ "buildDfoAxis": '' });
   //LRM Labels
+  buildDfoAxisArr.push({ "drawDfoHeading_nopix": '' });
   drawDfoHeading_nopix();
   //Draw roadway line DFO 
+  buildDfoAxisArr.push({ "drawDfoRoadwayLine_nopix": '' });
   drawDfoRoadwayLine_nopix();
   //Beginning tick mark DFO
+  buildDfoAxisArr.push({ "drawDfoTickBegLine_nopix": '' });
   drawDfoTickBegLine_nopix();
   //Ending tick mark DFO
+  buildDfoAxisArr.push({ "drawDfoTickEndLine_nopix": '' });
   drawDfoTickEndLine_nopix();
+  buildDfoAxisArr.push({ "drawDFOTickLabels_nopix": { "diagramDFOBeg_mi": dfo_fm, "diagramDFOEnd_mi": dfo_to } });
   drawDFOTickLabels_nopix(dfo_fm, dfo_to);
 
   let imagedata = document.getElementById("srdCanvas").toDataURL("image/png");
@@ -19,52 +34,78 @@ function buildDfoAxis(dfo_fm, dfo_to) {
 }
 
 function buildMptAxis() {
+  let buildMptAxisArr = [];
+
+  buildMptAxisArr.push({ "buildMptAxis": '' });
   //LRM Labels
+  buildMptAxisArr.push({ "drawMptHeading_nopix": '' });
   drawMptHeading_nopix();
   //Draw roadway line MilePoint
+  buildMptAxisArr.push({ "drawMptRoadwayLine_nopix": '' });
   drawMptRoadwayLine_nopix();
   //Beginning tick mark MilePoint
+  buildMptAxisArr.push({ "drawMptTickBegLine_nopix": '' });
   drawMptTickBegLine_nopix();
   //Ending tick mark MilePoint
+  buildMptAxisArr.push({ "drawMptTickEndLine_nopix": '' });
   drawMptTickEndLine_nopix();
 }
 
 function drawMultiControlSections(bandArr) {
+  let drawMultiControlSectionsArr = [];
+
   for (let i = 0; i < bandArr.length; i = i + 1) {
     let bandObj = bandArr[i];
+
     // draw tick marks
+    drawMultiControlSectionsArr.push({ "drawMptInternalBegLabelsByCharLen_nopix": { "DiagramMpBeg_mi": bandObj.begin_mpt_label, "offsetBeg_mi": bandObj.offset_beg_mi } });
     drawMptInternalBegLabelsByCharLen_nopix(bandObj.begin_mpt_label, bandObj.offset_beg_mi);
+    drawMultiControlSectionsArr.push({ "drawMptInternalEndLabels_nopix": { "DiagramMpEnd_mi": bandObj.end_mpt_label, "offsetEnd_mi": bandObj.offset_end_mi } });
     drawMptInternalEndLabels_nopix(bandObj.end_mpt_label, bandObj.offset_end_mi);
     //Draw divider // test
+    drawMultiControlSectionsArr.push({ "drawCSDividers_nopix": { "offsetEnd_mi": bandObj.offset_beg_mi } }); // test
     drawCSDividers_nopix(bandObj.offset_beg_mi); // test
     //Draw divider
+    drawMultiControlSectionsArr.push({ "drawCSDividers_nopix": { "offsetEnd_mi": bandObj.offset_end_mi } });
     drawCSDividers_nopix(bandObj.offset_end_mi);
     // draw label
+    drawMultiControlSectionsArr.push({ "drawCS1Label_nopix": { "customAttributeValue": bandObj.label, "offsetBeg_mi": bandObj.offset_beg_mi, "offsetEnd_mi": bandObj.offset_end_mi } });
     drawCS1Label_nopix(bandObj.label, bandObj.offset_beg_mi, bandObj.offset_end_mi);
   }
 }
 
 function drawFeatAttrMarks(feature, lineNo, markArr) {
+  let drawFeatAttrMarksArr = [];
+
   //Custom Attribute Name
   drawCustAttrHeading_nopix(feature, lineNo);
+
   for (let i = 0; i < markArr.length; i = i + 1) {
     let markObj = markArr[i];
     drawRefMrkrCircleAndLabel_nopix(markObj.customAttributeMeasureBeg_mi, markObj.label, markObj.offset_beg_mi, markObj.lineNo);
   }
+
   if (markArr.length == 0) { drawNoLoad_nopix(lineNo); }
 }
 
 function drawFeatAttrBands(feature, lineNo, bandArr) {
+  let drawFeatAttrBandsArr = [];
+
   //Custom Attribute Name
   drawCustAttrHeading_nopix(feature, lineNo);
+
   for (let i = 0; i < bandArr.length; i = i + 1) {
     let bandObj = bandArr[i];
     // draw band
+    drawFeatAttrBandsArr.push({ "drawCustAttrTickBegLineAndLabel_nopix": { "i": i, "offsetBeg_mi": bandObj.offset_beg_mi, "offsetEnd_mi": bandObj.offset_end_mi, "paletteForAttribute": bandObj.paletteForAttribute, "lineNo": bandObj.lineNo } });
     drawDataGraphicStripe_nopix(bandObj.offset_beg_mi, bandObj.offset_end_mi, bandObj.i, bandObj.paletteForAttribute, bandObj.lineNo);
     // draw tick marks
+    drawFeatAttrBandsArr.push({ "drawCustAttrTickBegLineAndLabel_nopix": { "customAttributeMeasureBeg_mi": bandObj.customAttributeMeasureBeg_mi, "offsetBeg_mi": bandObj.offset_beg_mi, "lineNo": bandObj.lineNo } });
     drawCustAttrTickBegLineAndLabel_nopix(bandObj.customAttributeMeasureBeg_mi, bandObj.offset_beg_mi, bandObj.lineNo);
+    drawFeatAttrBandsArr.push({ "drawCustAttrTickEndLineAndLabel_nopix": { "customAttributeMeasureEnd_mi": bandObj.customAttributeMeasureEnd_mi, "offsetEnd_mi": bandObj.offset_end_mi, "lineNo": bandObj.lineNo } });
     drawCustAttrTickEndLineAndLabel_nopix(bandObj.customAttributeMeasureEnd_mi, bandObj.offset_end_mi, bandObj.lineNo);
     // draw label
+    drawFeatAttrBandsArr.push({ "drawCustAttrFeatLabelByCharLen_nopix": { "customAttributeValue": bandObj.label, "offsetBeg_mi": bandObj.offset_beg_mi, "offsetEnd_mi": bandObj.offset_end_mi, "lineNo": bandObj.lineNo } });
     drawCustAttrFeatLabelByCharLen_nopix(bandObj.label, bandObj.offset_beg_mi, bandObj.offset_end_mi, bandObj.lineNo);
   }
   if (bandArr.length == 0) { drawNoLoad_nopix(lineNo); }
@@ -245,6 +286,8 @@ function drawDiagramTitle_nopix(diagramTitle) {
   drawText(theDiagramRouteLabel, CHARTWIDTH_px - txtWidth_px + 120, 36, "#FFFFFF", "24");
 }
 
+///////////
+
 function drawDfoHeading_nopix() {
   drawText("DFO", BORDERPADDINGX_px - 70, MAINROADWAYLINEY_px - 20, DfoPrimaryColor, "12");
 }
@@ -286,6 +329,8 @@ function drawDfoTickTermLabel_px(dfoTerm_lbl, xval) {
   drawText(dfoTerm_lbl, xval, MAINROADWAYLINEY_px - 60, DfoPrimaryColor, "12");
 }
 
+///////////
+
 function drawMptHeading_nopix() {
   drawText("Milepoint", BORDERPADDINGX_px - 70, MAINROADWAYLINEY_px + 30, MptPrimaryColor, "12");
 }
@@ -312,6 +357,8 @@ function drawMptTickTermLine_px(xval) {
   lineTip = lineBase + 56;
   drawLine(xval, lineBase, xval, lineTip, 2, MptPrimaryColor);
 }
+
+///////////
 
 function drawMptInternalBegLabelsByCharLen_px(DiagramMpTerm_mi_lbl, xOffset_px) {
   if (DiagramMpTerm_mi_lbl.toString().length == 1) { characterOffset_px = 10; } else { characterOffset_px = 25; }
@@ -342,6 +389,8 @@ function drawCSDividers_px(xval) {
 function drawCS1Label_px(DiagramControlSectionLabel, offsetLab_px) {
   drawText("CS: " + DiagramControlSectionLabel, offsetLab_px, MAINROADWAYLINEY_px + 90, CSLabelColor, "14");
 }
+
+///////////
 
 // pathway 2 drawing functions
 
@@ -383,6 +432,8 @@ function drawLeaderLine_nopix(lineNo) {
   yval = getYBaseline(lineNo);
   drawLine(calcLeftLimit(), yval, calcRightLimit(), yval, 3, LeaderLineColor);
 }
+
+///////////
 
 function drawRefMrkrCircleAndLabel_px(customAttributeMeasureBeg_mi_lbl, customAttributeValue, offsetBeg_px, lineNo) {
   drawAttrTickLabel_px(customAttributeMeasureBeg_mi_lbl, offsetBeg_px, lineNo);
